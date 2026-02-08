@@ -1,17 +1,13 @@
-import Link from "next/link";
+import Link from 'next/link';
 
 const relatedTools = [
-  { name: "YouTube Money Calculator", href: "/youtube-money-calculator" },
-  { name: "Instagram Engagement Rate", href: "/instagram-engagement-rate-calculator" },
-  { name: "TikTok Engagement Rate", href: "/tiktok-engagement-rate-calculator" },
-  { name: "YouTube Growth Projector", href: "/youtube-subscriber-projector" },
+  { name: 'YouTube Money Calculator', href: '/youtube-money-calculator' },
+  { name: 'Instagram Engagement Rate', href: '/instagram-engagement-rate-calculator' },
+  { name: 'TikTok Engagement Rate', href: '/tiktok-engagement-rate-calculator' },
+  { name: 'YouTube Growth Projector', href: '/youtube-subscriber-projector' },
 ];
 
-export default function CalculatorsLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function CalculatorsLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       {children}

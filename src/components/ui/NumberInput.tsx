@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 interface NumberInputProps {
   label: string;
@@ -24,7 +24,7 @@ export default function NumberInput({
       <label className="text-sm font-medium text-foreground">{label}</label>
       <input
         type="number"
-        value={value || ""}
+        value={value || ''}
         min={min}
         max={max}
         step={step}

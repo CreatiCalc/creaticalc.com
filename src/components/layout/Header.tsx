@@ -1,10 +1,10 @@
-import Link from "next/link";
+import Link from 'next/link';
 
 const calculators = [
-  { name: "YouTube Money Calculator", href: "/youtube-money-calculator" },
-  { name: "Instagram Engagement", href: "/instagram-engagement-rate-calculator" },
-  { name: "TikTok Engagement", href: "/tiktok-engagement-rate-calculator" },
-  { name: "YouTube Growth Projector", href: "/youtube-subscriber-projector" },
+  { name: 'YouTube Money Calculator', href: '/youtube-money-calculator' },
+  { name: 'Instagram Engagement', href: '/instagram-engagement-rate-calculator' },
+  { name: 'TikTok Engagement', href: '/tiktok-engagement-rate-calculator' },
+  { name: 'YouTube Growth Projector', href: '/youtube-subscriber-projector' },
 ];
 
 export default function Header() {

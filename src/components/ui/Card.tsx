@@ -3,11 +3,9 @@ interface CardProps {
   className?: string;
 }
 
-export default function Card({ children, className = "" }: CardProps) {
+export default function Card({ children, className = '' }: CardProps) {
   return (
-    <div
-      className={`rounded-xl border border-border bg-white p-6 shadow-sm ${className}`}
-    >
+    <div className={`rounded-xl border border-border bg-white p-6 shadow-sm ${className}`}>
       {children}
     </div>
   );

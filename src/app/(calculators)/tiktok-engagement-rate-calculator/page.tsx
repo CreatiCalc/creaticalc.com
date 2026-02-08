@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
+import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "TikTok Engagement Rate Calculator",
+  title: 'TikTok Engagement Rate Calculator',
   description:
-    "Free TikTok engagement rate calculator. Measure your TikTok engagement rate using views, likes, comments, and shares with industry benchmarks.",
+    'Free TikTok engagement rate calculator. Measure your TikTok engagement rate using views, likes, comments, and shares with industry benchmarks.',
 };
 
 export default function TikTokEngagementPage() {

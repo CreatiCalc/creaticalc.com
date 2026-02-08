@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 interface SliderProps {
   label: string;
@@ -25,9 +25,7 @@ export default function Slider({
     <div className="space-y-2">
       <div className="flex items-center justify-between">
         <label className="text-sm font-medium text-foreground">{label}</label>
-        <span className="text-sm font-semibold text-primary">
-          {displayValue}
-        </span>
+        <span className="text-sm font-semibold text-primary">{displayValue}</span>
       </div>
       <input
         type="range"
