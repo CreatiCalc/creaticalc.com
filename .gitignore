@@ -41,6 +41,7 @@ yarn-error.log*
 
 # claude
 .claude/settings.local.json
+.plans/
 
 # typescript
 *.tsbuildinfo
