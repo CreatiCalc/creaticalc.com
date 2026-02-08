@@ -1,6 +1,6 @@
-import type { FAQItem } from "./types";
-import FAQ from "./FAQ";
-import AdSlot from "@/components/layout/AdSlot";
+import type { FAQItem } from './types';
+import FAQ from './FAQ';
+import AdSlot from '@/components/layout/AdSlot';
 
 interface CalculatorLayoutProps {
   title: string;
@@ -33,9 +33,7 @@ export default function CalculatorLayout({
       {howItWorks && (
         <section className="mt-12">
           <h2 className="mb-4 text-2xl font-bold">How It Works</h2>
-          <div className="prose prose-sm max-w-none text-muted">
-            {howItWorks}
-          </div>
+          <div className="prose prose-sm max-w-none text-muted">{howItWorks}</div>
         </section>
       )}
 

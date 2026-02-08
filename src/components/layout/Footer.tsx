@@ -1,10 +1,10 @@
-import Link from "next/link";
+import Link from 'next/link';
 
 const calculators = [
-  { name: "YouTube Money Calculator", href: "/youtube-money-calculator" },
-  { name: "Instagram Engagement Rate", href: "/instagram-engagement-rate-calculator" },
-  { name: "TikTok Engagement Rate", href: "/tiktok-engagement-rate-calculator" },
-  { name: "YouTube Growth Projector", href: "/youtube-subscriber-projector" },
+  { name: 'YouTube Money Calculator', href: '/youtube-money-calculator' },
+  { name: 'Instagram Engagement Rate', href: '/instagram-engagement-rate-calculator' },
+  { name: 'TikTok Engagement Rate', href: '/tiktok-engagement-rate-calculator' },
+  { name: 'YouTube Growth Projector', href: '/youtube-subscriber-projector' },
 ];
 
 export default function Footer() {
@@ -14,8 +14,8 @@ export default function Footer() {
         <div>
           <p className="text-lg font-bold text-primary">CreatiCalc</p>
           <p className="mt-2 text-sm text-muted">
-            Free calculators for content creators. Estimate earnings, track
-            engagement, and project growth.
+            Free calculators for content creators. Estimate earnings, track engagement, and project
+            growth.
           </p>
         </div>
         <div>

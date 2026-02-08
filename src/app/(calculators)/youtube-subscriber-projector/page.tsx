@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
+import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "YouTube Subscriber Growth Projector",
+  title: 'YouTube Subscriber Growth Projector',
   description:
     "Free YouTube subscriber growth projector. See when you'll hit 1K, 10K, 100K, and 1M subscribers based on your current growth rate.",
 };
