@@ -1,9 +1,9 @@
 interface AdSlotProps {
-  slot: "header" | "sidebar" | "below-results";
+  slot: 'header' | 'sidebar' | 'below-results';
   className?: string;
 }
 
-export default function AdSlot({ slot, className = "" }: AdSlotProps) {
+export default function AdSlot({ slot, className = '' }: AdSlotProps) {
   return (
     <div
       className={`flex items-center justify-center rounded-lg border border-dashed border-border bg-surface-alt text-sm text-muted ${className}`}

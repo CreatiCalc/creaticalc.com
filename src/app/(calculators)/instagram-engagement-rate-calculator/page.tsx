@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
+import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Instagram Engagement Rate Calculator",
+  title: 'Instagram Engagement Rate Calculator',
   description:
-    "Free Instagram engagement rate calculator. Calculate your IG engagement rate and compare it against industry benchmarks by follower tier.",
+    'Free Instagram engagement rate calculator. Calculate your IG engagement rate and compare it against industry benchmarks by follower tier.',
 };
 
 export default function InstagramEngagementPage() {

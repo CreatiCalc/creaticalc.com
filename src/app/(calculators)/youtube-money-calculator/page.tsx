@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
+import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "YouTube Money Calculator — Estimate Your Earnings",
+  title: 'YouTube Money Calculator — Estimate Your Earnings',
   description:
-    "Free YouTube money calculator. Estimate how much money YouTubers make based on views, CPM, and niche. Calculate daily, monthly, and yearly YouTube earnings.",
+    'Free YouTube money calculator. Estimate how much money YouTubers make based on views, CPM, and niche. Calculate daily, monthly, and yearly YouTube earnings.',
 };
 
 export default function YouTubeMoneyCalculatorPage() {
