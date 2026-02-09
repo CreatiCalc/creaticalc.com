@@ -1,16 +1,138 @@
 import type { Metadata } from 'next';
+import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
+import CalculatorSchema from '@/components/seo/CalculatorSchema';
+import { YouTubeMoneyCalculator } from '@/features/calculators/youtube-money';
+import type { FAQItem } from '@/features/calculators/shared/types';
 
 export const metadata: Metadata = {
   title: 'YouTube Money Calculator — Estimate Your Earnings',
   description:
     'Free YouTube money calculator. Estimate how much money YouTubers make based on views, CPM, and niche. Calculate daily, monthly, and yearly YouTube earnings.',
+  openGraph: {
+    title: 'YouTube Money Calculator — Estimate Your Earnings',
+    description:
+      'Estimate how much money YouTubers make based on views, CPM, and niche. Free calculator for daily, monthly, and yearly YouTube revenue.',
+    url: '/youtube-money-calculator',
+  },
+  alternates: {
+    canonical: '/youtube-money-calculator',
+  },
 };
+
+const faq: FAQItem[] = [
+  {
+    question: 'How much money do YouTubers make per view?',
+    answer:
+      'YouTubers typically earn between $0.002 and $0.030 per view, depending on their niche, audience location, and ad engagement. This translates to a CPM (cost per 1,000 views) of roughly $2 to $30. Finance and business channels tend to earn the most per view, while gaming and entertainment channels earn less.',
+  },
+  {
+    question: 'What is CPM on YouTube?',
+    answer:
+      'CPM stands for "Cost Per Mille" (cost per 1,000 impressions). It represents how much advertisers pay YouTube for every 1,000 ad views on your videos. Your actual revenue is based on RPM (Revenue Per Mille), which is your earnings per 1,000 video views after YouTube takes its 45% cut. Our calculator uses estimated CPM ranges by niche to project your earnings.',
+  },
+  {
+    question: 'How much does YouTube pay for 1 million views?',
+    answer:
+      'For 1 million views, YouTube creators typically earn between $2,000 and $30,000, depending on their content niche. A finance channel might earn $12,000–$30,000 per million views, while a gaming channel might earn $2,000–$5,000. These figures vary based on audience demographics, ad engagement rates, and seasonal advertiser demand.',
+  },
+  {
+    question: 'What YouTube niche pays the most?',
+    answer:
+      'Finance and business content consistently pays the highest CPM on YouTube, with rates ranging from $12 to $30 per 1,000 views. This is because financial advertisers (banks, investment platforms, insurance companies) bid aggressively for this audience. Technology ($6–$12 CPM) and education ($5–$14 CPM) are also high-paying niches.',
+  },
+  {
+    question: 'How do YouTubers get paid?',
+    answer:
+      'YouTubers earn money through the YouTube Partner Program (YPP), which requires at least 1,000 subscribers and 4,000 watch hours in the past 12 months. Once accepted, creators earn a share of ad revenue displayed on their videos. YouTube keeps 45% and pays creators 55%. Payments are made monthly through AdSense once the $100 minimum threshold is reached.',
+  },
+  {
+    question: 'Are YouTube earnings estimates accurate?',
+    answer:
+      'Earnings calculators provide rough estimates based on average CPM rates by niche. Actual earnings vary based on many factors: audience location (US viewers pay more than other regions), viewer ad-blocker usage, video length (longer videos allow mid-roll ads), content type, and seasonal advertiser spending. Use these estimates as a general guide, not an exact prediction.',
+  },
+  {
+    question: 'How can I increase my YouTube earnings?',
+    answer:
+      'To maximize YouTube revenue, focus on: creating longer videos (8+ minutes) to enable mid-roll ads, targeting high-CPM niches like finance or technology, growing a US/UK audience where ad rates are highest, improving viewer retention to boost ad impressions, and diversifying income through sponsorships, memberships, and merchandise alongside ad revenue.',
+  },
+  {
+    question: 'What is RPM vs CPM on YouTube?',
+    answer:
+      'CPM (Cost Per Mille) is the amount advertisers pay YouTube for 1,000 ad impressions. RPM (Revenue Per Mille) is the amount creators actually earn per 1,000 video views after YouTube takes its 45% cut. For example, if the CPM is $10, the RPM is roughly $5.50. RPM is the more useful metric for creators because it reflects your actual take-home pay per 1,000 views. Our calculator shows both so you can see exactly how the split works.',
+  },
+  {
+    question: 'Why do YouTube earnings spike in Q4?',
+    answer:
+      'YouTube ad revenue peaks in October through December because of the holiday advertising cycle. Brands dramatically increase ad spend for Black Friday, Cyber Monday, and Christmas shopping. This drives CPMs up by 30–40% compared to mid-year averages. November typically sees a 30% increase and December a 40% increase in RPM. Conversely, January is the lowest-earning month — ad budgets reset and CPMs can drop 20% below average. Our seasonality toggle models these real fluctuations.',
+  },
+  {
+    question: 'How accurate is the growth rate projection?',
+    answer:
+      'The growth rate projection uses compound monthly growth, meaning each month builds on the previous one. A 5% monthly growth rate means your views increase by 5% each month compared to the previous month — not 5% of your starting views. Over 12 months, 5% monthly growth means roughly 80% more views by the end of the year. This is realistic for actively growing channels but aggressive for established ones. We recommend starting with 0% (flat) for conservative estimates and adjusting based on your recent channel trends.',
+  },
+];
+
+const howItWorks = (
+  <>
+    <p>
+      Our YouTube Money Calculator estimates your potential earnings using RPM (Revenue Per Mille) —
+      the amount you actually earn per 1,000 video views. We use industry-average data across 10
+      popular content niches to give you low, mid, and high earnings estimates, with optional
+      compound growth modeling and seasonal ad-rate adjustments.
+    </p>
+    <p className="mt-3">
+      The formula: your projected monthly views (daily views × days in month × growth factor) are
+      divided by 1,000 and multiplied by your niche RPM. If seasonality is enabled, each month uses
+      a different RPM multiplier based on real advertising cycles. The 12-month chart shows the
+      range between low and high estimates, with the mid estimate as a trend line.
+    </p>
+    <p className="mt-3">
+      Keep in mind that these are estimates based on ad revenue alone. Many successful creators earn
+      significantly more through brand sponsorships, affiliate marketing, merchandise, channel
+      memberships, and Super Chats. Your actual YouTube ad revenue will also depend on factors like
+      viewer geography, ad-blocker usage, and seasonal advertiser demand.
+    </p>
+
+    <h3 className="mt-6 text-lg font-semibold text-foreground">
+      RPM vs CPM vs What Creators Actually Earn
+    </h3>
+    <p className="mt-2">
+      CPM is the advertiser-side metric — what brands pay YouTube for 1,000 ad impressions. But
+      YouTube keeps 45% of that revenue. The remaining 55% is your RPM: the actual dollars you earn
+      per 1,000 video views. For example, a $10 CPM niche pays creators roughly $5.50 RPM. Our
+      calculator displays both values so you can see exactly how much YouTube takes and what you
+      keep.
+    </p>
+
+    <h3 className="mt-6 text-lg font-semibold text-foreground">Why Q4 Pays More</h3>
+    <p className="mt-2">
+      Advertising follows a seasonal cycle tied to consumer spending. In Q4, brands compete
+      aggressively for ad placements around Black Friday, Cyber Monday, and the holiday gift season.
+      This increased demand pushes ad rates up significantly: November CPMs typically rise 30% and
+      December CPMs surge 40% above the annual average. After the holidays, budgets reset — January
+      is the lowest-earning month with CPMs dropping about 20% below average. Our seasonality toggle
+      applies these real-world multipliers to your projection so you can see the impact across the
+      full year.
+    </p>
+  </>
+);
 
 export default function YouTubeMoneyCalculatorPage() {
   return (
-    <div className="mx-auto max-w-4xl px-4 py-10 text-center">
-      <h1 className="text-3xl font-bold">YouTube Money Calculator</h1>
-      <p className="mt-3 text-muted">Coming soon</p>
-    </div>
+    <>
+      <CalculatorSchema
+        name="YouTube Money Calculator"
+        description="Estimate how much money YouTubers make based on views, CPM, and content niche."
+        url="https://creaticalc.com/youtube-money-calculator"
+      />
+      <CalculatorLayout
+        title="YouTube Money Calculator"
+        description="Estimate your YouTube earnings based on daily views and content niche. See projected daily, monthly, and yearly revenue with growth modeling and seasonal adjustments."
+        faq={faq}
+        howItWorks={howItWorks}
+      >
+        <YouTubeMoneyCalculator />
+      </CalculatorLayout>
+    </>
   );
 }
