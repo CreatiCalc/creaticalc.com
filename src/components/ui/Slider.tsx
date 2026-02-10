@@ -34,6 +34,7 @@ export default function Slider({
         step={step}
         value={value}
         onChange={(e) => onChange(Number(e.target.value))}
+        autoComplete="off"
         className="w-full cursor-pointer accent-primary"
       />
     </div>
