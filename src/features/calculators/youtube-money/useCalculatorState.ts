@@ -19,7 +19,8 @@ type Action =
   | { type: 'SET_GROWTH_RATE'; payload: number }
   | { type: 'TOGGLE_SEASONALITY' }
   | { type: 'SET_REVENUE_TARGET'; payload: number }
-  | { type: 'APPLY_SCENARIO'; payload: Partial<ProjectionInput> };
+  | { type: 'APPLY_SCENARIO'; payload: Partial<ProjectionInput> }
+  | { type: 'SET_FROM_LOOKUP'; payload: { dailyViews: number; nicheId?: NicheId } };
 
 const defaults: CalculatorState = {
   dailyViews: 5000,
@@ -57,6 +58,11 @@ function reducer(state: CalculatorState, action: Action): CalculatorState {
       return { ...state, revenueTarget: action.payload };
     case 'APPLY_SCENARIO':
       return { ...state, ...action.payload };
+    case 'SET_FROM_LOOKUP': {
+      const next: Partial<CalculatorState> = { dailyViews: action.payload.dailyViews };
+      if (action.payload.nicheId) next.nicheId = action.payload.nicheId;
+      return { ...state, ...next };
+    }
     default:
       return state;
   }

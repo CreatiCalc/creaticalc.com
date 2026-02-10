@@ -1,5 +1,8 @@
 'use client';
 
+import { useId } from 'react';
+import { useWheelStep } from './useWheelStep';
+
 interface NumberInputProps {
   label: string;
   value: number;
@@ -19,15 +22,27 @@ export default function NumberInput({
   onChange,
   placeholder,
 }: NumberInputProps) {
+  const id = useId();
+  const inputRef = useWheelStep<HTMLInputElement>({
+    onStep: (dir) => {
+      const next = value + dir * step;
+      onChange(Math.max(min ?? -Infinity, Math.min(next, max ?? Infinity)));
+    },
+  });
+
   return (
     <div className="space-y-1">
-      <label className="text-sm font-medium text-foreground">{label}</label>
+      <label htmlFor={id} className="text-sm font-medium text-foreground">
+        {label}
+      </label>
       <input
+        ref={inputRef}
+        id={id}
         type="number"
-        value={value || ''}
+        value={value}
         min={min}
         max={max}
-        step={step}
+        step="any"
         onChange={(e) => onChange(Number(e.target.value))}
         autoComplete="off"
         placeholder={placeholder}

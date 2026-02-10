@@ -1,5 +1,7 @@
 'use client';
 
+import { useId } from 'react';
+
 interface SelectOption {
   label: string;
   value: string;
@@ -13,10 +15,15 @@ interface SelectProps {
 }
 
 export default function Select({ label, value, options, onChange }: SelectProps) {
+  const id = useId();
+
   return (
     <div className="space-y-1">
-      <label className="text-sm font-medium text-foreground">{label}</label>
+      <label htmlFor={id} className="text-sm font-medium text-foreground">
+        {label}
+      </label>
       <select
+        id={id}
         value={value}
         onChange={(e) => onChange(e.target.value)}
         autoComplete="off"

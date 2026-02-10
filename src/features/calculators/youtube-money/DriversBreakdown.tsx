@@ -1,5 +1,6 @@
 'use client';
 
+import { useMemo } from 'react';
 import type { ProjectionInput, ProjectionResult } from '@/lib/youtubeEarningsModel';
 import { calculateDrivers, formatUSD } from '@/lib/youtubeEarningsModel';
 
@@ -11,7 +12,7 @@ interface DriversBreakdownProps {
 }
 
 export default function DriversBreakdown({ state, projection }: DriversBreakdownProps) {
-  const drivers = calculateDrivers(state, projection);
+  const drivers = useMemo(() => calculateDrivers(state, projection), [state, projection]);
 
   return (
     <div className="mt-8">
