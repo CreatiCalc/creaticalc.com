@@ -1,5 +1,6 @@
 'use client';
 
+import { useMemo } from 'react';
 import Slider from '@/components/ui/Slider';
 import NumberInput from '@/components/ui/NumberInput';
 import Select from '@/components/ui/Select';
@@ -15,6 +16,7 @@ import {
   type ProjectionInput,
 } from '@/lib/youtubeEarningsModel';
 import { useCalculatorState } from './useCalculatorState';
+import UrlLookup from './UrlLookup';
 import GrowthRateInput from './GrowthRateInput';
 import SeasonalityToggle from './SeasonalityToggle';
 import ProjectionChart from './ProjectionChart';
@@ -25,31 +27,54 @@ import ShareButtons from './ShareButtons';
 
 const nicheOptions = NICHES.map((n) => ({ label: n.name, value: n.id }));
 
+const viewsTicks = [
+  { value: 1000, label: '1K' },
+  { value: 10000, label: '10K' },
+  { value: 100000, label: '100K' },
+  { value: 1000000, label: '1M' },
+];
+
 export default function YouTubeMoneyCalculator() {
   const { state, dispatch } = useCalculatorState();
 
-  const projectionInput: ProjectionInput = {
-    dailyViews: state.dailyViews,
-    nicheId: state.nicheId,
-    monthlyGrowthRate: state.monthlyGrowthRate,
-    seasonalityEnabled: state.seasonalityEnabled,
-    startMonth: state.startMonth,
-  };
+  const projectionInput: ProjectionInput = useMemo(
+    () => ({
+      dailyViews: state.dailyViews,
+      nicheId: state.nicheId,
+      monthlyGrowthRate: state.monthlyGrowthRate,
+      seasonalityEnabled: state.seasonalityEnabled,
+      startMonth: state.startMonth,
+    }),
+    [
+      state.dailyViews,
+      state.nicheId,
+      state.monthlyGrowthRate,
+      state.seasonalityEnabled,
+      state.startMonth,
+    ]
+  );
 
-  const projection = projectEarnings(projectionInput);
+  const projection = useMemo(() => projectEarnings(projectionInput), [projectionInput]);
   const niche = getNiche(state.nicheId);
 
   return (
     <>
-      <Card>
+      <UrlLookup
+        onResult={(data) => dispatch({ type: 'SET_FROM_LOOKUP', payload: data })}
+        currentDailyViews={state.dailyViews}
+      />
+
+      <Card className="mt-4">
         <div className="space-y-6">
           <div className="grid gap-4 sm:grid-cols-2">
             <Slider
               label="Daily Views"
               value={state.dailyViews}
-              min={1000}
-              max={1000000}
-              step={500}
+              min={100}
+              max={5000000}
+              step={100}
+              logScale
+              ticks={viewsTicks}
               onChange={(v) => dispatch({ type: 'SET_DAILY_VIEWS', payload: v })}
               formatValue={(v) => v.toLocaleString()}
             />
@@ -57,12 +82,12 @@ export default function YouTubeMoneyCalculator() {
               label="Or enter exact views"
               value={state.dailyViews}
               min={0}
-              max={10000000}
+              max={5000000}
               step={1000}
               onChange={(v) =>
                 dispatch({
                   type: 'SET_DAILY_VIEWS',
-                  payload: Math.max(0, Math.min(v, 10000000)),
+                  payload: Math.max(0, Math.min(v, 5000000)),
                 })
               }
             />

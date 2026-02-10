@@ -1,5 +1,6 @@
 'use client';
 
+import { useMemo } from 'react';
 import type { ProjectionInput, ProjectionResult, Recommendation } from '@/lib/youtubeEarningsModel';
 import { generateRecommendations, formatUSD } from '@/lib/youtubeEarningsModel';
 import NumberInput from '@/components/ui/NumberInput';
@@ -17,10 +18,9 @@ export default function Recommendations({
   onApplyScenario,
   onRevenueTargetChange,
 }: RecommendationsProps) {
-  const recommendations: Recommendation[] = generateRecommendations(
-    state,
-    projection,
-    state.revenueTarget
+  const recommendations: Recommendation[] = useMemo(
+    () => generateRecommendations(state, projection, state.revenueTarget),
+    [state, projection]
   );
 
   return (
