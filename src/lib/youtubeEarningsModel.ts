@@ -255,27 +255,29 @@ export function generateRecommendations(
   }
 
   // 3. Switch niche (up to 2 higher-RPM niches)
-  const currentNiche = getNiche(input.nicheId);
-  const higherNiches = NICHES.filter((n) => n.rpm.mid > currentNiche.rpm.mid).sort(
-    (a, b) => b.rpm.mid - a.rpm.mid
-  );
+  if (currentMonthlyMid < revenueTarget) {
+    const currentNiche = getNiche(input.nicheId);
+    const higherNiches = NICHES.filter((n) => n.rpm.mid > currentNiche.rpm.mid).sort(
+      (a, b) => b.rpm.mid - a.rpm.mid
+    );
 
-  for (const betterNiche of higherNiches.slice(0, 2)) {
-    const nicheProjection = projectEarnings({ ...input, nicheId: betterNiche.id });
-    const impact = nicheProjection.summary.monthly.mid - currentMonthlyMid;
-    if (impact > 0) {
-      recs.push({
-        id: `switch-niche-${betterNiche.id}`,
-        text: `Switch to ${betterNiche.name}`,
-        detail: `${betterNiche.name} has a mid RPM of $${betterNiche.rpm.mid.toFixed(2)} vs your current $${currentNiche.rpm.mid.toFixed(2)}.`,
-        scenario: { nicheId: betterNiche.id },
-        projectedImpact: impact,
-      });
+    for (const betterNiche of higherNiches.slice(0, 2)) {
+      const nicheProjection = projectEarnings({ ...input, nicheId: betterNiche.id });
+      const impact = nicheProjection.summary.monthly.mid - currentMonthlyMid;
+      if (impact > 0) {
+        recs.push({
+          id: `switch-niche-${betterNiche.id}`,
+          text: `Switch to ${betterNiche.name}`,
+          detail: `${betterNiche.name} has a mid RPM of $${betterNiche.rpm.mid.toFixed(2)} vs your current $${currentNiche.rpm.mid.toFixed(2)}.`,
+          scenario: { nicheId: betterNiche.id },
+          projectedImpact: impact,
+        });
+      }
     }
   }
 
   // 4. Enable seasonality
-  if (!input.seasonalityEnabled) {
+  if (currentMonthlyMid < revenueTarget && !input.seasonalityEnabled) {
     const seasonalProjection = projectEarnings({ ...input, seasonalityEnabled: true });
     const impact = seasonalProjection.totals.mid / 12 - currentMonthlyMid;
     if (impact > 0) {

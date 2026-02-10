@@ -2,6 +2,7 @@
 
 import { useReducer } from 'react';
 import type { NicheId, ProjectionInput } from '@/lib/youtubeEarningsModel';
+import { decodeCalcState } from '@/lib/shareCodec';
 
 export interface CalculatorState {
   dailyViews: number;
@@ -20,14 +21,27 @@ type Action =
   | { type: 'SET_REVENUE_TARGET'; payload: number }
   | { type: 'APPLY_SCENARIO'; payload: Partial<ProjectionInput> };
 
-const initialState: CalculatorState = {
-  dailyViews: 50000,
+const defaults: CalculatorState = {
+  dailyViews: 5000,
   nicheId: 'tech',
   monthlyGrowthRate: 0,
   seasonalityEnabled: false,
   revenueTarget: 2000,
   startMonth: new Date().getMonth(),
 };
+
+function getInitialState(): CalculatorState {
+  if (typeof window === 'undefined') return defaults;
+
+  const params = new URLSearchParams(window.location.search);
+  const code = params.get('c');
+  if (!code) return defaults;
+
+  const decoded = decodeCalcState(code);
+  if (!decoded) return defaults;
+
+  return { ...defaults, ...decoded };
+}
 
 function reducer(state: CalculatorState, action: Action): CalculatorState {
   switch (action.type) {
@@ -49,7 +63,7 @@ function reducer(state: CalculatorState, action: Action): CalculatorState {
 }
 
 export function useCalculatorState() {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, undefined, getInitialState);
 
   return { state, dispatch } as const;
 }

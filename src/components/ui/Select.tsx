@@ -19,6 +19,7 @@ export default function Select({ label, value, options, onChange }: SelectProps)
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
+        autoComplete="off"
         className="w-full rounded-lg border border-border bg-white px-3 py-2 text-sm transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
       >
         {options.map((opt) => (

@@ -21,6 +21,7 @@ import ProjectionChart from './ProjectionChart';
 import Recommendations from './Recommendations';
 import DriversBreakdown from './DriversBreakdown';
 import RpmTable from './RpmTable';
+import ShareButtons from './ShareButtons';
 
 const nicheOptions = NICHES.map((n) => ({ label: n.name, value: n.id }));
 
@@ -48,7 +49,7 @@ export default function YouTubeMoneyCalculator() {
               value={state.dailyViews}
               min={1000}
               max={1000000}
-              step={1000}
+              step={500}
               onChange={(v) => dispatch({ type: 'SET_DAILY_VIEWS', payload: v })}
               formatValue={(v) => v.toLocaleString()}
             />
@@ -111,6 +112,8 @@ export default function YouTubeMoneyCalculator() {
           comparison={`Mid estimate: ${formatUSD(projection.summary.yearly.mid)}/year`}
         />
       </div>
+
+      <ShareButtons state={state} yearlyMid={projection.summary.yearly.mid} />
 
       <AdSlot slot="below-results" className="mt-6" />
 

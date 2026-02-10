@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import MobileNav from './MobileNav';
 
 const calculators = [
   { name: 'YouTube Money Calculator', href: '/youtube-money-calculator' },
@@ -25,6 +26,7 @@ export default function Header() {
             </Link>
           ))}
         </nav>
+        <MobileNav />
       </div>
     </header>
   );
