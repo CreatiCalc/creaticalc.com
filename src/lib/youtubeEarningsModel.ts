@@ -78,16 +78,16 @@ export interface Driver {
 const YOUTUBE_CREATOR_SHARE = 0.55;
 
 const CPM_DATA: Record<NicheId, { name: string; cpm: RpmRange }> = {
-  finance: { name: 'Finance & Business', cpm: { low: 12, mid: 20, high: 30 } },
-  tech: { name: 'Technology', cpm: { low: 6, mid: 9, high: 12 } },
-  education: { name: 'Education', cpm: { low: 5, mid: 9, high: 14 } },
-  health: { name: 'Health & Fitness', cpm: { low: 5, mid: 8, high: 14 } },
+  finance: { name: 'Finance & Business', cpm: { low: 18, mid: 30, high: 45 } },
+  tech: { name: 'Technology', cpm: { low: 8, mid: 12, high: 18 } },
+  education: { name: 'Education', cpm: { low: 5, mid: 8, high: 12 } },
+  health: { name: 'Health & Fitness', cpm: { low: 5, mid: 8, high: 12 } },
   beauty: { name: 'Beauty & Fashion', cpm: { low: 3, mid: 6, high: 10 } },
-  travel: { name: 'Travel', cpm: { low: 3, mid: 6, high: 10 } },
+  travel: { name: 'Travel', cpm: { low: 4, mid: 7, high: 10 } },
   food: { name: 'Food & Cooking', cpm: { low: 3, mid: 5, high: 8 } },
-  lifestyle: { name: 'Lifestyle', cpm: { low: 2, mid: 4, high: 7 } },
-  entertainment: { name: 'Entertainment', cpm: { low: 2, mid: 4, high: 6 } },
-  gaming: { name: 'Gaming', cpm: { low: 2, mid: 3.5, high: 5 } },
+  lifestyle: { name: 'Lifestyle', cpm: { low: 2, mid: 4, high: 6 } },
+  entertainment: { name: 'Entertainment', cpm: { low: 1.5, mid: 2.5, high: 4 } },
+  gaming: { name: 'Gaming', cpm: { low: 1.5, mid: 3, high: 5 } },
 };
 
 export const NICHES: Niche[] = Object.entries(CPM_DATA).map(([id, data]) => ({
@@ -101,7 +101,7 @@ export const NICHES: Niche[] = Object.entries(CPM_DATA).map(([id, data]) => ({
   },
 }));
 
-export const SHORTS_RPM: RpmRange = { low: 0.04, mid: 0.05, high: 0.06 };
+export const SHORTS_RPM: RpmRange = { low: 0.02, mid: 0.05, high: 0.08 };
 
 export function getNiche(nicheId: NicheId): Niche {
   return NICHES.find((n) => n.id === nicheId) ?? NICHES[0];

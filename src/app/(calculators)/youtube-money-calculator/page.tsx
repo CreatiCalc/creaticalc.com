@@ -23,7 +23,7 @@ const faq: FAQItem[] = [
   {
     question: 'How much money do YouTubers make per view?',
     answer:
-      'YouTubers typically earn between $0.002 and $0.030 per view, depending on their niche, audience location, and ad engagement. This translates to a CPM (cost per 1,000 views) of roughly $2 to $30. Finance and business channels tend to earn the most per view, while gaming and entertainment channels earn less.',
+      'YouTubers typically earn between $0.001 and $0.045 per view, depending on their niche, audience location, and ad engagement. This translates to a CPM (cost per 1,000 views) of roughly $1.50 to $45. Finance and business channels tend to earn the most per view, while gaming and entertainment channels earn less.',
   },
   {
     question: 'What is CPM on YouTube?',
@@ -33,12 +33,12 @@ const faq: FAQItem[] = [
   {
     question: 'How much does YouTube pay for 1 million views?',
     answer:
-      'For 1 million views, YouTube creators typically earn between $2,000 and $30,000, depending on their content niche. A finance channel might earn $12,000–$30,000 per million views, while a gaming channel might earn $2,000–$5,000. These figures vary based on audience demographics, ad engagement rates, and seasonal advertiser demand.',
+      'For 1 million views, YouTube creators typically earn between $1,500 and $45,000, depending on their content niche. A finance channel might earn $18,000–$45,000 per million views, while a gaming channel might earn $1,500–$5,000. These figures vary based on audience demographics, ad engagement rates, and seasonal advertiser demand.',
   },
   {
     question: 'What YouTube niche pays the most?',
     answer:
-      'Finance and business content consistently pays the highest CPM on YouTube, with rates ranging from $12 to $30 per 1,000 views. This is because financial advertisers (banks, investment platforms, insurance companies) bid aggressively for this audience. Technology ($6–$12 CPM) and education ($5–$14 CPM) are also high-paying niches.',
+      'Finance and business content consistently pays the highest CPM on YouTube, with rates ranging from $18 to $45 per 1,000 views. This is because financial advertisers (banks, investment platforms, insurance companies) bid aggressively for this audience. Technology ($8–$18 CPM) and education ($5–$12 CPM) are also high-paying niches.',
   },
   {
     question: 'How do YouTubers get paid?',
@@ -78,7 +78,7 @@ const faq: FAQItem[] = [
   {
     question: 'How much do YouTube Shorts pay?',
     answer:
-      'YouTube Shorts pay significantly less than long-form videos — roughly $0.04 to $0.06 per 1,000 views (RPM). This is because Shorts ads come from a separate revenue pool with lower advertiser rates. Unlike long-form content where niche heavily influences earnings, Shorts RPM is relatively flat across all content categories. Use the "Shorts" toggle in our calculator to see projected Shorts earnings. To maximize revenue, many creators use Shorts to drive subscribers who then watch their higher-paying long-form content.',
+      'YouTube Shorts pay significantly less than long-form videos — roughly $0.02 to $0.08 per 1,000 views (RPM). This is because Shorts ads come from a separate revenue pool where creators receive 45% of allocated ad revenue. Unlike long-form content where niche heavily influences earnings, Shorts RPM is relatively flat across most content categories, though finance and tech Shorts can earn toward the higher end. Use the "Shorts" toggle in our calculator to see projected Shorts earnings. To maximize revenue, many creators use Shorts to drive subscribers who then watch their higher-paying long-form content.',
   },
 ];
 
