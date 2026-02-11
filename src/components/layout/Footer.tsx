@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Logo from '@/components/brand/Logo';
 
 const calculators = [
   { name: 'YouTube Money Calculator', href: '/youtube-money-calculator' },
@@ -12,8 +13,8 @@ export default function Footer() {
     <footer className="border-t border-border bg-surface py-12">
       <div className="mx-auto grid max-w-6xl gap-8 px-4 md:grid-cols-3">
         <div>
-          <p className="text-lg font-bold text-primary">CreatiCalc</p>
-          <p className="mt-2 text-sm text-muted">
+          <Logo size="sm" />
+          <p className="mt-3 text-sm text-muted">
             Free calculators for content creators. Estimate earnings, track engagement, and project
             growth.
           </p>

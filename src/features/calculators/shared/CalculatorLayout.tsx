@@ -20,8 +20,13 @@ export default function CalculatorLayout({
   return (
     <div className="mx-auto max-w-4xl px-4 py-10">
       <div className="mb-8 text-center">
-        <h1 className="text-3xl font-bold md:text-4xl">{title}</h1>
+        <h1 className="text-gradient-brand text-3xl font-bold md:text-4xl">{title}</h1>
         <p className="mt-3 text-muted">{description}</p>
+        <div
+          className="mx-auto mt-5 h-1 w-36 rounded-full"
+          style={{ background: 'var(--gradient-brand-vibrant)' }}
+          aria-hidden="true"
+        />
       </div>
 
       <AdSlot slot="header" className="mb-8" />
