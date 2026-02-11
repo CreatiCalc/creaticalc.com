@@ -4,6 +4,8 @@ import { useReducer } from 'react';
 import type { NicheId, ProjectionInput } from '@/lib/youtubeEarningsModel';
 import { decodeCalcState } from '@/lib/shareCodec';
 
+export type InputMode = 'daily' | 'perVideo';
+
 export interface CalculatorState {
   dailyViews: number;
   nicheId: NicheId;
@@ -11,6 +13,16 @@ export interface CalculatorState {
   seasonalityEnabled: boolean;
   revenueTarget: number;
   startMonth: number;
+  inputMode: InputMode;
+  viewsPerVideo: number;
+  uploadsPerWeek: number;
+}
+
+export function computeDailyViewsFromPerVideo(
+  viewsPerVideo: number,
+  uploadsPerWeek: number
+): number {
+  return Math.round((viewsPerVideo * uploadsPerWeek) / 7);
 }
 
 type Action =
@@ -20,7 +32,10 @@ type Action =
   | { type: 'TOGGLE_SEASONALITY' }
   | { type: 'SET_REVENUE_TARGET'; payload: number }
   | { type: 'APPLY_SCENARIO'; payload: Partial<ProjectionInput> }
-  | { type: 'SET_FROM_LOOKUP'; payload: { dailyViews: number; nicheId?: NicheId } };
+  | { type: 'SET_FROM_LOOKUP'; payload: { dailyViews: number; nicheId?: NicheId } }
+  | { type: 'SET_INPUT_MODE'; payload: InputMode }
+  | { type: 'SET_VIEWS_PER_VIDEO'; payload: number }
+  | { type: 'SET_UPLOADS_PER_WEEK'; payload: number };
 
 const defaults: CalculatorState = {
   dailyViews: 5000,
@@ -29,6 +44,9 @@ const defaults: CalculatorState = {
   seasonalityEnabled: false,
   revenueTarget: 2000,
   startMonth: new Date().getMonth(),
+  inputMode: 'daily',
+  viewsPerVideo: 2000,
+  uploadsPerWeek: 3,
 };
 
 function getInitialState(): CalculatorState {
@@ -57,12 +75,21 @@ function reducer(state: CalculatorState, action: Action): CalculatorState {
     case 'SET_REVENUE_TARGET':
       return { ...state, revenueTarget: action.payload };
     case 'APPLY_SCENARIO':
-      return { ...state, ...action.payload };
+      return { ...state, ...action.payload, inputMode: 'daily' };
     case 'SET_FROM_LOOKUP': {
-      const next: Partial<CalculatorState> = { dailyViews: action.payload.dailyViews };
+      const next: Partial<CalculatorState> = {
+        dailyViews: action.payload.dailyViews,
+        inputMode: 'daily',
+      };
       if (action.payload.nicheId) next.nicheId = action.payload.nicheId;
       return { ...state, ...next };
     }
+    case 'SET_INPUT_MODE':
+      return { ...state, inputMode: action.payload };
+    case 'SET_VIEWS_PER_VIDEO':
+      return { ...state, viewsPerVideo: action.payload };
+    case 'SET_UPLOADS_PER_WEEK':
+      return { ...state, uploadsPerWeek: action.payload };
     default:
       return state;
   }

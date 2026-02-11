@@ -19,11 +19,22 @@ export default function ShareButtons({ state, yearlyMid }: ShareButtonsProps) {
       nicheId: state.nicheId,
       monthlyGrowthRate: state.monthlyGrowthRate,
       seasonalityEnabled: state.seasonalityEnabled,
+      inputMode: state.inputMode,
+      viewsPerVideo: state.viewsPerVideo,
+      uploadsPerWeek: state.uploadsPerWeek,
     });
     const url = new URL(window.location.pathname, window.location.origin);
     url.searchParams.set('c', code);
     return url.toString();
-  }, [state.dailyViews, state.nicheId, state.monthlyGrowthRate, state.seasonalityEnabled]);
+  }, [
+    state.dailyViews,
+    state.nicheId,
+    state.monthlyGrowthRate,
+    state.seasonalityEnabled,
+    state.inputMode,
+    state.viewsPerVideo,
+    state.uploadsPerWeek,
+  ]);
 
   const handleCopy = async () => {
     const url = getShareUrl();

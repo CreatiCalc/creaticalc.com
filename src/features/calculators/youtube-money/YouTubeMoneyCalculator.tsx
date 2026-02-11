@@ -15,8 +15,9 @@ import {
   type NicheId,
   type ProjectionInput,
 } from '@/lib/youtubeEarningsModel';
-import { useCalculatorState } from './useCalculatorState';
+import { useCalculatorState, computeDailyViewsFromPerVideo } from './useCalculatorState';
 import UrlLookup from './UrlLookup';
+import InputModeToggle from './InputModeToggle';
 import GrowthRateInput from './GrowthRateInput';
 import SeasonalityToggle from './SeasonalityToggle';
 import ProjectionChart from './ProjectionChart';
@@ -34,19 +35,34 @@ const viewsTicks = [
   { value: 1000000, label: '1M' },
 ];
 
+const viewsPerVideoTicks = [
+  { value: 500, label: '500' },
+  { value: 5000, label: '5K' },
+  { value: 50000, label: '50K' },
+  { value: 500000, label: '500K' },
+];
+
 export default function YouTubeMoneyCalculator() {
   const { state, dispatch } = useCalculatorState();
 
+  const effectiveDailyViews = useMemo(
+    () =>
+      state.inputMode === 'perVideo'
+        ? computeDailyViewsFromPerVideo(state.viewsPerVideo, state.uploadsPerWeek)
+        : state.dailyViews,
+    [state.inputMode, state.viewsPerVideo, state.uploadsPerWeek, state.dailyViews]
+  );
+
   const projectionInput: ProjectionInput = useMemo(
     () => ({
-      dailyViews: state.dailyViews,
+      dailyViews: effectiveDailyViews,
       nicheId: state.nicheId,
       monthlyGrowthRate: state.monthlyGrowthRate,
       seasonalityEnabled: state.seasonalityEnabled,
       startMonth: state.startMonth,
     }),
     [
-      state.dailyViews,
+      effectiveDailyViews,
       state.nicheId,
       state.monthlyGrowthRate,
       state.seasonalityEnabled,
@@ -61,37 +77,76 @@ export default function YouTubeMoneyCalculator() {
     <>
       <UrlLookup
         onResult={(data) => dispatch({ type: 'SET_FROM_LOOKUP', payload: data })}
-        currentDailyViews={state.dailyViews}
+        currentDailyViews={effectiveDailyViews}
       />
 
       <Card className="mt-4">
         <div className="space-y-6">
-          <div className="grid gap-4 sm:grid-cols-2">
-            <Slider
-              label="Daily Views"
-              value={state.dailyViews}
-              min={100}
-              max={5000000}
-              step={100}
-              logScale
-              ticks={viewsTicks}
-              onChange={(v) => dispatch({ type: 'SET_DAILY_VIEWS', payload: v })}
-              formatValue={(v) => v.toLocaleString()}
-            />
-            <NumberInput
-              label="Or enter exact views"
-              value={state.dailyViews}
-              min={0}
-              max={5000000}
-              step={1000}
-              onChange={(v) =>
-                dispatch({
-                  type: 'SET_DAILY_VIEWS',
-                  payload: Math.max(0, Math.min(v, 5000000)),
-                })
-              }
-            />
-          </div>
+          <InputModeToggle
+            value={state.inputMode}
+            onChange={(mode) => dispatch({ type: 'SET_INPUT_MODE', payload: mode })}
+          />
+
+          {state.inputMode === 'daily' ? (
+            <div className="grid gap-4 sm:grid-cols-2">
+              <Slider
+                label="Daily Views"
+                value={state.dailyViews}
+                min={100}
+                max={5000000}
+                step={100}
+                logScale
+                ticks={viewsTicks}
+                onChange={(v) => dispatch({ type: 'SET_DAILY_VIEWS', payload: v })}
+                formatValue={(v) => v.toLocaleString()}
+              />
+              <NumberInput
+                label="Or enter exact views"
+                value={state.dailyViews}
+                min={0}
+                max={5000000}
+                step={1000}
+                onChange={(v) =>
+                  dispatch({
+                    type: 'SET_DAILY_VIEWS',
+                    payload: Math.max(0, Math.min(v, 5000000)),
+                  })
+                }
+              />
+            </div>
+          ) : (
+            <div className="space-y-4">
+              <div className="grid gap-4 sm:grid-cols-2">
+                <Slider
+                  label="Views Per Video"
+                  value={state.viewsPerVideo}
+                  min={100}
+                  max={5000000}
+                  step={100}
+                  logScale
+                  ticks={viewsPerVideoTicks}
+                  onChange={(v) => dispatch({ type: 'SET_VIEWS_PER_VIDEO', payload: v })}
+                  formatValue={(v) => v.toLocaleString()}
+                />
+                <NumberInput
+                  label="Uploads Per Week"
+                  value={state.uploadsPerWeek}
+                  min={1}
+                  max={100}
+                  step={1}
+                  onChange={(v) =>
+                    dispatch({
+                      type: 'SET_UPLOADS_PER_WEEK',
+                      payload: Math.max(1, Math.min(v, 100)),
+                    })
+                  }
+                />
+              </div>
+              <p className="text-sm text-muted">
+                ≈ {effectiveDailyViews.toLocaleString()} daily views
+              </p>
+            </div>
+          )}
 
           <Select
             label="Content Niche"

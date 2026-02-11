@@ -66,6 +66,11 @@ const faq: FAQItem[] = [
       'YouTube ad revenue peaks in October through December because of the holiday advertising cycle. Brands dramatically increase ad spend for Black Friday, Cyber Monday, and Christmas shopping. This drives CPMs up by 30–40% compared to mid-year averages. November typically sees a 30% increase and December a 40% increase in RPM. Conversely, January is the lowest-earning month — ad budgets reset and CPMs can drop 20% below average. Our seasonality toggle models these real fluctuations.',
   },
   {
+    question: 'What is the "Per Video" input mode?',
+    answer:
+      'The Per Video mode lets you estimate earnings based on how many views each video gets and how often you upload, rather than entering total daily views. The calculator converts your inputs to daily views using the formula: daily views = (views per video × uploads per week) / 7. This is useful for smaller creators who think in terms of individual video performance rather than overall channel traffic. Switching to Per Video mode does not change the earnings model — it simply provides an alternative way to enter your view data.',
+  },
+  {
     question: 'How accurate is the growth rate projection?',
     answer:
       'The growth rate projection uses compound monthly growth, meaning each month builds on the previous one. A 5% monthly growth rate means your views increase by 5% each month compared to the previous month — not 5% of your starting views. Over 12 months, 5% monthly growth means roughly 80% more views by the end of the year. This is realistic for actively growing channels but aggressive for established ones. We recommend starting with 0% (flat) for conservative estimates and adjusting based on your recent channel trends.',
