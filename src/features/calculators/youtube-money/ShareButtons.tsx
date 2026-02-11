@@ -8,9 +8,10 @@ import type { CalculatorState } from './useCalculatorState';
 interface ShareButtonsProps {
   state: CalculatorState;
   yearlyMid: number;
+  tier: string;
 }
 
-export default function ShareButtons({ state, yearlyMid }: ShareButtonsProps) {
+export default function ShareButtons({ state, yearlyMid, tier }: ShareButtonsProps) {
   const [copied, setCopied] = useState(false);
 
   const getShareUrl = useCallback(() => {
@@ -47,7 +48,7 @@ export default function ShareButtons({ state, yearlyMid }: ShareButtonsProps) {
 
   const handleShareX = () => {
     const url = getShareUrl();
-    const text = `I'm projected to make ${formatUSD(yearlyMid)}/year on YouTube! Check your earnings:`;
+    const text = `I'm a "${tier}" creator projected to make ${formatUSD(yearlyMid)}/year on YouTube! Check your earnings:`;
     window.open(
       `https://x.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`,
       '_blank',

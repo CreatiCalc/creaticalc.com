@@ -1,8 +1,11 @@
+import type { ReactNode } from 'react';
+
 interface ResultCardProps {
   label: string;
-  value: string;
-  comparison?: string;
+  value: ReactNode;
+  comparison?: ReactNode;
   highlight?: boolean;
+  badge?: string;
 }
 
 export default function ResultCard({
@@ -10,6 +13,7 @@ export default function ResultCard({
   value,
   comparison,
   highlight = false,
+  badge,
 }: ResultCardProps) {
   return (
     <div
@@ -17,7 +21,14 @@ export default function ResultCard({
         highlight ? 'border-primary/30 bg-primary/5' : 'border-border bg-white'
       }`}
     >
-      <p className="text-sm text-muted">{label}</p>
+      <div className="flex items-center justify-between">
+        <p className="text-sm text-muted">{label}</p>
+        {badge && (
+          <span className="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-semibold text-primary">
+            {badge}
+          </span>
+        )}
+      </div>
       <p className={`mt-1 text-2xl font-bold ${highlight ? 'text-primary' : 'text-foreground'}`}>
         {value}
       </p>

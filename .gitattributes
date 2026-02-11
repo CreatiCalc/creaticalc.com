@@ -1,0 +1,3 @@
+# Force LF line endings for all text files in the repo.
+# This prevents Windows CRLF issues regardless of individual git config.
+* text=auto eol=lf
