@@ -1,5 +1,7 @@
 // ─── Types ────────────────────────────────────────────────────────────────────
 
+export type ContentFormat = 'longform' | 'shorts';
+
 export type NicheId =
   | 'finance'
   | 'tech'
@@ -52,6 +54,7 @@ export interface ProjectionInput {
   monthlyGrowthRate: number;
   seasonalityEnabled: boolean;
   startMonth: number;
+  contentFormat?: ContentFormat;
 }
 
 export interface Recommendation {
@@ -98,6 +101,8 @@ export const NICHES: Niche[] = Object.entries(CPM_DATA).map(([id, data]) => ({
   },
 }));
 
+export const SHORTS_RPM: RpmRange = { low: 0.04, mid: 0.05, high: 0.06 };
+
 export function getNiche(nicheId: NicheId): Niche {
   return NICHES.find((n) => n.id === nicheId) ?? NICHES[0];
 }
@@ -139,6 +144,7 @@ const MONTH_LABELS = [
 
 export function projectEarnings(input: ProjectionInput): ProjectionResult {
   const niche = getNiche(input.nicheId);
+  const baseRpm = input.contentFormat === 'shorts' ? SHORTS_RPM : niche.rpm;
   const months: MonthProjection[] = [];
 
   for (let i = 0; i < 12; i++) {
@@ -151,9 +157,9 @@ export function projectEarnings(input: ProjectionInput): ProjectionResult {
       : 1.0;
 
     const effectiveRpm: RpmRange = {
-      low: niche.rpm.low * seasonalityMultiplier,
-      mid: niche.rpm.mid * seasonalityMultiplier,
-      high: niche.rpm.high * seasonalityMultiplier,
+      low: baseRpm.low * seasonalityMultiplier,
+      mid: baseRpm.mid * seasonalityMultiplier,
+      high: baseRpm.high * seasonalityMultiplier,
     };
 
     const revenue: RpmRange = {
@@ -208,12 +214,15 @@ export function generateRecommendations(
   const recs: Recommendation[] = [];
   const currentMonthlyMid = projection.summary.monthly.mid;
 
+  const isShorts = input.contentFormat === 'shorts';
+
   // 1. Increase views
   if (currentMonthlyMid < revenueTarget) {
     const niche = getNiche(input.nicheId);
+    const baseRpm = isShorts ? SHORTS_RPM : niche.rpm;
     const calMonth = input.startMonth % 12;
     const seasonMul = input.seasonalityEnabled ? SEASONALITY_MULTIPLIERS[calMonth] : 1.0;
-    const effectiveMidRpm = niche.rpm.mid * seasonMul;
+    const effectiveMidRpm = baseRpm.mid * seasonMul;
     const daysInFirstMonth = DAYS_IN_MONTH[calMonth];
     const neededMonthViews = (revenueTarget / effectiveMidRpm) * 1000;
     const neededDailyViews = Math.ceil(neededMonthViews / daysInFirstMonth);
@@ -254,8 +263,8 @@ export function generateRecommendations(
     }
   }
 
-  // 3. Switch niche (up to 2 higher-RPM niches)
-  if (currentMonthlyMid < revenueTarget) {
+  // 3. Switch niche (up to 2 higher-RPM niches) — skip for Shorts
+  if (currentMonthlyMid < revenueTarget && !isShorts) {
     const currentNiche = getNiche(input.nicheId);
     const higherNiches = NICHES.filter((n) => n.rpm.mid > currentNiche.rpm.mid).sort(
       (a, b) => b.rpm.mid - a.rpm.mid
@@ -299,6 +308,7 @@ export function generateRecommendations(
 
 export function calculateDrivers(input: ProjectionInput, projection: ProjectionResult): Driver[] {
   const baseMonthlyMid = projection.summary.monthly.mid;
+  const isShorts = input.contentFormat === 'shorts';
   const drivers: Driver[] = [];
 
   // Views: impact of +10K daily views
@@ -312,17 +322,19 @@ export function calculateDrivers(input: ProjectionInput, projection: ProjectionR
     relativeImpact: 0,
   });
 
-  // Niche: difference vs best niche
-  const bestNiche = NICHES.reduce((best, n) => (n.rpm.mid > best.rpm.mid ? n : best), NICHES[0]);
-  const bestNicheProjection = projectEarnings({ ...input, nicheId: bestNiche.id });
-  const nicheImpact = bestNicheProjection.summary.monthly.mid - baseMonthlyMid;
-  drivers.push({
-    factor: 'Content Niche',
-    description: `Gap vs. best niche (${bestNiche.name})`,
-    currentValue: getNiche(input.nicheId).name,
-    impactPerUnit: nicheImpact,
-    relativeImpact: 0,
-  });
+  // Niche: difference vs best niche — skip for Shorts (niche doesn't affect RPM)
+  if (!isShorts) {
+    const bestNiche = NICHES.reduce((best, n) => (n.rpm.mid > best.rpm.mid ? n : best), NICHES[0]);
+    const bestNicheProjection = projectEarnings({ ...input, nicheId: bestNiche.id });
+    const nicheImpact = bestNicheProjection.summary.monthly.mid - baseMonthlyMid;
+    drivers.push({
+      factor: 'Content Niche',
+      description: `Gap vs. best niche (${bestNiche.name})`,
+      currentValue: getNiche(input.nicheId).name,
+      impactPerUnit: nicheImpact,
+      relativeImpact: 0,
+    });
+  }
 
   // Growth: impact of +5% monthly growth (measured at month 12)
   const growthBump = projectEarnings({

@@ -1,11 +1,30 @@
-import { NICHES } from '@/lib/youtubeEarningsModel';
-import type { NicheId } from '@/lib/youtubeEarningsModel';
+import { NICHES, SHORTS_RPM } from '@/lib/youtubeEarningsModel';
+import type { NicheId, ContentFormat } from '@/lib/youtubeEarningsModel';
 
 interface RpmTableProps {
   activeNicheId: NicheId;
+  contentFormat: ContentFormat;
 }
 
-export default function RpmTable({ activeNicheId }: RpmTableProps) {
+export default function RpmTable({ activeNicheId, contentFormat }: RpmTableProps) {
+  if (contentFormat === 'shorts') {
+    return (
+      <div className="mt-8">
+        <h3 className="mb-2 text-lg font-semibold">YouTube Shorts RPM</h3>
+        <div className="rounded-lg border border-border bg-white p-4">
+          <p className="text-sm font-medium">
+            ${SHORTS_RPM.low.toFixed(2)} &ndash; ${SHORTS_RPM.high.toFixed(2)} per 1,000 views
+          </p>
+          <p className="mt-2 text-sm text-muted">
+            Shorts RPM is roughly the same across all niches because Shorts ads use a different
+            revenue pool. Unlike long-form content where niche heavily influences earnings, Shorts
+            creators earn from a shared ad fund distributed based on total Shorts views.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="mt-8">
       <h3 className="mb-2 text-lg font-semibold">RPM &amp; CPM by Niche</h3>
