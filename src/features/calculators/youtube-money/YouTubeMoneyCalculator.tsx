@@ -7,6 +7,7 @@ import Select from '@/components/ui/Select';
 import Card from '@/components/ui/Card';
 import ResultCard from '@/features/calculators/shared/ResultCard';
 import AdSlot from '@/components/layout/AdSlot';
+import AnimatedNumber from '@/components/ui/AnimatedNumber';
 import {
   NICHES,
   SHORTS_RPM,
@@ -29,6 +30,14 @@ import RpmTable from './RpmTable';
 import ShareButtons from './ShareButtons';
 
 const nicheOptions = NICHES.map((n) => ({ label: n.name, value: n.id }));
+
+function getCreatorTier(monthlyMid: number): string {
+  if (monthlyMid >= 10_000) return 'Top Creator';
+  if (monthlyMid >= 2_000) return 'Full-Time';
+  if (monthlyMid >= 500) return 'Part-Time';
+  if (monthlyMid >= 100) return 'Side Income';
+  return 'Hobby';
+}
 
 const viewsTicks = [
   { value: 1000, label: '1K' },
@@ -78,6 +87,7 @@ export default function YouTubeMoneyCalculator() {
 
   const projection = useMemo(() => projectEarnings(projectionInput), [projectionInput]);
   const niche = getNiche(state.nicheId);
+  const creatorTier = getCreatorTier(projection.summary.monthly.mid);
 
   return (
     <>
@@ -200,23 +210,57 @@ export default function YouTubeMoneyCalculator() {
       <div className="mt-6 grid gap-4 sm:grid-cols-3">
         <ResultCard
           label="Daily Earnings"
-          value={`${formatUSD(projection.summary.daily.low)} — ${formatUSD(projection.summary.daily.high)}`}
-          comparison={`Mid estimate: ${formatUSD(projection.summary.daily.mid)}/day`}
+          value={
+            <>
+              <AnimatedNumber value={projection.summary.daily.low} format={formatUSD} /> &mdash;{' '}
+              <AnimatedNumber value={projection.summary.daily.high} format={formatUSD} />
+            </>
+          }
+          comparison={
+            <>
+              Mid estimate:{' '}
+              <AnimatedNumber value={projection.summary.daily.mid} format={formatUSD} />
+              /day
+            </>
+          }
         />
         <ResultCard
           label="Monthly Earnings"
-          value={`${formatUSD(projection.summary.monthly.low)} — ${formatUSD(projection.summary.monthly.high)}`}
-          comparison={`Mid estimate: ${formatUSD(projection.summary.monthly.mid)}/month`}
+          value={
+            <>
+              <AnimatedNumber value={projection.summary.monthly.low} format={formatUSD} /> &mdash;{' '}
+              <AnimatedNumber value={projection.summary.monthly.high} format={formatUSD} />
+            </>
+          }
+          comparison={
+            <>
+              Mid estimate:{' '}
+              <AnimatedNumber value={projection.summary.monthly.mid} format={formatUSD} />
+              /month
+            </>
+          }
           highlight
+          badge={creatorTier}
         />
         <ResultCard
           label="Yearly Earnings"
-          value={`${formatUSD(projection.summary.yearly.low)} — ${formatUSD(projection.summary.yearly.high)}`}
-          comparison={`Mid estimate: ${formatUSD(projection.summary.yearly.mid)}/year`}
+          value={
+            <>
+              <AnimatedNumber value={projection.summary.yearly.low} format={formatUSD} /> &mdash;{' '}
+              <AnimatedNumber value={projection.summary.yearly.high} format={formatUSD} />
+            </>
+          }
+          comparison={
+            <>
+              Mid estimate:{' '}
+              <AnimatedNumber value={projection.summary.yearly.mid} format={formatUSD} />
+              /year
+            </>
+          }
         />
       </div>
 
-      <ShareButtons state={state} yearlyMid={projection.summary.yearly.mid} />
+      <ShareButtons state={state} yearlyMid={projection.summary.yearly.mid} tier={creatorTier} />
 
       <AdSlot slot="below-results" className="mt-6" />
 
