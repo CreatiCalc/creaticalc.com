@@ -51,6 +51,14 @@ CI runs lint, format:check, and build on PRs to `staging`.
 
 Use the YouTube Money Calculator (`src/features/calculators/youtube-money/`) as the reference implementation.
 
+## Pre-PR Checklist
+
+Before creating or updating a pull request, always run these commands and fix any issues:
+
+1. `npm run format` — auto-fix Prettier formatting
+2. `npm run lint` — ensure no ESLint errors
+3. `npm run build` — verify the production build succeeds
+
 ## Code Style
 
 - Prettier: single quotes, semicolons, 100-char line width, 2-space indent, trailing commas (ES5)
