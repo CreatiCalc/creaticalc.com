@@ -1,7 +1,7 @@
 'use client';
 
 import { useReducer } from 'react';
-import type { NicheId, ProjectionInput } from '@/lib/youtubeEarningsModel';
+import type { NicheId, ContentFormat, ProjectionInput } from '@/lib/youtubeEarningsModel';
 import { decodeCalcState } from '@/lib/shareCodec';
 
 export type InputMode = 'daily' | 'perVideo';
@@ -16,6 +16,7 @@ export interface CalculatorState {
   inputMode: InputMode;
   viewsPerVideo: number;
   uploadsPerWeek: number;
+  contentFormat: ContentFormat;
 }
 
 export function computeDailyViewsFromPerVideo(
@@ -35,7 +36,8 @@ type Action =
   | { type: 'SET_FROM_LOOKUP'; payload: { dailyViews: number; nicheId?: NicheId } }
   | { type: 'SET_INPUT_MODE'; payload: InputMode }
   | { type: 'SET_VIEWS_PER_VIDEO'; payload: number }
-  | { type: 'SET_UPLOADS_PER_WEEK'; payload: number };
+  | { type: 'SET_UPLOADS_PER_WEEK'; payload: number }
+  | { type: 'SET_CONTENT_FORMAT'; payload: ContentFormat };
 
 const defaults: CalculatorState = {
   dailyViews: 5000,
@@ -47,6 +49,7 @@ const defaults: CalculatorState = {
   inputMode: 'daily',
   viewsPerVideo: 2000,
   uploadsPerWeek: 3,
+  contentFormat: 'longform',
 };
 
 function getInitialState(): CalculatorState {
@@ -90,6 +93,8 @@ function reducer(state: CalculatorState, action: Action): CalculatorState {
       return { ...state, viewsPerVideo: action.payload };
     case 'SET_UPLOADS_PER_WEEK':
       return { ...state, uploadsPerWeek: action.payload };
+    case 'SET_CONTENT_FORMAT':
+      return { ...state, contentFormat: action.payload };
     default:
       return state;
   }

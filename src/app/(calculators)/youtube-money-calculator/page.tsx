@@ -75,6 +75,11 @@ const faq: FAQItem[] = [
     answer:
       'The growth rate projection uses compound monthly growth, meaning each month builds on the previous one. A 5% monthly growth rate means your views increase by 5% each month compared to the previous month — not 5% of your starting views. Over 12 months, 5% monthly growth means roughly 80% more views by the end of the year. This is realistic for actively growing channels but aggressive for established ones. We recommend starting with 0% (flat) for conservative estimates and adjusting based on your recent channel trends.',
   },
+  {
+    question: 'How much do YouTube Shorts pay?',
+    answer:
+      'YouTube Shorts pay significantly less than long-form videos — roughly $0.04 to $0.06 per 1,000 views (RPM). This is because Shorts ads come from a separate revenue pool with lower advertiser rates. Unlike long-form content where niche heavily influences earnings, Shorts RPM is relatively flat across all content categories. Use the "Shorts" toggle in our calculator to see projected Shorts earnings. To maximize revenue, many creators use Shorts to drive subscribers who then watch their higher-paying long-form content.',
+  },
 ];
 
 const howItWorks = (

@@ -9,6 +9,7 @@ import ResultCard from '@/features/calculators/shared/ResultCard';
 import AdSlot from '@/components/layout/AdSlot';
 import {
   NICHES,
+  SHORTS_RPM,
   getNiche,
   projectEarnings,
   formatUSD,
@@ -17,6 +18,7 @@ import {
 } from '@/lib/youtubeEarningsModel';
 import { useCalculatorState, computeDailyViewsFromPerVideo } from './useCalculatorState';
 import UrlLookup from './UrlLookup';
+import ContentFormatToggle from './ContentFormatToggle';
 import InputModeToggle from './InputModeToggle';
 import GrowthRateInput from './GrowthRateInput';
 import SeasonalityToggle from './SeasonalityToggle';
@@ -53,6 +55,8 @@ export default function YouTubeMoneyCalculator() {
     [state.inputMode, state.viewsPerVideo, state.uploadsPerWeek, state.dailyViews]
   );
 
+  const isShorts = state.contentFormat === 'shorts';
+
   const projectionInput: ProjectionInput = useMemo(
     () => ({
       dailyViews: effectiveDailyViews,
@@ -60,6 +64,7 @@ export default function YouTubeMoneyCalculator() {
       monthlyGrowthRate: state.monthlyGrowthRate,
       seasonalityEnabled: state.seasonalityEnabled,
       startMonth: state.startMonth,
+      contentFormat: state.contentFormat,
     }),
     [
       effectiveDailyViews,
@@ -67,6 +72,7 @@ export default function YouTubeMoneyCalculator() {
       state.monthlyGrowthRate,
       state.seasonalityEnabled,
       state.startMonth,
+      state.contentFormat,
     ]
   );
 
@@ -82,6 +88,11 @@ export default function YouTubeMoneyCalculator() {
 
       <Card className="mt-4">
         <div className="space-y-6">
+          <ContentFormatToggle
+            value={state.contentFormat}
+            onChange={(format) => dispatch({ type: 'SET_CONTENT_FORMAT', payload: format })}
+          />
+
           <InputModeToggle
             value={state.inputMode}
             onChange={(mode) => dispatch({ type: 'SET_INPUT_MODE', payload: mode })}
@@ -148,12 +159,17 @@ export default function YouTubeMoneyCalculator() {
             </div>
           )}
 
-          <Select
-            label="Content Niche"
-            value={state.nicheId}
-            options={nicheOptions}
-            onChange={(v) => dispatch({ type: 'SET_NICHE', payload: v as NicheId })}
-          />
+          <div className={isShorts ? 'opacity-50 pointer-events-none' : ''}>
+            <Select
+              label="Content Niche"
+              value={state.nicheId}
+              options={nicheOptions}
+              onChange={(v) => dispatch({ type: 'SET_NICHE', payload: v as NicheId })}
+            />
+            {isShorts && (
+              <p className="mt-1 text-xs text-muted">Niche has minimal impact on Shorts RPM</p>
+            )}
+          </div>
 
           <GrowthRateInput
             value={state.monthlyGrowthRate}
@@ -165,12 +181,19 @@ export default function YouTubeMoneyCalculator() {
             onToggle={() => dispatch({ type: 'TOGGLE_SEASONALITY' })}
           />
 
-          <p className="text-sm text-muted">
-            RPM for {niche.name}: ${niche.rpm.low.toFixed(2)} &ndash; ${niche.rpm.high.toFixed(2)}{' '}
-            <span className="text-xs">
-              (CPM: ${niche.cpm.low} &ndash; ${niche.cpm.high})
-            </span>
-          </p>
+          {isShorts ? (
+            <p className="text-sm text-muted">
+              Shorts RPM: ${SHORTS_RPM.low.toFixed(2)} &ndash; ${SHORTS_RPM.high.toFixed(2)} per
+              1,000 views
+            </p>
+          ) : (
+            <p className="text-sm text-muted">
+              RPM for {niche.name}: ${niche.rpm.low.toFixed(2)} &ndash; ${niche.rpm.high.toFixed(2)}{' '}
+              <span className="text-xs">
+                (CPM: ${niche.cpm.low} &ndash; ${niche.cpm.high})
+              </span>
+            </p>
+          )}
         </div>
       </Card>
 
@@ -212,7 +235,7 @@ export default function YouTubeMoneyCalculator() {
 
       <DriversBreakdown state={projectionInput} projection={projection} />
 
-      <RpmTable activeNicheId={state.nicheId} />
+      <RpmTable activeNicheId={state.nicheId} contentFormat={state.contentFormat} />
     </>
   );
 }

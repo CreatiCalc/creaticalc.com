@@ -8,6 +8,7 @@ interface ShareState {
   inputMode: 'daily' | 'perVideo';
   viewsPerVideo: number;
   uploadsPerWeek: number;
+  contentFormat: 'longform' | 'shorts';
 }
 
 const VALID_NICHES: Set<string> = new Set([
@@ -35,7 +36,8 @@ function fromBase64Url(str: string): string {
 export function encodeCalcState(state: ShareState): string {
   const growthPct = Math.round(state.monthlyGrowthRate * 100);
   const mode = state.inputMode === 'perVideo' ? 1 : 0;
-  const raw = `${state.dailyViews}|${state.nicheId}|${growthPct}|${state.seasonalityEnabled ? 1 : 0}|${mode}|${state.viewsPerVideo}|${state.uploadsPerWeek}`;
+  const format = state.contentFormat === 'shorts' ? 1 : 0;
+  const raw = `${state.dailyViews}|${state.nicheId}|${growthPct}|${state.seasonalityEnabled ? 1 : 0}|${mode}|${state.viewsPerVideo}|${state.uploadsPerWeek}|${format}`;
   return toBase64Url(raw);
 }
 
@@ -43,7 +45,7 @@ export function decodeCalcState(hash: string): ShareState | null {
   try {
     const raw = fromBase64Url(hash);
     const parts = raw.split('|');
-    if (parts.length !== 4 && parts.length !== 7) return null;
+    if (parts.length !== 4 && parts.length !== 7 && parts.length !== 8) return null;
 
     const dailyViews = parseInt(parts[0], 10);
     const nicheId = parts[1];
@@ -55,7 +57,7 @@ export function decodeCalcState(hash: string): ShareState | null {
     if (isNaN(growthPct) || growthPct < 0 || growthPct > 100) return null;
     if (seasonality !== '0' && seasonality !== '1') return null;
 
-    // Legacy 4-field format — default to daily mode
+    // Legacy 4-field format — default to daily mode, longform
     if (parts.length === 4) {
       return {
         dailyViews,
@@ -65,10 +67,11 @@ export function decodeCalcState(hash: string): ShareState | null {
         inputMode: 'daily',
         viewsPerVideo: 2000,
         uploadsPerWeek: 3,
+        contentFormat: 'longform',
       };
     }
 
-    // Extended 7-field format
+    // 7-field or 8-field format
     const mode = parts[4];
     const viewsPerVideo = parseInt(parts[5], 10);
     const uploadsPerWeek = parseInt(parts[6], 10);
@@ -76,6 +79,14 @@ export function decodeCalcState(hash: string): ShareState | null {
     if (mode !== '0' && mode !== '1') return null;
     if (isNaN(viewsPerVideo) || viewsPerVideo < 0 || viewsPerVideo > 100000000) return null;
     if (isNaN(uploadsPerWeek) || uploadsPerWeek < 0 || uploadsPerWeek > 100) return null;
+
+    // Parse contentFormat (8th field), default to longform for 7-field URLs
+    let contentFormat: 'longform' | 'shorts' = 'longform';
+    if (parts.length === 8) {
+      const fmt = parts[7];
+      if (fmt !== '0' && fmt !== '1') return null;
+      contentFormat = fmt === '1' ? 'shorts' : 'longform';
+    }
 
     return {
       dailyViews,
@@ -85,6 +96,7 @@ export function decodeCalcState(hash: string): ShareState | null {
       inputMode: mode === '1' ? 'perVideo' : 'daily',
       viewsPerVideo,
       uploadsPerWeek,
+      contentFormat,
     };
   } catch {
     return null;
