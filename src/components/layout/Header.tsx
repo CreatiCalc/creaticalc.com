@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Logo from '@/components/brand/Logo';
 import MobileNav from './MobileNav';
 
 const calculators = [
@@ -10,10 +11,10 @@ const calculators = [
 
 export default function Header() {
   return (
-    <header className="border-b border-border bg-white">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
-        <Link href="/" className="text-xl font-bold text-primary">
-          CreatiCalc
+    <header className="sticky top-0 z-40 border-b border-border/50 bg-white/80 backdrop-blur-lg">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
+        <Link href="/" className="transition-opacity hover:opacity-80">
+          <Logo size="sm" />
         </Link>
         <nav className="hidden items-center gap-6 md:flex">
           {calculators.map((calc) => (
