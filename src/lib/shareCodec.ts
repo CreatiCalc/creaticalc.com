@@ -1,4 +1,4 @@
-import type { NicheId } from './youtubeEarningsModel';
+import type { NicheId, VideoLength } from './youtubeEarningsModel';
 
 interface ShareState {
   dailyViews: number;
@@ -9,6 +9,7 @@ interface ShareState {
   viewsPerVideo: number;
   uploadsPerWeek: number;
   contentFormat: 'longform' | 'shorts';
+  videoLength: VideoLength;
 }
 
 const VALID_NICHES: Set<string> = new Set([
@@ -37,7 +38,9 @@ export function encodeCalcState(state: ShareState): string {
   const growthPct = Math.round(state.monthlyGrowthRate * 100);
   const mode = state.inputMode === 'perVideo' ? 1 : 0;
   const format = state.contentFormat === 'shorts' ? 1 : 0;
-  const raw = `${state.dailyViews}|${state.nicheId}|${growthPct}|${state.seasonalityEnabled ? 1 : 0}|${mode}|${state.viewsPerVideo}|${state.uploadsPerWeek}|${format}`;
+  const lengthMap: Record<VideoLength, number> = { short: 0, standard: 1, long: 2 };
+  const length = lengthMap[state.videoLength];
+  const raw = `${state.dailyViews}|${state.nicheId}|${growthPct}|${state.seasonalityEnabled ? 1 : 0}|${mode}|${state.viewsPerVideo}|${state.uploadsPerWeek}|${format}|${length}`;
   return toBase64Url(raw);
 }
 
@@ -45,7 +48,8 @@ export function decodeCalcState(hash: string): ShareState | null {
   try {
     const raw = fromBase64Url(hash);
     const parts = raw.split('|');
-    if (parts.length !== 4 && parts.length !== 7 && parts.length !== 8) return null;
+    if (parts.length !== 4 && parts.length !== 7 && parts.length !== 8 && parts.length !== 9)
+      return null;
 
     const dailyViews = parseInt(parts[0], 10);
     const nicheId = parts[1];
@@ -57,7 +61,7 @@ export function decodeCalcState(hash: string): ShareState | null {
     if (isNaN(growthPct) || growthPct < 0 || growthPct > 100) return null;
     if (seasonality !== '0' && seasonality !== '1') return null;
 
-    // Legacy 4-field format — default to daily mode, longform
+    // Legacy 4-field format — default to daily mode, longform, standard length
     if (parts.length === 4) {
       return {
         dailyViews,
@@ -68,6 +72,7 @@ export function decodeCalcState(hash: string): ShareState | null {
         viewsPerVideo: 2000,
         uploadsPerWeek: 3,
         contentFormat: 'longform',
+        videoLength: 'standard',
       };
     }
 
@@ -82,10 +87,19 @@ export function decodeCalcState(hash: string): ShareState | null {
 
     // Parse contentFormat (8th field), default to longform for 7-field URLs
     let contentFormat: 'longform' | 'shorts' = 'longform';
-    if (parts.length === 8) {
+    if (parts.length >= 8) {
       const fmt = parts[7];
       if (fmt !== '0' && fmt !== '1') return null;
       contentFormat = fmt === '1' ? 'shorts' : 'longform';
+    }
+
+    // Parse videoLength (9th field), default to standard for older URLs
+    let videoLength: VideoLength = 'standard';
+    if (parts.length === 9) {
+      const len = parts[8];
+      if (len !== '0' && len !== '1' && len !== '2') return null;
+      const lengthMap: Record<string, VideoLength> = { '0': 'short', '1': 'standard', '2': 'long' };
+      videoLength = lengthMap[len];
     }
 
     return {
@@ -97,6 +111,7 @@ export function decodeCalcState(hash: string): ShareState | null {
       viewsPerVideo,
       uploadsPerWeek,
       contentFormat,
+      videoLength,
     };
   } catch {
     return null;

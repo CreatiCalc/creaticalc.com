@@ -11,10 +11,12 @@ import AnimatedNumber from '@/components/ui/AnimatedNumber';
 import {
   NICHES,
   SHORTS_RPM,
+  VIDEO_LENGTH_MULTIPLIERS,
   getNiche,
   projectEarnings,
   formatUSD,
   type NicheId,
+  type VideoLength,
   type ProjectionInput,
 } from '@/lib/youtubeEarningsModel';
 import { useCalculatorState, computeDailyViewsFromPerVideo } from './useCalculatorState';
@@ -30,6 +32,12 @@ import RpmTable from './RpmTable';
 import ShareButtons from './ShareButtons';
 
 const nicheOptions = NICHES.map((n) => ({ label: n.name, value: n.id }));
+
+const videoLengthOptions = [
+  { label: 'Short (< 8 min) — no mid-roll ads', value: 'short' },
+  { label: 'Standard (8–20 min)', value: 'standard' },
+  { label: 'Long (20+ min) — more mid-roll ads', value: 'long' },
+];
 
 function getCreatorTier(monthlyMid: number): string {
   if (monthlyMid >= 10_000) return 'Top Creator';
@@ -74,6 +82,7 @@ export default function YouTubeMoneyCalculator() {
       seasonalityEnabled: state.seasonalityEnabled,
       startMonth: state.startMonth,
       contentFormat: state.contentFormat,
+      videoLength: state.videoLength,
     }),
     [
       effectiveDailyViews,
@@ -82,6 +91,7 @@ export default function YouTubeMoneyCalculator() {
       state.seasonalityEnabled,
       state.startMonth,
       state.contentFormat,
+      state.videoLength,
     ]
   );
 
@@ -181,6 +191,15 @@ export default function YouTubeMoneyCalculator() {
             )}
           </div>
 
+          {!isShorts && (
+            <Select
+              label="Video Length"
+              value={state.videoLength}
+              options={videoLengthOptions}
+              onChange={(v) => dispatch({ type: 'SET_VIDEO_LENGTH', payload: v as VideoLength })}
+            />
+          )}
+
           <GrowthRateInput
             value={state.monthlyGrowthRate}
             onChange={(rate) => dispatch({ type: 'SET_GROWTH_RATE', payload: rate })}
@@ -202,6 +221,13 @@ export default function YouTubeMoneyCalculator() {
               <span className="text-xs">
                 (CPM: ${niche.cpm.low} &ndash; ${niche.cpm.high})
               </span>
+              {state.videoLength !== 'standard' && (
+                <span className="text-xs">
+                  {' '}
+                  &times; {VIDEO_LENGTH_MULTIPLIERS[state.videoLength]}x {state.videoLength} video
+                  adjustment
+                </span>
+              )}
             </p>
           )}
         </div>

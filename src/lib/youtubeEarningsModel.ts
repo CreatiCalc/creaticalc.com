@@ -2,6 +2,8 @@
 
 export type ContentFormat = 'longform' | 'shorts';
 
+export type VideoLength = 'short' | 'standard' | 'long';
+
 export type NicheId =
   | 'finance'
   | 'tech'
@@ -55,6 +57,7 @@ export interface ProjectionInput {
   seasonalityEnabled: boolean;
   startMonth: number;
   contentFormat?: ContentFormat;
+  videoLength?: VideoLength;
 }
 
 export interface Recommendation {
@@ -103,6 +106,12 @@ export const NICHES: Niche[] = Object.entries(CPM_DATA).map(([id, data]) => ({
 
 export const SHORTS_RPM: RpmRange = { low: 0.02, mid: 0.05, high: 0.08 };
 
+export const VIDEO_LENGTH_MULTIPLIERS: Record<VideoLength, number> = {
+  short: 0.7,
+  standard: 1.0,
+  long: 1.3,
+};
+
 export function getNiche(nicheId: NicheId): Niche {
   return NICHES.find((n) => n.id === nicheId) ?? NICHES[0];
 }
@@ -144,7 +153,10 @@ const MONTH_LABELS = [
 
 export function projectEarnings(input: ProjectionInput): ProjectionResult {
   const niche = getNiche(input.nicheId);
-  const baseRpm = input.contentFormat === 'shorts' ? SHORTS_RPM : niche.rpm;
+  const isShorts = input.contentFormat === 'shorts';
+  const baseRpm = isShorts ? SHORTS_RPM : niche.rpm;
+  const lengthMultiplier =
+    !isShorts && input.videoLength ? VIDEO_LENGTH_MULTIPLIERS[input.videoLength] : 1.0;
   const months: MonthProjection[] = [];
 
   for (let i = 0; i < 12; i++) {
@@ -157,9 +169,9 @@ export function projectEarnings(input: ProjectionInput): ProjectionResult {
       : 1.0;
 
     const effectiveRpm: RpmRange = {
-      low: baseRpm.low * seasonalityMultiplier,
-      mid: baseRpm.mid * seasonalityMultiplier,
-      high: baseRpm.high * seasonalityMultiplier,
+      low: baseRpm.low * seasonalityMultiplier * lengthMultiplier,
+      mid: baseRpm.mid * seasonalityMultiplier * lengthMultiplier,
+      high: baseRpm.high * seasonalityMultiplier * lengthMultiplier,
     };
 
     const revenue: RpmRange = {
