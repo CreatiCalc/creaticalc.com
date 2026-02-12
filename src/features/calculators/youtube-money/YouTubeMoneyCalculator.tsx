@@ -29,6 +29,7 @@ import SeasonalityToggle from './SeasonalityToggle';
 import ProjectionChart from './ProjectionChart';
 import Recommendations from './Recommendations';
 import DriversBreakdown from './DriversBreakdown';
+import MilestoneTimeline from './MilestoneTimeline';
 import RpmTable from './RpmTable';
 import ShareButtons from './ShareButtons';
 
@@ -323,6 +324,8 @@ export default function YouTubeMoneyCalculator() {
       <AdSlot slot="below-results" className="mt-6" />
 
       <ProjectionChart months={projection.months} />
+
+      <MilestoneTimeline input={projectionInput} />
 
       <AdSlot slot="after-chart" className="mt-6" />
 

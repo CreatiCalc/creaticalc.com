@@ -408,6 +408,58 @@ export function calculateDrivers(input: ProjectionInput, projection: ProjectionR
   return drivers.sort((a, b) => b.relativeImpact - a.relativeImpact);
 }
 
+// ─── Milestone Projection ────────────────────────────────────────────────────
+
+export interface MilestoneResult {
+  target: number;
+  label: string;
+  monthIndex: number | null; // null = not reached within projection window
+}
+
+const MILESTONE_TARGETS = [
+  { target: 100, label: '$100/mo' },
+  { target: 500, label: '$500/mo' },
+  { target: 1_000, label: '$1K/mo' },
+  { target: 5_000, label: '$5K/mo' },
+  { target: 10_000, label: '$10K/mo' },
+];
+
+export function findMilestoneMonths(input: ProjectionInput, maxMonths = 36): MilestoneResult[] {
+  const niche = getNiche(input.nicheId);
+  const isShorts = input.contentFormat === 'shorts';
+  const baseRpm = isShorts ? SHORTS_RPM : niche.rpm;
+  const lengthMultiplier =
+    !isShorts && input.videoLength ? VIDEO_LENGTH_MULTIPLIERS[input.videoLength] : 1.0;
+  const geoMultiplier =
+    input.highCpmAudiencePct != null ? getGeographyMultiplier(input.highCpmAudiencePct) : 1.0;
+
+  const reached = new Map<number, number>();
+
+  for (let i = 0; i < maxMonths; i++) {
+    const calMonth = (input.startMonth + i) % 12;
+    const growthFactor = Math.pow(1 + input.monthlyGrowthRate, i);
+    const projectedDailyViews = Math.round(input.dailyViews * growthFactor);
+    const projectedMonthViews = projectedDailyViews * DAYS_IN_MONTH[calMonth];
+    const seasonMul = input.seasonalityEnabled ? SEASONALITY_MULTIPLIERS[calMonth] : 1.0;
+    const effectiveMidRpm = baseRpm.mid * seasonMul * lengthMultiplier * geoMultiplier;
+    const monthlyRevenue = (projectedMonthViews / 1000) * effectiveMidRpm;
+
+    for (const { target } of MILESTONE_TARGETS) {
+      if (!reached.has(target) && monthlyRevenue >= target) {
+        reached.set(target, i);
+      }
+    }
+
+    if (reached.size === MILESTONE_TARGETS.length) break;
+  }
+
+  return MILESTONE_TARGETS.map(({ target, label }) => ({
+    target,
+    label,
+    monthIndex: reached.get(target) ?? null,
+  }));
+}
+
 // ─── Utilities ────────────────────────────────────────────────────────────────
 
 export function formatUSD(amount: number): string {
