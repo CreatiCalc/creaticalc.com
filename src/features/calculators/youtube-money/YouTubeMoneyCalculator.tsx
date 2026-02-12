@@ -30,6 +30,7 @@ import ProjectionChart from './ProjectionChart';
 import Recommendations from './Recommendations';
 import DriversBreakdown from './DriversBreakdown';
 import MilestoneTimeline from './MilestoneTimeline';
+import SponsorshipEstimate from './SponsorshipEstimate';
 import RpmTable from './RpmTable';
 import ShareButtons from './ShareButtons';
 
@@ -326,6 +327,13 @@ export default function YouTubeMoneyCalculator() {
       <ProjectionChart months={projection.months} />
 
       <MilestoneTimeline input={projectionInput} />
+
+      <SponsorshipEstimate
+        dailyViews={effectiveDailyViews}
+        nicheId={state.nicheId}
+        contentFormat={state.contentFormat}
+        viewsPerVideo={state.inputMode === 'perVideo' ? state.viewsPerVideo : undefined}
+      />
 
       <AdSlot slot="after-chart" className="mt-6" />
 
