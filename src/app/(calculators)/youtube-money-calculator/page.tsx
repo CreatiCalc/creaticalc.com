@@ -86,6 +86,11 @@ const faq: FAQItem[] = [
       'Audience location is one of the biggest factors in YouTube ad revenue. Views from the US, UK, Canada, and Australia pay 3 to 5 times more than views from regions like India, Southeast Asia, or Latin America, because advertisers in high-income countries bid significantly more for ad placements. A channel with 100,000 daily views from a mostly US audience can earn 3x more than a channel with the same views from a global audience. Our Audience Geography slider lets you model this by adjusting the percentage of your viewers from high-CPM regions, with the default set to 50% as a baseline.',
   },
   {
+    question: 'What does the milestone timeline show?',
+    answer:
+      'The milestone timeline appears when you set a monthly growth rate above 0%. It projects when your channel will cross key monthly earnings thresholds: $100, $500, $1,000, $5,000, and $10,000 per month. The projections extend up to 36 months into the future, accounting for your current settings including niche, audience geography, video length, and seasonality. Milestones you have already reached are marked with a green check, future milestones show the projected month and date, and milestones beyond 3 years are grayed out.',
+  },
+  {
     question: 'How much do YouTube Shorts pay?',
     answer:
       'YouTube Shorts pay significantly less than long-form videos — roughly $0.02 to $0.08 per 1,000 views (RPM). This is because Shorts ads come from a separate revenue pool where creators receive 45% of allocated ad revenue. Unlike long-form content where niche heavily influences earnings, Shorts RPM is relatively flat across most content categories, though finance and tech Shorts can earn toward the higher end. Use the "Shorts" toggle in our calculator to see projected Shorts earnings. To maximize revenue, many creators use Shorts to drive subscribers who then watch their higher-paying long-form content.',
