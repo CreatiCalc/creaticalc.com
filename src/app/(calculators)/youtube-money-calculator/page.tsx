@@ -76,6 +76,11 @@ const faq: FAQItem[] = [
       'The growth rate projection uses compound monthly growth, meaning each month builds on the previous one. A 5% monthly growth rate means your views increase by 5% each month compared to the previous month — not 5% of your starting views. Over 12 months, 5% monthly growth means roughly 80% more views by the end of the year. This is realistic for actively growing channels but aggressive for established ones. We recommend starting with 0% (flat) for conservative estimates and adjusting based on your recent channel trends.',
   },
   {
+    question: 'Does video length affect YouTube earnings?',
+    answer:
+      'Yes, video length has a significant impact on YouTube ad revenue. Videos under 8 minutes cannot run mid-roll ads — they only display pre-roll and post-roll ads, which typically reduces RPM by about 30%. Videos between 8 and 20 minutes can include mid-roll ads and represent the standard earning potential. Videos over 20 minutes allow multiple mid-roll ad placements, boosting RPM by roughly 30% compared to standard-length videos. Our calculator includes a Video Length selector that adjusts your earnings estimate based on these real differences in ad load.',
+  },
+  {
     question: 'How much do YouTube Shorts pay?',
     answer:
       'YouTube Shorts pay significantly less than long-form videos — roughly $0.02 to $0.08 per 1,000 views (RPM). This is because Shorts ads come from a separate revenue pool where creators receive 45% of allocated ad revenue. Unlike long-form content where niche heavily influences earnings, Shorts RPM is relatively flat across most content categories, though finance and tech Shorts can earn toward the higher end. Use the "Shorts" toggle in our calculator to see projected Shorts earnings. To maximize revenue, many creators use Shorts to drive subscribers who then watch their higher-paying long-form content.',
