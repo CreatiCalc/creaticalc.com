@@ -46,6 +46,19 @@ const calculators = [
     platform: 'TikTok',
   },
   {
+    title: 'Instagram Sponsorship Rate',
+    description:
+      'Calculate how much to charge for sponsored Instagram posts, Reels, Stories, and carousels.',
+    href: '/instagram-sponsorship-rate-calculator',
+    platform: 'Instagram',
+  },
+  {
+    title: 'TikTok Sponsorship Rate',
+    description: 'Find out how much to charge for sponsored TikTok videos, Stories, and Lives.',
+    href: '/tiktok-sponsorship-rate-calculator',
+    platform: 'TikTok',
+  },
+  {
     title: 'YouTube Subscriber Projector',
     description: "Project your YouTube subscriber growth and see when you'll hit milestones.",
     href: '/youtube-subscriber-projector',

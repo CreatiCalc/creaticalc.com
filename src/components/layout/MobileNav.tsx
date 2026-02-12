@@ -3,12 +3,33 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 
-const calculators = [
-  { name: 'YouTube Money Calculator', href: '/youtube-money-calculator' },
-  { name: 'Engagement Rate Calculator', href: '/engagement-rate-calculator' },
-  { name: 'Instagram Engagement', href: '/instagram-engagement-rate-calculator' },
-  { name: 'TikTok Engagement', href: '/tiktok-engagement-rate-calculator' },
-  { name: 'YouTube Growth Projector', href: '/youtube-subscriber-projector' },
+const navGroups = [
+  {
+    label: 'YouTube',
+    items: [
+      { name: 'Money Calculator', href: '/youtube-money-calculator' },
+      { name: 'Growth Projector', href: '/youtube-subscriber-projector' },
+    ],
+  },
+  {
+    label: 'Instagram',
+    items: [
+      { name: 'Engagement Rate', href: '/instagram-engagement-rate-calculator' },
+      { name: 'Sponsorship Rate', href: '/instagram-sponsorship-rate-calculator' },
+    ],
+  },
+  {
+    label: 'TikTok',
+    items: [
+      { name: 'Engagement Rate', href: '/tiktok-engagement-rate-calculator' },
+      { name: 'Sponsorship Rate', href: '/tiktok-sponsorship-rate-calculator' },
+    ],
+  },
+];
+
+const moreLinks = [
+  { name: 'Engagement Calculator', href: '/engagement-rate-calculator' },
+  { name: 'Engagement Benchmarks', href: '/engagement-rate-benchmarks' },
 ];
 
 export default function MobileNav() {
@@ -69,14 +90,35 @@ export default function MobileNav() {
 
       {open && (
         <nav className="absolute right-0 top-full z-50 mt-2 w-64 rounded-xl border border-border bg-white p-2 shadow-lg">
-          {calculators.map((calc) => (
+          {navGroups.map((group, i) => (
+            <div key={group.label} className={i > 0 ? 'mt-1' : ''}>
+              <span className="block px-4 pb-1 pt-2 text-xs font-semibold uppercase tracking-wider text-muted/60">
+                {group.label}
+              </span>
+              {group.items.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  className="block rounded-lg px-4 py-2.5 text-sm text-muted transition-colors hover:bg-surface-alt hover:text-foreground"
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </div>
+          ))}
+          <div className="mx-3 my-1.5 border-t border-border/50" />
+          <span className="block px-4 pb-1 pt-2 text-xs font-semibold uppercase tracking-wider text-muted/60">
+            More
+          </span>
+          {moreLinks.map((link) => (
             <Link
-              key={calc.href}
-              href={calc.href}
+              key={link.href}
+              href={link.href}
               onClick={() => setOpen(false)}
-              className="block rounded-lg px-4 py-3 text-sm text-muted transition-colors hover:bg-surface-alt hover:text-foreground"
+              className="block rounded-lg px-4 py-2.5 text-sm text-muted transition-colors hover:bg-surface-alt hover:text-foreground"
             >
-              {calc.name}
+              {link.name}
             </Link>
           ))}
         </nav>
