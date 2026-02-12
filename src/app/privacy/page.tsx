@@ -528,19 +528,12 @@ export default function PrivacyPage() {
             If you have questions about this privacy policy, want to exercise your data rights, or
             have concerns about how your data is handled, you can reach us through:
           </p>
-          <ul className="mt-2 list-disc space-y-1 pl-5 marker:text-primary">
-            <li>
-              Opening an issue on our{' '}
-              <a
-                href="https://github.com/CreatiCalc/creaticalc.com"
-                className="text-primary underline"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                GitHub repository
-              </a>
-            </li>
-          </ul>
+          <p className="mt-2">
+            Email us at{' '}
+            <a href="mailto:privacy@creaticalc.com" className="text-primary underline">
+              privacy@creaticalc.com
+            </a>
+          </p>
           <p className="mt-3">We aim to respond to all privacy-related inquiries within 30 days.</p>
         </section>
       </div>
