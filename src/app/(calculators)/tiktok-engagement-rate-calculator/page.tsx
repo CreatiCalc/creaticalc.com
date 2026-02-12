@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import type { Metadata } from 'next';
 import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
 import CalculatorSchema from '@/components/seo/CalculatorSchema';
@@ -5,11 +6,11 @@ import { TikTokEngagementCalculator } from '@/features/calculators/tiktok-engage
 import type { FAQItem } from '@/features/calculators/shared/types';
 
 export const metadata: Metadata = {
-  title: 'TikTok Engagement Rate Calculator — Free Tool',
+  title: 'TikTok Engagement Rate Calculator + Industry Benchmarks 2026',
   description:
     'Free TikTok engagement rate calculator. Measure your TikTok engagement using likes, comments, shares, and views. Compare against benchmarks by follower tier and industry.',
   openGraph: {
-    title: 'TikTok Engagement Rate Calculator — Free Tool',
+    title: 'TikTok Engagement Rate Calculator + Industry Benchmarks 2026',
     description:
       'Calculate your TikTok engagement rate by followers or by views. Compare against industry benchmarks. Free calculator for creators and brands.',
     url: '/tiktok-engagement-rate-calculator',
@@ -151,7 +152,9 @@ export default function TikTokEngagementPage() {
         faq={faq}
         howItWorks={howItWorks}
       >
-        <TikTokEngagementCalculator />
+        <Suspense>
+          <TikTokEngagementCalculator />
+        </Suspense>
       </CalculatorLayout>
     </>
   );

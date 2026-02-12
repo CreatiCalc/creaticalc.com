@@ -1,7 +1,7 @@
 'use client';
 
 import { useReducer } from 'react';
-import type { TikTokCalcMethod, IndustryId } from '@/lib/engagementModel';
+import type { TikTokCalcMethod, IndustryId, EngagementInput } from '@/lib/engagementModel';
 
 export interface TikTokEngagementState {
   followers: number;
@@ -22,9 +22,11 @@ type Action =
   | { type: 'SET_AVG_VIEWS'; payload: number }
   | { type: 'SET_CALC_METHOD'; payload: TikTokCalcMethod }
   | { type: 'SET_INDUSTRY'; payload: IndustryId }
-  | { type: 'SET_POSTS_ANALYZED'; payload: number };
+  | { type: 'SET_POSTS_ANALYZED'; payload: number }
+  | { type: 'APPLY_SCENARIO'; payload: Partial<EngagementInput> }
+  | { type: 'RESTORE_STATE'; payload: TikTokEngagementState };
 
-const initialState: TikTokEngagementState = {
+const defaultState: TikTokEngagementState = {
   followers: 10_000,
   avgLikes: 600,
   avgComments: 30,
@@ -53,12 +55,26 @@ function reducer(state: TikTokEngagementState, action: Action): TikTokEngagement
       return { ...state, industryId: action.payload };
     case 'SET_POSTS_ANALYZED':
       return { ...state, postsAnalyzed: action.payload };
+    case 'APPLY_SCENARIO':
+      return {
+        ...state,
+        ...(action.payload.followers !== undefined && { followers: action.payload.followers }),
+        ...(action.payload.avgLikes !== undefined && { avgLikes: action.payload.avgLikes }),
+        ...(action.payload.avgComments !== undefined && {
+          avgComments: action.payload.avgComments,
+        }),
+        ...(action.payload.avgShares !== undefined && { avgShares: action.payload.avgShares }),
+      };
+    case 'RESTORE_STATE':
+      return action.payload;
     default:
       return state;
   }
 }
 
-export function useTikTokEngagementState() {
-  const [state, dispatch] = useReducer(reducer, initialState);
+export function useTikTokEngagementState(initialOverride?: TikTokEngagementState) {
+  const [state, dispatch] = useReducer(reducer, initialOverride ?? defaultState);
   return { state, dispatch };
 }
+
+export { defaultState as tiktokDefaultState };

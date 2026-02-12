@@ -27,6 +27,13 @@ const calculators = [
     platform: 'YouTube',
   },
   {
+    title: 'Engagement Rate Calculator',
+    description:
+      'Calculate your engagement rate on Instagram or TikTok. Compare against 2026 industry benchmarks.',
+    href: '/engagement-rate-calculator',
+    platform: 'Multi-Platform',
+  },
+  {
     title: 'Instagram Engagement Rate',
     description: 'Calculate your Instagram engagement rate and see how you compare.',
     href: '/instagram-engagement-rate-calculator',

@@ -1,6 +1,7 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useMemo, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import Slider from '@/components/ui/Slider';
 import NumberInput from '@/components/ui/NumberInput';
 import Select from '@/components/ui/Select';
@@ -15,15 +16,27 @@ import {
   GrowthRecommendations,
   EngagementBreakdownChart,
   FollowerPresets,
+  EngagementHealthScore,
+  WhatIfScenarios,
+  EngagementShareButtons,
+  EstimatedReachDisplay,
+  CrossPlatformComparison,
+  YoYTrendContext,
 } from '@/features/calculators/engagement-shared';
 import {
   INDUSTRIES,
   computeEngagement,
   generateEngagementRecommendations,
   getTierRange,
+  calculateHealthScore,
   type IndustryId,
   type EngagementInput,
 } from '@/lib/engagementModel';
+import {
+  decodeState,
+  tiktokStateToShareable,
+  shareableToTikTokState,
+} from '@/lib/engagementShareCodec';
 import { useTikTokEngagementState } from './useTikTokEngagementState';
 import CalcMethodToggle from './CalcMethodToggle';
 
@@ -52,6 +65,22 @@ const viewTicks = [
 
 export default function TikTokEngagementCalculator() {
   const { state, dispatch } = useTikTokEngagementState();
+  const searchParams = useSearchParams();
+
+  // Restore state from URL on mount
+  useEffect(() => {
+    const encoded = searchParams.get('s');
+    if (encoded) {
+      const decoded = decodeState(encoded);
+      if (decoded && decoded.p === 'tiktok') {
+        const restored = shareableToTikTokState(decoded);
+        dispatch({
+          type: 'RESTORE_STATE',
+          payload: { ...restored, industryId: restored.industryId as IndustryId },
+        });
+      }
+    }
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const input: EngagementInput = useMemo(
     () => ({
@@ -73,7 +102,13 @@ export default function TikTokEngagementCalculator() {
     () => generateEngagementRecommendations(input, result),
     [input, result]
   );
+  const healthScore = useMemo(
+    () => calculateHealthScore(input, result.engagementRate),
+    [input, result.engagementRate]
+  );
   const tierRange = getTierRange('tiktok', state.followers);
+
+  const shareableState = useMemo(() => tiktokStateToShareable(state), [state]);
 
   const isByViews = state.calcMethod === 'byViews';
 
@@ -256,6 +291,10 @@ export default function TikTokEngagementCalculator() {
           tierRange={tierRange}
           platform="tiktok"
         />
+        <EngagementHealthScore healthScore={healthScore} />
+      </div>
+
+      <div className="mt-4">
         <BenchmarkGauge
           rate={result.engagementRate}
           benchmarkLow={result.tierBenchmark.low}
@@ -265,7 +304,26 @@ export default function TikTokEngagementCalculator() {
         />
       </div>
 
+      {/* Share buttons */}
+      <div className="mt-4">
+        <EngagementShareButtons
+          platform="tiktok"
+          rate={result.engagementRate}
+          shareableState={shareableState}
+          basePath="/tiktok-engagement-rate-calculator"
+        />
+      </div>
+
       <AdSlot slot="below-results" className="mt-6" />
+
+      <CollapsibleSection title="What If Scenarios" defaultOpen={false} className="mt-6">
+        <WhatIfScenarios
+          input={input}
+          currentRate={result.engagementRate}
+          onApply={(changes) => dispatch({ type: 'APPLY_SCENARIO', payload: changes })}
+          platform="tiktok"
+        />
+      </CollapsibleSection>
 
       <CollapsibleSection title="Industry Benchmarks" defaultOpen={false} className="mt-6">
         <IndustryBenchmarks
@@ -286,6 +344,22 @@ export default function TikTokEngagementCalculator() {
       </CollapsibleSection>
 
       <AdSlot slot="after-chart" className="mt-6" />
+
+      <CollapsibleSection title="Estimated Reach" defaultOpen={false} className="mt-6">
+        <EstimatedReachDisplay platform="tiktok" followers={state.followers} />
+      </CollapsibleSection>
+
+      <CollapsibleSection title="Cross-Platform Comparison" defaultOpen={false} className="mt-6">
+        <CrossPlatformComparison
+          platform="tiktok"
+          rate={result.engagementRate}
+          followers={state.followers}
+        />
+      </CollapsibleSection>
+
+      <CollapsibleSection title="Year-Over-Year Trends" defaultOpen={false} className="mt-6">
+        <YoYTrendContext platform="tiktok" rate={result.engagementRate} />
+      </CollapsibleSection>
 
       <CollapsibleSection title="Growth Recommendations" defaultOpen={false} className="mt-6">
         <GrowthRecommendations recommendations={recommendations} />
