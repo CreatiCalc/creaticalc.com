@@ -33,6 +33,7 @@ import MilestoneTimeline from './MilestoneTimeline';
 import SponsorshipEstimate from './SponsorshipEstimate';
 import RpmTable from './RpmTable';
 import ShareButtons from './ShareButtons';
+import CollapsibleSection from '@/features/calculators/shared/CollapsibleSection';
 
 const nicheOptions = NICHES.map((n) => ({ label: n.name, value: n.id }));
 
@@ -326,29 +327,40 @@ export default function YouTubeMoneyCalculator() {
 
       <ProjectionChart months={projection.months} />
 
-      <MilestoneTimeline input={projectionInput} />
+      {state.monthlyGrowthRate > 0 && (
+        <CollapsibleSection title="Revenue Milestones" defaultOpen={false} className="mt-6">
+          <MilestoneTimeline input={projectionInput} />
+        </CollapsibleSection>
+      )}
 
-      <SponsorshipEstimate
-        dailyViews={effectiveDailyViews}
-        nicheId={state.nicheId}
-        contentFormat={state.contentFormat}
-        viewsPerVideo={state.inputMode === 'perVideo' ? state.viewsPerVideo : undefined}
-      />
+      <CollapsibleSection title="Sponsorship Rates" defaultOpen={false} className="mt-6">
+        <SponsorshipEstimate
+          dailyViews={effectiveDailyViews}
+          nicheId={state.nicheId}
+          contentFormat={state.contentFormat}
+          viewsPerVideo={state.inputMode === 'perVideo' ? state.viewsPerVideo : undefined}
+        />
+      </CollapsibleSection>
 
       <AdSlot slot="after-chart" className="mt-6" />
 
-      <Recommendations
-        state={{ ...projectionInput, revenueTarget: state.revenueTarget }}
-        projection={projection}
-        onApplyScenario={(scenario) => dispatch({ type: 'APPLY_SCENARIO', payload: scenario })}
-        onRevenueTargetChange={(target) =>
-          dispatch({ type: 'SET_REVENUE_TARGET', payload: target })
-        }
-      />
+      <CollapsibleSection title="Growth Recommendations" defaultOpen={false} className="mt-6">
+        <Recommendations
+          state={{ ...projectionInput, revenueTarget: state.revenueTarget }}
+          projection={projection}
+          onApplyScenario={(scenario) => dispatch({ type: 'APPLY_SCENARIO', payload: scenario })}
+          onRevenueTargetChange={(target) =>
+            dispatch({ type: 'SET_REVENUE_TARGET', payload: target })
+          }
+        />
+      </CollapsibleSection>
 
-      <DriversBreakdown state={projectionInput} projection={projection} />
-
-      <RpmTable activeNicheId={state.nicheId} contentFormat={state.contentFormat} />
+      <CollapsibleSection title="Earnings Breakdown" defaultOpen={false} className="mt-6">
+        <DriversBreakdown state={projectionInput} projection={projection} />
+        <div className="mt-6">
+          <RpmTable activeNicheId={state.nicheId} contentFormat={state.contentFormat} />
+        </div>
+      </CollapsibleSection>
     </>
   );
 }
