@@ -6,6 +6,16 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 CreatiCalc (creaticalc.com) is a free suite of calculators for content creators on YouTube, Instagram, and TikTok. Built with Next.js 16 (App Router), React 19, TypeScript, and Tailwind CSS 4. Charts use Recharts. Deployed on Netlify.
 
+## Business Goals
+
+The primary goal of CreatiCalc is to generate passive income through ad revenue, with a potential freemium model in the future. All design and development decisions should be made with this in mind:
+
+- **SEO is a top priority.** Organic search traffic is the main growth lever. Every page should be optimized for discoverability: meaningful metadata, structured data (JSON-LD), keyword-rich headings, FAQ sections, and fast load times.
+- **Ad placement.** Pages should be structured to support ad slots in high-visibility positions without degrading user experience. Keep content-to-ad ratio reasonable to maintain search ranking.
+- **User engagement and retention.** Calculators should be genuinely useful and encourage return visits, social sharing, and backlinks. More time on site and more pages per session increase ad impressions.
+- **Freemium readiness.** Architect features so that premium tiers (e.g., advanced analytics, export, saved calculations) can be gated later without major refactoring.
+- **Page speed and Core Web Vitals.** Google ranks fast sites higher, and ad networks pay more for performant pages. Minimize bundle size, lazy-load non-critical components, and optimize images.
+
 ## Commands
 
 ```bash

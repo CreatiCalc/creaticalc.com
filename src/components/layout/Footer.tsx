@@ -57,7 +57,14 @@ export default function Footer() {
         </div>
       </div>
       <div className="mx-auto mt-8 max-w-6xl border-t border-border px-4 pt-6">
-        <p className="text-center text-sm text-muted">
+        <p className="mx-auto max-w-3xl text-center text-xs leading-relaxed text-muted/70">
+          <strong>Disclaimer:</strong> All calculators on CreatiCalc provide estimates for
+          informational purposes only. Results are based on publicly available data and industry
+          averages and should not be considered financial, business, or professional advice. Actual
+          earnings, engagement rates, and growth will vary. CreatiCalc is not affiliated with
+          YouTube, Instagram, TikTok, or any other platform.
+        </p>
+        <p className="mt-4 text-center text-sm text-muted">
           &copy; {new Date().getFullYear()} CreatiCalc. All rights reserved.
         </p>
       </div>
