@@ -4,6 +4,7 @@ import MobileNav from './MobileNav';
 
 const calculators = [
   { name: 'YouTube Money Calculator', href: '/youtube-money-calculator' },
+  { name: 'Engagement Rate Calculator', href: '/engagement-rate-calculator' },
   { name: 'Instagram Engagement', href: '/instagram-engagement-rate-calculator' },
   { name: 'TikTok Engagement', href: '/tiktok-engagement-rate-calculator' },
   { name: 'YouTube Growth Projector', href: '/youtube-subscriber-projector' },

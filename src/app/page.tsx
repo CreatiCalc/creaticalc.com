@@ -1,5 +1,23 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import Card from '@/components/ui/Card';
+
+export const metadata: Metadata = {
+  title: {
+    absolute: 'CreatiCalc — Free Calculators for Content Creators',
+  },
+  description:
+    'Free calculators for YouTubers, TikTokers, and Instagram creators. Estimate earnings, calculate engagement rates, and project subscriber growth.',
+  openGraph: {
+    title: 'CreatiCalc — Free Calculators for Content Creators',
+    description:
+      'Free calculators for YouTubers, TikTokers, and Instagram creators. Estimate earnings, calculate engagement rates, and project subscriber growth.',
+    url: '/',
+  },
+  alternates: {
+    canonical: '/',
+  },
+};
 
 const calculators = [
   {
@@ -7,6 +25,13 @@ const calculators = [
     description: 'Estimate how much YouTubers earn based on views, CPM, and niche.',
     href: '/youtube-money-calculator',
     platform: 'YouTube',
+  },
+  {
+    title: 'Engagement Rate Calculator',
+    description:
+      'Calculate your engagement rate on Instagram or TikTok. Compare against 2026 industry benchmarks.',
+    href: '/engagement-rate-calculator',
+    platform: 'Multi-Platform',
   },
   {
     title: 'Instagram Engagement Rate',

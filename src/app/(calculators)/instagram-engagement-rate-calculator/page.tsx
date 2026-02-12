@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import type { Metadata } from 'next';
 import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
 import CalculatorSchema from '@/components/seo/CalculatorSchema';
@@ -5,11 +6,11 @@ import { InstagramEngagementCalculator } from '@/features/calculators/instagram-
 import type { FAQItem } from '@/features/calculators/shared/types';
 
 export const metadata: Metadata = {
-  title: 'Instagram Engagement Rate Calculator — Free Tool',
+  title: 'Instagram Engagement Rate Calculator + Industry Benchmarks 2026',
   description:
     'Free Instagram engagement rate calculator. Calculate your IG engagement rate from likes, comments, and saves, then compare it against benchmarks by follower tier and industry.',
   openGraph: {
-    title: 'Instagram Engagement Rate Calculator — Free Tool',
+    title: 'Instagram Engagement Rate Calculator + Industry Benchmarks 2026',
     description:
       'Calculate your Instagram engagement rate and compare it against industry benchmarks. Free calculator for creators and brands.',
     url: '/instagram-engagement-rate-calculator',
@@ -146,7 +147,9 @@ export default function InstagramEngagementPage() {
         faq={faq}
         howItWorks={howItWorks}
       >
-        <InstagramEngagementCalculator />
+        <Suspense>
+          <InstagramEngagementCalculator />
+        </Suspense>
       </CalculatorLayout>
     </>
   );
