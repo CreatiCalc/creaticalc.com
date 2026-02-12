@@ -1,5 +1,23 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import Card from '@/components/ui/Card';
+
+export const metadata: Metadata = {
+  title: {
+    absolute: 'CreatiCalc — Free Calculators for Content Creators',
+  },
+  description:
+    'Free calculators for YouTubers, TikTokers, and Instagram creators. Estimate earnings, calculate engagement rates, and project subscriber growth.',
+  openGraph: {
+    title: 'CreatiCalc — Free Calculators for Content Creators',
+    description:
+      'Free calculators for YouTubers, TikTokers, and Instagram creators. Estimate earnings, calculate engagement rates, and project subscriber growth.',
+    url: '/',
+  },
+  alternates: {
+    canonical: '/',
+  },
+};
 
 const calculators = [
   {
