@@ -5,6 +5,8 @@ const relatedTools = [
   { name: 'Engagement Rate Calculator', href: '/engagement-rate-calculator' },
   { name: 'Instagram Engagement Rate', href: '/instagram-engagement-rate-calculator' },
   { name: 'TikTok Engagement Rate', href: '/tiktok-engagement-rate-calculator' },
+  { name: 'Instagram Sponsorship Rate', href: '/instagram-sponsorship-rate-calculator' },
+  { name: 'TikTok Sponsorship Rate', href: '/tiktok-sponsorship-rate-calculator' },
   { name: 'Engagement Benchmarks', href: '/engagement-rate-benchmarks' },
   { name: 'YouTube Growth Projector', href: '/youtube-subscriber-projector' },
 ];
