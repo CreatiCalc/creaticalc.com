@@ -65,6 +65,13 @@ const viewsPerVideoTicks = [
   { value: 500000, label: '500K' },
 ];
 
+const viewsPresets = [
+  { label: 'Small (1K/day)', value: 1000 },
+  { label: 'Growing (10K)', value: 10000 },
+  { label: 'Established (100K)', value: 100000 },
+  { label: 'Viral (1M)', value: 1000000 },
+];
+
 export default function YouTubeMoneyCalculator() {
   const { state, dispatch } = useCalculatorState();
 
@@ -125,31 +132,49 @@ export default function YouTubeMoneyCalculator() {
           />
 
           {state.inputMode === 'daily' ? (
-            <div className="grid gap-4 sm:grid-cols-2">
-              <Slider
-                label="Daily Views"
-                value={state.dailyViews}
-                min={100}
-                max={5000000}
-                step={100}
-                logScale
-                ticks={viewsTicks}
-                onChange={(v) => dispatch({ type: 'SET_DAILY_VIEWS', payload: v })}
-                formatValue={(v) => v.toLocaleString()}
-              />
-              <NumberInput
-                label="Or enter exact views"
-                value={state.dailyViews}
-                min={0}
-                max={5000000}
-                step={1000}
-                onChange={(v) =>
-                  dispatch({
-                    type: 'SET_DAILY_VIEWS',
-                    payload: Math.max(0, Math.min(v, 5000000)),
-                  })
-                }
-              />
+            <div className="space-y-4">
+              <div className="flex flex-wrap gap-2">
+                {viewsPresets.map((preset) => (
+                  <button
+                    key={preset.value}
+                    type="button"
+                    onClick={() => dispatch({ type: 'SET_DAILY_VIEWS', payload: preset.value })}
+                    className={`rounded-full border px-3 py-1 text-sm transition-colors ${
+                      state.dailyViews === preset.value
+                        ? 'border-primary bg-primary text-white'
+                        : 'border-border bg-surface text-muted hover:border-primary hover:text-foreground'
+                    }`}
+                  >
+                    {preset.label}
+                  </button>
+                ))}
+              </div>
+              <div className="grid gap-4 sm:grid-cols-2">
+                <Slider
+                  label="Daily Views"
+                  value={state.dailyViews}
+                  min={100}
+                  max={5000000}
+                  step={100}
+                  logScale
+                  ticks={viewsTicks}
+                  onChange={(v) => dispatch({ type: 'SET_DAILY_VIEWS', payload: v })}
+                  formatValue={(v) => v.toLocaleString()}
+                />
+                <NumberInput
+                  label="Or enter exact views"
+                  value={state.dailyViews}
+                  min={0}
+                  max={5000000}
+                  step={1000}
+                  onChange={(v) =>
+                    dispatch({
+                      type: 'SET_DAILY_VIEWS',
+                      payload: Math.max(0, Math.min(v, 5000000)),
+                    })
+                  }
+                />
+              </div>
             </div>
           ) : (
             <div className="space-y-4">
