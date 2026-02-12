@@ -28,6 +28,16 @@ npm run format:check   # Check formatting without writing
 
 CI runs lint, format:check, and build on PRs to `staging`.
 
+### GitHub Authentication
+
+This repo is owned by the `CreatiCalc` GitHub org. The `gh` CLI must use the `creaticalc-dev` token stored in `.envrc-token` (gitignored). Before running any `gh` commands, load the token:
+
+```bash
+export GH_TOKEN=$(tr -d '\r\n' < .envrc-token)
+```
+
+The user's PowerShell environment handles this automatically via a `cd` hook, but Claude Code's bash session needs to load it manually. The SSH remote uses the `github-creaticalc` host alias (configured in `~/.ssh/config`) which maps to the `creaticalc-dev` SSH key.
+
 ## Architecture
 
 ### Directory Structure
