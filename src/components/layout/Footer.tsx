@@ -1,61 +1,73 @@
 import Link from 'next/link';
 import Logo from '@/components/brand/Logo';
 
-const calculators = [
-  { name: 'YouTube Money Calculator', href: '/youtube-money-calculator' },
-  { name: 'Engagement Rate Calculator', href: '/engagement-rate-calculator' },
-  { name: 'Instagram Engagement Rate', href: '/instagram-engagement-rate-calculator' },
-  { name: 'TikTok Engagement Rate', href: '/tiktok-engagement-rate-calculator' },
-  { name: 'Engagement Benchmarks 2026', href: '/engagement-rate-benchmarks' },
-  { name: 'YouTube Growth Projector', href: '/youtube-subscriber-projector' },
+const footerGroups = [
+  {
+    label: 'YouTube',
+    links: [
+      { name: 'Money Calculator', href: '/youtube-money-calculator' },
+      { name: 'Growth Projector', href: '/youtube-subscriber-projector' },
+    ],
+  },
+  {
+    label: 'Instagram',
+    links: [
+      { name: 'Engagement Rate', href: '/instagram-engagement-rate-calculator' },
+      { name: 'Sponsorship Rate', href: '/instagram-sponsorship-rate-calculator' },
+    ],
+  },
+  {
+    label: 'TikTok',
+    links: [
+      { name: 'Engagement Rate', href: '/tiktok-engagement-rate-calculator' },
+      { name: 'Sponsorship Rate', href: '/tiktok-sponsorship-rate-calculator' },
+    ],
+  },
+  {
+    label: 'More',
+    links: [
+      { name: 'Engagement Calculator', href: '/engagement-rate-calculator' },
+      { name: 'Engagement Benchmarks', href: '/engagement-rate-benchmarks' },
+    ],
+  },
+  {
+    label: 'Company',
+    links: [
+      { name: 'About', href: '/about' },
+      { name: 'Privacy Policy', href: '/privacy' },
+    ],
+  },
 ];
 
 export default function Footer() {
   return (
     <footer className="border-t border-border bg-surface py-12">
-      <div className="mx-auto grid max-w-6xl gap-8 px-4 md:grid-cols-3">
-        <div>
-          <Logo size="sm" />
-          <p className="mt-3 text-sm text-muted">
-            Free calculators for content creators. Estimate earnings, track engagement, and project
-            growth.
-          </p>
-        </div>
-        <div>
-          <p className="mb-3 font-semibold">Calculators</p>
-          <ul className="space-y-2">
-            {calculators.map((calc) => (
-              <li key={calc.href}>
-                <Link
-                  href={calc.href}
-                  className="text-sm text-muted transition-colors hover:text-foreground"
-                >
-                  {calc.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <p className="mb-3 font-semibold">Company</p>
-          <ul className="space-y-2">
-            <li>
-              <Link
-                href="/about"
-                className="text-sm text-muted transition-colors hover:text-foreground"
-              >
-                About
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/privacy"
-                className="text-sm text-muted transition-colors hover:text-foreground"
-              >
-                Privacy Policy
-              </Link>
-            </li>
-          </ul>
+      <div className="mx-auto max-w-6xl px-4">
+        <div className="grid gap-8 text-center sm:grid-cols-2 sm:text-left md:grid-cols-3 lg:grid-cols-[1.5fr_1fr_1fr_1fr_1fr_1fr]">
+          <div className="sm:col-span-2 md:col-span-3 lg:col-span-1">
+            <Logo size="sm" />
+            <p className="mt-3 text-sm text-muted">
+              Free calculators for content creators. Estimate earnings, track engagement, and
+              project growth.
+            </p>
+          </div>
+          {footerGroups.map((group) => (
+            <div key={group.label}>
+              <p className="mb-3 font-semibold">{group.label}</p>
+              <ul className="space-y-2">
+                {group.links.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="text-sm text-muted transition-colors hover:text-foreground"
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
       </div>
       <div className="mx-auto mt-8 max-w-6xl border-t border-border px-4 pt-6">
