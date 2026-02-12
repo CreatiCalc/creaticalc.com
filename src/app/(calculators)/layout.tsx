@@ -2,8 +2,10 @@ import Link from 'next/link';
 
 const relatedTools = [
   { name: 'YouTube Money Calculator', href: '/youtube-money-calculator' },
+  { name: 'Engagement Rate Calculator', href: '/engagement-rate-calculator' },
   { name: 'Instagram Engagement Rate', href: '/instagram-engagement-rate-calculator' },
   { name: 'TikTok Engagement Rate', href: '/tiktok-engagement-rate-calculator' },
+  { name: 'Engagement Benchmarks', href: '/engagement-rate-benchmarks' },
   { name: 'YouTube Growth Projector', href: '/youtube-subscriber-projector' },
 ];
 

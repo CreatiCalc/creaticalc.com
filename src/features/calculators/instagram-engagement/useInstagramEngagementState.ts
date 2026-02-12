@@ -1,7 +1,12 @@
 'use client';
 
 import { useReducer } from 'react';
-import type { InstagramContentType, IndustryId } from '@/lib/engagementModel';
+import type {
+  InstagramContentType,
+  InstagramCalcMethod,
+  IndustryId,
+  EngagementInput,
+} from '@/lib/engagementModel';
 
 export interface InstagramEngagementState {
   followers: number;
@@ -11,6 +16,9 @@ export interface InstagramEngagementState {
   contentType: InstagramContentType;
   industryId: IndustryId;
   postsAnalyzed: number;
+  avgReach: number;
+  avgImpressions: number;
+  instagramCalcMethod: InstagramCalcMethod;
 }
 
 type Action =
@@ -20,9 +28,14 @@ type Action =
   | { type: 'SET_AVG_SAVES'; payload: number }
   | { type: 'SET_CONTENT_TYPE'; payload: InstagramContentType }
   | { type: 'SET_INDUSTRY'; payload: IndustryId }
-  | { type: 'SET_POSTS_ANALYZED'; payload: number };
+  | { type: 'SET_POSTS_ANALYZED'; payload: number }
+  | { type: 'SET_AVG_REACH'; payload: number }
+  | { type: 'SET_AVG_IMPRESSIONS'; payload: number }
+  | { type: 'SET_INSTAGRAM_CALC_METHOD'; payload: InstagramCalcMethod }
+  | { type: 'APPLY_SCENARIO'; payload: Partial<EngagementInput> }
+  | { type: 'RESTORE_STATE'; payload: InstagramEngagementState };
 
-const initialState: InstagramEngagementState = {
+const defaultState: InstagramEngagementState = {
   followers: 10_000,
   avgLikes: 200,
   avgComments: 10,
@@ -30,6 +43,9 @@ const initialState: InstagramEngagementState = {
   contentType: 'mixed',
   industryId: 'general',
   postsAnalyzed: 12,
+  avgReach: 0,
+  avgImpressions: 0,
+  instagramCalcMethod: 'byFollowers',
 };
 
 function reducer(state: InstagramEngagementState, action: Action): InstagramEngagementState {
@@ -48,12 +64,32 @@ function reducer(state: InstagramEngagementState, action: Action): InstagramEnga
       return { ...state, industryId: action.payload };
     case 'SET_POSTS_ANALYZED':
       return { ...state, postsAnalyzed: action.payload };
+    case 'SET_AVG_REACH':
+      return { ...state, avgReach: action.payload };
+    case 'SET_AVG_IMPRESSIONS':
+      return { ...state, avgImpressions: action.payload };
+    case 'SET_INSTAGRAM_CALC_METHOD':
+      return { ...state, instagramCalcMethod: action.payload };
+    case 'APPLY_SCENARIO':
+      return {
+        ...state,
+        ...(action.payload.followers !== undefined && { followers: action.payload.followers }),
+        ...(action.payload.avgLikes !== undefined && { avgLikes: action.payload.avgLikes }),
+        ...(action.payload.avgComments !== undefined && {
+          avgComments: action.payload.avgComments,
+        }),
+        ...(action.payload.avgSaves !== undefined && { avgSaves: action.payload.avgSaves }),
+      };
+    case 'RESTORE_STATE':
+      return action.payload;
     default:
       return state;
   }
 }
 
-export function useInstagramEngagementState() {
-  const [state, dispatch] = useReducer(reducer, initialState);
+export function useInstagramEngagementState(initialOverride?: InstagramEngagementState) {
+  const [state, dispatch] = useReducer(reducer, initialOverride ?? defaultState);
   return { state, dispatch };
 }
+
+export { defaultState as instagramDefaultState };

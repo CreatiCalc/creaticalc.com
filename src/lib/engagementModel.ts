@@ -6,6 +6,10 @@ export type FollowerTier = 'nano' | 'micro' | 'mid' | 'macro' | 'mega' | 'super'
 
 export type EngagementRating = 'excellent' | 'good' | 'average' | 'below_average' | 'low';
 
+export type LetterGrade = 'A+' | 'A' | 'A-' | 'B+' | 'B' | 'B-' | 'C+' | 'C' | 'D' | 'F';
+
+export type InstagramCalcMethod = 'byFollowers' | 'byReach' | 'byImpressions';
+
 export type IndustryId =
   | 'animals'
   | 'arts'
@@ -35,6 +39,9 @@ export interface EngagementInput {
   // Instagram-specific
   avgSaves?: number;
   contentType?: InstagramContentType;
+  avgReach?: number;
+  avgImpressions?: number;
+  instagramCalcMethod?: InstagramCalcMethod;
   // TikTok-specific
   avgShares?: number;
   avgViews?: number;
@@ -67,6 +74,51 @@ export interface EngagementRecommendation {
   id: string;
   text: string;
   detail: string;
+}
+
+export interface HealthScore {
+  score: number; // 0-100
+  grade: LetterGrade;
+  components: {
+    rateBenchmark: number; // 0-40
+    likeCommentRatio: number; // 0-20
+    saveSharePct: number; // 0-20
+    industryComparison: number; // 0-20
+  };
+}
+
+export interface MultiFormulaResult {
+  byFollowers: number;
+  byReach: number | null;
+  byImpressions: number | null;
+}
+
+export interface WhatIfScenario {
+  id: string;
+  label: string;
+  description: string;
+  changes: Partial<EngagementInput>;
+}
+
+export interface EstimatedReach {
+  estimatedReach: number;
+  estimatedImpressions: number;
+  reachRate: number;
+}
+
+export interface CrossPlatformResult {
+  currentPlatform: Platform;
+  currentRate: number;
+  currentRating: EngagementRating;
+  otherPlatform: Platform;
+  equivalentRate: number;
+  otherRating: EngagementRating;
+}
+
+export interface YoYTrend {
+  year: number;
+  instagram: number;
+  tiktok: number;
 }
 
 export interface IndustryBenchmark {
@@ -230,6 +282,24 @@ const NICHE_MULTIPLIERS: Partial<Record<IndustryId, number>> = {
   sports: 0.9,
 };
 
+// Estimated organic reach as % of followers, by tier
+const REACH_RATES: Record<FollowerTier, number> = {
+  nano: 70,
+  micro: 40,
+  mid: 25,
+  macro: 15,
+  mega: 10,
+  super: 5,
+};
+
+// Year-over-year average engagement rate trends
+export const YOY_TRENDS: YoYTrend[] = [
+  { year: 2023, instagram: 1.16, tiktok: 4.07 },
+  { year: 2024, instagram: 1.05, tiktok: 4.4 },
+  { year: 2025, instagram: 1.01, tiktok: 4.64 },
+  { year: 2026, instagram: 0.98, tiktok: 4.9 },
+];
+
 // ─── Core Functions ───────────────────────────────────────────────────────────
 
 function getTiers(platform: Platform): TierBenchmark[] {
@@ -279,12 +349,26 @@ export function calculateEngagementRate(input: EngagementInput): number {
     return (totalInteractions / views) * 100;
   }
 
-  if (followers <= 0) return 0;
-
   if (platform === 'instagram') {
     const saves = input.avgSaves ?? 0;
-    return ((avgLikes + avgComments + saves) / followers) * 100;
+    const totalInteractions = avgLikes + avgComments + saves;
+
+    if (input.instagramCalcMethod === 'byReach') {
+      const reach = input.avgReach ?? 0;
+      if (reach <= 0) return 0;
+      return (totalInteractions / reach) * 100;
+    }
+    if (input.instagramCalcMethod === 'byImpressions') {
+      const impressions = input.avgImpressions ?? 0;
+      if (impressions <= 0) return 0;
+      return (totalInteractions / impressions) * 100;
+    }
+
+    if (followers <= 0) return 0;
+    return (totalInteractions / followers) * 100;
   }
+
+  if (followers <= 0) return 0;
 
   // TikTok by followers
   const shares = input.avgShares ?? 0;
@@ -537,6 +621,204 @@ export function generateEngagementRecommendations(
   }
 
   return recs.slice(0, 5);
+}
+
+// ─── Multi-Formula ───────────────────────────────────────────────────────────
+
+export function calculateMultiFormula(input: EngagementInput): MultiFormulaResult {
+  const { followers, avgLikes, avgComments } = input;
+  const saves = input.avgSaves ?? 0;
+  const total = avgLikes + avgComments + saves;
+
+  const byFollowers = followers > 0 ? (total / followers) * 100 : 0;
+
+  const reach = input.avgReach ?? 0;
+  const byReach = reach > 0 ? (total / reach) * 100 : null;
+
+  const impressions = input.avgImpressions ?? 0;
+  const byImpressions = impressions > 0 ? (total / impressions) * 100 : null;
+
+  return { byFollowers, byReach, byImpressions };
+}
+
+// ─── Engagement Health Score ────────────────────────────────────────────────
+
+export function calculateHealthScore(input: EngagementInput, rate: number): HealthScore {
+  const { platform, followers, industryId, avgLikes, avgComments } = input;
+  const benchmark = getTierBenchmark(platform, followers);
+  const midBenchmark = (benchmark.low + benchmark.high) / 2;
+
+  // 1. Rate vs benchmark (0-40)
+  const rateRatio = midBenchmark > 0 ? rate / midBenchmark : 0;
+  const rateBenchmark = Math.min(40, Math.round(rateRatio * 20));
+
+  // 2. Like-to-comment ratio (0-20) — ideal is 10:1 to 20:1
+  const lcr = avgComments > 0 ? avgLikes / avgComments : 100;
+  let likeCommentRatio: number;
+  if (lcr >= 10 && lcr <= 20) likeCommentRatio = 20;
+  else if (lcr >= 5 && lcr <= 30) likeCommentRatio = 15;
+  else if (lcr >= 3 && lcr <= 50) likeCommentRatio = 10;
+  else likeCommentRatio = 5;
+
+  // 3. Saves/shares as % of total interactions (0-20)
+  const saves = input.avgSaves ?? 0;
+  const shares = input.avgShares ?? 0;
+  const total = avgLikes + avgComments + saves + shares;
+  const specialPct = total > 0 ? ((saves + shares) / total) * 100 : 0;
+  let saveSharePct: number;
+  if (specialPct >= 15) saveSharePct = 20;
+  else if (specialPct >= 10) saveSharePct = 16;
+  else if (specialPct >= 5) saveSharePct = 12;
+  else if (specialPct >= 2) saveSharePct = 8;
+  else saveSharePct = 4;
+
+  // 4. Industry comparison (0-20)
+  const industryAvg = getIndustryBenchmark(platform, industryId);
+  const industryRatio = industryAvg > 0 ? rate / industryAvg : 0;
+  const industryComparison = Math.min(20, Math.round(industryRatio * 10));
+
+  const score = Math.min(100, rateBenchmark + likeCommentRatio + saveSharePct + industryComparison);
+  const grade = scoreToGrade(score);
+
+  return {
+    score,
+    grade,
+    components: { rateBenchmark, likeCommentRatio, saveSharePct, industryComparison },
+  };
+}
+
+function scoreToGrade(score: number): LetterGrade {
+  if (score >= 95) return 'A+';
+  if (score >= 88) return 'A';
+  if (score >= 80) return 'A-';
+  if (score >= 73) return 'B+';
+  if (score >= 65) return 'B';
+  if (score >= 58) return 'B-';
+  if (score >= 50) return 'C+';
+  if (score >= 40) return 'C';
+  if (score >= 25) return 'D';
+  return 'F';
+}
+
+// ─── What-If Scenarios ──────────────────────────────────────────────────────
+
+export function getWhatIfScenarios(input: EngagementInput): WhatIfScenario[] {
+  const { platform, followers, avgLikes, avgComments } = input;
+  const isInstagram = platform === 'instagram';
+
+  const scenarios: WhatIfScenario[] = [
+    {
+      id: 'double-comments',
+      label: 'Double your comments',
+      description: `What if you got ${(avgComments * 2).toLocaleString()} comments per post?`,
+      changes: { avgComments: avgComments * 2 },
+    },
+    {
+      id: 'boost-likes-50',
+      label: 'Boost likes by 50%',
+      description: `What if you averaged ${Math.round(avgLikes * 1.5).toLocaleString()} likes?`,
+      changes: { avgLikes: Math.round(avgLikes * 1.5) },
+    },
+    {
+      id: 'grow-next-tier',
+      label: 'Grow to next tier',
+      description: `What if you had ${getNextTierFollowers(platform, followers).toLocaleString()} followers?`,
+      changes: { followers: getNextTierFollowers(platform, followers) },
+    },
+  ];
+
+  if (isInstagram) {
+    const saves = input.avgSaves ?? 0;
+    scenarios.push({
+      id: 'triple-saves',
+      label: 'Triple your saves',
+      description: `What if you got ${(saves * 3).toLocaleString()} saves per post?`,
+      changes: { avgSaves: saves * 3 },
+    });
+  } else {
+    const shares = input.avgShares ?? 0;
+    scenarios.push({
+      id: 'triple-shares',
+      label: 'Triple your shares',
+      description: `What if you got ${(shares * 3).toLocaleString()} shares per video?`,
+      changes: { avgShares: shares * 3 },
+    });
+  }
+
+  return scenarios;
+}
+
+function getNextTierFollowers(platform: Platform, followers: number): number {
+  const tiers = platform === 'instagram' ? INSTAGRAM_TIERS : TIKTOK_TIERS;
+  const currentIdx = tiers.findIndex((t) => followers >= t.min && followers <= t.max);
+  if (currentIdx < 0 || currentIdx >= tiers.length - 1) return Math.round(followers * 2);
+  return tiers[currentIdx + 1].min;
+}
+
+// ─── Estimated Reach ────────────────────────────────────────────────────────
+
+export function estimateReach(platform: Platform, followers: number): EstimatedReach {
+  const tier = getFollowerTier(platform, followers);
+  const reachRate = REACH_RATES[tier];
+  const estimatedReach = Math.round((followers * reachRate) / 100);
+  const estimatedImpressions = Math.round(estimatedReach * 1.3);
+
+  return { estimatedReach, estimatedImpressions, reachRate };
+}
+
+// ─── Cross-Platform Comparison ──────────────────────────────────────────────
+
+export function crossPlatformComparison(
+  platform: Platform,
+  rate: number,
+  followers: number
+): CrossPlatformResult {
+  const otherPlatform: Platform = platform === 'instagram' ? 'tiktok' : 'instagram';
+
+  // Calculate the ratio of the current rate to the platform's overall average
+  const currentPlatformAvg = platform === 'instagram' ? 0.98 : 4.9;
+  const otherPlatformAvg = otherPlatform === 'instagram' ? 0.98 : 4.9;
+  const ratio = currentPlatformAvg > 0 ? rate / currentPlatformAvg : 1;
+  const equivalentRate = otherPlatformAvg * ratio;
+
+  const currentRating = rateEngagement(platform, followers, rate);
+  const otherRating = rateEngagement(otherPlatform, followers, equivalentRate);
+
+  return {
+    currentPlatform: platform,
+    currentRate: rate,
+    currentRating,
+    otherPlatform,
+    equivalentRate,
+    otherRating,
+  };
+}
+
+// ─── Year-Over-Year Trend Context ───────────────────────────────────────────
+
+export function getYoYContext(
+  platform: Platform,
+  rate: number
+): { currentYearAvg: number; prevYearAvg: number; changePercent: number; ratingVsPrev: string } {
+  const current = YOY_TRENDS[YOY_TRENDS.length - 1];
+  const previous = YOY_TRENDS[YOY_TRENDS.length - 2];
+
+  const currentAvg = platform === 'instagram' ? current.instagram : current.tiktok;
+  const prevAvg = platform === 'instagram' ? previous.instagram : previous.tiktok;
+  const changePercent = prevAvg > 0 ? ((currentAvg - prevAvg) / prevAvg) * 100 : 0;
+
+  let ratingVsPrev: string;
+  if (rate > prevAvg && rate <= currentAvg) {
+    ratingVsPrev = 'was above average last year, now average';
+  } else if (rate > currentAvg) {
+    ratingVsPrev = 'above average both years';
+  } else if (rate <= currentAvg && rate > prevAvg * 0.8) {
+    ratingVsPrev = 'close to average';
+  } else {
+    ratingVsPrev = 'below average both years';
+  }
+
+  return { currentYearAvg: currentAvg, prevYearAvg: prevAvg, changePercent, ratingVsPrev };
 }
 
 // ─── Utilities ────────────────────────────────────────────────────────────────
