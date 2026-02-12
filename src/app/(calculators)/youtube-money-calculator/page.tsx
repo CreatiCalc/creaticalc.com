@@ -91,6 +91,11 @@ const faq: FAQItem[] = [
       'The milestone timeline appears when you set a monthly growth rate above 0%. It projects when your channel will cross key monthly earnings thresholds: $100, $500, $1,000, $5,000, and $10,000 per month. The projections extend up to 36 months into the future, accounting for your current settings including niche, audience geography, video length, and seasonality. Milestones you have already reached are marked with a green check, future milestones show the projected month and date, and milestones beyond 3 years are grayed out.',
   },
   {
+    question: 'How much should I charge for a YouTube sponsorship?',
+    answer:
+      'Sponsorship rates depend on your niche, views per video, and audience quality. As a rule of thumb, creators charge $15 to $50 per 1,000 views for a standard 30 to 60 second integrated mention in a long-form video. Finance and tech channels command the highest rates ($25 to $70 per 1K views), while gaming and entertainment sit lower ($8 to $18 per 1K views). Dedicated review videos typically cost brands 3 to 5 times more than a mid-roll integration. Shorts sponsorships pay roughly 25 to 40 percent of long-form rates. Our sponsorship estimator calculates a suggested per-video rate based on your current views and niche.',
+  },
+  {
     question: 'How much do YouTube Shorts pay?',
     answer:
       'YouTube Shorts pay significantly less than long-form videos — roughly $0.02 to $0.08 per 1,000 views (RPM). This is because Shorts ads come from a separate revenue pool where creators receive 45% of allocated ad revenue. Unlike long-form content where niche heavily influences earnings, Shorts RPM is relatively flat across most content categories, though finance and tech Shorts can earn toward the higher end. Use the "Shorts" toggle in our calculator to see projected Shorts earnings. To maximize revenue, many creators use Shorts to drive subscribers who then watch their higher-paying long-form content.',
