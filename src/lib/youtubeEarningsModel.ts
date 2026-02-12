@@ -58,6 +58,7 @@ export interface ProjectionInput {
   startMonth: number;
   contentFormat?: ContentFormat;
   videoLength?: VideoLength;
+  highCpmAudiencePct?: number;
 }
 
 export interface Recommendation {
@@ -116,6 +117,20 @@ export function getNiche(nicheId: NicheId): Niche {
   return NICHES.find((n) => n.id === nicheId) ?? NICHES[0];
 }
 
+/**
+ * Geographic RPM multiplier based on % of audience from high-CPM regions (US/UK/CA/AU).
+ * - 0% high-CPM → 0.4x (all low-CPM regions like India/SE Asia)
+ * - 50% (default) → 1.0x (baseline)
+ * - 100% high-CPM → 1.4x (all US/UK/CA/AU)
+ */
+export function getGeographyMultiplier(highCpmPct: number): number {
+  const pct = Math.max(0, Math.min(100, highCpmPct));
+  if (pct <= 50) {
+    return 0.4 + (pct / 50) * 0.6;
+  }
+  return 1.0 + ((pct - 50) / 50) * 0.4;
+}
+
 // Index 0 = January, 11 = December
 export const SEASONALITY_MULTIPLIERS: number[] = [
   0.8, // Jan
@@ -157,6 +172,8 @@ export function projectEarnings(input: ProjectionInput): ProjectionResult {
   const baseRpm = isShorts ? SHORTS_RPM : niche.rpm;
   const lengthMultiplier =
     !isShorts && input.videoLength ? VIDEO_LENGTH_MULTIPLIERS[input.videoLength] : 1.0;
+  const geoMultiplier =
+    input.highCpmAudiencePct != null ? getGeographyMultiplier(input.highCpmAudiencePct) : 1.0;
   const months: MonthProjection[] = [];
 
   for (let i = 0; i < 12; i++) {
@@ -169,9 +186,9 @@ export function projectEarnings(input: ProjectionInput): ProjectionResult {
       : 1.0;
 
     const effectiveRpm: RpmRange = {
-      low: baseRpm.low * seasonalityMultiplier * lengthMultiplier,
-      mid: baseRpm.mid * seasonalityMultiplier * lengthMultiplier,
-      high: baseRpm.high * seasonalityMultiplier * lengthMultiplier,
+      low: baseRpm.low * seasonalityMultiplier * lengthMultiplier * geoMultiplier,
+      mid: baseRpm.mid * seasonalityMultiplier * lengthMultiplier * geoMultiplier,
+      high: baseRpm.high * seasonalityMultiplier * lengthMultiplier * geoMultiplier,
     };
 
     const revenue: RpmRange = {

@@ -13,6 +13,7 @@ import {
   SHORTS_RPM,
   VIDEO_LENGTH_MULTIPLIERS,
   getNiche,
+  getGeographyMultiplier,
   projectEarnings,
   formatUSD,
   type NicheId,
@@ -83,6 +84,7 @@ export default function YouTubeMoneyCalculator() {
       startMonth: state.startMonth,
       contentFormat: state.contentFormat,
       videoLength: state.videoLength,
+      highCpmAudiencePct: state.highCpmAudiencePct,
     }),
     [
       effectiveDailyViews,
@@ -92,6 +94,7 @@ export default function YouTubeMoneyCalculator() {
       state.startMonth,
       state.contentFormat,
       state.videoLength,
+      state.highCpmAudiencePct,
     ]
   );
 
@@ -200,6 +203,28 @@ export default function YouTubeMoneyCalculator() {
             />
           )}
 
+          <div>
+            <Slider
+              label="Audience from US/UK/CA/AU"
+              value={state.highCpmAudiencePct}
+              min={0}
+              max={100}
+              step={5}
+              onChange={(v) => dispatch({ type: 'SET_HIGH_CPM_AUDIENCE_PCT', payload: v })}
+              formatValue={(v) => `${v}%`}
+            />
+            <p className="mt-1 text-xs text-muted">
+              High-CPM regions pay 3&ndash;5&times; more per view.{' '}
+              {state.highCpmAudiencePct !== 50 && (
+                <span>
+                  Geography adjustment:{' '}
+                  {getGeographyMultiplier(state.highCpmAudiencePct).toFixed(2)}
+                  &times;
+                </span>
+              )}
+            </p>
+          </div>
+
           <GrowthRateInput
             value={state.monthlyGrowthRate}
             onChange={(rate) => dispatch({ type: 'SET_GROWTH_RATE', payload: rate })}
@@ -225,6 +250,13 @@ export default function YouTubeMoneyCalculator() {
                 <span className="text-xs">
                   {' '}
                   &times; {VIDEO_LENGTH_MULTIPLIERS[state.videoLength]}x {state.videoLength} video
+                  adjustment
+                </span>
+              )}
+              {state.highCpmAudiencePct !== 50 && (
+                <span className="text-xs">
+                  {' '}
+                  &times; {getGeographyMultiplier(state.highCpmAudiencePct).toFixed(2)}x geography
                   adjustment
                 </span>
               )}

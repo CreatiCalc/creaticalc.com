@@ -81,6 +81,11 @@ const faq: FAQItem[] = [
       'Yes, video length has a significant impact on YouTube ad revenue. Videos under 8 minutes cannot run mid-roll ads — they only display pre-roll and post-roll ads, which typically reduces RPM by about 30%. Videos between 8 and 20 minutes can include mid-roll ads and represent the standard earning potential. Videos over 20 minutes allow multiple mid-roll ad placements, boosting RPM by roughly 30% compared to standard-length videos. Our calculator includes a Video Length selector that adjusts your earnings estimate based on these real differences in ad load.',
   },
   {
+    question: 'How does audience geography affect YouTube earnings?',
+    answer:
+      'Audience location is one of the biggest factors in YouTube ad revenue. Views from the US, UK, Canada, and Australia pay 3 to 5 times more than views from regions like India, Southeast Asia, or Latin America, because advertisers in high-income countries bid significantly more for ad placements. A channel with 100,000 daily views from a mostly US audience can earn 3x more than a channel with the same views from a global audience. Our Audience Geography slider lets you model this by adjusting the percentage of your viewers from high-CPM regions, with the default set to 50% as a baseline.',
+  },
+  {
     question: 'How much do YouTube Shorts pay?',
     answer:
       'YouTube Shorts pay significantly less than long-form videos — roughly $0.02 to $0.08 per 1,000 views (RPM). This is because Shorts ads come from a separate revenue pool where creators receive 45% of allocated ad revenue. Unlike long-form content where niche heavily influences earnings, Shorts RPM is relatively flat across most content categories, though finance and tech Shorts can earn toward the higher end. Use the "Shorts" toggle in our calculator to see projected Shorts earnings. To maximize revenue, many creators use Shorts to drive subscribers who then watch their higher-paying long-form content.',

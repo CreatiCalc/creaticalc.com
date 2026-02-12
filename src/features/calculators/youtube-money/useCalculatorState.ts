@@ -23,6 +23,7 @@ export interface CalculatorState {
   uploadsPerWeek: number;
   contentFormat: ContentFormat;
   videoLength: VideoLength;
+  highCpmAudiencePct: number;
 }
 
 export function computeDailyViewsFromPerVideo(
@@ -44,7 +45,8 @@ type Action =
   | { type: 'SET_VIEWS_PER_VIDEO'; payload: number }
   | { type: 'SET_UPLOADS_PER_WEEK'; payload: number }
   | { type: 'SET_CONTENT_FORMAT'; payload: ContentFormat }
-  | { type: 'SET_VIDEO_LENGTH'; payload: VideoLength };
+  | { type: 'SET_VIDEO_LENGTH'; payload: VideoLength }
+  | { type: 'SET_HIGH_CPM_AUDIENCE_PCT'; payload: number };
 
 const defaults: CalculatorState = {
   dailyViews: 5000,
@@ -58,6 +60,7 @@ const defaults: CalculatorState = {
   uploadsPerWeek: 3,
   contentFormat: 'longform',
   videoLength: 'standard',
+  highCpmAudiencePct: 50,
 };
 
 function getInitialState(): CalculatorState {
@@ -105,6 +108,8 @@ function reducer(state: CalculatorState, action: Action): CalculatorState {
       return { ...state, contentFormat: action.payload };
     case 'SET_VIDEO_LENGTH':
       return { ...state, videoLength: action.payload };
+    case 'SET_HIGH_CPM_AUDIENCE_PCT':
+      return { ...state, highCpmAudiencePct: action.payload };
     default:
       return state;
   }

@@ -25,6 +25,7 @@ export default function ShareButtons({ state, yearlyMid, tier }: ShareButtonsPro
       uploadsPerWeek: state.uploadsPerWeek,
       contentFormat: state.contentFormat,
       videoLength: state.videoLength,
+      highCpmAudiencePct: state.highCpmAudiencePct,
     });
     const url = new URL(window.location.pathname, window.location.origin);
     url.searchParams.set('c', code);
@@ -39,6 +40,7 @@ export default function ShareButtons({ state, yearlyMid, tier }: ShareButtonsPro
     state.uploadsPerWeek,
     state.contentFormat,
     state.videoLength,
+    state.highCpmAudiencePct,
   ]);
 
   const handleCopy = async () => {
