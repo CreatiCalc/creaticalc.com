@@ -10,6 +10,7 @@ interface ShareState {
   uploadsPerWeek: number;
   contentFormat: 'longform' | 'shorts';
   videoLength: VideoLength;
+  highCpmAudiencePct: number;
 }
 
 const VALID_NICHES: Set<string> = new Set([
@@ -40,7 +41,7 @@ export function encodeCalcState(state: ShareState): string {
   const format = state.contentFormat === 'shorts' ? 1 : 0;
   const lengthMap: Record<VideoLength, number> = { short: 0, standard: 1, long: 2 };
   const length = lengthMap[state.videoLength];
-  const raw = `${state.dailyViews}|${state.nicheId}|${growthPct}|${state.seasonalityEnabled ? 1 : 0}|${mode}|${state.viewsPerVideo}|${state.uploadsPerWeek}|${format}|${length}`;
+  const raw = `${state.dailyViews}|${state.nicheId}|${growthPct}|${state.seasonalityEnabled ? 1 : 0}|${mode}|${state.viewsPerVideo}|${state.uploadsPerWeek}|${format}|${length}|${state.highCpmAudiencePct}`;
   return toBase64Url(raw);
 }
 
@@ -48,7 +49,13 @@ export function decodeCalcState(hash: string): ShareState | null {
   try {
     const raw = fromBase64Url(hash);
     const parts = raw.split('|');
-    if (parts.length !== 4 && parts.length !== 7 && parts.length !== 8 && parts.length !== 9)
+    if (
+      parts.length !== 4 &&
+      parts.length !== 7 &&
+      parts.length !== 8 &&
+      parts.length !== 9 &&
+      parts.length !== 10
+    )
       return null;
 
     const dailyViews = parseInt(parts[0], 10);
@@ -73,6 +80,7 @@ export function decodeCalcState(hash: string): ShareState | null {
         uploadsPerWeek: 3,
         contentFormat: 'longform',
         videoLength: 'standard',
+        highCpmAudiencePct: 50,
       };
     }
 
@@ -95,11 +103,19 @@ export function decodeCalcState(hash: string): ShareState | null {
 
     // Parse videoLength (9th field), default to standard for older URLs
     let videoLength: VideoLength = 'standard';
-    if (parts.length === 9) {
+    if (parts.length >= 9) {
       const len = parts[8];
       if (len !== '0' && len !== '1' && len !== '2') return null;
       const lengthMap: Record<string, VideoLength> = { '0': 'short', '1': 'standard', '2': 'long' };
       videoLength = lengthMap[len];
+    }
+
+    // Parse highCpmAudiencePct (10th field), default to 50 for older URLs
+    let highCpmAudiencePct = 50;
+    if (parts.length === 10) {
+      const geo = parseInt(parts[9], 10);
+      if (isNaN(geo) || geo < 0 || geo > 100) return null;
+      highCpmAudiencePct = geo;
     }
 
     return {
@@ -112,6 +128,7 @@ export function decodeCalcState(hash: string): ShareState | null {
       uploadsPerWeek,
       contentFormat,
       videoLength,
+      highCpmAudiencePct,
     };
   } catch {
     return null;
