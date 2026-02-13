@@ -74,7 +74,7 @@ function ScenarioCard({
             {formatPercent(hypotheticalRate)}
           </span>
           <span
-            className={`text-sm font-medium ${isPositive ? 'text-emerald-600' : 'text-red-500'}`}
+            className={`text-sm font-medium ${isPositive ? 'text-emerald-700' : 'text-red-700'}`}
           >
             {isPositive ? '+' : ''}
             {diff.toFixed(2)}pp

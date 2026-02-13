@@ -51,7 +51,7 @@ export default function EngagementRateDisplay({
 
       <p className="mt-3 text-sm text-muted">
         {tierLabel}{' '}
-        {tierRange && <span className="text-xs text-muted/70">({tierRange} followers)</span>}
+        {tierRange && <span className="text-xs text-muted">({tierRange} followers)</span>}
       </p>
     </div>
   );

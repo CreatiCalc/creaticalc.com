@@ -89,7 +89,7 @@ export default function BenchmarkTable({ platform }: BenchmarkTableProps) {
                     <td className="py-2.5 pr-4 font-medium text-foreground">{row.name}</td>
                     <td className="py-2.5 pr-4 text-muted">{formatPercent(row.rate)}</td>
                     <td
-                      className={`py-2.5 ${Number(relative) >= 0 ? 'text-emerald-600' : 'text-red-500'}`}
+                      className={`py-2.5 ${Number(relative) >= 0 ? 'text-emerald-700' : 'text-red-700'}`}
                     >
                       {sign}
                       {relative}% vs avg
