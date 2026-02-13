@@ -354,7 +354,7 @@ export default function AboutPage() {
                         href={calc.href}
                         className="text-sm font-medium text-primary hover:underline"
                       >
-                        {calc.title} &rarr;
+                        {calc.title}
                       </Link>
                     ))}
                 </div>
