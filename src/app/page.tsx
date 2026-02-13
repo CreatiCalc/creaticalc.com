@@ -7,11 +7,11 @@ export const metadata: Metadata = {
     absolute: 'CreatiCalc — Free Calculators for Content Creators',
   },
   description:
-    'Free calculators for YouTubers, TikTokers, and Instagram creators. Estimate earnings, calculate engagement rates, and project subscriber growth.',
+    'Free calculators for YouTubers, TikTokers, and Instagram creators. Estimate earnings, calculate engagement rates, find sponsorship pricing, and project subscriber growth.',
   openGraph: {
     title: 'CreatiCalc — Free Calculators for Content Creators',
     description:
-      'Free calculators for YouTubers, TikTokers, and Instagram creators. Estimate earnings, calculate engagement rates, and project subscriber growth.',
+      'Free calculators for YouTubers, TikTokers, and Instagram creators. Estimate earnings, calculate engagement rates, find sponsorship pricing, and project subscriber growth.',
     url: '/',
   },
   alternates: {
@@ -27,7 +27,7 @@ const jsonLd = {
       'name': 'CreatiCalc',
       'url': 'https://creaticalc.com',
       'description':
-        'Free calculators for YouTubers, TikTokers, and Instagram creators. Estimate earnings, calculate engagement rates, and project subscriber growth.',
+        'Free calculators for YouTubers, TikTokers, and Instagram creators. Estimate earnings, calculate engagement rates, find sponsorship pricing, and project subscriber growth.',
     },
     {
       '@type': 'Organization',
@@ -85,6 +85,13 @@ const calculators = [
     platform: 'TikTok',
   },
   {
+    title: 'Engagement Rate Benchmarks',
+    description:
+      'See average engagement rates by follower tier, industry, and platform for Instagram and TikTok.',
+    href: '/engagement-rate-benchmarks',
+    platform: 'Multi-Platform',
+  },
+  {
     title: 'YouTube Subscriber Projector',
     description: "Project your YouTube subscriber growth and see when you'll hit milestones.",
     href: '/youtube-subscriber-projector',
@@ -110,8 +117,8 @@ export default function Home() {
           Free Calculators for <span className="text-gradient-vibrant">Content Creators</span>
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-lg text-muted">
-          Estimate your YouTube earnings, calculate engagement rates on Instagram and TikTok, and
-          project your subscriber growth — all for free.
+          Estimate your YouTube earnings, calculate engagement rates, find your sponsorship pricing
+          on Instagram and TikTok, and project your subscriber growth — all for free.
         </p>
         <div className="mt-8 inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-2 text-sm text-muted">
           <span className="inline-block h-2 w-2 rounded-full bg-accent" aria-hidden="true" />

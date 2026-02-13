@@ -95,8 +95,20 @@ export default function PrivacyPage() {
           <p>
             All calculations — including earnings estimates, engagement rates, and growth
             projections — are performed entirely in your browser using JavaScript. No calculator
-            inputs or results are transmitted to or stored on our servers. Your data stays on your
-            device.
+            inputs or results are stored on our servers. Your data stays on your device.
+          </p>
+
+          <h3 className="mt-4 mb-1 font-semibold text-foreground">YouTube URL Lookup</h3>
+          <p>
+            Our{' '}
+            <Link href="/youtube-money-calculator" className="text-primary underline">
+              YouTube Money Calculator
+            </Link>{' '}
+            includes an optional URL lookup feature. When you use it, the YouTube URL you enter is
+            sent to our server, which queries the YouTube Data API to retrieve public channel or
+            video statistics. We do not store the URLs you look up. Your IP address is temporarily
+            held in memory for rate limiting purposes and is not persisted to disk or shared with
+            third parties.
           </p>
 
           <h3 className="mt-4 mb-1 font-semibold text-foreground">Automatically Collected Data</h3>
@@ -125,7 +137,10 @@ export default function PrivacyPage() {
           <ul className="mt-2 list-disc space-y-1 pl-5 marker:text-primary">
             <li>We do not collect names, email addresses, or phone numbers</li>
             <li>We do not require or offer user accounts</li>
-            <li>We do not store calculator inputs or results on our servers</li>
+            <li>
+              We do not store calculator inputs or results on our servers (see the YouTube URL
+              Lookup section above for the one exception)
+            </li>
             <li>We do not use fingerprinting to identify individual users</li>
             <li>We do not sell personal information to anyone</li>
           </ul>
@@ -152,7 +167,12 @@ export default function PrivacyPage() {
             </li>
             <li>
               <strong className="text-foreground">Consent</strong> — for advertising cookies and
-              personalized ads, obtained through our cookie consent mechanism
+              personalized ads. You can manage these through your browser settings and the opt-out
+              tools listed in the{' '}
+              <a href="#advertising" className="text-primary underline">
+                Advertising section
+              </a>{' '}
+              below
             </li>
           </ul>
         </section>
@@ -309,15 +329,15 @@ export default function PrivacyPage() {
               )
             </li>
             <li>
-              <strong className="text-foreground">Google Analytics</strong> — Anonymous website
-              usage analytics (
+              <strong className="text-foreground">YouTube Data API</strong> — Used by the optional
+              URL lookup feature to retrieve public video and channel statistics (
               <a
-                href="https://policies.google.com/privacy"
+                href="https://developers.google.com/youtube/terms/api-services-terms-of-service"
                 className="text-primary underline"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Google Privacy Policy
+                YouTube API Terms of Service
               </a>
               )
             </li>

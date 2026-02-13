@@ -80,7 +80,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/privacy`,
-      lastModified: '2026-02-11',
+      lastModified: '2026-02-12',
       changeFrequency: 'yearly',
       priority: 0.1,
     },
