@@ -68,6 +68,7 @@ export default function MobileNav() {
             stroke="currentColor"
             strokeWidth="2"
             strokeLinecap="round"
+            aria-hidden="true"
           >
             <line x1="4" y1="4" x2="16" y2="16" />
             <line x1="16" y1="4" x2="4" y2="16" />
@@ -81,6 +82,7 @@ export default function MobileNav() {
             stroke="currentColor"
             strokeWidth="2"
             strokeLinecap="round"
+            aria-hidden="true"
           >
             <line x1="3" y1="5" x2="17" y2="5" />
             <line x1="3" y1="10" x2="17" y2="10" />
