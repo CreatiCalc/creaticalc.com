@@ -122,7 +122,7 @@ export default function YouTubeShortsMoneyCalculatorPage() {
       <CalculatorSchema
         name="YouTube Shorts Money Calculator"
         description="Estimate how much YouTube Shorts pay per 1,000 views with real RPM data."
-        url="https://creaticalc.com/youtube-shorts-money-calculator"
+        url="/youtube-shorts-money-calculator"
       />
       <CalculatorLayout
         title="YouTube Shorts Money Calculator"

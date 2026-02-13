@@ -155,7 +155,7 @@ export default function YouTubeMoneyCalculatorPage() {
       <CalculatorSchema
         name="YouTube Money Calculator"
         description="Estimate how much money YouTubers make based on views, CPM, and content niche."
-        url="https://creaticalc.com/youtube-money-calculator"
+        url="/youtube-money-calculator"
       />
       <CalculatorLayout
         title="YouTube Money Calculator"

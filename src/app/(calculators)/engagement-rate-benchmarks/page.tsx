@@ -5,6 +5,7 @@ import AdSlot from '@/components/layout/AdSlot';
 import { BenchmarkTable, PlatformComparisonTable } from '@/features/calculators/engagement-shared';
 import { YOY_TRENDS, formatPercent } from '@/lib/engagementModel';
 import type { FAQItem } from '@/features/calculators/shared/types';
+import { SITE_URL } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
   title: 'Engagement Rate Benchmarks 2026 — Instagram & TikTok',
@@ -40,7 +41,7 @@ const faq: FAQItem[] = [
   {
     question: 'Are engagement rates going up or down?',
     answer:
-      'Instagram engagement rates have been slowly declining year-over-year as the platform matures and competition increases — from 1.16% in 2023 to 0.98% in 2026. TikTok rates have been increasing, rising from 4.07% in 2023 to 4.9% in 2026, reflecting the platform continued growth and algorithmic optimization for engagement.',
+      "Instagram engagement rates have been slowly declining year-over-year as the platform matures and competition increases — from 1.16% in 2023 to 0.98% in 2026. TikTok rates have been increasing, rising from 4.07% in 2023 to 4.9% in 2026, reflecting the platform's continued growth and algorithmic optimization for engagement.",
   },
   {
     question: 'How often do you update these benchmarks?',
@@ -61,7 +62,7 @@ export default function EngagementRateBenchmarksPage() {
     'name': 'Engagement Rate Benchmarks 2026',
     'description':
       'Complete engagement rate benchmarks for Instagram and TikTok in 2026 by follower tier and industry.',
-    'url': 'https://creaticalc.com/engagement-rate-benchmarks',
+    'url': `${SITE_URL}/engagement-rate-benchmarks`,
   };
 
   const latestTrend = YOY_TRENDS[YOY_TRENDS.length - 1];

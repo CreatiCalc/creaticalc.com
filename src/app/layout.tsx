@@ -3,6 +3,7 @@ import Script from 'next/script';
 import { Geist, Geist_Mono } from 'next/font/google';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import { SITE_URL, SITE_DESCRIPTION } from '@/lib/siteConfig';
 import './globals.css';
 
 const adsensePublisherId = process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID;
@@ -22,9 +23,8 @@ export const metadata: Metadata = {
     default: 'CreatiCalc — Free Calculators for Content Creators',
     template: '%s | CreatiCalc',
   },
-  description:
-    'Free calculators for YouTubers, TikTokers, and Instagram creators. Estimate earnings, calculate engagement rates, find sponsorship pricing, and project subscriber growth.',
-  metadataBase: new URL('https://creaticalc.com'),
+  description: SITE_DESCRIPTION,
+  metadataBase: new URL(SITE_URL),
   openGraph: {
     type: 'website',
     siteName: 'CreatiCalc',

@@ -3,6 +3,7 @@
 import { useState, useCallback } from 'react';
 import type { Platform } from '@/lib/engagementModel';
 import { encodeState, buildShareText, type ShareableState } from '@/lib/engagementShareCodec';
+import { SITE_URL } from '@/lib/siteConfig';
 
 // Re-export the ShareableState type alias for convenience
 export type { ShareableState } from '@/lib/engagementShareCodec';
@@ -24,7 +25,7 @@ export default function EngagementShareButtons({
 
   const getShareUrl = useCallback(() => {
     const encoded = encodeState(shareableState);
-    return `https://creaticalc.com${basePath}?s=${encoded}`;
+    return `${SITE_URL}${basePath}?s=${encoded}`;
   }, [shareableState, basePath]);
 
   const handleCopy = useCallback(async () => {

@@ -64,7 +64,7 @@ export default async function NicheCalculatorPage({ params }: NichePageProps) {
       <CalculatorSchema
         name={data.ogTitle}
         description={data.metaDescription}
-        url={`https://creaticalc.com/youtube-money-calculator/${data.slug}`}
+        url={`/youtube-money-calculator/${data.slug}`}
       />
       <CalculatorLayout
         title={data.ogTitle}

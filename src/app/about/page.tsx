@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Card from '@/components/ui/Card';
+import { SITE_NAME, SITE_URL, SITE_LOGO, SITE_DESCRIPTION } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
   title: 'About — Free Calculators for Content Creators',
@@ -132,11 +133,10 @@ const faqSchema = {
 const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  'name': 'CreatiCalc',
-  'url': 'https://creaticalc.com',
-  'logo': 'https://creaticalc.com/icon.svg',
-  'description':
-    'Free calculators for YouTubers, TikTokers, and Instagram creators. Estimate earnings, calculate engagement rates, find sponsorship pricing, and project subscriber growth.',
+  'name': SITE_NAME,
+  'url': SITE_URL,
+  'logo': SITE_LOGO,
+  'description': SITE_DESCRIPTION,
 };
 
 export default function AboutPage() {

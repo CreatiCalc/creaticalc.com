@@ -144,7 +144,7 @@ export default function TikTokEngagementPage() {
       <CalculatorSchema
         name="TikTok Engagement Rate Calculator"
         description="Calculate your TikTok engagement rate by followers or by views. Compare against industry benchmarks by follower tier."
-        url="https://creaticalc.com/tiktok-engagement-rate-calculator"
+        url="/tiktok-engagement-rate-calculator"
       />
       <CalculatorLayout
         title="TikTok Engagement Rate Calculator"
