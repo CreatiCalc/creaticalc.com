@@ -66,10 +66,15 @@ The user's PowerShell environment handles this automatically via a `cd` hook, bu
 1. Create route at `src/app/(calculators)/[slug]/page.tsx` — export metadata, define FAQ items, use `CalculatorLayout` wrapper
 2. Create feature directory at `src/features/calculators/[name]/` with components and barrel export
 3. Add business logic in `src/lib/[name]Model.ts` as pure functions
-4. Add navigation links in `Header.tsx` and `Footer.tsx`
+4. Add navigation links in `Header.tsx`, `MobileNav.tsx`, and `Footer.tsx`
 5. Add card to homepage calculators array in `src/app/page.tsx`
+6. Update `src/app/sitemap.ts` — add the new page entry
 
 Use the YouTube Money Calculator (`src/features/calculators/youtube-money/`) as the reference implementation.
+
+### Sitemap Maintenance
+
+When any page is added or its content is meaningfully changed, update the `lastModified` date for that page in `src/app/sitemap.ts` to the current date (YYYY-MM-DD format). Always keep sitemap dates in sync with actual content changes.
 
 ## Pre-PR Checklist
 

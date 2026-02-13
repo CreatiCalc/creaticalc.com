@@ -8,6 +8,7 @@ const navGroups = [
     label: 'YouTube',
     items: [
       { name: 'Money Calculator', href: '/youtube-money-calculator' },
+      { name: 'Shorts Calculator', href: '/youtube-shorts-money-calculator' },
       { name: 'Growth Projector', href: '/youtube-subscriber-projector' },
     ],
   },

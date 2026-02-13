@@ -46,6 +46,13 @@ const calculators = [
     platform: 'YouTube',
   },
   {
+    title: 'YouTube Shorts Calculator',
+    description:
+      'Estimate how much YouTube Shorts pay per 1,000 views. See projected Shorts revenue with real RPM data.',
+    href: '/youtube-shorts-money-calculator',
+    platform: 'YouTube',
+  },
+  {
     title: 'Engagement Rate Calculator',
     description:
       'Calculate your engagement rate on Instagram or TikTok. Compare against 2026 industry benchmarks.',

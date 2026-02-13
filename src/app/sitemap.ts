@@ -1,7 +1,15 @@
 import type { MetadataRoute } from 'next';
+import { NICHE_PAGES } from '@/lib/nichePageData';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://creaticalc.com';
+
+  const nichePages: MetadataRoute.Sitemap = NICHE_PAGES.map((n) => ({
+    url: `${baseUrl}/youtube-money-calculator/${n.slug}`,
+    lastModified: '2026-02-12',
+    changeFrequency: 'monthly',
+    priority: 0.7,
+  }));
 
   return [
     {
@@ -15,6 +23,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: '2026-02-11',
       changeFrequency: 'weekly',
       priority: 1.0,
+    },
+    {
+      url: `${baseUrl}/youtube-shorts-money-calculator`,
+      lastModified: '2026-02-12',
+      changeFrequency: 'weekly',
+      priority: 0.9,
     },
     {
       url: `${baseUrl}/youtube-subscriber-projector`,
@@ -70,5 +84,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'yearly',
       priority: 0.1,
     },
+    ...nichePages,
   ];
 }

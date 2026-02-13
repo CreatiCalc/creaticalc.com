@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
 import CalculatorSchema from '@/components/seo/CalculatorSchema';
 import { YouTubeMoneyCalculator } from '@/features/calculators/youtube-money';
 import type { FAQItem } from '@/features/calculators/shared/types';
+import { NICHE_PAGES } from '@/lib/nichePageData';
 
 export const metadata: Metadata = {
   title: 'YouTube Money Calculator — Estimate Your Earnings',
@@ -162,6 +164,25 @@ export default function YouTubeMoneyCalculatorPage() {
         howItWorks={howItWorks}
       >
         <YouTubeMoneyCalculator />
+
+        <section className="mt-12">
+          <h2 className="mb-4 text-2xl font-bold">Browse by Niche</h2>
+          <p className="mb-6 text-muted">
+            See earnings estimates tailored to your specific content niche. Each calculator uses
+            niche-specific CPM and RPM data.
+          </p>
+          <div className="grid gap-3 sm:grid-cols-2">
+            {NICHE_PAGES.map((niche) => (
+              <Link
+                key={niche.slug}
+                href={`/youtube-money-calculator/${niche.slug}`}
+                className="rounded-lg border border-border bg-white px-4 py-3 text-sm font-medium transition-colors hover:border-primary hover:text-primary"
+              >
+                {niche.name} Calculator
+              </Link>
+            ))}
+          </div>
+        </section>
       </CalculatorLayout>
     </>
   );
