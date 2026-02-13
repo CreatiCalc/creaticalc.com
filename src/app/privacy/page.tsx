@@ -340,6 +340,15 @@ export default function PrivacyPage() {
               >
                 YouTube API Terms of Service
               </a>
+              ;{' '}
+              <a
+                href="https://policies.google.com/privacy"
+                className="text-primary underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Google Privacy Policy
+              </a>
               )
             </li>
           </ul>

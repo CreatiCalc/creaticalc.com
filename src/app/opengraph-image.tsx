@@ -73,7 +73,8 @@ export default function Image() {
             marginTop: 12,
           }}
         >
-          Estimate YouTube earnings, calculate engagement rates, and project subscriber growth
+          Estimate earnings, calculate engagement rates, find sponsorship pricing, and project
+          growth
         </div>
       </div>
     </div>,

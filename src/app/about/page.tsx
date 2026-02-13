@@ -136,7 +136,7 @@ const organizationSchema = {
   'url': 'https://creaticalc.com',
   'logo': 'https://creaticalc.com/icon.svg',
   'description':
-    'Free suite of calculators for content creators on YouTube, Instagram, and TikTok.',
+    'Free calculators for YouTubers, TikTokers, and Instagram creators. Estimate earnings, calculate engagement rates, find sponsorship pricing, and project subscriber growth.',
 };
 
 export default function AboutPage() {

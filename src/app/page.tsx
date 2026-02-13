@@ -166,6 +166,11 @@ export default function Home() {
             <p className="mt-1 text-sm text-muted">Based on real industry benchmarks</p>
           </div>
         </div>
+        <p className="mt-6 text-sm text-muted">
+          <Link href="/about" className="text-primary hover:underline">
+            Learn more about CreatiCalc &rarr;
+          </Link>
+        </p>
       </section>
     </div>
   );
