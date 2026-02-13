@@ -100,7 +100,7 @@ const faq: FAQItem[] = [
   {
     question: 'How much do YouTube Shorts pay?',
     answer:
-      'YouTube Shorts pay significantly less than long-form videos — roughly $0.02 to $0.08 per 1,000 views (RPM). This is because Shorts ads come from a separate revenue pool where creators receive 45% of allocated ad revenue. Unlike long-form content where niche heavily influences earnings, Shorts RPM is relatively flat across most content categories, though finance and tech Shorts can earn toward the higher end. Use the "Shorts" toggle in our calculator to see projected Shorts earnings. To maximize revenue, many creators use Shorts to drive subscribers who then watch their higher-paying long-form content.',
+      'YouTube Shorts pay significantly less than long-form videos — roughly $0.01 to $0.07 per 1,000 views (RPM). This is because Shorts ads come from a separate revenue pool where creators receive 45% of allocated ad revenue. Unlike long-form content where niche heavily influences earnings, Shorts RPM is relatively flat across most content categories, though finance and tech Shorts can earn toward the higher end. Use the "Shorts" toggle in our calculator to see projected Shorts earnings. To maximize revenue, many creators use Shorts to drive subscribers who then watch their higher-paying long-form content.',
   },
 ];
 
