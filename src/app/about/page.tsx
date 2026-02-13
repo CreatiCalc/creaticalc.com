@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Card from '@/components/ui/Card';
 
 export const metadata: Metadata = {
-  title: 'About CreatiCalc — Free Calculators for Content Creators',
+  title: 'About — Free Calculators for Content Creators',
   description:
     'CreatiCalc offers free calculators for YouTube, Instagram, and TikTok creators. Estimate earnings, calculate engagement rates, find sponsorship pricing, and project subscriber growth with real industry data.',
   openGraph: {

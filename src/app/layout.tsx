@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     template: '%s | CreatiCalc',
   },
   description:
-    'Free calculators for YouTubers, TikTokers, and Instagram creators. Estimate earnings, calculate engagement rates, and project subscriber growth.',
+    'Free calculators for YouTubers, TikTokers, and Instagram creators. Estimate earnings, calculate engagement rates, find sponsorship pricing, and project subscriber growth.',
   metadataBase: new URL('https://creaticalc.com'),
   openGraph: {
     type: 'website',

@@ -34,6 +34,8 @@ const jsonLd = {
       'name': 'CreatiCalc',
       'url': 'https://creaticalc.com',
       'logo': 'https://creaticalc.com/icon.svg',
+      'description':
+        'Free calculators for YouTubers, TikTokers, and Instagram creators. Estimate earnings, calculate engagement rates, find sponsorship pricing, and project subscriber growth.',
     },
   ],
 };
@@ -53,23 +55,16 @@ const calculators = [
     platform: 'YouTube',
   },
   {
-    title: 'Engagement Rate Calculator',
-    description:
-      'Calculate your engagement rate on Instagram or TikTok. Compare against 2026 industry benchmarks.',
-    href: '/engagement-rate-calculator',
-    platform: 'Multi-Platform',
+    title: 'YouTube Subscriber Projector',
+    description: "Project your YouTube subscriber growth and see when you'll hit milestones.",
+    href: '/youtube-subscriber-projector',
+    platform: 'YouTube',
   },
   {
     title: 'Instagram Engagement Rate',
     description: 'Calculate your Instagram engagement rate and see how you compare.',
     href: '/instagram-engagement-rate-calculator',
     platform: 'Instagram',
-  },
-  {
-    title: 'TikTok Engagement Rate',
-    description: 'Measure your TikTok engagement rate with views, likes, and shares.',
-    href: '/tiktok-engagement-rate-calculator',
-    platform: 'TikTok',
   },
   {
     title: 'Instagram Sponsorship Rate',
@@ -79,10 +74,23 @@ const calculators = [
     platform: 'Instagram',
   },
   {
+    title: 'TikTok Engagement Rate',
+    description: 'Measure your TikTok engagement rate with views, likes, and shares.',
+    href: '/tiktok-engagement-rate-calculator',
+    platform: 'TikTok',
+  },
+  {
     title: 'TikTok Sponsorship Rate',
     description: 'Find out how much to charge for sponsored TikTok videos, Stories, and Lives.',
     href: '/tiktok-sponsorship-rate-calculator',
     platform: 'TikTok',
+  },
+  {
+    title: 'Engagement Rate Calculator',
+    description:
+      'Calculate your engagement rate on Instagram or TikTok. Compare against 2026 industry benchmarks.',
+    href: '/engagement-rate-calculator',
+    platform: 'Multi-Platform',
   },
   {
     title: 'Engagement Rate Benchmarks',
@@ -90,12 +98,6 @@ const calculators = [
       'See average engagement rates by follower tier, industry, and platform for Instagram and TikTok.',
     href: '/engagement-rate-benchmarks',
     platform: 'Multi-Platform',
-  },
-  {
-    title: 'YouTube Subscriber Projector',
-    description: "Project your YouTube subscriber growth and see when you'll hit milestones.",
-    href: '/youtube-subscriber-projector',
-    platform: 'YouTube',
   },
 ];
 

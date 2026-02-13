@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy — CreatiCalc',
+  title: 'Privacy Policy',
   description:
     'CreatiCalc privacy policy. Learn how we handle your data, use cookies, and work with advertising partners. No account required — your calculator data stays in your browser.',
   openGraph: {
@@ -205,10 +205,10 @@ export default function PrivacyPage() {
                   <td className="py-2 whitespace-nowrap">Up to 1 year</td>
                 </tr>
                 <tr>
-                  <td className="py-2 pr-4 font-medium text-foreground">Analytics</td>
+                  <td className="py-2 pr-4 font-medium text-foreground">Performance</td>
                   <td className="py-2 pr-4">
-                    Help us understand how visitors use the site — which pages are visited, how long
-                    users stay, and where traffic comes from
+                    Set by third-party services to understand site traffic — which pages are
+                    visited, how long users stay, and where traffic comes from
                   </td>
                   <td className="py-2 whitespace-nowrap">Up to 2 years</td>
                 </tr>
