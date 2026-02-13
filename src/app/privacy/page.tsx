@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy — CreatiCalc',
+  title: 'Privacy Policy',
   description:
     'CreatiCalc privacy policy. Learn how we handle your data, use cookies, and work with advertising partners. No account required — your calculator data stays in your browser.',
   openGraph: {
@@ -77,8 +77,9 @@ export default function PrivacyPage() {
           <p className="mt-3">
             <strong className="text-foreground">The short version:</strong> We don&apos;t require an
             account, we don&apos;t collect personal information, and all calculator inputs are
-            processed entirely in your browser — nothing is sent to our servers. The only data
-            collection comes from standard analytics and advertising services, which we describe in
+            processed entirely in your browser. The one exception is an optional YouTube URL lookup
+            that sends a URL to our server to fetch public stats — no data is stored. Beyond that,
+            the only data collection comes from standard advertising services, which we describe in
             detail below.
           </p>
         </section>
@@ -95,14 +96,26 @@ export default function PrivacyPage() {
           <p>
             All calculations — including earnings estimates, engagement rates, and growth
             projections — are performed entirely in your browser using JavaScript. No calculator
-            inputs or results are transmitted to or stored on our servers. Your data stays on your
-            device.
+            inputs or results are stored on our servers. Your data stays on your device.
+          </p>
+
+          <h3 className="mt-4 mb-1 font-semibold text-foreground">YouTube URL Lookup</h3>
+          <p>
+            Our{' '}
+            <Link href="/youtube-money-calculator" className="text-primary underline">
+              YouTube Money Calculator
+            </Link>{' '}
+            includes an optional URL lookup feature. When you use it, the YouTube URL you enter is
+            sent to our server, which queries the YouTube Data API to retrieve public channel or
+            video statistics. We do not store the URLs you look up. Your IP address is temporarily
+            held in memory for rate limiting purposes and is not persisted to disk or shared with
+            third parties.
           </p>
 
           <h3 className="mt-4 mb-1 font-semibold text-foreground">Automatically Collected Data</h3>
           <p>
-            When you visit CreatiCalc, our hosting provider and analytics tools may automatically
-            collect standard technical information, including:
+            When you visit CreatiCalc, our hosting provider and advertising partners may
+            automatically collect standard technical information, including:
           </p>
           <ul className="mt-2 list-disc space-y-1 pl-5 marker:text-primary">
             <li>IP address (anonymized where possible)</li>
@@ -125,7 +138,10 @@ export default function PrivacyPage() {
           <ul className="mt-2 list-disc space-y-1 pl-5 marker:text-primary">
             <li>We do not collect names, email addresses, or phone numbers</li>
             <li>We do not require or offer user accounts</li>
-            <li>We do not store calculator inputs or results on our servers</li>
+            <li>
+              We do not store calculator inputs or results on our servers (see the YouTube URL
+              Lookup section above for the one exception)
+            </li>
             <li>We do not use fingerprinting to identify individual users</li>
             <li>We do not sell personal information to anyone</li>
           </ul>
@@ -134,7 +150,7 @@ export default function PrivacyPage() {
         {/* 3. How We Use Your Data */}
         <section id="how-we-use-data">
           <h2 className="mb-2 text-xl font-semibold text-foreground">3. How We Use Your Data</h2>
-          <p>The limited data we collect through analytics is used to:</p>
+          <p>The limited data collected through our hosting and advertising services is used to:</p>
           <ul className="mt-2 list-disc space-y-1 pl-5 marker:text-primary">
             <li>Understand which calculators are most popular and improve them</li>
             <li>Identify and fix technical issues and broken pages</li>
@@ -147,12 +163,17 @@ export default function PrivacyPage() {
           <p>Under GDPR, we process data on the following legal bases:</p>
           <ul className="mt-2 list-disc space-y-1 pl-5 marker:text-primary">
             <li>
-              <strong className="text-foreground">Legitimate interest</strong> — for analytics that
-              help us maintain and improve the site
+              <strong className="text-foreground">Legitimate interest</strong> — for server logs and
+              usage data that help us maintain and improve the site
             </li>
             <li>
               <strong className="text-foreground">Consent</strong> — for advertising cookies and
-              personalized ads, obtained through our cookie consent mechanism
+              personalized ads. You can manage these through your browser settings and the opt-out
+              tools listed in the{' '}
+              <a href="#advertising" className="text-primary underline">
+                Advertising section
+              </a>{' '}
+              below
             </li>
           </ul>
         </section>
@@ -179,15 +200,15 @@ export default function PrivacyPage() {
                   <td className="py-2 pr-4 font-medium text-foreground">Essential</td>
                   <td className="py-2 pr-4">
                     Required for basic site functionality and remembering your preferences (e.g.,
-                    cookie consent choice)
+                    theme or display settings)
                   </td>
                   <td className="py-2 whitespace-nowrap">Up to 1 year</td>
                 </tr>
                 <tr>
-                  <td className="py-2 pr-4 font-medium text-foreground">Analytics</td>
+                  <td className="py-2 pr-4 font-medium text-foreground">Performance</td>
                   <td className="py-2 pr-4">
-                    Help us understand how visitors use the site — which pages are visited, how long
-                    users stay, and where traffic comes from
+                    Set by third-party services to understand site traffic — which pages are
+                    visited, how long users stay, and where traffic comes from
                   </td>
                   <td className="py-2 whitespace-nowrap">Up to 2 years</td>
                 </tr>
@@ -309,8 +330,17 @@ export default function PrivacyPage() {
               )
             </li>
             <li>
-              <strong className="text-foreground">Google Analytics</strong> — Anonymous website
-              usage analytics (
+              <strong className="text-foreground">YouTube Data API</strong> — Used by the optional
+              URL lookup feature to retrieve public video and channel statistics (
+              <a
+                href="https://developers.google.com/youtube/terms/api-services-terms-of-service"
+                className="text-primary underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                YouTube API Terms of Service
+              </a>
+              ;{' '}
               <a
                 href="https://policies.google.com/privacy"
                 className="text-primary underline"
@@ -337,10 +367,6 @@ export default function PrivacyPage() {
           </p>
           <ul className="mt-2 list-disc space-y-1 pl-5 marker:text-primary">
             <li>
-              <strong className="text-foreground">Analytics data</strong> is retained for up to 26
-              months in aggregate form and is automatically deleted after that period.
-            </li>
-            <li>
               <strong className="text-foreground">Server logs</strong> maintained by our hosting
               provider (Netlify) are retained according to their data retention policy, typically 30
               days.
@@ -361,7 +387,10 @@ export default function PrivacyPage() {
           <ul className="mt-2 list-disc space-y-1 pl-5 marker:text-primary">
             <li>All connections to CreatiCalc are encrypted using HTTPS/TLS</li>
             <li>Our site is served through Netlify&apos;s global CDN with DDoS protection</li>
-            <li>No personal data or calculator inputs are stored on our servers</li>
+            <li>
+              No personal data or calculator inputs are stored on our servers (YouTube URL lookups
+              are processed in memory and not persisted)
+            </li>
             <li>Third-party services we use maintain their own security certifications</li>
           </ul>
           <p className="mt-3">

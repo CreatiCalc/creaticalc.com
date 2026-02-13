@@ -1,17 +1,16 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Card from '@/components/ui/Card';
+import { SITE_NAME, SITE_URL, SITE_LOGO, SITE_DESCRIPTION } from '@/lib/siteConfig';
+
+const title = `${SITE_NAME} — Free Calculators for Content Creators`;
 
 export const metadata: Metadata = {
-  title: {
-    absolute: 'CreatiCalc — Free Calculators for Content Creators',
-  },
-  description:
-    'Free calculators for YouTubers, TikTokers, and Instagram creators. Estimate earnings, calculate engagement rates, and project subscriber growth.',
+  title: { absolute: title },
+  description: SITE_DESCRIPTION,
   openGraph: {
-    title: 'CreatiCalc — Free Calculators for Content Creators',
-    description:
-      'Free calculators for YouTubers, TikTokers, and Instagram creators. Estimate earnings, calculate engagement rates, and project subscriber growth.',
+    title,
+    description: SITE_DESCRIPTION,
     url: '/',
   },
   alternates: {
@@ -24,16 +23,16 @@ const jsonLd = {
   '@graph': [
     {
       '@type': 'WebSite',
-      'name': 'CreatiCalc',
-      'url': 'https://creaticalc.com',
-      'description':
-        'Free calculators for YouTubers, TikTokers, and Instagram creators. Estimate earnings, calculate engagement rates, and project subscriber growth.',
+      'name': SITE_NAME,
+      'url': SITE_URL,
+      'description': SITE_DESCRIPTION,
     },
     {
       '@type': 'Organization',
-      'name': 'CreatiCalc',
-      'url': 'https://creaticalc.com',
-      'logo': 'https://creaticalc.com/icon.svg',
+      'name': SITE_NAME,
+      'url': SITE_URL,
+      'logo': SITE_LOGO,
+      'description': SITE_DESCRIPTION,
     },
   ],
 };
@@ -53,23 +52,16 @@ const calculators = [
     platform: 'YouTube',
   },
   {
-    title: 'Engagement Rate Calculator',
-    description:
-      'Calculate your engagement rate on Instagram or TikTok. Compare against 2026 industry benchmarks.',
-    href: '/engagement-rate-calculator',
-    platform: 'Multi-Platform',
+    title: 'YouTube Subscriber Projector',
+    description: "Project your YouTube subscriber growth and see when you'll hit milestones.",
+    href: '/youtube-subscriber-projector',
+    platform: 'YouTube',
   },
   {
     title: 'Instagram Engagement Rate',
     description: 'Calculate your Instagram engagement rate and see how you compare.',
     href: '/instagram-engagement-rate-calculator',
     platform: 'Instagram',
-  },
-  {
-    title: 'TikTok Engagement Rate',
-    description: 'Measure your TikTok engagement rate with views, likes, and shares.',
-    href: '/tiktok-engagement-rate-calculator',
-    platform: 'TikTok',
   },
   {
     title: 'Instagram Sponsorship Rate',
@@ -79,16 +71,30 @@ const calculators = [
     platform: 'Instagram',
   },
   {
+    title: 'TikTok Engagement Rate',
+    description: 'Measure your TikTok engagement rate with views, likes, and shares.',
+    href: '/tiktok-engagement-rate-calculator',
+    platform: 'TikTok',
+  },
+  {
     title: 'TikTok Sponsorship Rate',
     description: 'Find out how much to charge for sponsored TikTok videos, Stories, and Lives.',
     href: '/tiktok-sponsorship-rate-calculator',
     platform: 'TikTok',
   },
   {
-    title: 'YouTube Subscriber Projector',
-    description: "Project your YouTube subscriber growth and see when you'll hit milestones.",
-    href: '/youtube-subscriber-projector',
-    platform: 'YouTube',
+    title: 'Engagement Rate Calculator',
+    description:
+      'Calculate your engagement rate on Instagram or TikTok. Compare against 2026 industry benchmarks.',
+    href: '/engagement-rate-calculator',
+    platform: 'Multi-Platform',
+  },
+  {
+    title: 'Engagement Rate Benchmarks',
+    description:
+      'See average engagement rates by follower tier, industry, and platform for Instagram and TikTok.',
+    href: '/engagement-rate-benchmarks',
+    platform: 'Multi-Platform',
   },
 ];
 
@@ -110,8 +116,8 @@ export default function Home() {
           Free Calculators for <span className="text-gradient-vibrant">Content Creators</span>
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-lg text-muted">
-          Estimate your YouTube earnings, calculate engagement rates on Instagram and TikTok, and
-          project your subscriber growth — all for free.
+          Estimate your YouTube earnings, calculate engagement rates, find your sponsorship pricing
+          on Instagram and TikTok, and project your subscriber growth — all for free.
         </p>
         <div className="mt-8 inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-2 text-sm text-muted">
           <span className="inline-block h-2 w-2 rounded-full bg-accent" aria-hidden="true" />
@@ -157,6 +163,11 @@ export default function Home() {
             <p className="mt-1 text-sm text-muted">Based on real industry benchmarks</p>
           </div>
         </div>
+        <p className="mt-6 text-sm text-muted">
+          <Link href="/about" className="text-primary hover:underline">
+            Learn more about CreatiCalc &rarr;
+          </Link>
+        </p>
       </section>
     </div>
   );

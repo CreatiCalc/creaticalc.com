@@ -48,8 +48,8 @@ export default function Footer() {
           <div className="sm:col-span-2 md:col-span-3 lg:col-span-1">
             <Logo size="sm" />
             <p className="mt-3 text-sm text-muted">
-              Free calculators for content creators. Estimate earnings, track engagement, and
-              project growth.
+              Free calculators for content creators. Estimate earnings, track engagement, find
+              sponsorship rates, and project growth.
             </p>
           </div>
           {footerGroups.map((group) => (

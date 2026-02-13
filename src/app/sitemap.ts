@@ -1,8 +1,9 @@
 import type { MetadataRoute } from 'next';
 import { NICHE_PAGES } from '@/lib/nichePageData';
+import { SITE_URL } from '@/lib/siteConfig';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://creaticalc.com';
+  const baseUrl = SITE_URL;
 
   const nichePages: MetadataRoute.Sitemap = NICHE_PAGES.map((n) => ({
     url: `${baseUrl}/youtube-money-calculator/${n.slug}`,
@@ -74,13 +75,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/about`,
-      lastModified: '2026-02-11',
+      lastModified: '2026-02-12',
       changeFrequency: 'monthly',
       priority: 0.3,
     },
     {
       url: `${baseUrl}/privacy`,
-      lastModified: '2026-02-11',
+      lastModified: '2026-02-12',
       changeFrequency: 'yearly',
       priority: 0.1,
     },

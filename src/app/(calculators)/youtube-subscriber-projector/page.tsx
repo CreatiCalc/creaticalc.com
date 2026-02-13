@@ -124,7 +124,7 @@ export default function YouTubeSubscriberProjectorPage() {
       <CalculatorSchema
         name="YouTube Subscriber Growth Projector"
         description="Project your YouTube subscriber growth over 24 months and see when you'll hit key milestones like 1K, 100K, and 1M subscribers."
-        url="https://creaticalc.com/youtube-subscriber-projector"
+        url="/youtube-subscriber-projector"
       />
       <CalculatorLayout
         title="YouTube Subscriber Growth Projector"

@@ -142,7 +142,7 @@ export default function TikTokSponsorshipPage() {
       <CalculatorSchema
         name="TikTok Sponsorship Rate Calculator"
         description="Calculate how much to charge for sponsored TikTok videos, Stories, and Lives based on your followers, engagement rate, and niche."
-        url="https://creaticalc.com/tiktok-sponsorship-rate-calculator"
+        url="/tiktok-sponsorship-rate-calculator"
       />
       <CalculatorLayout
         title="TikTok Sponsorship Rate Calculator"

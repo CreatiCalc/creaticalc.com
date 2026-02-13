@@ -107,7 +107,7 @@ export const NICHES: Niche[] = Object.entries(CPM_DATA).map(([id, data]) => ({
   },
 }));
 
-export const SHORTS_RPM: RpmRange = { low: 0.02, mid: 0.05, high: 0.08 };
+export const SHORTS_RPM: RpmRange = { low: 0.01, mid: 0.04, high: 0.07 };
 
 export const VIDEO_LENGTH_MULTIPLIERS: Record<VideoLength, number> = {
   short: 0.7,

@@ -133,7 +133,7 @@ export default function InstagramSponsorshipPage() {
       <CalculatorSchema
         name="Instagram Sponsorship Rate Calculator"
         description="Calculate how much to charge for sponsored Instagram posts, Reels, Stories, and carousels based on your followers, engagement rate, and niche."
-        url="https://creaticalc.com/instagram-sponsorship-rate-calculator"
+        url="/instagram-sponsorship-rate-calculator"
       />
       <CalculatorLayout
         title="Instagram Sponsorship Rate Calculator"
