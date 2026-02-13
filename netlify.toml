@@ -7,3 +7,14 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+
+[[redirects]]
+  from = "https://www.creaticalc.com/*"
+  to = "https://creaticalc.com/:splat"
+  status = 301
+  force = true

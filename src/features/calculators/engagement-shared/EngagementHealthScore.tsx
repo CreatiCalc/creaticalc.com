@@ -78,7 +78,7 @@ export default function EngagementHealthScore({ healthScore }: EngagementHealthS
   const { score, grade, components } = healthScore;
 
   let gradeColor = 'text-red-600';
-  if (score >= 80) gradeColor = 'text-emerald-600';
+  if (score >= 80) gradeColor = 'text-emerald-700';
   else if (score >= 60) gradeColor = 'text-green-600';
   else if (score >= 40) gradeColor = 'text-yellow-600';
   else if (score >= 25) gradeColor = 'text-orange-600';

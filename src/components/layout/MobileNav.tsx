@@ -8,6 +8,7 @@ const navGroups = [
     label: 'YouTube',
     items: [
       { name: 'Money Calculator', href: '/youtube-money-calculator' },
+      { name: 'Shorts Calculator', href: '/youtube-shorts-money-calculator' },
       { name: 'Growth Projector', href: '/youtube-subscriber-projector' },
     ],
   },
@@ -92,7 +93,7 @@ export default function MobileNav() {
         <nav className="absolute right-0 top-full z-50 mt-2 w-64 rounded-xl border border-border bg-white p-2 shadow-lg">
           {navGroups.map((group, i) => (
             <div key={group.label} className={i > 0 ? 'mt-1' : ''}>
-              <span className="block px-4 pb-1 pt-2 text-xs font-semibold uppercase tracking-wider text-muted/60">
+              <span className="block px-4 pb-1 pt-2 text-xs font-semibold uppercase tracking-wider text-muted">
                 {group.label}
               </span>
               {group.items.map((item) => (
@@ -108,7 +109,7 @@ export default function MobileNav() {
             </div>
           ))}
           <div className="mx-3 my-1.5 border-t border-border/50" />
-          <span className="block px-4 pb-1 pt-2 text-xs font-semibold uppercase tracking-wider text-muted/60">
+          <span className="block px-4 pb-1 pt-2 text-xs font-semibold uppercase tracking-wider text-muted">
             More
           </span>
           {moreLinks.map((link) => (

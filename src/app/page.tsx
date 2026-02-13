@@ -19,11 +19,37 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      'name': 'CreatiCalc',
+      'url': 'https://creaticalc.com',
+      'description':
+        'Free calculators for YouTubers, TikTokers, and Instagram creators. Estimate earnings, calculate engagement rates, and project subscriber growth.',
+    },
+    {
+      '@type': 'Organization',
+      'name': 'CreatiCalc',
+      'url': 'https://creaticalc.com',
+      'logo': 'https://creaticalc.com/icon.svg',
+    },
+  ],
+};
+
 const calculators = [
   {
     title: 'YouTube Money Calculator',
     description: 'Estimate how much YouTubers earn based on views, CPM, and niche.',
     href: '/youtube-money-calculator',
+    platform: 'YouTube',
+  },
+  {
+    title: 'YouTube Shorts Calculator',
+    description:
+      'Estimate how much YouTube Shorts pay per 1,000 views. See projected Shorts revenue with real RPM data.',
+    href: '/youtube-shorts-money-calculator',
     platform: 'YouTube',
   },
   {
@@ -69,6 +95,10 @@ const calculators = [
 export default function Home() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <section className="relative mb-20 text-center">
         {/* Decorative gradient orb */}
         <div

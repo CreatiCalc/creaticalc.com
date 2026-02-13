@@ -22,22 +22,30 @@ interface SliderProps {
 
 const INTERNAL_MAX = 1000;
 
+/** When min is 0, log-scale math needs a positive floor to avoid NaN from log(0). */
+function logMin(min: number): number {
+  return min > 0 ? min : 1;
+}
+
 function valueToPosition(value: number, min: number, max: number): number {
   if (value <= 0) return 0;
-  if (value <= min) return 1;
+  const m = logMin(min);
+  if (value <= m) return 1;
   if (value >= max) return INTERNAL_MAX;
-  return Math.round((Math.log(value / min) / Math.log(max / min)) * (INTERNAL_MAX - 1)) + 1;
+  return Math.round((Math.log(value / m) / Math.log(max / m)) * (INTERNAL_MAX - 1)) + 1;
 }
 
 function positionToValue(pos: number, min: number, max: number, step: number): number {
-  if (pos <= 0) return 0;
-  const raw = min * Math.pow(max / min, (pos - 1) / (INTERNAL_MAX - 1));
+  if (pos <= 0) return min;
+  const m = logMin(min);
+  const raw = m * Math.pow(max / m, (pos - 1) / (INTERNAL_MAX - 1));
   return Math.round(raw / step) * step;
 }
 
 function tickPosition(value: number, min: number, max: number): number {
   if (value <= 0) return 0;
-  const pos = (Math.log(value / min) / Math.log(max / min)) * (INTERNAL_MAX - 1) + 1;
+  const m = logMin(min);
+  const pos = (Math.log(value / m) / Math.log(max / m)) * (INTERNAL_MAX - 1) + 1;
   return (pos / INTERNAL_MAX) * 100;
 }
 

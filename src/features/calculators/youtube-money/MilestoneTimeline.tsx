@@ -41,7 +41,7 @@ export default function MilestoneTimeline({ input }: MilestoneTimelineProps) {
 
   return (
     <div className="mt-8">
-      <h3 className="mb-4 text-lg font-semibold">When Will You Hit...</h3>
+      <h2 className="mb-4 text-lg font-semibold">When Will You Hit...</h2>
       <div className="relative space-y-0">
         {milestones.map((milestone, i) => {
           const isReached = milestone.monthIndex === 0;

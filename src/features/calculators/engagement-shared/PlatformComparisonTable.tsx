@@ -20,7 +20,7 @@ export default function PlatformComparisonTable() {
                 <td className="py-2.5 pr-4 font-medium text-foreground">{b.name}</td>
                 <td className="py-2.5 pr-4 text-muted">{formatPercent(b.instagram)}</td>
                 <td className="py-2.5 pr-4 text-muted">{formatPercent(b.tiktok)}</td>
-                <td className="py-2.5 text-emerald-600">+{formatPercent(diff)}</td>
+                <td className="py-2.5 text-emerald-700">+{formatPercent(diff)}</td>
               </tr>
             );
           })}
