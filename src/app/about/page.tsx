@@ -134,9 +134,9 @@ const organizationSchema = {
   '@type': 'Organization',
   'name': 'CreatiCalc',
   'url': 'https://creaticalc.com',
+  'logo': 'https://creaticalc.com/icon.svg',
   'description':
     'Free suite of calculators for content creators on YouTube, Instagram, and TikTok.',
-  'sameAs': [],
 };
 
 export default function AboutPage() {

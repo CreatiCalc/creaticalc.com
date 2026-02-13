@@ -114,8 +114,8 @@ export default function PrivacyPage() {
 
           <h3 className="mt-4 mb-1 font-semibold text-foreground">Automatically Collected Data</h3>
           <p>
-            When you visit CreatiCalc, our hosting provider and analytics tools may automatically
-            collect standard technical information, including:
+            When you visit CreatiCalc, our hosting provider and advertising partners may
+            automatically collect standard technical information, including:
           </p>
           <ul className="mt-2 list-disc space-y-1 pl-5 marker:text-primary">
             <li>IP address (anonymized where possible)</li>
@@ -150,7 +150,7 @@ export default function PrivacyPage() {
         {/* 3. How We Use Your Data */}
         <section id="how-we-use-data">
           <h2 className="mb-2 text-xl font-semibold text-foreground">3. How We Use Your Data</h2>
-          <p>The limited data we collect through analytics is used to:</p>
+          <p>The limited data collected through our hosting and advertising services is used to:</p>
           <ul className="mt-2 list-disc space-y-1 pl-5 marker:text-primary">
             <li>Understand which calculators are most popular and improve them</li>
             <li>Identify and fix technical issues and broken pages</li>
@@ -163,8 +163,8 @@ export default function PrivacyPage() {
           <p>Under GDPR, we process data on the following legal bases:</p>
           <ul className="mt-2 list-disc space-y-1 pl-5 marker:text-primary">
             <li>
-              <strong className="text-foreground">Legitimate interest</strong> — for analytics that
-              help us maintain and improve the site
+              <strong className="text-foreground">Legitimate interest</strong> — for server logs and
+              usage data that help us maintain and improve the site
             </li>
             <li>
               <strong className="text-foreground">Consent</strong> — for advertising cookies and
@@ -200,7 +200,7 @@ export default function PrivacyPage() {
                   <td className="py-2 pr-4 font-medium text-foreground">Essential</td>
                   <td className="py-2 pr-4">
                     Required for basic site functionality and remembering your preferences (e.g.,
-                    cookie consent choice)
+                    theme or display settings)
                   </td>
                   <td className="py-2 whitespace-nowrap">Up to 1 year</td>
                 </tr>
@@ -357,10 +357,6 @@ export default function PrivacyPage() {
             personal data stored on our servers to retain.
           </p>
           <ul className="mt-2 list-disc space-y-1 pl-5 marker:text-primary">
-            <li>
-              <strong className="text-foreground">Analytics data</strong> is retained for up to 26
-              months in aggregate form and is automatically deleted after that period.
-            </li>
             <li>
               <strong className="text-foreground">Server logs</strong> maintained by our hosting
               provider (Netlify) are retained according to their data retention policy, typically 30
