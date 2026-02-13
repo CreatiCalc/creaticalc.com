@@ -72,14 +72,14 @@ const calculators = [
     description:
       'All-in-one engagement rate calculator for Instagram and TikTok. Compare against industry benchmarks and get personalized recommendations.',
     href: '/engagement-rate-calculator',
-    platform: 'All Platforms',
+    platform: 'Multi-Platform',
   },
   {
     title: 'Engagement Rate Benchmarks',
     description:
       'Complete engagement rate benchmark data for 2026. See average rates by follower tier, industry, and platform for Instagram and TikTok.',
     href: '/engagement-rate-benchmarks',
-    platform: 'All Platforms',
+    platform: 'Multi-Platform',
   },
 ];
 
@@ -363,7 +363,7 @@ export default function AboutPage() {
           </div>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             {calculators
-              .filter((c) => c.platform === 'All Platforms')
+              .filter((c) => c.platform === 'Multi-Platform')
               .map((calc) => (
                 <Link
                   key={calc.href}

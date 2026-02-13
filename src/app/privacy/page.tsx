@@ -77,8 +77,9 @@ export default function PrivacyPage() {
           <p className="mt-3">
             <strong className="text-foreground">The short version:</strong> We don&apos;t require an
             account, we don&apos;t collect personal information, and all calculator inputs are
-            processed entirely in your browser — nothing is sent to our servers. The only data
-            collection comes from standard analytics and advertising services, which we describe in
+            processed entirely in your browser. The one exception is an optional YouTube URL lookup
+            that sends a URL to our server to fetch public stats — no data is stored. Beyond that,
+            the only data collection comes from standard advertising services, which we describe in
             detail below.
           </p>
         </section>
@@ -381,7 +382,10 @@ export default function PrivacyPage() {
           <ul className="mt-2 list-disc space-y-1 pl-5 marker:text-primary">
             <li>All connections to CreatiCalc are encrypted using HTTPS/TLS</li>
             <li>Our site is served through Netlify&apos;s global CDN with DDoS protection</li>
-            <li>No personal data or calculator inputs are stored on our servers</li>
+            <li>
+              No personal data or calculator inputs are stored on our servers (YouTube URL lookups
+              are processed in memory and not persisted)
+            </li>
             <li>Third-party services we use maintain their own security certifications</li>
           </ul>
           <p className="mt-3">
