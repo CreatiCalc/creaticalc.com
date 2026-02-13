@@ -37,7 +37,7 @@ export default function EstimatedReachDisplay({ platform, followers }: Estimated
           <p className="mt-0.5 text-xs text-muted">of followers</p>
         </Card>
       </div>
-      <p className="text-xs text-muted/70">
+      <p className="text-xs text-muted">
         Smaller accounts typically reach a higher percentage of their followers. Nano creators
         average ~70% reach rate while mega creators average ~10%.
       </p>

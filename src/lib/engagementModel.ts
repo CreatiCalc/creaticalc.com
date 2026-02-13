@@ -413,7 +413,7 @@ export function getRatingLabel(rating: EngagementRating): string {
 
 export function getRatingColor(rating: EngagementRating): string {
   const colors: Record<EngagementRating, string> = {
-    excellent: 'text-emerald-600 bg-emerald-50 border-emerald-200',
+    excellent: 'text-emerald-700 bg-emerald-50 border-emerald-200',
     good: 'text-green-600 bg-green-50 border-green-200',
     average: 'text-yellow-600 bg-yellow-50 border-yellow-200',
     below_average: 'text-orange-600 bg-orange-50 border-orange-200',

@@ -12,6 +12,7 @@ export default function SeasonalityToggle({ enabled, onToggle }: SeasonalityTogg
         type="button"
         role="switch"
         aria-checked={enabled}
+        aria-label="Apply Seasonality"
         onClick={onToggle}
         className={`relative mt-0.5 h-5 w-9 shrink-0 cursor-pointer rounded-full transition-colors ${
           enabled ? 'bg-primary' : 'bg-muted-light'

@@ -64,7 +64,7 @@ export default function SponsorshipEstimate({
 
   return (
     <div className="mt-8">
-      <h3 className="mb-3 text-lg font-semibold">What to Charge Sponsors</h3>
+      <h2 className="mb-3 text-lg font-semibold">What to Charge Sponsors</h2>
       <div className="rounded-xl border border-border bg-white p-5 shadow-sm">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <div>

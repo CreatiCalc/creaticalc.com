@@ -10,7 +10,7 @@ export default function RpmTable({ activeNicheId, contentFormat }: RpmTableProps
   if (contentFormat === 'shorts') {
     return (
       <div className="mt-8">
-        <h3 className="mb-2 text-lg font-semibold">YouTube Shorts RPM</h3>
+        <h2 className="mb-2 text-lg font-semibold">YouTube Shorts RPM</h2>
         <div className="rounded-lg border border-border bg-white p-4">
           <p className="text-sm font-medium">
             ${SHORTS_RPM.low.toFixed(2)} &ndash; ${SHORTS_RPM.high.toFixed(2)} per 1,000 views
@@ -27,7 +27,7 @@ export default function RpmTable({ activeNicheId, contentFormat }: RpmTableProps
 
   return (
     <div className="mt-8">
-      <h3 className="mb-2 text-lg font-semibold">RPM &amp; CPM by Niche</h3>
+      <h2 className="mb-2 text-lg font-semibold">RPM &amp; CPM by Niche</h2>
       <p className="mb-3 text-sm text-muted">
         RPM = what you earn per 1K views. CPM = what advertisers pay before YouTube&apos;s 45% cut.
       </p>

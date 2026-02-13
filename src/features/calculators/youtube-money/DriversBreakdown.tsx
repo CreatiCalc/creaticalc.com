@@ -16,7 +16,7 @@ export default function DriversBreakdown({ state, projection }: DriversBreakdown
 
   return (
     <div className="mt-8">
-      <h3 className="mb-3 text-lg font-semibold">What Drives Your Earnings?</h3>
+      <h2 className="mb-3 text-lg font-semibold">What Drives Your Earnings?</h2>
       <div className="space-y-3">
         {drivers.map((driver, i) => (
           <div key={driver.factor}>

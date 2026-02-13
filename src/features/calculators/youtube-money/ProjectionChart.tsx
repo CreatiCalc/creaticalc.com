@@ -83,7 +83,7 @@ export default function ProjectionChart({ months }: ProjectionChartProps) {
 
   return (
     <div className="mt-6">
-      <h3 className="mb-3 text-lg font-semibold">12-Month Earnings Projection</h3>
+      <h2 className="mb-3 text-lg font-semibold">12-Month Earnings Projection</h2>
       <ResponsiveContainer width="100%" height={350}>
         <ComposedChart data={data} margin={{ top: 5, right: 20, left: 10, bottom: 5 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />

@@ -55,12 +55,12 @@ export default function Footer() {
           {footerGroups.map((group) => (
             <div key={group.label}>
               <p className="mb-3 font-semibold">{group.label}</p>
-              <ul className="space-y-2">
+              <ul className="space-y-1">
                 {group.links.map((link) => (
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="text-sm text-muted transition-colors hover:text-foreground"
+                      className="inline-block py-1 text-sm text-muted transition-colors hover:text-foreground"
                     >
                       {link.name}
                     </Link>
@@ -72,7 +72,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="mx-auto mt-8 max-w-6xl border-t border-border px-4 pt-6">
-        <p className="mx-auto max-w-3xl text-center text-xs leading-relaxed text-muted/70">
+        <p className="mx-auto max-w-3xl text-center text-xs leading-relaxed text-muted">
           <strong>Disclaimer:</strong> All calculators on CreatiCalc provide estimates for
           informational purposes only. Results are based on publicly available data and industry
           averages and should not be considered financial, business, or professional advice. Actual

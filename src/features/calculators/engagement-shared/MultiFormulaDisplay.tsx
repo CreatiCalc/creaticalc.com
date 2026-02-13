@@ -41,7 +41,7 @@ export default function MultiFormulaDisplay({ results }: MultiFormulaDisplayProp
           {m.value !== null ? (
             <p className="mt-0.5 text-xs text-primary">{m.note}</p>
           ) : (
-            <p className="mt-0.5 text-xs text-muted/60">Enter data above</p>
+            <p className="mt-0.5 text-xs text-muted">Enter data above</p>
           )}
         </Card>
       ))}
