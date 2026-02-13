@@ -44,7 +44,7 @@ The user's PowerShell environment handles this automatically via a `cd` hook, bu
 
 - `src/app/` — Next.js App Router pages. Calculator routes are grouped under `(calculators)/` route group with a shared layout.
 - `src/features/calculators/` — Feature-based calculator modules. Each calculator has its own directory with components, hooks, and a barrel export (`index.ts`). Shared calculator UI lives in `shared/`.
-- `src/lib/` — Pure business logic and calculation functions (e.g., `youtubeEarningsModel.ts`).
+- `src/lib/` — Pure business logic and calculation functions (e.g., `youtubeEarningsModel.ts`). Also contains `siteConfig.ts` with shared constants (`SITE_NAME`, `SITE_URL`, `SITE_LOGO`, `SITE_DESCRIPTION`) — always use these instead of hardcoding the site URL or description.
 - `src/components/ui/` — Reusable UI primitives (Card, Slider, NumberInput, Select).
 - `src/components/layout/` — Header, Footer, AdSlot.
 - `src/components/seo/` — JSON-LD structured data components.

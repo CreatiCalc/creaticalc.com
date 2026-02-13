@@ -71,6 +71,7 @@ export default function Header() {
               <button
                 type="button"
                 onClick={() => toggle(i)}
+                aria-expanded={openIndex === i}
                 className="flex items-center gap-1 rounded-lg px-3 py-2 text-sm text-muted transition-colors hover:bg-surface-alt hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
               >
                 {group.label}
@@ -111,6 +112,7 @@ export default function Header() {
             <button
               type="button"
               onClick={() => toggle(moreIndex)}
+              aria-expanded={openIndex === moreIndex}
               className="flex items-center gap-1 rounded-lg px-3 py-2 text-sm text-muted transition-colors hover:bg-surface-alt hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
             >
               More
