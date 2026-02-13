@@ -24,7 +24,7 @@ const faq: FAQItem[] = [
   {
     question: 'What is a good TikTok engagement rate?',
     answer:
-      'TikTok engagement rates are significantly higher than other platforms. For follower-based calculation, micro creators (1K–10K) typically see 8–12%, mid-tier (10K–100K) see 6–8%, macro (100K–1M) see 5–7%, mega (1M+) see 4–6%, and super creators (10M+) average around 2.88%. Anything above 5% is considered strong on TikTok. The platform average across all accounts is approximately 4.9%, which is about 5 times higher than Instagram.',
+      'TikTok engagement rates are significantly higher than other platforms. For follower-based calculation, micro creators (1K–10K) typically see 8–12%, mid-tier (10K–100K) see 6–8%, macro (100K–1M) see 5–7%, mega (1M+) see 4–6%, and super creators (10M+) average around 2–4%. Anything above 5% is considered strong on TikTok. The platform average across all accounts is approximately 4.9%, which is about 5 times higher than Instagram.',
   },
   {
     question: 'How is TikTok engagement rate calculated?',

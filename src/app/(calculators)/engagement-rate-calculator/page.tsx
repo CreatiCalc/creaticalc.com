@@ -207,7 +207,7 @@ export default function EngagementRateCalculatorPage() {
             <p className="mt-3">
               Engagement rates naturally decrease as follower count grows. A nano creator (under
               10,000 followers) will typically see 4-6% on Instagram, while a mega creator (1M+) may
-              only see 0.5-1.5%. This is expected and accounts-for by our tier-based benchmarking
+              only see 0.5-1.5%. This is expected and accounted for by our tier-based benchmarking
               system — we compare your rate against the expected range for your follower tier, not a
               flat average.
             </p>
