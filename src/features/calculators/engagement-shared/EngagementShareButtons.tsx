@@ -24,9 +24,7 @@ export default function EngagementShareButtons({
 
   const getShareUrl = useCallback(() => {
     const encoded = encodeState(shareableState);
-    const origin =
-      typeof window !== 'undefined' ? window.location.origin : 'https://creaticalc.com';
-    return `${origin}${basePath}?s=${encoded}`;
+    return `https://creaticalc.com${basePath}?s=${encoded}`;
   }, [shareableState, basePath]);
 
   const handleCopy = useCallback(async () => {

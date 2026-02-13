@@ -1,3 +1,6 @@
+'use client';
+
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Logo from '@/components/brand/Logo';
 import MobileNav from './MobileNav';
@@ -7,6 +10,7 @@ const navGroups = [
     label: 'YouTube',
     items: [
       { name: 'Money Calculator', href: '/youtube-money-calculator' },
+      { name: 'Shorts Calculator', href: '/youtube-shorts-money-calculator' },
       { name: 'Growth Projector', href: '/youtube-subscriber-projector' },
     ],
   },
@@ -32,17 +36,41 @@ const moreLinks = [
 ];
 
 export default function Header() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const navRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    if (openIndex === null) return;
+
+    function handleClickOutside(e: MouseEvent) {
+      if (navRef.current && !navRef.current.contains(e.target as Node)) {
+        setOpenIndex(null);
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [openIndex]);
+
+  function toggle(index: number) {
+    setOpenIndex((prev) => (prev === index ? null : index));
+  }
+
+  // "More" uses a sentinel index after the navGroups
+  const moreIndex = navGroups.length;
+
   return (
     <header className="sticky top-0 z-40 border-b border-border/50 bg-white/80 backdrop-blur-lg">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
         <Link href="/" className="transition-opacity hover:opacity-80">
           <Logo size="sm" />
         </Link>
-        <nav className="hidden items-center gap-1 md:flex">
-          {navGroups.map((group) => (
-            <div key={group.label} className="group relative">
+        <nav className="hidden items-center gap-1 md:flex" ref={navRef}>
+          {navGroups.map((group, i) => (
+            <div key={group.label} className="relative">
               <button
                 type="button"
+                onClick={() => toggle(i)}
                 className="flex items-center gap-1 rounded-lg px-3 py-2 text-sm text-muted transition-colors hover:bg-surface-alt hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
               >
                 {group.label}
@@ -55,30 +83,34 @@ export default function Header() {
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  className="transition-transform group-hover:rotate-180 group-focus-within:rotate-180"
+                  className={`transition-transform ${openIndex === i ? 'rotate-180' : ''}`}
                   aria-hidden="true"
                 >
                   <path d="M3 5l3 3 3-3" />
                 </svg>
               </button>
-              <div className="invisible absolute left-0 top-full z-50 pt-1 opacity-0 transition-all duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-                <div className="min-w-48 rounded-xl border border-border bg-white p-1.5 shadow-lg">
-                  {group.items.map((item) => (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      className="block rounded-lg px-4 py-2.5 text-sm text-muted transition-colors hover:bg-surface-alt hover:text-foreground"
-                    >
-                      {item.name}
-                    </Link>
-                  ))}
+              {openIndex === i && (
+                <div className="absolute left-0 top-full z-50 pt-1">
+                  <div className="min-w-56 rounded-xl border border-border bg-white p-1.5 shadow-lg">
+                    {group.items.map((item) => (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        onClick={() => setOpenIndex(null)}
+                        className="block rounded-lg px-4 py-2.5 text-sm text-muted transition-colors hover:bg-surface-alt hover:text-foreground"
+                      >
+                        {item.name}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           ))}
-          <div className="group relative">
+          <div className="relative">
             <button
               type="button"
+              onClick={() => toggle(moreIndex)}
               className="flex items-center gap-1 rounded-lg px-3 py-2 text-sm text-muted transition-colors hover:bg-surface-alt hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
             >
               More
@@ -91,25 +123,28 @@ export default function Header() {
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="transition-transform group-hover:rotate-180 group-focus-within:rotate-180"
+                className={`transition-transform ${openIndex === moreIndex ? 'rotate-180' : ''}`}
                 aria-hidden="true"
               >
                 <path d="M3 5l3 3 3-3" />
               </svg>
             </button>
-            <div className="invisible absolute right-0 top-full z-50 pt-1 opacity-0 transition-all duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-              <div className="min-w-48 rounded-xl border border-border bg-white p-1.5 shadow-lg">
-                {moreLinks.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className="block rounded-lg px-4 py-2.5 text-sm text-muted transition-colors hover:bg-surface-alt hover:text-foreground"
-                  >
-                    {item.name}
-                  </Link>
-                ))}
+            {openIndex === moreIndex && (
+              <div className="absolute right-0 top-full z-50 pt-1">
+                <div className="min-w-56 rounded-xl border border-border bg-white p-1.5 shadow-lg">
+                  {moreLinks.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      onClick={() => setOpenIndex(null)}
+                      className="block rounded-lg px-4 py-2.5 text-sm text-muted transition-colors hover:bg-surface-alt hover:text-foreground"
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </nav>
         <MobileNav />

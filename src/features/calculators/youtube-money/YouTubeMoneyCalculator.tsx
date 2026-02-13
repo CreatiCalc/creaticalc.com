@@ -72,8 +72,18 @@ const viewsPresets = [
   { label: 'Viral (1M)', value: 1000000 },
 ];
 
-export default function YouTubeMoneyCalculator() {
-  const { state, dispatch } = useCalculatorState();
+interface YouTubeMoneyCalculatorProps {
+  defaultOverrides?: Partial<import('./useCalculatorState').CalculatorState>;
+  hideFormatToggle?: boolean;
+  hideNicheSelector?: boolean;
+}
+
+export default function YouTubeMoneyCalculator({
+  defaultOverrides,
+  hideFormatToggle,
+  hideNicheSelector,
+}: YouTubeMoneyCalculatorProps = {}) {
+  const { state, dispatch } = useCalculatorState(defaultOverrides);
 
   const effectiveDailyViews = useMemo(
     () =>
@@ -121,10 +131,12 @@ export default function YouTubeMoneyCalculator() {
 
       <Card className="mt-4">
         <div className="space-y-6">
-          <ContentFormatToggle
-            value={state.contentFormat}
-            onChange={(format) => dispatch({ type: 'SET_CONTENT_FORMAT', payload: format })}
-          />
+          {!hideFormatToggle && (
+            <ContentFormatToggle
+              value={state.contentFormat}
+              onChange={(format) => dispatch({ type: 'SET_CONTENT_FORMAT', payload: format })}
+            />
+          )}
 
           <InputModeToggle
             value={state.inputMode}
@@ -210,17 +222,19 @@ export default function YouTubeMoneyCalculator() {
             </div>
           )}
 
-          <div className={isShorts ? 'opacity-50 pointer-events-none' : ''}>
-            <Select
-              label="Content Niche"
-              value={state.nicheId}
-              options={nicheOptions}
-              onChange={(v) => dispatch({ type: 'SET_NICHE', payload: v as NicheId })}
-            />
-            {isShorts && (
-              <p className="mt-1 text-xs text-muted">Niche has minimal impact on Shorts RPM</p>
-            )}
-          </div>
+          {!hideNicheSelector && (
+            <div className={isShorts ? 'opacity-50 pointer-events-none' : ''}>
+              <Select
+                label="Content Niche"
+                value={state.nicheId}
+                options={nicheOptions}
+                onChange={(v) => dispatch({ type: 'SET_NICHE', payload: v as NicheId })}
+              />
+              {isShorts && (
+                <p className="mt-1 text-xs text-muted">Niche has minimal impact on Shorts RPM</p>
+              )}
+            </div>
+          )}
 
           {!isShorts && (
             <Select
@@ -369,14 +383,11 @@ export default function YouTubeMoneyCalculator() {
 
       <AdSlot slot="after-chart" className="mt-6" />
 
-      <CollapsibleSection title="Growth Recommendations" defaultOpen={false} className="mt-6">
+      <CollapsibleSection title="Optimization Tips" defaultOpen={false} className="mt-6">
         <Recommendations
-          state={{ ...projectionInput, revenueTarget: state.revenueTarget }}
+          state={projectionInput}
           projection={projection}
           onApplyScenario={(scenario) => dispatch({ type: 'APPLY_SCENARIO', payload: scenario })}
-          onRevenueTargetChange={(target) =>
-            dispatch({ type: 'SET_REVENUE_TARGET', payload: target })
-          }
         />
       </CollapsibleSection>
 

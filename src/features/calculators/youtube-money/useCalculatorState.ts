@@ -1,6 +1,6 @@
 'use client';
 
-import { useReducer } from 'react';
+import { useEffect, useReducer } from 'react';
 import type {
   NicheId,
   ContentFormat,
@@ -16,7 +16,6 @@ export interface CalculatorState {
   nicheId: NicheId;
   monthlyGrowthRate: number;
   seasonalityEnabled: boolean;
-  revenueTarget: number;
   startMonth: number;
   inputMode: InputMode;
   viewsPerVideo: number;
@@ -38,9 +37,9 @@ type Action =
   | { type: 'SET_NICHE'; payload: NicheId }
   | { type: 'SET_GROWTH_RATE'; payload: number }
   | { type: 'TOGGLE_SEASONALITY' }
-  | { type: 'SET_REVENUE_TARGET'; payload: number }
   | { type: 'APPLY_SCENARIO'; payload: Partial<ProjectionInput> }
   | { type: 'SET_FROM_LOOKUP'; payload: { dailyViews: number; nicheId?: NicheId } }
+  | { type: 'SET_FROM_URL'; payload: Partial<CalculatorState> }
   | { type: 'SET_INPUT_MODE'; payload: InputMode }
   | { type: 'SET_VIEWS_PER_VIDEO'; payload: number }
   | { type: 'SET_UPLOADS_PER_WEEK'; payload: number }
@@ -53,7 +52,6 @@ const defaults: CalculatorState = {
   nicheId: 'tech',
   monthlyGrowthRate: 0,
   seasonalityEnabled: false,
-  revenueTarget: 2000,
   startMonth: new Date().getMonth(),
   inputMode: 'daily',
   viewsPerVideo: 2000,
@@ -63,17 +61,8 @@ const defaults: CalculatorState = {
   highCpmAudiencePct: 50,
 };
 
-function getInitialState(): CalculatorState {
-  if (typeof window === 'undefined') return defaults;
-
-  const params = new URLSearchParams(window.location.search);
-  const code = params.get('c');
-  if (!code) return defaults;
-
-  const decoded = decodeCalcState(code);
-  if (!decoded) return defaults;
-
-  return { ...defaults, ...decoded };
+function getInitialState(defaultOverrides?: Partial<CalculatorState>): CalculatorState {
+  return defaultOverrides ? { ...defaults, ...defaultOverrides } : defaults;
 }
 
 function reducer(state: CalculatorState, action: Action): CalculatorState {
@@ -86,8 +75,6 @@ function reducer(state: CalculatorState, action: Action): CalculatorState {
       return { ...state, monthlyGrowthRate: action.payload };
     case 'TOGGLE_SEASONALITY':
       return { ...state, seasonalityEnabled: !state.seasonalityEnabled };
-    case 'SET_REVENUE_TARGET':
-      return { ...state, revenueTarget: action.payload };
     case 'APPLY_SCENARIO':
       return { ...state, ...action.payload, inputMode: 'daily' };
     case 'SET_FROM_LOOKUP': {
@@ -98,6 +85,8 @@ function reducer(state: CalculatorState, action: Action): CalculatorState {
       if (action.payload.nicheId) next.nicheId = action.payload.nicheId;
       return { ...state, ...next };
     }
+    case 'SET_FROM_URL':
+      return { ...state, ...action.payload };
     case 'SET_INPUT_MODE':
       return { ...state, inputMode: action.payload };
     case 'SET_VIEWS_PER_VIDEO':
@@ -115,8 +104,21 @@ function reducer(state: CalculatorState, action: Action): CalculatorState {
   }
 }
 
-export function useCalculatorState() {
-  const [state, dispatch] = useReducer(reducer, undefined, getInitialState);
+export function useCalculatorState(defaultOverrides?: Partial<CalculatorState>) {
+  const [state, dispatch] = useReducer(reducer, defaultOverrides, (overrides) =>
+    getInitialState(overrides)
+  );
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get('c');
+    if (!code) return;
+
+    const decoded = decodeCalcState(code);
+    if (decoded) {
+      dispatch({ type: 'SET_FROM_URL', payload: decoded });
+    }
+  }, []);
 
   return { state, dispatch } as const;
 }
