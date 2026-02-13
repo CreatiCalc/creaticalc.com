@@ -19,6 +19,25 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      'name': 'CreatiCalc',
+      'url': 'https://creaticalc.com',
+      'description':
+        'Free calculators for YouTubers, TikTokers, and Instagram creators. Estimate earnings, calculate engagement rates, and project subscriber growth.',
+    },
+    {
+      '@type': 'Organization',
+      'name': 'CreatiCalc',
+      'url': 'https://creaticalc.com',
+      'logo': 'https://creaticalc.com/icon.svg',
+    },
+  ],
+};
+
 const calculators = [
   {
     title: 'YouTube Money Calculator',
@@ -69,6 +88,10 @@ const calculators = [
 export default function Home() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <section className="relative mb-20 text-center">
         {/* Decorative gradient orb */}
         <div
