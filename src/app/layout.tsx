@@ -3,6 +3,7 @@ import Script from 'next/script';
 import { Geist, Geist_Mono } from 'next/font/google';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import { SITE_URL, SITE_DESCRIPTION } from '@/lib/siteConfig';
 import './globals.css';
 
 const adsensePublisherId = process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID;
@@ -22,9 +23,8 @@ export const metadata: Metadata = {
     default: 'CreatiCalc — Free Calculators for Content Creators',
     template: '%s | CreatiCalc',
   },
-  description:
-    'Free calculators for YouTubers, TikTokers, and Instagram creators. Estimate earnings, calculate engagement rates, and project subscriber growth.',
-  metadataBase: new URL('https://creaticalc.com'),
+  description: SITE_DESCRIPTION,
+  metadataBase: new URL(SITE_URL),
   openGraph: {
     type: 'website',
     siteName: 'CreatiCalc',
@@ -56,8 +56,16 @@ export default function RootLayout({
         </head>
       )}
       <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2 focus:text-white"
+        >
+          Skip to main content
+        </a>
         <Header />
-        <main className="min-h-[calc(100vh-160px)]">{children}</main>
+        <main id="main-content" className="min-h-[calc(100vh-160px)]">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

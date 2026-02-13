@@ -139,7 +139,7 @@ export default function InstagramEngagementPage() {
       <CalculatorSchema
         name="Instagram Engagement Rate Calculator"
         description="Calculate your Instagram engagement rate from likes, comments, and saves. Compare against industry benchmarks by follower tier."
-        url="https://creaticalc.com/instagram-engagement-rate-calculator"
+        url="/instagram-engagement-rate-calculator"
       />
       <CalculatorLayout
         title="Instagram Engagement Rate Calculator"

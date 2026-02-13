@@ -79,7 +79,7 @@ export default function Image() {
             }}
           >
             <div style={{ fontSize: 16, color: '#64748b' }}>Shorts RPM</div>
-            <div style={{ fontSize: 24, fontWeight: 700, color: '#0f172a' }}>$0.02 — $0.08</div>
+            <div style={{ fontSize: 24, fontWeight: 700, color: '#0f172a' }}>$0.01 — $0.07</div>
           </div>
           <div
             style={{
