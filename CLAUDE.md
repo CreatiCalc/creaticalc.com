@@ -69,6 +69,7 @@ The user's PowerShell environment handles this automatically via a `cd` hook, bu
 4. Add navigation links in `Header.tsx`, `MobileNav.tsx`, and `Footer.tsx`
 5. Add card to homepage calculators array in `src/app/page.tsx`
 6. Update `src/app/sitemap.ts` — add the new page entry
+7. Add entry to the `calculators` array in `src/app/about/page.tsx` — keep the about page in sync with all available calculators
 
 Use the YouTube Money Calculator (`src/features/calculators/youtube-money/`) as the reference implementation.
 

@@ -74,7 +74,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/about`,
-      lastModified: '2026-02-11',
+      lastModified: '2026-02-12',
       changeFrequency: 'monthly',
       priority: 0.3,
     },
