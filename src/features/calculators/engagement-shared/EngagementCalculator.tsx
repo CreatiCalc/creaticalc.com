@@ -7,7 +7,7 @@ import NumberInput from '@/components/ui/NumberInput';
 import Select from '@/components/ui/Select';
 import Card from '@/components/ui/Card';
 import CollapsibleSection from '@/features/calculators/shared/CollapsibleSection';
-import CalcMethodToggle from '@/features/calculators/shared/CalcMethodToggle';
+import ButtonToggle from '@/components/ui/ButtonToggle';
 import FollowerSliderInput from '@/features/calculators/shared/FollowerSliderInput';
 import EngagementResultsSection from './EngagementResultsSection';
 import { MultiFormulaDisplay } from './dynamicImports';
@@ -136,9 +136,8 @@ export default function EngagementCalculator({ config }: EngagementCalculatorPro
 
   const activeMethod = String(getInputField(state, config.calcMethodInputKey) ?? 'byFollowers');
 
-  // Map calc methods to the CalcMethodToggle format
   const calcMethodOptions = config.calcMethods.map((m) => ({
-    mode: m.value,
+    value: m.value,
     label: m.label,
     description: m.description ?? '',
   }));
@@ -157,10 +156,12 @@ export default function EngagementCalculator({ config }: EngagementCalculatorPro
 
           {/* Calc method toggle */}
           {config.calcMethods.length > 1 && (
-            <CalcMethodToggle
+            <ButtonToggle
               value={activeMethod}
               onChange={(method) => setField(config.calcMethodInputKey, method)}
               options={calcMethodOptions}
+              label="Calculation Method"
+              ariaLabel="Calculation method"
               wrap={config.calcMethodWrap}
             />
           )}

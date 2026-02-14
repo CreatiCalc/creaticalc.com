@@ -9,7 +9,8 @@ import { useShareUrl } from '@/components/ui/useShareUrl';
 import AdSlot from '@/components/layout/AdSlot';
 import CollapsibleSection from '@/features/calculators/shared/CollapsibleSection';
 import FollowerSliderInput from '@/features/calculators/shared/FollowerSliderInput';
-import ContentTypeSelector from './ContentTypeSelector';
+import ButtonToggle from '@/components/ui/ButtonToggle';
+import { IG_CONTENT_TYPES, TIKTOK_CONTENT_TYPES } from '@/lib/sponsorshipModel';
 import DealTypeSelector from './DealTypeSelector';
 import SponsorshipRateDisplay from './SponsorshipRateDisplay';
 import RateCardTable from './RateCardTable';
@@ -82,12 +83,16 @@ export default function SponsorshipCalculator({ config }: SponsorshipCalculatorP
     <>
       <Card>
         <div className="space-y-6">
-          <ContentTypeSelector
-            platform={config.platform}
+          <ButtonToggle
             value={state.contentType}
             onChange={(v) =>
               dispatch({ type: 'SET_CONTENT_TYPE', payload: v as SponsorshipContentType })
             }
+            options={config.platform === 'instagram' ? IG_CONTENT_TYPES : TIKTOK_CONTENT_TYPES}
+            label="Content Type"
+            ariaLabel="Content type"
+            variant="pill"
+            wrap
           />
 
           <DealTypeSelector

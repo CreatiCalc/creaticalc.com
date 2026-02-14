@@ -23,8 +23,9 @@ import {
 } from '@/lib/youtubeEarningsModel';
 import { useCalculatorState, computeDailyViewsFromPerVideo } from './useCalculatorState';
 import UrlLookup from './UrlLookup';
-import ContentFormatToggle from './ContentFormatToggle';
-import InputModeToggle from './InputModeToggle';
+import ButtonToggle from '@/components/ui/ButtonToggle';
+import type { ContentFormat } from '@/lib/youtubeEarningsModel';
+import type { InputMode } from './useCalculatorState';
 import GrowthRateInput from './GrowthRateInput';
 import SeasonalityToggle from './SeasonalityToggle';
 import {
@@ -138,15 +139,27 @@ export default function YouTubeMoneyCalculator({
       <Card className={isEmbed ? '' : 'mt-4'}>
         <div className="space-y-6">
           {!hideFormatToggle && (
-            <ContentFormatToggle
+            <ButtonToggle<ContentFormat>
               value={state.contentFormat}
               onChange={(format) => dispatch({ type: 'SET_CONTENT_FORMAT', payload: format })}
+              options={[
+                { value: 'longform', label: 'Long-form' },
+                { value: 'shorts', label: 'Shorts' },
+              ]}
+              label="Content Format"
+              ariaLabel="Content format"
             />
           )}
 
-          <InputModeToggle
+          <ButtonToggle<InputMode>
             value={state.inputMode}
             onChange={(mode) => dispatch({ type: 'SET_INPUT_MODE', payload: mode })}
+            options={[
+              { value: 'daily', label: 'Daily Views' },
+              { value: 'perVideo', label: 'Per Video' },
+            ]}
+            label="Input Mode"
+            ariaLabel="View input mode"
           />
 
           {state.inputMode === 'daily' ? (

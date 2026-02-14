@@ -18,7 +18,8 @@ import {
   type GrowthInput,
 } from '@/lib/subscriberGrowthModel';
 import { useGrowthState } from './useGrowthState';
-import GrowthInputModeToggle from './GrowthInputModeToggle';
+import ButtonToggle from '@/components/ui/ButtonToggle';
+import type { GrowthInputMode } from '@/lib/subscriberGrowthModel';
 import YouTubeGrowthShareButtons from './ShareButtons';
 import { GrowthChart, GrowthMilestoneTimeline, GrowthRecommendations } from './dynamicImports';
 
@@ -72,9 +73,15 @@ export default function YouTubeGrowthCalculator() {
     <>
       <Card className="mt-4">
         <div className="space-y-6">
-          <GrowthInputModeToggle
+          <ButtonToggle<GrowthInputMode>
             value={state.inputMode}
             onChange={(mode) => dispatch({ type: 'SET_INPUT_MODE', payload: mode })}
+            options={[
+              { value: 'rate', label: 'Growth Rate (%)' },
+              { value: 'flat', label: 'Monthly New Subs' },
+            ]}
+            ariaLabel="Growth input mode"
+            variant="pill"
           />
 
           {/* Current Subscribers */}
