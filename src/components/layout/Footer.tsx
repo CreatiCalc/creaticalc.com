@@ -1,41 +1,6 @@
 import Link from 'next/link';
 import Logo from '@/components/brand/Logo';
-
-const footerGroups = [
-  {
-    label: 'YouTube',
-    links: [
-      { name: 'Money Calculator', href: '/youtube-money-calculator' },
-      { name: 'Shorts Calculator', href: '/youtube-shorts-money-calculator' },
-      { name: 'Growth Projector', href: '/youtube-subscriber-projector' },
-    ],
-  },
-  {
-    label: 'Engagement Rates',
-    links: [
-      { name: 'Instagram', href: '/instagram-engagement-rate-calculator' },
-      { name: 'TikTok', href: '/tiktok-engagement-rate-calculator' },
-      { name: 'Facebook', href: '/facebook-engagement-rate-calculator' },
-      { name: 'X (Twitter)', href: '/twitter-engagement-rate-calculator' },
-      { name: 'All Platforms', href: '/engagement-rate-calculator' },
-      { name: 'Benchmarks 2026', href: '/engagement-rate-benchmarks' },
-    ],
-  },
-  {
-    label: 'Sponsorship Rates',
-    links: [
-      { name: 'Instagram', href: '/instagram-sponsorship-rate-calculator' },
-      { name: 'TikTok', href: '/tiktok-sponsorship-rate-calculator' },
-    ],
-  },
-  {
-    label: 'Company',
-    links: [
-      { name: 'About', href: '/about' },
-      { name: 'Privacy Policy', href: '/privacy' },
-    ],
-  },
-];
+import { FOOTER_GROUPS } from './navConfig';
 
 export default function Footer() {
   return (
@@ -49,11 +14,11 @@ export default function Footer() {
               sponsorship rates, and project growth.
             </p>
           </div>
-          {footerGroups.map((group) => (
+          {FOOTER_GROUPS.map((group) => (
             <div key={group.label}>
               <p className="mb-3 font-semibold">{group.label}</p>
               <ul className="space-y-1">
-                {group.links.map((link) => (
+                {group.items.map((link) => (
                   <li key={link.href}>
                     <Link
                       href={link.href}
