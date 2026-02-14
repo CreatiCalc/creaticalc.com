@@ -14,9 +14,17 @@ interface SelectProps {
   onChange: (value: string) => void;
   /** Fallback accessible label when the visible label is insufficient for screen readers */
   ariaLabel?: string;
+  disabled?: boolean;
 }
 
-export default function Select({ label, value, options, onChange, ariaLabel }: SelectProps) {
+export default function Select({
+  label,
+  value,
+  options,
+  onChange,
+  ariaLabel,
+  disabled,
+}: SelectProps) {
   const id = useId();
 
   return (
@@ -30,7 +38,8 @@ export default function Select({ label, value, options, onChange, ariaLabel }: S
         onChange={(e) => onChange(e.target.value)}
         autoComplete="off"
         aria-label={ariaLabel}
-        className="w-full rounded-lg border border-border bg-background px-3 py-2 text-sm transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+        disabled={disabled}
+        className={`w-full rounded-lg border border-border bg-background px-3 py-2 text-sm transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20${disabled ? ' cursor-not-allowed opacity-50' : ''}`}
       >
         {options.map((opt) => (
           <option key={opt.value} value={opt.value}>

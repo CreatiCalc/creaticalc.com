@@ -211,7 +211,7 @@ window.addEventListener('message', function(e) {
                   color === opt.name ? 'scale-110 border-foreground' : 'border-transparent'
                 }`}
                 style={{ backgroundColor: opt.hex }}
-                title={opt.name.charAt(0).toUpperCase() + opt.name.slice(1)}
+                aria-label={`${opt.name.charAt(0).toUpperCase() + opt.name.slice(1)} accent color`}
               />
             ))}
             <div className="relative">
@@ -228,7 +228,7 @@ window.addEventListener('message', function(e) {
                     ? `#${color}`
                     : 'conic-gradient(red, yellow, lime, aqua, blue, magenta, red)',
                 }}
-                title="Custom color"
+                aria-label="Custom accent color"
               />
               {pickerOpen && (
                 <>

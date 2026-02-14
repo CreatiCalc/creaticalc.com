@@ -232,12 +232,13 @@ export default function YouTubeMoneyCalculator({
           )}
 
           {!hideNicheSelector && (
-            <div className={isShorts ? 'opacity-50 pointer-events-none' : ''}>
+            <div>
               <Select
                 label="Content Niche"
                 value={state.nicheId}
                 options={nicheOptions}
                 onChange={(v) => setNiche(v as NicheId)}
+                disabled={isShorts}
               />
               {isShorts && (
                 <p className="mt-1 text-xs text-muted">Niche has minimal impact on Shorts RPM</p>
