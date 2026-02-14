@@ -46,7 +46,7 @@ const DriversBreakdown = dynamic(() => import('./DriversBreakdown'), { ssr: fals
 const MilestoneTimeline = dynamic(() => import('./MilestoneTimeline'), { ssr: false });
 const SponsorshipEstimate = dynamic(() => import('./SponsorshipEstimate'), { ssr: false });
 const RpmTable = dynamic(() => import('./RpmTable'), { ssr: false });
-import ShareButtons from './ShareButtons';
+import YouTubeShareButtons from './ShareButtons';
 import CollapsibleSection from '@/features/calculators/shared/CollapsibleSection';
 
 const nicheOptions = NICHES.map((n) => ({ label: n.name, value: n.id }));
@@ -374,7 +374,11 @@ export default function YouTubeMoneyCalculator({
         />
       </div>
 
-      <ShareButtons state={state} yearlyMid={projection.summary.yearly.mid} tier={creatorTier} />
+      <YouTubeShareButtons
+        state={state}
+        yearlyMid={projection.summary.yearly.mid}
+        tier={creatorTier}
+      />
 
       <AdSlot slot="below-results" className="mt-6" />
 

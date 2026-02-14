@@ -11,24 +11,21 @@ const footerGroups = [
     ],
   },
   {
-    label: 'Instagram',
+    label: 'Engagement Rates',
     links: [
-      { name: 'Engagement Rate', href: '/instagram-engagement-rate-calculator' },
-      { name: 'Sponsorship Rate', href: '/instagram-sponsorship-rate-calculator' },
+      { name: 'Instagram', href: '/instagram-engagement-rate-calculator' },
+      { name: 'TikTok', href: '/tiktok-engagement-rate-calculator' },
+      { name: 'Facebook', href: '/facebook-engagement-rate-calculator' },
+      { name: 'X (Twitter)', href: '/twitter-engagement-rate-calculator' },
+      { name: 'All Platforms', href: '/engagement-rate-calculator' },
+      { name: 'Benchmarks 2026', href: '/engagement-rate-benchmarks' },
     ],
   },
   {
-    label: 'TikTok',
+    label: 'Sponsorship Rates',
     links: [
-      { name: 'Engagement Rate', href: '/tiktok-engagement-rate-calculator' },
-      { name: 'Sponsorship Rate', href: '/tiktok-sponsorship-rate-calculator' },
-    ],
-  },
-  {
-    label: 'More',
-    links: [
-      { name: 'Engagement Calculator', href: '/engagement-rate-calculator' },
-      { name: 'Engagement Benchmarks', href: '/engagement-rate-benchmarks' },
+      { name: 'Instagram', href: '/instagram-sponsorship-rate-calculator' },
+      { name: 'TikTok', href: '/tiktok-sponsorship-rate-calculator' },
     ],
   },
   {
@@ -44,7 +41,7 @@ export default function Footer() {
   return (
     <footer className="border-t border-border bg-surface py-12">
       <div className="mx-auto max-w-6xl px-4">
-        <div className="grid gap-8 text-center sm:grid-cols-2 sm:text-left md:grid-cols-3 lg:grid-cols-[1.5fr_1fr_1fr_1fr_1fr_1fr]">
+        <div className="grid gap-8 text-center sm:grid-cols-2 sm:text-left md:grid-cols-3 lg:grid-cols-[1.5fr_1fr_1fr_1fr_1fr]">
           <div className="sm:col-span-2 md:col-span-3 lg:col-span-1">
             <Logo size="sm" />
             <p className="mt-3 text-sm text-muted">
@@ -77,7 +74,7 @@ export default function Footer() {
           informational purposes only. Results are based on publicly available data and industry
           averages and should not be considered financial, business, or professional advice. Actual
           earnings, engagement rates, and growth will vary. CreatiCalc is not affiliated with
-          YouTube, Instagram, TikTok, or any other platform.
+          YouTube, Instagram, TikTok, Facebook, X (Twitter), or any other platform.
         </p>
         <p className="mt-4 text-center text-sm text-muted">
           &copy; {new Date().getFullYear()} CreatiCalc. All rights reserved.

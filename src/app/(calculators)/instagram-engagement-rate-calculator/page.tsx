@@ -1,14 +1,16 @@
 import { Suspense } from 'react';
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
 import CalculatorSchema from '@/components/seo/CalculatorSchema';
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import { InstagramEngagementCalculator } from '@/features/calculators/instagram-engagement';
 import type { FAQItem } from '@/features/calculators/shared/types';
 
 export const metadata: Metadata = {
   title: 'Instagram Engagement Rate Calculator + Industry Benchmarks 2026',
   description:
-    'Free Instagram engagement rate calculator. Calculate your IG engagement rate from likes, comments, and saves, then compare it against benchmarks by follower tier and industry.',
+    'Free Instagram engagement rate calculator. Calculate your IG engagement from likes, comments, and saves. Compare against 2026 benchmarks by tier and niche.',
   openGraph: {
     title: 'Instagram Engagement Rate Calculator + Industry Benchmarks 2026',
     description:
@@ -130,6 +132,55 @@ const howItWorks = (
       Our brand deal estimator uses your engagement rate, follower count, and content niche to
       project how much you could charge per sponsored post.
     </p>
+
+    <h3 className="mt-6 text-lg font-semibold text-foreground">Related Tools</h3>
+    <ul className="mt-2 list-disc space-y-1 pl-5">
+      <li>
+        <Link
+          href="/tiktok-engagement-rate-calculator"
+          className="font-medium text-primary hover:underline"
+        >
+          TikTok Engagement Rate Calculator
+        </Link>{' '}
+        — calculate by followers or by views
+      </li>
+      <li>
+        <Link
+          href="/facebook-engagement-rate-calculator"
+          className="font-medium text-primary hover:underline"
+        >
+          Facebook Engagement Rate Calculator
+        </Link>{' '}
+        — measure your Facebook page engagement by followers or reach
+      </li>
+      <li>
+        <Link
+          href="/twitter-engagement-rate-calculator"
+          className="font-medium text-primary hover:underline"
+        >
+          X (Twitter) Engagement Rate Calculator
+        </Link>{' '}
+        — includes likes, replies, reposts, and bookmarks
+      </li>
+      <li>
+        <Link
+          href="/engagement-rate-benchmarks"
+          className="font-medium text-primary hover:underline"
+        >
+          Engagement Rate Benchmarks 2026
+        </Link>{' '}
+        — full benchmark data across all platforms
+      </li>
+      <li>
+        <Link
+          href="/instagram-sponsorship-rate-calculator"
+          className="font-medium text-primary hover:underline"
+        >
+          Instagram Sponsorship Rate Calculator
+        </Link>{' '}
+        — estimate how much you can charge per sponsored post
+      </li>
+    </ul>
   </>
 );
 
@@ -140,6 +191,16 @@ export default function InstagramEngagementPage() {
         name="Instagram Engagement Rate Calculator"
         description="Calculate your Instagram engagement rate from likes, comments, and saves. Compare against industry benchmarks by follower tier."
         url="/instagram-engagement-rate-calculator"
+      />
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', path: '/' },
+          { name: 'Instagram', path: '/instagram-engagement-rate-calculator' },
+          {
+            name: 'Instagram Engagement Rate Calculator',
+            path: '/instagram-engagement-rate-calculator',
+          },
+        ]}
       />
       <CalculatorLayout
         title="Instagram Engagement Rate Calculator"

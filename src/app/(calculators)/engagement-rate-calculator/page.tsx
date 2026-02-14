@@ -5,16 +5,17 @@ import FAQ from '@/features/calculators/shared/FAQ';
 import AdSlot from '@/components/layout/AdSlot';
 import { PlatformComparisonTable } from '@/features/calculators/engagement-shared';
 import type { FAQItem } from '@/features/calculators/shared/types';
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import { SITE_URL } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
-  title: 'Engagement Rate Calculator — Free Tool for Instagram & TikTok',
+  title: 'Engagement Rate Calculator — Free for All Platforms',
   description:
-    'Free engagement rate calculator for Instagram and TikTok. Calculate your engagement rate, compare against industry benchmarks, and get personalized recommendations.',
+    'Free engagement rate calculator for Instagram, TikTok, Facebook, and X. Compare against benchmarks by follower tier and industry.',
   openGraph: {
-    title: 'Engagement Rate Calculator — Free Tool for Instagram & TikTok',
+    title: 'Engagement Rate Calculator — Free for All Platforms',
     description:
-      'Calculate your engagement rate on Instagram or TikTok. Compare against benchmarks by follower tier and industry.',
+      'Calculate your engagement rate on Instagram, TikTok, Facebook, or X. Compare against benchmarks by follower tier and industry.',
     url: '/engagement-rate-calculator',
   },
   alternates: {
@@ -31,12 +32,12 @@ const faq: FAQItem[] = [
   {
     question: 'How do you calculate engagement rate?',
     answer:
-      'The most common formula is: (Total Interactions / Followers) x 100. For Instagram, total interactions include likes, comments, and saves. For TikTok, they include likes, comments, and shares. Alternative formulas use reach or impressions as the denominator instead of followers for a more precise measure of content performance.',
+      'The most common formula is: (Total Interactions / Followers) x 100. For Instagram, total interactions include likes, comments, and saves. For TikTok, they include likes, comments, and shares. For Facebook, they include reactions, comments, and shares. For X (Twitter), they include likes, replies, reposts, and bookmarks. Alternative formulas use reach or impressions as the denominator instead of followers for a more precise measure of content performance.',
   },
   {
     question: 'What is a good engagement rate?',
     answer:
-      'A good engagement rate depends on the platform and follower count. On Instagram, 1-3% is average, 3-6% is good, and above 6% is excellent for most tier levels. On TikTok, rates are naturally higher: 4-6% is average, 6-10% is good, and above 10% is excellent. Smaller accounts typically have higher engagement rates than larger ones.',
+      'A good engagement rate depends on the platform and follower count. On Instagram, 1-3% is average, 3-6% is good, and above 6% is excellent. On TikTok, rates are naturally higher: 4-6% is average, 6-10% is good, and above 10% is excellent. Facebook has much lower rates: 0.5-1% is average and above 1.5% is strong. X (Twitter) is the lowest: 0.2-0.5% is average and above 1% is excellent. Smaller accounts typically have higher engagement rates across all platforms.',
   },
   {
     question: 'Why does engagement rate matter?',
@@ -44,9 +45,9 @@ const faq: FAQItem[] = [
       'Engagement rate is the primary metric brands use to evaluate creators for partnerships. A high engagement rate indicates an active, loyal audience that is more likely to take action on sponsored content. It is often more important than raw follower count because it measures audience quality rather than quantity.',
   },
   {
-    question: 'How is engagement rate different on Instagram vs TikTok?',
+    question: 'How do engagement rates compare across platforms?',
     answer:
-      "TikTok engagement rates are roughly 5 times higher than Instagram's. The Instagram average is approximately 0.98%, while TikTok averages around 4.9%. This difference is due to TikTok's algorithm-driven content distribution, auto-playing video format, and the lower friction of double-tap liking. You should not compare rates directly across platforms without adjusting for these differences.",
+      "Engagement rates vary dramatically by platform. TikTok leads at ~4.9% average, followed by Instagram at ~0.98%, Facebook at ~0.065%, and X (Twitter) at ~0.03%. These differences are driven by each platform's algorithm, content format, and audience behavior. TikTok's algorithm-driven content distribution and auto-playing video format produce the highest engagement. You should not compare rates directly across platforms without adjusting for these structural differences — use our cross-platform comparison tools for that.",
   },
   {
     question: 'Should I calculate engagement rate by followers, reach, or impressions?',
@@ -72,15 +73,31 @@ const platforms = [
     color: 'from-cyan-400 via-pink-500 to-red-500',
     avgRate: '4.9%',
   },
+  {
+    name: 'Facebook',
+    href: '/facebook-engagement-rate-calculator',
+    description:
+      'Calculate your Facebook page engagement rate from reactions, comments, and shares. Supports follower and reach formulas.',
+    color: 'from-blue-500 via-blue-600 to-indigo-500',
+    avgRate: '0.065%',
+  },
+  {
+    name: 'X (Twitter)',
+    href: '/twitter-engagement-rate-calculator',
+    description:
+      'Calculate your X engagement rate from likes, replies, reposts, and bookmarks. Supports follower and impressions formulas.',
+    color: 'from-sky-400 via-blue-500 to-indigo-400',
+    avgRate: '0.03%',
+  },
 ];
 
 export default function EngagementRateCalculatorPage() {
   const schema = {
     '@context': 'https://schema.org',
-    '@type': 'WebPage',
+    '@type': 'CollectionPage',
     'name': 'Engagement Rate Calculator',
     'description':
-      'Free engagement rate calculator for Instagram and TikTok. Compare against industry benchmarks.',
+      'Free engagement rate calculator for Instagram, TikTok, Facebook, and X (Twitter). Compare against industry benchmarks.',
     'url': `${SITE_URL}/engagement-rate-calculator`,
   };
 
@@ -90,14 +107,20 @@ export default function EngagementRateCalculatorPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', path: '/' },
+          { name: 'Engagement Rate Calculator', path: '/engagement-rate-calculator' },
+        ]}
+      />
       <div className="mx-auto max-w-4xl px-4 py-10">
         <div className="mb-8 text-center">
           <h1 className="text-gradient-brand text-3xl font-bold md:text-4xl">
             Engagement Rate Calculator
           </h1>
           <p className="mt-3 text-muted">
-            Calculate your engagement rate on Instagram or TikTok. Compare against industry
-            benchmarks and get actionable recommendations to grow your account.
+            Calculate your engagement rate on Instagram, TikTok, Facebook, or X (Twitter). Compare
+            against industry benchmarks and get actionable recommendations to grow your account.
           </p>
           <div
             className="mx-auto mt-5 h-1 w-36 rounded-full"
@@ -111,7 +134,7 @@ export default function EngagementRateCalculatorPage() {
         {/* Platform selector cards */}
         <section className="mb-12">
           <h2 className="mb-6 text-2xl font-bold">Choose Your Platform</h2>
-          <div className="grid gap-6 sm:grid-cols-2">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
             {platforms.map((p) => (
               <Link key={p.href} href={p.href} className="group">
                 <Card className="relative h-full overflow-hidden transition-all duration-200 group-hover:border-primary/50 group-hover:shadow-md">
@@ -217,6 +240,29 @@ export default function EngagementRateCalculatorPage() {
               valuable to a brand than a mega-creator with 0.5%, because the smaller audience is
               more targeted and responsive.
             </p>
+          </div>
+        </section>
+
+        {/* Monetize Your Engagement */}
+        <section className="mb-12">
+          <h2 className="mb-4 text-2xl font-bold">Monetize Your Engagement</h2>
+          <p className="mb-4 text-sm text-muted">
+            Know your engagement rate? Use it to calculate how much you should charge for sponsored
+            content.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <Link
+              href="/instagram-sponsorship-rate-calculator"
+              className="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-primary/90"
+            >
+              Instagram Sponsorship Rates
+            </Link>
+            <Link
+              href="/tiktok-sponsorship-rate-calculator"
+              className="rounded-lg border border-primary bg-primary/5 px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary/10"
+            >
+              TikTok Sponsorship Rates
+            </Link>
           </div>
         </section>
 

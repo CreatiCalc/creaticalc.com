@@ -24,8 +24,6 @@ function ArcGauge({ score }: { score: number }) {
   // Score arc
   const sX2 = cx + radius * Math.cos(scoreAngle);
   const sY2 = cy - radius * Math.sin(scoreAngle);
-  const largeArc = score > 50 ? 1 : 0;
-
   // Color based on score
   let strokeColor = '#ef4444'; // red
   if (score >= 80)
@@ -49,7 +47,7 @@ function ArcGauge({ score }: { score: number }) {
       {/* Score arc */}
       {score > 0 && (
         <path
-          d={`M ${bgX1} ${bgY1} A ${radius} ${radius} 0 ${largeArc} 1 ${sX2} ${sY2}`}
+          d={`M ${bgX1} ${bgY1} A ${radius} ${radius} 0 0 1 ${sX2} ${sY2}`}
           fill="none"
           stroke={strokeColor}
           strokeWidth="10"

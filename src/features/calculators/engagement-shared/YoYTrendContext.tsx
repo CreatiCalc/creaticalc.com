@@ -1,6 +1,12 @@
 'use client';
 
-import { type Platform, getYoYContext, formatPercent, YOY_TRENDS } from '@/lib/engagementModel';
+import {
+  type Platform,
+  PLATFORM_NAMES,
+  getYoYContext,
+  formatPercent,
+  YOY_TRENDS,
+} from '@/lib/engagementModel';
 
 interface YoYTrendContextProps {
   platform: Platform;
@@ -25,9 +31,9 @@ export default function YoYTrendContext({ platform, rate }: YoYTrendContextProps
             year-over-year
           </p>
           <p className="mt-1 text-sm text-muted">
-            The average {platform === 'instagram' ? 'Instagram' : 'TikTok'} engagement rate moved
-            from {formatPercent(context.prevYearAvg)} (2025) to{' '}
-            {formatPercent(context.currentYearAvg)} (2026). Your rate of {formatPercent(rate)} is{' '}
+            The average {PLATFORM_NAMES[platform]} engagement rate moved from{' '}
+            {formatPercent(context.prevYearAvg)} (2025) to {formatPercent(context.currentYearAvg)}{' '}
+            (2026). Your rate of {formatPercent(rate)} is{' '}
             <span className="font-medium text-foreground">{context.ratingVsPrev}</span>.
           </p>
         </div>
@@ -38,8 +44,10 @@ export default function YoYTrendContext({ platform, rate }: YoYTrendContextProps
           <thead>
             <tr className="border-b border-border text-xs text-muted">
               <th className="pb-2 pr-4 font-medium">Year</th>
-              <th className="pb-2 pr-4 font-medium">Instagram Avg</th>
-              <th className="pb-2 font-medium">TikTok Avg</th>
+              <th className="pb-2 pr-4 font-medium">Instagram</th>
+              <th className="pb-2 pr-4 font-medium">TikTok</th>
+              <th className="pb-2 pr-4 font-medium">Facebook</th>
+              <th className="pb-2 font-medium">X (Twitter)</th>
             </tr>
           </thead>
           <tbody>
@@ -47,7 +55,9 @@ export default function YoYTrendContext({ platform, rate }: YoYTrendContextProps
               <tr key={trend.year} className="border-b border-border/50 last:border-0">
                 <td className="py-2 pr-4 font-medium text-foreground">{trend.year}</td>
                 <td className="py-2 pr-4 text-muted">{formatPercent(trend.instagram)}</td>
-                <td className="py-2 text-muted">{formatPercent(trend.tiktok)}</td>
+                <td className="py-2 pr-4 text-muted">{formatPercent(trend.tiktok)}</td>
+                <td className="py-2 pr-4 text-muted">{formatPercent(trend.facebook)}</td>
+                <td className="py-2 text-muted">{formatPercent(trend.twitter)}</td>
               </tr>
             ))}
           </tbody>

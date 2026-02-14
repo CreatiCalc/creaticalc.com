@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
 import CalculatorSchema from '@/components/seo/CalculatorSchema';
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import { InstagramSponsorshipCalculator } from '@/features/calculators/instagram-sponsorship';
 import type { FAQItem } from '@/features/calculators/shared/types';
 
@@ -124,6 +126,46 @@ const howItWorks = (
       <strong>Series (2.0x per post)</strong> — Multi-post campaign at a per-post rate, often with a
       bundled discount.
     </p>
+
+    <h3 className="mt-6 text-lg font-semibold text-foreground">Related Tools</h3>
+    <ul className="mt-2 list-disc space-y-1 pl-5">
+      <li>
+        <Link
+          href="/instagram-engagement-rate-calculator"
+          className="font-medium text-primary hover:underline"
+        >
+          Instagram Engagement Rate Calculator
+        </Link>{' '}
+        — measure your IG engagement to set better sponsorship rates
+      </li>
+      <li>
+        <Link
+          href="/tiktok-sponsorship-rate-calculator"
+          className="font-medium text-primary hover:underline"
+        >
+          TikTok Sponsorship Rate Calculator
+        </Link>{' '}
+        — compare cross-platform sponsorship rates
+      </li>
+      <li>
+        <Link
+          href="/tiktok-engagement-rate-calculator"
+          className="font-medium text-primary hover:underline"
+        >
+          TikTok Engagement Rate Calculator
+        </Link>{' '}
+        — calculate your TikTok engagement by followers or views
+      </li>
+      <li>
+        <Link
+          href="/engagement-rate-benchmarks"
+          className="font-medium text-primary hover:underline"
+        >
+          Engagement Rate Benchmarks 2026
+        </Link>{' '}
+        — full benchmark data across all platforms
+      </li>
+    </ul>
   </>
 );
 
@@ -134,6 +176,16 @@ export default function InstagramSponsorshipPage() {
         name="Instagram Sponsorship Rate Calculator"
         description="Calculate how much to charge for sponsored Instagram posts, Reels, Stories, and carousels based on your followers, engagement rate, and niche."
         url="/instagram-sponsorship-rate-calculator"
+      />
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', path: '/' },
+          { name: 'Instagram', path: '/instagram-engagement-rate-calculator' },
+          {
+            name: 'Instagram Sponsorship Rate Calculator',
+            path: '/instagram-sponsorship-rate-calculator',
+          },
+        ]}
       />
       <CalculatorLayout
         title="Instagram Sponsorship Rate Calculator"

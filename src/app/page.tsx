@@ -18,6 +18,49 @@ export const metadata: Metadata = {
   },
 };
 
+const homeFaqItems = [
+  {
+    question: 'What is engagement rate and why does it matter?',
+    answer:
+      'Engagement rate measures how actively your audience interacts with your content, expressed as a percentage. It is calculated by dividing total interactions (likes, comments, saves, shares) by your follower count and multiplying by 100. Brands use engagement rate as the primary metric for evaluating creators for sponsorships — a high engagement rate signals an active, loyal audience.',
+  },
+  {
+    question: 'How much do YouTubers earn per 1,000 views?',
+    answer:
+      'YouTubers typically earn between $1.50 and $45 per 1,000 views (CPM), depending on their content niche. After YouTube takes its 45% cut, creators keep $0.83 to $24.75 per 1,000 views (RPM). Finance and tech channels earn the most, while gaming and entertainment earn less. Use our YouTube Money Calculator for a personalized estimate.',
+  },
+  {
+    question: 'Which social media platform pays creators the most?',
+    answer:
+      'YouTube pays the most per view through ad revenue sharing, with RPM ranging from $1 to $25+ depending on niche. Instagram and TikTok pay less through direct ad revenue but offer strong sponsorship income — Instagram sponsorship rates run $10–$25 per 1,000 followers, while TikTok rates are $5–$15 per 1,000 followers. YouTube Shorts pay $0.01–$0.07 per 1,000 views.',
+  },
+  {
+    question: 'How much should I charge for a sponsored post?',
+    answer:
+      'Sponsorship rates depend on your platform, follower count, engagement rate, content niche, and deal type. On Instagram, the standard rate is $10–$25 per 1,000 followers for a basic feed post mention. On TikTok, rates are $5–$15 per 1,000 followers. Use our Instagram and TikTok Sponsorship Rate Calculators for a personalized rate card.',
+  },
+  {
+    question: 'What is a good engagement rate on Instagram?',
+    answer:
+      'A good Instagram engagement rate depends on your follower count. Nano creators (1K–10K) typically see 4–6%, micro (10K–50K) see 2–4%, mid-tier (50K–500K) see 1.5–3%, and mega accounts (1M+) see 0.5–1.5%. The platform average is about 0.98%. Anything above 3% is considered strong.',
+  },
+  {
+    question: 'What is a good engagement rate on TikTok?',
+    answer:
+      'TikTok has the highest engagement rates of any major platform. Micro creators (1K–10K) typically see 8–12%, mid-tier (10K–100K) see 6–8%, and mega accounts (1M+) see 4–6%. The platform average is about 4.9%, roughly 5x higher than Instagram. Anything above 5% is solid on TikTok.',
+  },
+  {
+    question: 'How do YouTube Shorts compare to long-form videos for earnings?',
+    answer:
+      'YouTube Shorts pay significantly less than long-form videos — roughly $0.01–$0.07 per 1,000 views compared to $1–$25+ for long-form content. However, Shorts can reach millions of viewers with less production effort. Many creators use Shorts to build subscribers who then watch higher-paying long-form content.',
+  },
+  {
+    question: 'Are these calculators free to use?',
+    answer:
+      'Yes — every calculator on CreatiCalc is 100% free with no sign-up required. All calculations run in your browser, so your data never leaves your device. You get instant results with no paywalls or hidden fees.',
+  },
+];
+
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -33,6 +76,17 @@ const jsonLd = {
       'url': SITE_URL,
       'logo': SITE_LOGO,
       'description': SITE_DESCRIPTION,
+    },
+    {
+      '@type': 'FAQPage',
+      'mainEntity': homeFaqItems.map((item) => ({
+        '@type': 'Question',
+        'name': item.question,
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': item.answer,
+        },
+      })),
     },
   ],
 };
@@ -83,6 +137,20 @@ const calculators = [
     platform: 'TikTok',
   },
   {
+    title: 'Facebook Engagement Rate',
+    description:
+      'Calculate your Facebook Page engagement rate using reactions, comments, and shares. Compare against page benchmarks.',
+    href: '/facebook-engagement-rate-calculator',
+    platform: 'Facebook',
+  },
+  {
+    title: 'X (Twitter) Engagement Rate',
+    description:
+      'Measure your X engagement rate with likes, replies, reposts, and bookmarks. Compare against benchmarks.',
+    href: '/twitter-engagement-rate-calculator',
+    platform: 'X',
+  },
+  {
     title: 'Engagement Rate Calculator',
     description:
       'Calculate your engagement rate on Instagram or TikTok. Compare against 2026 industry benchmarks.',
@@ -123,6 +191,75 @@ export default function Home() {
           <span className="inline-block h-2 w-2 rounded-full bg-accent" aria-hidden="true" />
           Choose a calculator below to get started
         </div>
+      </section>
+
+      <section className="mb-12 text-center">
+        <p className="mx-auto max-w-3xl leading-relaxed text-muted">
+          CreatiCalc helps content creators on{' '}
+          <Link
+            href="/youtube-money-calculator"
+            className="font-medium text-primary hover:underline"
+          >
+            YouTube
+          </Link>
+          ,{' '}
+          <Link
+            href="/instagram-engagement-rate-calculator"
+            className="font-medium text-primary hover:underline"
+          >
+            Instagram
+          </Link>
+          ,{' '}
+          <Link
+            href="/tiktok-engagement-rate-calculator"
+            className="font-medium text-primary hover:underline"
+          >
+            TikTok
+          </Link>
+          ,{' '}
+          <Link
+            href="/facebook-engagement-rate-calculator"
+            className="font-medium text-primary hover:underline"
+          >
+            Facebook
+          </Link>
+          , and{' '}
+          <Link
+            href="/twitter-engagement-rate-calculator"
+            className="font-medium text-primary hover:underline"
+          >
+            X (Twitter)
+          </Link>{' '}
+          make data-driven decisions. Calculate your{' '}
+          <Link
+            href="/engagement-rate-calculator"
+            className="font-medium text-primary hover:underline"
+          >
+            engagement rate
+          </Link>
+          , estimate{' '}
+          <Link
+            href="/instagram-sponsorship-rate-calculator"
+            className="font-medium text-primary hover:underline"
+          >
+            sponsorship pricing
+          </Link>
+          , compare against{' '}
+          <Link
+            href="/engagement-rate-benchmarks"
+            className="font-medium text-primary hover:underline"
+          >
+            2026 industry benchmarks
+          </Link>
+          , and project your{' '}
+          <Link
+            href="/youtube-subscriber-projector"
+            className="font-medium text-primary hover:underline"
+          >
+            subscriber growth
+          </Link>{' '}
+          — all free, instant, and no sign-up required.
+        </p>
       </section>
 
       <section className="grid gap-6 sm:grid-cols-2">
@@ -168,6 +305,18 @@ export default function Home() {
             Learn more about CreatiCalc &rarr;
           </Link>
         </p>
+      </section>
+
+      <section className="mt-20">
+        <h2 className="mb-8 text-center text-2xl font-bold">Frequently Asked Questions</h2>
+        <div className="space-y-6">
+          {homeFaqItems.map((item) => (
+            <div key={item.question}>
+              <h3 className="text-lg font-semibold">{item.question}</h3>
+              <p className="mt-2 text-muted">{item.answer}</p>
+            </div>
+          ))}
+        </div>
       </section>
     </div>
   );

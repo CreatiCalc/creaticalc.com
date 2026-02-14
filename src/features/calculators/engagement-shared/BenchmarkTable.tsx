@@ -1,11 +1,16 @@
 import type { Platform } from '@/lib/engagementModel';
-import { INDUSTRY_BENCHMARKS, formatPercent, YOY_TRENDS } from '@/lib/engagementModel';
+import {
+  INDUSTRY_BENCHMARKS,
+  PLATFORM_NAMES,
+  formatPercent,
+  YOY_TRENDS,
+} from '@/lib/engagementModel';
 
 interface BenchmarkTableProps {
   platform: Platform;
 }
 
-const TIER_BENCHMARKS = {
+const TIER_BENCHMARKS: Record<Platform, { tier: string; low: number; high: number }[]> = {
   instagram: [
     { tier: 'Nano (1K–10K)', low: 4.0, high: 6.0 },
     { tier: 'Micro (10K–50K)', low: 2.0, high: 4.0 },
@@ -21,14 +26,28 @@ const TIER_BENCHMARKS = {
     { tier: 'Mega (1M–10M)', low: 4.0, high: 6.0 },
     { tier: 'Super (10M+)', low: 2.0, high: 4.0 },
   ],
+  facebook: [
+    { tier: 'Nano (0–10K)', low: 1.5, high: 3.0 },
+    { tier: 'Micro (10K–50K)', low: 0.8, high: 1.8 },
+    { tier: 'Mid-Tier (50K–200K)', low: 0.5, high: 1.2 },
+    { tier: 'Macro (200K–1M)', low: 0.2, high: 0.8 },
+    { tier: 'Mega (1M+)', low: 0.05, high: 0.3 },
+  ],
+  twitter: [
+    { tier: 'Nano (0–10K)', low: 1.0, high: 3.0 },
+    { tier: 'Micro (10K–50K)', low: 0.5, high: 1.5 },
+    { tier: 'Mid-Tier (50K–200K)', low: 0.2, high: 0.8 },
+    { tier: 'Macro (200K–1M)', low: 0.1, high: 0.4 },
+    { tier: 'Mega (1M+)', low: 0.02, high: 0.2 },
+  ],
 };
 
 export default function BenchmarkTable({ platform }: BenchmarkTableProps) {
-  const platformName = platform === 'instagram' ? 'Instagram' : 'TikTok';
+  const platformName = PLATFORM_NAMES[platform];
   const tierData = TIER_BENCHMARKS[platform];
   const industryData = INDUSTRY_BENCHMARKS.map((b) => ({
     name: b.name,
-    rate: platform === 'instagram' ? b.instagram : b.tiktok,
+    rate: b[platform],
   })).sort((a, b) => b.rate - a.rate);
 
   return (
@@ -78,10 +97,7 @@ export default function BenchmarkTable({ platform }: BenchmarkTableProps) {
             </thead>
             <tbody>
               {industryData.map((row) => {
-                const overallAvg =
-                  platform === 'instagram'
-                    ? YOY_TRENDS[YOY_TRENDS.length - 1].instagram
-                    : YOY_TRENDS[YOY_TRENDS.length - 1].tiktok;
+                const overallAvg = YOY_TRENDS[YOY_TRENDS.length - 1][platform];
                 const relative = ((row.rate / overallAvg - 1) * 100).toFixed(0);
                 const sign = Number(relative) >= 0 ? '+' : '';
                 return (

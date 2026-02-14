@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
 import CalculatorSchema from '@/components/seo/CalculatorSchema';
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import { TikTokSponsorshipCalculator } from '@/features/calculators/tiktok-sponsorship';
 import type { FAQItem } from '@/features/calculators/shared/types';
 
@@ -133,6 +135,46 @@ const howItWorks = (
       <strong>Series (2.0x per video)</strong> — Multi-video campaign at a per-video rate, often
       with a bundled discount.
     </p>
+
+    <h3 className="mt-6 text-lg font-semibold text-foreground">Related Tools</h3>
+    <ul className="mt-2 list-disc space-y-1 pl-5">
+      <li>
+        <Link
+          href="/tiktok-engagement-rate-calculator"
+          className="font-medium text-primary hover:underline"
+        >
+          TikTok Engagement Rate Calculator
+        </Link>{' '}
+        — measure your TikTok engagement to set better sponsorship rates
+      </li>
+      <li>
+        <Link
+          href="/instagram-sponsorship-rate-calculator"
+          className="font-medium text-primary hover:underline"
+        >
+          Instagram Sponsorship Rate Calculator
+        </Link>{' '}
+        — compare cross-platform sponsorship rates
+      </li>
+      <li>
+        <Link
+          href="/instagram-engagement-rate-calculator"
+          className="font-medium text-primary hover:underline"
+        >
+          Instagram Engagement Rate Calculator
+        </Link>{' '}
+        — calculate your Instagram engagement with likes, comments, and saves
+      </li>
+      <li>
+        <Link
+          href="/engagement-rate-benchmarks"
+          className="font-medium text-primary hover:underline"
+        >
+          Engagement Rate Benchmarks 2026
+        </Link>{' '}
+        — full benchmark data across all platforms
+      </li>
+    </ul>
   </>
 );
 
@@ -143,6 +185,16 @@ export default function TikTokSponsorshipPage() {
         name="TikTok Sponsorship Rate Calculator"
         description="Calculate how much to charge for sponsored TikTok videos, Stories, and Lives based on your followers, engagement rate, and niche."
         url="/tiktok-sponsorship-rate-calculator"
+      />
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', path: '/' },
+          { name: 'TikTok', path: '/tiktok-engagement-rate-calculator' },
+          {
+            name: 'TikTok Sponsorship Rate Calculator',
+            path: '/tiktok-sponsorship-rate-calculator',
+          },
+        ]}
       />
       <CalculatorLayout
         title="TikTok Sponsorship Rate Calculator"

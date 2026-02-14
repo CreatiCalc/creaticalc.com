@@ -26,11 +26,20 @@ const navGroups = [
       { name: 'Sponsorship Rate', href: '/tiktok-sponsorship-rate-calculator' },
     ],
   },
+  {
+    label: 'Facebook',
+    items: [{ name: 'Engagement Rate', href: '/facebook-engagement-rate-calculator' }],
+  },
+  {
+    label: 'X',
+    items: [{ name: 'Engagement Rate', href: '/twitter-engagement-rate-calculator' }],
+  },
 ];
 
 const moreLinks = [
   { name: 'Engagement Calculator', href: '/engagement-rate-calculator' },
   { name: 'Engagement Benchmarks', href: '/engagement-rate-benchmarks' },
+  { name: 'About', href: '/about' },
 ];
 
 export default function MobileNav() {
