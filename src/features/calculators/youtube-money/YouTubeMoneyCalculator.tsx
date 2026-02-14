@@ -27,26 +27,14 @@ import ContentFormatToggle from './ContentFormatToggle';
 import InputModeToggle from './InputModeToggle';
 import GrowthRateInput from './GrowthRateInput';
 import SeasonalityToggle from './SeasonalityToggle';
-import dynamic from 'next/dynamic';
-
-function ChartPlaceholder() {
-  return (
-    <div className="mt-6">
-      <div className="mb-3 h-6 w-64 animate-pulse rounded bg-surface-alt" />
-      <div className="h-[350px] animate-pulse rounded-lg bg-surface-alt" />
-    </div>
-  );
-}
-
-const ProjectionChart = dynamic(() => import('./ProjectionChart'), {
-  ssr: false,
-  loading: ChartPlaceholder,
-});
-const Recommendations = dynamic(() => import('./Recommendations'), { ssr: false });
-const DriversBreakdown = dynamic(() => import('./DriversBreakdown'), { ssr: false });
-const MilestoneTimeline = dynamic(() => import('./MilestoneTimeline'), { ssr: false });
-const SponsorshipEstimate = dynamic(() => import('./SponsorshipEstimate'), { ssr: false });
-const RpmTable = dynamic(() => import('./RpmTable'), { ssr: false });
+import {
+  ProjectionChart,
+  Recommendations,
+  DriversBreakdown,
+  MilestoneTimeline,
+  SponsorshipEstimate,
+  RpmTable,
+} from './dynamicImports';
 import YouTubeShareButtons from './ShareButtons';
 import CollapsibleSection from '@/features/calculators/shared/CollapsibleSection';
 
