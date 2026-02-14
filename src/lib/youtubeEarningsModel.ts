@@ -84,7 +84,7 @@ export interface Driver {
 const YOUTUBE_CREATOR_SHARE = 0.55;
 
 const CPM_DATA: Record<NicheId, { name: string; cpm: RpmRange }> = {
-  finance: { name: 'Finance & Business', cpm: { low: 18, mid: 30, high: 45 } },
+  finance: { name: 'Finance & Business', cpm: { low: 20, mid: 32, high: 50 } },
   tech: { name: 'Technology', cpm: { low: 8, mid: 12, high: 18 } },
   education: { name: 'Education', cpm: { low: 5, mid: 8, high: 12 } },
   health: { name: 'Health & Fitness', cpm: { low: 5, mid: 8, high: 12 } },
