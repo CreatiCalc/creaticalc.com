@@ -9,7 +9,7 @@ import Select from '@/components/ui/Select';
 import Card from '@/components/ui/Card';
 import CollapsibleSection from '@/features/calculators/shared/CollapsibleSection';
 import CalcMethodToggle from '@/features/calculators/shared/CalcMethodToggle';
-import FollowerPresets from './FollowerPresets';
+import FollowerSliderInput from '@/features/calculators/shared/FollowerSliderInput';
 import EngagementResultsSection from './EngagementResultsSection';
 import { MultiFormulaDisplay } from './dynamicImports';
 import {
@@ -66,15 +66,6 @@ function ContentTypeToggle({
     </div>
   );
 }
-
-// ─── Follower ticks ──────────────────────────────────────────────────────────
-
-const FOLLOWER_TICKS = [
-  { value: 1000, label: '1K' },
-  { value: 10000, label: '10K' },
-  { value: 100000, label: '100K' },
-  { value: 1000000, label: '1M' },
-];
 
 // ─── Formula display ─────────────────────────────────────────────────────────
 
@@ -191,30 +182,12 @@ export default function EngagementCalculator({ config }: EngagementCalculatorPro
           )}
 
           {/* Follower presets + slider */}
-          <FollowerPresets current={state.followers} onSelect={(v) => setField('followers', v)} />
-          <div className="grid gap-4 sm:grid-cols-2">
-            <Slider
-              label={config.followerLabel}
-              value={state.followers}
-              min={100}
-              max={config.followerSliderMax}
-              step={100}
-              logScale
-              ticks={FOLLOWER_TICKS}
-              onChange={(v) => setField('followers', v)}
-              formatValue={(v) => v.toLocaleString()}
-            />
-            <NumberInput
-              label="Or enter exact follower count"
-              value={state.followers}
-              min={0}
-              max={config.followerSliderMax}
-              step={100}
-              onChange={(v) =>
-                setField('followers', Math.max(0, Math.min(v, config.followerSliderMax)))
-              }
-            />
-          </div>
+          <FollowerSliderInput
+            value={state.followers}
+            onChange={(v) => setField('followers', v)}
+            max={config.followerSliderMax}
+            label={config.followerLabel}
+          />
 
           {/* Alt metrics — grouped mode (Instagram: reach + impressions in one box) */}
           {config.altMetricGrouped &&

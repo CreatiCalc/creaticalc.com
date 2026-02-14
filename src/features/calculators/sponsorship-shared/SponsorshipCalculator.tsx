@@ -2,15 +2,13 @@
 
 import { useMemo, useReducer } from 'react';
 import { useIsEmbed } from '@/lib/embedContext';
-import Slider from '@/components/ui/Slider';
-import NumberInput from '@/components/ui/NumberInput';
 import Select from '@/components/ui/Select';
 import Card from '@/components/ui/Card';
 import ShareButtons from '@/components/ui/ShareButtons';
 import { useShareUrl } from '@/components/ui/useShareUrl';
 import AdSlot from '@/components/layout/AdSlot';
 import CollapsibleSection from '@/features/calculators/shared/CollapsibleSection';
-import { FollowerPresets } from '@/features/calculators/engagement-shared';
+import FollowerSliderInput from '@/features/calculators/shared/FollowerSliderInput';
 import ContentTypeSelector from './ContentTypeSelector';
 import DealTypeSelector from './DealTypeSelector';
 import SponsorshipRateDisplay from './SponsorshipRateDisplay';
@@ -99,15 +97,6 @@ function getInitialState(config: SponsorshipPlatformConfig): SponsorshipState {
   };
 }
 
-// ─── Follower ticks ──────────────────────────────────────────────────────────
-
-const FOLLOWER_TICKS = [
-  { value: 1000, label: '1K' },
-  { value: 10000, label: '10K' },
-  { value: 100000, label: '100K' },
-  { value: 1000000, label: '1M' },
-];
-
 // ─── Main Component ──────────────────────────────────────────────────────────
 
 interface SponsorshipCalculatorProps {
@@ -175,33 +164,10 @@ export default function SponsorshipCalculator({ config }: SponsorshipCalculatorP
             onChange={(v) => dispatch({ type: 'SET_DEAL_TYPE', payload: v as DealType })}
           />
 
-          <FollowerPresets
-            current={state.followers}
-            onSelect={(v) => dispatch({ type: 'SET_FOLLOWERS', payload: v })}
+          <FollowerSliderInput
+            value={state.followers}
+            onChange={(v) => dispatch({ type: 'SET_FOLLOWERS', payload: v })}
           />
-          <div className="grid gap-4 sm:grid-cols-2">
-            <Slider
-              label="Followers"
-              value={state.followers}
-              min={100}
-              max={5_000_000}
-              step={100}
-              logScale
-              ticks={FOLLOWER_TICKS}
-              onChange={(v) => dispatch({ type: 'SET_FOLLOWERS', payload: v })}
-              formatValue={(v) => v.toLocaleString()}
-            />
-            <NumberInput
-              label="Or enter exact follower count"
-              value={state.followers}
-              min={0}
-              max={5_000_000}
-              step={100}
-              onChange={(v) =>
-                dispatch({ type: 'SET_FOLLOWERS', payload: Math.max(0, Math.min(v, 5_000_000)) })
-              }
-            />
-          </div>
 
           <EngagementRateInput
             engagementRate={state.engagementRate}
