@@ -27,8 +27,8 @@ import {
   PLATFORM_AVERAGES,
   YOY_TRENDS,
   getTiers,
+  findTier,
   getFollowerTier,
-  getTierLabel,
   getTierBenchmark,
   getIndustryBenchmark,
   formatPercent,
@@ -226,9 +226,10 @@ export function estimateBrandDealRate(
 
 export function computeEngagement(input: EngagementInput): EngagementResult {
   const rate = calculateEngagementRate(input);
-  const tier = getFollowerTier(input.platform, input.followers);
-  const tierLabel = getTierLabel(input.platform, input.followers);
-  const tierBenchmark = getTierBenchmark(input.platform, input.followers);
+  const tierData = findTier(input.platform, input.followers);
+  const tier = tierData.tier;
+  const tierLabel = tierData.label;
+  const tierBenchmark = { low: tierData.benchmarkLow, high: tierData.benchmarkHigh };
   const rating = rateEngagement(
     input.platform,
     input.followers,

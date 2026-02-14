@@ -557,28 +557,25 @@ export function getTiers(platform: Platform): TierBenchmark[] {
   }
 }
 
-export function getFollowerTier(platform: Platform, followers: number): FollowerTier {
+/** Single tier lookup — all other tier helpers delegate to this. */
+export function findTier(platform: Platform, followers: number): TierBenchmark {
   const tiers = getTiers(platform);
-  const match = tiers.find((t) => followers >= t.min && followers <= t.max);
-  return match?.tier ?? tiers[tiers.length - 1].tier;
+  return tiers.find((t) => followers >= t.min && followers <= t.max) ?? tiers[tiers.length - 1];
+}
+
+export function getFollowerTier(platform: Platform, followers: number): FollowerTier {
+  return findTier(platform, followers).tier;
 }
 
 export function getTierLabel(platform: Platform, followers: number): string {
-  const tiers = getTiers(platform);
-  const match = tiers.find((t) => followers >= t.min && followers <= t.max);
-  return match?.label ?? tiers[tiers.length - 1].label;
+  return findTier(platform, followers).label;
 }
 
 export function getTierBenchmark(
   platform: Platform,
   followers: number
 ): { low: number; high: number } {
-  const tiers = getTiers(platform);
-  const match = tiers.find((t) => followers >= t.min && followers <= t.max);
-  if (!match) {
-    const last = tiers[tiers.length - 1];
-    return { low: last.benchmarkLow, high: last.benchmarkHigh };
-  }
+  const match = findTier(platform, followers);
   return { low: match.benchmarkLow, high: match.benchmarkHigh };
 }
 

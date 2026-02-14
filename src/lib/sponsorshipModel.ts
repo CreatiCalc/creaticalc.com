@@ -1,7 +1,6 @@
 import type { Platform, IndustryId, FollowerTier } from './engagementBenchmarks';
 import {
-  getFollowerTier,
-  getTierLabel,
+  findTier,
   formatUSD,
   formatFollowerCount,
   getEngagementMultiplier,
@@ -234,8 +233,9 @@ export function computeSponsorship(input: SponsorshipInput): SponsorshipResult {
     industryId
   );
   const rateCard = buildRateCard(platform, followers, engagementRate, dealType, industryId);
-  const tier = getFollowerTier(platform, followers);
-  const tierLabel = getTierLabel(platform, followers);
+  const tierData = findTier(platform, followers);
+  const tier = tierData.tier;
+  const tierLabel = tierData.label;
   const tierRates = getTierRates(platform, engagementRate, contentType, dealType, industryId);
   const monthlyEarnings: RateRange = {
     low: rate.low * dealsPerMonth,
