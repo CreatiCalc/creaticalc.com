@@ -65,6 +65,23 @@ export interface EngagementInput {
   avgBookmarks?: number;
 }
 
+/** Type-safe accessor for dynamically-keyed EngagementInput fields. */
+export function getInputField(
+  input: EngagementInput,
+  key: keyof EngagementInput
+): EngagementInput[keyof EngagementInput] {
+  return input[key];
+}
+
+/** Type-safe setter that returns a shallow copy with the field updated. */
+export function setInputField(
+  input: EngagementInput,
+  key: keyof EngagementInput,
+  value: string | number
+): EngagementInput {
+  return { ...input, [key]: value };
+}
+
 export interface EngagementBreakdown {
   likes: { count: number; pct: number };
   comments: { count: number; pct: number };

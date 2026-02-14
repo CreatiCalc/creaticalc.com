@@ -14,15 +14,8 @@ function reducer(state: EngagementInput, action: Action): EngagementInput {
   switch (action.type) {
     case 'SET_FIELD':
       return { ...state, [action.field]: action.value };
-    case 'APPLY_SCENARIO': {
-      const next = { ...state };
-      for (const [key, val] of Object.entries(action.payload)) {
-        if (val !== undefined) {
-          (next as Record<string, unknown>)[key] = val;
-        }
-      }
-      return next;
-    }
+    case 'APPLY_SCENARIO':
+      return { ...state, ...action.payload };
     default:
       return state;
   }

@@ -4,6 +4,7 @@ import type {
   InstagramContentType,
   IndustryId,
 } from '@/lib/engagementModel';
+import { setInputField } from '@/lib/engagementModel';
 
 // ─── Config Types ────────────────────────────────────────────────────────────
 
@@ -394,7 +395,7 @@ export const TWITTER_CONFIG: EngagementPlatformConfig = {
 // ─── State Builders ──────────────────────────────────────────────────────────
 
 export function buildDefaultState(config: EngagementPlatformConfig): EngagementInput {
-  const state: EngagementInput = {
+  let state: EngagementInput = {
     platform: config.platform,
     followers: config.defaultFollowers,
     avgLikes: 0,
@@ -403,15 +404,14 @@ export function buildDefaultState(config: EngagementPlatformConfig): EngagementI
     postsAnalyzed: 10,
   };
 
-  const rec = state as unknown as Record<string, unknown>;
   for (const m of config.metrics) {
-    rec[m.inputKey] = m.defaultValue;
+    state = setInputField(state, m.inputKey, m.defaultValue);
   }
   for (const alt of config.altMetrics) {
-    rec[alt.inputKey] = alt.defaultValue;
+    state = setInputField(state, alt.inputKey, alt.defaultValue);
   }
   if (config.calcMethods.length > 0) {
-    rec[config.calcMethodInputKey] = config.calcMethods[0].value;
+    state = setInputField(state, config.calcMethodInputKey, config.calcMethods[0].value);
   }
   if (config.hasContentType && config.defaultContentType) {
     state.contentType = config.defaultContentType;

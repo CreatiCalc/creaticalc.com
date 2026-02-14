@@ -18,6 +18,8 @@ import {
   getTierRange,
   calculateMultiFormula,
   calculateHealthScore,
+  getInputField,
+  type EngagementInput,
   type IndustryId,
   type InstagramContentType,
 } from '@/lib/engagementModel';
@@ -74,24 +76,24 @@ function FormulaDisplay({
   rate,
 }: {
   config: EngagementPlatformConfig;
-  state: Record<string, unknown>;
+  state: EngagementInput;
   rate: number;
 }) {
   const metricLabels = config.metrics.map((m) => m.formulaLabel);
   const metricValues = config.metrics.map((m) =>
-    ((state[m.inputKey] as number) ?? 0).toLocaleString()
+    ((getInputField(state, m.inputKey) as number) ?? 0).toLocaleString()
   );
 
   // Determine the denominator based on the active calc method
-  const activeMethod = String(state[config.calcMethodInputKey] ?? 'byFollowers');
+  const activeMethod = String(getInputField(state, config.calcMethodInputKey) ?? 'byFollowers');
   const activeAlt = config.altMetrics.find((a) => a.activeForMethod === activeMethod);
 
   let denominatorLabel = 'Followers';
-  let denominatorValue = ((state.followers as number) ?? 0).toLocaleString();
+  let denominatorValue = (state.followers ?? 0).toLocaleString();
 
   if (activeAlt) {
     denominatorLabel = activeAlt.formulaLabel;
-    denominatorValue = ((state[activeAlt.inputKey] as number) ?? 0).toLocaleString();
+    denominatorValue = ((getInputField(state, activeAlt.inputKey) as number) ?? 0).toLocaleString();
   }
 
   return (
@@ -132,10 +134,7 @@ export default function EngagementCalculator({ config }: EngagementCalculatorPro
     [state, config.hasMultiFormula]
   );
 
-  // Access state fields dynamically via a helper that avoids TS strict-cast issues
-  const get = (key: string): unknown => (state as unknown as Record<string, unknown>)[key];
-
-  const activeMethod = String(get(config.calcMethodInputKey) ?? 'byFollowers');
+  const activeMethod = String(getInputField(state, config.calcMethodInputKey) ?? 'byFollowers');
 
   // Map calc methods to the CalcMethodToggle format
   const calcMethodOptions = config.calcMethods.map((m) => ({
@@ -143,8 +142,6 @@ export default function EngagementCalculator({ config }: EngagementCalculatorPro
     label: m.label,
     description: m.description ?? '',
   }));
-
-  const stateRec = state as unknown as Record<string, unknown>;
 
   return (
     <>
@@ -178,20 +175,20 @@ export default function EngagementCalculator({ config }: EngagementCalculatorPro
 
           {/* Alt metrics — grouped mode (Instagram: reach + impressions in one box) */}
           {config.altMetricGrouped &&
-            renderGroupedAltMetrics(config, stateRec, activeMethod, setField)}
+            renderGroupedAltMetrics(config, state, activeMethod, setField)}
 
           {/* Alt metrics — individual, prominent when active method */}
           {!config.altMetricGrouped &&
             config.altMetricAlwaysVisible &&
             config.altMetrics.map((alt) =>
               activeMethod === alt.activeForMethod
-                ? renderProminentAltMetric(alt, stateRec, setField)
+                ? renderProminentAltMetric(alt, state, setField)
                 : null
             )}
 
           {/* Main engagement metrics */}
           <div className={`grid gap-4 ${config.metricsGridCols}`}>
-            {config.metrics.map((m) => renderMetricSlider(m, stateRec, setField))}
+            {config.metrics.map((m) => renderMetricSlider(m, state, setField))}
           </div>
 
           {/* Alt metrics — individual, secondary position when not active */}
@@ -199,7 +196,7 @@ export default function EngagementCalculator({ config }: EngagementCalculatorPro
             config.altMetricAlwaysVisible &&
             config.altMetrics.map((alt) =>
               activeMethod !== alt.activeForMethod
-                ? renderSecondaryAltMetric(alt, stateRec, setField, config.altMetricSecondaryHint)
+                ? renderSecondaryAltMetric(alt, state, setField, config.altMetricSecondaryHint)
                 : null
             )}
 
@@ -222,7 +219,7 @@ export default function EngagementCalculator({ config }: EngagementCalculatorPro
           />
 
           {/* Formula display */}
-          <FormulaDisplay config={config} state={stateRec} rate={result.engagementRate} />
+          <FormulaDisplay config={config} state={state} rate={result.engagementRate} />
         </div>
       </Card>
 
@@ -257,16 +254,14 @@ export default function EngagementCalculator({ config }: EngagementCalculatorPro
 
 // ─── Render helpers ──────────────────────────────────────────────────────────
 
-function renderMetricSlider(
-  m: MetricDef,
-  state: Record<string, unknown>,
-  setField: (field: keyof import('@/lib/engagementModel').EngagementInput, value: number) => void
-) {
+type SetField = (field: keyof EngagementInput, value: number) => void;
+
+function renderMetricSlider(m: MetricDef, state: EngagementInput, setField: SetField) {
   return (
     <div key={m.inputKey}>
       <Slider
         label={m.label}
-        value={(state[m.inputKey] as number) ?? m.defaultValue}
+        value={(getInputField(state, m.inputKey) as number) ?? m.defaultValue}
         min={m.sliderMin}
         max={m.sliderMax}
         step={m.step}
@@ -279,11 +274,7 @@ function renderMetricSlider(
   );
 }
 
-function renderProminentAltMetric(
-  alt: AltMetricDef,
-  state: Record<string, unknown>,
-  setField: (field: keyof import('@/lib/engagementModel').EngagementInput, value: number) => void
-) {
+function renderProminentAltMetric(alt: AltMetricDef, state: EngagementInput, setField: SetField) {
   return (
     <div
       key={`${alt.inputKey}-prominent`}
@@ -291,7 +282,7 @@ function renderProminentAltMetric(
     >
       <Slider
         label={alt.label}
-        value={(state[alt.inputKey] as number) ?? alt.defaultValue}
+        value={(getInputField(state, alt.inputKey) as number) ?? alt.defaultValue}
         min={alt.min}
         max={alt.max}
         step={alt.step}
@@ -306,15 +297,15 @@ function renderProminentAltMetric(
 
 function renderSecondaryAltMetric(
   alt: AltMetricDef,
-  state: Record<string, unknown>,
-  setField: (field: keyof import('@/lib/engagementModel').EngagementInput, value: number) => void,
+  state: EngagementInput,
+  setField: SetField,
   hint?: string
 ) {
   return (
     <div key={`${alt.inputKey}-secondary`}>
       <Slider
         label={alt.label}
-        value={(state[alt.inputKey] as number) ?? alt.defaultValue}
+        value={(getInputField(state, alt.inputKey) as number) ?? alt.defaultValue}
         min={alt.min}
         max={alt.max}
         step={alt.step}
@@ -330,9 +321,9 @@ function renderSecondaryAltMetric(
 
 function renderGroupedAltMetrics(
   config: EngagementPlatformConfig,
-  state: Record<string, unknown>,
+  state: EngagementInput,
   activeMethod: string,
-  setField: (field: keyof import('@/lib/engagementModel').EngagementInput, value: number) => void
+  setField: SetField
 ) {
   const showGroup = activeMethod !== 'byFollowers';
   if (!showGroup) return null;
@@ -343,7 +334,7 @@ function renderGroupedAltMetrics(
         <NumberInput
           key={alt.inputKey}
           label={alt.label}
-          value={(state[alt.inputKey] as number) ?? alt.defaultValue}
+          value={(getInputField(state, alt.inputKey) as number) ?? alt.defaultValue}
           min={alt.min}
           max={alt.max}
           step={alt.step}
