@@ -46,3 +46,20 @@ export function formatFollowerCount(count: number): string {
   if (count >= 1_000) return `${(count / 1_000).toFixed(count % 1_000 === 0 ? 0 : 1)}K`;
   return count.toLocaleString();
 }
+
+/** Compact number format with consistent 1-decimal (e.g. 1.2B, 3.5M, 12.0K). */
+export function formatCompact(n: number): string {
+  if (n >= 1_000_000_000) return `${(n / 1_000_000_000).toFixed(1)}B`;
+  if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(1)}M`;
+  if (n >= 1_000) return `${(n / 1_000).toFixed(1)}K`;
+  return n.toLocaleString();
+}
+
+/** Format an ISO date string as "Jan 1, 2026". */
+export function formatDate(dateStr: string): string {
+  return new Date(dateStr).toLocaleDateString('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+  });
+}

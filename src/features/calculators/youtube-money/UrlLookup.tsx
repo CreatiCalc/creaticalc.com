@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { getNiche, type NicheId } from '@/lib/youtubeEarningsModel';
+import { formatCompact, formatDate } from '@/lib/formatters';
 
 interface LookupResult {
   dailyViews: number;
@@ -26,21 +27,6 @@ interface LookupData {
 interface UrlLookupProps {
   onResult: (data: LookupResult) => void;
   currentDailyViews: number;
-}
-
-function formatCompact(n: number): string {
-  if (n >= 1_000_000_000) return `${(n / 1_000_000_000).toFixed(1)}B`;
-  if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(1)}M`;
-  if (n >= 1_000) return `${(n / 1_000).toFixed(1)}K`;
-  return n.toLocaleString();
-}
-
-function formatDate(dateStr: string): string {
-  return new Date(dateStr).toLocaleDateString('en-US', {
-    month: 'short',
-    day: 'numeric',
-    year: 'numeric',
-  });
 }
 
 export default function UrlLookup({ onResult, currentDailyViews }: UrlLookupProps) {
