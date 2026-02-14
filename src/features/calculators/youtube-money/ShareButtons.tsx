@@ -4,6 +4,7 @@ import { useCallback } from 'react';
 import ShareButtons from '@/components/ui/ShareButtons';
 import { encodeCalcState } from '@/lib/shareCodec';
 import { formatUSD } from '@/lib/youtubeEarningsModel';
+import { SITE_URL } from '@/lib/siteConfig';
 import type { CalculatorState } from './useCalculatorState';
 
 interface YouTubeShareButtonsProps {
@@ -26,9 +27,7 @@ export default function YouTubeShareButtons({ state, yearlyMid, tier }: YouTubeS
       videoLength: state.videoLength,
       highCpmAudiencePct: state.highCpmAudiencePct,
     });
-    const url = new URL(window.location.pathname, window.location.origin);
-    url.searchParams.set('c', code);
-    return url.toString();
+    return `${SITE_URL}${window.location.pathname}?c=${code}`;
   }, [
     state.dailyViews,
     state.nicheId,
@@ -44,5 +43,8 @@ export default function YouTubeShareButtons({ state, yearlyMid, tier }: YouTubeS
 
   const shareText = `I'm a "${tier}" creator projected to make ${formatUSD(yearlyMid)}/year on YouTube! Check your earnings:`;
 
-  return <ShareButtons getShareUrl={getShareUrl} shareText={shareText} />;
+  const embedSlug =
+    typeof window !== 'undefined' ? window.location.pathname.replace(/^\//, '') : undefined;
+
+  return <ShareButtons getShareUrl={getShareUrl} shareText={shareText} embedSlug={embedSlug} />;
 }

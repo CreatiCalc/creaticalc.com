@@ -32,7 +32,7 @@ export default function InstagramContentTypeToggle({
             className={`rounded-lg px-3 py-1.5 text-sm font-medium transition-colors ${
               value === mode
                 ? 'bg-primary text-white'
-                : 'border border-border bg-white text-foreground hover:border-primary'
+                : 'border border-border bg-background text-foreground hover:border-primary'
             }`}
           >
             {label}

@@ -21,7 +21,7 @@ export default function DealTypeSelector({ value, onChange }: DealTypeSelectorPr
             className={`rounded-lg border px-3 py-2 text-left transition-colors ${
               value === dt.value
                 ? 'border-primary bg-primary/5 text-foreground'
-                : 'border-border bg-white text-muted hover:border-primary/50'
+                : 'border-border bg-background text-muted hover:border-primary/50'
             }`}
           >
             <span className="block text-sm font-medium">{dt.label}</span>

@@ -18,15 +18,10 @@ export default function ResultCard({
   return (
     <div
       className={`relative overflow-hidden rounded-lg border p-4 ${
-        highlight ? 'border-primary/30 bg-primary/5' : 'border-border bg-white'
+        highlight ? 'border-primary/30 bg-primary/5' : 'border-border bg-background'
       }`}
     >
-      {highlight && (
-        <div
-          className="absolute inset-x-0 top-0 h-0.5"
-          style={{ background: 'var(--gradient-brand)' }}
-        />
-      )}
+      {highlight && <div className="absolute inset-x-0 top-0 h-0.5 bg-primary" />}
       <div className="flex items-center justify-between">
         <p className="text-sm text-muted">{label}</p>
         {badge && (

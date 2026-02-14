@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo } from 'react';
+import { useIsEmbed } from '@/lib/embedContext';
 import Slider from '@/components/ui/Slider';
 import NumberInput from '@/components/ui/NumberInput';
 import Select from '@/components/ui/Select';
@@ -27,6 +28,7 @@ import {
   type SponsorshipContentType,
 } from '@/lib/sponsorshipModel';
 import { useInstagramSponsorshipState } from './useInstagramSponsorshipState';
+import InstagramSponsorshipShareButtons from './ShareButtons';
 
 const followerTicks = [
   { value: 1000, label: '1K' },
@@ -36,6 +38,7 @@ const followerTicks = [
 ];
 
 export default function InstagramSponsorshipCalculator() {
+  const isEmbed = useIsEmbed();
   const { state, dispatch } = useInstagramSponsorshipState();
 
   const result = useMemo(
@@ -130,36 +133,60 @@ export default function InstagramSponsorshipCalculator() {
         />
       </div>
 
-      <AdSlot slot="below-results" className="mt-6" />
-
-      <CollapsibleSection title="Full Rate Card" defaultOpen={false} className="mt-6">
-        <RateCardTable
-          rateCard={result.rateCard}
-          activeContentType={state.contentType as SponsorshipContentType}
-        />
-      </CollapsibleSection>
-
-      <CollapsibleSection title="Monthly Earnings Projection" defaultOpen={false} className="mt-6">
-        <MonthlyEarningsProjection
-          rate={result.rate}
-          dealsPerMonth={state.dealsPerMonth}
-          onDealsChange={(v) => dispatch({ type: 'SET_DEALS_PER_MONTH', payload: v })}
-        />
-      </CollapsibleSection>
-
-      <AdSlot slot="after-chart" className="mt-6" />
-
-      <CollapsibleSection title="Influencer Tier Context" defaultOpen={false} className="mt-6">
-        <TierContext
-          currentTier={result.tier}
+      {!isEmbed && (
+        <InstagramSponsorshipShareButtons
+          state={{
+            platform: 'instagram',
+            followers: state.followers,
+            engagementRate: state.engagementRate,
+            contentType: state.contentType,
+            dealType: state.dealType,
+            industryId: state.industryId,
+            dealsPerMonth: state.dealsPerMonth,
+          }}
+          rateMid={result.rate.mid}
           tierLabel={result.tierLabel}
-          tierRates={result.tierRates}
         />
-      </CollapsibleSection>
+      )}
 
-      <CollapsibleSection title="Negotiation Tips" defaultOpen={false} className="mt-6">
-        <NegotiationTips tips={tips} />
-      </CollapsibleSection>
+      {!isEmbed && (
+        <>
+          <AdSlot slot="below-results" className="mt-6" />
+
+          <CollapsibleSection title="Full Rate Card" defaultOpen={false} className="mt-6">
+            <RateCardTable
+              rateCard={result.rateCard}
+              activeContentType={state.contentType as SponsorshipContentType}
+            />
+          </CollapsibleSection>
+
+          <CollapsibleSection
+            title="Monthly Earnings Projection"
+            defaultOpen={false}
+            className="mt-6"
+          >
+            <MonthlyEarningsProjection
+              rate={result.rate}
+              dealsPerMonth={state.dealsPerMonth}
+              onDealsChange={(v) => dispatch({ type: 'SET_DEALS_PER_MONTH', payload: v })}
+            />
+          </CollapsibleSection>
+
+          <AdSlot slot="after-chart" className="mt-6" />
+
+          <CollapsibleSection title="Influencer Tier Context" defaultOpen={false} className="mt-6">
+            <TierContext
+              currentTier={result.tier}
+              tierLabel={result.tierLabel}
+              tierRates={result.tierRates}
+            />
+          </CollapsibleSection>
+
+          <CollapsibleSection title="Negotiation Tips" defaultOpen={false} className="mt-6">
+            <NegotiationTips tips={tips} />
+          </CollapsibleSection>
+        </>
+      )}
     </>
   );
 }

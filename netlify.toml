@@ -13,6 +13,11 @@
   [headers.values]
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
 
+[[headers]]
+  for = "/embed/*"
+  [headers.values]
+    X-Frame-Options = ""
+
 [[redirects]]
   from = "https://www.creaticalc.com/*"
   to = "https://creaticalc.com/:splat"

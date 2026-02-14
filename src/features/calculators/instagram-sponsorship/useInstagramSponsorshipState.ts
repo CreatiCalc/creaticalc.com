@@ -3,6 +3,7 @@
 import { useReducer } from 'react';
 import type { IndustryId } from '@/lib/engagementModel';
 import type { InstagramContentType, DealType } from '@/lib/sponsorshipModel';
+import { decodeSponsorshipState } from '@/lib/sponsorshipShareCodec';
 
 export interface InstagramSponsorshipState {
   followers: number;
@@ -30,6 +31,23 @@ const defaultState: InstagramSponsorshipState = {
   dealsPerMonth: 2,
 };
 
+function getInitialState(): InstagramSponsorshipState {
+  if (typeof window === 'undefined') return defaultState;
+  const params = new URLSearchParams(window.location.search);
+  const code = params.get('c');
+  if (!code) return defaultState;
+  const decoded = decodeSponsorshipState(code);
+  if (!decoded || decoded.platform !== 'instagram') return defaultState;
+  return {
+    followers: decoded.followers,
+    engagementRate: decoded.engagementRate,
+    contentType: decoded.contentType as InstagramContentType,
+    dealType: decoded.dealType as DealType,
+    industryId: decoded.industryId,
+    dealsPerMonth: decoded.dealsPerMonth,
+  };
+}
+
 function reducer(state: InstagramSponsorshipState, action: Action): InstagramSponsorshipState {
   switch (action.type) {
     case 'SET_FOLLOWERS':
@@ -50,6 +68,6 @@ function reducer(state: InstagramSponsorshipState, action: Action): InstagramSpo
 }
 
 export function useInstagramSponsorshipState() {
-  const [state, dispatch] = useReducer(reducer, defaultState);
+  const [state, dispatch] = useReducer(reducer, undefined, getInitialState);
   return { state, dispatch };
 }

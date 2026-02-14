@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo, useEffect } from 'react';
+import { useIsEmbed } from '@/lib/embedContext';
 import { useSearchParams } from 'next/navigation';
 import Slider from '@/components/ui/Slider';
 import NumberInput from '@/components/ui/NumberInput';
@@ -64,6 +65,7 @@ const impressionTicks = [
 ];
 
 export default function TwitterEngagementCalculator() {
+  const isEmbed = useIsEmbed();
   const { state, dispatch } = useTwitterEngagementState();
   const searchParams = useSearchParams();
 
@@ -326,70 +328,82 @@ export default function TwitterEngagementCalculator() {
         />
       </div>
 
-      {/* Share buttons */}
-      <div className="mt-4">
-        <EngagementShareButtons
-          platform="twitter"
-          rate={result.engagementRate}
-          shareableState={shareableState}
-          basePath="/twitter-engagement-rate-calculator"
-        />
-      </div>
+      {!isEmbed && (
+        <>
+          {/* Share buttons */}
+          <div className="mt-4">
+            <EngagementShareButtons
+              platform="twitter"
+              rate={result.engagementRate}
+              shareableState={shareableState}
+              basePath="/twitter-engagement-rate-calculator"
+            />
+          </div>
 
-      <AdSlot slot="below-results" className="mt-6" />
+          <AdSlot slot="below-results" className="mt-6" />
 
-      <CollapsibleSection title="What If Scenarios" defaultOpen={false} className="mt-6">
-        <WhatIfScenarios
-          input={input}
-          currentRate={result.engagementRate}
-          onApply={(changes) => dispatch({ type: 'APPLY_SCENARIO', payload: changes })}
-          platform="twitter"
-        />
-      </CollapsibleSection>
+          <CollapsibleSection title="What If Scenarios" defaultOpen={false} className="mt-6">
+            <WhatIfScenarios
+              input={input}
+              currentRate={result.engagementRate}
+              onApply={(changes) => dispatch({ type: 'APPLY_SCENARIO', payload: changes })}
+              platform="twitter"
+            />
+          </CollapsibleSection>
 
-      <CollapsibleSection title="Industry Benchmarks" defaultOpen={false} className="mt-6">
-        <IndustryBenchmarks
-          platform="twitter"
-          currentIndustryId={state.industryId}
-          currentRate={result.engagementRate}
-        />
-      </CollapsibleSection>
+          <CollapsibleSection title="Industry Benchmarks" defaultOpen={false} className="mt-6">
+            <IndustryBenchmarks
+              platform="twitter"
+              currentIndustryId={state.industryId}
+              currentRate={result.engagementRate}
+            />
+          </CollapsibleSection>
 
-      <CollapsibleSection title="Estimated Brand Deal Rates" defaultOpen={false} className="mt-6">
-        <BrandDealEstimate
-          platform="twitter"
-          followers={state.followers}
-          engagementRate={result.engagementRate}
-          industryId={state.industryId}
-          estimate={result.brandDealEstimate}
-        />
-      </CollapsibleSection>
+          <CollapsibleSection
+            title="Estimated Brand Deal Rates"
+            defaultOpen={false}
+            className="mt-6"
+          >
+            <BrandDealEstimate
+              platform="twitter"
+              followers={state.followers}
+              engagementRate={result.engagementRate}
+              industryId={state.industryId}
+              estimate={result.brandDealEstimate}
+            />
+          </CollapsibleSection>
 
-      <AdSlot slot="after-chart" className="mt-6" />
+          <AdSlot slot="after-chart" className="mt-6" />
 
-      <CollapsibleSection title="Estimated Reach" defaultOpen={false} className="mt-6">
-        <EstimatedReachDisplay platform="twitter" followers={state.followers} />
-      </CollapsibleSection>
+          <CollapsibleSection title="Estimated Reach" defaultOpen={false} className="mt-6">
+            <EstimatedReachDisplay platform="twitter" followers={state.followers} />
+          </CollapsibleSection>
 
-      <CollapsibleSection title="Cross-Platform Comparison" defaultOpen={false} className="mt-6">
-        <CrossPlatformComparison
-          platform="twitter"
-          rate={result.engagementRate}
-          followers={state.followers}
-        />
-      </CollapsibleSection>
+          <CollapsibleSection
+            title="Cross-Platform Comparison"
+            defaultOpen={false}
+            className="mt-6"
+          >
+            <CrossPlatformComparison
+              platform="twitter"
+              rate={result.engagementRate}
+              followers={state.followers}
+            />
+          </CollapsibleSection>
 
-      <CollapsibleSection title="Year-Over-Year Trends" defaultOpen={false} className="mt-6">
-        <YoYTrendContext platform="twitter" rate={result.engagementRate} />
-      </CollapsibleSection>
+          <CollapsibleSection title="Year-Over-Year Trends" defaultOpen={false} className="mt-6">
+            <YoYTrendContext platform="twitter" rate={result.engagementRate} />
+          </CollapsibleSection>
 
-      <CollapsibleSection title="Growth Recommendations" defaultOpen={false} className="mt-6">
-        <GrowthRecommendations recommendations={recommendations} />
-      </CollapsibleSection>
+          <CollapsibleSection title="Growth Recommendations" defaultOpen={false} className="mt-6">
+            <GrowthRecommendations recommendations={recommendations} />
+          </CollapsibleSection>
 
-      <CollapsibleSection title="Engagement Breakdown" defaultOpen={false} className="mt-6">
-        <EngagementBreakdownChart breakdown={result.breakdown} platform="twitter" />
-      </CollapsibleSection>
+          <CollapsibleSection title="Engagement Breakdown" defaultOpen={false} className="mt-6">
+            <EngagementBreakdownChart breakdown={result.breakdown} platform="twitter" />
+          </CollapsibleSection>
+        </>
+      )}
     </>
   );
 }
