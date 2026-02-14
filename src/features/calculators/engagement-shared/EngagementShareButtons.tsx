@@ -1,10 +1,9 @@
 'use client';
 
-import { useCallback } from 'react';
 import ShareButtons from '@/components/ui/ShareButtons';
+import { useShareUrl } from '@/components/ui/useShareUrl';
 import type { Platform } from '@/lib/engagementBenchmarks';
 import { encodeState, buildShareText, type ShareableState } from '@/lib/engagementShareCodec';
-import { SITE_URL } from '@/lib/siteConfig';
 
 export type { ShareableState } from '@/lib/engagementShareCodec';
 
@@ -21,14 +20,9 @@ export default function EngagementShareButtons({
   shareableState,
   basePath,
 }: EngagementShareButtonsProps) {
-  const getShareUrl = useCallback(() => {
-    const encoded = encodeState(shareableState);
-    return `${SITE_URL}${basePath}?s=${encoded}`;
-  }, [shareableState, basePath]);
+  const { getShareUrl, embedSlug } = useShareUrl(shareableState, encodeState, basePath, 's');
 
   const shareText = buildShareText(platform, rate);
-
-  const embedSlug = basePath.replace(/^\//, '');
 
   return <ShareButtons getShareUrl={getShareUrl} shareText={shareText} embedSlug={embedSlug} />;
 }
