@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Embed Test</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 800px; margin: 40px auto; padding: 0 20px; }
+    h1 { font-size: 1.5rem; }
+    h2 { font-size: 1.2rem; margin-top: 2rem; border-top: 1px solid #ddd; padding-top: 1rem; }
+    p { color: #666; }
+    iframe { margin-bottom: 1rem; }
+
+    .controls {
+      position: sticky;
+      top: 0;
+      background: #fff;
+      border-bottom: 2px solid #e2e8f0;
+      padding: 16px 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .control-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .control-group label {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #334155;
+    }
+    .toggle-btn {
+      padding: 6px 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      background: #fff;
+      cursor: pointer;
+      font-size: 0.8rem;
+      font-weight: 500;
+      transition: all 0.15s;
+    }
+    .toggle-btn.active {
+      background: #7c3aed;
+      color: #fff;
+      border-color: #7c3aed;
+    }
+    .color-swatch {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: transform 0.15s, border-color 0.15s;
+    }
+    .color-swatch.active {
+      transform: scale(1.15);
+      border-color: #0f172a;
+    }
+    .color-swatch:hover { transform: scale(1.1); }
+    .custom-color-label {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 2px solid #cbd5e1;
+      cursor: pointer;
+      background: conic-gradient(red, yellow, lime, aqua, blue, magenta, red);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.15s, border-color 0.15s;
+    }
+    .custom-color-label.active {
+      transform: scale(1.15);
+      border-color: #0f172a;
+    }
+    .custom-color-label input { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+  </style>
+</head>
+<body>
+  <h1>Embed Widget Test</h1>
+  <p>All 9 embeddable calculators with live theme and color controls.</p>
+
+  <div class="controls">
+    <div class="control-group">
+      <label>Theme:</label>
+      <button class="toggle-btn active" data-theme="light" onclick="setTheme('light')">Light</button>
+      <button class="toggle-btn" data-theme="dark" onclick="setTheme('dark')">Dark</button>
+    </div>
+
+    <div class="control-group">
+      <label>Color:</label>
+      <button class="color-swatch active" data-color="purple" style="background:#7c3aed" title="Purple" onclick="setColor('purple')"></button>
+      <button class="color-swatch" data-color="blue" style="background:#2563eb" title="Blue" onclick="setColor('blue')"></button>
+      <button class="color-swatch" data-color="green" style="background:#059669" title="Green" onclick="setColor('green')"></button>
+      <button class="color-swatch" data-color="red" style="background:#dc2626" title="Red" onclick="setColor('red')"></button>
+      <button class="color-swatch" data-color="pink" style="background:#db2777" title="Pink" onclick="setColor('pink')"></button>
+      <button class="color-swatch" data-color="orange" style="background:#ea580c" title="Orange" onclick="setColor('orange')"></button>
+      <button class="color-swatch" data-color="teal" style="background:#0d9488" title="Teal" onclick="setColor('teal')"></button>
+      <label class="custom-color-label" id="custom-color-label" title="Custom color">
+        <input type="color" id="custom-color-input" value="#7c3aed" oninput="setCustomColor(this.value)">
+      </label>
+    </div>
+  </div>
+
+  <h2>1. YouTube Money Calculator</h2>
+  <iframe data-slug="youtube-money-calculator" src="http://localhost:3000/embed/youtube-money-calculator" width="100%" height="600" style="border:none;border-radius:8px;" loading="lazy" title="YouTube Money Calculator"></iframe>
+
+  <h2>2. YouTube Shorts Money Calculator</h2>
+  <iframe data-slug="youtube-shorts-money-calculator" src="http://localhost:3000/embed/youtube-shorts-money-calculator" width="100%" height="600" style="border:none;border-radius:8px;" loading="lazy" title="YouTube Shorts Money Calculator"></iframe>
+
+  <h2>3. YouTube Subscriber Growth Projector</h2>
+  <iframe data-slug="youtube-subscriber-projector" src="http://localhost:3000/embed/youtube-subscriber-projector" width="100%" height="600" style="border:none;border-radius:8px;" loading="lazy" title="YouTube Subscriber Growth Projector"></iframe>
+
+  <h2>4. Instagram Engagement Rate Calculator</h2>
+  <iframe data-slug="instagram-engagement-rate-calculator" src="http://localhost:3000/embed/instagram-engagement-rate-calculator" width="100%" height="600" style="border:none;border-radius:8px;" loading="lazy" title="Instagram Engagement Rate Calculator"></iframe>
+
+  <h2>5. Instagram Sponsorship Rate Calculator</h2>
+  <iframe data-slug="instagram-sponsorship-rate-calculator" src="http://localhost:3000/embed/instagram-sponsorship-rate-calculator" width="100%" height="600" style="border:none;border-radius:8px;" loading="lazy" title="Instagram Sponsorship Rate Calculator"></iframe>
+
+  <h2>6. TikTok Engagement Rate Calculator</h2>
+  <iframe data-slug="tiktok-engagement-rate-calculator" src="http://localhost:3000/embed/tiktok-engagement-rate-calculator" width="100%" height="600" style="border:none;border-radius:8px;" loading="lazy" title="TikTok Engagement Rate Calculator"></iframe>
+
+  <h2>7. TikTok Sponsorship Rate Calculator</h2>
+  <iframe data-slug="tiktok-sponsorship-rate-calculator" src="http://localhost:3000/embed/tiktok-sponsorship-rate-calculator" width="100%" height="600" style="border:none;border-radius:8px;" loading="lazy" title="TikTok Sponsorship Rate Calculator"></iframe>
+
+  <h2>8. Facebook Engagement Rate Calculator</h2>
+  <iframe data-slug="facebook-engagement-rate-calculator" src="http://localhost:3000/embed/facebook-engagement-rate-calculator" width="100%" height="600" style="border:none;border-radius:8px;" loading="lazy" title="Facebook Engagement Rate Calculator"></iframe>
+
+  <h2>9. X (Twitter) Engagement Rate Calculator</h2>
+  <iframe data-slug="twitter-engagement-rate-calculator" src="http://localhost:3000/embed/twitter-engagement-rate-calculator" width="100%" height="600" style="border:none;border-radius:8px;" loading="lazy" title="X (Twitter) Engagement Rate Calculator"></iframe>
+
+  <script>
+    var currentTheme = 'light';
+    var currentColor = 'purple';
+    var isCustomColor = false;
+
+    function buildUrl(slug) {
+      var params = new URLSearchParams();
+      if (currentTheme === 'dark') params.set('theme', 'dark');
+      if (currentColor !== 'purple') params.set('color', currentColor);
+      var qs = params.toString();
+      return 'http://localhost:3000/embed/' + slug + (qs ? '?' + qs : '');
+    }
+
+    function updateAllIframes() {
+      document.querySelectorAll('iframe[data-slug]').forEach(function(iframe) {
+        iframe.src = buildUrl(iframe.dataset.slug);
+      });
+    }
+
+    function setTheme(theme) {
+      currentTheme = theme;
+      document.querySelectorAll('.toggle-btn').forEach(function(btn) {
+        btn.classList.toggle('active', btn.dataset.theme === theme);
+      });
+      updateAllIframes();
+    }
+
+    function setColor(name) {
+      currentColor = name;
+      isCustomColor = false;
+      document.querySelectorAll('.color-swatch').forEach(function(btn) {
+        btn.classList.toggle('active', btn.dataset.color === name);
+      });
+      document.getElementById('custom-color-label').classList.remove('active');
+      updateAllIframes();
+    }
+
+    function setCustomColor(hex) {
+      currentColor = hex.replace('#', '');
+      isCustomColor = true;
+      document.querySelectorAll('.color-swatch').forEach(function(btn) {
+        btn.classList.remove('active');
+      });
+      var label = document.getElementById('custom-color-label');
+      label.classList.add('active');
+      label.style.background = hex;
+      updateAllIframes();
+    }
+
+    // Auto-resize
+    window.addEventListener('message', function(e) {
+      if (e.data && e.data.type === 'creaticalc-resize') {
+        document.querySelectorAll('iframe').forEach(function(iframe) {
+          if (e.source === iframe.contentWindow) {
+            iframe.style.height = e.data.height + 'px';
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

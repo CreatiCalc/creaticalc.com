@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { getNiche, type NicheId } from '@/lib/youtubeEarningsModel';
 
 interface LookupResult {
@@ -181,11 +182,20 @@ export default function UrlLookup({ onResult, currentDailyViews }: UrlLookupProp
         <div className="rounded-xl border border-border bg-white p-4 shadow-sm">
           <div className="flex gap-4">
             {resultData.thumbnail && (
-              <img
-                src={resultData.thumbnail}
-                alt={resultData.title}
-                className="w-32 h-20 sm:w-40 sm:h-24 flex-shrink-0 rounded-lg object-cover"
-              />
+              <a
+                href={titleUrl ?? undefined}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-shrink-0"
+              >
+                <Image
+                  src={resultData.thumbnail}
+                  alt={resultData.title}
+                  width={160}
+                  height={96}
+                  className="w-32 h-20 sm:w-40 sm:h-24 rounded-lg object-cover"
+                />
+              </a>
             )}
             <div className="min-w-0 flex-1">
               <div className="flex items-start justify-between gap-2">

@@ -1,13 +1,15 @@
 'use client';
 
 import { useState, useCallback } from 'react';
+import { EmbedCodeButton } from '@/features/embed/EmbedCodeButton';
 
 interface ShareButtonsProps {
   getShareUrl: () => string;
   shareText: string;
+  embedSlug?: string;
 }
 
-export default function ShareButtons({ getShareUrl, shareText }: ShareButtonsProps) {
+export default function ShareButtons({ getShareUrl, shareText, embedSlug }: ShareButtonsProps) {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = useCallback(async () => {
@@ -77,6 +79,8 @@ export default function ShareButtons({ getShareUrl, shareText }: ShareButtonsPro
         </svg>
         Share on LinkedIn
       </button>
+
+      {embedSlug && <EmbedCodeButton slug={embedSlug} />}
     </div>
   );
 }

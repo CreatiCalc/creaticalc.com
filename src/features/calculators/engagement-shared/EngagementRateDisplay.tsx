@@ -35,7 +35,7 @@ export default function EngagementRateDisplay({
   const platformAccent = platformAccents[platform];
 
   return (
-    <div className="relative overflow-hidden rounded-xl border border-border bg-white p-6 text-center shadow-sm">
+    <div className="relative overflow-hidden rounded-xl border border-border bg-background p-6 text-center shadow-sm">
       <div
         className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${platformAccent}`}
         aria-hidden="true"
