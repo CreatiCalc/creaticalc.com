@@ -1,5 +1,5 @@
 import { MONTH_ABBREVIATIONS } from './formatters';
-import type { YouTubeNicheId } from './niches';
+import { type YouTubeNicheId, type RpmRange, YOUTUBE_NICHE_DATA } from './niches';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -9,11 +9,7 @@ export type VideoLength = 'short' | 'standard' | 'long';
 
 export type NicheId = YouTubeNicheId;
 
-export interface RpmRange {
-  low: number;
-  mid: number;
-  high: number;
-}
+export type { RpmRange } from './niches';
 
 export interface Niche {
   id: NicheId;
@@ -76,20 +72,7 @@ export interface Driver {
 
 const YOUTUBE_CREATOR_SHARE = 0.55;
 
-const CPM_DATA: Record<NicheId, { name: string; cpm: RpmRange }> = {
-  finance: { name: 'Finance & Business', cpm: { low: 20, mid: 32, high: 50 } },
-  tech: { name: 'Technology', cpm: { low: 8, mid: 12, high: 18 } },
-  education: { name: 'Education', cpm: { low: 5, mid: 8, high: 12 } },
-  health: { name: 'Health & Fitness', cpm: { low: 5, mid: 8, high: 12 } },
-  beauty: { name: 'Beauty & Fashion', cpm: { low: 3, mid: 6, high: 10 } },
-  travel: { name: 'Travel', cpm: { low: 4, mid: 7, high: 10 } },
-  food: { name: 'Food & Cooking', cpm: { low: 3, mid: 5, high: 8 } },
-  lifestyle: { name: 'Lifestyle', cpm: { low: 2, mid: 4, high: 6 } },
-  entertainment: { name: 'Entertainment', cpm: { low: 1.5, mid: 2.5, high: 4 } },
-  gaming: { name: 'Gaming', cpm: { low: 1.5, mid: 3, high: 5 } },
-};
-
-export const NICHES: Niche[] = Object.entries(CPM_DATA).map(([id, data]) => ({
+export const NICHES: Niche[] = Object.entries(YOUTUBE_NICHE_DATA).map(([id, data]) => ({
   id: id as NicheId,
   name: data.name,
   cpm: data.cpm,

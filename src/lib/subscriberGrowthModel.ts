@@ -1,5 +1,5 @@
 import { getMonthLabel } from './formatters';
-import type { YouTubeNicheId } from './niches';
+import { type YouTubeNicheId, YOUTUBE_NICHE_DATA } from './niches';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -57,24 +57,13 @@ export interface GrowthProjectionResult {
 
 // ─── Data Tables ──────────────────────────────────────────────────────────────
 
-const NICHE_DATA: Record<GrowthNicheId, { name: string; avgMonthlyGrowthPct: number }> = {
-  finance: { name: 'Finance & Business', avgMonthlyGrowthPct: 3.5 },
-  tech: { name: 'Technology', avgMonthlyGrowthPct: 4.0 },
-  education: { name: 'Education', avgMonthlyGrowthPct: 5.0 },
-  health: { name: 'Health & Fitness', avgMonthlyGrowthPct: 4.5 },
-  beauty: { name: 'Beauty & Fashion', avgMonthlyGrowthPct: 3.0 },
-  travel: { name: 'Travel', avgMonthlyGrowthPct: 3.5 },
-  food: { name: 'Food & Cooking', avgMonthlyGrowthPct: 4.0 },
-  lifestyle: { name: 'Lifestyle', avgMonthlyGrowthPct: 3.0 },
-  entertainment: { name: 'Entertainment', avgMonthlyGrowthPct: 6.0 },
-  gaming: { name: 'Gaming', avgMonthlyGrowthPct: 5.5 },
-};
-
-export const GROWTH_NICHES: GrowthNiche[] = Object.entries(NICHE_DATA).map(([id, data]) => ({
-  id: id as GrowthNicheId,
-  name: data.name,
-  avgMonthlyGrowthPct: data.avgMonthlyGrowthPct,
-}));
+export const GROWTH_NICHES: GrowthNiche[] = Object.entries(YOUTUBE_NICHE_DATA).map(
+  ([id, data]) => ({
+    id: id as GrowthNicheId,
+    name: data.name,
+    avgMonthlyGrowthPct: data.avgMonthlyGrowthPct,
+  })
+);
 
 export function getGrowthNiche(id: GrowthNicheId): GrowthNiche {
   return GROWTH_NICHES.find((n) => n.id === id) ?? GROWTH_NICHES[0];
