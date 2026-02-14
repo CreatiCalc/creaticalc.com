@@ -1,4 +1,4 @@
-import { formatUSD } from './formatters';
+import { formatUSD, MONTH_ABBREVIATIONS } from './formatters';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -168,21 +168,6 @@ export const SEASONALITY_MULTIPLIERS: number[] = [
 
 const DAYS_IN_MONTH: number[] = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
-const MONTH_LABELS = [
-  'Jan',
-  'Feb',
-  'Mar',
-  'Apr',
-  'May',
-  'Jun',
-  'Jul',
-  'Aug',
-  'Sep',
-  'Oct',
-  'Nov',
-  'Dec',
-];
-
 // ─── Core Projection ─────────────────────────────────────────────────────────
 
 export function projectEarnings(input: ProjectionInput): ProjectionResult {
@@ -218,7 +203,7 @@ export function projectEarnings(input: ProjectionInput): ProjectionResult {
 
     months.push({
       monthIndex: i,
-      monthLabel: MONTH_LABELS[calMonth],
+      monthLabel: MONTH_ABBREVIATIONS[calMonth],
       monthNumber: calMonth,
       projectedDailyViews,
       projectedMonthViews,

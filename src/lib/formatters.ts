@@ -1,3 +1,20 @@
+// ─── Month Labels ────────────────────────────────────────────────────────────
+
+export const MONTH_ABBREVIATIONS = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec',
+] as const;
+
 // ─── Shared Formatting Utilities ─────────────────────────────────────────────
 
 export function formatUSD(amount: number): string {

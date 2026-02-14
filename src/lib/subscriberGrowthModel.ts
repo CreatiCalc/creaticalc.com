@@ -1,3 +1,5 @@
+import { MONTH_ABBREVIATIONS } from './formatters';
+
 // ─── Types ────────────────────────────────────────────────────────────────────
 
 export type GrowthNicheId =
@@ -138,27 +140,12 @@ function getDecelerationFactor(subs: number): number {
 
 // ─── Month Labels ─────────────────────────────────────────────────────────────
 
-const MONTH_NAMES = [
-  'Jan',
-  'Feb',
-  'Mar',
-  'Apr',
-  'May',
-  'Jun',
-  'Jul',
-  'Aug',
-  'Sep',
-  'Oct',
-  'Nov',
-  'Dec',
-];
-
 function getMonthLabel(startMonth: number, offset: number): string {
   const now = new Date();
   const startYear = now.getFullYear();
   const calMonth = (startMonth + offset) % 12;
   const yearOffset = Math.floor((startMonth + offset) / 12);
-  return `${MONTH_NAMES[calMonth]} ${startYear + yearOffset}`;
+  return `${MONTH_ABBREVIATIONS[calMonth]} ${startYear + yearOffset}`;
 }
 
 // ─── Milestone Targets ────────────────────────────────────────────────────────

@@ -3,30 +3,16 @@
 import { useMemo } from 'react';
 import type { ProjectionInput } from '@/lib/youtubeEarningsModel';
 import { findMilestoneMonths, formatUSD } from '@/lib/youtubeEarningsModel';
+import { MONTH_ABBREVIATIONS } from '@/lib/formatters';
 import SharedMilestoneTimeline from '../shared/MilestoneTimeline';
 import type { MilestoneItem } from '../shared/MilestoneTimeline';
-
-const MONTH_NAMES = [
-  'Jan',
-  'Feb',
-  'Mar',
-  'Apr',
-  'May',
-  'Jun',
-  'Jul',
-  'Aug',
-  'Sep',
-  'Oct',
-  'Nov',
-  'Dec',
-];
 
 function getMonthLabel(startMonth: number, monthIndex: number): string {
   const now = new Date();
   const startYear = now.getFullYear();
   const calMonth = (startMonth + monthIndex) % 12;
   const yearOffset = Math.floor((startMonth + monthIndex) / 12);
-  return `${MONTH_NAMES[calMonth]} ${startYear + yearOffset}`;
+  return `${MONTH_ABBREVIATIONS[calMonth]} ${startYear + yearOffset}`;
 }
 
 interface MilestoneTimelineProps {
