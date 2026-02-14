@@ -72,5 +72,15 @@ function getInitialState(config: SponsorshipPlatformConfig): SponsorshipState {
 
 export function useSponsorshipState(config: SponsorshipPlatformConfig) {
   const [state, dispatch] = useReducer(reducer, config, getInitialState);
-  return { state, dispatch } as const;
+
+  return {
+    state,
+    setFollowers: (v: number) => dispatch({ type: 'SET_FOLLOWERS', payload: v }),
+    setEngagementRate: (v: number) => dispatch({ type: 'SET_ENGAGEMENT_RATE', payload: v }),
+    setContentType: (v: SponsorshipContentType) =>
+      dispatch({ type: 'SET_CONTENT_TYPE', payload: v }),
+    setDealType: (v: DealType) => dispatch({ type: 'SET_DEAL_TYPE', payload: v }),
+    setIndustry: (v: IndustryId) => dispatch({ type: 'SET_INDUSTRY', payload: v }),
+    setDealsPerMonth: (v: number) => dispatch({ type: 'SET_DEALS_PER_MONTH', payload: v }),
+  };
 }

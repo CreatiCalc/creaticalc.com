@@ -37,7 +37,15 @@ interface SponsorshipCalculatorProps {
 
 export default function SponsorshipCalculator({ config }: SponsorshipCalculatorProps) {
   const isEmbed = useIsEmbed();
-  const { state, dispatch } = useSponsorshipState(config);
+  const {
+    state,
+    setFollowers,
+    setEngagementRate,
+    setContentType,
+    setDealType,
+    setIndustry,
+    setDealsPerMonth,
+  } = useSponsorshipState(config);
 
   const result = useMemo(
     () =>
@@ -85,9 +93,7 @@ export default function SponsorshipCalculator({ config }: SponsorshipCalculatorP
         <div className="space-y-6">
           <ButtonToggle
             value={state.contentType}
-            onChange={(v) =>
-              dispatch({ type: 'SET_CONTENT_TYPE', payload: v as SponsorshipContentType })
-            }
+            onChange={(v) => setContentType(v as SponsorshipContentType)}
             options={config.platform === 'instagram' ? IG_CONTENT_TYPES : TIKTOK_CONTENT_TYPES}
             label="Content Type"
             ariaLabel="Content type"
@@ -95,27 +101,21 @@ export default function SponsorshipCalculator({ config }: SponsorshipCalculatorP
             wrap
           />
 
-          <DealTypeSelector
-            value={state.dealType}
-            onChange={(v) => dispatch({ type: 'SET_DEAL_TYPE', payload: v as DealType })}
-          />
+          <DealTypeSelector value={state.dealType} onChange={(v) => setDealType(v as DealType)} />
 
-          <FollowerSliderInput
-            value={state.followers}
-            onChange={(v) => dispatch({ type: 'SET_FOLLOWERS', payload: v })}
-          />
+          <FollowerSliderInput value={state.followers} onChange={setFollowers} />
 
           <EngagementRateInput
             engagementRate={state.engagementRate}
             followers={state.followers}
-            onEngagementRateChange={(v) => dispatch({ type: 'SET_ENGAGEMENT_RATE', payload: v })}
+            onEngagementRateChange={setEngagementRate}
           />
 
           <Select
             label="Content Niche"
             value={state.industryId}
             options={INDUSTRIES}
-            onChange={(v) => dispatch({ type: 'SET_INDUSTRY', payload: v as IndustryId })}
+            onChange={(v) => setIndustry(v as IndustryId)}
           />
         </div>
       </Card>
@@ -156,7 +156,7 @@ export default function SponsorshipCalculator({ config }: SponsorshipCalculatorP
             <MonthlyEarningsProjection
               rate={result.rate}
               dealsPerMonth={state.dealsPerMonth}
-              onDealsChange={(v) => dispatch({ type: 'SET_DEALS_PER_MONTH', payload: v })}
+              onDealsChange={setDealsPerMonth}
             />
           </CollapsibleSection>
 

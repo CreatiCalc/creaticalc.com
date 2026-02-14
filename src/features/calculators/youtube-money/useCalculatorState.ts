@@ -117,5 +117,22 @@ export function useCalculatorState(defaultOverrides?: Partial<CalculatorState>) 
     getInitialState(overrides)
   );
 
-  return { state, dispatch } as const;
+  return {
+    state,
+    setDailyViews: (v: number) => dispatch({ type: 'SET_DAILY_VIEWS', payload: v }),
+    setNiche: (v: NicheId) => dispatch({ type: 'SET_NICHE', payload: v }),
+    setGrowthRate: (v: number) => dispatch({ type: 'SET_GROWTH_RATE', payload: v }),
+    toggleSeasonality: () => dispatch({ type: 'TOGGLE_SEASONALITY' }),
+    applyScenario: (v: Partial<ProjectionInput>) =>
+      dispatch({ type: 'APPLY_SCENARIO', payload: v }),
+    setFromLookup: (v: { dailyViews: number; nicheId?: NicheId }) =>
+      dispatch({ type: 'SET_FROM_LOOKUP', payload: v }),
+    setInputMode: (v: InputMode) => dispatch({ type: 'SET_INPUT_MODE', payload: v }),
+    setViewsPerVideo: (v: number) => dispatch({ type: 'SET_VIEWS_PER_VIDEO', payload: v }),
+    setUploadsPerWeek: (v: number) => dispatch({ type: 'SET_UPLOADS_PER_WEEK', payload: v }),
+    setContentFormat: (v: ContentFormat) => dispatch({ type: 'SET_CONTENT_FORMAT', payload: v }),
+    setVideoLength: (v: VideoLength) => dispatch({ type: 'SET_VIDEO_LENGTH', payload: v }),
+    setHighCpmAudiencePct: (v: number) =>
+      dispatch({ type: 'SET_HIGH_CPM_AUDIENCE_PCT', payload: v }),
+  };
 }

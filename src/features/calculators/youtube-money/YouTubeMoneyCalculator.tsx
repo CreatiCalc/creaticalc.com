@@ -89,7 +89,21 @@ export default function YouTubeMoneyCalculator({
   hideNicheSelector,
 }: YouTubeMoneyCalculatorProps = {}) {
   const isEmbed = useIsEmbed();
-  const { state, dispatch } = useCalculatorState(defaultOverrides);
+  const {
+    state,
+    setDailyViews,
+    setNiche,
+    setGrowthRate,
+    toggleSeasonality,
+    applyScenario,
+    setFromLookup,
+    setInputMode,
+    setViewsPerVideo,
+    setUploadsPerWeek,
+    setContentFormat,
+    setVideoLength,
+    setHighCpmAudiencePct,
+  } = useCalculatorState(defaultOverrides);
 
   const effectiveDailyViews = useMemo(
     () =>
@@ -130,19 +144,14 @@ export default function YouTubeMoneyCalculator({
 
   return (
     <>
-      {!isEmbed && (
-        <UrlLookup
-          onResult={(data) => dispatch({ type: 'SET_FROM_LOOKUP', payload: data })}
-          currentDailyViews={effectiveDailyViews}
-        />
-      )}
+      {!isEmbed && <UrlLookup onResult={setFromLookup} currentDailyViews={effectiveDailyViews} />}
 
       <Card className={isEmbed ? '' : 'mt-4'}>
         <div className="space-y-6">
           {!hideFormatToggle && (
             <ButtonToggle<ContentFormat>
               value={state.contentFormat}
-              onChange={(format) => dispatch({ type: 'SET_CONTENT_FORMAT', payload: format })}
+              onChange={setContentFormat}
               options={[
                 { value: 'longform', label: 'Long-form' },
                 { value: 'shorts', label: 'Shorts' },
@@ -154,7 +163,7 @@ export default function YouTubeMoneyCalculator({
 
           <ButtonToggle<InputMode>
             value={state.inputMode}
-            onChange={(mode) => dispatch({ type: 'SET_INPUT_MODE', payload: mode })}
+            onChange={setInputMode}
             options={[
               { value: 'daily', label: 'Daily Views' },
               { value: 'perVideo', label: 'Per Video' },
@@ -168,7 +177,7 @@ export default function YouTubeMoneyCalculator({
               <PresetPills
                 options={viewsPresets}
                 value={state.dailyViews}
-                onChange={(v) => dispatch({ type: 'SET_DAILY_VIEWS', payload: v })}
+                onChange={setDailyViews}
                 ariaLabel="Daily views presets"
               />
               <div className="grid gap-4 sm:grid-cols-2">
@@ -180,7 +189,7 @@ export default function YouTubeMoneyCalculator({
                   step={100}
                   logScale
                   ticks={viewsTicks}
-                  onChange={(v) => dispatch({ type: 'SET_DAILY_VIEWS', payload: v })}
+                  onChange={setDailyViews}
                   formatValue={(v) => v.toLocaleString()}
                 />
                 <NumberInput
@@ -189,12 +198,7 @@ export default function YouTubeMoneyCalculator({
                   min={0}
                   max={5000000}
                   step={1000}
-                  onChange={(v) =>
-                    dispatch({
-                      type: 'SET_DAILY_VIEWS',
-                      payload: Math.max(0, Math.min(v, 5000000)),
-                    })
-                  }
+                  onChange={(v) => setDailyViews(Math.max(0, Math.min(v, 5000000)))}
                 />
               </div>
             </div>
@@ -209,7 +213,7 @@ export default function YouTubeMoneyCalculator({
                   step={100}
                   logScale
                   ticks={viewsPerVideoTicks}
-                  onChange={(v) => dispatch({ type: 'SET_VIEWS_PER_VIDEO', payload: v })}
+                  onChange={setViewsPerVideo}
                   formatValue={(v) => v.toLocaleString()}
                 />
                 <NumberInput
@@ -218,12 +222,7 @@ export default function YouTubeMoneyCalculator({
                   min={1}
                   max={100}
                   step={1}
-                  onChange={(v) =>
-                    dispatch({
-                      type: 'SET_UPLOADS_PER_WEEK',
-                      payload: Math.max(1, Math.min(v, 100)),
-                    })
-                  }
+                  onChange={(v) => setUploadsPerWeek(Math.max(1, Math.min(v, 100)))}
                 />
               </div>
               <p className="text-sm text-muted">
@@ -238,7 +237,7 @@ export default function YouTubeMoneyCalculator({
                 label="Content Niche"
                 value={state.nicheId}
                 options={nicheOptions}
-                onChange={(v) => dispatch({ type: 'SET_NICHE', payload: v as NicheId })}
+                onChange={(v) => setNiche(v as NicheId)}
               />
               {isShorts && (
                 <p className="mt-1 text-xs text-muted">Niche has minimal impact on Shorts RPM</p>
@@ -251,7 +250,7 @@ export default function YouTubeMoneyCalculator({
               label="Video Length"
               value={state.videoLength}
               options={videoLengthOptions}
-              onChange={(v) => dispatch({ type: 'SET_VIDEO_LENGTH', payload: v as VideoLength })}
+              onChange={(v) => setVideoLength(v as VideoLength)}
             />
           )}
 
@@ -262,7 +261,7 @@ export default function YouTubeMoneyCalculator({
               min={0}
               max={100}
               step={5}
-              onChange={(v) => dispatch({ type: 'SET_HIGH_CPM_AUDIENCE_PCT', payload: v })}
+              onChange={setHighCpmAudiencePct}
               formatValue={(v) => `${v}%`}
             />
             <p className="mt-1 text-xs text-muted">
@@ -277,15 +276,9 @@ export default function YouTubeMoneyCalculator({
             </p>
           </div>
 
-          <GrowthRateInput
-            value={state.monthlyGrowthRate}
-            onChange={(rate) => dispatch({ type: 'SET_GROWTH_RATE', payload: rate })}
-          />
+          <GrowthRateInput value={state.monthlyGrowthRate} onChange={setGrowthRate} />
 
-          <SeasonalityToggle
-            enabled={state.seasonalityEnabled}
-            onToggle={() => dispatch({ type: 'TOGGLE_SEASONALITY' })}
-          />
+          <SeasonalityToggle enabled={state.seasonalityEnabled} onToggle={toggleSeasonality} />
 
           {isShorts ? (
             <p className="text-sm text-muted">
@@ -403,9 +396,7 @@ export default function YouTubeMoneyCalculator({
             <Recommendations
               state={projectionInput}
               projection={projection}
-              onApplyScenario={(scenario) =>
-                dispatch({ type: 'APPLY_SCENARIO', payload: scenario })
-              }
+              onApplyScenario={applyScenario}
             />
           </CollapsibleSection>
 
