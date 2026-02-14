@@ -27,7 +27,7 @@ export default function PresetPills<T extends string | number>({
           role="radio"
           aria-checked={value === option.value}
           onClick={() => onChange(option.value)}
-          className={`rounded-full border px-3 py-1 text-sm transition-colors ${
+          className={`rounded-full border px-3 py-1 text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 ${
             value === option.value
               ? 'border-primary bg-primary text-white'
               : 'border-border bg-surface text-muted hover:border-primary hover:text-foreground'

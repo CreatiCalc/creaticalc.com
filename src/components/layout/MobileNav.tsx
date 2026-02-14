@@ -22,7 +22,7 @@ export default function MobileNav() {
         onClick={() => setOpen(!open)}
         aria-label="Toggle navigation menu"
         aria-expanded={open}
-        className="flex h-10 w-10 items-center justify-center rounded-lg text-muted transition-colors hover:bg-surface-alt hover:text-foreground"
+        className="flex h-10 w-10 items-center justify-center rounded-lg text-muted transition-colors hover:bg-surface-alt hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
       >
         {open ? (
           <svg
