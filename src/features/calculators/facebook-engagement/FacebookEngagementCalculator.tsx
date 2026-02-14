@@ -1,53 +1,14 @@
 'use client';
 
 import { useMemo, useEffect } from 'react';
-import dynamic from 'next/dynamic';
 import { useIsEmbed } from '@/lib/embedContext';
 import { useSearchParams } from 'next/navigation';
 import Slider from '@/components/ui/Slider';
 import NumberInput from '@/components/ui/NumberInput';
 import Select from '@/components/ui/Select';
 import Card from '@/components/ui/Card';
-import AdSlot from '@/components/layout/AdSlot';
-import CollapsibleSection from '@/features/calculators/shared/CollapsibleSection';
-import EngagementRateDisplay from '@/features/calculators/engagement-shared/EngagementRateDisplay';
-import BenchmarkGauge from '@/features/calculators/engagement-shared/BenchmarkGauge';
 import FollowerPresets from '@/features/calculators/engagement-shared/FollowerPresets';
-import EngagementHealthScore from '@/features/calculators/engagement-shared/EngagementHealthScore';
-import EngagementShareButtons from '@/features/calculators/engagement-shared/EngagementShareButtons';
-
-const IndustryBenchmarks = dynamic(
-  () => import('@/features/calculators/engagement-shared/IndustryBenchmarks'),
-  { ssr: false }
-);
-const BrandDealEstimate = dynamic(
-  () => import('@/features/calculators/engagement-shared/BrandDealEstimate'),
-  { ssr: false }
-);
-const GrowthRecommendations = dynamic(
-  () => import('@/features/calculators/engagement-shared/GrowthRecommendations'),
-  { ssr: false }
-);
-const EngagementBreakdownChart = dynamic(
-  () => import('@/features/calculators/engagement-shared/EngagementBreakdownChart'),
-  { ssr: false }
-);
-const WhatIfScenarios = dynamic(
-  () => import('@/features/calculators/engagement-shared/WhatIfScenarios'),
-  { ssr: false }
-);
-const EstimatedReachDisplay = dynamic(
-  () => import('@/features/calculators/engagement-shared/EstimatedReachDisplay'),
-  { ssr: false }
-);
-const CrossPlatformComparison = dynamic(
-  () => import('@/features/calculators/engagement-shared/CrossPlatformComparison'),
-  { ssr: false }
-);
-const YoYTrendContext = dynamic(
-  () => import('@/features/calculators/engagement-shared/YoYTrendContext'),
-  { ssr: false }
-);
+import EngagementResultsSection from '@/features/calculators/engagement-shared/EngagementResultsSection';
 import {
   INDUSTRIES,
   computeEngagement,
@@ -308,105 +269,20 @@ export default function FacebookEngagementCalculator() {
         </div>
       </Card>
 
-      {/* Results */}
-      <div className="mt-6 grid gap-4 sm:grid-cols-2">
-        <EngagementRateDisplay
-          rate={result.engagementRate}
-          rating={result.rating}
-          ratingLabel={result.ratingLabel}
-          tierLabel={result.tierLabel}
-          tierRange={tierRange}
-          platform="facebook"
-        />
-        <EngagementHealthScore healthScore={healthScore} />
-      </div>
-
-      <div className="mt-4">
-        <BenchmarkGauge
-          rate={result.engagementRate}
-          benchmarkLow={result.tierBenchmark.low}
-          benchmarkHigh={result.tierBenchmark.high}
-          industryAvg={result.industryAvg}
-          platform="facebook"
-        />
-      </div>
-
-      {!isEmbed && (
-        <>
-          {/* Share buttons */}
-          <div className="mt-4">
-            <EngagementShareButtons
-              platform="facebook"
-              rate={result.engagementRate}
-              shareableState={shareableState}
-              basePath="/facebook-engagement-rate-calculator"
-            />
-          </div>
-
-          <AdSlot slot="below-results" className="mt-6" />
-
-          <CollapsibleSection title="What If Scenarios" defaultOpen={false} className="mt-6">
-            <WhatIfScenarios
-              input={input}
-              currentRate={result.engagementRate}
-              onApply={(changes) => dispatch({ type: 'APPLY_SCENARIO', payload: changes })}
-              platform="facebook"
-            />
-          </CollapsibleSection>
-
-          <CollapsibleSection title="Industry Benchmarks" defaultOpen={false} className="mt-6">
-            <IndustryBenchmarks
-              platform="facebook"
-              currentIndustryId={state.industryId}
-              currentRate={result.engagementRate}
-            />
-          </CollapsibleSection>
-
-          <CollapsibleSection
-            title="Estimated Brand Deal Rates"
-            defaultOpen={false}
-            className="mt-6"
-          >
-            <BrandDealEstimate
-              platform="facebook"
-              followers={state.followers}
-              engagementRate={result.engagementRate}
-              industryId={state.industryId}
-              estimate={result.brandDealEstimate}
-            />
-          </CollapsibleSection>
-
-          <AdSlot slot="after-chart" className="mt-6" />
-
-          <CollapsibleSection title="Estimated Reach" defaultOpen={false} className="mt-6">
-            <EstimatedReachDisplay platform="facebook" followers={state.followers} />
-          </CollapsibleSection>
-
-          <CollapsibleSection
-            title="Cross-Platform Comparison"
-            defaultOpen={false}
-            className="mt-6"
-          >
-            <CrossPlatformComparison
-              platform="facebook"
-              rate={result.engagementRate}
-              followers={state.followers}
-            />
-          </CollapsibleSection>
-
-          <CollapsibleSection title="Year-Over-Year Trends" defaultOpen={false} className="mt-6">
-            <YoYTrendContext platform="facebook" rate={result.engagementRate} />
-          </CollapsibleSection>
-
-          <CollapsibleSection title="Growth Recommendations" defaultOpen={false} className="mt-6">
-            <GrowthRecommendations recommendations={recommendations} />
-          </CollapsibleSection>
-
-          <CollapsibleSection title="Engagement Breakdown" defaultOpen={false} className="mt-6">
-            <EngagementBreakdownChart breakdown={result.breakdown} platform="facebook" />
-          </CollapsibleSection>
-        </>
-      )}
+      <EngagementResultsSection
+        platform="facebook"
+        basePath="/facebook-engagement-rate-calculator"
+        result={result}
+        input={input}
+        healthScore={healthScore}
+        tierRange={tierRange}
+        shareableState={shareableState}
+        recommendations={recommendations}
+        followers={state.followers}
+        industryId={state.industryId}
+        isEmbed={isEmbed}
+        onApplyScenario={(changes) => dispatch({ type: 'APPLY_SCENARIO', payload: changes })}
+      />
     </>
   );
 }
