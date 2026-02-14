@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
 import CalculatorSchema from '@/components/seo/CalculatorSchema';
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import { TikTokEngagementCalculator } from '@/features/calculators/tiktok-engagement';
 import type { FAQItem } from '@/features/calculators/shared/types';
 
@@ -207,6 +208,16 @@ export default function TikTokEngagementPage() {
         name="TikTok Engagement Rate Calculator"
         description="Calculate your TikTok engagement rate by followers or by views. Compare against industry benchmarks by follower tier."
         url="/tiktok-engagement-rate-calculator"
+      />
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', path: '/' },
+          { name: 'TikTok', path: '/tiktok-engagement-rate-calculator' },
+          {
+            name: 'TikTok Engagement Rate Calculator',
+            path: '/tiktok-engagement-rate-calculator',
+          },
+        ]}
       />
       <CalculatorLayout
         title="TikTok Engagement Rate Calculator"

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
 import CalculatorSchema from '@/components/seo/CalculatorSchema';
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import { YouTubeMoneyCalculator } from '@/features/calculators/youtube-money';
 import type { FAQItem } from '@/features/calculators/shared/types';
 import { NICHE_PAGES } from '@/lib/nichePageData';
@@ -146,6 +147,55 @@ const howItWorks = (
       applies these real-world multipliers to your projection so you can see the impact across the
       full year.
     </p>
+
+    <h3 className="mt-6 text-lg font-semibold text-foreground">Related Tools</h3>
+    <ul className="mt-2 list-disc space-y-1 pl-5">
+      <li>
+        <Link
+          href="/youtube-shorts-money-calculator"
+          className="font-medium text-primary hover:underline"
+        >
+          YouTube Shorts Money Calculator
+        </Link>{' '}
+        — estimate how much Shorts pay per 1,000 views
+      </li>
+      <li>
+        <Link
+          href="/youtube-subscriber-projector"
+          className="font-medium text-primary hover:underline"
+        >
+          YouTube Subscriber Growth Projector
+        </Link>{' '}
+        — project when you&rsquo;ll hit key subscriber milestones
+      </li>
+      <li>
+        <Link
+          href="/instagram-sponsorship-rate-calculator"
+          className="font-medium text-primary hover:underline"
+        >
+          Instagram Sponsorship Rate Calculator
+        </Link>{' '}
+        — find out how much to charge for sponsored Instagram posts
+      </li>
+      <li>
+        <Link
+          href="/tiktok-sponsorship-rate-calculator"
+          className="font-medium text-primary hover:underline"
+        >
+          TikTok Sponsorship Rate Calculator
+        </Link>{' '}
+        — calculate your TikTok sponsorship rates
+      </li>
+      <li>
+        <Link
+          href="/engagement-rate-benchmarks"
+          className="font-medium text-primary hover:underline"
+        >
+          Engagement Rate Benchmarks 2026
+        </Link>{' '}
+        — compare engagement rates across all platforms
+      </li>
+    </ul>
   </>
 );
 
@@ -156,6 +206,13 @@ export default function YouTubeMoneyCalculatorPage() {
         name="YouTube Money Calculator"
         description="Estimate how much money YouTubers make based on views, CPM, and content niche."
         url="/youtube-money-calculator"
+      />
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', path: '/' },
+          { name: 'YouTube', path: '/youtube-money-calculator' },
+          { name: 'YouTube Money Calculator', path: '/youtube-money-calculator' },
+        ]}
       />
       <CalculatorLayout
         title="YouTube Money Calculator"

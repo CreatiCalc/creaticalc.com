@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
 import CalculatorSchema from '@/components/seo/CalculatorSchema';
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import { TwitterEngagementCalculator } from '@/features/calculators/twitter-engagement';
 import type { FAQItem } from '@/features/calculators/shared/types';
 
@@ -195,6 +196,15 @@ const howItWorks = (
         </Link>{' '}
         — full benchmark data across all platforms
       </li>
+      <li>
+        <Link
+          href="/instagram-sponsorship-rate-calculator"
+          className="font-medium text-primary hover:underline"
+        >
+          Instagram Sponsorship Rate Calculator
+        </Link>{' '}
+        — compare cross-platform sponsorship rates
+      </li>
     </ul>
   </>
 );
@@ -206,6 +216,16 @@ export default function TwitterEngagementPage() {
         name="X (Twitter) Engagement Rate Calculator"
         description="Calculate your X (Twitter) engagement rate by followers or by impressions. Compare against industry benchmarks by follower tier."
         url="/twitter-engagement-rate-calculator"
+      />
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', path: '/' },
+          { name: 'X', path: '/twitter-engagement-rate-calculator' },
+          {
+            name: 'X (Twitter) Engagement Rate Calculator',
+            path: '/twitter-engagement-rate-calculator',
+          },
+        ]}
       />
       <CalculatorLayout
         title="X (Twitter) Engagement Rate Calculator"

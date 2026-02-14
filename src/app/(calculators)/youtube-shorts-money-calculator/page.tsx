@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
 import CalculatorSchema from '@/components/seo/CalculatorSchema';
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import { YouTubeMoneyCalculator } from '@/features/calculators/youtube-money';
 import type { FAQItem } from '@/features/calculators/shared/types';
 
@@ -123,6 +124,13 @@ export default function YouTubeShortsMoneyCalculatorPage() {
         name="YouTube Shorts Money Calculator"
         description="Estimate how much YouTube Shorts pay per 1,000 views with real RPM data."
         url="/youtube-shorts-money-calculator"
+      />
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', path: '/' },
+          { name: 'YouTube', path: '/youtube-money-calculator' },
+          { name: 'YouTube Shorts Money Calculator', path: '/youtube-shorts-money-calculator' },
+        ]}
       />
       <CalculatorLayout
         title="YouTube Shorts Money Calculator"

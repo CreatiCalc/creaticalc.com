@@ -11,32 +11,21 @@ const footerGroups = [
     ],
   },
   {
-    label: 'Instagram',
+    label: 'Engagement Rates',
     links: [
-      { name: 'Engagement Rate', href: '/instagram-engagement-rate-calculator' },
-      { name: 'Sponsorship Rate', href: '/instagram-sponsorship-rate-calculator' },
+      { name: 'Instagram', href: '/instagram-engagement-rate-calculator' },
+      { name: 'TikTok', href: '/tiktok-engagement-rate-calculator' },
+      { name: 'Facebook', href: '/facebook-engagement-rate-calculator' },
+      { name: 'X (Twitter)', href: '/twitter-engagement-rate-calculator' },
+      { name: 'All Platforms', href: '/engagement-rate-calculator' },
+      { name: 'Benchmarks 2026', href: '/engagement-rate-benchmarks' },
     ],
   },
   {
-    label: 'TikTok',
+    label: 'Sponsorship Rates',
     links: [
-      { name: 'Engagement Rate', href: '/tiktok-engagement-rate-calculator' },
-      { name: 'Sponsorship Rate', href: '/tiktok-sponsorship-rate-calculator' },
-    ],
-  },
-  {
-    label: 'Facebook',
-    links: [{ name: 'Engagement Rate', href: '/facebook-engagement-rate-calculator' }],
-  },
-  {
-    label: 'X',
-    links: [{ name: 'Engagement Rate', href: '/twitter-engagement-rate-calculator' }],
-  },
-  {
-    label: 'More',
-    links: [
-      { name: 'Engagement Calculator', href: '/engagement-rate-calculator' },
-      { name: 'Engagement Benchmarks', href: '/engagement-rate-benchmarks' },
+      { name: 'Instagram', href: '/instagram-sponsorship-rate-calculator' },
+      { name: 'TikTok', href: '/tiktok-sponsorship-rate-calculator' },
     ],
   },
   {
@@ -52,7 +41,7 @@ export default function Footer() {
   return (
     <footer className="border-t border-border bg-surface py-12">
       <div className="mx-auto max-w-6xl px-4">
-        <div className="grid gap-8 text-center sm:grid-cols-2 sm:text-left md:grid-cols-3 lg:grid-cols-[1.5fr_1fr_1fr_1fr_1fr_1fr_1fr_1fr]">
+        <div className="grid gap-8 text-center sm:grid-cols-2 sm:text-left md:grid-cols-3 lg:grid-cols-[1.5fr_1fr_1fr_1fr_1fr]">
           <div className="sm:col-span-2 md:col-span-3 lg:col-span-1">
             <Logo size="sm" />
             <p className="mt-3 text-sm text-muted">

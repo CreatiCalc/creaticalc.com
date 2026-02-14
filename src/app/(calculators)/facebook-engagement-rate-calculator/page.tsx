@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
 import CalculatorSchema from '@/components/seo/CalculatorSchema';
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import { FacebookEngagementCalculator } from '@/features/calculators/facebook-engagement';
 import type { FAQItem } from '@/features/calculators/shared/types';
 
@@ -180,6 +181,15 @@ const howItWorks = (
         </Link>{' '}
         — full benchmark data across all platforms
       </li>
+      <li>
+        <Link
+          href="/instagram-sponsorship-rate-calculator"
+          className="font-medium text-primary hover:underline"
+        >
+          Instagram Sponsorship Rate Calculator
+        </Link>{' '}
+        — compare cross-platform sponsorship rates
+      </li>
     </ul>
   </>
 );
@@ -191,6 +201,16 @@ export default function FacebookEngagementPage() {
         name="Facebook Engagement Rate Calculator"
         description="Calculate your Facebook Page engagement rate by followers or by reach. Compare against industry benchmarks by follower tier."
         url="/facebook-engagement-rate-calculator"
+      />
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', path: '/' },
+          { name: 'Facebook', path: '/facebook-engagement-rate-calculator' },
+          {
+            name: 'Facebook Engagement Rate Calculator',
+            path: '/facebook-engagement-rate-calculator',
+          },
+        ]}
       />
       <CalculatorLayout
         title="Facebook Engagement Rate Calculator"
