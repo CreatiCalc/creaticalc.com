@@ -1,18 +1,9 @@
 import { getMonthLabel } from './formatters';
+import type { YouTubeNicheId } from './niches';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
-export type GrowthNicheId =
-  | 'finance'
-  | 'tech'
-  | 'education'
-  | 'health'
-  | 'beauty'
-  | 'travel'
-  | 'food'
-  | 'lifestyle'
-  | 'entertainment'
-  | 'gaming';
+export type GrowthNicheId = YouTubeNicheId;
 
 export type GrowthInputMode = 'rate' | 'flat';
 

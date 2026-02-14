@@ -1,4 +1,5 @@
 import { formatUSD, MONTH_ABBREVIATIONS } from './formatters';
+import type { YouTubeNicheId } from './niches';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -6,17 +7,7 @@ export type ContentFormat = 'longform' | 'shorts';
 
 export type VideoLength = 'short' | 'standard' | 'long';
 
-export type NicheId =
-  | 'finance'
-  | 'tech'
-  | 'education'
-  | 'health'
-  | 'beauty'
-  | 'travel'
-  | 'food'
-  | 'lifestyle'
-  | 'entertainment'
-  | 'gaming';
+export type NicheId = YouTubeNicheId;
 
 export interface RpmRange {
   low: number;

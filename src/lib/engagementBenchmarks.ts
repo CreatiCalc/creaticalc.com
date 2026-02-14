@@ -1,4 +1,5 @@
 import { formatFollowerCount } from './formatters';
+import type { EngagementIndustryId } from './niches';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -12,21 +13,7 @@ export type LetterGrade = 'A+' | 'A' | 'A-' | 'B+' | 'B' | 'B-' | 'C+' | 'C' | '
 
 export type InstagramCalcMethod = 'byFollowers' | 'byReach' | 'byImpressions';
 
-export type IndustryId =
-  | 'animals'
-  | 'arts'
-  | 'beauty'
-  | 'design'
-  | 'education'
-  | 'fashion'
-  | 'finance'
-  | 'food'
-  | 'health'
-  | 'tech'
-  | 'travel'
-  | 'entertainment'
-  | 'sports'
-  | 'general';
+export type IndustryId = EngagementIndustryId;
 
 export type InstagramContentType = 'feed' | 'reels' | 'stories' | 'mixed';
 export type TikTokCalcMethod = 'byFollowers' | 'byViews';
