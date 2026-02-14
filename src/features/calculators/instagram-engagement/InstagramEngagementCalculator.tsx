@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo, useEffect } from 'react';
+import { useIsEmbed } from '@/lib/embedContext';
 import { useSearchParams } from 'next/navigation';
 import Slider from '@/components/ui/Slider';
 import NumberInput from '@/components/ui/NumberInput';
@@ -60,6 +61,7 @@ const likeTicks = [
 ];
 
 export default function InstagramEngagementCalculator() {
+  const isEmbed = useIsEmbed();
   const { state, dispatch } = useInstagramEngagementState();
   const searchParams = useSearchParams();
 
@@ -296,79 +298,90 @@ export default function InstagramEngagementCalculator() {
         />
       </div>
 
-      {/* Share buttons */}
-      <div className="mt-4">
-        <EngagementShareButtons
-          platform="instagram"
-          rate={result.engagementRate}
-          shareableState={shareableState}
-          basePath="/instagram-engagement-rate-calculator"
-        />
-      </div>
+      {!isEmbed && (
+        <>
+          {/* Share buttons */}
+          <div className="mt-4">
+            <EngagementShareButtons
+              platform="instagram"
+              rate={result.engagementRate}
+              shareableState={shareableState}
+              basePath="/instagram-engagement-rate-calculator"
+            />
+          </div>
 
-      <AdSlot slot="below-results" className="mt-6" />
+          <AdSlot slot="below-results" className="mt-6" />
 
-      {/* Multi-formula display (Instagram only) */}
-      <CollapsibleSection
-        title="Engagement Rate by Different Formulas"
-        defaultOpen={false}
-        className="mt-6"
-      >
-        <MultiFormulaDisplay results={multiFormula} />
-      </CollapsibleSection>
+          <CollapsibleSection
+            title="Engagement Rate by Different Formulas"
+            defaultOpen={false}
+            className="mt-6"
+          >
+            <MultiFormulaDisplay results={multiFormula} />
+          </CollapsibleSection>
 
-      <CollapsibleSection title="What If Scenarios" defaultOpen={false} className="mt-6">
-        <WhatIfScenarios
-          input={input}
-          currentRate={result.engagementRate}
-          onApply={(changes) => dispatch({ type: 'APPLY_SCENARIO', payload: changes })}
-          platform="instagram"
-        />
-      </CollapsibleSection>
+          <CollapsibleSection title="What If Scenarios" defaultOpen={false} className="mt-6">
+            <WhatIfScenarios
+              input={input}
+              currentRate={result.engagementRate}
+              onApply={(changes) => dispatch({ type: 'APPLY_SCENARIO', payload: changes })}
+              platform="instagram"
+            />
+          </CollapsibleSection>
 
-      <CollapsibleSection title="Industry Benchmarks" defaultOpen={false} className="mt-6">
-        <IndustryBenchmarks
-          platform="instagram"
-          currentIndustryId={state.industryId}
-          currentRate={result.engagementRate}
-        />
-      </CollapsibleSection>
+          <CollapsibleSection title="Industry Benchmarks" defaultOpen={false} className="mt-6">
+            <IndustryBenchmarks
+              platform="instagram"
+              currentIndustryId={state.industryId}
+              currentRate={result.engagementRate}
+            />
+          </CollapsibleSection>
 
-      <CollapsibleSection title="Estimated Brand Deal Rates" defaultOpen={false} className="mt-6">
-        <BrandDealEstimate
-          platform="instagram"
-          followers={state.followers}
-          engagementRate={result.engagementRate}
-          industryId={state.industryId}
-          estimate={result.brandDealEstimate}
-        />
-      </CollapsibleSection>
+          <CollapsibleSection
+            title="Estimated Brand Deal Rates"
+            defaultOpen={false}
+            className="mt-6"
+          >
+            <BrandDealEstimate
+              platform="instagram"
+              followers={state.followers}
+              engagementRate={result.engagementRate}
+              industryId={state.industryId}
+              estimate={result.brandDealEstimate}
+            />
+          </CollapsibleSection>
 
-      <AdSlot slot="after-chart" className="mt-6" />
+          <AdSlot slot="after-chart" className="mt-6" />
 
-      <CollapsibleSection title="Estimated Reach" defaultOpen={false} className="mt-6">
-        <EstimatedReachDisplay platform="instagram" followers={state.followers} />
-      </CollapsibleSection>
+          <CollapsibleSection title="Estimated Reach" defaultOpen={false} className="mt-6">
+            <EstimatedReachDisplay platform="instagram" followers={state.followers} />
+          </CollapsibleSection>
 
-      <CollapsibleSection title="Cross-Platform Comparison" defaultOpen={false} className="mt-6">
-        <CrossPlatformComparison
-          platform="instagram"
-          rate={result.engagementRate}
-          followers={state.followers}
-        />
-      </CollapsibleSection>
+          <CollapsibleSection
+            title="Cross-Platform Comparison"
+            defaultOpen={false}
+            className="mt-6"
+          >
+            <CrossPlatformComparison
+              platform="instagram"
+              rate={result.engagementRate}
+              followers={state.followers}
+            />
+          </CollapsibleSection>
 
-      <CollapsibleSection title="Year-Over-Year Trends" defaultOpen={false} className="mt-6">
-        <YoYTrendContext platform="instagram" rate={result.engagementRate} />
-      </CollapsibleSection>
+          <CollapsibleSection title="Year-Over-Year Trends" defaultOpen={false} className="mt-6">
+            <YoYTrendContext platform="instagram" rate={result.engagementRate} />
+          </CollapsibleSection>
 
-      <CollapsibleSection title="Growth Recommendations" defaultOpen={false} className="mt-6">
-        <GrowthRecommendations recommendations={recommendations} />
-      </CollapsibleSection>
+          <CollapsibleSection title="Growth Recommendations" defaultOpen={false} className="mt-6">
+            <GrowthRecommendations recommendations={recommendations} />
+          </CollapsibleSection>
 
-      <CollapsibleSection title="Engagement Breakdown" defaultOpen={false} className="mt-6">
-        <EngagementBreakdownChart breakdown={result.breakdown} platform="instagram" />
-      </CollapsibleSection>
+          <CollapsibleSection title="Engagement Breakdown" defaultOpen={false} className="mt-6">
+            <EngagementBreakdownChart breakdown={result.breakdown} platform="instagram" />
+          </CollapsibleSection>
+        </>
+      )}
     </>
   );
 }

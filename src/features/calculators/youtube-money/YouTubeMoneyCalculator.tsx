@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo } from 'react';
+import { useIsEmbed } from '@/lib/embedContext';
 import Slider from '@/components/ui/Slider';
 import NumberInput from '@/components/ui/NumberInput';
 import Select from '@/components/ui/Select';
@@ -97,6 +98,7 @@ export default function YouTubeMoneyCalculator({
   hideFormatToggle,
   hideNicheSelector,
 }: YouTubeMoneyCalculatorProps = {}) {
+  const isEmbed = useIsEmbed();
   const { state, dispatch } = useCalculatorState(defaultOverrides);
 
   const effectiveDailyViews = useMemo(
@@ -138,12 +140,14 @@ export default function YouTubeMoneyCalculator({
 
   return (
     <>
-      <UrlLookup
-        onResult={(data) => dispatch({ type: 'SET_FROM_LOOKUP', payload: data })}
-        currentDailyViews={effectiveDailyViews}
-      />
+      {!isEmbed && (
+        <UrlLookup
+          onResult={(data) => dispatch({ type: 'SET_FROM_LOOKUP', payload: data })}
+          currentDailyViews={effectiveDailyViews}
+        />
+      )}
 
-      <Card className="mt-4">
+      <Card className={isEmbed ? '' : 'mt-4'}>
         <div className="space-y-6">
           {!hideFormatToggle && (
             <ContentFormatToggle
@@ -374,47 +378,53 @@ export default function YouTubeMoneyCalculator({
         />
       </div>
 
-      <YouTubeShareButtons
-        state={state}
-        yearlyMid={projection.summary.yearly.mid}
-        tier={creatorTier}
-      />
+      {!isEmbed && (
+        <>
+          <YouTubeShareButtons
+            state={state}
+            yearlyMid={projection.summary.yearly.mid}
+            tier={creatorTier}
+          />
 
-      <AdSlot slot="below-results" className="mt-6" />
+          <AdSlot slot="below-results" className="mt-6" />
 
-      <ProjectionChart months={projection.months} />
+          <ProjectionChart months={projection.months} />
 
-      {state.monthlyGrowthRate > 0 && (
-        <CollapsibleSection title="Revenue Milestones" defaultOpen={false} className="mt-6">
-          <MilestoneTimeline input={projectionInput} />
-        </CollapsibleSection>
+          {state.monthlyGrowthRate > 0 && (
+            <CollapsibleSection title="Revenue Milestones" defaultOpen={false} className="mt-6">
+              <MilestoneTimeline input={projectionInput} />
+            </CollapsibleSection>
+          )}
+
+          <CollapsibleSection title="Sponsorship Rates" defaultOpen={false} className="mt-6">
+            <SponsorshipEstimate
+              dailyViews={effectiveDailyViews}
+              nicheId={state.nicheId}
+              contentFormat={state.contentFormat}
+              viewsPerVideo={state.inputMode === 'perVideo' ? state.viewsPerVideo : undefined}
+            />
+          </CollapsibleSection>
+
+          <AdSlot slot="after-chart" className="mt-6" />
+
+          <CollapsibleSection title="Optimization Tips" defaultOpen={false} className="mt-6">
+            <Recommendations
+              state={projectionInput}
+              projection={projection}
+              onApplyScenario={(scenario) =>
+                dispatch({ type: 'APPLY_SCENARIO', payload: scenario })
+              }
+            />
+          </CollapsibleSection>
+
+          <CollapsibleSection title="Earnings Breakdown" defaultOpen={false} className="mt-6">
+            <DriversBreakdown state={projectionInput} projection={projection} />
+            <div className="mt-6">
+              <RpmTable activeNicheId={state.nicheId} contentFormat={state.contentFormat} />
+            </div>
+          </CollapsibleSection>
+        </>
       )}
-
-      <CollapsibleSection title="Sponsorship Rates" defaultOpen={false} className="mt-6">
-        <SponsorshipEstimate
-          dailyViews={effectiveDailyViews}
-          nicheId={state.nicheId}
-          contentFormat={state.contentFormat}
-          viewsPerVideo={state.inputMode === 'perVideo' ? state.viewsPerVideo : undefined}
-        />
-      </CollapsibleSection>
-
-      <AdSlot slot="after-chart" className="mt-6" />
-
-      <CollapsibleSection title="Optimization Tips" defaultOpen={false} className="mt-6">
-        <Recommendations
-          state={projectionInput}
-          projection={projection}
-          onApplyScenario={(scenario) => dispatch({ type: 'APPLY_SCENARIO', payload: scenario })}
-        />
-      </CollapsibleSection>
-
-      <CollapsibleSection title="Earnings Breakdown" defaultOpen={false} className="mt-6">
-        <DriversBreakdown state={projectionInput} projection={projection} />
-        <div className="mt-6">
-          <RpmTable activeNicheId={state.nicheId} contentFormat={state.contentFormat} />
-        </div>
-      </CollapsibleSection>
     </>
   );
 }

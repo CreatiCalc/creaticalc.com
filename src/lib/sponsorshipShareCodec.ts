@@ -1,0 +1,71 @@
+import type { IndustryId } from './engagementModel';
+
+export interface SponsorshipShareState {
+  platform: 'instagram' | 'tiktok';
+  followers: number;
+  engagementRate: number;
+  contentType: string;
+  dealType: string;
+  industryId: IndustryId;
+  dealsPerMonth: number;
+}
+
+function toBase64Url(str: string): string {
+  return btoa(str).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+}
+
+function fromBase64Url(str: string): string {
+  let padded = str.replace(/-/g, '+').replace(/_/g, '/');
+  while (padded.length % 4) padded += '=';
+  return atob(padded);
+}
+
+// Format: sp|platform|followers|engagementRate(x100)|contentType|dealType|industryId|dealsPerMonth
+export function encodeSponsorshipState(state: SponsorshipShareState): string {
+  const p = state.platform === 'instagram' ? 'i' : 't';
+  const engPct = Math.round(state.engagementRate * 100); // 2 decimal places
+  const raw = [
+    'sp',
+    p,
+    state.followers,
+    engPct,
+    state.contentType,
+    state.dealType,
+    state.industryId,
+    state.dealsPerMonth,
+  ].join('|');
+  return toBase64Url(raw);
+}
+
+export function decodeSponsorshipState(encoded: string): SponsorshipShareState | null {
+  try {
+    const raw = fromBase64Url(encoded);
+    const parts = raw.split('|');
+    if (parts[0] !== 'sp' || parts.length !== 8) return null;
+
+    const p = parts[1];
+    const followers = parseInt(parts[2], 10);
+    const engPct = parseInt(parts[3], 10);
+    const contentType = parts[4];
+    const dealType = parts[5];
+    const industryId = parts[6];
+    const dealsPerMonth = parseInt(parts[7], 10);
+
+    if (p !== 'i' && p !== 't') return null;
+    if (isNaN(followers) || followers < 0 || followers > 50000000) return null;
+    if (isNaN(engPct) || engPct < 0 || engPct > 10000) return null;
+    if (isNaN(dealsPerMonth) || dealsPerMonth < 0 || dealsPerMonth > 100) return null;
+
+    return {
+      platform: p === 'i' ? 'instagram' : 'tiktok',
+      followers,
+      engagementRate: engPct / 100,
+      contentType,
+      dealType,
+      industryId: industryId as IndustryId,
+      dealsPerMonth,
+    };
+  } catch {
+    return null;
+  }
+}

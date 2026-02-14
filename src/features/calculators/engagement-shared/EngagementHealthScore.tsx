@@ -82,7 +82,7 @@ export default function EngagementHealthScore({ healthScore }: EngagementHealthS
   else if (score >= 25) gradeColor = 'text-orange-600';
 
   return (
-    <div className="rounded-xl border border-border bg-white p-6 shadow-sm">
+    <div className="rounded-xl border border-border bg-background p-6 shadow-sm">
       <div className="text-center">
         <ArcGauge score={score} />
         <div className="-mt-2 flex items-baseline justify-center gap-2">

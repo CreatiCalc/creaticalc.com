@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo, useEffect } from 'react';
+import { useIsEmbed } from '@/lib/embedContext';
 import { useSearchParams } from 'next/navigation';
 import Slider from '@/components/ui/Slider';
 import NumberInput from '@/components/ui/NumberInput';
@@ -64,6 +65,7 @@ const reachTicks = [
 ];
 
 export default function FacebookEngagementCalculator() {
+  const isEmbed = useIsEmbed();
   const { state, dispatch } = useFacebookEngagementState();
   const searchParams = useSearchParams();
 
@@ -305,70 +307,82 @@ export default function FacebookEngagementCalculator() {
         />
       </div>
 
-      {/* Share buttons */}
-      <div className="mt-4">
-        <EngagementShareButtons
-          platform="facebook"
-          rate={result.engagementRate}
-          shareableState={shareableState}
-          basePath="/facebook-engagement-rate-calculator"
-        />
-      </div>
+      {!isEmbed && (
+        <>
+          {/* Share buttons */}
+          <div className="mt-4">
+            <EngagementShareButtons
+              platform="facebook"
+              rate={result.engagementRate}
+              shareableState={shareableState}
+              basePath="/facebook-engagement-rate-calculator"
+            />
+          </div>
 
-      <AdSlot slot="below-results" className="mt-6" />
+          <AdSlot slot="below-results" className="mt-6" />
 
-      <CollapsibleSection title="What If Scenarios" defaultOpen={false} className="mt-6">
-        <WhatIfScenarios
-          input={input}
-          currentRate={result.engagementRate}
-          onApply={(changes) => dispatch({ type: 'APPLY_SCENARIO', payload: changes })}
-          platform="facebook"
-        />
-      </CollapsibleSection>
+          <CollapsibleSection title="What If Scenarios" defaultOpen={false} className="mt-6">
+            <WhatIfScenarios
+              input={input}
+              currentRate={result.engagementRate}
+              onApply={(changes) => dispatch({ type: 'APPLY_SCENARIO', payload: changes })}
+              platform="facebook"
+            />
+          </CollapsibleSection>
 
-      <CollapsibleSection title="Industry Benchmarks" defaultOpen={false} className="mt-6">
-        <IndustryBenchmarks
-          platform="facebook"
-          currentIndustryId={state.industryId}
-          currentRate={result.engagementRate}
-        />
-      </CollapsibleSection>
+          <CollapsibleSection title="Industry Benchmarks" defaultOpen={false} className="mt-6">
+            <IndustryBenchmarks
+              platform="facebook"
+              currentIndustryId={state.industryId}
+              currentRate={result.engagementRate}
+            />
+          </CollapsibleSection>
 
-      <CollapsibleSection title="Estimated Brand Deal Rates" defaultOpen={false} className="mt-6">
-        <BrandDealEstimate
-          platform="facebook"
-          followers={state.followers}
-          engagementRate={result.engagementRate}
-          industryId={state.industryId}
-          estimate={result.brandDealEstimate}
-        />
-      </CollapsibleSection>
+          <CollapsibleSection
+            title="Estimated Brand Deal Rates"
+            defaultOpen={false}
+            className="mt-6"
+          >
+            <BrandDealEstimate
+              platform="facebook"
+              followers={state.followers}
+              engagementRate={result.engagementRate}
+              industryId={state.industryId}
+              estimate={result.brandDealEstimate}
+            />
+          </CollapsibleSection>
 
-      <AdSlot slot="after-chart" className="mt-6" />
+          <AdSlot slot="after-chart" className="mt-6" />
 
-      <CollapsibleSection title="Estimated Reach" defaultOpen={false} className="mt-6">
-        <EstimatedReachDisplay platform="facebook" followers={state.followers} />
-      </CollapsibleSection>
+          <CollapsibleSection title="Estimated Reach" defaultOpen={false} className="mt-6">
+            <EstimatedReachDisplay platform="facebook" followers={state.followers} />
+          </CollapsibleSection>
 
-      <CollapsibleSection title="Cross-Platform Comparison" defaultOpen={false} className="mt-6">
-        <CrossPlatformComparison
-          platform="facebook"
-          rate={result.engagementRate}
-          followers={state.followers}
-        />
-      </CollapsibleSection>
+          <CollapsibleSection
+            title="Cross-Platform Comparison"
+            defaultOpen={false}
+            className="mt-6"
+          >
+            <CrossPlatformComparison
+              platform="facebook"
+              rate={result.engagementRate}
+              followers={state.followers}
+            />
+          </CollapsibleSection>
 
-      <CollapsibleSection title="Year-Over-Year Trends" defaultOpen={false} className="mt-6">
-        <YoYTrendContext platform="facebook" rate={result.engagementRate} />
-      </CollapsibleSection>
+          <CollapsibleSection title="Year-Over-Year Trends" defaultOpen={false} className="mt-6">
+            <YoYTrendContext platform="facebook" rate={result.engagementRate} />
+          </CollapsibleSection>
 
-      <CollapsibleSection title="Growth Recommendations" defaultOpen={false} className="mt-6">
-        <GrowthRecommendations recommendations={recommendations} />
-      </CollapsibleSection>
+          <CollapsibleSection title="Growth Recommendations" defaultOpen={false} className="mt-6">
+            <GrowthRecommendations recommendations={recommendations} />
+          </CollapsibleSection>
 
-      <CollapsibleSection title="Engagement Breakdown" defaultOpen={false} className="mt-6">
-        <EngagementBreakdownChart breakdown={result.breakdown} platform="facebook" />
-      </CollapsibleSection>
+          <CollapsibleSection title="Engagement Breakdown" defaultOpen={false} className="mt-6">
+            <EngagementBreakdownChart breakdown={result.breakdown} platform="facebook" />
+          </CollapsibleSection>
+        </>
+      )}
     </>
   );
 }

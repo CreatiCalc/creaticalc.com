@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import { useIsEmbed } from '@/lib/embedContext';
 
 interface AdSlotProps {
   slot: 'header' | 'sidebar' | 'below-results' | 'after-chart';
@@ -10,15 +11,19 @@ interface AdSlotProps {
 const publisherId = process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID;
 
 export default function AdSlot({ slot, className = '' }: AdSlotProps) {
+  const isEmbed = useIsEmbed();
+
   useEffect(() => {
-    if (publisherId) {
+    if (publisherId && !isEmbed) {
       try {
         (((window as unknown as Record<string, unknown>).adsbygoogle as unknown[]) || []).push({});
       } catch {
         // AdSense may throw if ad already loaded
       }
     }
-  }, []);
+  }, [isEmbed]);
+
+  if (isEmbed) return null;
 
   if (publisherId) {
     return (

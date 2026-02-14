@@ -28,5 +28,7 @@ export default function EngagementShareButtons({
 
   const shareText = buildShareText(platform, rate);
 
-  return <ShareButtons getShareUrl={getShareUrl} shareText={shareText} />;
+  const embedSlug = basePath.replace(/^\//, '');
+
+  return <ShareButtons getShareUrl={getShareUrl} shareText={shareText} embedSlug={embedSlug} />;
 }

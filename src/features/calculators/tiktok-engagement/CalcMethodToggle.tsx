@@ -27,7 +27,7 @@ export default function CalcMethodToggle({ value, onChange }: CalcMethodTogglePr
             className={`flex flex-col rounded-lg px-3 py-1.5 text-left transition-colors ${
               value === mode
                 ? 'bg-primary text-white'
-                : 'border border-border bg-white text-foreground hover:border-primary'
+                : 'border border-border bg-background text-foreground hover:border-primary'
             }`}
           >
             <span className="text-sm font-medium">{label}</span>

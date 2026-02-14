@@ -2,6 +2,7 @@
 
 import { useReducer } from 'react';
 import type { GrowthNicheId, GrowthInputMode } from '@/lib/subscriberGrowthModel';
+import { decodeGrowthState } from '@/lib/growthShareCodec';
 
 export interface GrowthState {
   currentSubs: number;
@@ -32,6 +33,15 @@ const defaults: GrowthState = {
   decelerationEnabled: true,
 };
 
+function getInitialState(): GrowthState {
+  if (typeof window === 'undefined') return defaults;
+  const params = new URLSearchParams(window.location.search);
+  const code = params.get('c');
+  if (!code) return defaults;
+  const decoded = decodeGrowthState(code);
+  return decoded ?? defaults;
+}
+
 function reducer(state: GrowthState, action: Action): GrowthState {
   switch (action.type) {
     case 'SET_CURRENT_SUBS':
@@ -54,6 +64,6 @@ function reducer(state: GrowthState, action: Action): GrowthState {
 }
 
 export function useGrowthState() {
-  const [state, dispatch] = useReducer(reducer, defaults);
+  const [state, dispatch] = useReducer(reducer, undefined, getInitialState);
   return { state, dispatch } as const;
 }

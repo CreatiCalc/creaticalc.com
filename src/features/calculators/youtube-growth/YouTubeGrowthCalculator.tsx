@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo } from 'react';
+import { useIsEmbed } from '@/lib/embedContext';
 import Slider from '@/components/ui/Slider';
 import NumberInput from '@/components/ui/NumberInput';
 import Select from '@/components/ui/Select';
@@ -21,6 +22,7 @@ import GrowthInputModeToggle from './GrowthInputModeToggle';
 import GrowthChart from './GrowthChart';
 import GrowthMilestoneTimeline from './GrowthMilestoneTimeline';
 import GrowthRecommendations from './GrowthRecommendations';
+import YouTubeGrowthShareButtons from './ShareButtons';
 
 const nicheOptions = GROWTH_NICHES.map((n) => ({
   label: `${n.name} (~${n.avgMonthlyGrowthPct}%/mo)`,
@@ -50,6 +52,7 @@ const growthRatePresets = [
 ];
 
 export default function YouTubeGrowthCalculator() {
+  const isEmbed = useIsEmbed();
   const { state, dispatch } = useGrowthState();
 
   const growthInput: GrowthInput = useMemo(
@@ -248,19 +251,27 @@ export default function YouTubeGrowthCalculator() {
         />
       </div>
 
-      <AdSlot slot="below-results" className="mt-6" />
+      {!isEmbed && (
+        <YouTubeGrowthShareButtons state={state} projectedSubs={result.summary.month12} />
+      )}
 
-      <GrowthChart months={result.months} />
+      {!isEmbed && (
+        <>
+          <AdSlot slot="below-results" className="mt-6" />
 
-      <CollapsibleSection title="Subscriber Milestones" defaultOpen={false} className="mt-6">
-        <GrowthMilestoneTimeline milestones={result.milestones} />
-      </CollapsibleSection>
+          <GrowthChart months={result.months} />
 
-      <AdSlot slot="after-chart" className="mt-6" />
+          <CollapsibleSection title="Subscriber Milestones" defaultOpen={false} className="mt-6">
+            <GrowthMilestoneTimeline milestones={result.milestones} />
+          </CollapsibleSection>
 
-      <CollapsibleSection title="Growth Tips" defaultOpen={false} className="mt-6">
-        <GrowthRecommendations recommendations={result.recommendations} />
-      </CollapsibleSection>
+          <AdSlot slot="after-chart" className="mt-6" />
+
+          <CollapsibleSection title="Growth Tips" defaultOpen={false} className="mt-6">
+            <GrowthRecommendations recommendations={result.recommendations} />
+          </CollapsibleSection>
+        </>
+      )}
     </>
   );
 }

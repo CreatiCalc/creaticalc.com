@@ -22,7 +22,7 @@ export default function GrowthRateInput({ value, onChange }: GrowthRateInputProp
             className={`rounded-lg px-3 py-1.5 text-sm font-medium transition-colors ${
               value === preset
                 ? 'bg-primary text-white'
-                : 'border border-border bg-white text-foreground hover:border-primary'
+                : 'border border-border bg-background text-foreground hover:border-primary'
             }`}
           >
             {Math.round(preset * 100)}%
@@ -42,7 +42,7 @@ export default function GrowthRateInput({ value, onChange }: GrowthRateInputProp
           }}
           placeholder="Custom %"
           aria-label="Custom growth rate percentage"
-          className="w-24 rounded-lg border border-border bg-white px-3 py-1.5 text-sm transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+          className="w-24 rounded-lg border border-border bg-background px-3 py-1.5 text-sm transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
         />
       </div>
     </div>

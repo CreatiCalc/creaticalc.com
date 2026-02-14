@@ -36,7 +36,7 @@ export default function BenchmarkGauge({
   const platformColor = platformColors[platform];
 
   return (
-    <div className="rounded-xl border border-border bg-white p-6 shadow-sm">
+    <div className="rounded-xl border border-border bg-background p-6 shadow-sm">
       <p className="mb-4 text-sm font-medium text-foreground">
         Your Rate vs. Follower Tier Benchmark
       </p>
