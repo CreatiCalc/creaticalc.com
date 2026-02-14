@@ -20,11 +20,13 @@ export default function ContentTypeSelector({
   return (
     <div>
       <p className="mb-2 text-sm font-medium text-foreground">Content Type</p>
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-2" role="radiogroup" aria-label="Content type">
         {options.map((opt) => (
           <button
             key={opt.value}
             type="button"
+            role="radio"
+            aria-checked={value === opt.value}
             onClick={() => onChange(opt.value as SponsorshipContentType)}
             className={`rounded-full border px-4 py-1.5 text-sm transition-colors ${
               value === opt.value

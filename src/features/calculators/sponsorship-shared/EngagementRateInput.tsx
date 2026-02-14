@@ -30,9 +30,15 @@ export default function EngagementRateInput({
     <div>
       <div className="mb-3 flex items-center gap-2">
         <p className="text-sm font-medium text-foreground">Engagement Rate</p>
-        <div className="flex rounded-full border border-border bg-surface text-xs">
+        <div
+          className="flex rounded-full border border-border bg-surface text-xs"
+          role="radiogroup"
+          aria-label="Engagement rate input mode"
+        >
           <button
             type="button"
+            role="radio"
+            aria-checked={mode === 'direct'}
             onClick={() => setMode('direct')}
             className={`rounded-full px-3 py-1 transition-colors ${
               mode === 'direct' ? 'bg-primary text-white' : 'text-muted hover:text-foreground'
@@ -42,6 +48,8 @@ export default function EngagementRateInput({
           </button>
           <button
             type="button"
+            role="radio"
+            aria-checked={mode === 'calculated'}
             onClick={() => setMode('calculated')}
             className={`rounded-full px-3 py-1 transition-colors ${
               mode === 'calculated' ? 'bg-primary text-white' : 'text-muted hover:text-foreground'

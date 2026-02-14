@@ -14,11 +14,13 @@ const modes: { value: GrowthInputMode; label: string }[] = [
 
 export default function GrowthInputModeToggle({ value, onChange }: GrowthInputModeToggleProps) {
   return (
-    <div className="flex gap-2">
+    <div className="flex gap-2" role="radiogroup" aria-label="Growth input mode">
       {modes.map((mode) => (
         <button
           key={mode.value}
           type="button"
+          role="radio"
+          aria-checked={value === mode.value}
           onClick={() => onChange(mode.value)}
           className={`rounded-full border px-4 py-1.5 text-sm font-medium transition-colors ${
             value === mode.value
