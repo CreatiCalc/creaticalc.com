@@ -191,7 +191,9 @@ export function projectGrowth(input: GrowthInput): GrowthProjectionResult {
   });
 
   for (let i = 1; i <= 24; i++) {
-    const confidenceSpread = Math.min(i * 0.01, 0.3); // ±1% per month, cap ±30%
+    const CONFIDENCE_SPREAD_PER_MONTH = 0.01;
+    const CONFIDENCE_SPREAD_CAP = 0.3;
+    const confidenceSpread = Math.min(i * CONFIDENCE_SPREAD_PER_MONTH, CONFIDENCE_SPREAD_CAP);
 
     if (input.inputMode === 'rate') {
       const decel = input.decelerationEnabled ? getDecelerationFactor(subs) : 1.0;

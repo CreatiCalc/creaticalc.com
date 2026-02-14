@@ -445,13 +445,15 @@ export function generateOptimizationTips(
   }
 
   if (input.dailyViews >= 1000) {
+    const SPONSORSHIP_CPM_SHORTS = 6;
+    const SPONSORSHIP_CPM_BY_NICHE: Partial<Record<NicheId, number>> = {
+      finance: 50,
+      tech: 35,
+    };
+    const SPONSORSHIP_CPM_DEFAULT = 20;
     const sponsorshipCpmMid = isShorts
-      ? 6
-      : niche.id === 'finance'
-        ? 50
-        : niche.id === 'tech'
-          ? 35
-          : 20;
+      ? SPONSORSHIP_CPM_SHORTS
+      : (SPONSORSHIP_CPM_BY_NICHE[niche.id] ?? SPONSORSHIP_CPM_DEFAULT);
     const estViewsPerVideo = input.dailyViews * 7;
     const sponsorPerVideo = (estViewsPerVideo / 1000) * sponsorshipCpmMid * (isShorts ? 0.3 : 1);
     tips.push({

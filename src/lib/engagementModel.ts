@@ -448,14 +448,26 @@ export function calculateHealthScore(input: EngagementInput, rate: number): Heal
   const rateBenchmark = Math.min(40, Math.round(rateRatio * 20));
 
   // 2. Like-to-comment ratio (0-20) — ideal is 10:1 to 20:1
+  const LCR_IDEAL_LOW = 10;
+  const LCR_IDEAL_HIGH = 20;
+  const LCR_GOOD_LOW = 5;
+  const LCR_GOOD_HIGH = 30;
+  const LCR_FAIR_LOW = 3;
+  const LCR_FAIR_HIGH = 50;
+
   const lcr = avgComments > 0 ? avgLikes / avgComments : 100;
   let likeCommentRatio: number;
-  if (lcr >= 10 && lcr <= 20) likeCommentRatio = 20;
-  else if (lcr >= 5 && lcr <= 30) likeCommentRatio = 15;
-  else if (lcr >= 3 && lcr <= 50) likeCommentRatio = 10;
+  if (lcr >= LCR_IDEAL_LOW && lcr <= LCR_IDEAL_HIGH) likeCommentRatio = 20;
+  else if (lcr >= LCR_GOOD_LOW && lcr <= LCR_GOOD_HIGH) likeCommentRatio = 15;
+  else if (lcr >= LCR_FAIR_LOW && lcr <= LCR_FAIR_HIGH) likeCommentRatio = 10;
   else likeCommentRatio = 5;
 
   // 3. Saves/shares/reposts/bookmarks as % of total interactions (0-20)
+  const SPECIAL_PCT_EXCELLENT = 15;
+  const SPECIAL_PCT_GOOD = 10;
+  const SPECIAL_PCT_AVERAGE = 5;
+  const SPECIAL_PCT_LOW = 2;
+
   const saves = input.avgSaves ?? 0;
   const shares = input.avgShares ?? 0;
   const reposts = input.avgReposts ?? 0;
@@ -463,10 +475,10 @@ export function calculateHealthScore(input: EngagementInput, rate: number): Heal
   const total = avgLikes + avgComments + saves + shares + reposts + bookmarkCount;
   const specialPct = total > 0 ? ((saves + shares + reposts + bookmarkCount) / total) * 100 : 0;
   let saveSharePct: number;
-  if (specialPct >= 15) saveSharePct = 20;
-  else if (specialPct >= 10) saveSharePct = 16;
-  else if (specialPct >= 5) saveSharePct = 12;
-  else if (specialPct >= 2) saveSharePct = 8;
+  if (specialPct >= SPECIAL_PCT_EXCELLENT) saveSharePct = 20;
+  else if (specialPct >= SPECIAL_PCT_GOOD) saveSharePct = 16;
+  else if (specialPct >= SPECIAL_PCT_AVERAGE) saveSharePct = 12;
+  else if (specialPct >= SPECIAL_PCT_LOW) saveSharePct = 8;
   else saveSharePct = 4;
 
   // 4. Industry comparison (0-20)
@@ -567,7 +579,8 @@ export function estimateReach(platform: Platform, followers: number): EstimatedR
   const baseReachRate = REACH_RATES[tier];
   const reachRate = Math.max(1, Math.round(baseReachRate * PLATFORM_REACH_MULTIPLIERS[platform]));
   const estimatedReach = Math.round((followers * reachRate) / 100);
-  const estimatedImpressions = Math.round(estimatedReach * 1.3);
+  const IMPRESSIONS_TO_REACH_MULTIPLIER = 1.3;
+  const estimatedImpressions = Math.round(estimatedReach * IMPRESSIONS_TO_REACH_MULTIPLIER);
 
   return { estimatedReach, estimatedImpressions, reachRate };
 }
