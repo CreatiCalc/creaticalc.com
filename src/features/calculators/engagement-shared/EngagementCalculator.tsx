@@ -1,8 +1,7 @@
 'use client';
 
-import { useMemo, useEffect } from 'react';
+import { useMemo } from 'react';
 import { useIsEmbed } from '@/lib/embedContext';
-import { useSearchParams } from 'next/navigation';
 import Slider from '@/components/ui/Slider';
 import NumberInput from '@/components/ui/NumberInput';
 import Select from '@/components/ui/Select';
@@ -22,7 +21,7 @@ import {
   type IndustryId,
   type InstagramContentType,
 } from '@/lib/engagementModel';
-import { decodeState, inputToShareable, shareableToInput } from '@/lib/engagementShareCodec';
+import { inputToShareable } from '@/lib/engagementShareCodec';
 import type { EngagementPlatformConfig, MetricDef, AltMetricDef } from './platformConfigs';
 import { useEngagementState } from './useEngagementState';
 
@@ -114,19 +113,7 @@ interface EngagementCalculatorProps {
 
 export default function EngagementCalculator({ config }: EngagementCalculatorProps) {
   const isEmbed = useIsEmbed();
-  const { state, setField, applyScenario, restoreState } = useEngagementState(config);
-  const searchParams = useSearchParams();
-
-  // Restore state from URL on mount
-  useEffect(() => {
-    const encoded = searchParams.get('s');
-    if (encoded) {
-      const decoded = decodeState(encoded);
-      if (decoded && decoded.p === config.platform) {
-        restoreState(shareableToInput(decoded));
-      }
-    }
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  const { state, setField, applyScenario } = useEngagementState(config);
 
   const result = useMemo(() => computeEngagement(state), [state]);
   const recommendations = useMemo(

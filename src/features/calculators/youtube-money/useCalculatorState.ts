@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useReducer } from 'react';
+import { useReducer } from 'react';
 import type {
   NicheId,
   ContentFormat,
@@ -39,7 +39,6 @@ type Action =
   | { type: 'TOGGLE_SEASONALITY' }
   | { type: 'APPLY_SCENARIO'; payload: Partial<ProjectionInput> }
   | { type: 'SET_FROM_LOOKUP'; payload: { dailyViews: number; nicheId?: NicheId } }
-  | { type: 'SET_FROM_URL'; payload: Partial<CalculatorState> }
   | { type: 'SET_INPUT_MODE'; payload: InputMode }
   | { type: 'SET_VIEWS_PER_VIDEO'; payload: number }
   | { type: 'SET_UPLOADS_PER_WEEK'; payload: number }
@@ -62,7 +61,18 @@ const defaults: CalculatorState = {
 };
 
 function getInitialState(defaultOverrides?: Partial<CalculatorState>): CalculatorState {
-  return defaultOverrides ? { ...defaults, ...defaultOverrides } : defaults;
+  const base = defaultOverrides ? { ...defaults, ...defaultOverrides } : defaults;
+
+  if (typeof window !== 'undefined') {
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get('c');
+    if (code) {
+      const decoded = decodeCalcState(code);
+      if (decoded) return { ...base, ...decoded };
+    }
+  }
+
+  return base;
 }
 
 function reducer(state: CalculatorState, action: Action): CalculatorState {
@@ -85,8 +95,6 @@ function reducer(state: CalculatorState, action: Action): CalculatorState {
       if (action.payload.nicheId) next.nicheId = action.payload.nicheId;
       return { ...state, ...next };
     }
-    case 'SET_FROM_URL':
-      return { ...state, ...action.payload };
     case 'SET_INPUT_MODE':
       return { ...state, inputMode: action.payload };
     case 'SET_VIEWS_PER_VIDEO':
@@ -108,17 +116,6 @@ export function useCalculatorState(defaultOverrides?: Partial<CalculatorState>) 
   const [state, dispatch] = useReducer(reducer, defaultOverrides, (overrides) =>
     getInitialState(overrides)
   );
-
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const code = params.get('c');
-    if (!code) return;
-
-    const decoded = decodeCalcState(code);
-    if (decoded) {
-      dispatch({ type: 'SET_FROM_URL', payload: decoded });
-    }
-  }, []);
 
   return { state, dispatch } as const;
 }

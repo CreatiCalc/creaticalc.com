@@ -2,13 +2,13 @@
 
 import { useReducer } from 'react';
 import type { EngagementInput, IndustryId, InstagramContentType } from '@/lib/engagementModel';
+import { decodeState, shareableToInput } from '@/lib/engagementShareCodec';
 import type { EngagementPlatformConfig } from './platformConfigs';
 import { buildDefaultState } from './platformConfigs';
 
 type Action =
   | { type: 'SET_FIELD'; field: keyof EngagementInput; value: number | string }
-  | { type: 'APPLY_SCENARIO'; payload: Partial<EngagementInput> }
-  | { type: 'RESTORE_STATE'; payload: EngagementInput };
+  | { type: 'APPLY_SCENARIO'; payload: Partial<EngagementInput> };
 
 function reducer(state: EngagementInput, action: Action): EngagementInput {
   switch (action.type) {
@@ -23,15 +23,30 @@ function reducer(state: EngagementInput, action: Action): EngagementInput {
       }
       return next;
     }
-    case 'RESTORE_STATE':
-      return action.payload;
     default:
       return state;
   }
 }
 
+function getInitialState(config: EngagementPlatformConfig): EngagementInput {
+  const base = buildDefaultState(config);
+
+  if (typeof window !== 'undefined') {
+    const params = new URLSearchParams(window.location.search);
+    const encoded = params.get('s');
+    if (encoded) {
+      const decoded = decodeState(encoded);
+      if (decoded && decoded.p === config.platform) {
+        return shareableToInput(decoded);
+      }
+    }
+  }
+
+  return base;
+}
+
 export function useEngagementState(config: EngagementPlatformConfig) {
-  const [state, dispatch] = useReducer(reducer, config, buildDefaultState);
+  const [state, dispatch] = useReducer(reducer, config, getInitialState);
 
   const setField = (field: keyof EngagementInput, value: number | string) =>
     dispatch({ type: 'SET_FIELD', field, value });
@@ -39,10 +54,7 @@ export function useEngagementState(config: EngagementPlatformConfig) {
   const applyScenario = (changes: Partial<EngagementInput>) =>
     dispatch({ type: 'APPLY_SCENARIO', payload: changes });
 
-  const restoreState = (restored: EngagementInput) =>
-    dispatch({ type: 'RESTORE_STATE', payload: restored });
-
-  return { state, setField, applyScenario, restoreState };
+  return { state, setField, applyScenario };
 }
 
 export type { Action as EngagementAction, IndustryId, InstagramContentType };
