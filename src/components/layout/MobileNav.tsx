@@ -4,9 +4,6 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { NAV_GROUPS, MORE_LINKS } from './navConfig';
 
-const navGroups = NAV_GROUPS;
-const moreLinks = MORE_LINKS;
-
 export default function MobileNav() {
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -67,7 +64,7 @@ export default function MobileNav() {
 
       {open && (
         <nav className="absolute right-0 top-full z-50 mt-2 w-64 rounded-xl border border-border bg-white p-2 shadow-lg">
-          {navGroups.map((group, i) => (
+          {NAV_GROUPS.map((group, i) => (
             <div key={group.label} className={i > 0 ? 'mt-1' : ''}>
               <span className="block px-4 pb-1 pt-2 text-xs font-semibold uppercase tracking-wider text-muted">
                 {group.label}
@@ -88,7 +85,7 @@ export default function MobileNav() {
           <span className="block px-4 pb-1 pt-2 text-xs font-semibold uppercase tracking-wider text-muted">
             More
           </span>
-          {moreLinks.map((link) => (
+          {MORE_LINKS.map((link) => (
             <Link
               key={link.href}
               href={link.href}
