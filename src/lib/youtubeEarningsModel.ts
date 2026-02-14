@@ -101,9 +101,9 @@ export const NICHES: Niche[] = Object.entries(CPM_DATA).map(([id, data]) => ({
   name: data.name,
   cpm: data.cpm,
   rpm: {
-    low: +(data.cpm.low * YOUTUBE_CREATOR_SHARE).toFixed(2),
-    mid: +(data.cpm.mid * YOUTUBE_CREATOR_SHARE).toFixed(2),
-    high: +(data.cpm.high * YOUTUBE_CREATOR_SHARE).toFixed(2),
+    low: Math.round(data.cpm.low * YOUTUBE_CREATOR_SHARE * 100) / 100,
+    mid: Math.round(data.cpm.mid * YOUTUBE_CREATOR_SHARE * 100) / 100,
+    high: Math.round(data.cpm.high * YOUTUBE_CREATOR_SHARE * 100) / 100,
   },
 }));
 
@@ -119,6 +119,12 @@ export function getNiche(nicheId: NicheId): Niche {
   return NICHES.find((n) => n.id === nicheId) ?? NICHES[0];
 }
 
+// Geography RPM multiplier constants
+const GEO_MIN_MULTIPLIER = 0.4; // 0% high-CPM audience (all low-CPM regions)
+const GEO_BASELINE_MULTIPLIER = 1.0; // 50% high-CPM audience (default)
+const GEO_MAX_MULTIPLIER = 1.4; // 100% high-CPM audience (all US/UK/CA/AU)
+const GEO_BASELINE_PCT = 50; // Percentage threshold for baseline multiplier
+
 /**
  * Geographic RPM multiplier based on % of audience from high-CPM regions (US/UK/CA/AU).
  * - 0% high-CPM → 0.4x (all low-CPM regions like India/SE Asia)
@@ -127,10 +133,16 @@ export function getNiche(nicheId: NicheId): Niche {
  */
 export function getGeographyMultiplier(highCpmPct: number): number {
   const pct = Math.max(0, Math.min(100, highCpmPct));
-  if (pct <= 50) {
-    return 0.4 + (pct / 50) * 0.6;
+  if (pct <= GEO_BASELINE_PCT) {
+    return (
+      GEO_MIN_MULTIPLIER + (pct / GEO_BASELINE_PCT) * (GEO_BASELINE_MULTIPLIER - GEO_MIN_MULTIPLIER)
+    );
   }
-  return 1.0 + ((pct - 50) / 50) * 0.4;
+  return (
+    GEO_BASELINE_MULTIPLIER +
+    ((pct - GEO_BASELINE_PCT) / (100 - GEO_BASELINE_PCT)) *
+      (GEO_MAX_MULTIPLIER - GEO_BASELINE_MULTIPLIER)
+  );
 }
 
 // Index 0 = January, 11 = December

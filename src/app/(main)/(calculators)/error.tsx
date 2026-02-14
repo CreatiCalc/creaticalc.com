@@ -18,9 +18,7 @@ export default function CalculatorError({
     <div className="mx-auto max-w-2xl px-4 py-12 text-center">
       <p className="text-gradient-brand text-6xl font-bold">Oops</p>
       <h2 className="mt-4 text-2xl font-bold">Something went wrong</h2>
-      <p className="mt-3 text-muted">
-        An unexpected error occurred while loading this calculator.
-      </p>
+      <p className="mt-3 text-muted">An unexpected error occurred while loading this calculator.</p>
 
       <div className="mt-10 flex justify-center gap-3">
         <button

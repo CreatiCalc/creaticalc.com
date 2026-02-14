@@ -106,13 +106,34 @@ function getUploadMultiplier(uploadsPerWeek: number): number {
 
 /**
  * Deceleration factor — larger channels grow slower in percentage terms.
+ * Uses linear interpolation between breakpoints for smooth transitions.
  */
+const DECELERATION_BREAKPOINTS: [number, number][] = [
+  [10_000, 1.0],
+  [100_000, 0.85],
+  [500_000, 0.7],
+  [1_000_000, 0.6],
+];
+const DECELERATION_FLOOR = 0.5;
+
 function getDecelerationFactor(subs: number): number {
-  if (subs < 10_000) return 1.0;
-  if (subs < 100_000) return 0.85;
-  if (subs < 500_000) return 0.7;
-  if (subs < 1_000_000) return 0.6;
-  return 0.5;
+  if (subs < DECELERATION_BREAKPOINTS[0][0]) return DECELERATION_BREAKPOINTS[0][1];
+
+  for (let i = 0; i < DECELERATION_BREAKPOINTS.length - 1; i++) {
+    const [lowSubs, lowFactor] = DECELERATION_BREAKPOINTS[i];
+    const [highSubs, highFactor] = DECELERATION_BREAKPOINTS[i + 1];
+    if (subs < highSubs) {
+      const t = (subs - lowSubs) / (highSubs - lowSubs);
+      return lowFactor + t * (highFactor - lowFactor);
+    }
+  }
+
+  const [lastSubs, lastFactor] = DECELERATION_BREAKPOINTS[DECELERATION_BREAKPOINTS.length - 1];
+  if (subs < lastSubs) return lastFactor;
+
+  // Interpolate from last breakpoint to floor over the next 1M subs
+  const t = Math.min(1, (subs - lastSubs) / 1_000_000);
+  return lastFactor + t * (DECELERATION_FLOOR - lastFactor);
 }
 
 // ─── Month Labels ─────────────────────────────────────────────────────────────
