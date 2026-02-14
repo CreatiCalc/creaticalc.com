@@ -114,6 +114,7 @@ window.addEventListener('message', function(e) {
           <button
             type="button"
             onClick={() => dialogRef.current?.close()}
+            aria-label="Close dialog"
             className="rounded-lg p-1 text-muted hover:bg-surface hover:text-foreground"
           >
             <svg

@@ -6,7 +6,7 @@ interface EngagementHealthScoreProps {
   healthScore: HealthScore;
 }
 
-function ArcGauge({ score }: { score: number }) {
+function ArcGauge({ score, grade }: { score: number; grade: string }) {
   // SVG arc gauge: 180-degree arc
   const radius = 60;
   const cx = 70;
@@ -35,7 +35,12 @@ function ArcGauge({ score }: { score: number }) {
   else if (score >= 25) strokeColor = '#f97316'; // orange
 
   return (
-    <svg viewBox="0 0 140 80" className="mx-auto w-40">
+    <svg
+      viewBox="0 0 140 80"
+      className="mx-auto w-40"
+      role="img"
+      aria-label={`Health score gauge: ${score} out of 100, grade ${grade}`}
+    >
       {/* Background arc */}
       <path
         d={`M ${bgX1} ${bgY1} A ${radius} ${radius} 0 1 1 ${bgX2} ${bgY2}`}
@@ -84,7 +89,7 @@ export default function EngagementHealthScore({ healthScore }: EngagementHealthS
   return (
     <div className="rounded-xl border border-border bg-background p-6 shadow-sm">
       <div className="text-center">
-        <ArcGauge score={score} />
+        <ArcGauge score={score} grade={grade} />
         <div className="-mt-2 flex items-baseline justify-center gap-2">
           <span className="text-4xl font-bold text-foreground">{score}</span>
           <span className={`text-2xl font-bold ${gradeColor}`}>{grade}</span>
