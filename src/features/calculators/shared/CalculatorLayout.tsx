@@ -1,6 +1,7 @@
 import type { FAQItem } from './types';
 import FAQ from './FAQ';
 import AdSlot from '@/components/layout/AdSlot';
+import CalculatorErrorBoundary from './CalculatorErrorBoundary';
 
 interface CalculatorLayoutProps {
   title: string;
@@ -31,7 +32,7 @@ export default function CalculatorLayout({
 
       <AdSlot slot="header" className="mb-8" />
 
-      {children}
+      <CalculatorErrorBoundary>{children}</CalculatorErrorBoundary>
 
       <AdSlot slot="below-results" className="mt-8" />
 
