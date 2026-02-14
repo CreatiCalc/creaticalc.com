@@ -90,7 +90,16 @@ window.addEventListener('message', function(e) {
   const fullCode = includeAutoResize ? iframeCode + autoResizeScript : iframeCode;
 
   const handleCopy = useCallback(async () => {
-    await navigator.clipboard.writeText(fullCode);
+    try {
+      await navigator.clipboard.writeText(fullCode);
+    } catch {
+      const input = document.createElement('textarea');
+      input.value = fullCode;
+      document.body.appendChild(input);
+      input.select();
+      document.execCommand('copy');
+      document.body.removeChild(input);
+    }
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   }, [fullCode]);
