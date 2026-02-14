@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
 import CalculatorSchema from '@/components/seo/CalculatorSchema';
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import { InstagramEngagementCalculator } from '@/features/calculators/instagram-engagement';
 import type { FAQItem } from '@/features/calculators/shared/types';
 
@@ -190,6 +191,16 @@ export default function InstagramEngagementPage() {
         name="Instagram Engagement Rate Calculator"
         description="Calculate your Instagram engagement rate from likes, comments, and saves. Compare against industry benchmarks by follower tier."
         url="/instagram-engagement-rate-calculator"
+      />
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', path: '/' },
+          { name: 'Instagram', path: '/instagram-engagement-rate-calculator' },
+          {
+            name: 'Instagram Engagement Rate Calculator',
+            path: '/instagram-engagement-rate-calculator',
+          },
+        ]}
       />
       <CalculatorLayout
         title="Instagram Engagement Rate Calculator"

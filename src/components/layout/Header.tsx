@@ -41,6 +41,7 @@ const navGroups = [
 const moreLinks = [
   { name: 'Engagement Calculator', href: '/engagement-rate-calculator' },
   { name: 'Engagement Benchmarks', href: '/engagement-rate-benchmarks' },
+  { name: 'About', href: '/about' },
 ];
 
 export default function Header() {

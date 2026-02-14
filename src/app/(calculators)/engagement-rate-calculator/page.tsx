@@ -5,6 +5,7 @@ import FAQ from '@/features/calculators/shared/FAQ';
 import AdSlot from '@/components/layout/AdSlot';
 import { PlatformComparisonTable } from '@/features/calculators/engagement-shared';
 import type { FAQItem } from '@/features/calculators/shared/types';
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import { SITE_URL } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
@@ -105,6 +106,12 @@ export default function EngagementRateCalculatorPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', path: '/' },
+          { name: 'Engagement Rate Calculator', path: '/engagement-rate-calculator' },
+        ]}
       />
       <div className="mx-auto max-w-4xl px-4 py-10">
         <div className="mb-8 text-center">
@@ -233,6 +240,29 @@ export default function EngagementRateCalculatorPage() {
               valuable to a brand than a mega-creator with 0.5%, because the smaller audience is
               more targeted and responsive.
             </p>
+          </div>
+        </section>
+
+        {/* Monetize Your Engagement */}
+        <section className="mb-12">
+          <h2 className="mb-4 text-2xl font-bold">Monetize Your Engagement</h2>
+          <p className="mb-4 text-sm text-muted">
+            Know your engagement rate? Use it to calculate how much you should charge for sponsored
+            content.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <Link
+              href="/instagram-sponsorship-rate-calculator"
+              className="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-primary/90"
+            >
+              Instagram Sponsorship Rates
+            </Link>
+            <Link
+              href="/tiktok-sponsorship-rate-calculator"
+              className="rounded-lg border border-primary bg-primary/5 px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary/10"
+            >
+              TikTok Sponsorship Rates
+            </Link>
           </div>
         </section>
 

@@ -5,6 +5,7 @@ import AdSlot from '@/components/layout/AdSlot';
 import { BenchmarkTable, PlatformComparisonTable } from '@/features/calculators/engagement-shared';
 import { YOY_TRENDS, formatPercent } from '@/lib/engagementModel';
 import type { FAQItem } from '@/features/calculators/shared/types';
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import { SITE_URL } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
@@ -72,6 +73,12 @@ export default function EngagementRateBenchmarksPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', path: '/' },
+          { name: 'Engagement Rate Benchmarks', path: '/engagement-rate-benchmarks' },
+        ]}
       />
       <div className="mx-auto max-w-4xl px-4 py-10">
         <div className="mb-8 text-center">
@@ -316,6 +323,30 @@ export default function EngagementRateBenchmarksPage() {
             >
               Check your X (Twitter) rate
             </Link>
+          </div>
+
+          <div className="mt-8 rounded-xl border border-border bg-surface p-6">
+            <h3 className="text-lg font-semibold text-foreground">
+              Turn Your Engagement Into Sponsorship Revenue
+            </h3>
+            <p className="mt-2 text-sm text-muted">
+              Know your engagement rate? Use our sponsorship calculators to find out how much you
+              should charge for brand deals.
+            </p>
+            <div className="mt-4 flex flex-wrap gap-3">
+              <Link
+                href="/instagram-sponsorship-rate-calculator"
+                className="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-primary/90"
+              >
+                Instagram Sponsorship Rates
+              </Link>
+              <Link
+                href="/tiktok-sponsorship-rate-calculator"
+                className="rounded-lg border border-primary bg-primary/5 px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary/10"
+              >
+                TikTok Sponsorship Rates
+              </Link>
+            </div>
           </div>
         </section>
 
