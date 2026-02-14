@@ -1,25 +1,19 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import Link from 'next/link';
 import { NAV_GROUPS, MORE_LINKS } from './navConfig';
+import useClickOutside from '@/components/ui/useClickOutside';
+import useEscapeKey from '@/components/ui/useEscapeKey';
 
 export default function MobileNav() {
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (!open) return;
+  const close = useCallback(() => setOpen(false), []);
 
-    function handleClickOutside(e: MouseEvent) {
-      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
-        setOpen(false);
-      }
-    }
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, [open]);
+  useClickOutside(menuRef, close, open);
+  useEscapeKey(close, open);
 
   return (
     <div className="relative md:hidden" ref={menuRef}>

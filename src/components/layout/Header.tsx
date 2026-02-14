@@ -1,42 +1,26 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import Link from 'next/link';
 import Logo from '@/components/brand/Logo';
 import MobileNav from './MobileNav';
 import NavDropdown from './NavDropdown';
 import { NAV_GROUPS, MORE_LINKS } from './navConfig';
+import useClickOutside from '@/components/ui/useClickOutside';
+import useEscapeKey from '@/components/ui/useEscapeKey';
 
 export default function Header() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const navRef = useRef<HTMLElement>(null);
 
-  useEffect(() => {
-    if (openIndex === null) return;
+  const close = useCallback(() => setOpenIndex(null), []);
 
-    function handleClickOutside(e: MouseEvent) {
-      if (navRef.current && !navRef.current.contains(e.target as Node)) {
-        setOpenIndex(null);
-      }
-    }
-
-    function handleEscape(e: KeyboardEvent) {
-      if (e.key === 'Escape') setOpenIndex(null);
-    }
-
-    document.addEventListener('mousedown', handleClickOutside);
-    document.addEventListener('keydown', handleEscape);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-      document.removeEventListener('keydown', handleEscape);
-    };
-  }, [openIndex]);
+  useClickOutside(navRef, close, openIndex !== null);
+  useEscapeKey(close, openIndex !== null);
 
   function toggle(index: number) {
     setOpenIndex((prev) => (prev === index ? null : index));
   }
-
-  const close = () => setOpenIndex(null);
 
   return (
     <header className="sticky top-0 z-40 border-b border-border/50 bg-white/80 backdrop-blur-lg">
