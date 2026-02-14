@@ -1,15 +1,6 @@
 'use client';
 
-import {
-  ComposedChart,
-  Area,
-  Line,
-  XAxis,
-  YAxis,
-  Tooltip,
-  ResponsiveContainer,
-  CartesianGrid,
-} from 'recharts';
+import RangeProjectionChart from '../shared/RangeProjectionChart';
 import type { MonthProjection } from '@/lib/youtubeEarningsModel';
 import { formatUSD } from '@/lib/youtubeEarningsModel';
 
@@ -17,7 +8,7 @@ interface ProjectionChartProps {
   months: MonthProjection[];
 }
 
-interface ChartDataPoint {
+interface RevenueDataPoint {
   month: string;
   bandBase: number;
   bandHeight: number;
@@ -30,12 +21,12 @@ interface ChartDataPoint {
   rpmHigh: number;
 }
 
-function CustomTooltip({
+function RevenueTooltip({
   active,
   payload,
 }: {
   active?: boolean;
-  payload?: { payload: ChartDataPoint }[];
+  payload?: { payload: RevenueDataPoint }[];
   label?: string;
 }) {
   if (!active || !payload?.[0]) return null;
@@ -67,8 +58,12 @@ function CustomTooltip({
   );
 }
 
+function formatYAxis(v: number) {
+  return v >= 1000 ? `$${(v / 1000).toFixed(0)}k` : `$${v}`;
+}
+
 export default function ProjectionChart({ months }: ProjectionChartProps) {
-  const data: ChartDataPoint[] = months.map((m) => ({
+  const data = months.map((m) => ({
     month: m.monthLabel,
     bandBase: Math.round(m.revenue.low),
     bandHeight: Math.round(m.revenue.high - m.revenue.low),
@@ -82,41 +77,11 @@ export default function ProjectionChart({ months }: ProjectionChartProps) {
   }));
 
   return (
-    <div className="mt-6">
-      <h2 className="mb-3 text-lg font-semibold">12-Month Earnings Projection</h2>
-      <ResponsiveContainer width="100%" height={350}>
-        <ComposedChart data={data} margin={{ top: 5, right: 20, left: 10, bottom: 5 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-          <XAxis dataKey="month" tick={{ fontSize: 12 }} />
-          <YAxis
-            tickFormatter={(v: number) => (v >= 1000 ? `$${(v / 1000).toFixed(0)}k` : `$${v}`)}
-            tick={{ fontSize: 12 }}
-          />
-          <Tooltip content={<CustomTooltip />} />
-          <Area
-            type="monotone"
-            dataKey="bandBase"
-            stackId="band"
-            fill="transparent"
-            stroke="none"
-          />
-          <Area
-            type="monotone"
-            dataKey="bandHeight"
-            stackId="band"
-            fill="var(--color-primary)"
-            fillOpacity={0.12}
-            stroke="none"
-          />
-          <Line
-            type="monotone"
-            dataKey="mid"
-            stroke="var(--color-primary)"
-            strokeWidth={2}
-            dot={{ r: 4, fill: 'var(--color-primary)' }}
-          />
-        </ComposedChart>
-      </ResponsiveContainer>
-    </div>
+    <RangeProjectionChart
+      title="12-Month Earnings Projection"
+      data={data}
+      yAxisFormatter={formatYAxis}
+      tooltip={<RevenueTooltip />}
+    />
   );
 }
