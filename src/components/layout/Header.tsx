@@ -57,8 +57,16 @@ export default function Header() {
       }
     }
 
+    function handleEscape(e: KeyboardEvent) {
+      if (e.key === 'Escape') setOpenIndex(null);
+    }
+
     document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener('keydown', handleEscape);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleEscape);
+    };
   }, [openIndex]);
 
   function toggle(index: number) {
@@ -83,6 +91,7 @@ export default function Header() {
                   type="button"
                   onClick={() => toggle(i)}
                   aria-expanded={openIndex === i}
+                  aria-haspopup="menu"
                   aria-controls={panelId}
                   className="flex items-center gap-1 rounded-lg px-3 py-2 text-sm text-muted transition-colors hover:bg-surface-alt hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
                 >
@@ -103,12 +112,13 @@ export default function Header() {
                   </svg>
                 </button>
                 {openIndex === i && (
-                  <div id={panelId} className="absolute left-0 top-full z-50 pt-1">
+                  <div id={panelId} role="menu" className="absolute left-0 top-full z-50 pt-1">
                     <div className="min-w-56 rounded-xl border border-border bg-white p-1.5 shadow-lg">
                       {group.items.map((item) => (
                         <Link
                           key={item.href}
                           href={item.href}
+                          role="menuitem"
                           onClick={() => setOpenIndex(null)}
                           className="block rounded-lg px-4 py-2.5 text-sm text-muted transition-colors hover:bg-surface-alt hover:text-foreground"
                         >
@@ -126,6 +136,7 @@ export default function Header() {
               type="button"
               onClick={() => toggle(moreIndex)}
               aria-expanded={openIndex === moreIndex}
+              aria-haspopup="menu"
               aria-controls="nav-panel-more"
               className="flex items-center gap-1 rounded-lg px-3 py-2 text-sm text-muted transition-colors hover:bg-surface-alt hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
             >
@@ -146,12 +157,13 @@ export default function Header() {
               </svg>
             </button>
             {openIndex === moreIndex && (
-              <div id="nav-panel-more" className="absolute right-0 top-full z-50 pt-1">
+              <div id="nav-panel-more" role="menu" className="absolute right-0 top-full z-50 pt-1">
                 <div className="min-w-56 rounded-xl border border-border bg-white p-1.5 shadow-lg">
                   {moreLinks.map((item) => (
                     <Link
                       key={item.href}
                       href={item.href}
+                      role="menuitem"
                       onClick={() => setOpenIndex(null)}
                       className="block rounded-lg px-4 py-2.5 text-sm text-muted transition-colors hover:bg-surface-alt hover:text-foreground"
                     >
