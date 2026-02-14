@@ -2,9 +2,41 @@ import type {
   Platform,
   EngagementInput,
   InstagramContentType,
+  InstagramCalcMethod,
+  TikTokCalcMethod,
+  FacebookCalcMethod,
+  TwitterCalcMethod,
   IndustryId,
 } from '@/lib/engagementBenchmarks';
 import { setInputField } from '@/lib/engagementBenchmarks';
+
+type CalcMethodValue =
+  | InstagramCalcMethod
+  | TikTokCalcMethod
+  | FacebookCalcMethod
+  | TwitterCalcMethod;
+
+/** Keys of EngagementInput whose values are numeric (used by metric sliders). */
+export type NumericInputKey = Extract<
+  keyof EngagementInput,
+  | 'followers'
+  | 'avgLikes'
+  | 'avgComments'
+  | 'postsAnalyzed'
+  | 'avgSaves'
+  | 'avgReach'
+  | 'avgImpressions'
+  | 'avgShares'
+  | 'avgViews'
+  | 'avgReposts'
+  | 'avgBookmarks'
+>;
+
+/** Keys of EngagementInput whose values are calc-method strings. */
+export type CalcMethodInputKey = Extract<
+  keyof EngagementInput,
+  'instagramCalcMethod' | 'calcMethod' | 'facebookCalcMethod' | 'twitterCalcMethod'
+>;
 
 // ─── Config Types ────────────────────────────────────────────────────────────
 
@@ -14,7 +46,7 @@ interface Tick {
 }
 
 export interface MetricDef {
-  inputKey: keyof EngagementInput;
+  inputKey: NumericInputKey;
   label: string;
   formulaLabel: string;
   defaultValue: number;
@@ -26,7 +58,7 @@ export interface MetricDef {
 }
 
 export interface AltMetricDef {
-  inputKey: keyof EngagementInput;
+  inputKey: NumericInputKey;
   label: string;
   formulaLabel: string;
   defaultValue: number;
@@ -39,7 +71,7 @@ export interface AltMetricDef {
 }
 
 export interface CalcMethodDef {
-  value: string;
+  value: CalcMethodValue;
   label: string;
   description?: string;
 }
@@ -53,7 +85,7 @@ export interface EngagementPlatformConfig {
   metrics: MetricDef[];
   metricsGridCols: string;
   calcMethods: CalcMethodDef[];
-  calcMethodInputKey: keyof EngagementInput;
+  calcMethodInputKey: CalcMethodInputKey;
   calcMethodWrap?: boolean;
   altMetrics: AltMetricDef[];
   altMetricGrouped: boolean;

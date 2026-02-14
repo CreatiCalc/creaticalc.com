@@ -53,18 +53,18 @@ export interface EngagementInput {
 }
 
 /** Type-safe accessor for dynamically-keyed EngagementInput fields. */
-export function getInputField(
+export function getInputField<K extends keyof EngagementInput>(
   input: EngagementInput,
-  key: keyof EngagementInput
-): EngagementInput[keyof EngagementInput] {
+  key: K
+): EngagementInput[K] {
   return input[key];
 }
 
 /** Type-safe setter that returns a shallow copy with the field updated. */
-export function setInputField(
+export function setInputField<K extends keyof EngagementInput>(
   input: EngagementInput,
-  key: keyof EngagementInput,
-  value: string | number
+  key: K,
+  value: EngagementInput[K]
 ): EngagementInput {
   return { ...input, [key]: value };
 }
