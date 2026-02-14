@@ -44,7 +44,11 @@ export default function Header() {
         <Link href="/" className="transition-opacity hover:opacity-80">
           <Logo size="sm" />
         </Link>
-        <nav className="hidden items-center gap-1 md:flex" ref={navRef}>
+        <nav
+          className="hidden items-center gap-1 md:flex"
+          ref={navRef}
+          aria-label="Main navigation"
+        >
           {NAV_GROUPS.map((group, i) => (
             <NavDropdown
               key={group.label}

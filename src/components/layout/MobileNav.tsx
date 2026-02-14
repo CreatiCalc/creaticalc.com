@@ -63,7 +63,10 @@ export default function MobileNav() {
       </button>
 
       {open && (
-        <nav className="absolute right-0 top-full z-50 mt-2 w-64 rounded-xl border border-border bg-white p-2 shadow-lg">
+        <nav
+          className="absolute right-0 top-full z-50 mt-2 w-64 rounded-xl border border-border bg-white p-2 shadow-lg"
+          aria-label="Mobile navigation"
+        >
           {NAV_GROUPS.map((group, i) => (
             <div key={group.label} className={i > 0 ? 'mt-1' : ''}>
               <span className="block px-4 pb-1 pt-2 text-xs font-semibold uppercase tracking-wider text-muted">

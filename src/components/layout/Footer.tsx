@@ -15,7 +15,7 @@ export default function Footer() {
             </p>
           </div>
           {FOOTER_GROUPS.map((group) => (
-            <div key={group.label}>
+            <nav key={group.label} aria-label={group.label}>
               <p className="mb-3 font-semibold">{group.label}</p>
               <ul className="space-y-1">
                 {group.items.map((link) => (
@@ -29,7 +29,7 @@ export default function Footer() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </nav>
           ))}
         </div>
       </div>
