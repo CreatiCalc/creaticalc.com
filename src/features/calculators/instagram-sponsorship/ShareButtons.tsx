@@ -1,10 +1,9 @@
 'use client';
 
-import { useCallback } from 'react';
 import ShareButtons from '@/components/ui/ShareButtons';
+import { useShareUrl } from '@/components/ui/useShareUrl';
 import { formatUSD } from '@/lib/engagementModel';
 import { encodeSponsorshipState, type SponsorshipShareState } from '@/lib/sponsorshipShareCodec';
-import { SITE_URL } from '@/lib/siteConfig';
 
 interface InstagramSponsorshipShareButtonsProps {
   state: SponsorshipShareState;
@@ -17,18 +16,13 @@ export default function InstagramSponsorshipShareButtons({
   rateMid,
   tierLabel,
 }: InstagramSponsorshipShareButtonsProps) {
-  const getShareUrl = useCallback(() => {
-    const encoded = encodeSponsorshipState(state);
-    return `${SITE_URL}/instagram-sponsorship-rate-calculator?c=${encoded}`;
-  }, [state]);
+  const { getShareUrl, embedSlug } = useShareUrl(
+    state,
+    encodeSponsorshipState,
+    '/instagram-sponsorship-rate-calculator'
+  );
 
   const shareText = `As a ${tierLabel} Instagram creator, my estimated sponsorship rate is ${formatUSD(rateMid)}/post! Check yours:`;
 
-  return (
-    <ShareButtons
-      getShareUrl={getShareUrl}
-      shareText={shareText}
-      embedSlug="instagram-sponsorship-rate-calculator"
-    />
-  );
+  return <ShareButtons getShareUrl={getShareUrl} shareText={shareText} embedSlug={embedSlug} />;
 }

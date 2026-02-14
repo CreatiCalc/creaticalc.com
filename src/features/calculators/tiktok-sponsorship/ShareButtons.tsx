@@ -1,10 +1,9 @@
 'use client';
 
-import { useCallback } from 'react';
 import ShareButtons from '@/components/ui/ShareButtons';
+import { useShareUrl } from '@/components/ui/useShareUrl';
 import { formatUSD } from '@/lib/engagementModel';
 import { encodeSponsorshipState, type SponsorshipShareState } from '@/lib/sponsorshipShareCodec';
-import { SITE_URL } from '@/lib/siteConfig';
 
 interface TikTokSponsorshipShareButtonsProps {
   state: SponsorshipShareState;
@@ -17,18 +16,13 @@ export default function TikTokSponsorshipShareButtons({
   rateMid,
   tierLabel,
 }: TikTokSponsorshipShareButtonsProps) {
-  const getShareUrl = useCallback(() => {
-    const encoded = encodeSponsorshipState(state);
-    return `${SITE_URL}/tiktok-sponsorship-rate-calculator?c=${encoded}`;
-  }, [state]);
+  const { getShareUrl, embedSlug } = useShareUrl(
+    state,
+    encodeSponsorshipState,
+    '/tiktok-sponsorship-rate-calculator'
+  );
 
   const shareText = `As a ${tierLabel} TikTok creator, my estimated sponsorship rate is ${formatUSD(rateMid)}/post! Check yours:`;
 
-  return (
-    <ShareButtons
-      getShareUrl={getShareUrl}
-      shareText={shareText}
-      embedSlug="tiktok-sponsorship-rate-calculator"
-    />
-  );
+  return <ShareButtons getShareUrl={getShareUrl} shareText={shareText} embedSlug={embedSlug} />;
 }
