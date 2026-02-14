@@ -7,6 +7,7 @@ import type {
   TwitterCalcMethod,
 } from './engagementModel';
 import { PLATFORM_NAMES } from './engagementModel';
+import { toBase64Url, fromBase64Url } from './codecUtils';
 
 // ─── Validation sets for safe decoding ────────────────────────────────────────
 
@@ -88,16 +89,6 @@ const FB_CODE_TO_CALC_METHOD: FacebookCalcMethod[] = ['byFollowers', 'byReach'];
 
 const TW_CALC_METHOD_TO_CODE: Record<string, number> = { byFollowers: 0, byImpressions: 1 };
 const TW_CODE_TO_CALC_METHOD: TwitterCalcMethod[] = ['byFollowers', 'byImpressions'];
-
-function toBase64Url(str: string): string {
-  return btoa(str).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
-}
-
-function fromBase64Url(str: string): string {
-  let padded = str.replace(/-/g, '+').replace(/_/g, '/');
-  while (padded.length % 4) padded += '=';
-  return atob(padded);
-}
 
 export function encodeState(state: ShareableState): string {
   let raw: string;

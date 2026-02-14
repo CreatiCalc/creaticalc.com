@@ -1,4 +1,5 @@
 import type { IndustryId } from './engagementModel';
+import { toBase64Url, fromBase64Url } from './codecUtils';
 
 // Valid values for safe decoding
 const VALID_INDUSTRY_IDS = new Set<string>([
@@ -35,16 +36,6 @@ export interface SponsorshipShareState {
   dealType: string;
   industryId: IndustryId;
   dealsPerMonth: number;
-}
-
-function toBase64Url(str: string): string {
-  return btoa(str).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
-}
-
-function fromBase64Url(str: string): string {
-  let padded = str.replace(/-/g, '+').replace(/_/g, '/');
-  while (padded.length % 4) padded += '=';
-  return atob(padded);
 }
 
 // Format: sp|platform|followers|engagementRate(x100)|contentType|dealType|industryId|dealsPerMonth

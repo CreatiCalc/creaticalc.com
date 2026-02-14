@@ -1,4 +1,5 @@
 import type { NicheId, VideoLength } from './youtubeEarningsModel';
+import { toBase64Url, fromBase64Url } from './codecUtils';
 
 interface ShareState {
   dailyViews: number;
@@ -25,15 +26,6 @@ const VALID_NICHES: Set<string> = new Set([
   'entertainment',
   'gaming',
 ]);
-
-function toBase64Url(str: string): string {
-  return btoa(str).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
-}
-
-function fromBase64Url(str: string): string {
-  const padded = str.replace(/-/g, '+').replace(/_/g, '/');
-  return atob(padded);
-}
 
 export function encodeCalcState(state: ShareState): string {
   const growthPct = Math.round(state.monthlyGrowthRate * 100);
