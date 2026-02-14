@@ -1,3 +1,5 @@
+import { formatUSD } from './formatters';
+
 // ─── Types ────────────────────────────────────────────────────────────────────
 
 export type ContentFormat = 'longform' | 'shorts';
@@ -609,12 +611,6 @@ export function findMilestoneMonths(input: ProjectionInput, maxMonths = 36): Mil
   }));
 }
 
-// ─── Utilities ────────────────────────────────────────────────────────────────
+// ─── Utilities (canonical source: ./formatters) ─────────────────────────────
 
-export function formatUSD(amount: number): string {
-  return amount.toLocaleString('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    maximumFractionDigits: 0,
-  });
-}
+export { formatUSD } from './formatters';

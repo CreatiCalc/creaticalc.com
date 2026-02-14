@@ -1,4 +1,5 @@
 import type { GrowthNicheId, GrowthInputMode } from './subscriberGrowthModel';
+import { GROWTH_NICHES } from './subscriberGrowthModel';
 import { toBase64Url, fromBase64Url } from './codecUtils';
 
 export interface GrowthShareState {
@@ -11,23 +12,7 @@ export interface GrowthShareState {
   decelerationEnabled: boolean;
 }
 
-const VALID_NICHES: Set<string> = new Set([
-  'gaming',
-  'tech',
-  'beauty',
-  'education',
-  'entertainment',
-  'music',
-  'sports',
-  'news',
-  'food',
-  'travel',
-  'finance',
-  'health',
-  'diy',
-  'automotive',
-  'pets',
-]);
+const VALID_NICHES: Set<string> = new Set(GROWTH_NICHES.map((n) => n.id));
 
 // Format: g|currentSubs|inputMode|growthPct|monthlyNewSubs|uploadsPerWeek|nicheId|decel
 export function encodeGrowthState(state: GrowthShareState): string {

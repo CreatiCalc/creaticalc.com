@@ -1,5 +1,7 @@
 import type {
+  EngagementInput,
   FacebookCalcMethod,
+  IndustryId,
   InstagramCalcMethod,
   InstagramContentType,
   Platform,
@@ -264,169 +266,92 @@ export function decodeState(encoded: string): ShareableState | null {
   }
 }
 
-export function instagramStateToShareable(state: {
-  followers: number;
-  avgLikes: number;
-  avgComments: number;
-  avgSaves: number;
-  contentType: string;
-  industryId: string;
-  postsAnalyzed: number;
-  avgReach?: number;
-  avgImpressions?: number;
-  instagramCalcMethod?: string;
-}): ShareableState {
-  const s: ShareableState = {
-    p: 'instagram',
-    f: state.followers,
-    l: state.avgLikes,
-    c: state.avgComments,
-    i: state.industryId,
-    n: state.postsAnalyzed,
-    s: state.avgSaves,
-    ct: state.contentType,
+// ─── Generic converters ──────────────────────────────────────────────────────
+
+export function inputToShareable(input: EngagementInput): ShareableState {
+  const p = input.platform;
+  const base: ShareableState = {
+    p,
+    f: input.followers,
+    l: input.avgLikes,
+    c: input.avgComments,
+    i: input.industryId,
+    n: input.postsAnalyzed,
   };
-  if (state.avgReach) s.r = state.avgReach;
-  if (state.avgImpressions) s.im = state.avgImpressions;
-  if (state.instagramCalcMethod && state.instagramCalcMethod !== 'byFollowers') {
-    s.icm = state.instagramCalcMethod;
+
+  if (p === 'instagram') {
+    base.s = input.avgSaves ?? 0;
+    base.ct = input.contentType ?? 'mixed';
+    if (input.avgReach) base.r = input.avgReach;
+    if (input.avgImpressions) base.im = input.avgImpressions;
+    if (input.instagramCalcMethod && input.instagramCalcMethod !== 'byFollowers') {
+      base.icm = input.instagramCalcMethod;
+    }
+  } else if (p === 'tiktok') {
+    base.sh = input.avgShares ?? 0;
+    base.v = input.avgViews ?? 0;
+    base.cm = input.calcMethod ?? 'byFollowers';
+  } else if (p === 'facebook') {
+    base.fsh = input.avgShares ?? 0;
+    if (input.avgReach) base.fr = input.avgReach;
+    if (input.facebookCalcMethod && input.facebookCalcMethod !== 'byFollowers') {
+      base.fcm = input.facebookCalcMethod;
+    }
+  } else {
+    // twitter
+    base.rp = input.avgReposts ?? 0;
+    base.bm = input.avgBookmarks ?? 0;
+    if (input.avgImpressions) base.tim = input.avgImpressions;
+    if (input.twitterCalcMethod && input.twitterCalcMethod !== 'byFollowers') {
+      base.tcm = input.twitterCalcMethod;
+    }
   }
-  return s;
+  return base;
 }
 
-export function tiktokStateToShareable(state: {
-  followers: number;
-  avgLikes: number;
-  avgComments: number;
-  avgShares: number;
-  avgViews: number;
-  calcMethod: string;
-  industryId: string;
-  postsAnalyzed: number;
-}): ShareableState {
-  return {
-    p: 'tiktok',
-    f: state.followers,
-    l: state.avgLikes,
-    c: state.avgComments,
-    i: state.industryId,
-    n: state.postsAnalyzed,
-    sh: state.avgShares,
-    v: state.avgViews,
-    cm: state.calcMethod,
-  };
-}
-
-export function facebookStateToShareable(state: {
-  followers: number;
-  avgReactions: number;
-  avgComments: number;
-  avgShares: number;
-  avgReach: number;
-  calcMethod: string;
-  industryId: string;
-  postsAnalyzed: number;
-}): ShareableState {
-  const s: ShareableState = {
-    p: 'facebook',
-    f: state.followers,
-    l: state.avgReactions,
-    c: state.avgComments,
-    i: state.industryId,
-    n: state.postsAnalyzed,
-    fsh: state.avgShares,
-  };
-  if (state.avgReach) s.fr = state.avgReach;
-  if (state.calcMethod !== 'byFollowers') s.fcm = state.calcMethod;
-  return s;
-}
-
-export function twitterStateToShareable(state: {
-  followers: number;
-  avgLikes: number;
-  avgReplies: number;
-  avgReposts: number;
-  avgBookmarks: number;
-  avgImpressions: number;
-  calcMethod: string;
-  industryId: string;
-  postsAnalyzed: number;
-}): ShareableState {
-  const s: ShareableState = {
-    p: 'twitter',
-    f: state.followers,
-    l: state.avgLikes,
-    c: state.avgReplies,
-    i: state.industryId,
-    n: state.postsAnalyzed,
-    rp: state.avgReposts,
-    bm: state.avgBookmarks,
-  };
-  if (state.avgImpressions) s.tim = state.avgImpressions;
-  if (state.calcMethod !== 'byFollowers') s.tcm = state.calcMethod;
-  return s;
-}
-
-export function shareableToInstagramState(s: ShareableState) {
-  const ct = s.ct ?? 'mixed';
-  const icm = s.icm ?? 'byFollowers';
-  return {
+export function shareableToInput(s: ShareableState): EngagementInput {
+  const base: EngagementInput = {
+    platform: s.p,
     followers: s.f,
     avgLikes: s.l,
     avgComments: s.c,
-    avgSaves: s.s ?? 0,
-    contentType: (VALID_CONTENT_TYPES.has(ct) ? ct : 'mixed') as InstagramContentType,
-    industryId: s.i,
+    industryId: s.i as IndustryId,
     postsAnalyzed: s.n,
-    avgReach: s.r ?? 0,
-    avgImpressions: s.im ?? 0,
-    instagramCalcMethod: (VALID_IG_CALC_METHODS.has(icm)
-      ? icm
-      : 'byFollowers') as InstagramCalcMethod,
   };
-}
 
-export function shareableToTikTokState(s: ShareableState) {
-  const cm = s.cm ?? 'byFollowers';
-  return {
-    followers: s.f,
-    avgLikes: s.l,
-    avgComments: s.c,
-    avgShares: s.sh ?? 0,
-    avgViews: s.v ?? 0,
-    calcMethod: (VALID_TT_CALC_METHODS.has(cm) ? cm : 'byFollowers') as TikTokCalcMethod,
-    industryId: s.i,
-    postsAnalyzed: s.n,
-  };
-}
-
-export function shareableToFacebookState(s: ShareableState) {
-  const fcm = s.fcm ?? 'byFollowers';
-  return {
-    followers: s.f,
-    avgReactions: s.l,
-    avgComments: s.c,
-    avgShares: s.fsh ?? 0,
-    avgReach: s.fr ?? 0,
-    calcMethod: (VALID_FB_CALC_METHODS.has(fcm) ? fcm : 'byFollowers') as FacebookCalcMethod,
-    industryId: s.i,
-    postsAnalyzed: s.n,
-  };
-}
-
-export function shareableToTwitterState(s: ShareableState) {
-  const tcm = s.tcm ?? 'byFollowers';
-  return {
-    followers: s.f,
-    avgLikes: s.l,
-    avgReplies: s.c,
-    avgReposts: s.rp ?? 0,
-    avgBookmarks: s.bm ?? 0,
-    avgImpressions: s.tim ?? 0,
-    calcMethod: (VALID_TW_CALC_METHODS.has(tcm) ? tcm : 'byFollowers') as TwitterCalcMethod,
-    industryId: s.i,
-    postsAnalyzed: s.n,
-  };
+  if (s.p === 'instagram') {
+    base.avgSaves = s.s ?? 0;
+    const ct = s.ct ?? 'mixed';
+    base.contentType = (VALID_CONTENT_TYPES.has(ct) ? ct : 'mixed') as InstagramContentType;
+    base.avgReach = s.r ?? 0;
+    base.avgImpressions = s.im ?? 0;
+    const icm = s.icm ?? 'byFollowers';
+    base.instagramCalcMethod = (
+      VALID_IG_CALC_METHODS.has(icm) ? icm : 'byFollowers'
+    ) as InstagramCalcMethod;
+  } else if (s.p === 'tiktok') {
+    base.avgShares = s.sh ?? 0;
+    base.avgViews = s.v ?? 0;
+    const cm = s.cm ?? 'byFollowers';
+    base.calcMethod = (VALID_TT_CALC_METHODS.has(cm) ? cm : 'byFollowers') as TikTokCalcMethod;
+  } else if (s.p === 'facebook') {
+    base.avgShares = s.fsh ?? 0;
+    base.avgReach = s.fr ?? 0;
+    const fcm = s.fcm ?? 'byFollowers';
+    base.facebookCalcMethod = (
+      VALID_FB_CALC_METHODS.has(fcm) ? fcm : 'byFollowers'
+    ) as FacebookCalcMethod;
+  } else {
+    // twitter
+    base.avgReposts = s.rp ?? 0;
+    base.avgBookmarks = s.bm ?? 0;
+    base.avgImpressions = s.tim ?? 0;
+    const tcm = s.tcm ?? 'byFollowers';
+    base.twitterCalcMethod = (
+      VALID_TW_CALC_METHODS.has(tcm) ? tcm : 'byFollowers'
+    ) as TwitterCalcMethod;
+  }
+  return base;
 }
 
 export function buildShareUrl(basePath: string, state: ShareableState): string {

@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
@@ -72,7 +73,9 @@ export default async function NicheCalculatorPage({ params }: NichePageProps) {
         faq={data.faq}
         howItWorks={howItWorks}
       >
-        <YouTubeMoneyCalculator defaultOverrides={{ nicheId: data.nicheId }} hideNicheSelector />
+        <Suspense>
+          <YouTubeMoneyCalculator defaultOverrides={{ nicheId: data.nicheId }} hideNicheSelector />
+        </Suspense>
       </CalculatorLayout>
     </>
   );

@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
@@ -220,7 +221,9 @@ export default function YouTubeMoneyCalculatorPage() {
         faq={faq}
         howItWorks={howItWorks}
       >
-        <YouTubeMoneyCalculator />
+        <Suspense>
+          <YouTubeMoneyCalculator />
+        </Suspense>
 
         <section className="mt-12">
           <h2 className="mb-4 text-2xl font-bold">Browse by Niche</h2>

@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import type { Metadata } from 'next';
 import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
 import CalculatorSchema from '@/components/seo/CalculatorSchema';
@@ -138,10 +139,12 @@ export default function YouTubeShortsMoneyCalculatorPage() {
         faq={faq}
         howItWorks={howItWorks}
       >
-        <YouTubeMoneyCalculator
-          defaultOverrides={{ contentFormat: 'shorts', dailyViews: 50000 }}
-          hideFormatToggle
-        />
+        <Suspense>
+          <YouTubeMoneyCalculator
+            defaultOverrides={{ contentFormat: 'shorts', dailyViews: 50000 }}
+            hideFormatToggle
+          />
+        </Suspense>
       </CalculatorLayout>
     </>
   );

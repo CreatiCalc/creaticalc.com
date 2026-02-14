@@ -1,3 +1,5 @@
+import { formatFollowerCount } from './formatters';
+
 // ─── Types ────────────────────────────────────────────────────────────────────
 
 export type Platform = 'instagram' | 'tiktok' | 'facebook' | 'twitter';
@@ -562,22 +564,6 @@ export function getTopIndustries(platform: Platform, count = 5): IndustryBenchma
   return [...INDUSTRY_BENCHMARKS].sort((a, b) => b[platform] - a[platform]).slice(0, count);
 }
 
-// ─── Utilities ────────────────────────────────────────────────────────────────
+// ─── Utilities (canonical source: ./formatters) ─────────────────────────────
 
-export function formatPercent(value: number): string {
-  return `${value.toFixed(2)}%`;
-}
-
-export function formatFollowerCount(count: number): string {
-  if (count >= 1_000_000) return `${(count / 1_000_000).toFixed(count % 1_000_000 === 0 ? 0 : 1)}M`;
-  if (count >= 1_000) return `${(count / 1_000).toFixed(count % 1_000 === 0 ? 0 : 1)}K`;
-  return count.toLocaleString();
-}
-
-export function formatUSD(amount: number): string {
-  return amount.toLocaleString('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    maximumFractionDigits: 0,
-  });
-}
+export { formatUSD, formatPercent, formatFollowerCount } from './formatters';

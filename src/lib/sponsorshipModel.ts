@@ -1,5 +1,12 @@
 import type { Platform, IndustryId, FollowerTier } from './engagementModel';
-import { getFollowerTier, getTierLabel, formatUSD, formatFollowerCount } from './engagementModel';
+import {
+  getFollowerTier,
+  getTierLabel,
+  formatUSD,
+  formatFollowerCount,
+  ENGAGEMENT_MULTIPLIERS,
+  NICHE_MULTIPLIERS,
+} from './engagementModel';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -74,26 +81,6 @@ const DEAL_TYPE_MULTIPLIERS: Record<DealType, number> = {
   dedicated: 2.5,
   review: 3.5,
   series: 2.0,
-};
-
-const ENGAGEMENT_MULTIPLIERS: { maxRate: number; multiplier: number }[] = [
-  { maxRate: 1, multiplier: 0.5 },
-  { maxRate: 3, multiplier: 1.0 },
-  { maxRate: 5, multiplier: 1.5 },
-  { maxRate: Infinity, multiplier: 2.0 },
-];
-
-const NICHE_MULTIPLIERS: Partial<Record<IndustryId, number>> = {
-  finance: 2.0,
-  tech: 1.5,
-  education: 1.3,
-  health: 1.2,
-  beauty: 1.2,
-  travel: 1.1,
-  food: 1.0,
-  fashion: 1.0,
-  entertainment: 0.8,
-  sports: 0.9,
 };
 
 export const IG_CONTENT_TYPES: { value: InstagramContentType; label: string }[] = [
