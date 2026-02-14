@@ -2,7 +2,7 @@
 
 import { useCallback } from 'react';
 import ShareButtons from '@/components/ui/ShareButtons';
-import type { Platform } from '@/lib/engagementModel';
+import type { Platform } from '@/lib/engagementBenchmarks';
 import { encodeState, buildShareText, type ShareableState } from '@/lib/engagementShareCodec';
 import { SITE_URL } from '@/lib/siteConfig';
 

@@ -1,6 +1,6 @@
 'use client';
 
-import type { HealthScore } from '@/lib/engagementModel';
+import type { HealthScore } from '@/lib/engagementBenchmarks';
 
 interface EngagementHealthScoreProps {
   healthScore: HealthScore;

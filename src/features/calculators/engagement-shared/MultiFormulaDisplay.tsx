@@ -1,7 +1,7 @@
 'use client';
 
 import Card from '@/components/ui/Card';
-import { formatPercent, type MultiFormulaResult } from '@/lib/engagementModel';
+import { formatPercent, type MultiFormulaResult } from '@/lib/engagementBenchmarks';
 
 interface MultiFormulaDisplayProps {
   results: MultiFormulaResult;

@@ -1,7 +1,7 @@
 'use client';
 
 import { useReducer } from 'react';
-import type { EngagementInput, IndustryId, InstagramContentType } from '@/lib/engagementModel';
+import type { EngagementInput, IndustryId, InstagramContentType } from '@/lib/engagementBenchmarks';
 import { decodeState, shareableToInput } from '@/lib/engagementShareCodec';
 import type { EngagementPlatformConfig } from './platformConfigs';
 import { buildDefaultState } from './platformConfigs';

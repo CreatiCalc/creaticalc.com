@@ -1,10 +1,10 @@
-import type { Platform } from '@/lib/engagementModel';
+import type { Platform } from '@/lib/engagementBenchmarks';
 import {
   INDUSTRY_BENCHMARKS,
   PLATFORM_NAMES,
   formatPercent,
   YOY_TRENDS,
-} from '@/lib/engagementModel';
+} from '@/lib/engagementBenchmarks';
 
 interface BenchmarkTableProps {
   platform: Platform;

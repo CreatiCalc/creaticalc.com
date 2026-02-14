@@ -24,7 +24,7 @@ import type {
   EngagementResult,
   EngagementRecommendation,
   HealthScore,
-} from '@/lib/engagementModel';
+} from '@/lib/engagementBenchmarks';
 import type { ShareableState } from '@/lib/engagementShareCodec';
 
 interface EngagementResultsSectionProps {

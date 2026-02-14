@@ -18,7 +18,7 @@ import MonthlyEarningsProjection from './MonthlyEarningsProjection';
 import TierContext from './TierContext';
 import NegotiationTips from './NegotiationTips';
 import EngagementRateInput from './EngagementRateInput';
-import { INDUSTRIES, formatUSD, type IndustryId } from '@/lib/engagementModel';
+import { INDUSTRIES, formatUSD, type IndustryId } from '@/lib/engagementBenchmarks';
 import {
   computeSponsorship,
   getNegotiationTips,

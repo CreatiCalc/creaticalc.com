@@ -1,12 +1,8 @@
 'use client';
 
 import AnimatedNumber from '@/components/ui/AnimatedNumber';
-import {
-  type Platform,
-  type EngagementRating,
-  getRatingColor,
-  formatPercent,
-} from '@/lib/engagementModel';
+import { type Platform, type EngagementRating, formatPercent } from '@/lib/engagementBenchmarks';
+import { getRatingColor } from '@/lib/engagementModel';
 
 interface EngagementRateDisplayProps {
   rate: number;

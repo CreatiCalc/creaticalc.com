@@ -1,4 +1,4 @@
-import type { Platform, IndustryId } from '@/lib/engagementModel';
+import type { Platform, IndustryId } from '@/lib/engagementBenchmarks';
 import type { SponsorshipContentType, DealType } from '@/lib/sponsorshipModel';
 
 export interface SponsorshipPlatformConfig {

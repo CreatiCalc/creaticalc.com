@@ -3,8 +3,8 @@ import type {
   EngagementInput,
   InstagramContentType,
   IndustryId,
-} from '@/lib/engagementModel';
-import { setInputField } from '@/lib/engagementModel';
+} from '@/lib/engagementBenchmarks';
+import { setInputField } from '@/lib/engagementBenchmarks';
 
 // ─── Config Types ────────────────────────────────────────────────────────────
 

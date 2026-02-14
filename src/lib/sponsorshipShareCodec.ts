@@ -1,5 +1,5 @@
-import type { IndustryId } from './engagementModel';
-import { VALID_INDUSTRY_IDS } from './engagementModel';
+import type { IndustryId } from './engagementBenchmarks';
+import { VALID_INDUSTRY_IDS } from './engagementBenchmarks';
 import { toBase64Url, fromBase64Url } from './codecUtils';
 
 // Sponsorship-specific validation sets (content types and deal types differ from engagement)

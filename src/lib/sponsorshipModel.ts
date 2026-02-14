@@ -1,4 +1,4 @@
-import type { Platform, IndustryId, FollowerTier } from './engagementModel';
+import type { Platform, IndustryId, FollowerTier } from './engagementBenchmarks';
 import {
   getFollowerTier,
   getTierLabel,
@@ -6,7 +6,7 @@ import {
   formatFollowerCount,
   getEngagementMultiplier,
   getNicheMultiplier,
-} from './engagementModel';
+} from './engagementBenchmarks';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 

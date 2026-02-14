@@ -1,10 +1,10 @@
 'use client';
 
 import AnimatedNumber from '@/components/ui/AnimatedNumber';
-import { formatUSD } from '@/lib/engagementModel';
+import { formatUSD } from '@/lib/engagementBenchmarks';
 import type { RateRange } from '@/lib/sponsorshipModel';
 import { getContentTypeLabel, getDealTypeLabel } from '@/lib/sponsorshipModel';
-import type { Platform } from '@/lib/engagementModel';
+import type { Platform } from '@/lib/engagementBenchmarks';
 import type { SponsorshipContentType, DealType } from '@/lib/sponsorshipModel';
 
 interface SponsorshipRateDisplayProps {

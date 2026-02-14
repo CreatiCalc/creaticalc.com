@@ -13,15 +13,17 @@ import EngagementResultsSection from './EngagementResultsSection';
 import { MultiFormulaDisplay } from './dynamicImports';
 import {
   INDUSTRIES,
-  computeEngagement,
-  generateEngagementRecommendations,
   getTierRange,
-  calculateMultiFormula,
-  calculateHealthScore,
   getInputField,
   type EngagementInput,
   type IndustryId,
   type InstagramContentType,
+} from '@/lib/engagementBenchmarks';
+import {
+  computeEngagement,
+  generateEngagementRecommendations,
+  calculateMultiFormula,
+  calculateHealthScore,
 } from '@/lib/engagementModel';
 import { inputToShareable } from '@/lib/engagementShareCodec';
 import type { EngagementPlatformConfig, MetricDef, AltMetricDef } from './platformConfigs';

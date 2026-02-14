@@ -1,7 +1,3 @@
-// Re-export all types, constants, and tier functions from benchmarks
-// so existing consumers don't need to update their imports
-export * from './engagementBenchmarks';
-
 import {
   type Platform,
   type LetterGrade,

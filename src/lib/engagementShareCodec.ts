@@ -7,7 +7,7 @@ import type {
   Platform,
   TikTokCalcMethod,
   TwitterCalcMethod,
-} from './engagementModel';
+} from './engagementBenchmarks';
 import {
   PLATFORM_NAMES,
   VALID_INDUSTRY_IDS,
@@ -16,7 +16,7 @@ import {
   VALID_TT_CALC_METHODS,
   VALID_FB_CALC_METHODS,
   VALID_TW_CALC_METHODS,
-} from './engagementModel';
+} from './engagementBenchmarks';
 import { toBase64Url, fromBase64Url } from './codecUtils';
 
 export interface ShareableState {

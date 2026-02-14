@@ -3,10 +3,10 @@
 import {
   type Platform,
   PLATFORM_NAMES,
-  getYoYContext,
   formatPercent,
   YOY_TRENDS,
-} from '@/lib/engagementModel';
+} from '@/lib/engagementBenchmarks';
+import { getYoYContext } from '@/lib/engagementModel';
 
 interface YoYTrendContextProps {
   platform: Platform;

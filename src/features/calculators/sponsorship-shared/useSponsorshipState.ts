@@ -1,7 +1,7 @@
 'use client';
 
 import { useReducer } from 'react';
-import type { IndustryId } from '@/lib/engagementModel';
+import type { IndustryId } from '@/lib/engagementBenchmarks';
 import type { DealType, SponsorshipContentType } from '@/lib/sponsorshipModel';
 import { decodeSponsorshipState } from '@/lib/sponsorshipShareCodec';
 import type { SponsorshipPlatformConfig } from './sponsorshipConfigs';
