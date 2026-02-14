@@ -35,71 +35,43 @@ import {
   formatUSD,
 } from './engagementBenchmarks';
 
+// ─── Core Helpers ─────────────────────────────────────────────────────────────
+
+/** Total interactions for a platform (likes + comments + platform-specific extras). */
+function getInteractionTotal(input: EngagementInput): number {
+  const { platform, avgLikes, avgComments } = input;
+  switch (platform) {
+    case 'instagram':
+      return avgLikes + avgComments + (input.avgSaves ?? 0);
+    case 'twitter':
+      return avgLikes + avgComments + (input.avgReposts ?? 0) + (input.avgBookmarks ?? 0);
+    default:
+      // tiktok and facebook both use shares
+      return avgLikes + avgComments + (input.avgShares ?? 0);
+  }
+}
+
+/** Denominator for engagement rate based on platform and active calc method. */
+function getDenominator(input: EngagementInput): number {
+  const { platform, followers } = input;
+  if (platform === 'tiktok' && input.calcMethod === 'byViews') return input.avgViews ?? 0;
+  if (platform === 'instagram' && input.instagramCalcMethod === 'byReach')
+    return input.avgReach ?? 0;
+  if (platform === 'instagram' && input.instagramCalcMethod === 'byImpressions')
+    return input.avgImpressions ?? 0;
+  if (platform === 'facebook' && input.facebookCalcMethod === 'byReach') return input.avgReach ?? 0;
+  if (platform === 'twitter' && input.twitterCalcMethod === 'byImpressions')
+    return input.avgImpressions ?? 0;
+  return followers;
+}
+
 // ─── Core Functions ───────────────────────────────────────────────────────────
 
 export function calculateEngagementRate(input: EngagementInput): number {
-  const { platform, followers, avgLikes, avgComments } = input;
-
-  if (platform === 'tiktok' && input.calcMethod === 'byViews') {
-    const views = input.avgViews ?? 0;
-    if (views <= 0) return 0;
-    const totalInteractions = avgLikes + avgComments + (input.avgShares ?? 0);
-    return (totalInteractions / views) * 100;
-  }
-
-  if (platform === 'instagram') {
-    const saves = input.avgSaves ?? 0;
-    const totalInteractions = avgLikes + avgComments + saves;
-
-    if (input.instagramCalcMethod === 'byReach') {
-      const reach = input.avgReach ?? 0;
-      if (reach <= 0) return 0;
-      return (totalInteractions / reach) * 100;
-    }
-    if (input.instagramCalcMethod === 'byImpressions') {
-      const impressions = input.avgImpressions ?? 0;
-      if (impressions <= 0) return 0;
-      return (totalInteractions / impressions) * 100;
-    }
-
-    if (followers <= 0) return 0;
-    return (totalInteractions / followers) * 100;
-  }
-
-  if (platform === 'facebook') {
-    const shares = input.avgShares ?? 0;
-    const totalInteractions = avgLikes + avgComments + shares;
-
-    if (input.facebookCalcMethod === 'byReach') {
-      const reach = input.avgReach ?? 0;
-      if (reach <= 0) return 0;
-      return (totalInteractions / reach) * 100;
-    }
-
-    if (followers <= 0) return 0;
-    return (totalInteractions / followers) * 100;
-  }
-
-  if (platform === 'twitter') {
-    const reposts = input.avgReposts ?? 0;
-    const bookmarks = input.avgBookmarks ?? 0;
-    const totalInteractions = avgLikes + avgComments + reposts + bookmarks;
-
-    if (input.twitterCalcMethod === 'byImpressions') {
-      const impressions = input.avgImpressions ?? 0;
-      if (impressions <= 0) return 0;
-      return (totalInteractions / impressions) * 100;
-    }
-
-    if (followers <= 0) return 0;
-    return (totalInteractions / followers) * 100;
-  }
-
-  if (followers <= 0) return 0;
-
-  // TikTok by followers
-  const shares = input.avgShares ?? 0;
-  return ((avgLikes + avgComments + shares) / followers) * 100;
+  const total = getInteractionTotal(input);
+  const denominator = getDenominator(input);
+  if (denominator <= 0) return 0;
+  return (total / denominator) * 100;
 }
 
 interface FixedBenchmarks {
@@ -169,33 +141,30 @@ export function getRatingColor(rating: EngagementRating): string {
 
 export function calculateBreakdown(input: EngagementInput): EngagementBreakdown {
   const { platform, avgLikes, avgComments } = input;
+  const total = getInteractionTotal(input);
+  const pct = (count: number) => (total > 0 ? (count / total) * 100 : 0);
 
-  let total: number;
   let saves: { count: number; pct: number } | undefined;
   let shares: { count: number; pct: number } | undefined;
   let reposts: { count: number; pct: number } | undefined;
   let bookmarks: { count: number; pct: number } | undefined;
 
   if (platform === 'instagram') {
-    const savesCount = input.avgSaves ?? 0;
-    total = avgLikes + avgComments + savesCount;
-    saves = { count: savesCount, pct: total > 0 ? (savesCount / total) * 100 : 0 };
+    const count = input.avgSaves ?? 0;
+    saves = { count, pct: pct(count) };
   } else if (platform === 'twitter') {
-    const repostsCount = input.avgReposts ?? 0;
-    const bookmarksCount = input.avgBookmarks ?? 0;
-    total = avgLikes + avgComments + repostsCount + bookmarksCount;
-    reposts = { count: repostsCount, pct: total > 0 ? (repostsCount / total) * 100 : 0 };
-    bookmarks = { count: bookmarksCount, pct: total > 0 ? (bookmarksCount / total) * 100 : 0 };
+    const rCount = input.avgReposts ?? 0;
+    const bCount = input.avgBookmarks ?? 0;
+    reposts = { count: rCount, pct: pct(rCount) };
+    bookmarks = { count: bCount, pct: pct(bCount) };
   } else {
-    // TikTok and Facebook both use shares
-    const sharesCount = input.avgShares ?? 0;
-    total = avgLikes + avgComments + sharesCount;
-    shares = { count: sharesCount, pct: total > 0 ? (sharesCount / total) * 100 : 0 };
+    const count = input.avgShares ?? 0;
+    shares = { count, pct: pct(count) };
   }
 
   return {
-    likes: { count: avgLikes, pct: total > 0 ? (avgLikes / total) * 100 : 0 },
-    comments: { count: avgComments, pct: total > 0 ? (avgComments / total) * 100 : 0 },
+    likes: { count: avgLikes, pct: pct(avgLikes) },
+    comments: { count: avgComments, pct: pct(avgComments) },
     saves,
     shares,
     reposts,
