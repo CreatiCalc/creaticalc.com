@@ -1,4 +1,4 @@
-import { MONTH_ABBREVIATIONS } from './formatters';
+import { getMonthLabel } from './formatters';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -138,16 +138,6 @@ function getDecelerationFactor(subs: number): number {
   return lastFactor + t * (DECELERATION_FLOOR - lastFactor);
 }
 
-// ─── Month Labels ─────────────────────────────────────────────────────────────
-
-function getMonthLabel(startMonth: number, offset: number): string {
-  const now = new Date();
-  const startYear = now.getFullYear();
-  const calMonth = (startMonth + offset) % 12;
-  const yearOffset = Math.floor((startMonth + offset) / 12);
-  return `${MONTH_ABBREVIATIONS[calMonth]} ${startYear + yearOffset}`;
-}
-
 // ─── Milestone Targets ────────────────────────────────────────────────────────
 
 const MILESTONE_TARGETS = [
@@ -162,7 +152,9 @@ const MILESTONE_TARGETS = [
 // ─── Core Projection ─────────────────────────────────────────────────────────
 
 export function projectGrowth(input: GrowthInput): GrowthProjectionResult {
-  const startMonth = new Date().getMonth();
+  const now = new Date();
+  const startMonth = now.getMonth();
+  const startYear = now.getFullYear();
   const uploadMultiplier = getUploadMultiplier(input.uploadsPerWeek);
   const months: MonthGrowthProjection[] = [];
 
@@ -193,7 +185,7 @@ export function projectGrowth(input: GrowthInput): GrowthProjectionResult {
     const rounded = Math.round(subs);
     months.push({
       monthIndex: i,
-      monthLabel: getMonthLabel(startMonth, i),
+      monthLabel: getMonthLabel(startMonth, startYear, i),
       subscribers: rounded,
       subscribersLow: Math.round(rounded * (1 - confidenceSpread)),
       subscribersHigh: Math.round(rounded * (1 + confidenceSpread)),

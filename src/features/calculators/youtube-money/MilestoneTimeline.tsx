@@ -3,21 +3,15 @@
 import { useMemo } from 'react';
 import type { ProjectionInput } from '@/lib/youtubeEarningsModel';
 import { findMilestoneMonths, formatUSD } from '@/lib/youtubeEarningsModel';
-import { MONTH_ABBREVIATIONS } from '@/lib/formatters';
+import { getMonthLabel } from '@/lib/formatters';
 import SharedMilestoneTimeline from '../shared/MilestoneTimeline';
 import type { MilestoneItem } from '../shared/MilestoneTimeline';
-
-function getMonthLabel(startMonth: number, monthIndex: number): string {
-  const now = new Date();
-  const startYear = now.getFullYear();
-  const calMonth = (startMonth + monthIndex) % 12;
-  const yearOffset = Math.floor((startMonth + monthIndex) / 12);
-  return `${MONTH_ABBREVIATIONS[calMonth]} ${startYear + yearOffset}`;
-}
 
 interface MilestoneTimelineProps {
   input: ProjectionInput;
 }
+
+const START_YEAR = new Date().getFullYear();
 
 export default function MilestoneTimeline({ input }: MilestoneTimelineProps) {
   const rawMilestones = useMemo(() => findMilestoneMonths(input), [input]);
@@ -35,7 +29,7 @@ export default function MilestoneTimeline({ input }: MilestoneTimelineProps) {
     futureDetail:
       m.monthIndex !== null && m.monthIndex > 0 ? (
         <>
-          Month {m.monthIndex} &mdash; {getMonthLabel(input.startMonth, m.monthIndex)}
+          Month {m.monthIndex} &mdash; {getMonthLabel(input.startMonth, START_YEAR, m.monthIndex)}
         </>
       ) : undefined,
     unreachableText: 'Beyond 3 years',
