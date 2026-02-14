@@ -227,16 +227,11 @@ export default function EngagementCalculator({ config }: EngagementCalculatorPro
       </Card>
 
       <EngagementResultsSection
-        platform={config.platform}
         basePath={config.basePath}
         result={result}
         input={state}
-        healthScore={healthScore}
-        tierRange={tierRange}
+        computed={{ healthScore, tierRange, recommendations }}
         shareableState={shareableState}
-        recommendations={recommendations}
-        followers={state.followers}
-        industryId={state.industryId}
         isEmbed={isEmbed}
         onApplyScenario={applyScenario}
         extraSections={

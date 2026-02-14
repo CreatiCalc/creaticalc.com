@@ -18,8 +18,6 @@ import {
   YoYTrendContext,
 } from './dynamicImports';
 import type {
-  Platform,
-  IndustryId,
   EngagementInput,
   EngagementResult,
   EngagementRecommendation,
@@ -27,37 +25,35 @@ import type {
 } from '@/lib/engagementBenchmarks';
 import type { ShareableState } from '@/lib/engagementShareCodec';
 
+export interface ComputedEngagementResults {
+  healthScore: HealthScore;
+  tierRange: string;
+  recommendations: EngagementRecommendation[];
+}
+
 interface EngagementResultsSectionProps {
-  platform: Platform;
   basePath: string;
   result: EngagementResult;
   input: EngagementInput;
-  healthScore: HealthScore;
-  tierRange: string;
+  computed: ComputedEngagementResults;
   shareableState: ShareableState;
-  recommendations: EngagementRecommendation[];
-  followers: number;
-  industryId: IndustryId;
   isEmbed: boolean;
   onApplyScenario: (changes: Partial<EngagementInput>) => void;
   extraSections?: ReactNode;
 }
 
 export default function EngagementResultsSection({
-  platform,
   basePath,
   result,
   input,
-  healthScore,
-  tierRange,
+  computed,
   shareableState,
-  recommendations,
-  followers,
-  industryId,
   isEmbed,
   onApplyScenario,
   extraSections,
 }: EngagementResultsSectionProps) {
+  const { platform, followers, industryId } = input;
+
   return (
     <>
       <div className="mt-6 grid gap-4 sm:grid-cols-2">
@@ -66,10 +62,10 @@ export default function EngagementResultsSection({
           rating={result.rating}
           ratingLabel={result.ratingLabel}
           tierLabel={result.tierLabel}
-          tierRange={tierRange}
+          tierRange={computed.tierRange}
           platform={platform}
         />
-        <EngagementHealthScore healthScore={healthScore} />
+        <EngagementHealthScore healthScore={computed.healthScore} />
       </div>
 
       <div className="mt-4">
@@ -151,7 +147,7 @@ export default function EngagementResultsSection({
           </CollapsibleSection>
 
           <CollapsibleSection title="Growth Recommendations" defaultOpen={false} className="mt-6">
-            <GrowthRecommendations recommendations={recommendations} />
+            <GrowthRecommendations recommendations={computed.recommendations} />
           </CollapsibleSection>
 
           <CollapsibleSection title="Engagement Breakdown" defaultOpen={false} className="mt-6">
