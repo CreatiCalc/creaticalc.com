@@ -106,6 +106,21 @@ export function calculateEngagementRate(input: EngagementInput): number {
   return ((avgLikes + avgComments + shares) / followers) * 100;
 }
 
+interface FixedBenchmarks {
+  excellent: number;
+  good: number;
+  average: number;
+  belowAverage: number;
+}
+
+function rateFromFixedBenchmarks(rate: number, b: FixedBenchmarks): EngagementRating {
+  if (rate >= b.excellent) return 'excellent';
+  if (rate >= b.good) return 'good';
+  if (rate >= b.average) return 'average';
+  if (rate >= b.belowAverage) return 'below_average';
+  return 'low';
+}
+
 export function rateEngagement(
   platform: Platform,
   followers: number,
@@ -114,31 +129,14 @@ export function rateEngagement(
   facebookCalcMethod?: FacebookCalcMethod,
   twitterCalcMethod?: TwitterCalcMethod
 ): EngagementRating {
-  // TikTok view-based uses its own scale
   if (platform === 'tiktok' && calcMethod === 'byViews') {
-    if (rate >= TIKTOK_VIEW_BENCHMARKS.excellent) return 'excellent';
-    if (rate >= TIKTOK_VIEW_BENCHMARKS.good) return 'good';
-    if (rate >= TIKTOK_VIEW_BENCHMARKS.average) return 'average';
-    if (rate >= TIKTOK_VIEW_BENCHMARKS.belowAverage) return 'below_average';
-    return 'low';
+    return rateFromFixedBenchmarks(rate, TIKTOK_VIEW_BENCHMARKS);
   }
-
-  // Facebook reach-based uses its own scale
   if (platform === 'facebook' && facebookCalcMethod === 'byReach') {
-    if (rate >= FACEBOOK_REACH_BENCHMARKS.excellent) return 'excellent';
-    if (rate >= FACEBOOK_REACH_BENCHMARKS.good) return 'good';
-    if (rate >= FACEBOOK_REACH_BENCHMARKS.average) return 'average';
-    if (rate >= FACEBOOK_REACH_BENCHMARKS.belowAverage) return 'below_average';
-    return 'low';
+    return rateFromFixedBenchmarks(rate, FACEBOOK_REACH_BENCHMARKS);
   }
-
-  // Twitter impressions-based uses its own scale
   if (platform === 'twitter' && twitterCalcMethod === 'byImpressions') {
-    if (rate >= TWITTER_IMPRESSIONS_BENCHMARKS.excellent) return 'excellent';
-    if (rate >= TWITTER_IMPRESSIONS_BENCHMARKS.good) return 'good';
-    if (rate >= TWITTER_IMPRESSIONS_BENCHMARKS.average) return 'average';
-    if (rate >= TWITTER_IMPRESSIONS_BENCHMARKS.belowAverage) return 'below_average';
-    return 'low';
+    return rateFromFixedBenchmarks(rate, TWITTER_IMPRESSIONS_BENCHMARKS);
   }
 
   const benchmark = getTierBenchmark(platform, followers);
