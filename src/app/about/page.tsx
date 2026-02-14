@@ -6,11 +6,11 @@ import { SITE_NAME, SITE_URL, SITE_LOGO, SITE_DESCRIPTION } from '@/lib/siteConf
 export const metadata: Metadata = {
   title: 'About — Free Calculators for Content Creators',
   description:
-    'CreatiCalc offers free calculators for YouTube, Instagram, and TikTok creators. Estimate earnings, calculate engagement rates, find sponsorship pricing, and project subscriber growth with real industry data.',
+    'CreatiCalc offers free calculators for YouTube, Instagram, TikTok, Facebook, and X (Twitter) creators. Estimate earnings, calculate engagement rates, find sponsorship pricing, and project subscriber growth with real industry data.',
   openGraph: {
     title: 'About CreatiCalc — Free Calculators for Content Creators',
     description:
-      'Free YouTube earnings calculator, Instagram and TikTok engagement rate calculators, sponsorship rate tools, and more. Built for content creators, powered by real industry benchmarks.',
+      'Free YouTube earnings calculator, Instagram, TikTok, Facebook, and X (Twitter) engagement rate calculators, sponsorship rate tools, and more. Built for content creators, powered by real industry benchmarks.',
     url: '/about',
   },
   alternates: {
@@ -69,6 +69,20 @@ const calculators = [
     platform: 'TikTok',
   },
   {
+    title: 'Facebook Engagement Rate Calculator',
+    description:
+      'Calculate your Facebook Page engagement rate using reactions, comments, and shares. Compare against page benchmarks by follower tier and industry.',
+    href: '/facebook-engagement-rate-calculator',
+    platform: 'Facebook',
+  },
+  {
+    title: 'X (Twitter) Engagement Rate Calculator',
+    description:
+      'Measure your X engagement rate using likes, replies, reposts, and bookmarks. Compare against benchmarks by follower tier and industry.',
+    href: '/twitter-engagement-rate-calculator',
+    platform: 'X',
+  },
+  {
     title: 'Engagement Rate Calculator',
     description:
       'All-in-one engagement rate calculator for Instagram and TikTok. Compare against industry benchmarks and get personalized recommendations.',
@@ -93,12 +107,12 @@ const faqItems = [
   {
     question: 'How accurate are the calculator results?',
     answer:
-      'Our calculators use real industry benchmarks and publicly available data from YouTube, Instagram, and TikTok. While no estimate is perfectly precise — actual results depend on factors like audience geography, ad-blocker usage, and seasonal trends — our tools give you a reliable range to plan around.',
+      'Our calculators use real industry benchmarks and publicly available data from YouTube, Instagram, TikTok, Facebook, and X (Twitter). While no estimate is perfectly precise — actual results depend on factors like audience geography, ad-blocker usage, and seasonal trends — our tools give you a reliable range to plan around.',
   },
   {
     question: 'What platforms does CreatiCalc support?',
     answer:
-      'CreatiCalc currently supports YouTube, Instagram, and TikTok. We offer earnings calculators (including YouTube Shorts), engagement rate calculators, sponsorship rate calculators, engagement benchmarks, and growth projectors — with more tools in development.',
+      'CreatiCalc currently supports YouTube, Instagram, TikTok, Facebook, and X (Twitter). We offer earnings calculators (including YouTube Shorts), engagement rate calculators, sponsorship rate calculators, engagement benchmarks, and growth projectors — with more tools in development.',
   },
   {
     question: 'How often is the data updated?',
@@ -159,7 +173,7 @@ export default function AboutPage() {
           </h1>
           <p className="mt-6 text-lg leading-relaxed text-muted">
             CreatiCalc is a free suite of calculators built for content creators on YouTube,
-            Instagram, and TikTok. Whether you&apos;re estimating your{' '}
+            Instagram, TikTok, Facebook, and X (Twitter). Whether you&apos;re estimating your{' '}
             <Link href="/youtube-money-calculator" className="text-primary hover:underline">
               YouTube ad revenue
             </Link>
@@ -193,7 +207,7 @@ export default function AboutPage() {
             </Link>{' '}
             to calculating{' '}
             <Link href="/engagement-rate-calculator" className="text-primary hover:underline">
-              engagement rates on Instagram and TikTok
+              engagement rates on Instagram, TikTok, Facebook, and X
             </Link>
             , every tool is built to give you actionable numbers — fast, free, and without requiring
             an account.
@@ -339,8 +353,8 @@ export default function AboutPage() {
           <p className="mt-4 text-muted">
             Pick a calculator and get instant, free results — no sign-up required.
           </p>
-          <div className="mt-8 grid gap-6 text-left sm:grid-cols-3">
-            {(['YouTube', 'Instagram', 'TikTok'] as const).map((platform) => (
+          <div className="mt-8 grid gap-6 text-left sm:grid-cols-3 lg:grid-cols-5">
+            {(['YouTube', 'Instagram', 'TikTok', 'Facebook', 'X'] as const).map((platform) => (
               <div key={platform}>
                 <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-muted">
                   {platform}
@@ -354,7 +368,7 @@ export default function AboutPage() {
                         href={calc.href}
                         className="text-sm font-medium text-primary hover:underline"
                       >
-                        {calc.title} &rarr;
+                        {calc.title}
                       </Link>
                     ))}
                 </div>

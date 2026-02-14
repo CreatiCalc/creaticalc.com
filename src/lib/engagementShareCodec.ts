@@ -1,4 +1,12 @@
-import type { Platform } from './engagementModel';
+import type {
+  FacebookCalcMethod,
+  InstagramCalcMethod,
+  InstagramContentType,
+  Platform,
+  TikTokCalcMethod,
+  TwitterCalcMethod,
+} from './engagementModel';
+import { PLATFORM_NAMES } from './engagementModel';
 
 export interface ShareableState {
   p: Platform;
@@ -17,22 +25,204 @@ export interface ShareableState {
   sh?: number; // shares
   v?: number; // views
   cm?: string; // calcMethod (TikTok)
+  // Facebook-specific
+  fsh?: number; // facebook shares
+  fr?: number; // facebook reach
+  fcm?: string; // facebookCalcMethod
+  // Twitter-specific
+  rp?: number; // reposts
+  bm?: number; // bookmarks
+  tim?: number; // twitter impressions
+  tcm?: string; // twitterCalcMethod
+}
+
+// ─── Compact pipe-delimited encoding ──────────────────────────────────────────
+//
+// Instagram: i|followers|likes|comments|industryId|postsAnalyzed|saves|contentType[|reach|impressions|calcMethod]
+// TikTok:    t|followers|likes|comments|industryId|postsAnalyzed|shares|views|calcMethod
+// Facebook:  f|followers|likes|comments|industryId|postsAnalyzed|shares[|reach|calcMethod]
+// Twitter:   x|followers|likes|comments|industryId|postsAnalyzed|reposts|bookmarks[|impressions|calcMethod]
+//
+// Calc method codes:
+//   Instagram: 0=byFollowers (default), 1=byReach, 2=byImpressions
+//   TikTok:    0=byFollowers (default), 1=byViews
+//   Facebook:  0=byFollowers (default), 1=byReach
+//   Twitter:   0=byFollowers (default), 1=byImpressions
+
+const IG_CALC_METHOD_TO_CODE: Record<string, number> = {
+  byFollowers: 0,
+  byReach: 1,
+  byImpressions: 2,
+};
+const IG_CODE_TO_CALC_METHOD: InstagramCalcMethod[] = ['byFollowers', 'byReach', 'byImpressions'];
+
+const TT_CALC_METHOD_TO_CODE: Record<string, number> = { byFollowers: 0, byViews: 1 };
+const TT_CODE_TO_CALC_METHOD: TikTokCalcMethod[] = ['byFollowers', 'byViews'];
+
+const FB_CALC_METHOD_TO_CODE: Record<string, number> = { byFollowers: 0, byReach: 1 };
+const FB_CODE_TO_CALC_METHOD: FacebookCalcMethod[] = ['byFollowers', 'byReach'];
+
+const TW_CALC_METHOD_TO_CODE: Record<string, number> = { byFollowers: 0, byImpressions: 1 };
+const TW_CODE_TO_CALC_METHOD: TwitterCalcMethod[] = ['byFollowers', 'byImpressions'];
+
+function toBase64Url(str: string): string {
+  return btoa(str).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+}
+
+function fromBase64Url(str: string): string {
+  let padded = str.replace(/-/g, '+').replace(/_/g, '/');
+  while (padded.length % 4) padded += '=';
+  return atob(padded);
 }
 
 export function encodeState(state: ShareableState): string {
-  const json = JSON.stringify(state);
-  // Use btoa with URI-safe encoding
-  const base64 = btoa(json);
-  return base64.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+  let raw: string;
+  if (state.p === 'instagram') {
+    // Base fields (8): i|f|l|c|ind|n|saves|contentType
+    const parts = [
+      'i',
+      state.f,
+      state.l,
+      state.c,
+      state.i,
+      state.n,
+      state.s ?? 0,
+      state.ct ?? 'mixed',
+    ];
+    // Optional reach/impressions/calcMethod — only include if non-default
+    const icm = state.icm ?? 'byFollowers';
+    if (icm !== 'byFollowers' || state.r || state.im) {
+      parts.push(state.r ?? 0, state.im ?? 0, IG_CALC_METHOD_TO_CODE[icm] ?? 0);
+    }
+    raw = parts.join('|');
+  } else if (state.p === 'tiktok') {
+    // TikTok: t|f|l|c|ind|n|shares|views|calcMethod
+    raw = [
+      't',
+      state.f,
+      state.l,
+      state.c,
+      state.i,
+      state.n,
+      state.sh ?? 0,
+      state.v ?? 0,
+      TT_CALC_METHOD_TO_CODE[state.cm ?? 'byFollowers'] ?? 0,
+    ].join('|');
+  } else if (state.p === 'facebook') {
+    // Facebook: f|followers|likes|comments|ind|n|shares[|reach|calcMethod]
+    const parts = ['f', state.f, state.l, state.c, state.i, state.n, state.fsh ?? 0];
+    const fcm = state.fcm ?? 'byFollowers';
+    if (fcm !== 'byFollowers' || state.fr) {
+      parts.push(state.fr ?? 0, FB_CALC_METHOD_TO_CODE[fcm] ?? 0);
+    }
+    raw = parts.join('|');
+  } else {
+    // Twitter: x|followers|likes|comments|ind|n|reposts|bookmarks[|impressions|calcMethod]
+    const parts = ['x', state.f, state.l, state.c, state.i, state.n, state.rp ?? 0, state.bm ?? 0];
+    const tcm = state.tcm ?? 'byFollowers';
+    if (tcm !== 'byFollowers' || state.tim) {
+      parts.push(state.tim ?? 0, TW_CALC_METHOD_TO_CODE[tcm] ?? 0);
+    }
+    raw = parts.join('|');
+  }
+  return toBase64Url(raw);
+}
+
+function decodePipe(raw: string): ShareableState | null {
+  const parts = raw.split('|');
+  const platform = parts[0];
+
+  if (platform === 'i') {
+    if (parts.length < 8) return null;
+    const s: ShareableState = {
+      p: 'instagram',
+      f: parseInt(parts[1], 10),
+      l: parseInt(parts[2], 10),
+      c: parseInt(parts[3], 10),
+      i: parts[4],
+      n: parseInt(parts[5], 10),
+      s: parseInt(parts[6], 10),
+      ct: parts[7] as InstagramContentType,
+    };
+    if (parts.length >= 11) {
+      s.r = parseInt(parts[8], 10);
+      s.im = parseInt(parts[9], 10);
+      s.icm = IG_CODE_TO_CALC_METHOD[parseInt(parts[10], 10)] ?? 'byFollowers';
+    }
+    return s;
+  }
+
+  if (platform === 't') {
+    if (parts.length < 9) return null;
+    return {
+      p: 'tiktok',
+      f: parseInt(parts[1], 10),
+      l: parseInt(parts[2], 10),
+      c: parseInt(parts[3], 10),
+      i: parts[4],
+      n: parseInt(parts[5], 10),
+      sh: parseInt(parts[6], 10),
+      v: parseInt(parts[7], 10),
+      cm: TT_CODE_TO_CALC_METHOD[parseInt(parts[8], 10)] ?? 'byFollowers',
+    };
+  }
+
+  if (platform === 'f') {
+    if (parts.length < 7) return null;
+    const s: ShareableState = {
+      p: 'facebook',
+      f: parseInt(parts[1], 10),
+      l: parseInt(parts[2], 10),
+      c: parseInt(parts[3], 10),
+      i: parts[4],
+      n: parseInt(parts[5], 10),
+      fsh: parseInt(parts[6], 10),
+    };
+    if (parts.length >= 9) {
+      s.fr = parseInt(parts[7], 10);
+      s.fcm = FB_CODE_TO_CALC_METHOD[parseInt(parts[8], 10)] ?? 'byFollowers';
+    }
+    return s;
+  }
+
+  if (platform === 'x') {
+    if (parts.length < 8) return null;
+    const s: ShareableState = {
+      p: 'twitter',
+      f: parseInt(parts[1], 10),
+      l: parseInt(parts[2], 10),
+      c: parseInt(parts[3], 10),
+      i: parts[4],
+      n: parseInt(parts[5], 10),
+      rp: parseInt(parts[6], 10),
+      bm: parseInt(parts[7], 10),
+    };
+    if (parts.length >= 10) {
+      s.tim = parseInt(parts[8], 10);
+      s.tcm = TW_CODE_TO_CALC_METHOD[parseInt(parts[9], 10)] ?? 'byFollowers';
+    }
+    return s;
+  }
+
+  return null;
+}
+
+function decodeJson(raw: string): ShareableState | null {
+  try {
+    return JSON.parse(raw) as ShareableState;
+  } catch {
+    return null;
+  }
 }
 
 export function decodeState(encoded: string): ShareableState | null {
   try {
-    // Restore base64 padding
-    let base64 = encoded.replace(/-/g, '+').replace(/_/g, '/');
-    while (base64.length % 4) base64 += '=';
-    const json = atob(base64);
-    return JSON.parse(json) as ShareableState;
+    const raw = fromBase64Url(encoded);
+    // New pipe-delimited format starts with 'i|', 't|', 'f|', or 'x|'; old JSON format starts with '{'
+    if (raw.startsWith('{')) {
+      return decodeJson(raw);
+    }
+    return decodePipe(raw);
   } catch {
     return null;
   }
@@ -91,6 +281,56 @@ export function tiktokStateToShareable(state: {
   };
 }
 
+export function facebookStateToShareable(state: {
+  followers: number;
+  avgReactions: number;
+  avgComments: number;
+  avgShares: number;
+  avgReach: number;
+  calcMethod: string;
+  industryId: string;
+  postsAnalyzed: number;
+}): ShareableState {
+  const s: ShareableState = {
+    p: 'facebook',
+    f: state.followers,
+    l: state.avgReactions,
+    c: state.avgComments,
+    i: state.industryId,
+    n: state.postsAnalyzed,
+    fsh: state.avgShares,
+  };
+  if (state.avgReach) s.fr = state.avgReach;
+  if (state.calcMethod !== 'byFollowers') s.fcm = state.calcMethod;
+  return s;
+}
+
+export function twitterStateToShareable(state: {
+  followers: number;
+  avgLikes: number;
+  avgReplies: number;
+  avgReposts: number;
+  avgBookmarks: number;
+  avgImpressions: number;
+  calcMethod: string;
+  industryId: string;
+  postsAnalyzed: number;
+}): ShareableState {
+  const s: ShareableState = {
+    p: 'twitter',
+    f: state.followers,
+    l: state.avgLikes,
+    c: state.avgReplies,
+    i: state.industryId,
+    n: state.postsAnalyzed,
+    rp: state.avgReposts,
+    bm: state.avgBookmarks,
+  };
+  if (state.avgImpressions) s.tim = state.avgImpressions;
+  if (state.calcMethod !== 'byFollowers') s.tcm = state.calcMethod;
+  return s;
+}
+
 export function shareableToInstagramState(s: ShareableState) {
   return {
     followers: s.f,
@@ -119,12 +359,39 @@ export function shareableToTikTokState(s: ShareableState) {
   };
 }
 
+export function shareableToFacebookState(s: ShareableState) {
+  return {
+    followers: s.f,
+    avgReactions: s.l,
+    avgComments: s.c,
+    avgShares: s.fsh ?? 0,
+    avgReach: s.fr ?? 0,
+    calcMethod: (s.fcm ?? 'byFollowers') as 'byFollowers' | 'byReach',
+    industryId: s.i,
+    postsAnalyzed: s.n,
+  };
+}
+
+export function shareableToTwitterState(s: ShareableState) {
+  return {
+    followers: s.f,
+    avgLikes: s.l,
+    avgReplies: s.c,
+    avgReposts: s.rp ?? 0,
+    avgBookmarks: s.bm ?? 0,
+    avgImpressions: s.tim ?? 0,
+    calcMethod: (s.tcm ?? 'byFollowers') as 'byFollowers' | 'byImpressions',
+    industryId: s.i,
+    postsAnalyzed: s.n,
+  };
+}
+
 export function buildShareUrl(basePath: string, state: ShareableState): string {
   const encoded = encodeState(state);
   return `${basePath}?s=${encoded}`;
 }
 
 export function buildShareText(platform: Platform, rate: number): string {
-  const platformName = platform === 'instagram' ? 'Instagram' : 'TikTok';
+  const platformName = PLATFORM_NAMES[platform];
   return `My ${platformName} engagement rate is ${rate.toFixed(2)}%! Check yours for free:`;
 }

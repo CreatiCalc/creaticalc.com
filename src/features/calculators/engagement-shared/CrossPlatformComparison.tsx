@@ -24,6 +24,22 @@ const PLATFORM_LINKS: Record<Platform, { name: string; href: string }> = {
     name: 'TikTok',
     href: '/tiktok-engagement-rate-calculator',
   },
+  facebook: {
+    name: 'Facebook',
+    href: '/facebook-engagement-rate-calculator',
+  },
+  twitter: {
+    name: 'X (Twitter)',
+    href: '/twitter-engagement-rate-calculator',
+  },
+};
+
+// Default comparison target per platform
+const DEFAULT_COMPARISON: Record<Platform, Platform> = {
+  instagram: 'tiktok',
+  tiktok: 'instagram',
+  facebook: 'instagram',
+  twitter: 'instagram',
 };
 
 export default function CrossPlatformComparison({
@@ -31,7 +47,8 @@ export default function CrossPlatformComparison({
   rate,
   followers,
 }: CrossPlatformComparisonProps) {
-  const result = crossPlatformComparison(platform, rate, followers);
+  const otherPlatform = DEFAULT_COMPARISON[platform];
+  const result = crossPlatformComparison(platform, rate, followers, otherPlatform);
   const currentInfo = PLATFORM_LINKS[platform];
   const otherInfo = PLATFORM_LINKS[result.otherPlatform];
   const otherRatingLabel = getRatingLabel(result.otherRating);

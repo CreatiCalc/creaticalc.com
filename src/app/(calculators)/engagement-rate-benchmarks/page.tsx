@@ -8,11 +8,11 @@ import type { FAQItem } from '@/features/calculators/shared/types';
 import { SITE_URL } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
-  title: 'Engagement Rate Benchmarks 2026 — Instagram & TikTok',
+  title: 'Engagement Rate Benchmarks 2026 — All Platforms',
   description:
-    'Complete engagement rate benchmarks for 2026. See average engagement rates by follower tier, industry, and platform for Instagram and TikTok.',
+    'Engagement rate benchmarks for 2026 across Instagram, TikTok, Facebook, and X. Compare average rates by follower tier and industry.',
   openGraph: {
-    title: 'Engagement Rate Benchmarks 2026 — Instagram & TikTok',
+    title: 'Engagement Rate Benchmarks 2026 — All Platforms',
     description:
       'Full engagement rate benchmark data for 2026 by follower tier, industry, and platform.',
     url: '/engagement-rate-benchmarks',
@@ -36,12 +36,12 @@ const faq: FAQItem[] = [
   {
     question: 'What is a good engagement rate for my niche?',
     answer:
-      'A good engagement rate depends on your platform, follower count, and industry. In general, if your rate is above the average for your follower tier on your platform, you are performing well. Use our Instagram and TikTok calculators to get a personalized assessment that accounts for your specific situation.',
+      'A good engagement rate depends on your platform, follower count, and industry. In general, if your rate is above the average for your follower tier on your platform, you are performing well. Use our Instagram, TikTok, Facebook, or X (Twitter) calculators to get a personalized assessment that accounts for your specific situation.',
   },
   {
     question: 'Are engagement rates going up or down?',
     answer:
-      "Instagram engagement rates have been slowly declining year-over-year as the platform matures and competition increases — from 1.16% in 2023 to 0.98% in 2026. TikTok rates have been increasing, rising from 4.07% in 2023 to 4.9% in 2026, reflecting the platform's continued growth and algorithmic optimization for engagement.",
+      'Instagram engagement rates have been slowly declining year-over-year as the platform matures — from 1.16% in 2023 to 0.98% in 2026. TikTok rates have been increasing, rising from 4.07% in 2023 to 4.9% in 2026. Facebook engagement is recovering slightly to 0.065% in 2026 after years of decline. X (Twitter) continues to decline, dropping to approximately 0.03% in 2026 — down roughly 80% since 2021.',
   },
   {
     question: 'How often do you update these benchmarks?',
@@ -61,7 +61,7 @@ export default function EngagementRateBenchmarksPage() {
     '@type': 'WebPage',
     'name': 'Engagement Rate Benchmarks 2026',
     'description':
-      'Complete engagement rate benchmarks for Instagram and TikTok in 2026 by follower tier and industry.',
+      'Complete engagement rate benchmarks for Instagram, TikTok, Facebook, and X (Twitter) in 2026 by follower tier and industry.',
     'url': `${SITE_URL}/engagement-rate-benchmarks`,
   };
 
@@ -79,8 +79,8 @@ export default function EngagementRateBenchmarksPage() {
             Engagement Rate Benchmarks 2026
           </h1>
           <p className="mt-3 text-muted">
-            Comprehensive engagement rate benchmarks for Instagram and TikTok. See how your account
-            compares by follower tier, industry, and platform.
+            Comprehensive engagement rate benchmarks for Instagram, TikTok, Facebook, and X
+            (Twitter). See how your account compares by follower tier, industry, and platform.
           </p>
           <div
             className="mx-auto mt-5 h-1 w-36 rounded-full"
@@ -92,7 +92,7 @@ export default function EngagementRateBenchmarksPage() {
         <AdSlot slot="header" className="mb-8" />
 
         {/* Key stats */}
-        <section className="mb-12 grid gap-4 sm:grid-cols-3">
+        <section className="mb-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <div className="rounded-xl border border-border bg-white p-6 text-center shadow-sm">
             <p className="text-3xl font-bold text-foreground">
               {formatPercent(latestTrend.instagram)}
@@ -107,9 +107,15 @@ export default function EngagementRateBenchmarksPage() {
           </div>
           <div className="rounded-xl border border-border bg-white p-6 text-center shadow-sm">
             <p className="text-3xl font-bold text-foreground">
-              {(latestTrend.tiktok / latestTrend.instagram).toFixed(1)}x
+              {formatPercent(latestTrend.facebook)}
             </p>
-            <p className="mt-1 text-sm text-muted">TikTok vs Instagram</p>
+            <p className="mt-1 text-sm text-muted">Facebook Average (2026)</p>
+          </div>
+          <div className="rounded-xl border border-border bg-white p-6 text-center shadow-sm">
+            <p className="text-3xl font-bold text-foreground">
+              {formatPercent(latestTrend.twitter)}
+            </p>
+            <p className="mt-1 text-sm text-muted">X (Twitter) Average (2026)</p>
           </div>
         </section>
 
@@ -151,9 +157,47 @@ export default function EngagementRateBenchmarksPage() {
           </div>
         </section>
 
+        {/* Facebook benchmarks */}
+        <section className="mb-12">
+          <h2 className="mb-4 text-2xl font-bold">Facebook Benchmarks</h2>
+          <p className="mb-4 text-sm text-muted">
+            Use the{' '}
+            <Link
+              href="/facebook-engagement-rate-calculator"
+              className="font-medium text-primary hover:underline"
+            >
+              Facebook Engagement Rate Calculator
+            </Link>{' '}
+            for a personalized analysis of your page.
+          </p>
+          <div className="rounded-xl border border-border bg-white p-6 shadow-sm">
+            <BenchmarkTable platform="facebook" />
+          </div>
+        </section>
+
+        {/* Twitter benchmarks */}
+        <section className="mb-12">
+          <h2 className="mb-4 text-2xl font-bold">X (Twitter) Benchmarks</h2>
+          <p className="mb-4 text-sm text-muted">
+            Use the{' '}
+            <Link
+              href="/twitter-engagement-rate-calculator"
+              className="font-medium text-primary hover:underline"
+            >
+              X (Twitter) Engagement Rate Calculator
+            </Link>{' '}
+            for a personalized analysis of your account.
+          </p>
+          <div className="rounded-xl border border-border bg-white p-6 shadow-sm">
+            <BenchmarkTable platform="twitter" />
+          </div>
+        </section>
+
+        <AdSlot slot="after-chart" className="mb-8" />
+
         {/* Platform comparison */}
         <section className="mb-12">
-          <h2 className="mb-4 text-2xl font-bold">Instagram vs TikTok by Industry</h2>
+          <h2 className="mb-4 text-2xl font-bold">Engagement Rates by Industry Across Platforms</h2>
           <div className="rounded-xl border border-border bg-white p-6 shadow-sm">
             <PlatformComparisonTable />
           </div>
@@ -174,7 +218,8 @@ export default function EngagementRateBenchmarksPage() {
                   <th className="pb-2 pr-4 font-medium">Year</th>
                   <th className="pb-2 pr-4 font-medium">Instagram</th>
                   <th className="pb-2 pr-4 font-medium">TikTok</th>
-                  <th className="pb-2 font-medium">Gap</th>
+                  <th className="pb-2 pr-4 font-medium">Facebook</th>
+                  <th className="pb-2 font-medium">X (Twitter)</th>
                 </tr>
               </thead>
               <tbody>
@@ -183,9 +228,8 @@ export default function EngagementRateBenchmarksPage() {
                     <td className="py-2.5 pr-4 font-medium text-foreground">{trend.year}</td>
                     <td className="py-2.5 pr-4 text-muted">{formatPercent(trend.instagram)}</td>
                     <td className="py-2.5 pr-4 text-muted">{formatPercent(trend.tiktok)}</td>
-                    <td className="py-2.5 text-muted">
-                      {(trend.tiktok / trend.instagram).toFixed(1)}x
-                    </td>
+                    <td className="py-2.5 pr-4 text-muted">{formatPercent(trend.facebook)}</td>
+                    <td className="py-2.5 text-muted">{formatPercent(trend.twitter)}</td>
                   </tr>
                 ))}
               </tbody>
@@ -223,6 +267,28 @@ export default function EngagementRateBenchmarksPage() {
               <li>Create shareable content (&ldquo;send this to someone who...&rdquo; formats)</li>
               <li>Respond to comments with video replies to boost the algorithm signal</li>
             </ul>
+
+            <h3 className="mt-6 text-lg font-semibold text-foreground">For Facebook</h3>
+            <ul className="mt-2 list-disc space-y-1 pl-5">
+              <li>
+                Focus on photo and album posts — they earn 35% more engagement than text posts
+              </li>
+              <li>Go live regularly — Facebook Live videos generate 6x more interactions</li>
+              <li>Build and engage with Facebook Groups to foster community discussions</li>
+              <li>Ask questions and run polls to prompt meaningful comments</li>
+              <li>Share native video instead of external links to get better algorithmic reach</li>
+              <li>Post 3-5 times per week at peak hours for your audience</li>
+            </ul>
+
+            <h3 className="mt-6 text-lg font-semibold text-foreground">For X (Twitter)</h3>
+            <ul className="mt-2 list-disc space-y-1 pl-5">
+              <li>Post frequently — 3-5 tweets daily, including threads for deeper engagement</li>
+              <li>Use images and videos to increase visibility in the algorithmic feed</li>
+              <li>Engage in trending conversations and use relevant hashtags sparingly</li>
+              <li>Quote-tweet and reply to others in your niche to build community presence</li>
+              <li>Create bookmark-worthy content like tips, data, and reference threads</li>
+              <li>Post during high-activity windows (8-10 AM, 12-1 PM, 5-6 PM)</li>
+            </ul>
           </div>
 
           <div className="mt-6 flex flex-wrap gap-3">
@@ -230,13 +296,25 @@ export default function EngagementRateBenchmarksPage() {
               href="/instagram-engagement-rate-calculator"
               className="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-primary/90"
             >
-              Check your Instagram rate &rarr;
+              Check your Instagram rate
             </Link>
             <Link
               href="/tiktok-engagement-rate-calculator"
               className="rounded-lg border border-primary bg-primary/5 px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary/10"
             >
-              Check your TikTok rate &rarr;
+              Check your TikTok rate
+            </Link>
+            <Link
+              href="/facebook-engagement-rate-calculator"
+              className="rounded-lg border border-primary bg-primary/5 px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary/10"
+            >
+              Check your Facebook rate
+            </Link>
+            <Link
+              href="/twitter-engagement-rate-calculator"
+              className="rounded-lg border border-primary bg-primary/5 px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary/10"
+            >
+              Check your X (Twitter) rate
             </Link>
           </div>
         </section>

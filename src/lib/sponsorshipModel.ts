@@ -52,6 +52,8 @@ export interface SponsorshipResult {
 const BASE_RATES: Record<Platform, { low: number; mid: number; high: number }> = {
   instagram: { low: 10, mid: 17.5, high: 25 },
   tiktok: { low: 5, mid: 10, high: 15 },
+  facebook: { low: 5, mid: 10, high: 15 },
+  twitter: { low: 8, mid: 14, high: 20 },
 };
 
 const IG_CONTENT_TYPE_MULTIPLIERS: Record<InstagramContentType, number> = {

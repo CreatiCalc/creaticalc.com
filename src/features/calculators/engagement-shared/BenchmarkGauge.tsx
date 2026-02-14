@@ -27,7 +27,13 @@ export default function BenchmarkGauge({
   const ratePct = toPercent(rate);
   const industryPct = toPercent(industryAvg);
 
-  const platformColor = platform === 'instagram' ? 'bg-purple-600' : 'bg-pink-500';
+  const platformColors: Record<Platform, string> = {
+    instagram: 'bg-purple-600',
+    tiktok: 'bg-pink-500',
+    facebook: 'bg-blue-600',
+    twitter: 'bg-sky-500',
+  };
+  const platformColor = platformColors[platform];
 
   return (
     <div className="rounded-xl border border-border bg-white p-6 shadow-sm">

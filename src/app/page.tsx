@@ -83,6 +83,20 @@ const calculators = [
     platform: 'TikTok',
   },
   {
+    title: 'Facebook Engagement Rate',
+    description:
+      'Calculate your Facebook Page engagement rate using reactions, comments, and shares. Compare against page benchmarks.',
+    href: '/facebook-engagement-rate-calculator',
+    platform: 'Facebook',
+  },
+  {
+    title: 'X (Twitter) Engagement Rate',
+    description:
+      'Measure your X engagement rate with likes, replies, reposts, and bookmarks. Compare against benchmarks.',
+    href: '/twitter-engagement-rate-calculator',
+    platform: 'X',
+  },
+  {
     title: 'Engagement Rate Calculator',
     description:
       'Calculate your engagement rate on Instagram or TikTok. Compare against 2026 industry benchmarks.',
