@@ -1,24 +1,9 @@
 import type { IndustryId } from './engagementModel';
+import { VALID_INDUSTRY_IDS } from './engagementModel';
 import { toBase64Url, fromBase64Url } from './codecUtils';
 
-// Valid values for safe decoding
-const VALID_INDUSTRY_IDS = new Set<string>([
-  'animals',
-  'arts',
-  'beauty',
-  'design',
-  'education',
-  'fashion',
-  'finance',
-  'food',
-  'health',
-  'tech',
-  'travel',
-  'entertainment',
-  'sports',
-  'general',
-]);
-const VALID_CONTENT_TYPES = new Set<string>([
+// Sponsorship-specific validation sets (content types and deal types differ from engagement)
+const VALID_SPONSORSHIP_CONTENT_TYPES = new Set<string>([
   'feedPost',
   'reel',
   'story',
@@ -74,7 +59,7 @@ export function decodeSponsorshipState(encoded: string): SponsorshipShareState |
     if (isNaN(engPct) || engPct < 0 || engPct > 10000) return null;
     if (isNaN(dealsPerMonth) || dealsPerMonth < 0 || dealsPerMonth > 100) return null;
     if (!VALID_INDUSTRY_IDS.has(industryId)) return null;
-    if (!VALID_CONTENT_TYPES.has(contentType)) return null;
+    if (!VALID_SPONSORSHIP_CONTENT_TYPES.has(contentType)) return null;
     if (!VALID_DEAL_TYPES.has(dealType)) return null;
 
     return {

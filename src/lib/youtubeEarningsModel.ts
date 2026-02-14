@@ -109,6 +109,9 @@ export const NICHES: Niche[] = Object.entries(CPM_DATA).map(([id, data]) => ({
   },
 }));
 
+/** Canonical set of valid NicheId values — use for codec validation instead of hardcoding. */
+export const VALID_NICHE_IDS: ReadonlySet<string> = new Set<string>(NICHES.map((n) => n.id));
+
 export const SHORTS_RPM: RpmRange = { low: 0.01, mid: 0.04, high: 0.07 };
 
 export const VIDEO_LENGTH_MULTIPLIERS: Record<VideoLength, number> = {

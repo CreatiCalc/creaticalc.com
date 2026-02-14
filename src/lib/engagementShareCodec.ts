@@ -8,32 +8,16 @@ import type {
   TikTokCalcMethod,
   TwitterCalcMethod,
 } from './engagementModel';
-import { PLATFORM_NAMES } from './engagementModel';
+import {
+  PLATFORM_NAMES,
+  VALID_INDUSTRY_IDS,
+  VALID_CONTENT_TYPES,
+  VALID_IG_CALC_METHODS,
+  VALID_TT_CALC_METHODS,
+  VALID_FB_CALC_METHODS,
+  VALID_TW_CALC_METHODS,
+} from './engagementModel';
 import { toBase64Url, fromBase64Url } from './codecUtils';
-
-// ─── Validation sets for safe decoding ────────────────────────────────────────
-
-const VALID_CONTENT_TYPES = new Set<string>(['feed', 'reels', 'stories', 'mixed']);
-const VALID_IG_CALC_METHODS = new Set<string>(['byFollowers', 'byReach', 'byImpressions']);
-const VALID_TT_CALC_METHODS = new Set<string>(['byFollowers', 'byViews']);
-const VALID_FB_CALC_METHODS = new Set<string>(['byFollowers', 'byReach']);
-const VALID_TW_CALC_METHODS = new Set<string>(['byFollowers', 'byImpressions']);
-const VALID_INDUSTRY_IDS = new Set<string>([
-  'animals',
-  'arts',
-  'beauty',
-  'design',
-  'education',
-  'fashion',
-  'finance',
-  'food',
-  'health',
-  'tech',
-  'travel',
-  'entertainment',
-  'sports',
-  'general',
-]);
 
 export interface ShareableState {
   p: Platform;

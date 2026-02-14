@@ -444,6 +444,38 @@ export const INDUSTRY_BENCHMARKS: IndustryBenchmark[] = [
 
 export const INDUSTRIES = INDUSTRY_BENCHMARKS.map((b) => ({ label: b.name, value: b.id }));
 
+/** Canonical set of valid IndustryId values — use for codec validation instead of hardcoding. */
+export const VALID_INDUSTRY_IDS: ReadonlySet<string> = new Set<string>(
+  INDUSTRY_BENCHMARKS.map((b) => b.id)
+);
+
+/** Canonical set of valid InstagramContentType values. */
+export const VALID_CONTENT_TYPES: ReadonlySet<string> = new Set<string>([
+  'feed',
+  'reels',
+  'stories',
+  'mixed',
+]);
+
+/** Canonical sets of valid calc-method values per platform. */
+export const VALID_IG_CALC_METHODS: ReadonlySet<string> = new Set<string>([
+  'byFollowers',
+  'byReach',
+  'byImpressions',
+]);
+export const VALID_TT_CALC_METHODS: ReadonlySet<string> = new Set<string>([
+  'byFollowers',
+  'byViews',
+]);
+export const VALID_FB_CALC_METHODS: ReadonlySet<string> = new Set<string>([
+  'byFollowers',
+  'byReach',
+]);
+export const VALID_TW_CALC_METHODS: ReadonlySet<string> = new Set<string>([
+  'byFollowers',
+  'byImpressions',
+]);
+
 // Brand deal base rates per 1K followers
 export const BRAND_DEAL_BASE: Record<Platform, { low: number; high: number }> = {
   instagram: { low: 10, high: 25 },
