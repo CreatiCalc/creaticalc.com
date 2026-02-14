@@ -38,6 +38,7 @@ import {
 } from './dynamicImports';
 import YouTubeShareButtons from './ShareButtons';
 import CollapsibleSection from '@/features/calculators/shared/CollapsibleSection';
+import PresetPills from '@/components/ui/PresetPills';
 
 const nicheOptions = NICHES.map((n) => ({ label: n.name, value: n.id }));
 
@@ -164,22 +165,12 @@ export default function YouTubeMoneyCalculator({
 
           {state.inputMode === 'daily' ? (
             <div className="space-y-4">
-              <div className="flex flex-wrap gap-2">
-                {viewsPresets.map((preset) => (
-                  <button
-                    key={preset.value}
-                    type="button"
-                    onClick={() => dispatch({ type: 'SET_DAILY_VIEWS', payload: preset.value })}
-                    className={`rounded-full border px-3 py-1 text-sm transition-colors ${
-                      state.dailyViews === preset.value
-                        ? 'border-primary bg-primary text-white'
-                        : 'border-border bg-surface text-muted hover:border-primary hover:text-foreground'
-                    }`}
-                  >
-                    {preset.label}
-                  </button>
-                ))}
-              </div>
+              <PresetPills
+                options={viewsPresets}
+                value={state.dailyViews}
+                onChange={(v) => dispatch({ type: 'SET_DAILY_VIEWS', payload: v })}
+                ariaLabel="Daily views presets"
+              />
               <div className="grid gap-4 sm:grid-cols-2">
                 <Slider
                   label="Daily Views"

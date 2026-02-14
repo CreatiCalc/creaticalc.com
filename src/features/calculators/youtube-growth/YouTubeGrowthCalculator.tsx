@@ -22,6 +22,7 @@ import ButtonToggle from '@/components/ui/ButtonToggle';
 import type { GrowthInputMode } from '@/lib/subscriberGrowthModel';
 import YouTubeGrowthShareButtons from './ShareButtons';
 import { GrowthChart, GrowthMilestoneTimeline, GrowthRecommendations } from './dynamicImports';
+import PresetPills from '@/components/ui/PresetPills';
 
 const nicheOptions = GROWTH_NICHES.map((n) => ({
   label: `${n.name} (~${n.avgMonthlyGrowthPct}%/mo)`,
@@ -86,22 +87,12 @@ export default function YouTubeGrowthCalculator() {
 
           {/* Current Subscribers */}
           <div className="space-y-4">
-            <div className="flex flex-wrap gap-2">
-              {subsPresets.map((preset) => (
-                <button
-                  key={preset.value}
-                  type="button"
-                  onClick={() => dispatch({ type: 'SET_CURRENT_SUBS', payload: preset.value })}
-                  className={`rounded-full border px-3 py-1 text-sm transition-colors ${
-                    state.currentSubs === preset.value
-                      ? 'border-primary bg-primary text-white'
-                      : 'border-border bg-surface text-muted hover:border-primary hover:text-foreground'
-                  }`}
-                >
-                  {preset.label}
-                </button>
-              ))}
-            </div>
+            <PresetPills
+              options={subsPresets}
+              value={state.currentSubs}
+              onChange={(v) => dispatch({ type: 'SET_CURRENT_SUBS', payload: v })}
+              ariaLabel="Subscriber count presets"
+            />
             <div className="grid gap-4 sm:grid-cols-2">
               <Slider
                 label="Current Subscribers"
@@ -133,24 +124,12 @@ export default function YouTubeGrowthCalculator() {
           {/* Growth Rate or Flat Gain */}
           {state.inputMode === 'rate' ? (
             <div className="space-y-4">
-              <div className="flex flex-wrap gap-2">
-                {growthRatePresets.map((preset) => (
-                  <button
-                    key={preset.value}
-                    type="button"
-                    onClick={() =>
-                      dispatch({ type: 'SET_MONTHLY_GROWTH_RATE', payload: preset.value })
-                    }
-                    className={`rounded-full border px-3 py-1 text-sm transition-colors ${
-                      state.monthlyGrowthRate === preset.value
-                        ? 'border-primary bg-primary text-white'
-                        : 'border-border bg-surface text-muted hover:border-primary hover:text-foreground'
-                    }`}
-                  >
-                    {preset.label}
-                  </button>
-                ))}
-              </div>
+              <PresetPills
+                options={growthRatePresets}
+                value={state.monthlyGrowthRate}
+                onChange={(v) => dispatch({ type: 'SET_MONTHLY_GROWTH_RATE', payload: v })}
+                ariaLabel="Growth rate presets"
+              />
               <Slider
                 label="Monthly Growth Rate"
                 value={state.monthlyGrowthRate}

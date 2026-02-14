@@ -1,5 +1,7 @@
 'use client';
 
+import PresetPills from '@/components/ui/PresetPills';
+
 interface FollowerPresetsProps {
   current: number;
   onSelect: (value: number) => void;
@@ -16,23 +18,11 @@ const PRESETS = [
 
 export default function FollowerPresets({ current, onSelect }: FollowerPresetsProps) {
   return (
-    <div className="flex flex-wrap gap-2" role="radiogroup" aria-label="Quick follower presets">
-      {PRESETS.map((preset) => (
-        <button
-          key={preset.value}
-          type="button"
-          role="radio"
-          aria-checked={current === preset.value}
-          onClick={() => onSelect(preset.value)}
-          className={`rounded-full border px-3 py-1 text-sm transition-colors ${
-            current === preset.value
-              ? 'border-primary bg-primary text-white'
-              : 'border-border bg-surface text-muted hover:border-primary hover:text-foreground'
-          }`}
-        >
-          {preset.label}
-        </button>
-      ))}
-    </div>
+    <PresetPills
+      options={PRESETS}
+      value={current}
+      onChange={onSelect}
+      ariaLabel="Quick follower presets"
+    />
   );
 }
