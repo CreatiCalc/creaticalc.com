@@ -19,15 +19,32 @@ const CATEGORY_TO_NICHE: Record<string, NicheId> = {
 
 const RATE_LIMIT_WINDOW_MS = 60_000;
 const RATE_LIMIT_MAX = 10;
+const MAX_MAP_SIZE = 10_000;
 const rateLimitMap = new Map<string, number[]>();
 
 function isRateLimited(ip: string): boolean {
   const now = Date.now();
   const timestamps = rateLimitMap.get(ip) ?? [];
   const recent = timestamps.filter((t) => now - t < RATE_LIMIT_WINDOW_MS);
-  rateLimitMap.set(ip, recent);
+
+  if (recent.length === 0) {
+    rateLimitMap.delete(ip);
+  } else {
+    rateLimitMap.set(ip, recent);
+  }
+
+  // Prevent unbounded memory growth from diverse IPs
+  if (rateLimitMap.size > MAX_MAP_SIZE) {
+    for (const [key, ts] of rateLimitMap) {
+      if (ts.every((t) => now - t >= RATE_LIMIT_WINDOW_MS)) {
+        rateLimitMap.delete(key);
+      }
+    }
+  }
+
   if (recent.length >= RATE_LIMIT_MAX) return true;
   recent.push(now);
+  rateLimitMap.set(ip, recent);
   return false;
 }
 

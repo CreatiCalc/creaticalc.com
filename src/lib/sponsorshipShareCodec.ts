@@ -1,5 +1,32 @@
 import type { IndustryId } from './engagementModel';
 
+// Valid values for safe decoding
+const VALID_INDUSTRY_IDS = new Set<string>([
+  'animals',
+  'arts',
+  'beauty',
+  'design',
+  'education',
+  'fashion',
+  'finance',
+  'food',
+  'health',
+  'tech',
+  'travel',
+  'entertainment',
+  'sports',
+  'general',
+]);
+const VALID_CONTENT_TYPES = new Set<string>([
+  'feedPost',
+  'reel',
+  'story',
+  'carousel',
+  'video',
+  'live',
+]);
+const VALID_DEAL_TYPES = new Set<string>(['mention', 'dedicated', 'review', 'series']);
+
 export interface SponsorshipShareState {
   platform: 'instagram' | 'tiktok';
   followers: number;
@@ -55,6 +82,9 @@ export function decodeSponsorshipState(encoded: string): SponsorshipShareState |
     if (isNaN(followers) || followers < 0 || followers > 50000000) return null;
     if (isNaN(engPct) || engPct < 0 || engPct > 10000) return null;
     if (isNaN(dealsPerMonth) || dealsPerMonth < 0 || dealsPerMonth > 100) return null;
+    if (!VALID_INDUSTRY_IDS.has(industryId)) return null;
+    if (!VALID_CONTENT_TYPES.has(contentType)) return null;
+    if (!VALID_DEAL_TYPES.has(dealType)) return null;
 
     return {
       platform: p === 'i' ? 'instagram' : 'tiktok',

@@ -8,6 +8,30 @@ import type {
 } from './engagementModel';
 import { PLATFORM_NAMES } from './engagementModel';
 
+// ─── Validation sets for safe decoding ────────────────────────────────────────
+
+const VALID_CONTENT_TYPES = new Set<string>(['feed', 'reels', 'stories', 'mixed']);
+const VALID_IG_CALC_METHODS = new Set<string>(['byFollowers', 'byReach', 'byImpressions']);
+const VALID_TT_CALC_METHODS = new Set<string>(['byFollowers', 'byViews']);
+const VALID_FB_CALC_METHODS = new Set<string>(['byFollowers', 'byReach']);
+const VALID_TW_CALC_METHODS = new Set<string>(['byFollowers', 'byImpressions']);
+const VALID_INDUSTRY_IDS = new Set<string>([
+  'animals',
+  'arts',
+  'beauty',
+  'design',
+  'education',
+  'fashion',
+  'finance',
+  'food',
+  'health',
+  'tech',
+  'travel',
+  'entertainment',
+  'sports',
+  'general',
+]);
+
 export interface ShareableState {
   p: Platform;
   f: number; // followers
@@ -134,6 +158,8 @@ function decodePipe(raw: string): ShareableState | null {
 
   if (platform === 'i') {
     if (parts.length < 8) return null;
+    if (!VALID_INDUSTRY_IDS.has(parts[4])) return null;
+    if (!VALID_CONTENT_TYPES.has(parts[7])) return null;
     const s: ShareableState = {
       p: 'instagram',
       f: parseInt(parts[1], 10),
@@ -142,18 +168,24 @@ function decodePipe(raw: string): ShareableState | null {
       i: parts[4],
       n: parseInt(parts[5], 10),
       s: parseInt(parts[6], 10),
-      ct: parts[7] as InstagramContentType,
+      ct: parts[7],
     };
     if (parts.length >= 11) {
       s.r = parseInt(parts[8], 10);
       s.im = parseInt(parts[9], 10);
-      s.icm = IG_CODE_TO_CALC_METHOD[parseInt(parts[10], 10)] ?? 'byFollowers';
+      const calcCode = parseInt(parts[10], 10);
+      s.icm =
+        calcCode >= 0 && calcCode < IG_CODE_TO_CALC_METHOD.length
+          ? IG_CODE_TO_CALC_METHOD[calcCode]
+          : 'byFollowers';
     }
     return s;
   }
 
   if (platform === 't') {
     if (parts.length < 9) return null;
+    if (!VALID_INDUSTRY_IDS.has(parts[4])) return null;
+    const calcCode = parseInt(parts[8], 10);
     return {
       p: 'tiktok',
       f: parseInt(parts[1], 10),
@@ -163,12 +195,16 @@ function decodePipe(raw: string): ShareableState | null {
       n: parseInt(parts[5], 10),
       sh: parseInt(parts[6], 10),
       v: parseInt(parts[7], 10),
-      cm: TT_CODE_TO_CALC_METHOD[parseInt(parts[8], 10)] ?? 'byFollowers',
+      cm:
+        calcCode >= 0 && calcCode < TT_CODE_TO_CALC_METHOD.length
+          ? TT_CODE_TO_CALC_METHOD[calcCode]
+          : 'byFollowers',
     };
   }
 
   if (platform === 'f') {
     if (parts.length < 7) return null;
+    if (!VALID_INDUSTRY_IDS.has(parts[4])) return null;
     const s: ShareableState = {
       p: 'facebook',
       f: parseInt(parts[1], 10),
@@ -180,13 +216,18 @@ function decodePipe(raw: string): ShareableState | null {
     };
     if (parts.length >= 9) {
       s.fr = parseInt(parts[7], 10);
-      s.fcm = FB_CODE_TO_CALC_METHOD[parseInt(parts[8], 10)] ?? 'byFollowers';
+      const calcCode = parseInt(parts[8], 10);
+      s.fcm =
+        calcCode >= 0 && calcCode < FB_CODE_TO_CALC_METHOD.length
+          ? FB_CODE_TO_CALC_METHOD[calcCode]
+          : 'byFollowers';
     }
     return s;
   }
 
   if (platform === 'x') {
     if (parts.length < 8) return null;
+    if (!VALID_INDUSTRY_IDS.has(parts[4])) return null;
     const s: ShareableState = {
       p: 'twitter',
       f: parseInt(parts[1], 10),
@@ -199,7 +240,11 @@ function decodePipe(raw: string): ShareableState | null {
     };
     if (parts.length >= 10) {
       s.tim = parseInt(parts[8], 10);
-      s.tcm = TW_CODE_TO_CALC_METHOD[parseInt(parts[9], 10)] ?? 'byFollowers';
+      const calcCode = parseInt(parts[9], 10);
+      s.tcm =
+        calcCode >= 0 && calcCode < TW_CODE_TO_CALC_METHOD.length
+          ? TW_CODE_TO_CALC_METHOD[calcCode]
+          : 'byFollowers';
     }
     return s;
   }
@@ -332,47 +377,54 @@ export function twitterStateToShareable(state: {
 }
 
 export function shareableToInstagramState(s: ShareableState) {
+  const ct = s.ct ?? 'mixed';
+  const icm = s.icm ?? 'byFollowers';
   return {
     followers: s.f,
     avgLikes: s.l,
     avgComments: s.c,
     avgSaves: s.s ?? 0,
-    contentType: (s.ct ?? 'mixed') as 'feed' | 'reels' | 'stories' | 'mixed',
+    contentType: (VALID_CONTENT_TYPES.has(ct) ? ct : 'mixed') as InstagramContentType,
     industryId: s.i,
     postsAnalyzed: s.n,
     avgReach: s.r ?? 0,
     avgImpressions: s.im ?? 0,
-    instagramCalcMethod: (s.icm ?? 'byFollowers') as 'byFollowers' | 'byReach' | 'byImpressions',
+    instagramCalcMethod: (VALID_IG_CALC_METHODS.has(icm)
+      ? icm
+      : 'byFollowers') as InstagramCalcMethod,
   };
 }
 
 export function shareableToTikTokState(s: ShareableState) {
+  const cm = s.cm ?? 'byFollowers';
   return {
     followers: s.f,
     avgLikes: s.l,
     avgComments: s.c,
     avgShares: s.sh ?? 0,
     avgViews: s.v ?? 0,
-    calcMethod: (s.cm ?? 'byFollowers') as 'byFollowers' | 'byViews',
+    calcMethod: (VALID_TT_CALC_METHODS.has(cm) ? cm : 'byFollowers') as TikTokCalcMethod,
     industryId: s.i,
     postsAnalyzed: s.n,
   };
 }
 
 export function shareableToFacebookState(s: ShareableState) {
+  const fcm = s.fcm ?? 'byFollowers';
   return {
     followers: s.f,
     avgReactions: s.l,
     avgComments: s.c,
     avgShares: s.fsh ?? 0,
     avgReach: s.fr ?? 0,
-    calcMethod: (s.fcm ?? 'byFollowers') as 'byFollowers' | 'byReach',
+    calcMethod: (VALID_FB_CALC_METHODS.has(fcm) ? fcm : 'byFollowers') as FacebookCalcMethod,
     industryId: s.i,
     postsAnalyzed: s.n,
   };
 }
 
 export function shareableToTwitterState(s: ShareableState) {
+  const tcm = s.tcm ?? 'byFollowers';
   return {
     followers: s.f,
     avgLikes: s.l,
@@ -380,7 +432,7 @@ export function shareableToTwitterState(s: ShareableState) {
     avgReposts: s.rp ?? 0,
     avgBookmarks: s.bm ?? 0,
     avgImpressions: s.tim ?? 0,
-    calcMethod: (s.tcm ?? 'byFollowers') as 'byFollowers' | 'byImpressions',
+    calcMethod: (VALID_TW_CALC_METHODS.has(tcm) ? tcm : 'byFollowers') as TwitterCalcMethod,
     industryId: s.i,
     postsAnalyzed: s.n,
   };
