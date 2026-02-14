@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo, useEffect } from 'react';
+import dynamic from 'next/dynamic';
 import { useIsEmbed } from '@/lib/embedContext';
 import { useSearchParams } from 'next/navigation';
 import Slider from '@/components/ui/Slider';
@@ -9,22 +10,48 @@ import Select from '@/components/ui/Select';
 import Card from '@/components/ui/Card';
 import AdSlot from '@/components/layout/AdSlot';
 import CollapsibleSection from '@/features/calculators/shared/CollapsibleSection';
-import {
-  EngagementRateDisplay,
-  BenchmarkGauge,
-  IndustryBenchmarks,
-  BrandDealEstimate,
-  GrowthRecommendations,
-  EngagementBreakdownChart,
-  FollowerPresets,
-  MultiFormulaDisplay,
-  EngagementHealthScore,
-  WhatIfScenarios,
-  EngagementShareButtons,
-  EstimatedReachDisplay,
-  CrossPlatformComparison,
-  YoYTrendContext,
-} from '@/features/calculators/engagement-shared';
+import EngagementRateDisplay from '@/features/calculators/engagement-shared/EngagementRateDisplay';
+import BenchmarkGauge from '@/features/calculators/engagement-shared/BenchmarkGauge';
+import FollowerPresets from '@/features/calculators/engagement-shared/FollowerPresets';
+import EngagementHealthScore from '@/features/calculators/engagement-shared/EngagementHealthScore';
+import EngagementShareButtons from '@/features/calculators/engagement-shared/EngagementShareButtons';
+
+const IndustryBenchmarks = dynamic(
+  () => import('@/features/calculators/engagement-shared/IndustryBenchmarks'),
+  { ssr: false }
+);
+const BrandDealEstimate = dynamic(
+  () => import('@/features/calculators/engagement-shared/BrandDealEstimate'),
+  { ssr: false }
+);
+const GrowthRecommendations = dynamic(
+  () => import('@/features/calculators/engagement-shared/GrowthRecommendations'),
+  { ssr: false }
+);
+const EngagementBreakdownChart = dynamic(
+  () => import('@/features/calculators/engagement-shared/EngagementBreakdownChart'),
+  { ssr: false }
+);
+const MultiFormulaDisplay = dynamic(
+  () => import('@/features/calculators/engagement-shared/MultiFormulaDisplay'),
+  { ssr: false }
+);
+const WhatIfScenarios = dynamic(
+  () => import('@/features/calculators/engagement-shared/WhatIfScenarios'),
+  { ssr: false }
+);
+const EstimatedReachDisplay = dynamic(
+  () => import('@/features/calculators/engagement-shared/EstimatedReachDisplay'),
+  { ssr: false }
+);
+const CrossPlatformComparison = dynamic(
+  () => import('@/features/calculators/engagement-shared/CrossPlatformComparison'),
+  { ssr: false }
+);
+const YoYTrendContext = dynamic(
+  () => import('@/features/calculators/engagement-shared/YoYTrendContext'),
+  { ssr: false }
+);
 import {
   INDUSTRIES,
   computeEngagement,

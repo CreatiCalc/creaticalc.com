@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo } from 'react';
+import dynamic from 'next/dynamic';
 import { useIsEmbed } from '@/lib/embedContext';
 import Slider from '@/components/ui/Slider';
 import NumberInput from '@/components/ui/NumberInput';
@@ -19,10 +20,11 @@ import {
 } from '@/lib/subscriberGrowthModel';
 import { useGrowthState } from './useGrowthState';
 import GrowthInputModeToggle from './GrowthInputModeToggle';
-import GrowthChart from './GrowthChart';
-import GrowthMilestoneTimeline from './GrowthMilestoneTimeline';
-import GrowthRecommendations from './GrowthRecommendations';
 import YouTubeGrowthShareButtons from './ShareButtons';
+
+const GrowthChart = dynamic(() => import('./GrowthChart'), { ssr: false });
+const GrowthMilestoneTimeline = dynamic(() => import('./GrowthMilestoneTimeline'), { ssr: false });
+const GrowthRecommendations = dynamic(() => import('./GrowthRecommendations'), { ssr: false });
 
 const nicheOptions = GROWTH_NICHES.map((n) => ({
   label: `${n.name} (~${n.avgMonthlyGrowthPct}%/mo)`,
