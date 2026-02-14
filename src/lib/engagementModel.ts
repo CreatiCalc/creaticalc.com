@@ -24,8 +24,8 @@ import {
   FACEBOOK_REACH_BENCHMARKS,
   TWITTER_IMPRESSIONS_BENCHMARKS,
   BRAND_DEAL_BASE,
-  ENGAGEMENT_MULTIPLIERS,
-  NICHE_MULTIPLIERS,
+  getEngagementMultiplier,
+  getNicheMultiplier,
   REACH_RATES,
   PLATFORM_REACH_MULTIPLIERS,
   PLATFORM_AVERAGES,
@@ -219,12 +219,8 @@ export function estimateBrandDealRate(
 ): { low: number; high: number } {
   const base = BRAND_DEAL_BASE[platform];
   const followerK = followers / 1000;
-
-  // Engagement multiplier
-  const engMul = ENGAGEMENT_MULTIPLIERS.find((m) => engagementRate < m.maxRate)?.multiplier ?? 2.0;
-
-  // Niche multiplier
-  const nicheMul = NICHE_MULTIPLIERS[industryId] ?? 1.0;
+  const engMul = getEngagementMultiplier(engagementRate);
+  const nicheMul = getNicheMultiplier(industryId);
 
   return {
     low: Math.round(followerK * base.low * engMul * nicheMul),

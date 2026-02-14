@@ -613,6 +613,18 @@ export function getTopIndustries(platform: Platform, count = 5): IndustryBenchma
   return [...INDUSTRY_BENCHMARKS].sort((a, b) => b[platform] - a[platform]).slice(0, count);
 }
 
+// ─── Multiplier Helpers ──────────────────────────────────────────────────────
+
+/** Look up the engagement-rate multiplier used for brand-deal / sponsorship estimates. */
+export function getEngagementMultiplier(engagementRate: number): number {
+  return ENGAGEMENT_MULTIPLIERS.find((m) => engagementRate < m.maxRate)?.multiplier ?? 2.0;
+}
+
+/** Look up the niche/industry multiplier used for brand-deal / sponsorship estimates. */
+export function getNicheMultiplier(industryId: IndustryId): number {
+  return NICHE_MULTIPLIERS[industryId] ?? 1.0;
+}
+
 // ─── Utilities (canonical source: ./formatters) ─────────────────────────────
 
 export { formatUSD, formatPercent, formatFollowerCount } from './formatters';

@@ -4,8 +4,8 @@ import {
   getTierLabel,
   formatUSD,
   formatFollowerCount,
-  ENGAGEMENT_MULTIPLIERS,
-  NICHE_MULTIPLIERS,
+  getEngagementMultiplier,
+  getNicheMultiplier,
 } from './engagementModel';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -129,14 +129,6 @@ const TIKTOK_TIER_DEFS: TierDef[] = [
 ];
 
 // ─── Core Functions ───────────────────────────────────────────────────────────
-
-function getEngagementMultiplier(engagementRate: number): number {
-  return ENGAGEMENT_MULTIPLIERS.find((m) => engagementRate < m.maxRate)?.multiplier ?? 2.0;
-}
-
-function getNicheMultiplier(industryId: IndustryId): number {
-  return NICHE_MULTIPLIERS[industryId] ?? 1.0;
-}
 
 function getContentTypeMultiplier(platform: Platform, contentType: SponsorshipContentType): number {
   if (platform === 'instagram') {
