@@ -32,10 +32,16 @@ export default function BrandDealEstimate({
   else if (engagementRate >= 1) engTier = 'Standard (1.0x)';
   else engTier = 'Low (0.5x discount)';
 
-  const platformNote =
-    platform === 'tiktok'
-      ? 'TikTok rates are typically 50–70% of Instagram rates for comparable audience sizes.'
-      : 'Instagram commands the highest per-post rates among social platforms due to mature brand deal infrastructure.';
+  const platformNotes: Record<Platform, string> = {
+    instagram:
+      'Instagram commands the highest per-post rates among social platforms due to mature brand deal infrastructure.',
+    tiktok: 'TikTok rates are typically 50–70% of Instagram rates for comparable audience sizes.',
+    facebook:
+      'Facebook brand deal rates are lower than Instagram but benefit from precise audience targeting and longer content lifespan.',
+    twitter:
+      'X (Twitter) sponsorship rates vary widely — accounts with high-value niches (finance, tech) can command premium rates despite lower overall engagement.',
+  };
+  const platformNote = platformNotes[platform];
 
   return (
     <div className="space-y-4">

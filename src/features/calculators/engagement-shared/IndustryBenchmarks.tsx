@@ -3,6 +3,7 @@
 import {
   type Platform,
   type IndustryId,
+  PLATFORM_NAMES,
   getTopIndustries,
   getIndustryBenchmark,
   formatPercent,
@@ -24,9 +25,7 @@ export default function IndustryBenchmarks({
   const delta = currentRate - industryAvg;
   const topIndustries = getTopIndustries(platform, 5);
   const currentIndustry = INDUSTRY_BENCHMARKS.find((b) => b.id === currentIndustryId);
-  const maxRate = Math.max(
-    ...topIndustries.map((i) => (platform === 'instagram' ? i.instagram : i.tiktok))
-  );
+  const maxRate = Math.max(...topIndustries.map((i) => i[platform]));
 
   return (
     <div className="space-y-6">
@@ -53,11 +52,11 @@ export default function IndustryBenchmarks({
       {/* Top industries chart */}
       <div>
         <p className="mb-3 text-sm font-medium text-foreground">
-          Top {platform === 'instagram' ? 'Instagram' : 'TikTok'} Industries by Engagement
+          Top {PLATFORM_NAMES[platform]} Industries by Engagement
         </p>
         <div className="space-y-2">
           {topIndustries.map((industry) => {
-            const rate = platform === 'instagram' ? industry.instagram : industry.tiktok;
+            const rate = industry[platform];
             const barWidth = maxRate > 0 ? (rate / maxRate) * 100 : 0;
             const isCurrent = industry.id === currentIndustryId;
 

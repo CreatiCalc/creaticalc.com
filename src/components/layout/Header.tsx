@@ -28,6 +28,14 @@ const navGroups = [
       { name: 'Sponsorship Rate', href: '/tiktok-sponsorship-rate-calculator' },
     ],
   },
+  {
+    label: 'Facebook',
+    items: [{ name: 'Engagement Rate', href: '/facebook-engagement-rate-calculator' }],
+  },
+  {
+    label: 'X',
+    items: [{ name: 'Engagement Rate', href: '/twitter-engagement-rate-calculator' }],
+  },
 ];
 
 const moreLinks = [

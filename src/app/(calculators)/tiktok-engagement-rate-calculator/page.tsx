@@ -1,5 +1,6 @@
 import { Suspense } from 'react';
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
 import CalculatorSchema from '@/components/seo/CalculatorSchema';
 import { TikTokEngagementCalculator } from '@/features/calculators/tiktok-engagement';
@@ -8,7 +9,7 @@ import type { FAQItem } from '@/features/calculators/shared/types';
 export const metadata: Metadata = {
   title: 'TikTok Engagement Rate Calculator + Industry Benchmarks 2026',
   description:
-    'Free TikTok engagement rate calculator. Measure your TikTok engagement using likes, comments, shares, and views. Compare against benchmarks by follower tier and industry.',
+    'Free TikTok engagement rate calculator. Measure engagement from likes, comments, shares, and views. Compare against 2026 benchmarks by tier and niche.',
   openGraph: {
     title: 'TikTok Engagement Rate Calculator + Industry Benchmarks 2026',
     description:
@@ -115,13 +116,25 @@ const howItWorks = (
       Why TikTok Engagement Is Different
     </h3>
     <p className="mt-2">
-      TikTok engagement rates are roughly 5 times higher than Instagram and 10 times higher than
-      Facebook. This is because TikTok&rsquo;s algorithm is designed around engagement — every video
-      is tested with small audience batches, and only content that generates strong interactions
-      gets expanded distribution. This creates a natural floor where most content that gets seen at
-      all has already been pre-filtered for engagement quality. The result is that
-      &ldquo;average&rdquo; TikTok engagement (around 4.9%) would be considered exceptional on any
-      other platform.
+      TikTok engagement rates are roughly 5 times higher than{' '}
+      <Link
+        href="/instagram-engagement-rate-calculator"
+        className="font-medium text-primary hover:underline"
+      >
+        Instagram
+      </Link>{' '}
+      and 10 times higher than{' '}
+      <Link
+        href="/facebook-engagement-rate-calculator"
+        className="font-medium text-primary hover:underline"
+      >
+        Facebook
+      </Link>
+      . This is because TikTok&rsquo;s algorithm is designed around engagement — every video is
+      tested with small audience batches, and only content that generates strong interactions gets
+      expanded distribution. This creates a natural floor where most content that gets seen at all
+      has already been pre-filtered for engagement quality. The result is that &ldquo;average&rdquo;
+      TikTok engagement (around 4.9%) would be considered exceptional on any other platform.
     </p>
 
     <h3 className="mt-6 text-lg font-semibold text-foreground">
@@ -135,6 +148,55 @@ const howItWorks = (
       even weeks after posting. Our breakdown chart shows your share percentage so you can see how
       your content performs on this critical metric.
     </p>
+
+    <h3 className="mt-6 text-lg font-semibold text-foreground">Related Tools</h3>
+    <ul className="mt-2 list-disc space-y-1 pl-5">
+      <li>
+        <Link
+          href="/instagram-engagement-rate-calculator"
+          className="font-medium text-primary hover:underline"
+        >
+          Instagram Engagement Rate Calculator
+        </Link>{' '}
+        — measure your IG engagement with likes, comments, and saves
+      </li>
+      <li>
+        <Link
+          href="/facebook-engagement-rate-calculator"
+          className="font-medium text-primary hover:underline"
+        >
+          Facebook Engagement Rate Calculator
+        </Link>{' '}
+        — measure your Facebook page engagement by followers or reach
+      </li>
+      <li>
+        <Link
+          href="/twitter-engagement-rate-calculator"
+          className="font-medium text-primary hover:underline"
+        >
+          X (Twitter) Engagement Rate Calculator
+        </Link>{' '}
+        — includes likes, replies, reposts, and bookmarks
+      </li>
+      <li>
+        <Link
+          href="/engagement-rate-benchmarks"
+          className="font-medium text-primary hover:underline"
+        >
+          Engagement Rate Benchmarks 2026
+        </Link>{' '}
+        — full benchmark data across all platforms
+      </li>
+      <li>
+        <Link
+          href="/tiktok-sponsorship-rate-calculator"
+          className="font-medium text-primary hover:underline"
+        >
+          TikTok Sponsorship Rate Calculator
+        </Link>{' '}
+        — estimate how much you can charge per sponsored video
+      </li>
+    </ul>
   </>
 );
 

@@ -26,10 +26,13 @@ export default function EngagementRateDisplay({
   platform,
 }: EngagementRateDisplayProps) {
   const colorClasses = getRatingColor(rating);
-  const platformAccent =
-    platform === 'instagram'
-      ? 'from-pink-500 via-purple-500 to-orange-400'
-      : 'from-cyan-400 via-pink-500 to-red-500';
+  const platformAccents: Record<Platform, string> = {
+    instagram: 'from-pink-500 via-purple-500 to-orange-400',
+    tiktok: 'from-cyan-400 via-pink-500 to-red-500',
+    facebook: 'from-blue-500 via-blue-600 to-indigo-500',
+    twitter: 'from-sky-400 via-blue-500 to-indigo-400',
+  };
+  const platformAccent = platformAccents[platform];
 
   return (
     <div className="relative overflow-hidden rounded-xl border border-border bg-white p-6 text-center shadow-sm">

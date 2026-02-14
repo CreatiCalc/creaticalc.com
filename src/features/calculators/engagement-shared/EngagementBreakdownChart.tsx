@@ -8,24 +8,41 @@ interface EngagementBreakdownChartProps {
   platform: Platform;
 }
 
-const INSTAGRAM_COLORS = ['#E1306C', '#833AB4', '#F77737'];
-const TIKTOK_COLORS = ['#FF0050', '#00F2EA', '#000000'];
+const PLATFORM_COLORS: Record<Platform, string[]> = {
+  instagram: ['#E1306C', '#833AB4', '#F77737'],
+  tiktok: ['#FF0050', '#00F2EA', '#000000'],
+  facebook: ['#1877F2', '#42B72A', '#F7B928'],
+  twitter: ['#1DA1F2', '#14171A', '#657786', '#AAB8C2'],
+};
 
 export default function EngagementBreakdownChart({
   breakdown,
   platform,
 }: EngagementBreakdownChartProps) {
-  const isInstagram = platform === 'instagram';
-  const colors = isInstagram ? INSTAGRAM_COLORS : TIKTOK_COLORS;
+  const colors = PLATFORM_COLORS[platform];
 
   const data = [
-    { name: 'Likes', value: breakdown.likes.count, pct: breakdown.likes.pct },
-    { name: 'Comments', value: breakdown.comments.count, pct: breakdown.comments.pct },
-    ...(isInstagram && breakdown.saves
+    {
+      name: platform === 'facebook' ? 'Reactions' : 'Likes',
+      value: breakdown.likes.count,
+      pct: breakdown.likes.pct,
+    },
+    {
+      name: platform === 'twitter' ? 'Replies' : 'Comments',
+      value: breakdown.comments.count,
+      pct: breakdown.comments.pct,
+    },
+    ...(breakdown.saves
       ? [{ name: 'Saves', value: breakdown.saves.count, pct: breakdown.saves.pct }]
       : []),
-    ...(!isInstagram && breakdown.shares
+    ...(breakdown.shares
       ? [{ name: 'Shares', value: breakdown.shares.count, pct: breakdown.shares.pct }]
+      : []),
+    ...(breakdown.reposts
+      ? [{ name: 'Reposts', value: breakdown.reposts.count, pct: breakdown.reposts.pct }]
+      : []),
+    ...(breakdown.bookmarks
+      ? [{ name: 'Bookmarks', value: breakdown.bookmarks.count, pct: breakdown.bookmarks.pct }]
       : []),
   ].filter((d) => d.value > 0);
 

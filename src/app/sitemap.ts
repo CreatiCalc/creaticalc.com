@@ -15,7 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: baseUrl,
-      lastModified: '2026-02-12',
+      lastModified: '2026-02-13',
       changeFrequency: 'monthly',
       priority: 0.8,
     },
@@ -39,7 +39,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/engagement-rate-calculator`,
-      lastModified: '2026-02-12',
+      lastModified: '2026-02-13',
       changeFrequency: 'weekly',
       priority: 0.9,
     },
@@ -68,14 +68,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${baseUrl}/facebook-engagement-rate-calculator`,
+      lastModified: '2026-02-13',
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/twitter-engagement-rate-calculator`,
+      lastModified: '2026-02-13',
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
       url: `${baseUrl}/engagement-rate-benchmarks`,
-      lastModified: '2026-02-12',
+      lastModified: '2026-02-13',
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
       url: `${baseUrl}/about`,
-      lastModified: '2026-02-12',
+      lastModified: '2026-02-13',
       changeFrequency: 'monthly',
       priority: 0.3,
     },
