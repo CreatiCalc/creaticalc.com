@@ -24,8 +24,11 @@ export default function InstagramSponsorshipShareButtons({
 
   const shareText = `As a ${tierLabel} Instagram creator, my estimated sponsorship rate is ${formatUSD(rateMid)}/post! Check yours:`;
 
-  const embedSlug =
-    typeof window !== 'undefined' ? window.location.pathname.replace(/^\//, '') : undefined;
-
-  return <ShareButtons getShareUrl={getShareUrl} shareText={shareText} embedSlug={embedSlug} />;
+  return (
+    <ShareButtons
+      getShareUrl={getShareUrl}
+      shareText={shareText}
+      embedSlug="instagram-sponsorship-rate-calculator"
+    />
+  );
 }

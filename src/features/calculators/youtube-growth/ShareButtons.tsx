@@ -6,6 +6,8 @@ import { formatSubscribers } from '@/lib/subscriberGrowthModel';
 import { encodeGrowthState, type GrowthShareState } from '@/lib/growthShareCodec';
 import { SITE_URL } from '@/lib/siteConfig';
 
+const BASE_PATH = '/youtube-subscriber-projector';
+
 interface YouTubeGrowthShareButtonsProps {
   state: GrowthShareState;
   projectedSubs: number;
@@ -17,13 +19,12 @@ export default function YouTubeGrowthShareButtons({
 }: YouTubeGrowthShareButtonsProps) {
   const getShareUrl = useCallback(() => {
     const encoded = encodeGrowthState(state);
-    return `${SITE_URL}/youtube-subscriber-projector?c=${encoded}`;
+    return `${SITE_URL}${BASE_PATH}?c=${encoded}`;
   }, [state]);
 
   const shareText = `Starting at ${formatSubscribers(state.currentSubs)} subs, I'm projected to hit ${formatSubscribers(projectedSubs)} in 12 months! Check your YouTube growth:`;
 
-  const embedSlug =
-    typeof window !== 'undefined' ? window.location.pathname.replace(/^\//, '') : undefined;
-
-  return <ShareButtons getShareUrl={getShareUrl} shareText={shareText} embedSlug={embedSlug} />;
+  return (
+    <ShareButtons getShareUrl={getShareUrl} shareText={shareText} embedSlug={BASE_PATH.slice(1)} />
+  );
 }

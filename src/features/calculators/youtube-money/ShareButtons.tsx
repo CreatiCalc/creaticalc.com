@@ -14,6 +14,11 @@ interface YouTubeShareButtonsProps {
 }
 
 export default function YouTubeShareButtons({ state, yearlyMid, tier }: YouTubeShareButtonsProps) {
+  const basePath =
+    state.contentFormat === 'shorts'
+      ? '/youtube-shorts-money-calculator'
+      : '/youtube-money-calculator';
+
   const getShareUrl = useCallback(() => {
     const code = encodeCalcState({
       dailyViews: state.dailyViews,
@@ -27,8 +32,9 @@ export default function YouTubeShareButtons({ state, yearlyMid, tier }: YouTubeS
       videoLength: state.videoLength,
       highCpmAudiencePct: state.highCpmAudiencePct,
     });
-    return `${SITE_URL}${window.location.pathname}?c=${code}`;
+    return `${SITE_URL}${basePath}?c=${code}`;
   }, [
+    basePath,
     state.dailyViews,
     state.nicheId,
     state.monthlyGrowthRate,
@@ -43,8 +49,7 @@ export default function YouTubeShareButtons({ state, yearlyMid, tier }: YouTubeS
 
   const shareText = `I'm a "${tier}" creator projected to make ${formatUSD(yearlyMid)}/year on YouTube! Check your earnings:`;
 
-  const embedSlug =
-    typeof window !== 'undefined' ? window.location.pathname.replace(/^\//, '') : undefined;
-
-  return <ShareButtons getShareUrl={getShareUrl} shareText={shareText} embedSlug={embedSlug} />;
+  return (
+    <ShareButtons getShareUrl={getShareUrl} shareText={shareText} embedSlug={basePath.slice(1)} />
+  );
 }
