@@ -102,13 +102,7 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <section className="relative mb-24 text-center">
-        {/* Animated gradient orb */}
-        <div
-          className="animate-hero-glow pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[500px] w-[700px] rounded-full blur-2xl"
-          style={{ background: 'var(--gradient-hero)' }}
-          aria-hidden="true"
-        />
+      <section className="hero-dots relative mb-24 py-8 text-center">
         <h1 className="text-4xl font-bold tracking-tight md:text-6xl">
           Free Calculators for <span className="text-gradient-vibrant">Content Creators</span>
         </h1>

@@ -24,7 +24,6 @@
 :root {
   --gradient-brand: linear-gradient(135deg, #0d9488 0%, #0891b2 50%, #06b6d4 100%);
   --gradient-brand-vibrant: linear-gradient(135deg, #0d9488 0%, #d97706 100%);
-  --gradient-hero: linear-gradient(135deg, #0d9488 0%, #0891b2 40%, #22d3ee 100%);
 }
 
 body {
@@ -92,24 +91,24 @@ details .details-content > div {
   }
 }
 
-@keyframes hero-glow {
-  0%,
-  100% {
-    opacity: 0.15;
-    transform: translate(-50%, -50%) scale(1);
-  }
-  50% {
-    opacity: 0.25;
-    transform: translate(-50%, -50%) scale(1.1);
-  }
-}
-
 .animate-fade-up {
   animation: fade-up 0.6s ease-out both;
 }
 
-.animate-hero-glow {
-  animation: hero-glow 6s ease-in-out infinite;
+/* Dot-grid pattern for the homepage hero — evokes precision / data */
+.hero-dots {
+  background-image:
+    radial-gradient(ellipse 80% 60% at 50% 40%, transparent 30%, var(--color-background) 75%),
+    radial-gradient(circle, var(--color-border) 1.5px, transparent 1.5px),
+    radial-gradient(
+      ellipse at 50% 30%,
+      color-mix(in srgb, var(--color-primary) 6%, transparent) 0%,
+      transparent 70%
+    );
+  background-size:
+    100% 100%,
+    20px 20px,
+    100% 100%;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -117,10 +116,6 @@ details .details-content > div {
     animation: none;
     opacity: 1;
     transform: none;
-  }
-
-  .animate-hero-glow {
-    animation: none;
   }
 }
 
