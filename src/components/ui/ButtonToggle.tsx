@@ -53,7 +53,7 @@ export default function ButtonToggle<T extends string>({
             role="radio"
             aria-checked={value === opt.value}
             onClick={() => onChange(opt.value)}
-            className={`${hasDescriptions ? 'flex flex-col text-left' : ''} border ${rounding} px-3 py-1.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 ${
+            className={`${hasDescriptions ? 'flex flex-col text-left' : ''} border ${rounding} px-3 py-1.5 text-sm font-medium transition-all active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 ${
               value === opt.value ? activeClass : inactiveClass
             }`}
           >

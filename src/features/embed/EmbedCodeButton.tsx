@@ -18,7 +18,7 @@ export function EmbedCodeButton({ slug }: EmbedCodeButtonProps) {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="inline-flex items-center gap-1.5 rounded-lg border border-border px-3 py-1.5 text-sm font-medium text-muted transition-colors hover:border-primary hover:text-primary"
+        className="inline-flex items-center gap-1.5 rounded-lg border border-border px-3 py-1.5 text-sm font-medium text-muted transition-all active:scale-[0.97] hover:border-primary hover:text-primary"
       >
         <svg
           className="h-4 w-4"
@@ -370,7 +370,7 @@ window.addEventListener('message', function(e) {
         <button
           type="button"
           onClick={handleCopy}
-          className="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-white transition-colors"
+          className="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-white transition-all active:scale-[0.97]"
           style={{ background: copied ? '#10b981' : resolvedColor }}
         >
           {copied ? (

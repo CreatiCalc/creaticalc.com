@@ -53,7 +53,7 @@ export default function NavDropdown({
           role="menu"
           className={`absolute top-full z-50 pt-1 ${align === 'right' ? 'right-0' : 'left-0'}`}
         >
-          <div className="min-w-56 rounded-xl border border-border bg-white p-1.5 shadow-lg">
+          <div className="animate-dropdown-in min-w-56 rounded-xl border border-border bg-white p-1.5 shadow-lg">
             {items.map((item) => (
               <Link
                 key={item.href}

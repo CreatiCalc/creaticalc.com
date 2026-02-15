@@ -39,7 +39,7 @@ export default function Select({
         autoComplete="off"
         aria-label={ariaLabel}
         disabled={disabled}
-        className={`w-full rounded-lg border border-border bg-background px-3 py-2 text-sm transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20${disabled ? ' cursor-not-allowed opacity-50' : ''}`}
+        className={`w-full rounded-lg border border-border bg-background px-3 py-2 text-sm transition-all focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20${disabled ? ' cursor-not-allowed opacity-50' : ''}`}
       >
         {options.map((opt) => (
           <option key={opt.value} value={opt.value}>
