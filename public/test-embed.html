@@ -4,139 +4,335 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Embed Test</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: system-ui, sans-serif; max-width: 800px; margin: 40px auto; padding: 0 20px; }
-    h1 { font-size: 1.5rem; }
-    h2 { font-size: 1.2rem; margin-top: 2rem; border-top: 1px solid #ddd; padding-top: 1rem; }
-    p { color: #666; }
-    iframe { margin-bottom: 1rem; }
+    body {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+      color: #1c1917;
+      background: #fafaf9;
+    }
+    h1 {
+      font-family: 'Sora', sans-serif;
+      font-size: 1.5rem;
+      color: #1c1917;
+    }
+    p { color: #57534e; font-size: 0.875rem; }
+    .embed-section { margin-top: 5rem; padding-top: 3rem; border-top: 1px solid #e7e5e4; }
+    .embed-section:first-of-type { margin-top: 3rem; }
+    .embed-number {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #a8a29e;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    iframe { margin-bottom: 0; }
 
     .controls {
       position: sticky;
       top: 0;
-      background: #fff;
-      border-bottom: 2px solid #e2e8f0;
+      background: #fafaf9;
+      border-bottom: 1px solid #e7e5e4;
       padding: 16px 0;
       z-index: 10;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 24px;
       flex-wrap: wrap;
     }
     .control-group {
       display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .control-group > span {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #1c1917;
+    }
+    .control-group .options {
+      display: flex;
       align-items: center;
       gap: 8px;
     }
-    .control-group label {
-      font-size: 0.875rem;
-      font-weight: 600;
-      color: #334155;
+
+    /* Pill-shaped theme toggle */
+    .theme-toggle {
+      display: flex;
+      gap: 4px;
+      border: 1px solid #e7e5e4;
+      border-radius: 9999px;
+      background: #fafaf9;
+      padding: 4px;
     }
     .toggle-btn {
       padding: 6px 14px;
-      border: 1px solid #cbd5e1;
-      border-radius: 6px;
-      background: #fff;
+      border: none;
+      border-radius: 9999px;
+      background: transparent;
       cursor: pointer;
+      font-family: 'DM Sans', system-ui, sans-serif;
       font-size: 0.8rem;
       font-weight: 500;
+      color: #57534e;
       transition: all 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
+    .toggle-btn:hover { color: #1c1917; }
     .toggle-btn.active {
       background: #0d9488;
       color: #fff;
-      border-color: #0d9488;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.08);
     }
+    .toggle-btn:active { transform: scale(0.97); }
+    .toggle-btn svg { width: 14px; height: 14px; }
+
+    /* Ring-based color swatches */
     .color-swatch {
       width: 28px;
       height: 28px;
       border-radius: 50%;
-      border: 2px solid transparent;
+      border: none;
       cursor: pointer;
-      transition: transform 0.15s, border-color 0.15s;
+      transition: transform 0.15s, box-shadow 0.15s;
+      box-shadow: none;
     }
     .color-swatch.active {
-      transform: scale(1.15);
-      border-color: #0f172a;
+      box-shadow: 0 0 0 2px #fafaf9, 0 0 0 4px #1c1917;
     }
-    .color-swatch:hover { transform: scale(1.1); }
+    .color-swatch:not(.active):hover { transform: scale(1.1); }
     .custom-color-label {
       width: 28px;
       height: 28px;
       border-radius: 50%;
-      border: 2px solid #cbd5e1;
+      border: none;
       cursor: pointer;
       background: conic-gradient(red, yellow, lime, aqua, blue, magenta, red);
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: transform 0.15s, border-color 0.15s;
+      transition: transform 0.15s, box-shadow 0.15s;
     }
     .custom-color-label.active {
-      transform: scale(1.15);
-      border-color: #0f172a;
+      box-shadow: 0 0 0 2px #fafaf9, 0 0 0 4px #1c1917;
     }
+    .custom-color-label:not(.active):hover { transform: scale(1.1); }
     .custom-color-label input { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+
+    /* Height preset pills */
+    .height-pill {
+      padding: 4px 12px;
+      border: 1px solid #e7e5e4;
+      border-radius: 9999px;
+      background: #fff;
+      cursor: pointer;
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: #57534e;
+      transition: all 0.15s;
+    }
+    .height-pill:hover { border-color: #0d9488; color: #1c1917; }
+    .height-pill.active {
+      background: #0d9488;
+      color: #fff;
+      border-color: #0d9488;
+    }
+    .height-pill:active { transform: scale(0.97); }
+    .height-input {
+      width: 64px;
+      padding: 4px 8px;
+      border: 1px solid #e7e5e4;
+      border-radius: 8px;
+      background: #fff;
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-size: 0.75rem;
+      color: #1c1917;
+      outline: none;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .height-input:focus {
+      border-color: #0d9488;
+      box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.15);
+    }
+
+    /* Auto-resize toggle switch */
+    .toggle-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .toggle-switch {
+      position: relative;
+      width: 36px;
+      height: 20px;
+      border-radius: 9999px;
+      background: #e7e5e4;
+      border: none;
+      cursor: pointer;
+      transition: background 0.15s;
+      flex-shrink: 0;
+    }
+    .toggle-switch.active { background: #0d9488; }
+    .toggle-switch .knob {
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+      transition: transform 0.15s;
+    }
+    .toggle-switch.active .knob { transform: translateX(16px); }
+    .toggle-label {
+      font-size: 0.8rem;
+      color: #1c1917;
+    }
+    .toggle-badge {
+      font-size: 0.65rem;
+      font-weight: 500;
+      color: #0d9488;
+      background: rgba(13, 148, 136, 0.1);
+      padding: 2px 8px;
+      border-radius: 9999px;
+    }
   </style>
 </head>
 <body>
   <h1>Embed Widget Test</h1>
-  <p>All 9 embeddable calculators with live theme and color controls.</p>
+  <p>All 12 embeddable calculators with live theme and color controls.</p>
 
   <div class="controls">
     <div class="control-group">
-      <label>Theme:</label>
-      <button class="toggle-btn active" data-theme="light" onclick="setTheme('light')">Light</button>
-      <button class="toggle-btn" data-theme="dark" onclick="setTheme('dark')">Dark</button>
+      <span>Theme</span>
+      <div class="theme-toggle">
+        <button class="toggle-btn active" data-theme="light" onclick="setTheme('light')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          Light
+        </button>
+        <button class="toggle-btn" data-theme="dark" onclick="setTheme('dark')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          Dark
+        </button>
+      </div>
     </div>
 
     <div class="control-group">
-      <label>Color:</label>
-      <button class="color-swatch" data-color="purple" style="background:#7c3aed" title="Purple" onclick="setColor('purple')"></button>
-      <button class="color-swatch" data-color="blue" style="background:#2563eb" title="Blue" onclick="setColor('blue')"></button>
-      <button class="color-swatch" data-color="green" style="background:#059669" title="Green" onclick="setColor('green')"></button>
-      <button class="color-swatch" data-color="red" style="background:#dc2626" title="Red" onclick="setColor('red')"></button>
-      <button class="color-swatch" data-color="pink" style="background:#db2777" title="Pink" onclick="setColor('pink')"></button>
-      <button class="color-swatch" data-color="orange" style="background:#ea580c" title="Orange" onclick="setColor('orange')"></button>
-      <button class="color-swatch active" data-color="teal" style="background:#0d9488" title="Teal" onclick="setColor('teal')"></button>
-      <label class="custom-color-label" id="custom-color-label" title="Custom color">
-        <input type="color" id="custom-color-input" value="#0d9488" oninput="setCustomColor(this.value)">
-      </label>
+      <span>Accent Color</span>
+      <div class="options">
+        <button class="color-swatch" data-color="purple" style="background:#7c3aed" title="Purple" onclick="setColor('purple')"></button>
+        <button class="color-swatch" data-color="blue" style="background:#2563eb" title="Blue" onclick="setColor('blue')"></button>
+        <button class="color-swatch" data-color="green" style="background:#059669" title="Green" onclick="setColor('green')"></button>
+        <button class="color-swatch" data-color="red" style="background:#dc2626" title="Red" onclick="setColor('red')"></button>
+        <button class="color-swatch" data-color="pink" style="background:#db2777" title="Pink" onclick="setColor('pink')"></button>
+        <button class="color-swatch" data-color="orange" style="background:#ea580c" title="Orange" onclick="setColor('orange')"></button>
+        <button class="color-swatch active" data-color="teal" style="background:#0d9488" title="Teal" onclick="setColor('teal')"></button>
+        <label class="custom-color-label" id="custom-color-label" title="Custom color">
+          <input type="color" id="custom-color-input" value="#0d9488" oninput="setCustomColor(this.value)">
+        </label>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <span>Height</span>
+      <div class="options">
+        <button class="height-pill" data-height="400" onclick="setHeight(400)">400px</button>
+        <button class="height-pill active" data-height="600" onclick="setHeight(600)">600px</button>
+        <button class="height-pill" data-height="800" onclick="setHeight(800)">800px</button>
+        <input class="height-input" type="number" id="height-input" value="600" min="300" max="1200" oninput="setHeight(Number(this.value) || 600)">
+      </div>
+    </div>
+
+    <div class="control-group">
+      <span>Auto-resize</span>
+      <div class="toggle-row">
+        <button class="toggle-switch active" id="autoresize-toggle" onclick="toggleAutoResize()">
+          <span class="knob"></span>
+        </button>
+        <span class="toggle-label">Resize to fit</span>
+        <span class="toggle-badge">Recommended</span>
+      </div>
     </div>
   </div>
 
-  <h2>1. YouTube Money Calculator</h2>
-  <iframe data-slug="youtube-money-calculator" src="http://localhost:3000/embed/youtube-money-calculator" width="100%" height="600" style="border:none;border-radius:8px;" loading="lazy" title="YouTube Money Calculator"></iframe>
+  <div class="embed-section">
+    <div class="embed-number">1 of 12</div>
+    <iframe data-slug="youtube-money-calculator" src="http://localhost:3000/embed/youtube-money-calculator" width="100%" height="600" style="border:none;border-radius:8px;" loading="lazy" title="YouTube Money Calculator"></iframe>
+  </div>
 
-  <h2>2. YouTube Shorts Money Calculator</h2>
-  <iframe data-slug="youtube-shorts-money-calculator" src="http://localhost:3000/embed/youtube-shorts-money-calculator" width="100%" height="600" style="border:none;border-radius:8px;" loading="lazy" title="YouTube Shorts Money Calculator"></iframe>
+  <div class="embed-section">
+    <div class="embed-number">2 of 12</div>
+    <iframe data-slug="youtube-shorts-money-calculator" src="http://localhost:3000/embed/youtube-shorts-money-calculator" width="100%" height="600" style="border:none;border-radius:8px;" loading="lazy" title="YouTube Shorts Money Calculator"></iframe>
+  </div>
 
-  <h2>3. YouTube Subscriber Growth Projector</h2>
-  <iframe data-slug="youtube-subscriber-projector" src="http://localhost:3000/embed/youtube-subscriber-projector" width="100%" height="600" style="border:none;border-radius:8px;" loading="lazy" title="YouTube Subscriber Growth Projector"></iframe>
+  <div class="embed-section">
+    <div class="embed-number">3 of 12</div>
+    <iframe data-slug="youtube-subscriber-projector" src="http://localhost:3000/embed/youtube-subscriber-projector" width="100%" height="600" style="border:none;border-radius:8px;" loading="lazy" title="YouTube Subscriber Growth Projector"></iframe>
+  </div>
 
-  <h2>4. Instagram Engagement Rate Calculator</h2>
-  <iframe data-slug="instagram-engagement-rate-calculator" src="http://localhost:3000/embed/instagram-engagement-rate-calculator" width="100%" height="600" style="border:none;border-radius:8px;" loading="lazy" title="Instagram Engagement Rate Calculator"></iframe>
+  <div class="embed-section">
+    <div class="embed-number">4 of 12</div>
+    <iframe data-slug="youtube-sponsorship-rate-calculator" src="http://localhost:3000/embed/youtube-sponsorship-rate-calculator" width="100%" height="600" style="border:none;border-radius:8px;" loading="lazy" title="YouTube Sponsorship Rate Calculator"></iframe>
+  </div>
 
-  <h2>5. Instagram Sponsorship Rate Calculator</h2>
-  <iframe data-slug="instagram-sponsorship-rate-calculator" src="http://localhost:3000/embed/instagram-sponsorship-rate-calculator" width="100%" height="600" style="border:none;border-radius:8px;" loading="lazy" title="Instagram Sponsorship Rate Calculator"></iframe>
+  <div class="embed-section">
+    <div class="embed-number">5 of 12</div>
+    <iframe data-slug="instagram-engagement-rate-calculator" src="http://localhost:3000/embed/instagram-engagement-rate-calculator" width="100%" height="600" style="border:none;border-radius:8px;" loading="lazy" title="Instagram Engagement Rate Calculator"></iframe>
+  </div>
 
-  <h2>6. TikTok Engagement Rate Calculator</h2>
-  <iframe data-slug="tiktok-engagement-rate-calculator" src="http://localhost:3000/embed/tiktok-engagement-rate-calculator" width="100%" height="600" style="border:none;border-radius:8px;" loading="lazy" title="TikTok Engagement Rate Calculator"></iframe>
+  <div class="embed-section">
+    <div class="embed-number">6 of 12</div>
+    <iframe data-slug="instagram-sponsorship-rate-calculator" src="http://localhost:3000/embed/instagram-sponsorship-rate-calculator" width="100%" height="600" style="border:none;border-radius:8px;" loading="lazy" title="Instagram Sponsorship Rate Calculator"></iframe>
+  </div>
 
-  <h2>7. TikTok Sponsorship Rate Calculator</h2>
-  <iframe data-slug="tiktok-sponsorship-rate-calculator" src="http://localhost:3000/embed/tiktok-sponsorship-rate-calculator" width="100%" height="600" style="border:none;border-radius:8px;" loading="lazy" title="TikTok Sponsorship Rate Calculator"></iframe>
+  <div class="embed-section">
+    <div class="embed-number">7 of 12</div>
+    <iframe data-slug="tiktok-engagement-rate-calculator" src="http://localhost:3000/embed/tiktok-engagement-rate-calculator" width="100%" height="600" style="border:none;border-radius:8px;" loading="lazy" title="TikTok Engagement Rate Calculator"></iframe>
+  </div>
 
-  <h2>8. Facebook Engagement Rate Calculator</h2>
-  <iframe data-slug="facebook-engagement-rate-calculator" src="http://localhost:3000/embed/facebook-engagement-rate-calculator" width="100%" height="600" style="border:none;border-radius:8px;" loading="lazy" title="Facebook Engagement Rate Calculator"></iframe>
+  <div class="embed-section">
+    <div class="embed-number">8 of 12</div>
+    <iframe data-slug="tiktok-sponsorship-rate-calculator" src="http://localhost:3000/embed/tiktok-sponsorship-rate-calculator" width="100%" height="600" style="border:none;border-radius:8px;" loading="lazy" title="TikTok Sponsorship Rate Calculator"></iframe>
+  </div>
 
-  <h2>9. X (Twitter) Engagement Rate Calculator</h2>
-  <iframe data-slug="twitter-engagement-rate-calculator" src="http://localhost:3000/embed/twitter-engagement-rate-calculator" width="100%" height="600" style="border:none;border-radius:8px;" loading="lazy" title="X (Twitter) Engagement Rate Calculator"></iframe>
+  <div class="embed-section">
+    <div class="embed-number">9 of 12</div>
+    <iframe data-slug="facebook-engagement-rate-calculator" src="http://localhost:3000/embed/facebook-engagement-rate-calculator" width="100%" height="600" style="border:none;border-radius:8px;" loading="lazy" title="Facebook Engagement Rate Calculator"></iframe>
+  </div>
+
+  <div class="embed-section">
+    <div class="embed-number">10 of 12</div>
+    <iframe data-slug="facebook-sponsorship-rate-calculator" src="http://localhost:3000/embed/facebook-sponsorship-rate-calculator" width="100%" height="600" style="border:none;border-radius:8px;" loading="lazy" title="Facebook Sponsorship Rate Calculator"></iframe>
+  </div>
+
+  <div class="embed-section">
+    <div class="embed-number">11 of 12</div>
+    <iframe data-slug="twitter-engagement-rate-calculator" src="http://localhost:3000/embed/twitter-engagement-rate-calculator" width="100%" height="600" style="border:none;border-radius:8px;" loading="lazy" title="X (Twitter) Engagement Rate Calculator"></iframe>
+  </div>
+
+  <div class="embed-section">
+    <div class="embed-number">12 of 12</div>
+    <iframe data-slug="twitter-sponsorship-rate-calculator" src="http://localhost:3000/embed/twitter-sponsorship-rate-calculator" width="100%" height="600" style="border:none;border-radius:8px;" loading="lazy" title="X (Twitter) Sponsorship Rate Calculator"></iframe>
+  </div>
 
   <script>
     var currentTheme = 'light';
     var currentColor = 'teal';
+    var currentHeight = 600;
+    var autoResize = true;
     var isCustomColor = false;
+    var reportedHeights = {};
 
     function buildUrl(slug) {
       var params = new URLSearchParams();
@@ -149,6 +345,21 @@
     function updateAllIframes() {
       document.querySelectorAll('iframe[data-slug]').forEach(function(iframe) {
         iframe.src = buildUrl(iframe.dataset.slug);
+      });
+    }
+
+    function applyHeight() {
+      document.querySelectorAll('iframe[data-slug]').forEach(function(iframe) {
+        iframe.style.height = currentHeight + 'px';
+      });
+    }
+
+    function applyAutoResizeHeights() {
+      document.querySelectorAll('iframe[data-slug]').forEach(function(iframe) {
+        var slug = iframe.dataset.slug;
+        if (reportedHeights[slug]) {
+          iframe.style.height = reportedHeights[slug] + 'px';
+        }
       });
     }
 
@@ -182,12 +393,36 @@
       updateAllIframes();
     }
 
-    // Auto-resize
+    function setHeight(h) {
+      currentHeight = h;
+      document.querySelectorAll('.height-pill').forEach(function(btn) {
+        btn.classList.toggle('active', Number(btn.dataset.height) === h);
+      });
+      document.getElementById('height-input').value = h;
+      if (!autoResize) applyHeight();
+    }
+
+    function toggleAutoResize() {
+      autoResize = !autoResize;
+      var toggle = document.getElementById('autoresize-toggle');
+      toggle.classList.toggle('active', autoResize);
+      if (autoResize) {
+        applyAutoResizeHeights();
+      } else {
+        applyHeight();
+      }
+    }
+
+    // Auto-resize listener — always store reported heights, only apply when enabled
     window.addEventListener('message', function(e) {
       if (e.data && e.data.type === 'creaticalc-resize') {
         document.querySelectorAll('iframe').forEach(function(iframe) {
           if (e.source === iframe.contentWindow) {
-            iframe.style.height = e.data.height + 'px';
+            var slug = iframe.dataset.slug;
+            if (slug) reportedHeights[slug] = e.data.height;
+            if (autoResize) {
+              iframe.style.height = e.data.height + 'px';
+            }
           }
         });
       }

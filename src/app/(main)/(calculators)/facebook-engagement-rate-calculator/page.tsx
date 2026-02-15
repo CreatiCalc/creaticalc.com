@@ -78,6 +78,11 @@ const faq: FAQItem[] = [
     answer:
       'Despite low organic engagement rates, Facebook remains valuable for creators due to its massive user base (nearly 3 billion monthly active users), strong monetization tools (in-stream ads, Stars, paid subscriptions), and Facebook Reels which currently get boosted distribution. Facebook Groups also provide a powerful community-building tool that no other platform matches. The key is to adapt your strategy — focus on video content, build a Group alongside your Page, and consider using paid promotion strategically rather than relying solely on organic reach.',
   },
+  {
+    question: 'Can I embed this calculator on my website?',
+    answer:
+      'Yes! Click the "Embed" button below the calculator results to get a free embed code for your website or blog. You can customize the theme (light or dark), accent color, and height to match your site\'s design. The embed is fully responsive and works on any website that supports iframes.',
+  },
 ];
 
 const howItWorks = (

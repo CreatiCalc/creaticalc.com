@@ -83,6 +83,11 @@ const faq: FAQItem[] = [
     answer:
       'If you are an X Premium subscriber, you can justify charging higher sponsorship rates for several reasons. Premium subscribers get prioritized in replies and search, which means your sponsored content reaches a larger audience. The verified badge adds credibility to brand endorsements. You can also write longer posts (up to 25,000 characters), attach longer videos, and edit tweets after posting — all of which give brands more flexibility in how their message is presented. Many creators with Premium charge a 15–25% premium over standard rates to reflect this enhanced reach and functionality.',
   },
+  {
+    question: 'Can I embed this calculator on my website?',
+    answer:
+      'Yes! Click the "Embed" button below the calculator results to get a free embed code for your website or blog. You can customize the theme (light or dark), accent color, and height to match your site\'s design. The embed is fully responsive and works on any website that supports iframes.',
+  },
 ];
 
 const howItWorks = (

@@ -71,21 +71,25 @@ export default function EmbedWrapper({ title, canonicalPath, children }: EmbedWr
 
   return (
     <EmbedContext.Provider value={true}>
-      <div ref={containerRef} className={theme === 'dark' ? 'embed-dark' : undefined} style={style}>
-        <div className="mx-auto max-w-4xl px-4 py-4">
+      <div
+        ref={containerRef}
+        className={`flex min-h-screen flex-col ${theme === 'dark' ? 'embed-dark' : ''}`}
+        style={style}
+      >
+        <div className="mx-auto w-full max-w-4xl flex-1 px-4 py-4">
           <h1 className="mb-4 text-xl font-bold text-foreground">{title}</h1>
           {children}
-          <div className="mt-6 border-t border-border pt-3 text-center text-xs text-muted">
-            Powered by{' '}
-            <a
-              href={`${SITE_URL}${canonicalPath}?utm_source=embed&utm_medium=widget`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-medium text-primary hover:underline"
-            >
-              CreatiCalc
-            </a>
-          </div>
+        </div>
+        <div className="sticky bottom-0 border-t border-border bg-background py-2 text-center text-xs text-muted">
+          Powered by{' '}
+          <a
+            href={`${SITE_URL}${canonicalPath}?utm_source=embed&utm_medium=widget`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium text-primary hover:underline"
+          >
+            CreatiCalc
+          </a>
         </div>
       </div>
     </EmbedContext.Provider>

@@ -83,6 +83,11 @@ const faq: FAQItem[] = [
     answer:
       'Yes, usage rights should almost always be a separate line item in your sponsorship agreement. When a brand wants to repurpose your video content as a paid advertisement on YouTube, social media, or other channels, that extends the value of your work far beyond your organic audience. Standard usage rights fees range from 50\u2013500% of the base sponsorship rate, depending on the scope (platforms, duration, geographic reach) and whether the brand will run the content as paid ads. Always specify the usage period\u2014typically 30, 60, or 90 days\u2014and charge more for perpetual or unlimited usage.',
   },
+  {
+    question: 'Can I embed this calculator on my website?',
+    answer:
+      'Yes! Click the "Embed" button below the calculator results to get a free embed code for your website or blog. You can customize the theme (light or dark), accent color, and height to match your site\'s design. The embed is fully responsive and works on any website that supports iframes.',
+  },
 ];
 
 const howItWorks = (

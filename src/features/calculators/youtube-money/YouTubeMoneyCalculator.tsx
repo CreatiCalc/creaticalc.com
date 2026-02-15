@@ -150,29 +150,31 @@ export default function YouTubeMoneyCalculator({
 
       <Card className={isEmbed ? '' : 'mt-4'}>
         <div className="space-y-6">
-          {!hideFormatToggle && (
-            <ButtonToggle<ContentFormat>
-              value={state.contentFormat}
-              onChange={setContentFormat}
-              options={[
-                { value: 'longform', label: 'Long-form' },
-                { value: 'shorts', label: 'Shorts' },
-              ]}
-              label="Content Format"
-              ariaLabel="Content format"
-            />
-          )}
+          <div className={isEmbed ? 'flex flex-wrap gap-6' : 'space-y-6'}>
+            {!hideFormatToggle && (
+              <ButtonToggle<ContentFormat>
+                value={state.contentFormat}
+                onChange={setContentFormat}
+                options={[
+                  { value: 'longform', label: 'Long-form' },
+                  { value: 'shorts', label: 'Shorts' },
+                ]}
+                label="Content Format"
+                ariaLabel="Content format"
+              />
+            )}
 
-          <ButtonToggle<InputMode>
-            value={state.inputMode}
-            onChange={setInputMode}
-            options={[
-              { value: 'daily', label: 'Daily Views' },
-              { value: 'perVideo', label: 'Per Video' },
-            ]}
-            label="Input Mode"
-            ariaLabel="View input mode"
-          />
+            <ButtonToggle<InputMode>
+              value={state.inputMode}
+              onChange={setInputMode}
+              options={[
+                { value: 'daily', label: 'Daily Views' },
+                { value: 'perVideo', label: 'Per Video' },
+              ]}
+              label="Input Mode"
+              ariaLabel="View input mode"
+            />
+          </div>
 
           {state.inputMode === 'daily' ? (
             <div className="space-y-4">

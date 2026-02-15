@@ -83,6 +83,11 @@ const faq: FAQItem[] = [
     answer:
       'Rate mode uses percentage-based compound growth — your subscriber count grows by a fixed percentage each month, meaning the absolute number of new subscribers increases over time. This models organic channel growth well. Flat gain mode adds a fixed number of subscribers each month regardless of channel size. This is useful if you have a predictable external traffic source (like a blog or social media following) that drives a steady stream of new subscribers.',
   },
+  {
+    question: 'Can I embed this calculator on my website?',
+    answer:
+      'Yes! Click the "Embed" button below the calculator results to get a free embed code for your website or blog. You can customize the theme (light or dark), accent color, and height to match your site\'s design. The embed is fully responsive and works on any website that supports iframes.',
+  },
 ];
 
 const howItWorks = (

@@ -83,6 +83,11 @@ const faq: FAQItem[] = [
     answer:
       'Most TikTok creators use flat-rate pricing (a fixed fee per video) rather than CPM pricing. Flat rates are simpler to negotiate and give you predictable income. CPM pricing (charging per 1,000 views) can be advantageous if your content regularly goes viral, but it introduces uncertainty for both you and the brand. A hybrid approach — a guaranteed base rate plus a performance bonus if the video exceeds a view threshold — is becoming increasingly popular and benefits both parties.',
   },
+  {
+    question: 'Can I embed this calculator on my website?',
+    answer:
+      'Yes! Click the "Embed" button below the calculator results to get a free embed code for your website or blog. You can customize the theme (light or dark), accent color, and height to match your site\'s design. The embed is fully responsive and works on any website that supports iframes.',
+  },
 ];
 
 const howItWorks = (

@@ -78,6 +78,11 @@ const faq: FAQItem[] = [
     answer:
       'X offers ad revenue sharing for Premium subscribers who meet eligibility requirements (typically 500+ followers and 5M+ post impressions in the last 3 months). Revenue is generated from ads shown in replies to your posts. Higher engagement rates — especially replies and conversations — directly increase the ad impressions on your content and thus your revenue. This creates a direct financial incentive to optimize for engagement, particularly comment-generating content. The program pays monthly and rates vary based on ad market conditions.',
   },
+  {
+    question: 'Can I embed this calculator on my website?',
+    answer:
+      'Yes! Click the "Embed" button below the calculator results to get a free embed code for your website or blog. You can customize the theme (light or dark), accent color, and height to match your site\'s design. The embed is fully responsive and works on any website that supports iframes.',
+  },
 ];
 
 const howItWorks = (

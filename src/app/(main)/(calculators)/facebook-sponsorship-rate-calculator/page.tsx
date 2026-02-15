@@ -83,6 +83,11 @@ const faq: FAQItem[] = [
     answer:
       "Facebook Page sponsorships involve branded content published on your public Page, similar to a standard influencer post on any platform. Facebook Group sponsorships involve promoting a brand within a community you manage, which carries a different kind of value — community endorsement. Group sponsorships can command a premium because members trust the group admin's recommendations and engagement rates within Groups tend to be significantly higher than on Pages. However, Group sponsorships require careful handling to maintain community trust, and over-promotion can lead to member pushback or departures.",
   },
+  {
+    question: 'Can I embed this calculator on my website?',
+    answer:
+      'Yes! Click the "Embed" button below the calculator results to get a free embed code for your website or blog. You can customize the theme (light or dark), accent color, and height to match your site\'s design. The embed is fully responsive and works on any website that supports iframes.',
+  },
 ];
 
 const howItWorks = (

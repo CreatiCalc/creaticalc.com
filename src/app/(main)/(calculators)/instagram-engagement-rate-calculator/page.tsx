@@ -83,6 +83,11 @@ const faq: FAQItem[] = [
     answer:
       'Engagement rate by followers divides total interactions by your follower count — this is the standard metric used for comparing accounts and is what brands typically request. Engagement rate by reach divides interactions by the number of unique people who saw the post — this is more accurate for measuring content performance since it accounts for actual visibility. Reach-based rates are typically 2–5 times higher than follower-based rates because not all followers see every post. Our calculator uses the follower-based formula as it is the industry standard.',
   },
+  {
+    question: 'Can I embed this calculator on my website?',
+    answer:
+      'Yes! Click the "Embed" button below the calculator results to get a free embed code for your website or blog. You can customize the theme (light or dark), accent color, and height to match your site\'s design. The embed is fully responsive and works on any website that supports iframes.',
+  },
 ];
 
 const howItWorks = (

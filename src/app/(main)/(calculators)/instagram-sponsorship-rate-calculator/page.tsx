@@ -83,6 +83,11 @@ const faq: FAQItem[] = [
     answer:
       'A strong media kit should include: your follower count and engagement rate, audience demographics (age, gender, location), content examples and past brand partnerships, your rate card broken down by content type, reach and impression statistics, and any notable results from previous campaigns (click-through rates, conversions). Use this calculator to generate your rate card and include specific numbers for Feed Posts, Reels, Stories, and Carousels.',
   },
+  {
+    question: 'Can I embed this calculator on my website?',
+    answer:
+      'Yes! Click the "Embed" button below the calculator results to get a free embed code for your website or blog. You can customize the theme (light or dark), accent color, and height to match your site\'s design. The embed is fully responsive and works on any website that supports iframes.',
+  },
 ];
 
 const howItWorks = (

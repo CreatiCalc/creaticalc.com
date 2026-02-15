@@ -83,6 +83,11 @@ const faq: FAQItem[] = [
     answer:
       'Shares are one of the most powerful engagement signals on TikTok. When someone shares your video via direct message, to another platform, or by downloading it, TikTok interprets this as the strongest form of endorsement — the viewer found the content valuable enough to actively send to someone else. Shares carry more algorithmic weight than likes and are roughly equivalent to comments in impact. Videos with high share rates tend to see extended distribution cycles, sometimes resurfacing days or weeks after initial posting.',
   },
+  {
+    question: 'Can I embed this calculator on my website?',
+    answer:
+      'Yes! Click the "Embed" button below the calculator results to get a free embed code for your website or blog. You can customize the theme (light or dark), accent color, and height to match your site\'s design. The embed is fully responsive and works on any website that supports iframes.',
+  },
 ];
 
 const howItWorks = (

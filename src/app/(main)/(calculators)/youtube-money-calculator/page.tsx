@@ -104,6 +104,11 @@ const faq: FAQItem[] = [
     answer:
       'YouTube Shorts pay significantly less than long-form videos — roughly $0.01 to $0.07 per 1,000 views (RPM). This is because Shorts ads come from a separate revenue pool where creators receive 45% of allocated ad revenue. Unlike long-form content where niche heavily influences earnings, Shorts RPM is relatively flat across most content categories, though finance and tech Shorts can earn toward the higher end. Use the "Shorts" toggle in our calculator to see projected Shorts earnings. To maximize revenue, many creators use Shorts to drive subscribers who then watch their higher-paying long-form content.',
   },
+  {
+    question: 'Can I embed this calculator on my website?',
+    answer:
+      'Yes! Click the "Embed" button below the calculator results to get a free embed code for your website or blog. You can customize the theme (light or dark), accent color, and height to match your site\'s design. The embed is fully responsive and works on any website that supports iframes.',
+  },
 ];
 
 const howItWorks = (

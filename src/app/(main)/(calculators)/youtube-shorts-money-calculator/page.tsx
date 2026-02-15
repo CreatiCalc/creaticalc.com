@@ -73,6 +73,11 @@ const faq: FAQItem[] = [
     answer:
       "YouTube pays Shorts creators monthly through Google AdSense, the same payment system used for long-form video earnings. Payments are issued between the 21st and 26th of each month for the previous month's earnings, provided you have reached the $100 minimum payment threshold. Revenue from Shorts and long-form videos is combined into a single monthly payment.",
   },
+  {
+    question: 'Can I embed this calculator on my website?',
+    answer:
+      'Yes! Click the "Embed" button below the calculator results to get a free embed code for your website or blog. You can customize the theme (light or dark), accent color, and height to match your site\'s design. The embed is fully responsive and works on any website that supports iframes.',
+  },
 ];
 
 const howItWorks = (
