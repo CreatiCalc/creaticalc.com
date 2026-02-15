@@ -6,7 +6,7 @@ const jetbrainsMono = JetBrains_Mono({
   variable: '--font-jetbrains-mono',
   subsets: ['latin'],
   display: 'optional',
-  weight: ['400', '700'],
+  weight: ['400'],
 });
 
 const relatedTools = getAllCalculators().map((c) => ({ name: c.cardTitle, href: c.href }));

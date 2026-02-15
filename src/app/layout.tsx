@@ -48,6 +48,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
+        <link rel="dns-prefetch" href="https://static.cloudflareinsights.com" />
+        <link
+          rel="preconnect"
+          href="https://pagead2.googlesyndication.com"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body className={`${dmSans.variable} ${sora.variable} font-sans antialiased`}>
         {children}
       </body>

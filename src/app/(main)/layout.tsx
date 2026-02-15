@@ -15,15 +15,15 @@ export default function MainLayout({
       {adsensePublisherId && (
         <Script
           src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsensePublisherId}`}
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           crossOrigin="anonymous"
         />
       )}
       {cfBeaconToken && (
         <Script
-          defer
           src="https://static.cloudflareinsights.com/beacon.min.js"
           data-cf-beacon={`{"token": "${cfBeaconToken}"}`}
+          strategy="lazyOnload"
         />
       )}
       <a
