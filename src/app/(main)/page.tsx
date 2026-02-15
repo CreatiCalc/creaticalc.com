@@ -115,8 +115,8 @@ export default function Home() {
           className="animate-fade-up mx-auto mt-6 max-w-2xl text-lg text-muted"
           style={{ animationDelay: '150ms' }}
         >
-          Estimate your YouTube earnings, calculate engagement rates, find your sponsorship pricing
-          on Instagram and TikTok, and project your subscriber growth — all for free.
+          Estimate earnings, calculate engagement rates, and find sponsorship pricing for YouTube,
+          Instagram, TikTok, Facebook, and X — all free, no sign-up required.
         </p>
         <div
           className="animate-fade-up mt-8 inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-2 text-sm text-muted"
@@ -129,42 +129,7 @@ export default function Home() {
 
       <section className="mb-12 text-center">
         <p className="mx-auto max-w-3xl leading-relaxed text-muted">
-          CreatiCalc helps content creators on{' '}
-          <Link
-            href="/youtube-money-calculator"
-            className="font-medium text-primary hover:underline"
-          >
-            YouTube
-          </Link>
-          ,{' '}
-          <Link
-            href="/instagram-engagement-rate-calculator"
-            className="font-medium text-primary hover:underline"
-          >
-            Instagram
-          </Link>
-          ,{' '}
-          <Link
-            href="/tiktok-engagement-rate-calculator"
-            className="font-medium text-primary hover:underline"
-          >
-            TikTok
-          </Link>
-          ,{' '}
-          <Link
-            href="/facebook-engagement-rate-calculator"
-            className="font-medium text-primary hover:underline"
-          >
-            Facebook
-          </Link>
-          , and{' '}
-          <Link
-            href="/twitter-engagement-rate-calculator"
-            className="font-medium text-primary hover:underline"
-          >
-            X (Twitter)
-          </Link>{' '}
-          make data-driven decisions. Calculate your{' '}
+          Calculate your{' '}
           <Link
             href="/engagement-rate-calculator"
             className="font-medium text-primary hover:underline"
@@ -185,14 +150,21 @@ export default function Home() {
           >
             2026 industry benchmarks
           </Link>
-          , and project your{' '}
+          , project{' '}
           <Link
             href="/youtube-subscriber-projector"
             className="font-medium text-primary hover:underline"
           >
             subscriber growth
+          </Link>
+          , and estimate{' '}
+          <Link
+            href="/youtube-money-calculator"
+            className="font-medium text-primary hover:underline"
+          >
+            YouTube ad revenue
           </Link>{' '}
-          — all free, instant, and no sign-up required.
+          — across YouTube, Instagram, TikTok, Facebook, and X.
         </p>
       </section>
 
@@ -237,16 +209,22 @@ export default function Home() {
         <h2 className="text-2xl font-bold">Why CreatiCalc?</h2>
         <div className="mt-8 grid gap-8 md:grid-cols-3">
           <div>
-            <p className="text-gradient-brand text-3xl font-bold">100%</p>
-            <p className="mt-1 text-sm text-muted">Free to use, no sign-up required</p>
+            <p className="text-gradient-brand text-3xl font-bold">5 Platforms</p>
+            <p className="mt-1 text-sm text-muted">
+              YouTube, Instagram, TikTok, Facebook &amp; X in one place
+            </p>
           </div>
           <div>
-            <p className="text-gradient-brand text-3xl font-bold">Instant</p>
-            <p className="mt-1 text-sm text-muted">Results calculated in real-time</p>
+            <p className="text-gradient-brand text-3xl font-bold">2026 Data</p>
+            <p className="mt-1 text-sm text-muted">
+              Benchmarks updated with the latest industry rates
+            </p>
           </div>
           <div>
-            <p className="text-gradient-brand text-3xl font-bold">Accurate</p>
-            <p className="mt-1 text-sm text-muted">Based on real industry benchmarks</p>
+            <p className="text-gradient-brand text-3xl font-bold">100% Free</p>
+            <p className="mt-1 text-sm text-muted">
+              No sign-up, no paywall — runs entirely in your browser
+            </p>
           </div>
         </div>
         <p className="mt-6 text-sm text-muted">
