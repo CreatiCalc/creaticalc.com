@@ -198,12 +198,12 @@ const howItWorks = (
       </li>
       <li>
         <Link
-          href="/instagram-sponsorship-rate-calculator"
+          href="/twitter-sponsorship-rate-calculator"
           className="font-medium text-primary hover:underline"
         >
-          Instagram Sponsorship Rate Calculator
+          X (Twitter) Sponsorship Rate Calculator
         </Link>{' '}
-        — compare cross-platform sponsorship rates
+        — find out how much to charge for sponsored tweets, threads, and Spaces
       </li>
     </ul>
   </>

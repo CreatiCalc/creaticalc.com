@@ -5,10 +5,9 @@ import {
   type Platform,
   type EngagementInput,
   type WhatIfScenario,
-  getWhatIfScenarios,
-  calculateEngagementRate,
   formatPercent,
-} from '@/lib/engagementModel';
+} from '@/lib/engagementBenchmarks';
+import { getWhatIfScenarios, calculateEngagementRate } from '@/lib/engagementModel';
 
 interface WhatIfScenariosProps {
   input: EngagementInput;

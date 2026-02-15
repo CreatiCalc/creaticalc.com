@@ -3,7 +3,7 @@ import Link from 'next/link';
 import FAQ from '@/features/calculators/shared/FAQ';
 import AdSlot from '@/components/layout/AdSlot';
 import { BenchmarkTable, PlatformComparisonTable } from '@/features/calculators/engagement-shared';
-import { YOY_TRENDS, formatPercent } from '@/lib/engagementModel';
+import { YOY_TRENDS, formatPercent } from '@/lib/engagementBenchmarks';
 import type { FAQItem } from '@/features/calculators/shared/types';
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import { SITE_URL } from '@/lib/siteConfig';
@@ -335,8 +335,14 @@ export default function EngagementRateBenchmarksPage() {
             </p>
             <div className="mt-4 flex flex-wrap gap-3">
               <Link
-                href="/instagram-sponsorship-rate-calculator"
+                href="/youtube-sponsorship-rate-calculator"
                 className="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-primary/90"
+              >
+                YouTube Sponsorship Rates
+              </Link>
+              <Link
+                href="/instagram-sponsorship-rate-calculator"
+                className="rounded-lg border border-primary bg-primary/5 px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary/10"
               >
                 Instagram Sponsorship Rates
               </Link>
@@ -345,6 +351,18 @@ export default function EngagementRateBenchmarksPage() {
                 className="rounded-lg border border-primary bg-primary/5 px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary/10"
               >
                 TikTok Sponsorship Rates
+              </Link>
+              <Link
+                href="/facebook-sponsorship-rate-calculator"
+                className="rounded-lg border border-primary bg-primary/5 px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary/10"
+              >
+                Facebook Sponsorship Rates
+              </Link>
+              <Link
+                href="/twitter-sponsorship-rate-calculator"
+                className="rounded-lg border border-primary bg-primary/5 px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary/10"
+              >
+                X (Twitter) Sponsorship Rates
               </Link>
             </div>
           </div>

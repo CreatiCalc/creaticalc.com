@@ -1,63 +1,19 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import Link from 'next/link';
-
-const navGroups = [
-  {
-    label: 'YouTube',
-    items: [
-      { name: 'Money Calculator', href: '/youtube-money-calculator' },
-      { name: 'Shorts Calculator', href: '/youtube-shorts-money-calculator' },
-      { name: 'Growth Projector', href: '/youtube-subscriber-projector' },
-    ],
-  },
-  {
-    label: 'Instagram',
-    items: [
-      { name: 'Engagement Rate', href: '/instagram-engagement-rate-calculator' },
-      { name: 'Sponsorship Rate', href: '/instagram-sponsorship-rate-calculator' },
-    ],
-  },
-  {
-    label: 'TikTok',
-    items: [
-      { name: 'Engagement Rate', href: '/tiktok-engagement-rate-calculator' },
-      { name: 'Sponsorship Rate', href: '/tiktok-sponsorship-rate-calculator' },
-    ],
-  },
-  {
-    label: 'Facebook',
-    items: [{ name: 'Engagement Rate', href: '/facebook-engagement-rate-calculator' }],
-  },
-  {
-    label: 'X',
-    items: [{ name: 'Engagement Rate', href: '/twitter-engagement-rate-calculator' }],
-  },
-];
-
-const moreLinks = [
-  { name: 'Engagement Calculator', href: '/engagement-rate-calculator' },
-  { name: 'Engagement Benchmarks', href: '/engagement-rate-benchmarks' },
-  { name: 'About', href: '/about' },
-];
+import { NAV_GROUPS, MORE_LINKS } from './navConfig';
+import useClickOutside from '@/components/ui/useClickOutside';
+import useEscapeKey from '@/components/ui/useEscapeKey';
 
 export default function MobileNav() {
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (!open) return;
+  const close = useCallback(() => setOpen(false), []);
 
-    function handleClickOutside(e: MouseEvent) {
-      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
-        setOpen(false);
-      }
-    }
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, [open]);
+  useClickOutside(menuRef, close, open);
+  useEscapeKey(close, open);
 
   return (
     <div className="relative md:hidden" ref={menuRef}>
@@ -66,7 +22,7 @@ export default function MobileNav() {
         onClick={() => setOpen(!open)}
         aria-label="Toggle navigation menu"
         aria-expanded={open}
-        className="flex h-10 w-10 items-center justify-center rounded-lg text-muted transition-colors hover:bg-surface-alt hover:text-foreground"
+        className="flex h-10 w-10 items-center justify-center rounded-lg text-muted transition-colors hover:bg-surface-alt hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
       >
         {open ? (
           <svg
@@ -101,8 +57,11 @@ export default function MobileNav() {
       </button>
 
       {open && (
-        <nav className="absolute right-0 top-full z-50 mt-2 w-64 rounded-xl border border-border bg-white p-2 shadow-lg">
-          {navGroups.map((group, i) => (
+        <nav
+          className="absolute right-0 top-full z-50 mt-2 w-64 rounded-xl border border-border bg-white p-2 shadow-lg"
+          aria-label="Mobile navigation"
+        >
+          {NAV_GROUPS.map((group, i) => (
             <div key={group.label} className={i > 0 ? 'mt-1' : ''}>
               <span className="block px-4 pb-1 pt-2 text-xs font-semibold uppercase tracking-wider text-muted">
                 {group.label}
@@ -123,7 +82,7 @@ export default function MobileNav() {
           <span className="block px-4 pb-1 pt-2 text-xs font-semibold uppercase tracking-wider text-muted">
             More
           </span>
-          {moreLinks.map((link) => (
+          {MORE_LINKS.map((link) => (
             <Link
               key={link.href}
               href={link.href}

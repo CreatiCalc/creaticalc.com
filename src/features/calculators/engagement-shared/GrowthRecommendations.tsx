@@ -1,6 +1,6 @@
 'use client';
 
-import type { EngagementRecommendation } from '@/lib/engagementModel';
+import type { EngagementRecommendation } from '@/lib/engagementBenchmarks';
 
 interface GrowthRecommendationsProps {
   recommendations: EngagementRecommendation[];

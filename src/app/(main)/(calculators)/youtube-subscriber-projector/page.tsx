@@ -1,4 +1,6 @@
+import { Suspense } from 'react';
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
 import CalculatorSchema from '@/components/seo/CalculatorSchema';
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
@@ -116,6 +118,86 @@ const howItWorks = (
       1M (Gold Play Button). Milestones you&apos;ve already passed are marked with a green check,
       and those beyond the 24-month window are shown as unreachable.
     </p>
+
+    <h3 className="mt-6 text-lg font-semibold text-foreground">What Your Subscribers Are Worth</h3>
+    <p className="mt-2">
+      As your subscriber count grows, so does your earning potential. Use our{' '}
+      <Link href="/youtube-money-calculator" className="font-medium text-primary hover:underline">
+        YouTube Money Calculator
+      </Link>{' '}
+      to estimate how much you&apos;ll earn from ad revenue at each milestone, or check the{' '}
+      <Link
+        href="/youtube-sponsorship-rate-calculator"
+        className="font-medium text-primary hover:underline"
+      >
+        YouTube Sponsorship Rate Calculator
+      </Link>{' '}
+      to see how much brands will pay to sponsor your videos at different subscriber levels. Many
+      creators also use{' '}
+      <Link
+        href="/youtube-shorts-money-calculator"
+        className="font-medium text-primary hover:underline"
+      >
+        YouTube Shorts
+      </Link>{' '}
+      to accelerate subscriber growth while monetizing through short-form content.
+    </p>
+
+    <h3 className="mt-6 text-lg font-semibold text-foreground">Related Tools</h3>
+    <ul className="mt-2 list-disc space-y-1 pl-5">
+      <li>
+        <Link href="/youtube-money-calculator" className="font-medium text-primary hover:underline">
+          YouTube Money Calculator
+        </Link>{' '}
+        &mdash; estimate your YouTube ad revenue by views, CPM, and niche
+      </li>
+      <li>
+        <Link
+          href="/youtube-shorts-money-calculator"
+          className="font-medium text-primary hover:underline"
+        >
+          YouTube Shorts Money Calculator
+        </Link>{' '}
+        &mdash; estimate how much Shorts pay per 1,000 views
+      </li>
+      <li>
+        <Link
+          href="/youtube-sponsorship-rate-calculator"
+          className="font-medium text-primary hover:underline"
+        >
+          YouTube Sponsorship Rate Calculator
+        </Link>{' '}
+        &mdash; find out how much to charge for integrations, dedicated videos, and Shorts
+        sponsorships
+      </li>
+      <li>
+        <Link
+          href="/instagram-sponsorship-rate-calculator"
+          className="font-medium text-primary hover:underline"
+        >
+          Instagram Sponsorship Rate Calculator
+        </Link>{' '}
+        &mdash; calculate cross-platform sponsorship rates for Instagram
+      </li>
+      <li>
+        <Link
+          href="/tiktok-sponsorship-rate-calculator"
+          className="font-medium text-primary hover:underline"
+        >
+          TikTok Sponsorship Rate Calculator
+        </Link>{' '}
+        &mdash; compare sponsorship rates across platforms
+      </li>
+      <li>
+        <Link
+          href="/engagement-rate-benchmarks"
+          className="font-medium text-primary hover:underline"
+        >
+          Engagement Rate Benchmarks 2026
+        </Link>{' '}
+        &mdash; see how your engagement compares across all platforms
+      </li>
+    </ul>
   </>
 );
 
@@ -143,7 +225,9 @@ export default function YouTubeSubscriberProjectorPage() {
         faq={faq}
         howItWorks={howItWorks}
       >
-        <YouTubeGrowthCalculator />
+        <Suspense>
+          <YouTubeGrowthCalculator />
+        </Suspense>
       </CalculatorLayout>
     </>
   );

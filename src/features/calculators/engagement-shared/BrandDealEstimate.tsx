@@ -6,7 +6,7 @@ import {
   formatUSD,
   formatPercent,
   INDUSTRY_BENCHMARKS,
-} from '@/lib/engagementModel';
+} from '@/lib/engagementBenchmarks';
 
 interface BrandDealEstimateProps {
   platform: Platform;

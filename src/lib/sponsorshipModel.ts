@@ -1,16 +1,32 @@
-import type { Platform, IndustryId, FollowerTier } from './engagementModel';
-import { getFollowerTier, getTierLabel, formatUSD, formatFollowerCount } from './engagementModel';
+import type { Platform, IndustryId, FollowerTier } from './engagementBenchmarks';
+import {
+  findTier,
+  formatUSD,
+  formatFollowerCount,
+  getEngagementMultiplier,
+  getNicheMultiplier,
+} from './engagementBenchmarks';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
+export type SponsorshipPlatform = Platform | 'youtube';
+
 export type InstagramContentType = 'feedPost' | 'reel' | 'story' | 'carousel';
 export type TikTokContentType = 'video' | 'story' | 'live';
-export type SponsorshipContentType = InstagramContentType | TikTokContentType;
+export type YouTubeContentType = 'integration' | 'dedicated' | 'short' | 'preRoll';
+export type FacebookContentType = 'feedPost' | 'reel' | 'story' | 'live';
+export type TwitterContentType = 'tweet' | 'thread' | 'space';
+export type SponsorshipContentType =
+  | InstagramContentType
+  | TikTokContentType
+  | YouTubeContentType
+  | FacebookContentType
+  | TwitterContentType;
 
 export type DealType = 'mention' | 'dedicated' | 'review' | 'series';
 
 export interface SponsorshipInput {
-  platform: Platform;
+  platform: SponsorshipPlatform;
   followers: number;
   engagementRate: number;
   contentType: SponsorshipContentType;
@@ -47,76 +63,18 @@ export interface SponsorshipResult {
   tierRates: TierRateInfo[];
 }
 
-// ─── Data Tables ──────────────────────────────────────────────────────────────
+export interface ContentTypeOption {
+  value: SponsorshipContentType;
+  label: string;
+}
 
-const BASE_RATES: Record<Platform, { low: number; mid: number; high: number }> = {
-  instagram: { low: 10, mid: 17.5, high: 25 },
-  tiktok: { low: 5, mid: 10, high: 15 },
-  facebook: { low: 5, mid: 10, high: 15 },
-  twitter: { low: 8, mid: 14, high: 20 },
-};
+export interface NegotiationTip {
+  id: string;
+  text: string;
+  detail: string;
+}
 
-const IG_CONTENT_TYPE_MULTIPLIERS: Record<InstagramContentType, number> = {
-  feedPost: 1.0,
-  reel: 1.5,
-  story: 0.3,
-  carousel: 1.2,
-};
-
-const TIKTOK_CONTENT_TYPE_MULTIPLIERS: Record<TikTokContentType, number> = {
-  video: 1.0,
-  story: 0.25,
-  live: 0.8,
-};
-
-const DEAL_TYPE_MULTIPLIERS: Record<DealType, number> = {
-  mention: 1.0,
-  dedicated: 2.5,
-  review: 3.5,
-  series: 2.0,
-};
-
-const ENGAGEMENT_MULTIPLIERS: { maxRate: number; multiplier: number }[] = [
-  { maxRate: 1, multiplier: 0.5 },
-  { maxRate: 3, multiplier: 1.0 },
-  { maxRate: 5, multiplier: 1.5 },
-  { maxRate: Infinity, multiplier: 2.0 },
-];
-
-const NICHE_MULTIPLIERS: Partial<Record<IndustryId, number>> = {
-  finance: 2.0,
-  tech: 1.5,
-  education: 1.3,
-  health: 1.2,
-  beauty: 1.2,
-  travel: 1.1,
-  food: 1.0,
-  fashion: 1.0,
-  entertainment: 0.8,
-  sports: 0.9,
-};
-
-export const IG_CONTENT_TYPES: { value: InstagramContentType; label: string }[] = [
-  { value: 'feedPost', label: 'Feed Post' },
-  { value: 'reel', label: 'Reel' },
-  { value: 'story', label: 'Story' },
-  { value: 'carousel', label: 'Carousel' },
-];
-
-export const TIKTOK_CONTENT_TYPES: { value: TikTokContentType; label: string }[] = [
-  { value: 'video', label: 'Video' },
-  { value: 'story', label: 'Story' },
-  { value: 'live', label: 'Live' },
-];
-
-export const DEAL_TYPES: { value: DealType; label: string; description: string }[] = [
-  { value: 'mention', label: 'Mention', description: 'Brief brand mention in content' },
-  { value: 'dedicated', label: 'Dedicated', description: 'Entire post focused on brand' },
-  { value: 'review', label: 'Review', description: 'In-depth product review' },
-  { value: 'series', label: 'Series', description: 'Multi-post campaign (per-post rate)' },
-];
-
-// ─── Tier data for context display ────────────────────────────────────────────
+// ─── Per-Platform Data ───────────────────────────────────────────────────────
 
 interface TierDef {
   tier: FollowerTier;
@@ -125,7 +83,15 @@ interface TierDef {
   max: number;
 }
 
-const IG_TIER_DEFS: TierDef[] = [
+interface PlatformSponsorshipData {
+  baseRate: { low: number; mid: number; high: number };
+  contentTypes: ContentTypeOption[];
+  contentTypeMultipliers: Partial<Record<string, number>>;
+  tierDefs: TierDef[];
+  platformTip: NegotiationTip;
+}
+
+const STANDARD_TIER_DEFS: TierDef[] = [
   { tier: 'nano', label: 'Nano', min: 1_000, max: 9_999 },
   { tier: 'micro', label: 'Micro', min: 10_000, max: 49_999 },
   { tier: 'mid', label: 'Mid-Tier', min: 50_000, max: 499_999 },
@@ -141,21 +107,122 @@ const TIKTOK_TIER_DEFS: TierDef[] = [
   { tier: 'mega', label: 'Mega', min: 1_000_000, max: Infinity },
 ];
 
+const PLATFORM_DATA: Record<SponsorshipPlatform, PlatformSponsorshipData> = {
+  instagram: {
+    baseRate: { low: 10, mid: 17.5, high: 25 },
+    contentTypes: [
+      { value: 'feedPost', label: 'Feed Post' },
+      { value: 'reel', label: 'Reel' },
+      { value: 'story', label: 'Story' },
+      { value: 'carousel', label: 'Carousel' },
+    ],
+    contentTypeMultipliers: { feedPost: 1.0, reel: 1.5, story: 0.3, carousel: 1.2 },
+    tierDefs: STANDARD_TIER_DEFS,
+    platformTip: {
+      id: 'ig-cross-post',
+      text: 'Charge extra for cross-posting',
+      detail:
+        'If a brand wants you to post on Stories, Reels, AND Feed, each format should be priced separately. A Reel typically commands 1.5x a feed post rate, while each Story frame is worth about 30% of a feed post.',
+    },
+  },
+  tiktok: {
+    baseRate: { low: 5, mid: 10, high: 15 },
+    contentTypes: [
+      { value: 'video', label: 'Video' },
+      { value: 'story', label: 'Story' },
+      { value: 'live', label: 'Live' },
+    ],
+    contentTypeMultipliers: { video: 1.0, story: 0.25, live: 0.8 },
+    tierDefs: TIKTOK_TIER_DEFS,
+    platformTip: {
+      id: 'tt-viral-potential',
+      text: 'Highlight TikTok viral potential',
+      detail:
+        "TikTok's algorithm can push sponsored content far beyond your follower count. If your average views exceed your followers, use this as leverage — brands are paying for potential reach, not just your follower count.",
+    },
+  },
+  youtube: {
+    baseRate: { low: 20, mid: 35, high: 50 },
+    contentTypes: [
+      { value: 'integration', label: 'Integration' },
+      { value: 'dedicated', label: 'Dedicated Video' },
+      { value: 'short', label: 'Short' },
+      { value: 'preRoll', label: 'Pre-Roll' },
+    ],
+    contentTypeMultipliers: { integration: 1.0, dedicated: 2.0, short: 0.4, preRoll: 0.6 },
+    tierDefs: STANDARD_TIER_DEFS,
+    platformTip: {
+      id: 'yt-long-tail',
+      text: 'Leverage YouTube long-tail value',
+      detail:
+        'Unlike social media posts, YouTube videos generate views for months or years. When negotiating, highlight this evergreen reach — a sponsored integration keeps driving brand awareness long after the upload date. Charge a premium for this lasting exposure.',
+    },
+  },
+  facebook: {
+    baseRate: { low: 5, mid: 10, high: 15 },
+    contentTypes: [
+      { value: 'feedPost', label: 'Feed Post' },
+      { value: 'reel', label: 'Reel' },
+      { value: 'story', label: 'Story' },
+      { value: 'live', label: 'Live' },
+    ],
+    contentTypeMultipliers: { feedPost: 1.0, reel: 1.4, story: 0.3, live: 0.7 },
+    tierDefs: STANDARD_TIER_DEFS,
+    platformTip: {
+      id: 'fb-audience-targeting',
+      text: 'Emphasize Facebook audience demographics',
+      detail:
+        'Facebook skews older and more affluent than TikTok or Instagram. Brands targeting 25–55 year-olds value Facebook placements highly. Share your page insights showing audience age, income level, and location data to justify premium rates.',
+    },
+  },
+  twitter: {
+    baseRate: { low: 8, mid: 14, high: 20 },
+    contentTypes: [
+      { value: 'tweet', label: 'Tweet' },
+      { value: 'thread', label: 'Thread' },
+      { value: 'space', label: 'Space' },
+    ],
+    contentTypeMultipliers: { tweet: 1.0, thread: 1.8, space: 0.7 },
+    tierDefs: STANDARD_TIER_DEFS,
+    platformTip: {
+      id: 'x-thought-leadership',
+      text: 'Position sponsored content as thought leadership',
+      detail:
+        'X is where industry conversations happen. Brands pay a premium for creators who can weave product mentions into insightful commentary. A well-crafted thread that educates while promoting feels authentic and drives higher engagement than obvious ads.',
+    },
+  },
+};
+
+// ─── Deal Types ──────────────────────────────────────────────────────────────
+
+const DEAL_TYPE_MULTIPLIERS: Record<DealType, number> = {
+  mention: 1.0,
+  dedicated: 2.5,
+  review: 3.5,
+  series: 2.0,
+};
+
+export const DEAL_TYPES: { value: DealType; label: string; description: string }[] = [
+  { value: 'mention', label: 'Mention', description: 'Brief brand mention in content' },
+  { value: 'dedicated', label: 'Dedicated', description: 'Entire post focused on brand' },
+  { value: 'review', label: 'Review', description: 'In-depth product review' },
+  { value: 'series', label: 'Series', description: 'Multi-post campaign (per-post rate)' },
+];
+
+// ─── Public Data Accessors ───────────────────────────────────────────────────
+
+/** Returns the content type options for a given platform (used by the shared UI). */
+export function getContentTypesForPlatform(platform: SponsorshipPlatform): ContentTypeOption[] {
+  return PLATFORM_DATA[platform].contentTypes;
+}
+
 // ─── Core Functions ───────────────────────────────────────────────────────────
 
-function getEngagementMultiplier(engagementRate: number): number {
-  return ENGAGEMENT_MULTIPLIERS.find((m) => engagementRate < m.maxRate)?.multiplier ?? 2.0;
-}
-
-function getNicheMultiplier(industryId: IndustryId): number {
-  return NICHE_MULTIPLIERS[industryId] ?? 1.0;
-}
-
-function getContentTypeMultiplier(platform: Platform, contentType: SponsorshipContentType): number {
-  if (platform === 'instagram') {
-    return IG_CONTENT_TYPE_MULTIPLIERS[contentType as InstagramContentType] ?? 1.0;
-  }
-  return TIKTOK_CONTENT_TYPE_MULTIPLIERS[contentType as TikTokContentType] ?? 1.0;
+function getContentTypeMultiplier(
+  platform: SponsorshipPlatform,
+  contentType: SponsorshipContentType
+): number {
+  return PLATFORM_DATA[platform].contentTypeMultipliers[contentType] ?? 1.0;
 }
 
 function getDealTypeMultiplier(dealType: DealType): number {
@@ -163,14 +230,14 @@ function getDealTypeMultiplier(dealType: DealType): number {
 }
 
 export function calculateRate(
-  platform: Platform,
+  platform: SponsorshipPlatform,
   followers: number,
   engagementRate: number,
   contentType: SponsorshipContentType,
   dealType: DealType,
   industryId: IndustryId
 ): RateRange {
-  const base = BASE_RATES[platform];
+  const base = PLATFORM_DATA[platform].baseRate;
   const followerK = followers / 1000;
   const engMul = getEngagementMultiplier(engagementRate);
   const nicheMul = getNicheMultiplier(industryId);
@@ -185,40 +252,42 @@ export function calculateRate(
 }
 
 export function buildRateCard(
-  platform: Platform,
+  platform: SponsorshipPlatform,
   followers: number,
   engagementRate: number,
   dealType: DealType,
   industryId: IndustryId
 ): RateCardEntry[] {
-  const contentTypes =
-    platform === 'instagram'
-      ? IG_CONTENT_TYPES.map((ct) => ({
-          value: ct.value as SponsorshipContentType,
-          label: ct.label,
-        }))
-      : TIKTOK_CONTENT_TYPES.map((ct) => ({
-          value: ct.value as SponsorshipContentType,
-          label: ct.label,
-        }));
-
-  return contentTypes.map((ct) => ({
+  return PLATFORM_DATA[platform].contentTypes.map((ct) => ({
     contentType: ct.value,
     label: ct.label,
     rate: calculateRate(platform, followers, engagementRate, ct.value, dealType, industryId),
   }));
 }
 
+function findSponsorshipTier(
+  platform: SponsorshipPlatform,
+  followers: number
+): { tier: FollowerTier; label: string } {
+  // For engagement platforms, delegate to the canonical engagement tier lookup
+  if (platform !== 'youtube') {
+    const tierData = findTier(platform, followers);
+    return { tier: tierData.tier, label: tierData.label };
+  }
+  // YouTube uses sponsorship-specific tier defs
+  const defs = PLATFORM_DATA.youtube.tierDefs;
+  const match = defs.find((d) => followers >= d.min && followers <= d.max) ?? defs[defs.length - 1];
+  return { tier: match.tier, label: match.label };
+}
+
 export function getTierRates(
-  platform: Platform,
+  platform: SponsorshipPlatform,
   engagementRate: number,
   contentType: SponsorshipContentType,
   dealType: DealType,
   industryId: IndustryId
 ): TierRateInfo[] {
-  const defs = platform === 'instagram' ? IG_TIER_DEFS : TIKTOK_TIER_DEFS;
-
-  return defs.map((def) => {
+  return PLATFORM_DATA[platform].tierDefs.map((def) => {
     const representativeFollowers = def.max === Infinity ? def.min * 2 : (def.min + def.max) / 2;
     const rate = calculateRate(
       platform,
@@ -255,8 +324,9 @@ export function computeSponsorship(input: SponsorshipInput): SponsorshipResult {
     industryId
   );
   const rateCard = buildRateCard(platform, followers, engagementRate, dealType, industryId);
-  const tier = getFollowerTier(platform, followers);
-  const tierLabel = getTierLabel(platform, followers);
+  const tierData = findSponsorshipTier(platform, followers);
+  const tier = tierData.tier;
+  const tierLabel = tierData.label;
   const tierRates = getTierRates(platform, engagementRate, contentType, dealType, industryId);
   const monthlyEarnings: RateRange = {
     low: rate.low * dealsPerMonth,
@@ -276,16 +346,10 @@ export function computeSponsorship(input: SponsorshipInput): SponsorshipResult {
 
 // ─── Negotiation Tips ─────────────────────────────────────────────────────────
 
-export interface NegotiationTip {
-  id: string;
-  text: string;
-  detail: string;
-}
-
 export function getNegotiationTips(
   tier: FollowerTier,
   engagementRate: number,
-  platform: Platform
+  platform: SponsorshipPlatform
 ): NegotiationTip[] {
   const tips: NegotiationTip[] = [];
 
@@ -329,21 +393,7 @@ export function getNegotiationTips(
       'Brands love predictability. Offer a 10–15% discount for 3+ post packages. You earn more total revenue while the brand gets a better per-post rate. This also builds longer-term relationships.',
   });
 
-  if (platform === 'instagram') {
-    tips.push({
-      id: 'ig-cross-post',
-      text: 'Charge extra for cross-posting',
-      detail:
-        'If a brand wants you to post on Stories, Reels, AND Feed, each format should be priced separately. A Reel typically commands 1.5x a feed post rate, while each Story frame is worth about 30% of a feed post.',
-    });
-  } else {
-    tips.push({
-      id: 'tt-viral-potential',
-      text: 'Highlight TikTok viral potential',
-      detail:
-        "TikTok's algorithm can push sponsored content far beyond your follower count. If your average views exceed your followers, use this as leverage — brands are paying for potential reach, not just your follower count.",
-    });
-  }
+  tips.push(PLATFORM_DATA[platform].platformTip);
 
   return tips.slice(0, 5);
 }
@@ -359,11 +409,10 @@ export function getDealTypeLabel(dealType: DealType): string {
 }
 
 export function getContentTypeLabel(
-  platform: Platform,
+  platform: SponsorshipPlatform,
   contentType: SponsorshipContentType
 ): string {
-  if (platform === 'instagram') {
-    return IG_CONTENT_TYPES.find((c) => c.value === contentType)?.label ?? contentType;
-  }
-  return TIKTOK_CONTENT_TYPES.find((c) => c.value === contentType)?.label ?? contentType;
+  return (
+    PLATFORM_DATA[platform].contentTypes.find((c) => c.value === contentType)?.label ?? contentType
+  );
 }

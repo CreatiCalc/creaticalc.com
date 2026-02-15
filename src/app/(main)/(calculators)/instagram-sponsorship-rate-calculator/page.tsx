@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
@@ -140,6 +141,15 @@ const howItWorks = (
       </li>
       <li>
         <Link
+          href="/youtube-sponsorship-rate-calculator"
+          className="font-medium text-primary hover:underline"
+        >
+          YouTube Sponsorship Rate Calculator
+        </Link>{' '}
+        — calculate YouTube integration and dedicated video rates
+      </li>
+      <li>
+        <Link
           href="/tiktok-sponsorship-rate-calculator"
           className="font-medium text-primary hover:underline"
         >
@@ -149,12 +159,12 @@ const howItWorks = (
       </li>
       <li>
         <Link
-          href="/tiktok-engagement-rate-calculator"
+          href="/facebook-sponsorship-rate-calculator"
           className="font-medium text-primary hover:underline"
         >
-          TikTok Engagement Rate Calculator
+          Facebook Sponsorship Rate Calculator
         </Link>{' '}
-        — calculate your TikTok engagement by followers or views
+        — calculate Facebook sponsorship pricing
       </li>
       <li>
         <Link
@@ -193,7 +203,9 @@ export default function InstagramSponsorshipPage() {
         faq={faq}
         howItWorks={howItWorks}
       >
-        <InstagramSponsorshipCalculator />
+        <Suspense>
+          <InstagramSponsorshipCalculator />
+        </Suspense>
       </CalculatorLayout>
     </>
   );

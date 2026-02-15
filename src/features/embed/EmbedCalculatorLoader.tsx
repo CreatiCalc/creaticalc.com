@@ -56,6 +56,27 @@ const calculatorComponents: Record<string, ComponentType> = {
       ),
     { ssr: false }
   ),
+  'youtube-sponsorship-rate-calculator': dynamic(
+    () =>
+      import('@/features/calculators/youtube-sponsorship').then(
+        (m) => m.YouTubeSponsorshipCalculator
+      ),
+    { ssr: false }
+  ),
+  'facebook-sponsorship-rate-calculator': dynamic(
+    () =>
+      import('@/features/calculators/facebook-sponsorship').then(
+        (m) => m.FacebookSponsorshipCalculator
+      ),
+    { ssr: false }
+  ),
+  'twitter-sponsorship-rate-calculator': dynamic(
+    () =>
+      import('@/features/calculators/twitter-sponsorship').then(
+        (m) => m.TwitterSponsorshipCalculator
+      ),
+    { ssr: false }
+  ),
 };
 
 interface EmbedCalculatorLoaderProps {

@@ -2,7 +2,7 @@
 
 import Slider from '@/components/ui/Slider';
 import AnimatedNumber from '@/components/ui/AnimatedNumber';
-import { formatUSD } from '@/lib/engagementModel';
+import { formatUSD } from '@/lib/engagementBenchmarks';
 import type { RateRange } from '@/lib/sponsorshipModel';
 
 interface MonthlyEarningsProjectionProps {

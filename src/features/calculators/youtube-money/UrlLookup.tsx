@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { getNiche, type NicheId } from '@/lib/youtubeEarningsModel';
+import { formatCompact, formatDate } from '@/lib/formatters';
 
 interface LookupResult {
   dailyViews: number;
@@ -26,21 +27,6 @@ interface LookupData {
 interface UrlLookupProps {
   onResult: (data: LookupResult) => void;
   currentDailyViews: number;
-}
-
-function formatCompact(n: number): string {
-  if (n >= 1_000_000_000) return `${(n / 1_000_000_000).toFixed(1)}B`;
-  if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(1)}M`;
-  if (n >= 1_000) return `${(n / 1_000).toFixed(1)}K`;
-  return n.toLocaleString();
-}
-
-function formatDate(dateStr: string): string {
-  return new Date(dateStr).toLocaleDateString('en-US', {
-    month: 'short',
-    day: 'numeric',
-    year: 'numeric',
-  });
 }
 
 export default function UrlLookup({ onResult, currentDailyViews }: UrlLookupProps) {
@@ -155,7 +141,12 @@ export default function UrlLookup({ onResult, currentDailyViews }: UrlLookupProp
             className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-primary/90 disabled:opacity-50"
           >
             {loading && (
-              <svg className="h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none">
+              <svg
+                className="h-4 w-4 animate-spin"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true"
+              >
                 <circle
                   className="opacity-25"
                   cx="12"
@@ -233,7 +224,12 @@ export default function UrlLookup({ onResult, currentDailyViews }: UrlLookupProp
                   className="flex-shrink-0 text-muted transition-colors hover:text-foreground"
                   aria-label="Dismiss"
                 >
-                  <svg className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                  <svg
+                    className="h-4 w-4"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
                     <path
                       fillRule="evenodd"
                       d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"

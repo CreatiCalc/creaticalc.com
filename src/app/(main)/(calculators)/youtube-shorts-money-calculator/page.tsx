@@ -1,4 +1,6 @@
+import { Suspense } from 'react';
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
 import CalculatorSchema from '@/components/seo/CalculatorSchema';
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
@@ -90,9 +92,18 @@ const howItWorks = (
     </p>
     <p className="mt-3">
       Keep in mind that Shorts ad revenue is just one income stream. Many successful Shorts creators
-      earn significantly more through brand sponsorships, affiliate marketing, and by using Shorts
-      as a funnel to drive subscribers to their long-form content, which pays 20&ndash;100x more per
-      view.
+      earn significantly more through{' '}
+      <Link
+        href="/youtube-sponsorship-rate-calculator"
+        className="font-medium text-primary hover:underline"
+      >
+        brand sponsorships
+      </Link>
+      , affiliate marketing, and by using Shorts as a funnel to drive subscribers to their{' '}
+      <Link href="/youtube-money-calculator" className="font-medium text-primary hover:underline">
+        long-form content
+      </Link>
+      , which pays 20&ndash;100x more per view.
     </p>
 
     <h3 className="mt-6 text-lg font-semibold text-foreground">
@@ -103,17 +114,123 @@ const howItWorks = (
       $1.50 to $45 depending on niche. Shorts, on the other hand, share a pooled ad revenue model
       where ads appear between Shorts in the feed. The shorter viewing duration and different ad
       format result in much lower per-view earnings. However, the tradeoff is reach: Shorts can
-      generate millions of views with far less production effort.
+      generate millions of views with far less production effort. Use our{' '}
+      <Link href="/youtube-money-calculator" className="font-medium text-primary hover:underline">
+        YouTube Money Calculator
+      </Link>{' '}
+      to compare what the same views would earn on long-form content.
     </p>
 
     <h3 className="mt-6 text-lg font-semibold text-foreground">Shorts as a Growth Strategy</h3>
     <p className="mt-2">
       Many creators use Shorts as a subscriber acquisition tool rather than a primary revenue
-      source. A viral Short can add thousands of subscribers in a single day, and those subscribers
-      then watch your long-form content where you earn 20&ndash;100x more per view. This strategy
-      combines the reach of Shorts with the monetization power of long-form videos, creating a more
-      sustainable income than either format alone.
+      source. A viral Short can add thousands of subscribers in a single day &mdash;{' '}
+      <Link
+        href="/youtube-subscriber-projector"
+        className="font-medium text-primary hover:underline"
+      >
+        project your subscriber growth
+      </Link>{' '}
+      to see when you&rsquo;ll hit key milestones. Those subscribers then watch your long-form
+      content where you earn 20&ndash;100x more per view. This strategy combines the reach of Shorts
+      with the monetization power of long-form videos, creating a more sustainable income than
+      either format alone.
     </p>
+
+    <h3 className="mt-6 text-lg font-semibold text-foreground">
+      Beyond Ad Revenue: Sponsorships for Shorts Creators
+    </h3>
+    <p className="mt-2">
+      While Shorts ad revenue is modest, Shorts creators with engaged audiences can earn
+      significantly more through sponsorships. Brands are increasingly interested in short-form
+      sponsored content because of its viral potential and low cost-per-impression. A Shorts
+      sponsorship typically pays 0.4x the rate of a standard YouTube integration &mdash; use our{' '}
+      <Link
+        href="/youtube-sponsorship-rate-calculator"
+        className="font-medium text-primary hover:underline"
+      >
+        YouTube Sponsorship Rate Calculator
+      </Link>{' '}
+      to see what your channel could charge. If you also create content on other platforms, compare
+      rates across{' '}
+      <Link
+        href="/instagram-sponsorship-rate-calculator"
+        className="font-medium text-primary hover:underline"
+      >
+        Instagram
+      </Link>
+      ,{' '}
+      <Link
+        href="/tiktok-sponsorship-rate-calculator"
+        className="font-medium text-primary hover:underline"
+      >
+        TikTok
+      </Link>
+      , and{' '}
+      <Link
+        href="/facebook-sponsorship-rate-calculator"
+        className="font-medium text-primary hover:underline"
+      >
+        Facebook
+      </Link>
+      .
+    </p>
+
+    <h3 className="mt-6 text-lg font-semibold text-foreground">Related Tools</h3>
+    <ul className="mt-2 list-disc space-y-1 pl-5">
+      <li>
+        <Link href="/youtube-money-calculator" className="font-medium text-primary hover:underline">
+          YouTube Money Calculator
+        </Link>{' '}
+        &mdash; estimate long-form video earnings by views, CPM, and niche
+      </li>
+      <li>
+        <Link
+          href="/youtube-sponsorship-rate-calculator"
+          className="font-medium text-primary hover:underline"
+        >
+          YouTube Sponsorship Rate Calculator
+        </Link>{' '}
+        &mdash; find out how much to charge for integrations, dedicated videos, and Shorts
+        sponsorships
+      </li>
+      <li>
+        <Link
+          href="/youtube-subscriber-projector"
+          className="font-medium text-primary hover:underline"
+        >
+          YouTube Subscriber Growth Projector
+        </Link>{' '}
+        &mdash; forecast your subscriber growth and milestone dates
+      </li>
+      <li>
+        <Link
+          href="/tiktok-sponsorship-rate-calculator"
+          className="font-medium text-primary hover:underline"
+        >
+          TikTok Sponsorship Rate Calculator
+        </Link>{' '}
+        &mdash; compare Shorts earnings with TikTok sponsorship rates
+      </li>
+      <li>
+        <Link
+          href="/instagram-sponsorship-rate-calculator"
+          className="font-medium text-primary hover:underline"
+        >
+          Instagram Sponsorship Rate Calculator
+        </Link>{' '}
+        &mdash; calculate cross-platform sponsorship rates for Instagram
+      </li>
+      <li>
+        <Link
+          href="/engagement-rate-benchmarks"
+          className="font-medium text-primary hover:underline"
+        >
+          Engagement Rate Benchmarks 2026
+        </Link>{' '}
+        &mdash; see how your engagement compares across all platforms
+      </li>
+    </ul>
   </>
 );
 
@@ -138,10 +255,12 @@ export default function YouTubeShortsMoneyCalculatorPage() {
         faq={faq}
         howItWorks={howItWorks}
       >
-        <YouTubeMoneyCalculator
-          defaultOverrides={{ contentFormat: 'shorts', dailyViews: 50000 }}
-          hideFormatToggle
-        />
+        <Suspense>
+          <YouTubeMoneyCalculator
+            defaultOverrides={{ contentFormat: 'shorts', dailyViews: 50000 }}
+            hideFormatToggle
+          />
+        </Suspense>
       </CalculatorLayout>
     </>
   );

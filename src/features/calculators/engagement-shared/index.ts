@@ -1,3 +1,4 @@
+export { default as EngagementCalculator } from './EngagementCalculator';
 export { default as EngagementRateDisplay } from './EngagementRateDisplay';
 export { default as BenchmarkGauge } from './BenchmarkGauge';
 export { default as IndustryBenchmarks } from './IndustryBenchmarks';

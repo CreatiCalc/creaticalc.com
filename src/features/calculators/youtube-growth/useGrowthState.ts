@@ -65,5 +65,15 @@ function reducer(state: GrowthState, action: Action): GrowthState {
 
 export function useGrowthState() {
   const [state, dispatch] = useReducer(reducer, undefined, getInitialState);
-  return { state, dispatch } as const;
+
+  return {
+    state,
+    setCurrentSubs: (v: number) => dispatch({ type: 'SET_CURRENT_SUBS', payload: v }),
+    setInputMode: (v: GrowthInputMode) => dispatch({ type: 'SET_INPUT_MODE', payload: v }),
+    setMonthlyGrowthRate: (v: number) => dispatch({ type: 'SET_MONTHLY_GROWTH_RATE', payload: v }),
+    setMonthlyNewSubs: (v: number) => dispatch({ type: 'SET_MONTHLY_NEW_SUBS', payload: v }),
+    setUploadsPerWeek: (v: number) => dispatch({ type: 'SET_UPLOADS_PER_WEEK', payload: v }),
+    setNiche: (v: GrowthNicheId) => dispatch({ type: 'SET_NICHE', payload: v }),
+    toggleDeceleration: () => dispatch({ type: 'TOGGLE_DECELERATION' }),
+  };
 }

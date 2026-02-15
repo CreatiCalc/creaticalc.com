@@ -1,4 +1,6 @@
 import type { NicheId, VideoLength } from './youtubeEarningsModel';
+import { VALID_NICHE_IDS } from './youtubeEarningsModel';
+import { toBase64Url, fromBase64Url } from './codecUtils';
 
 interface ShareState {
   dailyViews: number;
@@ -11,28 +13,6 @@ interface ShareState {
   contentFormat: 'longform' | 'shorts';
   videoLength: VideoLength;
   highCpmAudiencePct: number;
-}
-
-const VALID_NICHES: Set<string> = new Set([
-  'finance',
-  'tech',
-  'education',
-  'health',
-  'beauty',
-  'travel',
-  'food',
-  'lifestyle',
-  'entertainment',
-  'gaming',
-]);
-
-function toBase64Url(str: string): string {
-  return btoa(str).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
-}
-
-function fromBase64Url(str: string): string {
-  const padded = str.replace(/-/g, '+').replace(/_/g, '/');
-  return atob(padded);
 }
 
 export function encodeCalcState(state: ShareState): string {
@@ -64,7 +44,7 @@ export function decodeCalcState(hash: string): ShareState | null {
     const seasonality = parts[3];
 
     if (isNaN(dailyViews) || dailyViews < 0 || dailyViews > 10000000) return null;
-    if (!VALID_NICHES.has(nicheId)) return null;
+    if (!VALID_NICHE_IDS.has(nicheId)) return null;
     if (isNaN(growthPct) || growthPct < 0 || growthPct > 100) return null;
     if (seasonality !== '0' && seasonality !== '1') return null;
 

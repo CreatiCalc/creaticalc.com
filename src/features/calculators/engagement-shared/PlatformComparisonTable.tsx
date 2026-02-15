@@ -1,4 +1,4 @@
-import { INDUSTRY_BENCHMARKS, formatPercent } from '@/lib/engagementModel';
+import { INDUSTRY_BENCHMARKS, formatPercent } from '@/lib/engagementBenchmarks';
 
 export default function PlatformComparisonTable() {
   return (

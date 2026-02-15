@@ -1,16 +1,9 @@
+import { getMonthLabel } from './formatters';
+import { type YouTubeNicheId, YOUTUBE_NICHE_DATA } from './niches';
+
 // ─── Types ────────────────────────────────────────────────────────────────────
 
-export type GrowthNicheId =
-  | 'finance'
-  | 'tech'
-  | 'education'
-  | 'health'
-  | 'beauty'
-  | 'travel'
-  | 'food'
-  | 'lifestyle'
-  | 'entertainment'
-  | 'gaming';
+export type GrowthNicheId = YouTubeNicheId;
 
 export type GrowthInputMode = 'rate' | 'flat';
 
@@ -64,24 +57,13 @@ export interface GrowthProjectionResult {
 
 // ─── Data Tables ──────────────────────────────────────────────────────────────
 
-const NICHE_DATA: Record<GrowthNicheId, { name: string; avgMonthlyGrowthPct: number }> = {
-  finance: { name: 'Finance & Business', avgMonthlyGrowthPct: 3.5 },
-  tech: { name: 'Technology', avgMonthlyGrowthPct: 4.0 },
-  education: { name: 'Education', avgMonthlyGrowthPct: 5.0 },
-  health: { name: 'Health & Fitness', avgMonthlyGrowthPct: 4.5 },
-  beauty: { name: 'Beauty & Fashion', avgMonthlyGrowthPct: 3.0 },
-  travel: { name: 'Travel', avgMonthlyGrowthPct: 3.5 },
-  food: { name: 'Food & Cooking', avgMonthlyGrowthPct: 4.0 },
-  lifestyle: { name: 'Lifestyle', avgMonthlyGrowthPct: 3.0 },
-  entertainment: { name: 'Entertainment', avgMonthlyGrowthPct: 6.0 },
-  gaming: { name: 'Gaming', avgMonthlyGrowthPct: 5.5 },
-};
-
-export const GROWTH_NICHES: GrowthNiche[] = Object.entries(NICHE_DATA).map(([id, data]) => ({
-  id: id as GrowthNicheId,
-  name: data.name,
-  avgMonthlyGrowthPct: data.avgMonthlyGrowthPct,
-}));
+export const GROWTH_NICHES: GrowthNiche[] = Object.entries(YOUTUBE_NICHE_DATA).map(
+  ([id, data]) => ({
+    id: id as GrowthNicheId,
+    name: data.name,
+    avgMonthlyGrowthPct: data.avgMonthlyGrowthPct,
+  })
+);
 
 export function getGrowthNiche(id: GrowthNicheId): GrowthNiche {
   return GROWTH_NICHES.find((n) => n.id === id) ?? GROWTH_NICHES[0];
@@ -106,38 +88,34 @@ function getUploadMultiplier(uploadsPerWeek: number): number {
 
 /**
  * Deceleration factor — larger channels grow slower in percentage terms.
+ * Uses linear interpolation between breakpoints for smooth transitions.
  */
-function getDecelerationFactor(subs: number): number {
-  if (subs < 10_000) return 1.0;
-  if (subs < 100_000) return 0.85;
-  if (subs < 500_000) return 0.7;
-  if (subs < 1_000_000) return 0.6;
-  return 0.5;
-}
-
-// ─── Month Labels ─────────────────────────────────────────────────────────────
-
-const MONTH_NAMES = [
-  'Jan',
-  'Feb',
-  'Mar',
-  'Apr',
-  'May',
-  'Jun',
-  'Jul',
-  'Aug',
-  'Sep',
-  'Oct',
-  'Nov',
-  'Dec',
+const DECELERATION_BREAKPOINTS: [number, number][] = [
+  [10_000, 1.0],
+  [100_000, 0.85],
+  [500_000, 0.7],
+  [1_000_000, 0.6],
 ];
+const DECELERATION_FLOOR = 0.5;
 
-function getMonthLabel(startMonth: number, offset: number): string {
-  const now = new Date();
-  const startYear = now.getFullYear();
-  const calMonth = (startMonth + offset) % 12;
-  const yearOffset = Math.floor((startMonth + offset) / 12);
-  return `${MONTH_NAMES[calMonth]} ${startYear + yearOffset}`;
+function getDecelerationFactor(subs: number): number {
+  if (subs < DECELERATION_BREAKPOINTS[0][0]) return DECELERATION_BREAKPOINTS[0][1];
+
+  for (let i = 0; i < DECELERATION_BREAKPOINTS.length - 1; i++) {
+    const [lowSubs, lowFactor] = DECELERATION_BREAKPOINTS[i];
+    const [highSubs, highFactor] = DECELERATION_BREAKPOINTS[i + 1];
+    if (subs < highSubs) {
+      const t = (subs - lowSubs) / (highSubs - lowSubs);
+      return lowFactor + t * (highFactor - lowFactor);
+    }
+  }
+
+  const [lastSubs, lastFactor] = DECELERATION_BREAKPOINTS[DECELERATION_BREAKPOINTS.length - 1];
+  if (subs < lastSubs) return lastFactor;
+
+  // Interpolate from last breakpoint to floor over the next 1M subs
+  const t = Math.min(1, (subs - lastSubs) / 1_000_000);
+  return lastFactor + t * (DECELERATION_FLOOR - lastFactor);
 }
 
 // ─── Milestone Targets ────────────────────────────────────────────────────────
@@ -154,7 +132,9 @@ const MILESTONE_TARGETS = [
 // ─── Core Projection ─────────────────────────────────────────────────────────
 
 export function projectGrowth(input: GrowthInput): GrowthProjectionResult {
-  const startMonth = new Date().getMonth();
+  const now = new Date();
+  const startMonth = now.getMonth();
+  const startYear = now.getFullYear();
   const uploadMultiplier = getUploadMultiplier(input.uploadsPerWeek);
   const months: MonthGrowthProjection[] = [];
 
@@ -170,7 +150,9 @@ export function projectGrowth(input: GrowthInput): GrowthProjectionResult {
   });
 
   for (let i = 1; i <= 24; i++) {
-    const confidenceSpread = Math.min(i * 0.01, 0.3); // ±1% per month, cap ±30%
+    const CONFIDENCE_SPREAD_PER_MONTH = 0.01;
+    const CONFIDENCE_SPREAD_CAP = 0.3;
+    const confidenceSpread = Math.min(i * CONFIDENCE_SPREAD_PER_MONTH, CONFIDENCE_SPREAD_CAP);
 
     if (input.inputMode === 'rate') {
       const decel = input.decelerationEnabled ? getDecelerationFactor(subs) : 1.0;
@@ -183,7 +165,7 @@ export function projectGrowth(input: GrowthInput): GrowthProjectionResult {
     const rounded = Math.round(subs);
     months.push({
       monthIndex: i,
-      monthLabel: getMonthLabel(startMonth, i),
+      monthLabel: getMonthLabel(startMonth, startYear, i),
       subscribers: rounded,
       subscribersLow: Math.round(rounded * (1 - confidenceSpread)),
       subscribersHigh: Math.round(rounded * (1 + confidenceSpread)),
@@ -296,8 +278,4 @@ function generateGrowthRecommendations(
 
 // ─── Utilities ────────────────────────────────────────────────────────────────
 
-export function formatSubscribers(n: number): string {
-  if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(1)}M`;
-  if (n >= 1_000) return `${(n / 1_000).toFixed(1)}K`;
-  return n.toLocaleString();
-}
+export { formatCompact as formatSubscribers } from './formatters';

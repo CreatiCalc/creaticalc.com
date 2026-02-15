@@ -1,4 +1,6 @@
 import type { GrowthNicheId, GrowthInputMode } from './subscriberGrowthModel';
+import { GROWTH_NICHES } from './subscriberGrowthModel';
+import { toBase64Url, fromBase64Url } from './codecUtils';
 
 export interface GrowthShareState {
   currentSubs: number;
@@ -10,33 +12,7 @@ export interface GrowthShareState {
   decelerationEnabled: boolean;
 }
 
-const VALID_NICHES: Set<string> = new Set([
-  'gaming',
-  'tech',
-  'beauty',
-  'education',
-  'entertainment',
-  'music',
-  'sports',
-  'news',
-  'food',
-  'travel',
-  'finance',
-  'health',
-  'diy',
-  'automotive',
-  'pets',
-]);
-
-function toBase64Url(str: string): string {
-  return btoa(str).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
-}
-
-function fromBase64Url(str: string): string {
-  let padded = str.replace(/-/g, '+').replace(/_/g, '/');
-  while (padded.length % 4) padded += '=';
-  return atob(padded);
-}
+const VALID_NICHES: Set<string> = new Set(GROWTH_NICHES.map((n) => n.id));
 
 // Format: g|currentSubs|inputMode|growthPct|monthlyNewSubs|uploadsPerWeek|nicheId|decel
 export function encodeGrowthState(state: GrowthShareState): string {

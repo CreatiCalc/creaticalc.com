@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
@@ -170,6 +171,15 @@ const howItWorks = (
       </li>
       <li>
         <Link
+          href="/youtube-sponsorship-rate-calculator"
+          className="font-medium text-primary hover:underline"
+        >
+          YouTube Sponsorship Rate Calculator
+        </Link>{' '}
+        — find out how much to charge for integrations, dedicated videos, and Shorts sponsorships
+      </li>
+      <li>
+        <Link
           href="/instagram-sponsorship-rate-calculator"
           className="font-medium text-primary hover:underline"
         >
@@ -185,6 +195,24 @@ const howItWorks = (
           TikTok Sponsorship Rate Calculator
         </Link>{' '}
         — calculate your TikTok sponsorship rates
+      </li>
+      <li>
+        <Link
+          href="/facebook-sponsorship-rate-calculator"
+          className="font-medium text-primary hover:underline"
+        >
+          Facebook Sponsorship Rate Calculator
+        </Link>{' '}
+        — calculate Facebook sponsorship pricing
+      </li>
+      <li>
+        <Link
+          href="/twitter-sponsorship-rate-calculator"
+          className="font-medium text-primary hover:underline"
+        >
+          X (Twitter) Sponsorship Rate Calculator
+        </Link>{' '}
+        — calculate X sponsorship pricing for tweets and threads
       </li>
       <li>
         <Link
@@ -220,7 +248,9 @@ export default function YouTubeMoneyCalculatorPage() {
         faq={faq}
         howItWorks={howItWorks}
       >
-        <YouTubeMoneyCalculator />
+        <Suspense>
+          <YouTubeMoneyCalculator />
+        </Suspense>
 
         <section className="mt-12">
           <h2 className="mb-4 text-2xl font-bold">Browse by Niche</h2>

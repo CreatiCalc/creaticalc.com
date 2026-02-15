@@ -12,11 +12,17 @@ export default function DealTypeSelector({ value, onChange }: DealTypeSelectorPr
   return (
     <div>
       <p className="mb-2 text-sm font-medium text-foreground">Deal Type</p>
-      <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+      <div
+        className="grid grid-cols-2 gap-2 sm:grid-cols-4"
+        role="radiogroup"
+        aria-label="Deal type"
+      >
         {DEAL_TYPES.map((dt) => (
           <button
             key={dt.value}
             type="button"
+            role="radio"
+            aria-checked={value === dt.value}
             onClick={() => onChange(dt.value)}
             className={`rounded-lg border px-3 py-2 text-left transition-colors ${
               value === dt.value

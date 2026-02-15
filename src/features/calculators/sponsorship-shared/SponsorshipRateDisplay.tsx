@@ -1,15 +1,14 @@
 'use client';
 
 import AnimatedNumber from '@/components/ui/AnimatedNumber';
-import { formatUSD } from '@/lib/engagementModel';
+import { formatUSD } from '@/lib/engagementBenchmarks';
 import type { RateRange } from '@/lib/sponsorshipModel';
 import { getContentTypeLabel, getDealTypeLabel } from '@/lib/sponsorshipModel';
-import type { Platform } from '@/lib/engagementModel';
-import type { SponsorshipContentType, DealType } from '@/lib/sponsorshipModel';
+import type { SponsorshipPlatform, SponsorshipContentType, DealType } from '@/lib/sponsorshipModel';
 
 interface SponsorshipRateDisplayProps {
   rate: RateRange;
-  platform: Platform;
+  platform: SponsorshipPlatform;
   contentType: SponsorshipContentType;
   dealType: DealType;
   tierLabel: string;
