@@ -44,9 +44,9 @@
       transition: all 0.15s;
     }
     .toggle-btn.active {
-      background: #7c3aed;
+      background: #0d9488;
       color: #fff;
-      border-color: #7c3aed;
+      border-color: #0d9488;
     }
     .color-swatch {
       width: 28px;
@@ -93,15 +93,15 @@
 
     <div class="control-group">
       <label>Color:</label>
-      <button class="color-swatch active" data-color="purple" style="background:#7c3aed" title="Purple" onclick="setColor('purple')"></button>
+      <button class="color-swatch" data-color="purple" style="background:#7c3aed" title="Purple" onclick="setColor('purple')"></button>
       <button class="color-swatch" data-color="blue" style="background:#2563eb" title="Blue" onclick="setColor('blue')"></button>
       <button class="color-swatch" data-color="green" style="background:#059669" title="Green" onclick="setColor('green')"></button>
       <button class="color-swatch" data-color="red" style="background:#dc2626" title="Red" onclick="setColor('red')"></button>
       <button class="color-swatch" data-color="pink" style="background:#db2777" title="Pink" onclick="setColor('pink')"></button>
       <button class="color-swatch" data-color="orange" style="background:#ea580c" title="Orange" onclick="setColor('orange')"></button>
-      <button class="color-swatch" data-color="teal" style="background:#0d9488" title="Teal" onclick="setColor('teal')"></button>
+      <button class="color-swatch active" data-color="teal" style="background:#0d9488" title="Teal" onclick="setColor('teal')"></button>
       <label class="custom-color-label" id="custom-color-label" title="Custom color">
-        <input type="color" id="custom-color-input" value="#7c3aed" oninput="setCustomColor(this.value)">
+        <input type="color" id="custom-color-input" value="#0d9488" oninput="setCustomColor(this.value)">
       </label>
     </div>
   </div>
@@ -135,13 +135,13 @@
 
   <script>
     var currentTheme = 'light';
-    var currentColor = 'purple';
+    var currentColor = 'teal';
     var isCustomColor = false;
 
     function buildUrl(slug) {
       var params = new URLSearchParams();
       if (currentTheme === 'dark') params.set('theme', 'dark');
-      if (currentColor !== 'purple') params.set('color', currentColor);
+      if (currentColor !== 'teal') params.set('color', currentColor);
       var qs = params.toString();
       return 'http://localhost:3000/embed/' + slug + (qs ? '?' + qs : '');
     }

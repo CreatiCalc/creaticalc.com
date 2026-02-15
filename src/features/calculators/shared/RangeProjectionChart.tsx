@@ -40,7 +40,7 @@ export default function RangeProjectionChart({
       <h3 className="mb-3 text-lg font-semibold">{title}</h3>
       <ResponsiveContainer width="100%" height={350}>
         <ComposedChart data={data} margin={{ top: 5, right: 20, left: 10, bottom: 5 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+          <CartesianGrid strokeDasharray="3 3" stroke="#e7e5e4" />
           <XAxis dataKey="month" tick={{ fontSize: 12 }} interval={xAxisInterval} />
           <YAxis tickFormatter={yAxisFormatter} tick={{ fontSize: 12 }} />
           <Tooltip content={tooltip} />

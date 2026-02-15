@@ -40,7 +40,7 @@ export function createOgImageResponse({ title, subtitle, stats }: OgImageConfig)
           style={{
             fontSize: 28,
             fontWeight: 700,
-            color: '#6d28d9',
+            color: '#0d9488',
             marginBottom: 32,
           }}
         >
@@ -50,7 +50,7 @@ export function createOgImageResponse({ title, subtitle, stats }: OgImageConfig)
           style={{
             fontSize: 44,
             fontWeight: 700,
-            color: '#0f172a',
+            color: '#1c1917',
             marginBottom: 16,
             textAlign: 'center',
           }}
@@ -81,12 +81,12 @@ export function createOgImageResponse({ title, subtitle, stats }: OgImageConfig)
               alignItems: 'center',
               padding: '16px 32px',
               borderRadius: 12,
-              backgroundColor: '#f8fafc',
-              border: '1px solid #e2e8f0',
+              backgroundColor: '#fafaf9',
+              border: '1px solid #e7e5e4',
             }}
           >
             <div style={{ fontSize: 16, color: '#64748b' }}>{stats[0].label}</div>
-            <div style={{ fontSize: 24, fontWeight: 700, color: '#0f172a' }}>{stats[0].value}</div>
+            <div style={{ fontSize: 24, fontWeight: 700, color: '#1c1917' }}>{stats[0].value}</div>
           </div>
           <div
             style={{
@@ -95,7 +95,7 @@ export function createOgImageResponse({ title, subtitle, stats }: OgImageConfig)
               alignItems: 'center',
               padding: '16px 32px',
               borderRadius: 12,
-              backgroundColor: '#6d28d9',
+              backgroundColor: '#0d9488',
               color: '#ffffff',
             }}
           >
@@ -109,12 +109,12 @@ export function createOgImageResponse({ title, subtitle, stats }: OgImageConfig)
               alignItems: 'center',
               padding: '16px 32px',
               borderRadius: 12,
-              backgroundColor: '#f8fafc',
-              border: '1px solid #e2e8f0',
+              backgroundColor: '#fafaf9',
+              border: '1px solid #e7e5e4',
             }}
           >
             <div style={{ fontSize: 16, color: '#64748b' }}>{stats[2].label}</div>
-            <div style={{ fontSize: 24, fontWeight: 700, color: '#0f172a' }}>{stats[2].value}</div>
+            <div style={{ fontSize: 24, fontWeight: 700, color: '#1c1917' }}>{stats[2].value}</div>
           </div>
         </div>
       </div>
