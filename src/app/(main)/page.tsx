@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Card from '@/components/ui/Card';
+import CollapsibleSection from '@/features/calculators/shared/CollapsibleSection';
 import { SITE_NAME, SITE_URL, SITE_LOGO, SITE_DESCRIPTION } from '@/lib/siteConfig';
 import { getAllCalculators } from '@/lib/calculatorRegistry';
 
@@ -236,12 +237,16 @@ export default function Home() {
 
       <section className="mt-20">
         <h2 className="mb-8 text-center text-2xl font-bold">Frequently Asked Questions</h2>
-        <div className="space-y-6">
-          {homeFaqItems.map((item) => (
-            <div key={item.question}>
-              <h3 className="text-lg font-semibold">{item.question}</h3>
-              <p className="mt-2 text-muted">{item.answer}</p>
-            </div>
+        <div className="space-y-3">
+          {homeFaqItems.map((item, i) => (
+            <CollapsibleSection
+              key={item.question}
+              title={item.question}
+              defaultOpen={i === 0}
+              variant="compact"
+            >
+              <p className="text-muted">{item.answer}</p>
+            </CollapsibleSection>
           ))}
         </div>
       </section>
