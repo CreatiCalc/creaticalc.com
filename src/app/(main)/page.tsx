@@ -101,21 +101,27 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <section className="relative mb-20 text-center">
-        {/* Decorative gradient orb */}
+      <section className="relative mb-24 text-center">
+        {/* Animated gradient orb */}
         <div
-          className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[400px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-20 blur-3xl"
-          style={{ background: 'var(--gradient-brand-vibrant)' }}
+          className="animate-hero-glow pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[500px] w-[700px] rounded-full blur-3xl"
+          style={{ background: 'var(--gradient-hero)' }}
           aria-hidden="true"
         />
-        <h1 className="text-4xl font-bold tracking-tight md:text-6xl">
+        <h1 className="animate-fade-up text-4xl font-bold tracking-tight md:text-6xl">
           Free Calculators for <span className="text-gradient-vibrant">Content Creators</span>
         </h1>
-        <p className="mx-auto mt-6 max-w-2xl text-lg text-muted">
+        <p
+          className="animate-fade-up mx-auto mt-6 max-w-2xl text-lg text-muted"
+          style={{ animationDelay: '150ms' }}
+        >
           Estimate your YouTube earnings, calculate engagement rates, find your sponsorship pricing
           on Instagram and TikTok, and project your subscriber growth — all for free.
         </p>
-        <div className="mt-8 inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-2 text-sm text-muted">
+        <div
+          className="animate-fade-up mt-8 inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-2 text-sm text-muted"
+          style={{ animationDelay: '300ms' }}
+        >
           <span className="inline-block h-2 w-2 rounded-full bg-accent" aria-hidden="true" />
           Choose a calculator below to get started
         </div>
