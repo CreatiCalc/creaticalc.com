@@ -1,13 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import {
-  type Platform,
-  crossPlatformComparison,
-  formatPercent,
-  getRatingLabel,
-  getRatingColor,
-} from '@/lib/engagementModel';
+import { type Platform, formatPercent } from '@/lib/engagementBenchmarks';
+import { crossPlatformComparison, getRatingLabel, getRatingColor } from '@/lib/engagementModel';
 
 interface CrossPlatformComparisonProps {
   platform: Platform;

@@ -109,6 +109,10 @@ export default function Slider({
         value={sliderValue}
         onChange={handleChange}
         autoComplete="off"
+        aria-valuemin={min}
+        aria-valuemax={max}
+        aria-valuenow={value}
+        aria-valuetext={displayValue}
         className="w-full cursor-pointer accent-primary"
       />
       {logScale && ticks && ticks.length > 0 && (

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import FAQ from '@/features/calculators/shared/FAQ';
 import AdSlot from '@/components/layout/AdSlot';
 import { BenchmarkTable, PlatformComparisonTable } from '@/features/calculators/engagement-shared';
-import { YOY_TRENDS, formatPercent } from '@/lib/engagementModel';
+import { YOY_TRENDS, formatPercent } from '@/lib/engagementBenchmarks';
 import type { FAQItem } from '@/features/calculators/shared/types';
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import { SITE_URL } from '@/lib/siteConfig';

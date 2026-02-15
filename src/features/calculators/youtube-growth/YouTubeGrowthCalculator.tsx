@@ -18,11 +18,11 @@ import {
   type GrowthInput,
 } from '@/lib/subscriberGrowthModel';
 import { useGrowthState } from './useGrowthState';
-import GrowthInputModeToggle from './GrowthInputModeToggle';
-import GrowthChart from './GrowthChart';
-import GrowthMilestoneTimeline from './GrowthMilestoneTimeline';
-import GrowthRecommendations from './GrowthRecommendations';
+import ButtonToggle from '@/components/ui/ButtonToggle';
+import type { GrowthInputMode } from '@/lib/subscriberGrowthModel';
 import YouTubeGrowthShareButtons from './ShareButtons';
+import { GrowthChart, GrowthMilestoneTimeline, GrowthRecommendations } from './dynamicImports';
+import PresetPills from '@/components/ui/PresetPills';
 
 const nicheOptions = GROWTH_NICHES.map((n) => ({
   label: `${n.name} (~${n.avgMonthlyGrowthPct}%/mo)`,
@@ -53,7 +53,16 @@ const growthRatePresets = [
 
 export default function YouTubeGrowthCalculator() {
   const isEmbed = useIsEmbed();
-  const { state, dispatch } = useGrowthState();
+  const {
+    state,
+    setCurrentSubs,
+    setInputMode,
+    setMonthlyGrowthRate,
+    setMonthlyNewSubs,
+    setUploadsPerWeek,
+    setNiche,
+    toggleDeceleration,
+  } = useGrowthState();
 
   const growthInput: GrowthInput = useMemo(
     () => ({
@@ -74,29 +83,25 @@ export default function YouTubeGrowthCalculator() {
     <>
       <Card className="mt-4">
         <div className="space-y-6">
-          <GrowthInputModeToggle
+          <ButtonToggle<GrowthInputMode>
             value={state.inputMode}
-            onChange={(mode) => dispatch({ type: 'SET_INPUT_MODE', payload: mode })}
+            onChange={setInputMode}
+            options={[
+              { value: 'rate', label: 'Growth Rate (%)' },
+              { value: 'flat', label: 'Monthly New Subs' },
+            ]}
+            ariaLabel="Growth input mode"
+            variant="pill"
           />
 
           {/* Current Subscribers */}
           <div className="space-y-4">
-            <div className="flex flex-wrap gap-2">
-              {subsPresets.map((preset) => (
-                <button
-                  key={preset.value}
-                  type="button"
-                  onClick={() => dispatch({ type: 'SET_CURRENT_SUBS', payload: preset.value })}
-                  className={`rounded-full border px-3 py-1 text-sm transition-colors ${
-                    state.currentSubs === preset.value
-                      ? 'border-primary bg-primary text-white'
-                      : 'border-border bg-surface text-muted hover:border-primary hover:text-foreground'
-                  }`}
-                >
-                  {preset.label}
-                </button>
-              ))}
-            </div>
+            <PresetPills
+              options={subsPresets}
+              value={state.currentSubs}
+              onChange={setCurrentSubs}
+              ariaLabel="Subscriber count presets"
+            />
             <div className="grid gap-4 sm:grid-cols-2">
               <Slider
                 label="Current Subscribers"
@@ -106,7 +111,7 @@ export default function YouTubeGrowthCalculator() {
                 step={10}
                 logScale
                 ticks={subsTicks}
-                onChange={(v) => dispatch({ type: 'SET_CURRENT_SUBS', payload: v })}
+                onChange={setCurrentSubs}
                 formatValue={(v) => v.toLocaleString()}
               />
               <NumberInput
@@ -115,12 +120,7 @@ export default function YouTubeGrowthCalculator() {
                 min={0}
                 max={5000000}
                 step={100}
-                onChange={(v) =>
-                  dispatch({
-                    type: 'SET_CURRENT_SUBS',
-                    payload: Math.max(0, Math.min(v, 5000000)),
-                  })
-                }
+                onChange={(v) => setCurrentSubs(Math.max(0, Math.min(v, 5000000)))}
               />
             </div>
           </div>
@@ -128,31 +128,19 @@ export default function YouTubeGrowthCalculator() {
           {/* Growth Rate or Flat Gain */}
           {state.inputMode === 'rate' ? (
             <div className="space-y-4">
-              <div className="flex flex-wrap gap-2">
-                {growthRatePresets.map((preset) => (
-                  <button
-                    key={preset.value}
-                    type="button"
-                    onClick={() =>
-                      dispatch({ type: 'SET_MONTHLY_GROWTH_RATE', payload: preset.value })
-                    }
-                    className={`rounded-full border px-3 py-1 text-sm transition-colors ${
-                      state.monthlyGrowthRate === preset.value
-                        ? 'border-primary bg-primary text-white'
-                        : 'border-border bg-surface text-muted hover:border-primary hover:text-foreground'
-                    }`}
-                  >
-                    {preset.label}
-                  </button>
-                ))}
-              </div>
+              <PresetPills
+                options={growthRatePresets}
+                value={state.monthlyGrowthRate}
+                onChange={setMonthlyGrowthRate}
+                ariaLabel="Growth rate presets"
+              />
               <Slider
                 label="Monthly Growth Rate"
                 value={state.monthlyGrowthRate}
                 min={0.005}
                 max={0.5}
                 step={0.005}
-                onChange={(v) => dispatch({ type: 'SET_MONTHLY_GROWTH_RATE', payload: v })}
+                onChange={setMonthlyGrowthRate}
                 formatValue={(v) => `${(v * 100).toFixed(1)}%`}
               />
             </div>
@@ -163,12 +151,7 @@ export default function YouTubeGrowthCalculator() {
               min={1}
               max={1000000}
               step={10}
-              onChange={(v) =>
-                dispatch({
-                  type: 'SET_MONTHLY_NEW_SUBS',
-                  payload: Math.max(1, Math.min(v, 1000000)),
-                })
-              }
+              onChange={(v) => setMonthlyNewSubs(Math.max(1, Math.min(v, 1000000)))}
             />
           )}
 
@@ -179,12 +162,7 @@ export default function YouTubeGrowthCalculator() {
             min={0}
             max={30}
             step={1}
-            onChange={(v) =>
-              dispatch({
-                type: 'SET_UPLOADS_PER_WEEK',
-                payload: Math.max(0, Math.min(v, 30)),
-              })
-            }
+            onChange={(v) => setUploadsPerWeek(Math.max(0, Math.min(v, 30)))}
           />
 
           {/* Content Niche */}
@@ -192,7 +170,7 @@ export default function YouTubeGrowthCalculator() {
             label="Content Niche"
             value={state.nicheId}
             options={nicheOptions}
-            onChange={(v) => dispatch({ type: 'SET_NICHE', payload: v as GrowthNicheId })}
+            onChange={(v) => setNiche(v as GrowthNicheId)}
           />
 
           {/* Deceleration Toggle */}
@@ -201,7 +179,7 @@ export default function YouTubeGrowthCalculator() {
               <input
                 type="checkbox"
                 checked={state.decelerationEnabled}
-                onChange={() => dispatch({ type: 'TOGGLE_DECELERATION' })}
+                onChange={toggleDeceleration}
                 className="h-4 w-4 accent-primary"
               />
               <div>

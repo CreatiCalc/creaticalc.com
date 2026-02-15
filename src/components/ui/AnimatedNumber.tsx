@@ -47,5 +47,9 @@ export default function AnimatedNumber({ value, format, duration = 400 }: Animat
     };
   }, [value, duration]);
 
-  return <>{format(display)}</>;
+  return (
+    <span aria-live="polite" aria-atomic="true">
+      {format(display)}
+    </span>
+  );
 }

@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
@@ -202,7 +203,9 @@ export default function TikTokSponsorshipPage() {
         faq={faq}
         howItWorks={howItWorks}
       >
-        <TikTokSponsorshipCalculator />
+        <Suspense>
+          <TikTokSponsorshipCalculator />
+        </Suspense>
       </CalculatorLayout>
     </>
   );

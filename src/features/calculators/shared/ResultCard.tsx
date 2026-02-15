@@ -30,7 +30,11 @@ export default function ResultCard({
           </span>
         )}
       </div>
-      <p className={`mt-1 text-2xl font-bold ${highlight ? 'text-primary' : 'text-foreground'}`}>
+      <p
+        className={`mt-1 text-2xl font-bold ${highlight ? 'text-primary' : 'text-foreground'}`}
+        aria-live="polite"
+        aria-atomic="true"
+      >
         {value}
       </p>
       {comparison && <p className="mt-1 text-xs text-muted">{comparison}</p>}

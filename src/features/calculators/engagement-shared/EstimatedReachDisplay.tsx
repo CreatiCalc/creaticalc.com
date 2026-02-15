@@ -1,7 +1,8 @@
 'use client';
 
 import Card from '@/components/ui/Card';
-import { type Platform, estimateReach, formatFollowerCount } from '@/lib/engagementModel';
+import { type Platform, formatFollowerCount } from '@/lib/engagementBenchmarks';
+import { estimateReach } from '@/lib/engagementModel';
 
 interface EstimatedReachDisplayProps {
   platform: Platform;

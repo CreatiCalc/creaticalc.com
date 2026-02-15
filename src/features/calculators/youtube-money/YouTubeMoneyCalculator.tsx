@@ -23,32 +23,22 @@ import {
 } from '@/lib/youtubeEarningsModel';
 import { useCalculatorState, computeDailyViewsFromPerVideo } from './useCalculatorState';
 import UrlLookup from './UrlLookup';
-import ContentFormatToggle from './ContentFormatToggle';
-import InputModeToggle from './InputModeToggle';
+import ButtonToggle from '@/components/ui/ButtonToggle';
+import type { ContentFormat } from '@/lib/youtubeEarningsModel';
+import type { InputMode } from './useCalculatorState';
 import GrowthRateInput from './GrowthRateInput';
 import SeasonalityToggle from './SeasonalityToggle';
-import dynamic from 'next/dynamic';
-
-function ChartPlaceholder() {
-  return (
-    <div className="mt-6">
-      <div className="mb-3 h-6 w-64 animate-pulse rounded bg-surface-alt" />
-      <div className="h-[350px] animate-pulse rounded-lg bg-surface-alt" />
-    </div>
-  );
-}
-
-const ProjectionChart = dynamic(() => import('./ProjectionChart'), {
-  ssr: false,
-  loading: ChartPlaceholder,
-});
-const Recommendations = dynamic(() => import('./Recommendations'), { ssr: false });
-const DriversBreakdown = dynamic(() => import('./DriversBreakdown'), { ssr: false });
-const MilestoneTimeline = dynamic(() => import('./MilestoneTimeline'), { ssr: false });
-const SponsorshipEstimate = dynamic(() => import('./SponsorshipEstimate'), { ssr: false });
-const RpmTable = dynamic(() => import('./RpmTable'), { ssr: false });
+import {
+  ProjectionChart,
+  Recommendations,
+  DriversBreakdown,
+  MilestoneTimeline,
+  SponsorshipEstimate,
+  RpmTable,
+} from './dynamicImports';
 import YouTubeShareButtons from './ShareButtons';
 import CollapsibleSection from '@/features/calculators/shared/CollapsibleSection';
+import PresetPills from '@/components/ui/PresetPills';
 
 const nicheOptions = NICHES.map((n) => ({ label: n.name, value: n.id }));
 
@@ -99,7 +89,21 @@ export default function YouTubeMoneyCalculator({
   hideNicheSelector,
 }: YouTubeMoneyCalculatorProps = {}) {
   const isEmbed = useIsEmbed();
-  const { state, dispatch } = useCalculatorState(defaultOverrides);
+  const {
+    state,
+    setDailyViews,
+    setNiche,
+    setGrowthRate,
+    toggleSeasonality,
+    applyScenario,
+    setFromLookup,
+    setInputMode,
+    setViewsPerVideo,
+    setUploadsPerWeek,
+    setContentFormat,
+    setVideoLength,
+    setHighCpmAudiencePct,
+  } = useCalculatorState(defaultOverrides);
 
   const effectiveDailyViews = useMemo(
     () =>
@@ -140,45 +144,42 @@ export default function YouTubeMoneyCalculator({
 
   return (
     <>
-      {!isEmbed && (
-        <UrlLookup
-          onResult={(data) => dispatch({ type: 'SET_FROM_LOOKUP', payload: data })}
-          currentDailyViews={effectiveDailyViews}
-        />
-      )}
+      {!isEmbed && <UrlLookup onResult={setFromLookup} currentDailyViews={effectiveDailyViews} />}
 
       <Card className={isEmbed ? '' : 'mt-4'}>
         <div className="space-y-6">
           {!hideFormatToggle && (
-            <ContentFormatToggle
+            <ButtonToggle<ContentFormat>
               value={state.contentFormat}
-              onChange={(format) => dispatch({ type: 'SET_CONTENT_FORMAT', payload: format })}
+              onChange={setContentFormat}
+              options={[
+                { value: 'longform', label: 'Long-form' },
+                { value: 'shorts', label: 'Shorts' },
+              ]}
+              label="Content Format"
+              ariaLabel="Content format"
             />
           )}
 
-          <InputModeToggle
+          <ButtonToggle<InputMode>
             value={state.inputMode}
-            onChange={(mode) => dispatch({ type: 'SET_INPUT_MODE', payload: mode })}
+            onChange={setInputMode}
+            options={[
+              { value: 'daily', label: 'Daily Views' },
+              { value: 'perVideo', label: 'Per Video' },
+            ]}
+            label="Input Mode"
+            ariaLabel="View input mode"
           />
 
           {state.inputMode === 'daily' ? (
             <div className="space-y-4">
-              <div className="flex flex-wrap gap-2">
-                {viewsPresets.map((preset) => (
-                  <button
-                    key={preset.value}
-                    type="button"
-                    onClick={() => dispatch({ type: 'SET_DAILY_VIEWS', payload: preset.value })}
-                    className={`rounded-full border px-3 py-1 text-sm transition-colors ${
-                      state.dailyViews === preset.value
-                        ? 'border-primary bg-primary text-white'
-                        : 'border-border bg-surface text-muted hover:border-primary hover:text-foreground'
-                    }`}
-                  >
-                    {preset.label}
-                  </button>
-                ))}
-              </div>
+              <PresetPills
+                options={viewsPresets}
+                value={state.dailyViews}
+                onChange={setDailyViews}
+                ariaLabel="Daily views presets"
+              />
               <div className="grid gap-4 sm:grid-cols-2">
                 <Slider
                   label="Daily Views"
@@ -188,7 +189,7 @@ export default function YouTubeMoneyCalculator({
                   step={100}
                   logScale
                   ticks={viewsTicks}
-                  onChange={(v) => dispatch({ type: 'SET_DAILY_VIEWS', payload: v })}
+                  onChange={setDailyViews}
                   formatValue={(v) => v.toLocaleString()}
                 />
                 <NumberInput
@@ -197,12 +198,7 @@ export default function YouTubeMoneyCalculator({
                   min={0}
                   max={5000000}
                   step={1000}
-                  onChange={(v) =>
-                    dispatch({
-                      type: 'SET_DAILY_VIEWS',
-                      payload: Math.max(0, Math.min(v, 5000000)),
-                    })
-                  }
+                  onChange={(v) => setDailyViews(Math.max(0, Math.min(v, 5000000)))}
                 />
               </div>
             </div>
@@ -217,7 +213,7 @@ export default function YouTubeMoneyCalculator({
                   step={100}
                   logScale
                   ticks={viewsPerVideoTicks}
-                  onChange={(v) => dispatch({ type: 'SET_VIEWS_PER_VIDEO', payload: v })}
+                  onChange={setViewsPerVideo}
                   formatValue={(v) => v.toLocaleString()}
                 />
                 <NumberInput
@@ -226,12 +222,7 @@ export default function YouTubeMoneyCalculator({
                   min={1}
                   max={100}
                   step={1}
-                  onChange={(v) =>
-                    dispatch({
-                      type: 'SET_UPLOADS_PER_WEEK',
-                      payload: Math.max(1, Math.min(v, 100)),
-                    })
-                  }
+                  onChange={(v) => setUploadsPerWeek(Math.max(1, Math.min(v, 100)))}
                 />
               </div>
               <p className="text-sm text-muted">
@@ -241,12 +232,13 @@ export default function YouTubeMoneyCalculator({
           )}
 
           {!hideNicheSelector && (
-            <div className={isShorts ? 'opacity-50 pointer-events-none' : ''}>
+            <div>
               <Select
                 label="Content Niche"
                 value={state.nicheId}
                 options={nicheOptions}
-                onChange={(v) => dispatch({ type: 'SET_NICHE', payload: v as NicheId })}
+                onChange={(v) => setNiche(v as NicheId)}
+                disabled={isShorts}
               />
               {isShorts && (
                 <p className="mt-1 text-xs text-muted">Niche has minimal impact on Shorts RPM</p>
@@ -259,7 +251,7 @@ export default function YouTubeMoneyCalculator({
               label="Video Length"
               value={state.videoLength}
               options={videoLengthOptions}
-              onChange={(v) => dispatch({ type: 'SET_VIDEO_LENGTH', payload: v as VideoLength })}
+              onChange={(v) => setVideoLength(v as VideoLength)}
             />
           )}
 
@@ -270,7 +262,7 @@ export default function YouTubeMoneyCalculator({
               min={0}
               max={100}
               step={5}
-              onChange={(v) => dispatch({ type: 'SET_HIGH_CPM_AUDIENCE_PCT', payload: v })}
+              onChange={setHighCpmAudiencePct}
               formatValue={(v) => `${v}%`}
             />
             <p className="mt-1 text-xs text-muted">
@@ -285,15 +277,9 @@ export default function YouTubeMoneyCalculator({
             </p>
           </div>
 
-          <GrowthRateInput
-            value={state.monthlyGrowthRate}
-            onChange={(rate) => dispatch({ type: 'SET_GROWTH_RATE', payload: rate })}
-          />
+          <GrowthRateInput value={state.monthlyGrowthRate} onChange={setGrowthRate} />
 
-          <SeasonalityToggle
-            enabled={state.seasonalityEnabled}
-            onToggle={() => dispatch({ type: 'TOGGLE_SEASONALITY' })}
-          />
+          <SeasonalityToggle enabled={state.seasonalityEnabled} onToggle={toggleSeasonality} />
 
           {isShorts ? (
             <p className="text-sm text-muted">
@@ -411,9 +397,7 @@ export default function YouTubeMoneyCalculator({
             <Recommendations
               state={projectionInput}
               projection={projection}
-              onApplyScenario={(scenario) =>
-                dispatch({ type: 'APPLY_SCENARIO', payload: scenario })
-              }
+              onApplyScenario={applyScenario}
             />
           </CollapsibleSection>
 

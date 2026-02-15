@@ -10,6 +10,13 @@ interface AdSlotProps {
 
 const publisherId = process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID;
 
+const SLOT_MIN_HEIGHTS: Record<AdSlotProps['slot'], string> = {
+  'header': 'min-h-[90px]',
+  'sidebar': 'min-h-[250px]',
+  'below-results': 'min-h-[250px]',
+  'after-chart': 'min-h-[250px]',
+};
+
 export default function AdSlot({ slot, className = '' }: AdSlotProps) {
   const isEmbed = useIsEmbed();
 
@@ -27,7 +34,7 @@ export default function AdSlot({ slot, className = '' }: AdSlotProps) {
 
   if (publisherId) {
     return (
-      <div className={className} data-ad-slot={slot}>
+      <div className={`${SLOT_MIN_HEIGHTS[slot]} ${className}`} data-ad-slot={slot}>
         <ins
           className="adsbygoogle"
           style={{ display: 'block' }}
@@ -43,7 +50,7 @@ export default function AdSlot({ slot, className = '' }: AdSlotProps) {
   if (process.env.NODE_ENV !== 'production') {
     return (
       <div
-        className={`flex items-center justify-center rounded-lg border border-dashed border-border bg-surface-alt text-sm text-muted ${className}`}
+        className={`flex items-center justify-center rounded-lg border border-dashed border-border bg-surface-alt text-sm text-muted ${SLOT_MIN_HEIGHTS[slot]} ${className}`}
         data-ad-slot={slot}
       >
         <span className="px-4 py-3">Ad Space</span>

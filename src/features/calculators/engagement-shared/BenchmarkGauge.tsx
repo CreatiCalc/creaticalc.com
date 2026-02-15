@@ -1,6 +1,6 @@
 'use client';
 
-import { type Platform, formatPercent } from '@/lib/engagementModel';
+import { type Platform, formatPercent } from '@/lib/engagementBenchmarks';
 
 interface BenchmarkGaugeProps {
   rate: number;

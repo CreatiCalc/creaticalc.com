@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import type { Metadata } from 'next';
 import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
 import CalculatorSchema from '@/components/seo/CalculatorSchema';
@@ -143,7 +144,9 @@ export default function YouTubeSubscriberProjectorPage() {
         faq={faq}
         howItWorks={howItWorks}
       >
-        <YouTubeGrowthCalculator />
+        <Suspense>
+          <YouTubeGrowthCalculator />
+        </Suspense>
       </CalculatorLayout>
     </>
   );

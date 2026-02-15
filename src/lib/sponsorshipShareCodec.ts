@@ -1,4 +1,17 @@
-import type { IndustryId } from './engagementModel';
+import type { IndustryId } from './engagementBenchmarks';
+import { VALID_INDUSTRY_IDS } from './engagementBenchmarks';
+import { toBase64Url, fromBase64Url } from './codecUtils';
+
+// Sponsorship-specific validation sets (content types and deal types differ from engagement)
+const VALID_SPONSORSHIP_CONTENT_TYPES = new Set<string>([
+  'feedPost',
+  'reel',
+  'story',
+  'carousel',
+  'video',
+  'live',
+]);
+const VALID_DEAL_TYPES = new Set<string>(['mention', 'dedicated', 'review', 'series']);
 
 export interface SponsorshipShareState {
   platform: 'instagram' | 'tiktok';
@@ -8,16 +21,6 @@ export interface SponsorshipShareState {
   dealType: string;
   industryId: IndustryId;
   dealsPerMonth: number;
-}
-
-function toBase64Url(str: string): string {
-  return btoa(str).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
-}
-
-function fromBase64Url(str: string): string {
-  let padded = str.replace(/-/g, '+').replace(/_/g, '/');
-  while (padded.length % 4) padded += '=';
-  return atob(padded);
 }
 
 // Format: sp|platform|followers|engagementRate(x100)|contentType|dealType|industryId|dealsPerMonth
@@ -55,6 +58,9 @@ export function decodeSponsorshipState(encoded: string): SponsorshipShareState |
     if (isNaN(followers) || followers < 0 || followers > 50000000) return null;
     if (isNaN(engPct) || engPct < 0 || engPct > 10000) return null;
     if (isNaN(dealsPerMonth) || dealsPerMonth < 0 || dealsPerMonth > 100) return null;
+    if (!VALID_INDUSTRY_IDS.has(industryId)) return null;
+    if (!VALID_SPONSORSHIP_CONTENT_TYPES.has(contentType)) return null;
+    if (!VALID_DEAL_TYPES.has(dealType)) return null;
 
     return {
       platform: p === 'i' ? 'instagram' : 'tiktok',

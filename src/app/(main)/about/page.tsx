@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Card from '@/components/ui/Card';
 import { SITE_NAME, SITE_URL, SITE_LOGO, SITE_DESCRIPTION } from '@/lib/siteConfig';
+import { getAllCalculators } from '@/lib/calculatorRegistry';
 
 export const metadata: Metadata = {
   title: 'About — Free Calculators for Content Creators',
@@ -18,85 +19,7 @@ export const metadata: Metadata = {
   },
 };
 
-const calculators = [
-  {
-    title: 'YouTube Money Calculator',
-    description:
-      'Estimate how much YouTubers earn based on views, CPM, and content niche. Includes growth modeling, seasonality adjustments, and sponsorship rate estimates.',
-    href: '/youtube-money-calculator',
-    platform: 'YouTube',
-  },
-  {
-    title: 'YouTube Shorts Money Calculator',
-    description:
-      'Find out how much YouTube Shorts pay. Estimate Shorts revenue based on views, RPM, and the Shorts monetization model.',
-    href: '/youtube-shorts-money-calculator',
-    platform: 'YouTube',
-  },
-  {
-    title: 'YouTube Subscriber Growth Projector',
-    description:
-      "Project your YouTube subscriber growth over time and see when you'll hit key milestones like 1K, 10K, and 100K subscribers.",
-    href: '/youtube-subscriber-projector',
-    platform: 'YouTube',
-  },
-  {
-    title: 'Instagram Engagement Rate Calculator',
-    description:
-      'Calculate your Instagram engagement rate and benchmark it against industry averages. Track likes, comments, and shares.',
-    href: '/instagram-engagement-rate-calculator',
-    platform: 'Instagram',
-  },
-  {
-    title: 'Instagram Sponsorship Rate Calculator',
-    description:
-      'Find out how much to charge for sponsored posts, Reels, Stories, and carousels based on your followers, engagement rate, and niche.',
-    href: '/instagram-sponsorship-rate-calculator',
-    platform: 'Instagram',
-  },
-  {
-    title: 'TikTok Engagement Rate Calculator',
-    description:
-      'Measure your TikTok engagement rate using views, likes, comments, and shares. Compare your performance to other creators.',
-    href: '/tiktok-engagement-rate-calculator',
-    platform: 'TikTok',
-  },
-  {
-    title: 'TikTok Sponsorship Rate Calculator',
-    description:
-      'Calculate how much to charge for sponsored TikTok videos, Stories, and Lives based on your followers, engagement, and niche.',
-    href: '/tiktok-sponsorship-rate-calculator',
-    platform: 'TikTok',
-  },
-  {
-    title: 'Facebook Engagement Rate Calculator',
-    description:
-      'Calculate your Facebook Page engagement rate using reactions, comments, and shares. Compare against page benchmarks by follower tier and industry.',
-    href: '/facebook-engagement-rate-calculator',
-    platform: 'Facebook',
-  },
-  {
-    title: 'X (Twitter) Engagement Rate Calculator',
-    description:
-      'Measure your X engagement rate using likes, replies, reposts, and bookmarks. Compare against benchmarks by follower tier and industry.',
-    href: '/twitter-engagement-rate-calculator',
-    platform: 'X',
-  },
-  {
-    title: 'Engagement Rate Calculator',
-    description:
-      'All-in-one engagement rate calculator for Instagram and TikTok. Compare against industry benchmarks and get personalized recommendations.',
-    href: '/engagement-rate-calculator',
-    platform: 'Multi-Platform',
-  },
-  {
-    title: 'Engagement Rate Benchmarks',
-    description:
-      'Complete engagement rate benchmark data for 2026. See average rates by follower tier, industry, and platform for Instagram and TikTok.',
-    href: '/engagement-rate-benchmarks',
-    platform: 'Multi-Platform',
-  },
-];
+const calculators = getAllCalculators();
 
 const faqItems = [
   {
@@ -234,7 +157,7 @@ export default function AboutPage() {
                     {calc.platform}
                   </span>
                   <h3 className="text-lg font-semibold group-hover:text-primary">{calc.title}</h3>
-                  <p className="mt-1 text-sm text-muted">{calc.description}</p>
+                  <p className="mt-1 text-sm text-muted">{calc.aboutDescription}</p>
                   <p className="mt-3 text-sm font-medium text-primary opacity-0 transition-opacity duration-200 group-hover:opacity-100">
                     Try it free &rarr;
                   </p>

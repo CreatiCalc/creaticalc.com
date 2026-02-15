@@ -1,6 +1,6 @@
 'use client';
 
-import { formatUSD } from '@/lib/engagementModel';
+import { formatUSD } from '@/lib/engagementBenchmarks';
 import type { RateCardEntry, SponsorshipContentType } from '@/lib/sponsorshipModel';
 
 interface RateCardTableProps {

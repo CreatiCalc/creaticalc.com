@@ -1,5 +1,11 @@
-import type { Platform, IndustryId, FollowerTier } from './engagementModel';
-import { getFollowerTier, getTierLabel, formatUSD, formatFollowerCount } from './engagementModel';
+import type { Platform, IndustryId, FollowerTier } from './engagementBenchmarks';
+import {
+  findTier,
+  formatUSD,
+  formatFollowerCount,
+  getEngagementMultiplier,
+  getNicheMultiplier,
+} from './engagementBenchmarks';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -76,26 +82,6 @@ const DEAL_TYPE_MULTIPLIERS: Record<DealType, number> = {
   series: 2.0,
 };
 
-const ENGAGEMENT_MULTIPLIERS: { maxRate: number; multiplier: number }[] = [
-  { maxRate: 1, multiplier: 0.5 },
-  { maxRate: 3, multiplier: 1.0 },
-  { maxRate: 5, multiplier: 1.5 },
-  { maxRate: Infinity, multiplier: 2.0 },
-];
-
-const NICHE_MULTIPLIERS: Partial<Record<IndustryId, number>> = {
-  finance: 2.0,
-  tech: 1.5,
-  education: 1.3,
-  health: 1.2,
-  beauty: 1.2,
-  travel: 1.1,
-  food: 1.0,
-  fashion: 1.0,
-  entertainment: 0.8,
-  sports: 0.9,
-};
-
 export const IG_CONTENT_TYPES: { value: InstagramContentType; label: string }[] = [
   { value: 'feedPost', label: 'Feed Post' },
   { value: 'reel', label: 'Reel' },
@@ -142,14 +128,6 @@ const TIKTOK_TIER_DEFS: TierDef[] = [
 ];
 
 // ─── Core Functions ───────────────────────────────────────────────────────────
-
-function getEngagementMultiplier(engagementRate: number): number {
-  return ENGAGEMENT_MULTIPLIERS.find((m) => engagementRate < m.maxRate)?.multiplier ?? 2.0;
-}
-
-function getNicheMultiplier(industryId: IndustryId): number {
-  return NICHE_MULTIPLIERS[industryId] ?? 1.0;
-}
 
 function getContentTypeMultiplier(platform: Platform, contentType: SponsorshipContentType): number {
   if (platform === 'instagram') {
@@ -255,8 +233,9 @@ export function computeSponsorship(input: SponsorshipInput): SponsorshipResult {
     industryId
   );
   const rateCard = buildRateCard(platform, followers, engagementRate, dealType, industryId);
-  const tier = getFollowerTier(platform, followers);
-  const tierLabel = getTierLabel(platform, followers);
+  const tierData = findTier(platform, followers);
+  const tier = tierData.tier;
+  const tierLabel = tierData.label;
   const tierRates = getTierRates(platform, engagementRate, contentType, dealType, industryId);
   const monthlyEarnings: RateRange = {
     low: rate.low * dealsPerMonth,

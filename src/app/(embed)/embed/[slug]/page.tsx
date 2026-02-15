@@ -22,7 +22,7 @@ export default async function EmbedPage({ params }: EmbedPageProps) {
 
   return (
     <Suspense>
-      <EmbedWrapper title={entry.title} canonicalPath={entry.canonicalPath}>
+      <EmbedWrapper title={entry.title} canonicalPath={entry.href}>
         <EmbedCalculatorLoader slug={slug} />
       </EmbedWrapper>
     </Suspense>

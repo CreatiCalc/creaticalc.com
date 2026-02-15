@@ -5,29 +5,55 @@ import type { NicheId } from '@/lib/youtubeEarningsModel';
 const YOUTUBE_API_BASE = 'https://www.googleapis.com/youtube/v3';
 
 // YouTube category ID → our niche ID (best-effort)
+// Full list: https://developers.google.com/youtube/v3/docs/videoCategories/list
 const CATEGORY_TO_NICHE: Record<string, NicheId> = {
-  '28': 'tech', // Science & Technology
-  '20': 'gaming', // Gaming
-  '27': 'education', // Education
-  '24': 'entertainment', // Entertainment
+  '1': 'entertainment', // Film & Animation
+  '2': 'entertainment', // Autos & Vehicles
+  '10': 'entertainment', // Music
+  '15': 'entertainment', // Pets & Animals
+  '17': 'entertainment', // Sports
   '19': 'travel', // Travel & Events
-  '26': 'beauty', // Howto & Style
+  '20': 'gaming', // Gaming
   '22': 'lifestyle', // People & Blogs
+  '23': 'entertainment', // Comedy
+  '24': 'entertainment', // Entertainment
+  '25': 'education', // News & Politics
+  '26': 'beauty', // Howto & Style
+  '27': 'education', // Education
+  '28': 'tech', // Science & Technology
+  '29': 'entertainment', // Nonprofits & Activism
 };
 
 // ─── Rate Limiting ──────────────────────────────────────────────────────────
 
 const RATE_LIMIT_WINDOW_MS = 60_000;
 const RATE_LIMIT_MAX = 10;
+const MAX_MAP_SIZE = 10_000;
 const rateLimitMap = new Map<string, number[]>();
 
 function isRateLimited(ip: string): boolean {
   const now = Date.now();
   const timestamps = rateLimitMap.get(ip) ?? [];
   const recent = timestamps.filter((t) => now - t < RATE_LIMIT_WINDOW_MS);
-  rateLimitMap.set(ip, recent);
+
+  if (recent.length === 0) {
+    rateLimitMap.delete(ip);
+  } else {
+    rateLimitMap.set(ip, recent);
+  }
+
+  // Prevent unbounded memory growth from diverse IPs
+  if (rateLimitMap.size > MAX_MAP_SIZE) {
+    for (const [key, ts] of rateLimitMap) {
+      if (ts.every((t) => now - t >= RATE_LIMIT_WINDOW_MS)) {
+        rateLimitMap.delete(key);
+      }
+    }
+  }
+
   if (recent.length >= RATE_LIMIT_MAX) return true;
   recent.push(now);
+  rateLimitMap.set(ip, recent);
   return false;
 }
 

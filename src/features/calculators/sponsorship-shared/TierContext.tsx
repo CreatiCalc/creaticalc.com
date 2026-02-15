@@ -1,7 +1,7 @@
 'use client';
 
-import { formatUSD } from '@/lib/engagementModel';
-import type { FollowerTier } from '@/lib/engagementModel';
+import { formatUSD } from '@/lib/engagementBenchmarks';
+import type { FollowerTier } from '@/lib/engagementBenchmarks';
 import type { TierRateInfo } from '@/lib/sponsorshipModel';
 
 interface TierContextProps {

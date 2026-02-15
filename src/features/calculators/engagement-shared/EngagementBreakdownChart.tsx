@@ -1,7 +1,7 @@
 'use client';
 
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
-import { type Platform, type EngagementBreakdown, formatPercent } from '@/lib/engagementModel';
+import { type Platform, type EngagementBreakdown, formatPercent } from '@/lib/engagementBenchmarks';
 
 interface EngagementBreakdownChartProps {
   breakdown: EngagementBreakdown;

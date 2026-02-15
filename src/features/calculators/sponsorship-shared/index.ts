@@ -1,4 +1,3 @@
-export { default as ContentTypeSelector } from './ContentTypeSelector';
 export { default as DealTypeSelector } from './DealTypeSelector';
 export { default as SponsorshipRateDisplay } from './SponsorshipRateDisplay';
 export { default as RateCardTable } from './RateCardTable';
