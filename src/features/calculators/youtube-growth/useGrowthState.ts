@@ -1,7 +1,11 @@
 'use client';
 
 import { useReducer } from 'react';
-import type { GrowthNicheId, GrowthInputMode } from '@/lib/subscriberGrowthModel';
+import {
+  getGrowthNiche,
+  type GrowthNicheId,
+  type GrowthInputMode,
+} from '@/lib/subscriberGrowthModel';
 import { decodeGrowthState } from '@/lib/growthShareCodec';
 
 export interface GrowthState {
@@ -54,8 +58,14 @@ function reducer(state: GrowthState, action: Action): GrowthState {
       return { ...state, monthlyNewSubs: action.payload };
     case 'SET_UPLOADS_PER_WEEK':
       return { ...state, uploadsPerWeek: action.payload };
-    case 'SET_NICHE':
-      return { ...state, nicheId: action.payload };
+    case 'SET_NICHE': {
+      const niche = getGrowthNiche(action.payload);
+      return {
+        ...state,
+        nicheId: action.payload,
+        monthlyGrowthRate: niche.avgMonthlyGrowthPct / 100,
+      };
+    }
     case 'TOGGLE_DECELERATION':
       return { ...state, decelerationEnabled: !state.decelerationEnabled };
     default:

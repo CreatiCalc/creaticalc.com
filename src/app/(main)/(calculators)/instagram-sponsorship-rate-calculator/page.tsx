@@ -195,7 +195,7 @@ export default function InstagramSponsorshipPage() {
         howItWorks={howItWorks}
         breadcrumbs={[
           { name: 'Home', path: '/' },
-          { name: 'Instagram', path: '/instagram-engagement-rate-calculator' },
+          { name: 'Instagram', path: '/instagram' },
           {
             name: 'Instagram Sponsorship Rate Calculator',
             path: '/instagram-sponsorship-rate-calculator',

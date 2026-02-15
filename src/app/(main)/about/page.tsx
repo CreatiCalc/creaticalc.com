@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Card from '@/components/ui/Card';
 import { SITE_NAME, SITE_URL, SITE_LOGO, SITE_DESCRIPTION } from '@/lib/siteConfig';
-import { getAllCalculators } from '@/lib/calculatorRegistry';
+import { getAllCalculators, PLATFORM_GRADIENTS } from '@/lib/calculatorRegistry';
 
 export const metadata: Metadata = {
   title: 'About — Free Calculators for Content Creators',
@@ -152,10 +152,18 @@ export default function AboutPage() {
           <div className="grid gap-4 sm:grid-cols-2">
             {calculators.map((calc) => (
               <Link key={calc.href} href={calc.href} className="group">
-                <Card className="h-full transition-all duration-200 group-hover:border-primary/50 group-hover:shadow-md">
-                  <span className="mb-2 inline-block rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-semibold text-primary">
-                    {calc.platform}
-                  </span>
+                <Card className="relative h-full overflow-hidden transition-all duration-200 group-hover:border-primary/50 group-hover:shadow-md">
+                  <div
+                    className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r opacity-0 transition-opacity duration-200 group-hover:opacity-100 ${PLATFORM_GRADIENTS[calc.platform] ?? ''}`}
+                  />
+                  <div className="flex items-center justify-between">
+                    <span className="inline-block rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-semibold text-primary">
+                      {calc.platform}
+                    </span>
+                    <span className="rounded-full bg-surface-alt px-2 py-0.5 text-xs text-muted">
+                      Free
+                    </span>
+                  </div>
                   <h3 className="text-lg font-semibold group-hover:text-primary">{calc.title}</h3>
                   <p className="mt-1 text-sm text-muted">{calc.aboutDescription}</p>
                   <p className="mt-3 text-sm font-medium text-primary opacity-0 transition-opacity duration-200 group-hover:opacity-100">
@@ -277,14 +285,25 @@ export default function AboutPage() {
             Pick a calculator and get instant, free results — no sign-up required.
           </p>
           <div className="mt-8 grid gap-6 text-left sm:grid-cols-3 lg:grid-cols-5">
-            {(['YouTube', 'Instagram', 'TikTok', 'Facebook', 'X'] as const).map((platform) => (
-              <div key={platform}>
-                <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-muted">
-                  {platform}
-                </h3>
+            {(
+              [
+                { name: 'YouTube', href: '/youtube' },
+                { name: 'Instagram', href: '/instagram' },
+                { name: 'TikTok', href: '/tiktok' },
+                { name: 'Facebook', href: '/facebook' },
+                { name: 'X (Twitter)', href: '/x' },
+              ] as const
+            ).map((platform) => (
+              <div key={platform.name}>
+                <Link
+                  href={platform.href}
+                  className="mb-3 block text-sm font-semibold uppercase tracking-wider text-muted hover:text-primary"
+                >
+                  {platform.name}
+                </Link>
                 <div className="flex flex-col gap-2">
                   {calculators
-                    .filter((c) => c.platform === platform)
+                    .filter((c) => c.platform === platform.name)
                     .map((calc) => (
                       <Link
                         key={calc.href}

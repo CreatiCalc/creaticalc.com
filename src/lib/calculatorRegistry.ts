@@ -1,3 +1,13 @@
+/** Tailwind gradient classes for each platform's accent bar. */
+export const PLATFORM_GRADIENTS: Record<string, string> = {
+  'YouTube': 'from-red-500 via-red-600 to-red-700',
+  'Instagram': 'from-pink-500 via-purple-500 to-orange-400',
+  'TikTok': 'from-cyan-400 via-pink-500 to-red-500',
+  'Facebook': 'from-blue-500 via-blue-600 to-indigo-500',
+  'X': 'from-sky-400 via-blue-500 to-indigo-400',
+  'Multi-Platform': 'from-teal-400 via-emerald-500 to-cyan-500',
+};
+
 export interface CalculatorEntry {
   /** URL slug, e.g. 'youtube-money-calculator' */
   slug: string;
@@ -35,7 +45,7 @@ const CALCULATORS: CalculatorEntry[] = [
   {
     slug: 'youtube-shorts-money-calculator',
     title: 'YouTube Shorts Money Calculator',
-    cardTitle: 'YouTube Shorts Calculator',
+    cardTitle: 'YouTube Shorts Money Calculator',
     href: '/youtube-shorts-money-calculator',
     platform: 'YouTube',
     description:
@@ -201,6 +211,11 @@ const CALCULATORS: CalculatorEntry[] = [
 /** All calculators in display order. */
 export function getAllCalculators(): CalculatorEntry[] {
   return CALCULATORS;
+}
+
+/** Get all calculators for a specific platform. */
+export function getCalculatorsByPlatform(platform: string): CalculatorEntry[] {
+  return CALCULATORS.filter((c) => c.platform === platform);
 }
 
 /** Only calculators that support the embed widget. */

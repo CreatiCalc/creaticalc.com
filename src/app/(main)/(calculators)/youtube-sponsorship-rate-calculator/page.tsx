@@ -223,7 +223,7 @@ export default function YouTubeSponsorshipPage() {
         howItWorks={howItWorks}
         breadcrumbs={[
           { name: 'Home', path: '/' },
-          { name: 'YouTube', path: '/youtube-money-calculator' },
+          { name: 'YouTube', path: '/youtube' },
           {
             name: 'YouTube Sponsorship Rate Calculator',
             path: '/youtube-sponsorship-rate-calculator',

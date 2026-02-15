@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Card from '@/components/ui/Card';
 import CollapsibleSection from '@/features/calculators/shared/CollapsibleSection';
 import { SITE_NAME, SITE_URL, SITE_LOGO, SITE_DESCRIPTION } from '@/lib/siteConfig';
-import { getAllCalculators } from '@/lib/calculatorRegistry';
+import { getAllCalculators, PLATFORM_GRADIENTS } from '@/lib/calculatorRegistry';
 
 const title = `${SITE_NAME} — Free Calculators for Content Creators`;
 
@@ -173,14 +173,18 @@ export default function Home() {
         {calculators.map((calc) => (
           <Link key={calc.href} href={calc.href} className="group">
             <Card className="relative h-full overflow-hidden transition-all duration-300 group-hover:scale-[1.02] group-hover:border-primary/50 group-hover:shadow-lg">
-              {/* Gradient accent bar — slides in from left on hover */}
+              {/* Platform gradient accent bar — slides in from left on hover */}
               <div
-                className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100"
-                style={{ background: 'var(--gradient-brand)' }}
+                className={`absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-gradient-to-r transition-transform duration-300 group-hover:scale-x-100 ${PLATFORM_GRADIENTS[calc.platform] ?? ''}`}
               />
-              <span className="mb-2 inline-block rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-semibold text-primary">
-                {calc.platform}
-              </span>
+              <div className="flex items-center justify-between">
+                <span className="inline-block rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-semibold text-primary">
+                  {calc.platform}
+                </span>
+                <span className="rounded-full bg-surface-alt px-2 py-0.5 text-xs text-muted">
+                  Free
+                </span>
+              </div>
               <h2 className="text-lg font-semibold transition-colors duration-200 group-hover:text-primary">
                 {calc.cardTitle}
               </h2>

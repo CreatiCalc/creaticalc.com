@@ -217,7 +217,7 @@ export default function TwitterSponsorshipPage() {
         howItWorks={howItWorks}
         breadcrumbs={[
           { name: 'Home', path: '/' },
-          { name: 'X', path: '/twitter-engagement-rate-calculator' },
+          { name: 'X (Twitter)', path: '/x' },
           {
             name: 'X (Twitter) Sponsorship Rate Calculator',
             path: '/twitter-sponsorship-rate-calculator',

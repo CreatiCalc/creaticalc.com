@@ -204,7 +204,7 @@ export default function TikTokSponsorshipPage() {
         howItWorks={howItWorks}
         breadcrumbs={[
           { name: 'Home', path: '/' },
-          { name: 'TikTok', path: '/tiktok-engagement-rate-calculator' },
+          { name: 'TikTok', path: '/tiktok' },
           {
             name: 'TikTok Sponsorship Rate Calculator',
             path: '/tiktok-sponsorship-rate-calculator',

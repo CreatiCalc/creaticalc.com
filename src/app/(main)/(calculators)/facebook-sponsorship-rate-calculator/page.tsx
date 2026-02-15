@@ -216,7 +216,7 @@ export default function FacebookSponsorshipPage() {
         howItWorks={howItWorks}
         breadcrumbs={[
           { name: 'Home', path: '/' },
-          { name: 'Facebook', path: '/facebook-engagement-rate-calculator' },
+          { name: 'Facebook', path: '/facebook' },
           {
             name: 'Facebook Sponsorship Rate Calculator',
             path: '/facebook-sponsorship-rate-calculator',

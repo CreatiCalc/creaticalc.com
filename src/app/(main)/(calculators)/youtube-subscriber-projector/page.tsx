@@ -217,7 +217,7 @@ export default function YouTubeSubscriberProjectorPage() {
         howItWorks={howItWorks}
         breadcrumbs={[
           { name: 'Home', path: '/' },
-          { name: 'YouTube', path: '/youtube-money-calculator' },
+          { name: 'YouTube', path: '/youtube' },
           {
             name: 'YouTube Subscriber Growth Projector',
             path: '/youtube-subscriber-projector',

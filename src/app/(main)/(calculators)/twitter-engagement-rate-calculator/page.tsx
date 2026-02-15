@@ -225,6 +225,7 @@ export default function TwitterEngagementPage() {
         howItWorks={howItWorks}
         breadcrumbs={[
           { name: 'Home', path: '/' },
+          { name: 'X (Twitter)', path: '/x' },
           {
             name: 'X (Twitter) Engagement Rate Calculator',
             path: '/twitter-engagement-rate-calculator',

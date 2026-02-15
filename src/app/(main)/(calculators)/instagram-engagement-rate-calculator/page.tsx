@@ -200,6 +200,7 @@ export default function InstagramEngagementPage() {
         howItWorks={howItWorks}
         breadcrumbs={[
           { name: 'Home', path: '/' },
+          { name: 'Instagram', path: '/instagram' },
           {
             name: 'Instagram Engagement Rate Calculator',
             path: '/instagram-engagement-rate-calculator',

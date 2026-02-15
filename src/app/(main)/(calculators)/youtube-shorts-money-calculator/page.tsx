@@ -250,7 +250,7 @@ export default function YouTubeShortsMoneyCalculatorPage() {
         howItWorks={howItWorks}
         breadcrumbs={[
           { name: 'Home', path: '/' },
-          { name: 'YouTube', path: '/youtube-money-calculator' },
+          { name: 'YouTube', path: '/youtube' },
           { name: 'YouTube Shorts Money Calculator', path: '/youtube-shorts-money-calculator' },
         ]}
       >
