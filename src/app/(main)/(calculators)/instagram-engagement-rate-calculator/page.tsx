@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
 import CalculatorSchema from '@/components/seo/CalculatorSchema';
-import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
+
 import { InstagramEngagementCalculator } from '@/features/calculators/instagram-engagement';
 import type { FAQItem } from '@/features/calculators/shared/types';
 
@@ -82,6 +82,11 @@ const faq: FAQItem[] = [
     question: 'What is the difference between engagement rate by followers vs. by reach?',
     answer:
       'Engagement rate by followers divides total interactions by your follower count — this is the standard metric used for comparing accounts and is what brands typically request. Engagement rate by reach divides interactions by the number of unique people who saw the post — this is more accurate for measuring content performance since it accounts for actual visibility. Reach-based rates are typically 2–5 times higher than follower-based rates because not all followers see every post. Our calculator uses the follower-based formula as it is the industry standard.',
+  },
+  {
+    question: 'Can I embed this calculator on my website?',
+    answer:
+      'Yes! Click the "Embed" button below the calculator results to get a free embed code for your website or blog. You can customize the theme (light or dark), accent color, and height to match your site\'s design. The embed is fully responsive and works on any website that supports iframes.',
   },
 ];
 
@@ -192,21 +197,20 @@ export default function InstagramEngagementPage() {
         description="Calculate your Instagram engagement rate from likes, comments, and saves. Compare against industry benchmarks by follower tier."
         url="/instagram-engagement-rate-calculator"
       />
-      <BreadcrumbSchema
-        items={[
+      <CalculatorLayout
+        title="Instagram Engagement Rate Calculator"
+        slug="instagram-engagement-rate-calculator"
+        description="Calculate your Instagram engagement rate and see how you compare against benchmarks for your follower tier and content niche."
+        faq={faq}
+        howItWorks={howItWorks}
+        breadcrumbs={[
           { name: 'Home', path: '/' },
-          { name: 'Instagram', path: '/instagram-engagement-rate-calculator' },
+          { name: 'Instagram', path: '/instagram' },
           {
             name: 'Instagram Engagement Rate Calculator',
             path: '/instagram-engagement-rate-calculator',
           },
         ]}
-      />
-      <CalculatorLayout
-        title="Instagram Engagement Rate Calculator"
-        description="Calculate your Instagram engagement rate and see how you compare against benchmarks for your follower tier and content niche."
-        faq={faq}
-        howItWorks={howItWorks}
       >
         <Suspense>
           <InstagramEngagementCalculator />

@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
 import CalculatorSchema from '@/components/seo/CalculatorSchema';
-import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
+
 import { InstagramSponsorshipCalculator } from '@/features/calculators/instagram-sponsorship';
 import type { FAQItem } from '@/features/calculators/shared/types';
 
@@ -82,6 +82,11 @@ const faq: FAQItem[] = [
     question: 'What should I include in my Instagram media kit?',
     answer:
       'A strong media kit should include: your follower count and engagement rate, audience demographics (age, gender, location), content examples and past brand partnerships, your rate card broken down by content type, reach and impression statistics, and any notable results from previous campaigns (click-through rates, conversions). Use this calculator to generate your rate card and include specific numbers for Feed Posts, Reels, Stories, and Carousels.',
+  },
+  {
+    question: 'Can I embed this calculator on my website?',
+    answer:
+      'Yes! Click the "Embed" button below the calculator results to get a free embed code for your website or blog. You can customize the theme (light or dark), accent color, and height to match your site\'s design. The embed is fully responsive and works on any website that supports iframes.',
   },
 ];
 
@@ -187,21 +192,20 @@ export default function InstagramSponsorshipPage() {
         description="Calculate how much to charge for sponsored Instagram posts, Reels, Stories, and carousels based on your followers, engagement rate, and niche."
         url="/instagram-sponsorship-rate-calculator"
       />
-      <BreadcrumbSchema
-        items={[
+      <CalculatorLayout
+        title="Instagram Sponsorship Rate Calculator"
+        slug="instagram-sponsorship-rate-calculator"
+        description="Find out how much to charge for sponsored posts on Instagram. Get a personalized rate card based on your followers, engagement rate, content type, and niche."
+        faq={faq}
+        howItWorks={howItWorks}
+        breadcrumbs={[
           { name: 'Home', path: '/' },
-          { name: 'Instagram', path: '/instagram-engagement-rate-calculator' },
+          { name: 'Instagram', path: '/instagram' },
           {
             name: 'Instagram Sponsorship Rate Calculator',
             path: '/instagram-sponsorship-rate-calculator',
           },
         ]}
-      />
-      <CalculatorLayout
-        title="Instagram Sponsorship Rate Calculator"
-        description="Find out how much to charge for sponsored posts on Instagram. Get a personalized rate card based on your followers, engagement rate, content type, and niche."
-        faq={faq}
-        howItWorks={howItWorks}
       >
         <Suspense>
           <InstagramSponsorshipCalculator />

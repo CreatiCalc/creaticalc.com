@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
 import CalculatorSchema from '@/components/seo/CalculatorSchema';
-import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
+
 import { YouTubeMoneyCalculator } from '@/features/calculators/youtube-money';
 import type { FAQItem } from '@/features/calculators/shared/types';
 
@@ -72,6 +72,11 @@ const faq: FAQItem[] = [
     question: 'How often does YouTube pay for Shorts?',
     answer:
       "YouTube pays Shorts creators monthly through Google AdSense, the same payment system used for long-form video earnings. Payments are issued between the 21st and 26th of each month for the previous month's earnings, provided you have reached the $100 minimum payment threshold. Revenue from Shorts and long-form videos is combined into a single monthly payment.",
+  },
+  {
+    question: 'Can I embed this calculator on my website?',
+    answer:
+      'Yes! Click the "Embed" button below the calculator results to get a free embed code for your website or blog. You can customize the theme (light or dark), accent color, and height to match your site\'s design. The embed is fully responsive and works on any website that supports iframes.',
   },
 ];
 
@@ -242,18 +247,17 @@ export default function YouTubeShortsMoneyCalculatorPage() {
         description="Estimate how much YouTube Shorts pay per 1,000 views with real RPM data."
         url="/youtube-shorts-money-calculator"
       />
-      <BreadcrumbSchema
-        items={[
-          { name: 'Home', path: '/' },
-          { name: 'YouTube', path: '/youtube-money-calculator' },
-          { name: 'YouTube Shorts Money Calculator', path: '/youtube-shorts-money-calculator' },
-        ]}
-      />
       <CalculatorLayout
         title="YouTube Shorts Money Calculator"
+        slug="youtube-shorts-money-calculator"
         description="Estimate your YouTube Shorts earnings based on daily views. See projected daily, monthly, and yearly Shorts revenue with growth modeling and seasonal adjustments."
         faq={faq}
         howItWorks={howItWorks}
+        breadcrumbs={[
+          { name: 'Home', path: '/' },
+          { name: 'YouTube', path: '/youtube' },
+          { name: 'YouTube Shorts Money Calculator', path: '/youtube-shorts-money-calculator' },
+        ]}
       >
         <Suspense>
           <YouTubeMoneyCalculator

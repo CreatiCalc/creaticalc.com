@@ -18,6 +18,15 @@ interface FollowerSliderInputProps {
   label?: string;
 }
 
+function getTierHint(followers: number): string {
+  if (followers >= 1_000_000) return 'Mega creator (1M+)';
+  if (followers >= 100_000) return 'Macro creator (100K–1M)';
+  if (followers >= 50_000) return 'Mid-tier creator (50K–100K)';
+  if (followers >= 10_000) return 'Micro creator (10K–50K)';
+  if (followers >= 1_000) return 'Nano creator (1K–10K)';
+  return 'Growing account (<1K)';
+}
+
 export default function FollowerSliderInput({
   value,
   onChange,
@@ -48,6 +57,7 @@ export default function FollowerSliderInput({
           onChange={(v) => onChange(Math.max(0, Math.min(v, max)))}
         />
       </div>
+      <p className="mt-1 text-xs text-muted">{getTierHint(value)}</p>
     </>
   );
 }

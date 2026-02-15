@@ -1,20 +1,23 @@
 import type { Metadata, Viewport } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { DM_Sans, Sora } from 'next/font/google';
 import { SITE_URL, SITE_DESCRIPTION } from '@/lib/siteConfig';
 import './globals.css';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+const dmSans = DM_Sans({
+  variable: '--font-dm-sans',
   subsets: ['latin'],
+  display: 'swap',
 });
 
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
+const sora = Sora({
+  variable: '--font-sora',
   subsets: ['latin'],
+  display: 'swap',
+  weight: ['600', '700'],
 });
 
 export const viewport: Viewport = {
-  themeColor: '#7c3aed',
+  themeColor: '#0d9488',
 };
 
 export const metadata: Metadata = {
@@ -45,7 +48,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>
+      <body className={`${dmSans.variable} ${sora.variable} font-sans antialiased`}>
         {children}
       </body>
     </html>

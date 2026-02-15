@@ -42,11 +42,11 @@ export default function NumberInput({
         value={value}
         min={min}
         max={max}
-        step="any"
+        step={step}
         onChange={(e) => onChange(Number(e.target.value))}
         autoComplete="off"
         placeholder={placeholder}
-        className="w-full rounded-lg border border-border bg-background px-3 py-2 text-sm transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+        className="w-full rounded-lg border border-border bg-background px-3 py-2 text-sm transition-all focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
       />
     </div>
   );

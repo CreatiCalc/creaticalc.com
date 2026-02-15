@@ -1,20 +1,28 @@
 import dynamic from 'next/dynamic';
-
-function ChartPlaceholder() {
-  return (
-    <div className="mt-6">
-      <div className="mb-3 h-6 w-64 animate-pulse rounded bg-surface-alt" />
-      <div className="h-[350px] animate-pulse rounded-lg bg-surface-alt" />
-    </div>
-  );
-}
+import ChartSkeleton from '@/features/calculators/shared/ChartSkeleton';
+import SectionSkeleton from '@/features/calculators/shared/SectionSkeleton';
 
 export const ProjectionChart = dynamic(() => import('./ProjectionChart'), {
   ssr: false,
-  loading: ChartPlaceholder,
+  loading: ChartSkeleton,
 });
-export const Recommendations = dynamic(() => import('./Recommendations'), { ssr: false });
-export const DriversBreakdown = dynamic(() => import('./DriversBreakdown'), { ssr: false });
-export const MilestoneTimeline = dynamic(() => import('./MilestoneTimeline'), { ssr: false });
-export const SponsorshipEstimate = dynamic(() => import('./SponsorshipEstimate'), { ssr: false });
-export const RpmTable = dynamic(() => import('./RpmTable'), { ssr: false });
+export const Recommendations = dynamic(() => import('./Recommendations'), {
+  ssr: false,
+  loading: SectionSkeleton,
+});
+export const DriversBreakdown = dynamic(() => import('./DriversBreakdown'), {
+  ssr: false,
+  loading: SectionSkeleton,
+});
+export const MilestoneTimeline = dynamic(() => import('./MilestoneTimeline'), {
+  ssr: false,
+  loading: SectionSkeleton,
+});
+export const SponsorshipEstimate = dynamic(() => import('./SponsorshipEstimate'), {
+  ssr: false,
+  loading: SectionSkeleton,
+});
+export const RpmTable = dynamic(() => import('./RpmTable'), {
+  ssr: false,
+  loading: SectionSkeleton,
+});

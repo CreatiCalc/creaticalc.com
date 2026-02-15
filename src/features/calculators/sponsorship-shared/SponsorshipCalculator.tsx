@@ -8,6 +8,7 @@ import ShareButtons from '@/components/ui/ShareButtons';
 import { useShareUrl } from '@/components/ui/useShareUrl';
 import AdSlot from '@/components/layout/AdSlot';
 import CollapsibleSection from '@/features/calculators/shared/CollapsibleSection';
+import ResultsHeading from '@/features/calculators/shared/ResultsHeading';
 import FollowerSliderInput from '@/features/calculators/shared/FollowerSliderInput';
 import ButtonToggle from '@/components/ui/ButtonToggle';
 import { getContentTypesForPlatform } from '@/lib/sponsorshipModel';
@@ -125,8 +126,8 @@ export default function SponsorshipCalculator({ config }: SponsorshipCalculatorP
         </div>
       </Card>
 
-      {/* Primary result */}
-      <div className="mt-6">
+      <ResultsHeading title="Sponsorship Rate" subtitle="Based on 2026 creator economy rates" />
+      <div>
         <SponsorshipRateDisplay
           rate={result.rate}
           platform={config.platform}
@@ -146,18 +147,14 @@ export default function SponsorshipCalculator({ config }: SponsorshipCalculatorP
         <>
           <AdSlot slot="below-results" className="mt-6" />
 
-          <CollapsibleSection title="Full Rate Card" defaultOpen={false} className="mt-6">
+          <CollapsibleSection title="Full Rate Card" defaultOpen className="mt-6">
             <RateCardTable
               rateCard={result.rateCard}
               activeContentType={state.contentType as SponsorshipContentType}
             />
           </CollapsibleSection>
 
-          <CollapsibleSection
-            title="Monthly Earnings Projection"
-            defaultOpen={false}
-            className="mt-6"
-          >
+          <CollapsibleSection title="Monthly Earnings Projection" defaultOpen className="mt-6">
             <MonthlyEarningsProjection
               rate={result.rate}
               dealsPerMonth={state.dealsPerMonth}
@@ -167,7 +164,12 @@ export default function SponsorshipCalculator({ config }: SponsorshipCalculatorP
 
           <AdSlot slot="after-chart" className="mt-6" />
 
-          <CollapsibleSection title="Influencer Tier Context" defaultOpen={false} className="mt-6">
+          <CollapsibleSection
+            title="Influencer Tier Context"
+            defaultOpen={false}
+            className="mt-6"
+            preview="How your tier compares"
+          >
             <TierContext
               currentTier={result.tier}
               tierLabel={result.tierLabel}
@@ -175,7 +177,12 @@ export default function SponsorshipCalculator({ config }: SponsorshipCalculatorP
             />
           </CollapsibleSection>
 
-          <CollapsibleSection title="Negotiation Tips" defaultOpen={false} className="mt-6">
+          <CollapsibleSection
+            title="Negotiation Tips"
+            defaultOpen={false}
+            className="mt-6"
+            preview="Maximize your deal value"
+          >
             <NegotiationTips tips={tips} />
           </CollapsibleSection>
         </>

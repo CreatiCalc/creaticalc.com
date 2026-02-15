@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useRef } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import Logo from '@/components/brand/Logo';
 import MobileNav from './MobileNav';
 import NavDropdown from './NavDropdown';
@@ -12,6 +13,7 @@ import useEscapeKey from '@/components/ui/useEscapeKey';
 export default function Header() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const navRef = useRef<HTMLElement>(null);
+  const pathname = usePathname();
 
   const close = useCallback(() => setOpenIndex(null), []);
 
@@ -42,6 +44,7 @@ export default function Header() {
               isOpen={openIndex === i}
               onToggle={() => toggle(i)}
               onClose={close}
+              pathname={pathname}
             />
           ))}
           <NavDropdown
@@ -52,6 +55,7 @@ export default function Header() {
             onToggle={() => toggle(NAV_GROUPS.length)}
             onClose={close}
             align="right"
+            pathname={pathname}
           />
         </nav>
         <MobileNav />

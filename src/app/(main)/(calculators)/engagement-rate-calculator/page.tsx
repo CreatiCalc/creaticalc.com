@@ -6,6 +6,7 @@ import AdSlot from '@/components/layout/AdSlot';
 import { PlatformComparisonTable } from '@/features/calculators/engagement-shared';
 import type { FAQItem } from '@/features/calculators/shared/types';
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
+import Breadcrumbs from '@/components/seo/Breadcrumbs';
 import { SITE_URL } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
@@ -114,6 +115,12 @@ export default function EngagementRateCalculatorPage() {
         ]}
       />
       <div className="mx-auto max-w-4xl px-4 py-10">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', path: '/' },
+            { name: 'Engagement Rate Calculator', path: '/engagement-rate-calculator' },
+          ]}
+        />
         <div className="mb-8 text-center">
           <h1 className="text-gradient-brand text-3xl font-bold md:text-4xl">
             Engagement Rate Calculator

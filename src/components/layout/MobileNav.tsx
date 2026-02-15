@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useRef } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { NAV_GROUPS, MORE_LINKS } from './navConfig';
 import useClickOutside from '@/components/ui/useClickOutside';
 import useEscapeKey from '@/components/ui/useEscapeKey';
@@ -9,6 +10,7 @@ import useEscapeKey from '@/components/ui/useEscapeKey';
 export default function MobileNav() {
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
 
   const close = useCallback(() => setOpen(false), []);
 
@@ -71,7 +73,8 @@ export default function MobileNav() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className="block rounded-lg px-4 py-2.5 text-sm text-muted transition-colors hover:bg-surface-alt hover:text-foreground"
+                  aria-current={pathname === item.href ? 'page' : undefined}
+                  className={`block rounded-lg px-4 py-2.5 text-sm transition-colors hover:bg-surface-alt hover:text-foreground ${pathname === item.href ? 'bg-primary/5 font-medium text-primary' : 'text-muted'}`}
                 >
                   {item.name}
                 </Link>
@@ -87,7 +90,8 @@ export default function MobileNav() {
               key={link.href}
               href={link.href}
               onClick={() => setOpen(false)}
-              className="block rounded-lg px-4 py-2.5 text-sm text-muted transition-colors hover:bg-surface-alt hover:text-foreground"
+              aria-current={pathname === link.href ? 'page' : undefined}
+              className={`block rounded-lg px-4 py-2.5 text-sm transition-colors hover:bg-surface-alt hover:text-foreground ${pathname === link.href ? 'bg-primary/5 font-medium text-primary' : 'text-muted'}`}
             >
               {link.name}
             </Link>

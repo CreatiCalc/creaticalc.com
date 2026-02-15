@@ -19,6 +19,12 @@
     X-Frame-Options = ""
 
 [[redirects]]
+  from = "/test-embed.html"
+  to = "/404"
+  status = 404
+  force = true
+
+[[redirects]]
   from = "https://www.creaticalc.com/*"
   to = "https://creaticalc.com/:splat"
   status = 301

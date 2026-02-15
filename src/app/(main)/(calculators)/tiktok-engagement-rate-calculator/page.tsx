@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
 import CalculatorSchema from '@/components/seo/CalculatorSchema';
-import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
+
 import { TikTokEngagementCalculator } from '@/features/calculators/tiktok-engagement';
 import type { FAQItem } from '@/features/calculators/shared/types';
 
@@ -82,6 +82,11 @@ const faq: FAQItem[] = [
     question: 'How do TikTok shares affect the algorithm?',
     answer:
       'Shares are one of the most powerful engagement signals on TikTok. When someone shares your video via direct message, to another platform, or by downloading it, TikTok interprets this as the strongest form of endorsement — the viewer found the content valuable enough to actively send to someone else. Shares carry more algorithmic weight than likes and are roughly equivalent to comments in impact. Videos with high share rates tend to see extended distribution cycles, sometimes resurfacing days or weeks after initial posting.',
+  },
+  {
+    question: 'Can I embed this calculator on my website?',
+    answer:
+      'Yes! Click the "Embed" button below the calculator results to get a free embed code for your website or blog. You can customize the theme (light or dark), accent color, and height to match your site\'s design. The embed is fully responsive and works on any website that supports iframes.',
   },
 ];
 
@@ -209,21 +214,20 @@ export default function TikTokEngagementPage() {
         description="Calculate your TikTok engagement rate by followers or by views. Compare against industry benchmarks by follower tier."
         url="/tiktok-engagement-rate-calculator"
       />
-      <BreadcrumbSchema
-        items={[
+      <CalculatorLayout
+        title="TikTok Engagement Rate Calculator"
+        slug="tiktok-engagement-rate-calculator"
+        description="Calculate your TikTok engagement rate by followers or by views. See how you compare against benchmarks for your follower tier and content niche."
+        faq={faq}
+        howItWorks={howItWorks}
+        breadcrumbs={[
           { name: 'Home', path: '/' },
-          { name: 'TikTok', path: '/tiktok-engagement-rate-calculator' },
+          { name: 'TikTok', path: '/tiktok' },
           {
             name: 'TikTok Engagement Rate Calculator',
             path: '/tiktok-engagement-rate-calculator',
           },
         ]}
-      />
-      <CalculatorLayout
-        title="TikTok Engagement Rate Calculator"
-        description="Calculate your TikTok engagement rate by followers or by views. See how you compare against benchmarks for your follower tier and content niche."
-        faq={faq}
-        howItWorks={howItWorks}
       >
         <Suspense>
           <TikTokEngagementCalculator />

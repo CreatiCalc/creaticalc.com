@@ -19,8 +19,8 @@ export default function Logo({ className = '', showWordmark = true, size = 'md' 
       >
         <defs>
           <linearGradient id="logo-grad" x1="0" y1="32" x2="32" y2="0">
-            <stop offset="0%" stopColor="#7c3aed" />
-            <stop offset="100%" stopColor="#6366f1" />
+            <stop offset="0%" stopColor="#0d9488" />
+            <stop offset="100%" stopColor="#0891b2" />
           </linearGradient>
         </defs>
         {/* Three ascending rounded bars — tighter grouping, rounder corners */}
@@ -28,7 +28,7 @@ export default function Logo({ className = '', showWordmark = true, size = 'md' 
         <rect x="13" y="12" width="6" height="18" rx="3" fill="url(#logo-grad)" />
         <rect x="22" y="4" width="6" height="26" rx="3" fill="url(#logo-grad)" />
         {/* 4-point sparkle */}
-        <path d="M29 0 L30.5 2 L32 3.5 L30.5 5 L29 7 L27.5 5 L26 3.5 L27.5 2Z" fill="#ec4899" />
+        <path d="M29 0 L30.5 2 L32 3.5 L30.5 5 L29 7 L27.5 5 L26 3.5 L27.5 2Z" fill="#d97706" />
       </svg>
       {showWordmark && (
         <span className={`font-bold leading-none ${size === 'sm' ? 'text-lg' : 'text-xl'}`}>
