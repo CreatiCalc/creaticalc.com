@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
 import CalculatorSchema from '@/components/seo/CalculatorSchema';
-import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
+
 import { YouTubeSponsorshipCalculator } from '@/features/calculators/youtube-sponsorship';
 import type { FAQItem } from '@/features/calculators/shared/types';
 
@@ -82,6 +82,11 @@ const faq: FAQItem[] = [
     question: 'Should I charge for usage rights separately?',
     answer:
       'Yes, usage rights should almost always be a separate line item in your sponsorship agreement. When a brand wants to repurpose your video content as a paid advertisement on YouTube, social media, or other channels, that extends the value of your work far beyond your organic audience. Standard usage rights fees range from 50\u2013500% of the base sponsorship rate, depending on the scope (platforms, duration, geographic reach) and whether the brand will run the content as paid ads. Always specify the usage period\u2014typically 30, 60, or 90 days\u2014and charge more for perpetual or unlimited usage.',
+  },
+  {
+    question: 'Can I embed this calculator on my website?',
+    answer:
+      'Yes! Click the "Embed" button below the calculator results to get a free embed code for your website or blog. You can customize the theme (light or dark), accent color, and height to match your site\'s design. The embed is fully responsive and works on any website that supports iframes.',
   },
 ];
 
@@ -215,21 +220,20 @@ export default function YouTubeSponsorshipPage() {
         description="Calculate how much to charge for sponsored YouTube videos, integrations, Shorts, and pre-rolls based on your subscribers, engagement rate, and niche."
         url="/youtube-sponsorship-rate-calculator"
       />
-      <BreadcrumbSchema
-        items={[
+      <CalculatorLayout
+        title="YouTube Sponsorship Rate Calculator"
+        slug="youtube-sponsorship-rate-calculator"
+        description="Find out how much to charge for sponsored videos on YouTube. Get a personalized rate card based on your subscribers, engagement rate, content type, and niche."
+        faq={faq}
+        howItWorks={howItWorks}
+        breadcrumbs={[
           { name: 'Home', path: '/' },
-          { name: 'YouTube', path: '/youtube-money-calculator' },
+          { name: 'YouTube', path: '/youtube' },
           {
             name: 'YouTube Sponsorship Rate Calculator',
             path: '/youtube-sponsorship-rate-calculator',
           },
         ]}
-      />
-      <CalculatorLayout
-        title="YouTube Sponsorship Rate Calculator"
-        description="Find out how much to charge for sponsored videos on YouTube. Get a personalized rate card based on your subscribers, engagement rate, content type, and niche."
-        faq={faq}
-        howItWorks={howItWorks}
       >
         <Suspense>
           <YouTubeSponsorshipCalculator />

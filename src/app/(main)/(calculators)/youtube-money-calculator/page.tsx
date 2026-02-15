@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
 import CalculatorSchema from '@/components/seo/CalculatorSchema';
-import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
+
 import { YouTubeMoneyCalculator } from '@/features/calculators/youtube-money';
 import type { FAQItem } from '@/features/calculators/shared/types';
 import { NICHE_PAGES } from '@/lib/nichePageData';
@@ -103,6 +103,11 @@ const faq: FAQItem[] = [
     question: 'How much do YouTube Shorts pay?',
     answer:
       'YouTube Shorts pay significantly less than long-form videos — roughly $0.01 to $0.07 per 1,000 views (RPM). This is because Shorts ads come from a separate revenue pool where creators receive 45% of allocated ad revenue. Unlike long-form content where niche heavily influences earnings, Shorts RPM is relatively flat across most content categories, though finance and tech Shorts can earn toward the higher end. Use the "Shorts" toggle in our calculator to see projected Shorts earnings. To maximize revenue, many creators use Shorts to drive subscribers who then watch their higher-paying long-form content.',
+  },
+  {
+    question: 'Can I embed this calculator on my website?',
+    answer:
+      'Yes! Click the "Embed" button below the calculator results to get a free embed code for your website or blog. You can customize the theme (light or dark), accent color, and height to match your site\'s design. The embed is fully responsive and works on any website that supports iframes.',
   },
 ];
 
@@ -235,18 +240,17 @@ export default function YouTubeMoneyCalculatorPage() {
         description="Estimate how much money YouTubers make based on views, CPM, and content niche."
         url="/youtube-money-calculator"
       />
-      <BreadcrumbSchema
-        items={[
-          { name: 'Home', path: '/' },
-          { name: 'YouTube', path: '/youtube-money-calculator' },
-          { name: 'YouTube Money Calculator', path: '/youtube-money-calculator' },
-        ]}
-      />
       <CalculatorLayout
         title="YouTube Money Calculator"
+        slug="youtube-money-calculator"
         description="Estimate your YouTube earnings based on daily views and content niche. See projected daily, monthly, and yearly revenue with growth modeling and seasonal adjustments."
         faq={faq}
         howItWorks={howItWorks}
+        breadcrumbs={[
+          { name: 'Home', path: '/' },
+          { name: 'YouTube', path: '/youtube' },
+          { name: 'YouTube Money Calculator', path: '/youtube-money-calculator' },
+        ]}
       >
         <Suspense>
           <YouTubeMoneyCalculator />

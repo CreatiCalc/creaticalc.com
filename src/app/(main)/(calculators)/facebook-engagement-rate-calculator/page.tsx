@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
 import CalculatorSchema from '@/components/seo/CalculatorSchema';
-import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
+
 import { FacebookEngagementCalculator } from '@/features/calculators/facebook-engagement';
 import type { FAQItem } from '@/features/calculators/shared/types';
 
@@ -77,6 +77,11 @@ const faq: FAQItem[] = [
     question: 'Is Facebook still worth it for creators in 2026?',
     answer:
       'Despite low organic engagement rates, Facebook remains valuable for creators due to its massive user base (nearly 3 billion monthly active users), strong monetization tools (in-stream ads, Stars, paid subscriptions), and Facebook Reels which currently get boosted distribution. Facebook Groups also provide a powerful community-building tool that no other platform matches. The key is to adapt your strategy — focus on video content, build a Group alongside your Page, and consider using paid promotion strategically rather than relying solely on organic reach.',
+  },
+  {
+    question: 'Can I embed this calculator on my website?',
+    answer:
+      'Yes! Click the "Embed" button below the calculator results to get a free embed code for your website or blog. You can customize the theme (light or dark), accent color, and height to match your site\'s design. The embed is fully responsive and works on any website that supports iframes.',
   },
 ];
 
@@ -202,21 +207,20 @@ export default function FacebookEngagementPage() {
         description="Calculate your Facebook Page engagement rate by followers or by reach. Compare against industry benchmarks by follower tier."
         url="/facebook-engagement-rate-calculator"
       />
-      <BreadcrumbSchema
-        items={[
+      <CalculatorLayout
+        title="Facebook Engagement Rate Calculator"
+        slug="facebook-engagement-rate-calculator"
+        description="Calculate your Facebook Page engagement rate by followers or by reach. See how you compare against benchmarks for your follower tier and content niche."
+        faq={faq}
+        howItWorks={howItWorks}
+        breadcrumbs={[
           { name: 'Home', path: '/' },
-          { name: 'Facebook', path: '/facebook-engagement-rate-calculator' },
+          { name: 'Facebook', path: '/facebook' },
           {
             name: 'Facebook Engagement Rate Calculator',
             path: '/facebook-engagement-rate-calculator',
           },
         ]}
-      />
-      <CalculatorLayout
-        title="Facebook Engagement Rate Calculator"
-        description="Calculate your Facebook Page engagement rate by followers or by reach. See how you compare against benchmarks for your follower tier and content niche."
-        faq={faq}
-        howItWorks={howItWorks}
       >
         <Suspense>
           <FacebookEngagementCalculator />

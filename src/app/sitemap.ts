@@ -15,10 +15,42 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: baseUrl,
-      lastModified: '2026-02-14',
+      lastModified: '2026-02-15',
       changeFrequency: 'monthly',
       priority: 0.8,
     },
+    // Platform hub pages
+    {
+      url: `${baseUrl}/youtube`,
+      lastModified: '2026-02-15',
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/instagram`,
+      lastModified: '2026-02-15',
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/tiktok`,
+      lastModified: '2026-02-15',
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/facebook`,
+      lastModified: '2026-02-15',
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/x`,
+      lastModified: '2026-02-15',
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    // Individual calculators
     {
       url: `${baseUrl}/youtube-money-calculator`,
       lastModified: '2026-02-14',

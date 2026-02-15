@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
 import CalculatorSchema from '@/components/seo/CalculatorSchema';
-import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
+
 import { TwitterSponsorshipCalculator } from '@/features/calculators/twitter-sponsorship';
 import type { FAQItem } from '@/features/calculators/shared/types';
 
@@ -82,6 +82,11 @@ const faq: FAQItem[] = [
     question: 'Should I charge differently for X Premium subscribers?',
     answer:
       'If you are an X Premium subscriber, you can justify charging higher sponsorship rates for several reasons. Premium subscribers get prioritized in replies and search, which means your sponsored content reaches a larger audience. The verified badge adds credibility to brand endorsements. You can also write longer posts (up to 25,000 characters), attach longer videos, and edit tweets after posting — all of which give brands more flexibility in how their message is presented. Many creators with Premium charge a 15–25% premium over standard rates to reflect this enhanced reach and functionality.',
+  },
+  {
+    question: 'Can I embed this calculator on my website?',
+    answer:
+      'Yes! Click the "Embed" button below the calculator results to get a free embed code for your website or blog. You can customize the theme (light or dark), accent color, and height to match your site\'s design. The embed is fully responsive and works on any website that supports iframes.',
   },
 ];
 
@@ -209,21 +214,20 @@ export default function TwitterSponsorshipPage() {
         description="Calculate how much to charge for sponsored tweets, threads, and X Spaces based on your followers, engagement rate, and niche."
         url="/twitter-sponsorship-rate-calculator"
       />
-      <BreadcrumbSchema
-        items={[
+      <CalculatorLayout
+        title="X (Twitter) Sponsorship Rate Calculator"
+        slug="twitter-sponsorship-rate-calculator"
+        description="Find out how much to charge for sponsored content on X (Twitter). Get a personalized rate card based on your followers, engagement rate, content type, and niche."
+        faq={faq}
+        howItWorks={howItWorks}
+        breadcrumbs={[
           { name: 'Home', path: '/' },
-          { name: 'X', path: '/twitter-engagement-rate-calculator' },
+          { name: 'X (Twitter)', path: '/x' },
           {
             name: 'X (Twitter) Sponsorship Rate Calculator',
             path: '/twitter-sponsorship-rate-calculator',
           },
         ]}
-      />
-      <CalculatorLayout
-        title="X (Twitter) Sponsorship Rate Calculator"
-        description="Find out how much to charge for sponsored content on X (Twitter). Get a personalized rate card based on your followers, engagement rate, content type, and niche."
-        faq={faq}
-        howItWorks={howItWorks}
       >
         <Suspense>
           <TwitterSponsorshipCalculator />

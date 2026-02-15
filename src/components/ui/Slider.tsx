@@ -113,7 +113,7 @@ export default function Slider({
         aria-valuemax={max}
         aria-valuenow={value}
         aria-valuetext={displayValue}
-        className="w-full cursor-pointer accent-primary"
+        className="w-full"
       />
       {logScale && ticks && ticks.length > 0 && (
         <div className="relative h-4">

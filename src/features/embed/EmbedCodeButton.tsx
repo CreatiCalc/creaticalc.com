@@ -18,7 +18,7 @@ export function EmbedCodeButton({ slug }: EmbedCodeButtonProps) {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="inline-flex items-center gap-1.5 rounded-lg border border-border px-3 py-1.5 text-sm font-medium text-muted transition-colors hover:border-primary hover:text-primary"
+        className="inline-flex items-center gap-1.5 rounded-lg border border-border px-3 py-1.5 text-sm font-medium text-muted transition-all active:scale-[0.97] hover:border-primary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
       >
         <svg
           className="h-4 w-4"
@@ -115,16 +115,36 @@ window.addEventListener('message', function(e) {
     <dialog
       ref={setDialogRef}
       onClose={onClose}
-      className="m-auto w-full max-w-lg rounded-xl border border-border bg-background p-0 shadow-xl backdrop:bg-foreground/40"
+      className="m-auto w-full max-w-lg overflow-visible rounded-2xl border border-border bg-background p-0 shadow-2xl backdrop:bg-foreground/50 backdrop:backdrop-blur-sm"
     >
       <div className="p-6">
-        <div className="mb-4 flex items-center justify-between">
-          <h2 className="text-lg font-semibold text-foreground">Embed This Calculator</h2>
+        {/* Header */}
+        <div className="mb-6 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10">
+              <svg
+                className="h-4.5 w-4.5 text-primary"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <polyline points="16 18 22 12 16 6" />
+                <polyline points="8 6 2 12 8 18" />
+              </svg>
+            </div>
+            <h2 className="font-display text-lg font-semibold text-foreground">
+              Embed This Calculator
+            </h2>
+          </div>
           <button
             type="button"
             onClick={() => dialogRef.current?.close()}
             aria-label="Close dialog"
-            className="rounded-lg p-1 text-muted hover:bg-surface hover:text-foreground"
+            className="rounded-lg p-1.5 text-muted-light transition-colors hover:bg-surface-alt hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
           >
             <svg
               className="h-5 w-5"
@@ -132,6 +152,8 @@ window.addEventListener('message', function(e) {
               fill="none"
               stroke="currentColor"
               strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               aria-hidden="true"
             >
               <path d="M18 6L6 18M6 6l12 12" />
@@ -139,239 +161,351 @@ window.addEventListener('message', function(e) {
           </button>
         </div>
 
-        {/* Theme toggle with sun/moon icons */}
-        <div className="mb-4 flex items-center gap-4">
-          <label className="text-sm font-medium text-foreground">Theme</label>
-          <div className="flex gap-1 rounded-lg border border-border p-0.5">
-            <button
-              type="button"
-              onClick={() => setTheme('light')}
-              className={`inline-flex items-center gap-1.5 rounded-md px-3 py-1 text-sm font-medium transition-colors ${
-                theme === 'light' ? 'text-white' : 'text-muted hover:text-foreground'
-              }`}
-              style={theme === 'light' ? { background: resolvedColor } : undefined}
+        {/* Theme + Accent Color row */}
+        <div className="mb-5 flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-6">
+          {/* Theme toggle */}
+          <div className="space-y-2">
+            <label className="text-sm font-medium text-foreground">Theme</label>
+            <div
+              className="flex gap-1 rounded-full border border-border bg-surface p-1"
+              role="radiogroup"
+              aria-label="Embed theme"
             >
-              <svg
-                className="h-3.5 w-3.5"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
+              <button
+                type="button"
+                role="radio"
+                aria-checked={theme === 'light'}
+                onClick={() => setTheme('light')}
+                className={`inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-sm font-medium transition-all active:scale-[0.97] ${
+                  theme === 'light'
+                    ? 'bg-primary text-white shadow-sm'
+                    : 'text-muted hover:text-foreground'
+                }`}
               >
-                <circle cx="12" cy="12" r="5" />
-                <line x1="12" y1="1" x2="12" y2="3" />
-                <line x1="12" y1="21" x2="12" y2="23" />
-                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-                <line x1="1" y1="12" x2="3" y2="12" />
-                <line x1="21" y1="12" x2="23" y2="12" />
-                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-              </svg>
-              Light
-            </button>
-            <button
-              type="button"
-              onClick={() => setTheme('dark')}
-              className={`inline-flex items-center gap-1.5 rounded-md px-3 py-1 text-sm font-medium transition-colors ${
-                theme === 'dark' ? 'text-white' : 'text-muted hover:text-foreground'
-              }`}
-              style={theme === 'dark' ? { background: resolvedColor } : undefined}
-            >
-              <svg
-                className="h-3.5 w-3.5"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
+                <svg
+                  className="h-3.5 w-3.5"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <circle cx="12" cy="12" r="5" />
+                  <line x1="12" y1="1" x2="12" y2="3" />
+                  <line x1="12" y1="21" x2="12" y2="23" />
+                  <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                  <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                  <line x1="1" y1="12" x2="3" y2="12" />
+                  <line x1="21" y1="12" x2="23" y2="12" />
+                  <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                  <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                </svg>
+                Light
+              </button>
+              <button
+                type="button"
+                role="radio"
+                aria-checked={theme === 'dark'}
+                onClick={() => setTheme('dark')}
+                className={`inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-sm font-medium transition-all active:scale-[0.97] ${
+                  theme === 'dark'
+                    ? 'bg-primary text-white shadow-sm'
+                    : 'text-muted hover:text-foreground'
+                }`}
               >
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-              </svg>
-              Dark
-            </button>
+                <svg
+                  className="h-3.5 w-3.5"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                </svg>
+                Dark
+              </button>
+            </div>
           </div>
-        </div>
 
-        {/* Color swatches + custom picker */}
-        <div className="mb-4">
-          <label className="mb-2 block text-sm font-medium text-foreground">Accent Color</label>
-          <div className="flex flex-wrap gap-2">
-            {colorOptions.map((opt) => (
-              <button
-                key={opt.name}
-                type="button"
-                onClick={() => setColor(opt.name)}
-                className={`h-8 w-8 rounded-full border-2 transition-transform ${
-                  color === opt.name ? 'scale-110 border-foreground' : 'border-transparent'
-                }`}
-                style={{ backgroundColor: opt.hex }}
-                aria-label={`${opt.name.charAt(0).toUpperCase() + opt.name.slice(1)} accent color`}
-              />
-            ))}
-            <div className="relative">
-              <button
-                type="button"
-                onClick={() => setPickerOpen(!pickerOpen)}
-                className={`h-8 w-8 rounded-full border-2 transition-transform ${
-                  !COLOR_PRESETS[color]
-                    ? 'scale-110 border-foreground'
-                    : 'border-border hover:border-muted'
-                }`}
-                style={{
-                  background: !COLOR_PRESETS[color]
-                    ? `#${color}`
-                    : 'conic-gradient(red, yellow, lime, aqua, blue, magenta, red)',
-                }}
-                aria-label="Custom accent color"
-              />
-              {pickerOpen && (
-                <>
-                  <div className="fixed inset-0 z-10" onClick={() => setPickerOpen(false)} />
-                  <div className="absolute top-10 right-0 z-20 rounded-lg border border-border bg-background p-3 shadow-xl">
-                    <HexColorPicker
-                      color={COLOR_PRESETS[color]?.primary ?? `#${color}`}
-                      onChange={(hex) => setColor(hex.replace('#', ''))}
-                    />
-                  </div>
-                </>
-              )}
+          {/* Accent color */}
+          <div className="min-w-0 flex-1 space-y-2">
+            <label className="text-sm font-medium text-foreground">Accent Color</label>
+            <div className="flex flex-wrap items-center gap-2">
+              {colorOptions.map((opt) => (
+                <button
+                  key={opt.name}
+                  type="button"
+                  onClick={() => setColor(opt.name)}
+                  className={`h-7 w-7 rounded-full transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 ${
+                    color === opt.name
+                      ? 'ring-2 ring-foreground ring-offset-2 ring-offset-background'
+                      : 'hover:scale-110'
+                  }`}
+                  style={{ backgroundColor: opt.hex }}
+                  aria-label={`${opt.name.charAt(0).toUpperCase() + opt.name.slice(1)} accent`}
+                />
+              ))}
+              <div className="relative">
+                <button
+                  type="button"
+                  onClick={() => setPickerOpen(!pickerOpen)}
+                  className={`h-7 w-7 rounded-full transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 ${
+                    !COLOR_PRESETS[color]
+                      ? 'ring-2 ring-foreground ring-offset-2 ring-offset-background'
+                      : 'hover:scale-110'
+                  }`}
+                  style={{
+                    background: !COLOR_PRESETS[color]
+                      ? `#${color}`
+                      : 'conic-gradient(red, yellow, lime, aqua, blue, magenta, red)',
+                  }}
+                  aria-label="Custom accent color"
+                />
+                {pickerOpen && (
+                  <>
+                    <div className="fixed inset-0 z-10" onClick={() => setPickerOpen(false)} />
+                    <div className="absolute top-10 right-0 z-20 rounded-xl border border-border bg-background p-3 shadow-xl">
+                      <HexColorPicker
+                        color={COLOR_PRESETS[color]?.primary ?? `#${color}`}
+                        onChange={(hex) => setColor(hex.replace('#', ''))}
+                      />
+                    </div>
+                  </>
+                )}
+              </div>
             </div>
           </div>
         </div>
 
         {/* Live preview */}
-        <div className="mb-4">
+        <div className="mb-5">
           <label className="mb-2 block text-sm font-medium text-foreground">Preview</label>
           <div
-            className="overflow-hidden rounded-lg border text-xs transition-colors"
+            className="overflow-hidden rounded-xl border text-xs shadow-sm transition-colors"
             style={{
-              background: isDark ? '#0f172a' : '#ffffff',
-              borderColor: isDark ? '#334155' : '#e2e8f0',
-              color: isDark ? '#e2e8f0' : '#0f172a',
+              background: isDark ? '#1c1917' : '#ffffff',
+              borderColor: isDark ? '#44403c' : '#e7e5e4',
+              color: isDark ? '#e7e5e4' : '#1c1917',
             }}
           >
-            <div className="px-4 pt-3 pb-2 font-bold" style={{ fontSize: '0.8rem' }}>
+            <div
+              className="font-display px-4 pt-3 pb-2 font-semibold"
+              style={{ fontSize: '0.8rem' }}
+            >
               {calcTitle}
             </div>
             <div className="flex gap-2 px-4 pb-2">
               <div
-                className="flex-1 rounded-md px-2 py-1.5"
-                style={{ background: isDark ? '#1e293b' : '#f8fafc' }}
+                className="flex-1 rounded-lg px-2.5 py-2"
+                style={{ background: isDark ? '#292524' : '#fafaf9' }}
               >
                 <div
                   className="mb-1"
-                  style={{ color: isDark ? '#94a3b8' : '#475569', fontSize: '0.65rem' }}
+                  style={{ color: isDark ? '#a8a29e' : '#57534e', fontSize: '0.6rem' }}
                 >
                   Daily Views
                 </div>
-                <div className="font-semibold" style={{ fontSize: '0.75rem' }}>
+                <div className="font-mono font-semibold" style={{ fontSize: '0.75rem' }}>
                   50,000
                 </div>
               </div>
               <div
-                className="flex-1 rounded-md border px-2 py-1.5"
+                className="relative flex-1 overflow-hidden rounded-lg border px-2.5 py-2"
                 style={{
                   borderColor: `${resolvedColor}30`,
                   background: `${resolvedColor}08`,
                 }}
               >
-                <div className="relative mb-1 overflow-hidden rounded-sm" style={{ height: 2 }}>
-                  <div className="absolute inset-0" style={{ background: resolvedColor }} />
-                </div>
                 <div
-                  className="mb-0.5"
-                  style={{ color: isDark ? '#94a3b8' : '#475569', fontSize: '0.65rem' }}
+                  className="absolute inset-x-0 top-0 h-0.5"
+                  style={{ background: resolvedColor }}
+                  aria-hidden="true"
+                />
+                <div
+                  className="mb-1"
+                  style={{ color: isDark ? '#a8a29e' : '#57534e', fontSize: '0.6rem' }}
                 >
                   Estimated Earnings
                 </div>
-                <div className="font-bold" style={{ color: resolvedColor, fontSize: '0.75rem' }}>
+                <div
+                  className="font-mono font-bold"
+                  style={{ color: resolvedColor, fontSize: '0.75rem' }}
+                >
                   $120 — $340
                 </div>
               </div>
             </div>
             <div
               className="flex items-center justify-center gap-1 border-t px-4 py-1.5"
-              style={{ borderColor: isDark ? '#334155' : '#e2e8f0' }}
+              style={{ borderColor: isDark ? '#44403c' : '#e7e5e4' }}
             >
-              <span style={{ color: isDark ? '#94a3b8' : '#475569', fontSize: '0.6rem' }}>
+              <span style={{ color: isDark ? '#a8a29e' : '#57534e', fontSize: '0.6rem' }}>
                 Powered by
               </span>
-              <span style={{ color: resolvedColor, fontSize: '0.6rem', fontWeight: 500 }}>
+              <span style={{ color: resolvedColor, fontSize: '0.6rem', fontWeight: 600 }}>
                 CreatiCalc
               </span>
             </div>
           </div>
         </div>
 
-        {/* Height with presets */}
-        <div className="mb-4 flex items-center gap-3">
-          <label htmlFor="embed-height" className="text-sm font-medium text-foreground">
-            Height
-          </label>
-          <div className="flex gap-1">
-            {HEIGHT_PRESETS.map((h) => (
-              <button
-                key={h}
-                type="button"
-                onClick={() => setHeight(h)}
-                className={`rounded-md px-2.5 py-1 text-xs font-medium transition-colors ${
-                  height === h
-                    ? 'text-white'
-                    : 'border border-border text-muted hover:text-foreground'
-                }`}
-                style={height === h ? { background: resolvedColor } : undefined}
-              >
-                {h}px
-              </button>
-            ))}
+        {/* Height + auto-resize section */}
+        <div className="mb-5 rounded-xl border border-border bg-surface/50 p-4">
+          <div className="flex flex-wrap items-center gap-3">
+            <label htmlFor="embed-height" className="text-sm font-medium text-foreground">
+              Height
+            </label>
+            <div className="flex gap-1.5" role="radiogroup" aria-label="Embed height">
+              {HEIGHT_PRESETS.map((h) => (
+                <button
+                  key={h}
+                  type="button"
+                  role="radio"
+                  aria-checked={height === h}
+                  onClick={() => setHeight(h)}
+                  className={`rounded-full border px-3 py-1 text-xs font-medium transition-all active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 ${
+                    height === h
+                      ? 'border-primary bg-primary text-white'
+                      : 'border-border bg-background text-muted hover:border-primary hover:text-foreground'
+                  }`}
+                >
+                  {h}px
+                </button>
+              ))}
+            </div>
+            <input
+              id="embed-height"
+              type="number"
+              value={height}
+              onChange={(e) => setHeight(Number(e.target.value) || 600)}
+              min={300}
+              max={1200}
+              className="w-20 rounded-lg border border-border bg-background px-2.5 py-1 text-sm text-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+            />
           </div>
-          <input
-            id="embed-height"
-            type="number"
-            value={height}
-            onChange={(e) => setHeight(Number(e.target.value) || 600)}
-            min={300}
-            max={1200}
-            className="w-20 rounded-lg border border-border bg-surface px-2.5 py-1 text-sm text-foreground"
-          />
-        </div>
 
-        {/* Auto-resize toggle */}
-        <label className="mb-4 flex cursor-pointer items-center gap-2">
-          <input
-            type="checkbox"
-            checked={includeAutoResize}
-            onChange={(e) => setIncludeAutoResize(e.target.checked)}
-            className="h-4 w-4 rounded accent-primary"
-          />
-          <span className="text-sm font-medium text-foreground">Include auto-resize script</span>
-          <span className="text-xs text-muted">(recommended)</span>
-        </label>
+          {/* Auto-resize toggle */}
+          <label className="mt-3 flex cursor-pointer items-center gap-2.5 border-t border-border pt-3">
+            <button
+              type="button"
+              role="switch"
+              aria-checked={includeAutoResize}
+              onClick={() => setIncludeAutoResize(!includeAutoResize)}
+              className={`relative h-5 w-9 shrink-0 rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 ${
+                includeAutoResize ? 'bg-primary' : 'bg-border'
+              }`}
+            >
+              <span
+                className={`absolute top-0.5 left-0.5 h-4 w-4 rounded-full bg-white shadow-sm transition-transform ${
+                  includeAutoResize ? 'translate-x-4' : 'translate-x-0'
+                }`}
+              />
+            </button>
+            <span className="text-sm text-foreground">Auto-resize script</span>
+            <span
+              className="group relative flex cursor-help items-center text-muted-light"
+              aria-describedby="auto-resize-tooltip"
+            >
+              <svg
+                className="h-3.5 w-3.5"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                <line x1="12" y1="17" x2="12.01" y2="17" />
+              </svg>
+              <span
+                id="auto-resize-tooltip"
+                role="tooltip"
+                className="pointer-events-none absolute bottom-full left-1/2 z-30 mb-2 w-52 -translate-x-1/2 rounded-lg border border-border bg-foreground px-3 py-2 text-xs leading-relaxed text-background opacity-0 shadow-lg transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100"
+              >
+                Adds a small script that automatically adjusts the iframe height to fit the
+                calculator content, preventing scrollbars.
+              </span>
+            </span>
+            <span className="flex items-center rounded-full bg-primary/10 px-2 py-0.5 text-[0.65rem] font-medium leading-none text-primary">
+              Recommended
+            </span>
+          </label>
+        </div>
 
         {/* Embed code */}
-        <div className="mb-3">
-          <label className="mb-1 block text-sm font-medium text-foreground">Embed Code</label>
-          <textarea
-            readOnly
-            value={fullCode}
-            rows={includeAutoResize ? 6 : 3}
-            className="w-full rounded-lg border border-border bg-surface px-3 py-2 font-mono text-xs text-foreground"
-            onFocus={(e) => e.target.select()}
-          />
+        <div className="mb-4">
+          <label className="mb-1.5 block text-sm font-medium text-foreground">Embed Code</label>
+          <div className="overflow-hidden rounded-xl border border-border">
+            <div className="flex items-center justify-between border-b border-border bg-surface px-3 py-1.5">
+              <span className="font-mono text-[0.65rem] tracking-wide text-muted-light">HTML</span>
+              <button
+                type="button"
+                onClick={handleCopy}
+                className={`inline-flex items-center gap-1 rounded-md px-2 py-0.5 text-xs font-medium transition-all active:scale-[0.97] ${
+                  copied ? 'text-success' : 'text-primary hover:bg-primary/10'
+                }`}
+              >
+                {copied ? (
+                  <>
+                    <svg
+                      className="h-3 w-3"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden="true"
+                    >
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    Copied
+                  </>
+                ) : (
+                  <>
+                    <svg
+                      className="h-3 w-3"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden="true"
+                    >
+                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                    </svg>
+                    Copy
+                  </>
+                )}
+              </button>
+            </div>
+            <textarea
+              readOnly
+              value={fullCode}
+              rows={includeAutoResize ? 6 : 3}
+              className="w-full resize-none bg-surface-alt px-3 py-2.5 font-mono text-xs leading-relaxed text-foreground focus:outline-none"
+              onFocus={(e) => e.target.select()}
+            />
+          </div>
         </div>
 
-        {/* Copy button with checkmark */}
+        {/* Primary CTA button */}
         <button
           type="button"
           onClick={handleCopy}
-          className="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-white transition-colors"
-          style={{ background: copied ? '#10b981' : resolvedColor }}
+          className={`flex w-full items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-all active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 ${
+            copied ? 'bg-success' : 'bg-primary hover:bg-primary-dark'
+          }`}
         >
           {copied ? (
             <>
@@ -387,7 +521,7 @@ window.addEventListener('message', function(e) {
               >
                 <polyline points="20 6 9 17 4 12" />
               </svg>
-              Copied!
+              Copied to Clipboard!
             </>
           ) : (
             <>

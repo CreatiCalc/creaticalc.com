@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
 import CalculatorSchema from '@/components/seo/CalculatorSchema';
-import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
+
 import { YouTubeGrowthCalculator } from '@/features/calculators/youtube-growth';
 import type { FAQItem } from '@/features/calculators/shared/types';
 
@@ -82,6 +82,11 @@ const faq: FAQItem[] = [
     question: 'What is the difference between rate mode and flat gain mode?',
     answer:
       'Rate mode uses percentage-based compound growth — your subscriber count grows by a fixed percentage each month, meaning the absolute number of new subscribers increases over time. This models organic channel growth well. Flat gain mode adds a fixed number of subscribers each month regardless of channel size. This is useful if you have a predictable external traffic source (like a blog or social media following) that drives a steady stream of new subscribers.',
+  },
+  {
+    question: 'Can I embed this calculator on my website?',
+    answer:
+      'Yes! Click the "Embed" button below the calculator results to get a free embed code for your website or blog. You can customize the theme (light or dark), accent color, and height to match your site\'s design. The embed is fully responsive and works on any website that supports iframes.',
   },
 ];
 
@@ -209,21 +214,20 @@ export default function YouTubeSubscriberProjectorPage() {
         description="Project your YouTube subscriber growth over 24 months and see when you'll hit key milestones like 1K, 100K, and 1M subscribers."
         url="/youtube-subscriber-projector"
       />
-      <BreadcrumbSchema
-        items={[
+      <CalculatorLayout
+        title="YouTube Subscriber Growth Projector"
+        slug="youtube-subscriber-projector"
+        description="Project your YouTube subscriber growth over 24 months. See when you'll hit key milestones based on your growth rate, upload frequency, and content niche."
+        faq={faq}
+        howItWorks={howItWorks}
+        breadcrumbs={[
           { name: 'Home', path: '/' },
-          { name: 'YouTube', path: '/youtube-money-calculator' },
+          { name: 'YouTube', path: '/youtube' },
           {
             name: 'YouTube Subscriber Growth Projector',
             path: '/youtube-subscriber-projector',
           },
         ]}
-      />
-      <CalculatorLayout
-        title="YouTube Subscriber Growth Projector"
-        description="Project your YouTube subscriber growth over 24 months. See when you'll hit key milestones based on your growth rate, upload frequency, and content niche."
-        faq={faq}
-        howItWorks={howItWorks}
       >
         <Suspense>
           <YouTubeGrowthCalculator />

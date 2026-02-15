@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
 import CalculatorSchema from '@/components/seo/CalculatorSchema';
-import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
+
 import { TikTokSponsorshipCalculator } from '@/features/calculators/tiktok-sponsorship';
 import type { FAQItem } from '@/features/calculators/shared/types';
 
@@ -82,6 +82,11 @@ const faq: FAQItem[] = [
     question: 'Should I use a flat rate or CPM pricing for TikTok sponsorships?',
     answer:
       'Most TikTok creators use flat-rate pricing (a fixed fee per video) rather than CPM pricing. Flat rates are simpler to negotiate and give you predictable income. CPM pricing (charging per 1,000 views) can be advantageous if your content regularly goes viral, but it introduces uncertainty for both you and the brand. A hybrid approach — a guaranteed base rate plus a performance bonus if the video exceeds a view threshold — is becoming increasingly popular and benefits both parties.',
+  },
+  {
+    question: 'Can I embed this calculator on my website?',
+    answer:
+      'Yes! Click the "Embed" button below the calculator results to get a free embed code for your website or blog. You can customize the theme (light or dark), accent color, and height to match your site\'s design. The embed is fully responsive and works on any website that supports iframes.',
   },
 ];
 
@@ -196,21 +201,20 @@ export default function TikTokSponsorshipPage() {
         description="Calculate how much to charge for sponsored TikTok videos, Stories, and Lives based on your followers, engagement rate, and niche."
         url="/tiktok-sponsorship-rate-calculator"
       />
-      <BreadcrumbSchema
-        items={[
+      <CalculatorLayout
+        title="TikTok Sponsorship Rate Calculator"
+        slug="tiktok-sponsorship-rate-calculator"
+        description="Find out how much to charge for sponsored content on TikTok. Get a personalized rate card based on your followers, engagement rate, content type, and niche."
+        faq={faq}
+        howItWorks={howItWorks}
+        breadcrumbs={[
           { name: 'Home', path: '/' },
-          { name: 'TikTok', path: '/tiktok-engagement-rate-calculator' },
+          { name: 'TikTok', path: '/tiktok' },
           {
             name: 'TikTok Sponsorship Rate Calculator',
             path: '/tiktok-sponsorship-rate-calculator',
           },
         ]}
-      />
-      <CalculatorLayout
-        title="TikTok Sponsorship Rate Calculator"
-        description="Find out how much to charge for sponsored content on TikTok. Get a personalized rate card based on your followers, engagement rate, content type, and niche."
-        faq={faq}
-        howItWorks={howItWorks}
       >
         <Suspense>
           <TikTokSponsorshipCalculator />

@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
 import CalculatorSchema from '@/components/seo/CalculatorSchema';
-import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
+
 import { FacebookSponsorshipCalculator } from '@/features/calculators/facebook-sponsorship';
 import type { FAQItem } from '@/features/calculators/shared/types';
 
@@ -82,6 +82,11 @@ const faq: FAQItem[] = [
     question: 'What is the difference between Facebook Page and Facebook Group sponsorships?',
     answer:
       "Facebook Page sponsorships involve branded content published on your public Page, similar to a standard influencer post on any platform. Facebook Group sponsorships involve promoting a brand within a community you manage, which carries a different kind of value — community endorsement. Group sponsorships can command a premium because members trust the group admin's recommendations and engagement rates within Groups tend to be significantly higher than on Pages. However, Group sponsorships require careful handling to maintain community trust, and over-promotion can lead to member pushback or departures.",
+  },
+  {
+    question: 'Can I embed this calculator on my website?',
+    answer:
+      'Yes! Click the "Embed" button below the calculator results to get a free embed code for your website or blog. You can customize the theme (light or dark), accent color, and height to match your site\'s design. The embed is fully responsive and works on any website that supports iframes.',
   },
 ];
 
@@ -208,21 +213,20 @@ export default function FacebookSponsorshipPage() {
         description="Calculate how much to charge for sponsored Facebook feed posts, Reels, Stories, and Lives based on your followers, engagement rate, and niche."
         url="/facebook-sponsorship-rate-calculator"
       />
-      <BreadcrumbSchema
-        items={[
+      <CalculatorLayout
+        title="Facebook Sponsorship Rate Calculator"
+        slug="facebook-sponsorship-rate-calculator"
+        description="Find out how much to charge for sponsored posts on Facebook. Get a personalized rate card based on your followers, engagement rate, content type, and niche."
+        faq={faq}
+        howItWorks={howItWorks}
+        breadcrumbs={[
           { name: 'Home', path: '/' },
-          { name: 'Facebook', path: '/facebook-engagement-rate-calculator' },
+          { name: 'Facebook', path: '/facebook' },
           {
             name: 'Facebook Sponsorship Rate Calculator',
             path: '/facebook-sponsorship-rate-calculator',
           },
         ]}
-      />
-      <CalculatorLayout
-        title="Facebook Sponsorship Rate Calculator"
-        description="Find out how much to charge for sponsored posts on Facebook. Get a personalized rate card based on your followers, engagement rate, content type, and niche."
-        faq={faq}
-        howItWorks={howItWorks}
       >
         <Suspense>
           <FacebookSponsorshipCalculator />

@@ -17,13 +17,20 @@ export default function ResultCard({
 }: ResultCardProps) {
   return (
     <div
-      className={`relative overflow-hidden rounded-lg border p-4 ${
-        highlight ? 'border-primary/30 bg-primary/5' : 'border-border bg-background'
+      className={`relative overflow-hidden rounded-xl border p-5 transition-shadow ${
+        highlight
+          ? 'border-primary/30 bg-gradient-to-br from-primary/5 to-primary/10 shadow-sm'
+          : 'border-border bg-background'
       }`}
     >
-      {highlight && <div className="absolute inset-x-0 top-0 h-0.5 bg-primary" />}
+      {highlight && (
+        <div
+          className="absolute inset-x-0 top-0 h-1"
+          style={{ background: 'var(--gradient-brand)' }}
+        />
+      )}
       <div className="flex items-center justify-between">
-        <p className="text-sm text-muted">{label}</p>
+        <p className="text-sm font-medium text-muted">{label}</p>
         {badge && (
           <span className="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-semibold text-primary">
             {badge}
@@ -31,13 +38,13 @@ export default function ResultCard({
         )}
       </div>
       <p
-        className={`mt-1 text-2xl font-bold ${highlight ? 'text-primary' : 'text-foreground'}`}
+        className={`mt-2 font-mono text-3xl font-bold tracking-tight ${highlight ? 'text-primary' : 'text-foreground'}`}
         aria-live="polite"
         aria-atomic="true"
       >
         {value}
       </p>
-      {comparison && <p className="mt-1 text-xs text-muted">{comparison}</p>}
+      {comparison && <p className="mt-2 text-xs text-muted">{comparison}</p>}
     </div>
   );
 }

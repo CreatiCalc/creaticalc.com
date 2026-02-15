@@ -7,6 +7,7 @@ import NumberInput from '@/components/ui/NumberInput';
 import Select from '@/components/ui/Select';
 import Card from '@/components/ui/Card';
 import ResultCard from '@/features/calculators/shared/ResultCard';
+import ResultCardGrid from '@/features/calculators/shared/ResultCardGrid';
 import AdSlot from '@/components/layout/AdSlot';
 import AnimatedNumber from '@/components/ui/AnimatedNumber';
 import {
@@ -38,6 +39,7 @@ import {
 } from './dynamicImports';
 import YouTubeShareButtons from './ShareButtons';
 import CollapsibleSection from '@/features/calculators/shared/CollapsibleSection';
+import ResultsHeading from '@/features/calculators/shared/ResultsHeading';
 import PresetPills from '@/components/ui/PresetPills';
 
 const nicheOptions = NICHES.map((n) => ({ label: n.name, value: n.id }));
@@ -148,29 +150,31 @@ export default function YouTubeMoneyCalculator({
 
       <Card className={isEmbed ? '' : 'mt-4'}>
         <div className="space-y-6">
-          {!hideFormatToggle && (
-            <ButtonToggle<ContentFormat>
-              value={state.contentFormat}
-              onChange={setContentFormat}
-              options={[
-                { value: 'longform', label: 'Long-form' },
-                { value: 'shorts', label: 'Shorts' },
-              ]}
-              label="Content Format"
-              ariaLabel="Content format"
-            />
-          )}
+          <div className={isEmbed ? 'flex flex-wrap gap-6' : 'space-y-6'}>
+            {!hideFormatToggle && (
+              <ButtonToggle<ContentFormat>
+                value={state.contentFormat}
+                onChange={setContentFormat}
+                options={[
+                  { value: 'longform', label: 'Long-form' },
+                  { value: 'shorts', label: 'Shorts' },
+                ]}
+                label="Content Format"
+                ariaLabel="Content format"
+              />
+            )}
 
-          <ButtonToggle<InputMode>
-            value={state.inputMode}
-            onChange={setInputMode}
-            options={[
-              { value: 'daily', label: 'Daily Views' },
-              { value: 'perVideo', label: 'Per Video' },
-            ]}
-            label="Input Mode"
-            ariaLabel="View input mode"
-          />
+            <ButtonToggle<InputMode>
+              value={state.inputMode}
+              onChange={setInputMode}
+              options={[
+                { value: 'daily', label: 'Daily Views' },
+                { value: 'perVideo', label: 'Per Video' },
+              ]}
+              label="Input Mode"
+              ariaLabel="View input mode"
+            />
+          </div>
 
           {state.inputMode === 'daily' ? (
             <div className="space-y-4">
@@ -311,7 +315,8 @@ export default function YouTubeMoneyCalculator({
         </div>
       </Card>
 
-      <div className="mt-6 grid gap-4 sm:grid-cols-3">
+      <ResultsHeading title="Estimated Earnings" subtitle="Based on 2026 CPM/RPM data by niche" />
+      <ResultCardGrid labels={['Daily', 'Monthly', 'Yearly']}>
         <ResultCard
           label="Daily Earnings"
           value={
@@ -362,7 +367,7 @@ export default function YouTubeMoneyCalculator({
             </>
           }
         />
-      </div>
+      </ResultCardGrid>
 
       {!isEmbed && (
         <>
@@ -377,12 +382,17 @@ export default function YouTubeMoneyCalculator({
           <ProjectionChart months={projection.months} />
 
           {state.monthlyGrowthRate > 0 && (
-            <CollapsibleSection title="Revenue Milestones" defaultOpen={false} className="mt-6">
+            <CollapsibleSection
+              title="Revenue Milestones"
+              defaultOpen={false}
+              className="mt-6"
+              preview="When you'll hit $100, $1K, $10K/mo"
+            >
               <MilestoneTimeline input={projectionInput} />
             </CollapsibleSection>
           )}
 
-          <CollapsibleSection title="Sponsorship Rates" defaultOpen={false} className="mt-6">
+          <CollapsibleSection title="Sponsorship Rates" defaultOpen className="mt-6">
             <SponsorshipEstimate
               dailyViews={effectiveDailyViews}
               nicheId={state.nicheId}
@@ -393,7 +403,7 @@ export default function YouTubeMoneyCalculator({
 
           <AdSlot slot="after-chart" className="mt-6" />
 
-          <CollapsibleSection title="Optimization Tips" defaultOpen={false} className="mt-6">
+          <CollapsibleSection title="Optimization Tips" defaultOpen className="mt-6">
             <Recommendations
               state={projectionInput}
               projection={projection}
@@ -401,7 +411,12 @@ export default function YouTubeMoneyCalculator({
             />
           </CollapsibleSection>
 
-          <CollapsibleSection title="Earnings Breakdown" defaultOpen={false} className="mt-6">
+          <CollapsibleSection
+            title="Earnings Breakdown"
+            defaultOpen={false}
+            className="mt-6"
+            preview="CPM, RPM, and niche comparison"
+          >
             <DriversBreakdown state={projectionInput} projection={projection} />
             <div className="mt-6">
               <RpmTable activeNicheId={state.nicheId} contentFormat={state.contentFormat} />

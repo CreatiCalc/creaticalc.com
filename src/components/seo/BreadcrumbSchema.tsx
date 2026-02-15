@@ -1,6 +1,6 @@
 import { SITE_URL } from '@/lib/siteConfig';
 
-interface BreadcrumbItem {
+export interface BreadcrumbItem {
   name: string;
   path: string;
 }

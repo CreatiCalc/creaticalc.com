@@ -59,7 +59,7 @@ The user's PowerShell environment handles this automatically via a `cd` hook, bu
 
 **SEO:** Each page exports a `metadata` object (Next.js Metadata API). Root layout sets title template `'%s | CreatiCalc'`. Calculator pages include `CalculatorSchema` (WebApplication JSON-LD) and FAQ structured data.
 
-**Styling:** Tailwind CSS 4 with inline `@theme` in `globals.css` — no tailwind.config file. Custom CSS variables define the design tokens (primary purple `#6d28d9`, Geist fonts). Use semantic color classes like `text-primary`, `bg-surface`, `border-border`.
+**Styling:** Tailwind CSS 4 with inline `@theme` in `globals.css` — no tailwind.config file. Custom CSS variables define the design tokens (primary teal `#0d9488`, accent amber `#d97706`, warm stone neutrals). Fonts: DM Sans (body), Sora (display/headings), JetBrains Mono (monospace/numbers). Use semantic color classes like `text-primary`, `bg-surface`, `border-border`.
 
 ### Adding a New Calculator
 

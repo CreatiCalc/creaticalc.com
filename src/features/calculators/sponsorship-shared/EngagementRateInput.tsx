@@ -61,15 +61,22 @@ export default function EngagementRateInput({
       </div>
 
       {mode === 'direct' ? (
-        <Slider
-          label="Engagement Rate (%)"
-          value={engagementRate}
-          min={0.1}
-          max={15}
-          step={0.1}
-          onChange={onEngagementRateChange}
-          formatValue={(v) => `${v.toFixed(1)}%`}
-        />
+        <div>
+          <Slider
+            label="Engagement Rate (%)"
+            value={engagementRate}
+            min={0.1}
+            max={15}
+            step={0.1}
+            onChange={onEngagementRateChange}
+            formatValue={(v) => `${v.toFixed(1)}%`}
+          />
+          {engagementRate > 10 && (
+            <p className="mt-1 text-xs text-amber-600">
+              Rates above 10% are uncommon — double-check your metrics are accurate.
+            </p>
+          )}
+        </div>
       ) : (
         <div className="space-y-3 rounded-lg border border-primary/20 bg-primary/5 p-4">
           <NumberInput

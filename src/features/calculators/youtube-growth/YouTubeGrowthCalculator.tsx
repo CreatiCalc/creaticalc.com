@@ -7,9 +7,11 @@ import NumberInput from '@/components/ui/NumberInput';
 import Select from '@/components/ui/Select';
 import Card from '@/components/ui/Card';
 import ResultCard from '@/features/calculators/shared/ResultCard';
+import ResultCardGrid from '@/features/calculators/shared/ResultCardGrid';
 import AdSlot from '@/components/layout/AdSlot';
 import AnimatedNumber from '@/components/ui/AnimatedNumber';
 import CollapsibleSection from '@/features/calculators/shared/CollapsibleSection';
+import ResultsHeading from '@/features/calculators/shared/ResultsHeading';
 import {
   GROWTH_NICHES,
   projectGrowth,
@@ -199,8 +201,11 @@ export default function YouTubeGrowthCalculator() {
         </div>
       </Card>
 
-      {/* Result Cards */}
-      <div className="mt-6 grid gap-4 sm:grid-cols-3">
+      <ResultsHeading
+        title="Growth Projection"
+        subtitle="Model uses niche-adjusted growth curves"
+      />
+      <ResultCardGrid labels={['Current', '12 Months', '24 Months']}>
         <ResultCard
           label="Current"
           value={<AnimatedNumber value={result.summary.current} format={formatSubscribers} />}
@@ -227,7 +232,7 @@ export default function YouTubeGrowthCalculator() {
             </>
           }
         />
-      </div>
+      </ResultCardGrid>
 
       {!isEmbed && (
         <YouTubeGrowthShareButtons state={state} projectedSubs={result.summary.month12} />
@@ -239,13 +244,23 @@ export default function YouTubeGrowthCalculator() {
 
           <GrowthChart months={result.months} />
 
-          <CollapsibleSection title="Subscriber Milestones" defaultOpen={false} className="mt-6">
+          <CollapsibleSection
+            title="Subscriber Milestones"
+            defaultOpen={false}
+            className="mt-6"
+            preview="When you'll hit 1K, 10K, 100K"
+          >
             <GrowthMilestoneTimeline milestones={result.milestones} />
           </CollapsibleSection>
 
           <AdSlot slot="after-chart" className="mt-6" />
 
-          <CollapsibleSection title="Growth Tips" defaultOpen={false} className="mt-6">
+          <CollapsibleSection
+            title="Growth Tips"
+            defaultOpen={false}
+            className="mt-6"
+            preview="Actionable tips to grow faster"
+          >
             <GrowthRecommendations recommendations={result.recommendations} />
           </CollapsibleSection>
         </>

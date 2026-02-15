@@ -12,8 +12,9 @@ export const NAV_GROUPS: NavGroup[] = [
   {
     label: 'YouTube',
     items: [
+      { name: 'All YouTube Tools', href: '/youtube' },
       { name: 'Money Calculator', href: '/youtube-money-calculator' },
-      { name: 'Shorts Calculator', href: '/youtube-shorts-money-calculator' },
+      { name: 'Shorts Money Calculator', href: '/youtube-shorts-money-calculator' },
       { name: 'Growth Projector', href: '/youtube-subscriber-projector' },
       { name: 'Sponsorship Rate', href: '/youtube-sponsorship-rate-calculator' },
     ],
@@ -21,6 +22,7 @@ export const NAV_GROUPS: NavGroup[] = [
   {
     label: 'Instagram',
     items: [
+      { name: 'All Instagram Tools', href: '/instagram' },
       { name: 'Engagement Rate', href: '/instagram-engagement-rate-calculator' },
       { name: 'Sponsorship Rate', href: '/instagram-sponsorship-rate-calculator' },
     ],
@@ -28,6 +30,7 @@ export const NAV_GROUPS: NavGroup[] = [
   {
     label: 'TikTok',
     items: [
+      { name: 'All TikTok Tools', href: '/tiktok' },
       { name: 'Engagement Rate', href: '/tiktok-engagement-rate-calculator' },
       { name: 'Sponsorship Rate', href: '/tiktok-sponsorship-rate-calculator' },
     ],
@@ -35,13 +38,15 @@ export const NAV_GROUPS: NavGroup[] = [
   {
     label: 'Facebook',
     items: [
+      { name: 'All Facebook Tools', href: '/facebook' },
       { name: 'Engagement Rate', href: '/facebook-engagement-rate-calculator' },
       { name: 'Sponsorship Rate', href: '/facebook-sponsorship-rate-calculator' },
     ],
   },
   {
-    label: 'X',
+    label: 'X (Twitter)',
     items: [
+      { name: 'All X (Twitter) Tools', href: '/x' },
       { name: 'Engagement Rate', href: '/twitter-engagement-rate-calculator' },
       { name: 'Sponsorship Rate', href: '/twitter-sponsorship-rate-calculator' },
     ],
@@ -58,12 +63,13 @@ export const MORE_LINKS: NavItem[] = [
 // single source of truth for all site-wide link data.
 export const FOOTER_GROUPS: NavGroup[] = [
   {
-    label: 'YouTube',
+    label: 'Platforms',
     items: [
-      { name: 'Money Calculator', href: '/youtube-money-calculator' },
-      { name: 'Shorts Calculator', href: '/youtube-shorts-money-calculator' },
-      { name: 'Growth Projector', href: '/youtube-subscriber-projector' },
-      { name: 'Sponsorship Rate', href: '/youtube-sponsorship-rate-calculator' },
+      { name: 'YouTube Tools', href: '/youtube' },
+      { name: 'Instagram Tools', href: '/instagram' },
+      { name: 'TikTok Tools', href: '/tiktok' },
+      { name: 'Facebook Tools', href: '/facebook' },
+      { name: 'X (Twitter) Tools', href: '/x' },
     ],
   },
   {

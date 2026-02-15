@@ -116,6 +116,7 @@ export default async function NicheCalculatorPage({ params }: NichePageProps) {
       />
       <CalculatorLayout
         title={data.ogTitle}
+        slug="youtube-money-calculator"
         description={data.pageDescription}
         faq={data.faq}
         howItWorks={howItWorks}
