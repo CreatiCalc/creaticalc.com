@@ -1,3 +1,7 @@
+'use client';
+
+import { useRef, useCallback } from 'react';
+
 interface CollapsibleSectionProps {
   title: string;
   defaultOpen?: boolean;
@@ -20,6 +24,8 @@ const VARIANT_STYLES = {
   },
 };
 
+const DURATION = 250; // ms — must match CSS transition duration
+
 export default function CollapsibleSection({
   title,
   defaultOpen = false,
@@ -28,9 +34,56 @@ export default function CollapsibleSection({
   variant = 'default',
 }: CollapsibleSectionProps) {
   const styles = VARIANT_STYLES[variant];
+  const detailsRef = useRef<HTMLDetailsElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const animatingRef = useRef(false);
+
+  const handleClick = useCallback((e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault();
+    const details = detailsRef.current;
+    const content = contentRef.current;
+    if (!details || !content || animatingRef.current) return;
+
+    animatingRef.current = true;
+
+    /** Run `fn` exactly once — via transitionend or safety timeout, whichever fires first. */
+    function onceDone(fn: () => void) {
+      let called = false;
+      const run = () => {
+        if (called) return;
+        called = true;
+        content!.removeEventListener('transitionend', run);
+        fn();
+      };
+      content!.addEventListener('transitionend', run, { once: true });
+      setTimeout(run, DURATION + 50);
+    }
+
+    if (details.open) {
+      // Animate close: override to 0fr, then remove open when done
+      content.style.gridTemplateRows = '0fr';
+      onceDone(() => {
+        details.removeAttribute('open');
+        content.style.gridTemplateRows = '';
+        animatingRef.current = false;
+      });
+    } else {
+      // Open: set open attr, force 0fr, reflow, then animate to 1fr
+      details.setAttribute('open', '');
+      content.style.gridTemplateRows = '0fr';
+      content.getBoundingClientRect(); // force reflow
+      content.style.gridTemplateRows = '1fr';
+      onceDone(() => {
+        content.style.gridTemplateRows = '';
+        animatingRef.current = false;
+      });
+    }
+  }, []);
+
   return (
-    <details className={`group ${styles.details} ${className}`} open={defaultOpen}>
+    <details ref={detailsRef} className={`group ${styles.details} ${className}`} open={defaultOpen}>
       <summary
+        onClick={handleClick}
         className={`cursor-pointer list-none ${styles.summary} transition-colors hover:text-primary [&::-webkit-details-marker]:hidden`}
       >
         <span className="inline-flex items-center gap-2">
@@ -46,7 +99,7 @@ export default function CollapsibleSection({
           </svg>
         </span>
       </summary>
-      <div className="details-content">
+      <div ref={contentRef} className="details-content">
         <div>
           <div className={styles.content}>{children}</div>
         </div>
