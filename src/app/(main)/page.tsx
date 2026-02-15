@@ -199,19 +199,34 @@ export default function Home() {
       <section className="grid gap-6 sm:grid-cols-2">
         {calculators.map((calc) => (
           <Link key={calc.href} href={calc.href} className="group">
-            <Card className="relative h-full overflow-hidden transition-all duration-200 group-hover:border-primary/50 group-hover:shadow-md">
-              {/* Gradient accent bar on hover */}
+            <Card className="relative h-full overflow-hidden transition-all duration-300 group-hover:scale-[1.02] group-hover:border-primary/50 group-hover:shadow-lg">
+              {/* Gradient accent bar — slides in from left on hover */}
               <div
-                className="absolute inset-x-0 top-0 h-1 opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+                className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100"
                 style={{ background: 'var(--gradient-brand)' }}
               />
               <span className="mb-2 inline-block rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-semibold text-primary">
                 {calc.platform}
               </span>
-              <h2 className="text-lg font-semibold group-hover:text-primary">{calc.cardTitle}</h2>
+              <h2 className="text-lg font-semibold transition-colors duration-200 group-hover:text-primary">
+                {calc.cardTitle}
+              </h2>
               <p className="mt-1 text-sm text-muted">{calc.description}</p>
-              <p className="mt-3 text-sm font-medium text-primary opacity-0 transition-opacity duration-200 group-hover:opacity-100">
-                Try it free &rarr;
+              <p className="mt-3 flex items-center gap-1 text-sm font-medium text-primary opacity-0 transition-all duration-200 group-hover:translate-x-1 group-hover:opacity-100">
+                Try it free
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 14 14"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M1 7h12M8 2l5 5-5 5" />
+                </svg>
               </p>
             </Card>
           </Link>
