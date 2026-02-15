@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
 import CalculatorSchema from '@/components/seo/CalculatorSchema';
-import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
+
 import { FacebookEngagementCalculator } from '@/features/calculators/facebook-engagement';
 import type { FAQItem } from '@/features/calculators/shared/types';
 
@@ -202,8 +202,12 @@ export default function FacebookEngagementPage() {
         description="Calculate your Facebook Page engagement rate by followers or by reach. Compare against industry benchmarks by follower tier."
         url="/facebook-engagement-rate-calculator"
       />
-      <BreadcrumbSchema
-        items={[
+      <CalculatorLayout
+        title="Facebook Engagement Rate Calculator"
+        description="Calculate your Facebook Page engagement rate by followers or by reach. See how you compare against benchmarks for your follower tier and content niche."
+        faq={faq}
+        howItWorks={howItWorks}
+        breadcrumbs={[
           { name: 'Home', path: '/' },
           { name: 'Facebook', path: '/facebook-engagement-rate-calculator' },
           {
@@ -211,12 +215,6 @@ export default function FacebookEngagementPage() {
             path: '/facebook-engagement-rate-calculator',
           },
         ]}
-      />
-      <CalculatorLayout
-        title="Facebook Engagement Rate Calculator"
-        description="Calculate your Facebook Page engagement rate by followers or by reach. See how you compare against benchmarks for your follower tier and content niche."
-        faq={faq}
-        howItWorks={howItWorks}
       >
         <Suspense>
           <FacebookEngagementCalculator />

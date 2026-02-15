@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
 import CalculatorSchema from '@/components/seo/CalculatorSchema';
-import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
+
 import { TwitterEngagementCalculator } from '@/features/calculators/twitter-engagement';
 import type { FAQItem } from '@/features/calculators/shared/types';
 
@@ -217,8 +217,12 @@ export default function TwitterEngagementPage() {
         description="Calculate your X (Twitter) engagement rate by followers or by impressions. Compare against industry benchmarks by follower tier."
         url="/twitter-engagement-rate-calculator"
       />
-      <BreadcrumbSchema
-        items={[
+      <CalculatorLayout
+        title="X (Twitter) Engagement Rate Calculator"
+        description="Calculate your X (Twitter) engagement rate by followers or by impressions. See how you compare against benchmarks for your follower tier and content niche."
+        faq={faq}
+        howItWorks={howItWorks}
+        breadcrumbs={[
           { name: 'Home', path: '/' },
           { name: 'X', path: '/twitter-engagement-rate-calculator' },
           {
@@ -226,12 +230,6 @@ export default function TwitterEngagementPage() {
             path: '/twitter-engagement-rate-calculator',
           },
         ]}
-      />
-      <CalculatorLayout
-        title="X (Twitter) Engagement Rate Calculator"
-        description="Calculate your X (Twitter) engagement rate by followers or by impressions. See how you compare against benchmarks for your follower tier and content niche."
-        faq={faq}
-        howItWorks={howItWorks}
       >
         <Suspense>
           <TwitterEngagementCalculator />

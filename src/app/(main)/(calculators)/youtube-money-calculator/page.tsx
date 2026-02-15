@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
 import CalculatorSchema from '@/components/seo/CalculatorSchema';
-import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
+
 import { YouTubeMoneyCalculator } from '@/features/calculators/youtube-money';
 import type { FAQItem } from '@/features/calculators/shared/types';
 import { NICHE_PAGES } from '@/lib/nichePageData';
@@ -235,18 +235,16 @@ export default function YouTubeMoneyCalculatorPage() {
         description="Estimate how much money YouTubers make based on views, CPM, and content niche."
         url="/youtube-money-calculator"
       />
-      <BreadcrumbSchema
-        items={[
-          { name: 'Home', path: '/' },
-          { name: 'YouTube', path: '/youtube-money-calculator' },
-          { name: 'YouTube Money Calculator', path: '/youtube-money-calculator' },
-        ]}
-      />
       <CalculatorLayout
         title="YouTube Money Calculator"
         description="Estimate your YouTube earnings based on daily views and content niche. See projected daily, monthly, and yearly revenue with growth modeling and seasonal adjustments."
         faq={faq}
         howItWorks={howItWorks}
+        breadcrumbs={[
+          { name: 'Home', path: '/' },
+          { name: 'YouTube', path: '/youtube-money-calculator' },
+          { name: 'YouTube Money Calculator', path: '/youtube-money-calculator' },
+        ]}
       >
         <Suspense>
           <YouTubeMoneyCalculator />

@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
 import CalculatorSchema from '@/components/seo/CalculatorSchema';
-import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
+
 import { FacebookSponsorshipCalculator } from '@/features/calculators/facebook-sponsorship';
 import type { FAQItem } from '@/features/calculators/shared/types';
 
@@ -208,8 +208,12 @@ export default function FacebookSponsorshipPage() {
         description="Calculate how much to charge for sponsored Facebook feed posts, Reels, Stories, and Lives based on your followers, engagement rate, and niche."
         url="/facebook-sponsorship-rate-calculator"
       />
-      <BreadcrumbSchema
-        items={[
+      <CalculatorLayout
+        title="Facebook Sponsorship Rate Calculator"
+        description="Find out how much to charge for sponsored posts on Facebook. Get a personalized rate card based on your followers, engagement rate, content type, and niche."
+        faq={faq}
+        howItWorks={howItWorks}
+        breadcrumbs={[
           { name: 'Home', path: '/' },
           { name: 'Facebook', path: '/facebook-engagement-rate-calculator' },
           {
@@ -217,12 +221,6 @@ export default function FacebookSponsorshipPage() {
             path: '/facebook-sponsorship-rate-calculator',
           },
         ]}
-      />
-      <CalculatorLayout
-        title="Facebook Sponsorship Rate Calculator"
-        description="Find out how much to charge for sponsored posts on Facebook. Get a personalized rate card based on your followers, engagement rate, content type, and niche."
-        faq={faq}
-        howItWorks={howItWorks}
       >
         <Suspense>
           <FacebookSponsorshipCalculator />

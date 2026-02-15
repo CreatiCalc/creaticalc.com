@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
 import CalculatorSchema from '@/components/seo/CalculatorSchema';
-import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
+
 import { TwitterSponsorshipCalculator } from '@/features/calculators/twitter-sponsorship';
 import type { FAQItem } from '@/features/calculators/shared/types';
 
@@ -209,8 +209,12 @@ export default function TwitterSponsorshipPage() {
         description="Calculate how much to charge for sponsored tweets, threads, and X Spaces based on your followers, engagement rate, and niche."
         url="/twitter-sponsorship-rate-calculator"
       />
-      <BreadcrumbSchema
-        items={[
+      <CalculatorLayout
+        title="X (Twitter) Sponsorship Rate Calculator"
+        description="Find out how much to charge for sponsored content on X (Twitter). Get a personalized rate card based on your followers, engagement rate, content type, and niche."
+        faq={faq}
+        howItWorks={howItWorks}
+        breadcrumbs={[
           { name: 'Home', path: '/' },
           { name: 'X', path: '/twitter-engagement-rate-calculator' },
           {
@@ -218,12 +222,6 @@ export default function TwitterSponsorshipPage() {
             path: '/twitter-sponsorship-rate-calculator',
           },
         ]}
-      />
-      <CalculatorLayout
-        title="X (Twitter) Sponsorship Rate Calculator"
-        description="Find out how much to charge for sponsored content on X (Twitter). Get a personalized rate card based on your followers, engagement rate, content type, and niche."
-        faq={faq}
-        howItWorks={howItWorks}
       >
         <Suspense>
           <TwitterSponsorshipCalculator />

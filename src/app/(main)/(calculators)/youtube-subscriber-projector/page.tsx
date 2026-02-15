@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
 import CalculatorSchema from '@/components/seo/CalculatorSchema';
-import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
+
 import { YouTubeGrowthCalculator } from '@/features/calculators/youtube-growth';
 import type { FAQItem } from '@/features/calculators/shared/types';
 
@@ -209,8 +209,12 @@ export default function YouTubeSubscriberProjectorPage() {
         description="Project your YouTube subscriber growth over 24 months and see when you'll hit key milestones like 1K, 100K, and 1M subscribers."
         url="/youtube-subscriber-projector"
       />
-      <BreadcrumbSchema
-        items={[
+      <CalculatorLayout
+        title="YouTube Subscriber Growth Projector"
+        description="Project your YouTube subscriber growth over 24 months. See when you'll hit key milestones based on your growth rate, upload frequency, and content niche."
+        faq={faq}
+        howItWorks={howItWorks}
+        breadcrumbs={[
           { name: 'Home', path: '/' },
           { name: 'YouTube', path: '/youtube-money-calculator' },
           {
@@ -218,12 +222,6 @@ export default function YouTubeSubscriberProjectorPage() {
             path: '/youtube-subscriber-projector',
           },
         ]}
-      />
-      <CalculatorLayout
-        title="YouTube Subscriber Growth Projector"
-        description="Project your YouTube subscriber growth over 24 months. See when you'll hit key milestones based on your growth rate, upload frequency, and content niche."
-        faq={faq}
-        howItWorks={howItWorks}
       >
         <Suspense>
           <YouTubeGrowthCalculator />

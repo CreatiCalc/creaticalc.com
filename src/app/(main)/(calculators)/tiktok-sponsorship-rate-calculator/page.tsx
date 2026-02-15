@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
 import CalculatorSchema from '@/components/seo/CalculatorSchema';
-import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
+
 import { TikTokSponsorshipCalculator } from '@/features/calculators/tiktok-sponsorship';
 import type { FAQItem } from '@/features/calculators/shared/types';
 
@@ -196,8 +196,12 @@ export default function TikTokSponsorshipPage() {
         description="Calculate how much to charge for sponsored TikTok videos, Stories, and Lives based on your followers, engagement rate, and niche."
         url="/tiktok-sponsorship-rate-calculator"
       />
-      <BreadcrumbSchema
-        items={[
+      <CalculatorLayout
+        title="TikTok Sponsorship Rate Calculator"
+        description="Find out how much to charge for sponsored content on TikTok. Get a personalized rate card based on your followers, engagement rate, content type, and niche."
+        faq={faq}
+        howItWorks={howItWorks}
+        breadcrumbs={[
           { name: 'Home', path: '/' },
           { name: 'TikTok', path: '/tiktok-engagement-rate-calculator' },
           {
@@ -205,12 +209,6 @@ export default function TikTokSponsorshipPage() {
             path: '/tiktok-sponsorship-rate-calculator',
           },
         ]}
-      />
-      <CalculatorLayout
-        title="TikTok Sponsorship Rate Calculator"
-        description="Find out how much to charge for sponsored content on TikTok. Get a personalized rate card based on your followers, engagement rate, content type, and niche."
-        faq={faq}
-        howItWorks={howItWorks}
       >
         <Suspense>
           <TikTokSponsorshipCalculator />
