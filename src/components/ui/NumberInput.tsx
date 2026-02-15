@@ -42,7 +42,7 @@ export default function NumberInput({
         value={value}
         min={min}
         max={max}
-        step="any"
+        step={step}
         onChange={(e) => onChange(Number(e.target.value))}
         autoComplete="off"
         placeholder={placeholder}
