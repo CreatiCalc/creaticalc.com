@@ -7,6 +7,7 @@ import NumberInput from '@/components/ui/NumberInput';
 import Select from '@/components/ui/Select';
 import Card from '@/components/ui/Card';
 import ResultCard from '@/features/calculators/shared/ResultCard';
+import ResultCardGrid from '@/features/calculators/shared/ResultCardGrid';
 import AdSlot from '@/components/layout/AdSlot';
 import AnimatedNumber from '@/components/ui/AnimatedNumber';
 import CollapsibleSection from '@/features/calculators/shared/CollapsibleSection';
@@ -204,7 +205,7 @@ export default function YouTubeGrowthCalculator() {
         title="Growth Projection"
         subtitle="Model uses niche-adjusted growth curves"
       />
-      <div className="grid gap-4 sm:grid-cols-3">
+      <ResultCardGrid labels={['Current', '12 Months', '24 Months']}>
         <ResultCard
           label="Current"
           value={<AnimatedNumber value={result.summary.current} format={formatSubscribers} />}
@@ -231,7 +232,7 @@ export default function YouTubeGrowthCalculator() {
             </>
           }
         />
-      </div>
+      </ResultCardGrid>
 
       {!isEmbed && (
         <YouTubeGrowthShareButtons state={state} projectedSubs={result.summary.month12} />
