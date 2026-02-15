@@ -1,11 +1,19 @@
 import Link from 'next/link';
+import { JetBrains_Mono } from 'next/font/google';
 import { getAllCalculators } from '@/lib/calculatorRegistry';
+
+const jetbrainsMono = JetBrains_Mono({
+  variable: '--font-jetbrains-mono',
+  subsets: ['latin'],
+  display: 'optional',
+  weight: ['400', '700'],
+});
 
 const relatedTools = getAllCalculators().map((c) => ({ name: c.cardTitle, href: c.href }));
 
 export default function CalculatorsLayout({ children }: { children: React.ReactNode }) {
   return (
-    <>
+    <div className={jetbrainsMono.variable}>
       {children}
       <section className="border-t border-border bg-surface py-10">
         <div className="mx-auto max-w-4xl px-4">
@@ -23,6 +31,6 @@ export default function CalculatorsLayout({ children }: { children: React.ReactN
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

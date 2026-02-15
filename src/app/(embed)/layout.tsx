@@ -1,4 +1,12 @@
 import type { Metadata } from 'next';
+import { JetBrains_Mono } from 'next/font/google';
+
+const jetbrainsMono = JetBrains_Mono({
+  variable: '--font-jetbrains-mono',
+  subsets: ['latin'],
+  display: 'optional',
+  weight: ['400', '700'],
+});
 
 export const metadata: Metadata = {
   robots: {
@@ -12,5 +20,5 @@ export default function EmbedLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return children;
+  return <div className={jetbrainsMono.variable}>{children}</div>;
 }
