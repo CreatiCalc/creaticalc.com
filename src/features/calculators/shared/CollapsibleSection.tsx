@@ -46,7 +46,11 @@ export default function CollapsibleSection({
           </svg>
         </span>
       </summary>
-      <div className={styles.content}>{children}</div>
+      <div className="details-content">
+        <div>
+          <div className={styles.content}>{children}</div>
+        </div>
+      </div>
     </details>
   );
 }

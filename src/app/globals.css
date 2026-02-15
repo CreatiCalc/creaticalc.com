@@ -65,6 +65,21 @@ h6 {
   padding-bottom: 0.1em;
 }
 
+/* Collapsible section smooth animation via grid trick */
+details .details-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.25s ease-out;
+}
+
+details[open] .details-content {
+  grid-template-rows: 1fr;
+}
+
+details .details-content > div {
+  overflow: hidden;
+}
+
 /* Hero entrance animations */
 @keyframes fade-up {
   from {
