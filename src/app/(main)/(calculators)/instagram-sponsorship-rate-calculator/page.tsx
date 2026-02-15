@@ -189,6 +189,7 @@ export default function InstagramSponsorshipPage() {
       />
       <CalculatorLayout
         title="Instagram Sponsorship Rate Calculator"
+        slug="instagram-sponsorship-rate-calculator"
         description="Find out how much to charge for sponsored posts on Instagram. Get a personalized rate card based on your followers, engagement rate, content type, and niche."
         faq={faq}
         howItWorks={howItWorks}

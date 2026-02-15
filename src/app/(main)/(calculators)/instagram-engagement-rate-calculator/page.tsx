@@ -194,6 +194,7 @@ export default function InstagramEngagementPage() {
       />
       <CalculatorLayout
         title="Instagram Engagement Rate Calculator"
+        slug="instagram-engagement-rate-calculator"
         description="Calculate your Instagram engagement rate and see how you compare against benchmarks for your follower tier and content niche."
         faq={faq}
         howItWorks={howItWorks}

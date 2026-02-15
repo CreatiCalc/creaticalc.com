@@ -217,6 +217,7 @@ export default function YouTubeSponsorshipPage() {
       />
       <CalculatorLayout
         title="YouTube Sponsorship Rate Calculator"
+        slug="youtube-sponsorship-rate-calculator"
         description="Find out how much to charge for sponsored videos on YouTube. Get a personalized rate card based on your subscribers, engagement rate, content type, and niche."
         faq={faq}
         howItWorks={howItWorks}

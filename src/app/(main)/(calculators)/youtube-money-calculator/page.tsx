@@ -237,6 +237,7 @@ export default function YouTubeMoneyCalculatorPage() {
       />
       <CalculatorLayout
         title="YouTube Money Calculator"
+        slug="youtube-money-calculator"
         description="Estimate your YouTube earnings based on daily views and content niche. See projected daily, monthly, and yearly revenue with growth modeling and seasonal adjustments."
         faq={faq}
         howItWorks={howItWorks}

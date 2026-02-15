@@ -211,6 +211,7 @@ export default function TwitterSponsorshipPage() {
       />
       <CalculatorLayout
         title="X (Twitter) Sponsorship Rate Calculator"
+        slug="twitter-sponsorship-rate-calculator"
         description="Find out how much to charge for sponsored content on X (Twitter). Get a personalized rate card based on your followers, engagement rate, content type, and niche."
         faq={faq}
         howItWorks={howItWorks}

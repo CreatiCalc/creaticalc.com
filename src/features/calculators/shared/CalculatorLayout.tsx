@@ -5,6 +5,7 @@ import Breadcrumbs from '@/components/seo/Breadcrumbs';
 import FAQ from './FAQ';
 import AdSlot from '@/components/layout/AdSlot';
 import CalculatorErrorBoundary from './CalculatorErrorBoundary';
+import NextStepCTA from './NextStepCTA';
 
 interface CalculatorLayoutProps {
   title: string;
@@ -13,6 +14,8 @@ interface CalculatorLayoutProps {
   faq: FAQItem[];
   howItWorks?: React.ReactNode;
   breadcrumbs?: BreadcrumbItem[];
+  /** Calculator slug for related-calculator CTAs */
+  slug?: string;
 }
 
 export default function CalculatorLayout({
@@ -22,6 +25,7 @@ export default function CalculatorLayout({
   faq,
   howItWorks,
   breadcrumbs,
+  slug,
 }: CalculatorLayoutProps) {
   return (
     <div className="mx-auto max-w-4xl px-4 py-10">
@@ -46,6 +50,8 @@ export default function CalculatorLayout({
       <CalculatorErrorBoundary>{children}</CalculatorErrorBoundary>
 
       <AdSlot slot="below-results" className="mt-8" />
+
+      {slug && <NextStepCTA currentSlug={slug} />}
 
       {howItWorks && (
         <section className="mt-12">

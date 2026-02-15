@@ -244,6 +244,7 @@ export default function YouTubeShortsMoneyCalculatorPage() {
       />
       <CalculatorLayout
         title="YouTube Shorts Money Calculator"
+        slug="youtube-shorts-money-calculator"
         description="Estimate your YouTube Shorts earnings based on daily views. See projected daily, monthly, and yearly Shorts revenue with growth modeling and seasonal adjustments."
         faq={faq}
         howItWorks={howItWorks}

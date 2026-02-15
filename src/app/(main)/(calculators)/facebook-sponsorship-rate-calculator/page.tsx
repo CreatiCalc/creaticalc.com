@@ -210,6 +210,7 @@ export default function FacebookSponsorshipPage() {
       />
       <CalculatorLayout
         title="Facebook Sponsorship Rate Calculator"
+        slug="facebook-sponsorship-rate-calculator"
         description="Find out how much to charge for sponsored posts on Facebook. Get a personalized rate card based on your followers, engagement rate, content type, and niche."
         faq={faq}
         howItWorks={howItWorks}

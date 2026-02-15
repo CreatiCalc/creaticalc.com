@@ -204,6 +204,7 @@ export default function FacebookEngagementPage() {
       />
       <CalculatorLayout
         title="Facebook Engagement Rate Calculator"
+        slug="facebook-engagement-rate-calculator"
         description="Calculate your Facebook Page engagement rate by followers or by reach. See how you compare against benchmarks for your follower tier and content niche."
         faq={faq}
         howItWorks={howItWorks}
