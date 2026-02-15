@@ -12,7 +12,7 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
         {items.map((item, i) => {
           const isLast = i === items.length - 1;
           return (
-            <li key={item.path} className="flex items-center gap-1">
+            <li key={`${i}-${item.path}`} className="flex items-center gap-1">
               {i > 0 && (
                 <svg
                   width="12"

@@ -209,7 +209,6 @@ export default function FacebookEngagementPage() {
         howItWorks={howItWorks}
         breadcrumbs={[
           { name: 'Home', path: '/' },
-          { name: 'Facebook', path: '/facebook-engagement-rate-calculator' },
           {
             name: 'Facebook Engagement Rate Calculator',
             path: '/facebook-engagement-rate-calculator',

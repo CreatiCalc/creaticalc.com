@@ -216,7 +216,6 @@ export default function TikTokEngagementPage() {
         howItWorks={howItWorks}
         breadcrumbs={[
           { name: 'Home', path: '/' },
-          { name: 'TikTok', path: '/tiktok-engagement-rate-calculator' },
           {
             name: 'TikTok Engagement Rate Calculator',
             path: '/tiktok-engagement-rate-calculator',
