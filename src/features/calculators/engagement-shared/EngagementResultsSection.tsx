@@ -98,7 +98,12 @@ export default function EngagementResultsSection({
 
           {extraSections}
 
-          <CollapsibleSection title="What If Scenarios" defaultOpen={false} className="mt-6">
+          <CollapsibleSection
+            title="What If Scenarios"
+            defaultOpen={false}
+            className="mt-6"
+            preview="See how changes affect your rate"
+          >
             <WhatIfScenarios
               input={input}
               currentRate={result.engagementRate}
@@ -127,7 +132,12 @@ export default function EngagementResultsSection({
 
           <AdSlot slot="after-chart" className="mt-6" />
 
-          <CollapsibleSection title="Estimated Reach" defaultOpen={false} className="mt-6">
+          <CollapsibleSection
+            title="Estimated Reach"
+            defaultOpen={false}
+            className="mt-6"
+            preview="How many people see your posts"
+          >
             <EstimatedReachDisplay platform={platform} followers={followers} />
           </CollapsibleSection>
 
@@ -135,6 +145,7 @@ export default function EngagementResultsSection({
             title="Cross-Platform Comparison"
             defaultOpen={false}
             className="mt-6"
+            preview="Your rate vs. other platforms"
           >
             <CrossPlatformComparison
               platform={platform}
@@ -143,15 +154,30 @@ export default function EngagementResultsSection({
             />
           </CollapsibleSection>
 
-          <CollapsibleSection title="Year-Over-Year Trends" defaultOpen={false} className="mt-6">
+          <CollapsibleSection
+            title="Year-Over-Year Trends"
+            defaultOpen={false}
+            className="mt-6"
+            preview="How rates changed from 2025 to 2026"
+          >
             <YoYTrendContext platform={platform} rate={result.engagementRate} />
           </CollapsibleSection>
 
-          <CollapsibleSection title="Growth Recommendations" defaultOpen={false} className="mt-6">
+          <CollapsibleSection
+            title="Growth Recommendations"
+            defaultOpen={false}
+            className="mt-6"
+            preview="Actionable tips to improve"
+          >
             <GrowthRecommendations recommendations={computed.recommendations} />
           </CollapsibleSection>
 
-          <CollapsibleSection title="Engagement Breakdown" defaultOpen={false} className="mt-6">
+          <CollapsibleSection
+            title="Engagement Breakdown"
+            defaultOpen={false}
+            className="mt-6"
+            preview="Likes, comments, shares split"
+          >
             <EngagementBreakdownChart breakdown={result.breakdown} platform={platform} />
           </CollapsibleSection>
         </>

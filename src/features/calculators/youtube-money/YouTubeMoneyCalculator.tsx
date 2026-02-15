@@ -379,7 +379,12 @@ export default function YouTubeMoneyCalculator({
           <ProjectionChart months={projection.months} />
 
           {state.monthlyGrowthRate > 0 && (
-            <CollapsibleSection title="Revenue Milestones" defaultOpen={false} className="mt-6">
+            <CollapsibleSection
+              title="Revenue Milestones"
+              defaultOpen={false}
+              className="mt-6"
+              preview="When you'll hit $100, $1K, $10K/mo"
+            >
               <MilestoneTimeline input={projectionInput} />
             </CollapsibleSection>
           )}
@@ -403,7 +408,12 @@ export default function YouTubeMoneyCalculator({
             />
           </CollapsibleSection>
 
-          <CollapsibleSection title="Earnings Breakdown" defaultOpen={false} className="mt-6">
+          <CollapsibleSection
+            title="Earnings Breakdown"
+            defaultOpen={false}
+            className="mt-6"
+            preview="CPM, RPM, and niche comparison"
+          >
             <DriversBreakdown state={projectionInput} projection={projection} />
             <div className="mt-6">
               <RpmTable activeNicheId={state.nicheId} contentFormat={state.contentFormat} />

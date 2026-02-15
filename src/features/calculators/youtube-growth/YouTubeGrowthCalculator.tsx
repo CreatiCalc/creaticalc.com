@@ -243,13 +243,23 @@ export default function YouTubeGrowthCalculator() {
 
           <GrowthChart months={result.months} />
 
-          <CollapsibleSection title="Subscriber Milestones" defaultOpen={false} className="mt-6">
+          <CollapsibleSection
+            title="Subscriber Milestones"
+            defaultOpen={false}
+            className="mt-6"
+            preview="When you'll hit 1K, 10K, 100K"
+          >
             <GrowthMilestoneTimeline milestones={result.milestones} />
           </CollapsibleSection>
 
           <AdSlot slot="after-chart" className="mt-6" />
 
-          <CollapsibleSection title="Growth Tips" defaultOpen={false} className="mt-6">
+          <CollapsibleSection
+            title="Growth Tips"
+            defaultOpen={false}
+            className="mt-6"
+            preview="Actionable tips to grow faster"
+          >
             <GrowthRecommendations recommendations={result.recommendations} />
           </CollapsibleSection>
         </>

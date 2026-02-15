@@ -9,6 +9,8 @@ interface CollapsibleSectionProps {
   className?: string;
   /** "default" uses rounded-xl shadow-sm semibold; "compact" uses rounded-lg no shadow medium */
   variant?: 'default' | 'compact';
+  /** Short text shown next to the title when collapsed (hidden when open) */
+  preview?: string;
 }
 
 const VARIANT_STYLES = {
@@ -32,6 +34,7 @@ export default function CollapsibleSection({
   children,
   className = '',
   variant = 'default',
+  preview,
 }: CollapsibleSectionProps) {
   const styles = VARIANT_STYLES[variant];
   const detailsRef = useRef<HTMLDetailsElement>(null);
@@ -88,6 +91,11 @@ export default function CollapsibleSection({
       >
         <span className="inline-flex items-center gap-2">
           {title}
+          {preview && (
+            <span className="text-xs font-normal text-muted transition-opacity group-open:opacity-0">
+              — {preview}
+            </span>
+          )}
           <svg
             className="h-4 w-4 transition-transform group-open:rotate-180"
             fill="none"

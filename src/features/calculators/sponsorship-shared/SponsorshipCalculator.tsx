@@ -164,7 +164,12 @@ export default function SponsorshipCalculator({ config }: SponsorshipCalculatorP
 
           <AdSlot slot="after-chart" className="mt-6" />
 
-          <CollapsibleSection title="Influencer Tier Context" defaultOpen={false} className="mt-6">
+          <CollapsibleSection
+            title="Influencer Tier Context"
+            defaultOpen={false}
+            className="mt-6"
+            preview="How your tier compares"
+          >
             <TierContext
               currentTier={result.tier}
               tierLabel={result.tierLabel}
@@ -172,7 +177,12 @@ export default function SponsorshipCalculator({ config }: SponsorshipCalculatorP
             />
           </CollapsibleSection>
 
-          <CollapsibleSection title="Negotiation Tips" defaultOpen={false} className="mt-6">
+          <CollapsibleSection
+            title="Negotiation Tips"
+            defaultOpen={false}
+            className="mt-6"
+            preview="Maximize your deal value"
+          >
             <NegotiationTips tips={tips} />
           </CollapsibleSection>
         </>
