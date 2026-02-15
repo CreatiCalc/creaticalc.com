@@ -38,7 +38,7 @@ const homeFaqItems = [
   {
     question: 'How much should I charge for a sponsored post?',
     answer:
-      'Sponsorship rates depend on your platform, follower count, engagement rate, content niche, and deal type. On Instagram, the standard rate is $10–$25 per 1,000 followers for a basic feed post mention. On TikTok, rates are $5–$15 per 1,000 followers. Use our Instagram and TikTok Sponsorship Rate Calculators for a personalized rate card.',
+      'Sponsorship rates depend on your platform, follower count, engagement rate, content niche, and deal type. On Instagram, the standard rate is $10–$25 per 1,000 followers for a basic feed post mention. On TikTok, rates are $5–$15 per 1,000 followers. On YouTube, integrations run $20–$50 per 1,000 subscribers. Use our Sponsorship Rate Calculators for YouTube, Instagram, TikTok, Facebook, and X for a personalized rate card.',
   },
   {
     question: 'What is a good engagement rate on Instagram?',

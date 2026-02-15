@@ -10,7 +10,7 @@ import AdSlot from '@/components/layout/AdSlot';
 import CollapsibleSection from '@/features/calculators/shared/CollapsibleSection';
 import FollowerSliderInput from '@/features/calculators/shared/FollowerSliderInput';
 import ButtonToggle from '@/components/ui/ButtonToggle';
-import { IG_CONTENT_TYPES, TIKTOK_CONTENT_TYPES } from '@/lib/sponsorshipModel';
+import { getContentTypesForPlatform } from '@/lib/sponsorshipModel';
 import DealTypeSelector from './DealTypeSelector';
 import SponsorshipRateDisplay from './SponsorshipRateDisplay';
 import RateCardTable from './RateCardTable';
@@ -47,6 +47,11 @@ export default function SponsorshipCalculator({ config }: SponsorshipCalculatorP
     setDealsPerMonth,
   } = useSponsorshipState(config);
 
+  const contentTypeOptions = useMemo(
+    () => getContentTypesForPlatform(config.platform),
+    [config.platform]
+  );
+
   const result = useMemo(
     () =>
       computeSponsorship({
@@ -68,7 +73,7 @@ export default function SponsorshipCalculator({ config }: SponsorshipCalculatorP
 
   const shareState = useMemo<SponsorshipShareState>(
     () => ({
-      platform: config.platform as 'instagram' | 'tiktok',
+      platform: config.platform,
       followers: state.followers,
       engagementRate: state.engagementRate,
       contentType: state.contentType,
@@ -94,7 +99,7 @@ export default function SponsorshipCalculator({ config }: SponsorshipCalculatorP
           <ButtonToggle
             value={state.contentType}
             onChange={(v) => setContentType(v as SponsorshipContentType)}
-            options={config.platform === 'instagram' ? IG_CONTENT_TYPES : TIKTOK_CONTENT_TYPES}
+            options={contentTypeOptions}
             label="Content Type"
             ariaLabel="Content type"
             variant="pill"

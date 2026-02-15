@@ -1,8 +1,8 @@
-import type { Platform, IndustryId } from '@/lib/engagementBenchmarks';
-import type { SponsorshipContentType, DealType } from '@/lib/sponsorshipModel';
+import type { IndustryId } from '@/lib/engagementBenchmarks';
+import type { SponsorshipPlatform, SponsorshipContentType, DealType } from '@/lib/sponsorshipModel';
 
 export interface SponsorshipPlatformConfig {
-  platform: Platform;
+  platform: SponsorshipPlatform;
   basePath: string;
   platformLabel: string;
   defaultFollowers: number;
@@ -32,6 +32,42 @@ export const TIKTOK_SPONSORSHIP_CONFIG: SponsorshipPlatformConfig = {
   defaultFollowers: 10_000,
   defaultEngagementRate: 5.0,
   defaultContentType: 'video',
+  defaultDealType: 'mention',
+  defaultIndustryId: 'general',
+  defaultDealsPerMonth: 2,
+};
+
+export const YOUTUBE_SPONSORSHIP_CONFIG: SponsorshipPlatformConfig = {
+  platform: 'youtube',
+  basePath: '/youtube-sponsorship-rate-calculator',
+  platformLabel: 'YouTube',
+  defaultFollowers: 10_000,
+  defaultEngagementRate: 3.5,
+  defaultContentType: 'integration',
+  defaultDealType: 'mention',
+  defaultIndustryId: 'general',
+  defaultDealsPerMonth: 2,
+};
+
+export const FACEBOOK_SPONSORSHIP_CONFIG: SponsorshipPlatformConfig = {
+  platform: 'facebook',
+  basePath: '/facebook-sponsorship-rate-calculator',
+  platformLabel: 'Facebook',
+  defaultFollowers: 10_000,
+  defaultEngagementRate: 1.0,
+  defaultContentType: 'feedPost',
+  defaultDealType: 'mention',
+  defaultIndustryId: 'general',
+  defaultDealsPerMonth: 2,
+};
+
+export const TWITTER_SPONSORSHIP_CONFIG: SponsorshipPlatformConfig = {
+  platform: 'twitter',
+  basePath: '/twitter-sponsorship-rate-calculator',
+  platformLabel: 'X (Twitter)',
+  defaultFollowers: 10_000,
+  defaultEngagementRate: 1.5,
+  defaultContentType: 'tweet',
   defaultDealType: 'mention',
   defaultIndustryId: 'general',
   defaultDealsPerMonth: 2,

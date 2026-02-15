@@ -53,6 +53,18 @@ const CALCULATORS: CalculatorEntry[] = [
     embeddable: true,
   },
   {
+    slug: 'youtube-sponsorship-rate-calculator',
+    title: 'YouTube Sponsorship Rate Calculator',
+    cardTitle: 'YouTube Sponsorship Rate',
+    href: '/youtube-sponsorship-rate-calculator',
+    platform: 'YouTube',
+    description:
+      'Calculate how much to charge for YouTube integrations, dedicated videos, Shorts, and pre-rolls.',
+    aboutDescription:
+      'Find out how much to charge for sponsored YouTube content based on your subscribers, engagement rate, content type, and niche.',
+    embeddable: true,
+  },
+  {
     slug: 'instagram-engagement-rate-calculator',
     title: 'Instagram Engagement Rate Calculator',
     cardTitle: 'Instagram Engagement Rate',
@@ -110,6 +122,18 @@ const CALCULATORS: CalculatorEntry[] = [
     embeddable: true,
   },
   {
+    slug: 'facebook-sponsorship-rate-calculator',
+    title: 'Facebook Sponsorship Rate Calculator',
+    cardTitle: 'Facebook Sponsorship Rate',
+    href: '/facebook-sponsorship-rate-calculator',
+    platform: 'Facebook',
+    description:
+      'Calculate how much to charge for sponsored Facebook posts, Reels, Stories, and Lives.',
+    aboutDescription:
+      'Find out how much to charge for sponsored Facebook content based on your followers, engagement rate, content type, and niche.',
+    embeddable: true,
+  },
+  {
     slug: 'twitter-engagement-rate-calculator',
     title: 'X (Twitter) Engagement Rate Calculator',
     cardTitle: 'X (Twitter) Engagement Rate',
@@ -119,6 +143,17 @@ const CALCULATORS: CalculatorEntry[] = [
       'Measure your X engagement rate with likes, replies, reposts, and bookmarks. Compare against benchmarks.',
     aboutDescription:
       'Measure your X engagement rate using likes, replies, reposts, and bookmarks. Compare against benchmarks by follower tier and industry.',
+    embeddable: true,
+  },
+  {
+    slug: 'twitter-sponsorship-rate-calculator',
+    title: 'X (Twitter) Sponsorship Rate Calculator',
+    cardTitle: 'X (Twitter) Sponsorship Rate',
+    href: '/twitter-sponsorship-rate-calculator',
+    platform: 'X',
+    description: 'Calculate how much to charge for sponsored tweets, threads, and X Spaces.',
+    aboutDescription:
+      'Find out how much to charge for sponsored X content based on your followers, engagement rate, content type, and niche.',
     embeddable: true,
   },
   {

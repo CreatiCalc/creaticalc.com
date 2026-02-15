@@ -15,6 +15,7 @@ export const NAV_GROUPS: NavGroup[] = [
       { name: 'Money Calculator', href: '/youtube-money-calculator' },
       { name: 'Shorts Calculator', href: '/youtube-shorts-money-calculator' },
       { name: 'Growth Projector', href: '/youtube-subscriber-projector' },
+      { name: 'Sponsorship Rate', href: '/youtube-sponsorship-rate-calculator' },
     ],
   },
   {
@@ -33,11 +34,17 @@ export const NAV_GROUPS: NavGroup[] = [
   },
   {
     label: 'Facebook',
-    items: [{ name: 'Engagement Rate', href: '/facebook-engagement-rate-calculator' }],
+    items: [
+      { name: 'Engagement Rate', href: '/facebook-engagement-rate-calculator' },
+      { name: 'Sponsorship Rate', href: '/facebook-sponsorship-rate-calculator' },
+    ],
   },
   {
     label: 'X',
-    items: [{ name: 'Engagement Rate', href: '/twitter-engagement-rate-calculator' }],
+    items: [
+      { name: 'Engagement Rate', href: '/twitter-engagement-rate-calculator' },
+      { name: 'Sponsorship Rate', href: '/twitter-sponsorship-rate-calculator' },
+    ],
   },
 ];
 
@@ -56,6 +63,7 @@ export const FOOTER_GROUPS: NavGroup[] = [
       { name: 'Money Calculator', href: '/youtube-money-calculator' },
       { name: 'Shorts Calculator', href: '/youtube-shorts-money-calculator' },
       { name: 'Growth Projector', href: '/youtube-subscriber-projector' },
+      { name: 'Sponsorship Rate', href: '/youtube-sponsorship-rate-calculator' },
     ],
   },
   {
@@ -72,8 +80,11 @@ export const FOOTER_GROUPS: NavGroup[] = [
   {
     label: 'Sponsorship Rates',
     items: [
+      { name: 'YouTube', href: '/youtube-sponsorship-rate-calculator' },
       { name: 'Instagram', href: '/instagram-sponsorship-rate-calculator' },
       { name: 'TikTok', href: '/tiktok-sponsorship-rate-calculator' },
+      { name: 'Facebook', href: '/facebook-sponsorship-rate-calculator' },
+      { name: 'X (Twitter)', href: '/twitter-sponsorship-rate-calculator' },
     ],
   },
   {
