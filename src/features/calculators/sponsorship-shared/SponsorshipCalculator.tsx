@@ -126,7 +126,7 @@ export default function SponsorshipCalculator({ config }: SponsorshipCalculatorP
         </div>
       </Card>
 
-      <ResultsHeading title="Sponsorship Rate" />
+      <ResultsHeading title="Sponsorship Rate" subtitle="Based on 2026 creator economy rates" />
       <div>
         <SponsorshipRateDisplay
           rate={result.rate}

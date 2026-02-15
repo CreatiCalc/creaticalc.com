@@ -57,7 +57,10 @@ export default function EngagementResultsSection({
 
   return (
     <>
-      <ResultsHeading title="Your Engagement" />
+      <ResultsHeading
+        title="Your Engagement"
+        subtitle="Compared against 2026 industry benchmarks"
+      />
       <div className="grid gap-4 sm:grid-cols-2">
         <EngagementRateDisplay
           rate={result.engagementRate}

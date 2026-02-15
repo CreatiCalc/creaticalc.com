@@ -312,7 +312,7 @@ export default function YouTubeMoneyCalculator({
         </div>
       </Card>
 
-      <ResultsHeading title="Estimated Earnings" />
+      <ResultsHeading title="Estimated Earnings" subtitle="Based on 2026 CPM/RPM data by niche" />
       <div className="grid gap-4 sm:grid-cols-3">
         <ResultCard
           label="Daily Earnings"

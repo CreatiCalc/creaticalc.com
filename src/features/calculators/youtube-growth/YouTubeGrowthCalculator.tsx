@@ -200,7 +200,10 @@ export default function YouTubeGrowthCalculator() {
         </div>
       </Card>
 
-      <ResultsHeading title="Growth Projection" />
+      <ResultsHeading
+        title="Growth Projection"
+        subtitle="Model uses niche-adjusted growth curves"
+      />
       <div className="grid gap-4 sm:grid-cols-3">
         <ResultCard
           label="Current"
