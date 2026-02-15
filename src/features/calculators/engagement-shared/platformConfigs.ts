@@ -294,7 +294,7 @@ export const FACEBOOK_CONFIG: EngagementPlatformConfig = {
       inputKey: 'avgLikes',
       label: 'Avg. Reactions per Post',
       formulaLabel: 'Reactions',
-      defaultValue: 50,
+      defaultValue: 80,
       sliderMin: 1,
       sliderMax: 500_000,
       step: 1,
