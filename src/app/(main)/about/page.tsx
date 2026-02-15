@@ -45,7 +45,7 @@ const faqItems = [
   {
     question: 'Can I use CreatiCalc for brand deals and sponsorship pricing?',
     answer:
-      'Yes. We have dedicated sponsorship rate calculators for both Instagram and TikTok that suggest rates based on your followers, engagement, content type, and niche. Our YouTube Money Calculator also includes a built-in sponsorship rate estimator. These are great starting points for negotiating brand deals.',
+      'Yes. We have dedicated sponsorship rate calculators for YouTube, Instagram, TikTok, Facebook, and X (Twitter) that suggest rates based on your followers, engagement, content type, and niche. These are great starting points for negotiating brand deals and building your rate card.',
   },
   {
     question: 'Do I need to create an account?',

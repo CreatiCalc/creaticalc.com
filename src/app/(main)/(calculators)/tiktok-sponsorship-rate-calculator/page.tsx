@@ -150,6 +150,15 @@ const howItWorks = (
       </li>
       <li>
         <Link
+          href="/youtube-sponsorship-rate-calculator"
+          className="font-medium text-primary hover:underline"
+        >
+          YouTube Sponsorship Rate Calculator
+        </Link>{' '}
+        — calculate YouTube integration and dedicated video rates
+      </li>
+      <li>
+        <Link
           href="/instagram-sponsorship-rate-calculator"
           className="font-medium text-primary hover:underline"
         >
@@ -159,12 +168,12 @@ const howItWorks = (
       </li>
       <li>
         <Link
-          href="/instagram-engagement-rate-calculator"
+          href="/facebook-sponsorship-rate-calculator"
           className="font-medium text-primary hover:underline"
         >
-          Instagram Engagement Rate Calculator
+          Facebook Sponsorship Rate Calculator
         </Link>{' '}
-        — calculate your Instagram engagement with likes, comments, and saves
+        — calculate Facebook sponsorship pricing
       </li>
       <li>
         <Link

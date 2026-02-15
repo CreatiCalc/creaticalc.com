@@ -80,6 +80,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: `${baseUrl}/youtube-sponsorship-rate-calculator`,
+      lastModified: '2026-02-14',
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/facebook-sponsorship-rate-calculator`,
+      lastModified: '2026-02-14',
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/twitter-sponsorship-rate-calculator`,
+      lastModified: '2026-02-14',
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
       url: `${baseUrl}/engagement-rate-benchmarks`,
       lastModified: '2026-02-14',
       changeFrequency: 'monthly',

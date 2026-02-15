@@ -1,5 +1,6 @@
 import { Suspense } from 'react';
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
 import CalculatorSchema from '@/components/seo/CalculatorSchema';
@@ -54,9 +55,55 @@ export default async function NicheCalculatorPage({ params }: NichePageProps) {
       </p>
       <p className="mt-3">
         Keep in mind that these are estimates based on ad revenue alone. Many successful {data.name}{' '}
-        creators earn significantly more through brand sponsorships, affiliate marketing, and other
-        revenue streams.
+        creators earn significantly more through{' '}
+        <Link
+          href="/youtube-sponsorship-rate-calculator"
+          className="font-medium text-primary hover:underline"
+        >
+          brand sponsorships
+        </Link>
+        , affiliate marketing, and other revenue streams.
       </p>
+
+      <h3 className="mt-6 text-lg font-semibold text-foreground">Related Tools</h3>
+      <ul className="mt-2 list-disc space-y-1 pl-5">
+        <li>
+          <Link
+            href="/youtube-money-calculator"
+            className="font-medium text-primary hover:underline"
+          >
+            YouTube Money Calculator
+          </Link>{' '}
+          &mdash; estimate earnings across all niches and compare RPM rates
+        </li>
+        <li>
+          <Link
+            href="/youtube-shorts-money-calculator"
+            className="font-medium text-primary hover:underline"
+          >
+            YouTube Shorts Money Calculator
+          </Link>{' '}
+          &mdash; estimate how much Shorts pay per 1,000 views
+        </li>
+        <li>
+          <Link
+            href="/youtube-sponsorship-rate-calculator"
+            className="font-medium text-primary hover:underline"
+          >
+            YouTube Sponsorship Rate Calculator
+          </Link>{' '}
+          &mdash; find out how much to charge for sponsored YouTube content
+        </li>
+        <li>
+          <Link
+            href="/youtube-subscriber-projector"
+            className="font-medium text-primary hover:underline"
+          >
+            YouTube Subscriber Growth Projector
+          </Link>{' '}
+          &mdash; forecast your subscriber growth and milestone dates
+        </li>
+      </ul>
     </>
   );
 
