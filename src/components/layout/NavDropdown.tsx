@@ -10,6 +10,8 @@ interface NavDropdownProps {
   onClose: () => void;
   /** "left" aligns dropdown to the left edge, "right" to the right edge */
   align?: 'left' | 'right';
+  /** Current pathname for active-link highlighting */
+  pathname?: string;
 }
 
 export default function NavDropdown({
@@ -20,7 +22,9 @@ export default function NavDropdown({
   onToggle,
   onClose,
   align = 'left',
+  pathname,
 }: NavDropdownProps) {
+  const hasActiveChild = pathname ? items.some((item) => pathname === item.href) : false;
   return (
     <div className="relative">
       <button
@@ -29,7 +33,7 @@ export default function NavDropdown({
         aria-expanded={isOpen}
         aria-haspopup="menu"
         aria-controls={panelId}
-        className="flex items-center gap-1 rounded-lg px-3 py-2 text-sm text-muted transition-colors hover:bg-surface-alt hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
+        className={`flex items-center gap-1 rounded-lg px-3 py-2 text-sm transition-colors hover:bg-surface-alt hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 ${hasActiveChild ? 'font-medium text-primary' : 'text-muted'}`}
       >
         {label}
         <svg
@@ -60,7 +64,8 @@ export default function NavDropdown({
                 href={item.href}
                 role="menuitem"
                 onClick={onClose}
-                className="block rounded-lg px-4 py-2.5 text-sm text-muted transition-colors hover:bg-surface-alt hover:text-foreground"
+                aria-current={pathname === item.href ? 'page' : undefined}
+                className={`block rounded-lg px-4 py-2.5 text-sm transition-colors hover:bg-surface-alt hover:text-foreground ${pathname === item.href ? 'bg-primary/5 font-medium text-primary' : 'text-muted'}`}
               >
                 {item.name}
               </Link>
