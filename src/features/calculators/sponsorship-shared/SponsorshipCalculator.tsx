@@ -147,18 +147,14 @@ export default function SponsorshipCalculator({ config }: SponsorshipCalculatorP
         <>
           <AdSlot slot="below-results" className="mt-6" />
 
-          <CollapsibleSection title="Full Rate Card" defaultOpen={false} className="mt-6">
+          <CollapsibleSection title="Full Rate Card" defaultOpen className="mt-6">
             <RateCardTable
               rateCard={result.rateCard}
               activeContentType={state.contentType as SponsorshipContentType}
             />
           </CollapsibleSection>
 
-          <CollapsibleSection
-            title="Monthly Earnings Projection"
-            defaultOpen={false}
-            className="mt-6"
-          >
+          <CollapsibleSection title="Monthly Earnings Projection" defaultOpen className="mt-6">
             <MonthlyEarningsProjection
               rate={result.rate}
               dealsPerMonth={state.dealsPerMonth}

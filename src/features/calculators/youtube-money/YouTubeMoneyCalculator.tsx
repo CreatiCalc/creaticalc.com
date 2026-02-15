@@ -384,7 +384,7 @@ export default function YouTubeMoneyCalculator({
             </CollapsibleSection>
           )}
 
-          <CollapsibleSection title="Sponsorship Rates" defaultOpen={false} className="mt-6">
+          <CollapsibleSection title="Sponsorship Rates" defaultOpen className="mt-6">
             <SponsorshipEstimate
               dailyViews={effectiveDailyViews}
               nicheId={state.nicheId}
@@ -395,7 +395,7 @@ export default function YouTubeMoneyCalculator({
 
           <AdSlot slot="after-chart" className="mt-6" />
 
-          <CollapsibleSection title="Optimization Tips" defaultOpen={false} className="mt-6">
+          <CollapsibleSection title="Optimization Tips" defaultOpen className="mt-6">
             <Recommendations
               state={projectionInput}
               projection={projection}

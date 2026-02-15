@@ -104,7 +104,7 @@ export default function EngagementResultsSection({
             />
           </CollapsibleSection>
 
-          <CollapsibleSection title="Industry Benchmarks" defaultOpen={false} className="mt-6">
+          <CollapsibleSection title="Industry Benchmarks" defaultOpen className="mt-6">
             <IndustryBenchmarks
               platform={platform}
               currentIndustryId={industryId}
@@ -112,11 +112,7 @@ export default function EngagementResultsSection({
             />
           </CollapsibleSection>
 
-          <CollapsibleSection
-            title="Estimated Brand Deal Rates"
-            defaultOpen={false}
-            className="mt-6"
-          >
+          <CollapsibleSection title="Estimated Brand Deal Rates" defaultOpen className="mt-6">
             <BrandDealEstimate
               platform={platform}
               followers={followers}
