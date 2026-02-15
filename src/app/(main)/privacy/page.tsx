@@ -41,7 +41,7 @@ export default function PrivacyPage() {
     <div className="mx-auto max-w-3xl px-4 py-16">
       <h1 className="text-3xl font-bold">Privacy Policy</h1>
       <p className="mt-2 text-sm text-muted">
-        Effective date: February 1, 2026 &middot; Last updated: February 2026
+        Effective date: February 1, 2026 &middot; Last updated: February 15, 2026
       </p>
 
       {/* Table of Contents */}
@@ -115,21 +115,21 @@ export default function PrivacyPage() {
 
           <h3 className="mt-4 mb-1 font-semibold text-foreground">Automatically Collected Data</h3>
           <p>
-            When you visit CreatiCalc, our hosting provider and advertising partners may
-            automatically collect standard technical information, including:
+            When you visit CreatiCalc, our analytics provider (Cloudflare Web Analytics), hosting
+            provider, and advertising partners may automatically collect standard technical
+            information, including:
           </p>
           <ul className="mt-2 list-disc space-y-1 pl-5 marker:text-primary">
-            <li>IP address (anonymized where possible)</li>
             <li>Browser type and version</li>
             <li>Operating system and device type (desktop, mobile, tablet)</li>
-            <li>Pages visited, time spent on each page, and navigation path</li>
-            <li>Referring URL (the page that linked you to our site)</li>
-            <li>Approximate geographic location (country/region level, derived from IP)</li>
-            <li>Screen resolution and viewport size</li>
+            <li>Pages visited and referring URL (the page that linked you to our site)</li>
+            <li>Approximate geographic location (country/region level)</li>
           </ul>
           <p className="mt-3">
-            This data is collected in aggregate to understand traffic patterns and improve the site.
-            It is not linked to any identifiable individual.
+            Cloudflare Web Analytics is privacy-first: it does not use cookies, does not track
+            individual users, and does not collect IP addresses. Data is collected in aggregate to
+            understand traffic patterns and improve the site. It is not linked to any identifiable
+            individual.
           </p>
 
           <h3 className="mt-4 mb-1 font-semibold text-foreground">
@@ -183,8 +183,9 @@ export default function PrivacyPage() {
         <section id="cookies">
           <h2 className="mb-2 text-xl font-semibold text-foreground">4. Cookies</h2>
           <p>
-            Cookies are small text files stored on your device by your browser. CreatiCalc and its
-            partners may use the following types:
+            Cookies are small text files stored on your device by your browser. CreatiCalc uses
+            Cloudflare Web Analytics for traffic measurement, which does not use cookies or track
+            individual users. However, our advertising partners may set cookies as described below.
           </p>
 
           <div className="mt-4 overflow-x-auto">
@@ -204,14 +205,6 @@ export default function PrivacyPage() {
                     theme or display settings)
                   </td>
                   <td className="py-2 whitespace-nowrap">Up to 1 year</td>
-                </tr>
-                <tr>
-                  <td className="py-2 pr-4 font-medium text-foreground">Performance</td>
-                  <td className="py-2 pr-4">
-                    Set by third-party services to understand site traffic — which pages are
-                    visited, how long users stay, and where traffic comes from
-                  </td>
-                  <td className="py-2 whitespace-nowrap">Up to 2 years</td>
                 </tr>
                 <tr>
                   <td className="py-2 pr-4 font-medium text-foreground">Advertising</td>
@@ -304,6 +297,20 @@ export default function PrivacyPage() {
             providing their service:
           </p>
           <ul className="mt-2 list-disc space-y-2 pl-5 marker:text-primary">
+            <li>
+              <strong className="text-foreground">Cloudflare Web Analytics</strong> — Privacy-first
+              traffic analytics. Does not use cookies, does not track individual users, and does not
+              collect personal data (
+              <a
+                href="https://www.cloudflare.com/privacypolicy/"
+                className="text-primary underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Cloudflare Privacy Policy
+              </a>
+              )
+            </li>
             <li>
               <strong className="text-foreground">Netlify</strong> — Hosting, content delivery, and
               edge functions (
@@ -509,9 +516,9 @@ export default function PrivacyPage() {
           <p>
             CreatiCalc is hosted on Netlify&apos;s global CDN, which means your requests may be
             processed by servers in different countries. Our third-party service providers
-            (including Google) may also process data outside your country of residence. These
-            providers maintain appropriate safeguards for international data transfers, including
-            Standard Contractual Clauses where required by GDPR.
+            (including Cloudflare and Google) may also process data outside your country of
+            residence. These providers maintain appropriate safeguards for international data
+            transfers, including Standard Contractual Clauses where required by GDPR.
           </p>
         </section>
 
