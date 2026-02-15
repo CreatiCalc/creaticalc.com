@@ -8,6 +8,7 @@ import ShareButtons from '@/components/ui/ShareButtons';
 import { useShareUrl } from '@/components/ui/useShareUrl';
 import AdSlot from '@/components/layout/AdSlot';
 import CollapsibleSection from '@/features/calculators/shared/CollapsibleSection';
+import ResultsHeading from '@/features/calculators/shared/ResultsHeading';
 import FollowerSliderInput from '@/features/calculators/shared/FollowerSliderInput';
 import ButtonToggle from '@/components/ui/ButtonToggle';
 import { getContentTypesForPlatform } from '@/lib/sponsorshipModel';
@@ -125,8 +126,8 @@ export default function SponsorshipCalculator({ config }: SponsorshipCalculatorP
         </div>
       </Card>
 
-      {/* Primary result */}
-      <div className="mt-6">
+      <ResultsHeading title="Sponsorship Rate" />
+      <div>
         <SponsorshipRateDisplay
           rate={result.rate}
           platform={config.platform}

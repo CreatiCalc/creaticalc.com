@@ -10,6 +10,7 @@ import ResultCard from '@/features/calculators/shared/ResultCard';
 import AdSlot from '@/components/layout/AdSlot';
 import AnimatedNumber from '@/components/ui/AnimatedNumber';
 import CollapsibleSection from '@/features/calculators/shared/CollapsibleSection';
+import ResultsHeading from '@/features/calculators/shared/ResultsHeading';
 import {
   GROWTH_NICHES,
   projectGrowth,
@@ -199,8 +200,8 @@ export default function YouTubeGrowthCalculator() {
         </div>
       </Card>
 
-      {/* Result Cards */}
-      <div className="mt-6 grid gap-4 sm:grid-cols-3">
+      <ResultsHeading title="Growth Projection" />
+      <div className="grid gap-4 sm:grid-cols-3">
         <ResultCard
           label="Current"
           value={<AnimatedNumber value={result.summary.current} format={formatSubscribers} />}

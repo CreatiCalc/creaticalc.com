@@ -3,6 +3,7 @@
 import type { ReactNode } from 'react';
 import AdSlot from '@/components/layout/AdSlot';
 import CollapsibleSection from '@/features/calculators/shared/CollapsibleSection';
+import ResultsHeading from '@/features/calculators/shared/ResultsHeading';
 import EngagementRateDisplay from './EngagementRateDisplay';
 import BenchmarkGauge from './BenchmarkGauge';
 import EngagementHealthScore from './EngagementHealthScore';
@@ -56,7 +57,8 @@ export default function EngagementResultsSection({
 
   return (
     <>
-      <div className="mt-6 grid gap-4 sm:grid-cols-2">
+      <ResultsHeading title="Your Engagement" />
+      <div className="grid gap-4 sm:grid-cols-2">
         <EngagementRateDisplay
           rate={result.engagementRate}
           rating={result.rating}

@@ -38,6 +38,7 @@ import {
 } from './dynamicImports';
 import YouTubeShareButtons from './ShareButtons';
 import CollapsibleSection from '@/features/calculators/shared/CollapsibleSection';
+import ResultsHeading from '@/features/calculators/shared/ResultsHeading';
 import PresetPills from '@/components/ui/PresetPills';
 
 const nicheOptions = NICHES.map((n) => ({ label: n.name, value: n.id }));
@@ -311,7 +312,8 @@ export default function YouTubeMoneyCalculator({
         </div>
       </Card>
 
-      <div className="mt-6 grid gap-4 sm:grid-cols-3">
+      <ResultsHeading title="Estimated Earnings" />
+      <div className="grid gap-4 sm:grid-cols-3">
         <ResultCard
           label="Daily Earnings"
           value={
