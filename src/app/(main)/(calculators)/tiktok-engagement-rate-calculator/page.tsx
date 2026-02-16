@@ -6,6 +6,7 @@ import CalculatorSchema from '@/components/seo/CalculatorSchema';
 
 import { TikTokEngagementCalculator } from '@/features/calculators/tiktok-engagement';
 import type { FAQItem } from '@/features/calculators/shared/types';
+import { getEngagementNichePages } from '@/lib/engagement-niches';
 
 export const metadata: Metadata = {
   title: 'TikTok Engagement Rate Calculator + Industry Benchmarks 2026',
@@ -235,6 +236,24 @@ export default function TikTokEngagementPage() {
         <Suspense>
           <TikTokEngagementCalculator />
         </Suspense>
+
+        <section className="mt-12">
+          <h2 className="mb-4 text-2xl font-bold">Browse by Niche</h2>
+          <p className="mb-6 text-muted">
+            See engagement rate benchmarks and tips tailored to your specific content niche.
+          </p>
+          <div className="grid gap-3 sm:grid-cols-2">
+            {getEngagementNichePages('tiktok').map((niche) => (
+              <Link
+                key={niche.slug}
+                href={`/tiktok-engagement-rate-calculator/${niche.slug}`}
+                className="rounded-lg border border-border bg-white px-4 py-3 text-sm font-medium transition-colors hover:border-primary hover:text-primary"
+              >
+                {niche.name} Engagement Rates
+              </Link>
+            ))}
+          </div>
+        </section>
       </CalculatorLayout>
     </>
   );

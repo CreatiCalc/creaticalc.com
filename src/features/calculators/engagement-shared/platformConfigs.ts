@@ -96,6 +96,7 @@ export interface EngagementPlatformConfig {
   hasContentType?: boolean;
   defaultContentType?: InstagramContentType;
   hasMultiFormula?: boolean;
+  defaultIndustryId?: IndustryId;
 }
 
 // ─── Shared tick sets ────────────────────────────────────────────────────────
@@ -432,7 +433,7 @@ export function buildDefaultState(config: EngagementPlatformConfig): EngagementI
     followers: config.defaultFollowers,
     avgLikes: 0,
     avgComments: 0,
-    industryId: 'general' as IndustryId,
+    industryId: (config.defaultIndustryId ?? 'general') as IndustryId,
     postsAnalyzed: 10,
   };
 
