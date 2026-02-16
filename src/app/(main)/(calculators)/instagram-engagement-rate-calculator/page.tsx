@@ -196,10 +196,13 @@ export default function InstagramEngagementPage() {
         name="Instagram Engagement Rate Calculator"
         description="Calculate your Instagram engagement rate from likes, comments, and saves. Compare against industry benchmarks by follower tier."
         url="/instagram-engagement-rate-calculator"
+        datePublished="2025-01-15"
+        dateModified="2026-02-16"
       />
       <CalculatorLayout
         title="Instagram Engagement Rate Calculator"
         slug="instagram-engagement-rate-calculator"
+        lastUpdated="February 2026"
         description="Calculate your Instagram engagement rate and see how you compare against benchmarks for your follower tier and content niche."
         faq={faq}
         howItWorks={howItWorks}

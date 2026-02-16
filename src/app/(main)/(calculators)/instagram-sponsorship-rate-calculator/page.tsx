@@ -6,6 +6,7 @@ import CalculatorSchema from '@/components/seo/CalculatorSchema';
 
 import { InstagramSponsorshipCalculator } from '@/features/calculators/instagram-sponsorship';
 import type { FAQItem } from '@/features/calculators/shared/types';
+import { getSponsorshipNichePages } from '@/lib/sponsorship-niches';
 
 export const metadata: Metadata = {
   title: 'Instagram Sponsorship Rate Calculator — How Much to Charge in 2026',
@@ -94,9 +95,15 @@ const howItWorks = (
   <>
     <p>
       Our Instagram Sponsorship Rate Calculator helps creators determine how much to charge for
-      branded content on Instagram. The calculator uses a formula based on your follower count,
-      engagement rate, content type, deal type, and content niche to produce a per-post rate range
-      that reflects current market rates.
+      branded content on Instagram. The calculator uses a formula based on your follower count,{' '}
+      <Link href="/glossary" className="font-medium text-primary hover:underline">
+        engagement rate
+      </Link>
+      , content type, deal type, and{' '}
+      <Link href="/glossary" className="font-medium text-primary hover:underline">
+        content niche
+      </Link>{' '}
+      to produce a per-post rate range that reflects current market rates.
     </p>
     <p className="mt-3">
       The base rate starts at $10–$25 per 1,000 followers for Instagram, then multiplies based on
@@ -191,10 +198,13 @@ export default function InstagramSponsorshipPage() {
         name="Instagram Sponsorship Rate Calculator"
         description="Calculate how much to charge for sponsored Instagram posts, Reels, Stories, and carousels based on your followers, engagement rate, and niche."
         url="/instagram-sponsorship-rate-calculator"
+        datePublished="2025-01-15"
+        dateModified="2026-02-16"
       />
       <CalculatorLayout
         title="Instagram Sponsorship Rate Calculator"
         slug="instagram-sponsorship-rate-calculator"
+        lastUpdated="February 2026"
         description="Find out how much to charge for sponsored posts on Instagram. Get a personalized rate card based on your followers, engagement rate, content type, and niche."
         faq={faq}
         howItWorks={howItWorks}
@@ -210,6 +220,25 @@ export default function InstagramSponsorshipPage() {
         <Suspense>
           <InstagramSponsorshipCalculator />
         </Suspense>
+
+        <section className="mt-12">
+          <h2 className="mb-4 text-2xl font-bold">Browse by Niche</h2>
+          <p className="mb-6 text-muted">
+            See sponsorship rate estimates tailored to your specific content niche. Each calculator
+            uses niche-specific pricing data and benchmarks.
+          </p>
+          <div className="grid gap-3 sm:grid-cols-2">
+            {getSponsorshipNichePages('instagram').map((niche) => (
+              <Link
+                key={niche.slug}
+                href={`/instagram-sponsorship-rate-calculator/${niche.slug}`}
+                className="rounded-lg border border-border bg-white px-4 py-3 text-sm font-medium transition-colors hover:border-primary hover:text-primary"
+              >
+                {niche.name} Sponsorship Rates
+              </Link>
+            ))}
+          </div>
+        </section>
       </CalculatorLayout>
     </>
   );

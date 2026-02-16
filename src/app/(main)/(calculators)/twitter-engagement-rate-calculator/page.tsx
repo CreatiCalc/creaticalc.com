@@ -221,10 +221,13 @@ export default function TwitterEngagementPage() {
         name="X (Twitter) Engagement Rate Calculator"
         description="Calculate your X (Twitter) engagement rate by followers or by impressions. Compare against industry benchmarks by follower tier."
         url="/twitter-engagement-rate-calculator"
+        datePublished="2025-01-15"
+        dateModified="2026-02-16"
       />
       <CalculatorLayout
         title="X (Twitter) Engagement Rate Calculator"
         slug="twitter-engagement-rate-calculator"
+        lastUpdated="February 2026"
         description="Calculate your X (Twitter) engagement rate by followers or by impressions. See how you compare against benchmarks for your follower tier and content niche."
         faq={faq}
         howItWorks={howItWorks}

@@ -56,6 +56,7 @@ export const NAV_GROUPS: NavGroup[] = [
 export const MORE_LINKS: NavItem[] = [
   { name: 'Engagement Calculator', href: '/engagement-rate-calculator' },
   { name: 'Engagement Benchmarks', href: '/engagement-rate-benchmarks' },
+  { name: 'Glossary', href: '/glossary' },
   { name: 'About', href: '/about' },
 ];
 
@@ -97,6 +98,7 @@ export const FOOTER_GROUPS: NavGroup[] = [
     label: 'Company',
     items: [
       { name: 'About', href: '/about' },
+      { name: 'Glossary', href: '/glossary' },
       { name: 'Privacy Policy', href: '/privacy' },
     ],
   },

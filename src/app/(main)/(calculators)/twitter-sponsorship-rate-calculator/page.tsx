@@ -6,6 +6,7 @@ import CalculatorSchema from '@/components/seo/CalculatorSchema';
 
 import { TwitterSponsorshipCalculator } from '@/features/calculators/twitter-sponsorship';
 import type { FAQItem } from '@/features/calculators/shared/types';
+import { getSponsorshipNichePages } from '@/lib/sponsorship-niches';
 
 export const metadata: Metadata = {
   title: 'X (Twitter) Sponsorship Rate Calculator — How Much to Charge in 2026',
@@ -213,10 +214,13 @@ export default function TwitterSponsorshipPage() {
         name="X (Twitter) Sponsorship Rate Calculator"
         description="Calculate how much to charge for sponsored tweets, threads, and X Spaces based on your followers, engagement rate, and niche."
         url="/twitter-sponsorship-rate-calculator"
+        datePublished="2025-01-15"
+        dateModified="2026-02-16"
       />
       <CalculatorLayout
         title="X (Twitter) Sponsorship Rate Calculator"
         slug="twitter-sponsorship-rate-calculator"
+        lastUpdated="February 2026"
         description="Find out how much to charge for sponsored content on X (Twitter). Get a personalized rate card based on your followers, engagement rate, content type, and niche."
         faq={faq}
         howItWorks={howItWorks}
@@ -232,6 +236,25 @@ export default function TwitterSponsorshipPage() {
         <Suspense>
           <TwitterSponsorshipCalculator />
         </Suspense>
+
+        <section className="mt-12">
+          <h2 className="mb-4 text-2xl font-bold">Browse by Niche</h2>
+          <p className="mb-6 text-muted">
+            See sponsorship rate estimates tailored to your specific content niche. Each calculator
+            uses niche-specific pricing data and benchmarks.
+          </p>
+          <div className="grid gap-3 sm:grid-cols-2">
+            {getSponsorshipNichePages('twitter').map((niche) => (
+              <Link
+                key={niche.slug}
+                href={`/twitter-sponsorship-rate-calculator/${niche.slug}`}
+                className="rounded-lg border border-border bg-white px-4 py-3 text-sm font-medium transition-colors hover:border-primary hover:text-primary"
+              >
+                {niche.name} Sponsorship Rates
+              </Link>
+            ))}
+          </div>
+        </section>
       </CalculatorLayout>
     </>
   );

@@ -6,6 +6,7 @@ import CalculatorSchema from '@/components/seo/CalculatorSchema';
 
 import { YouTubeSponsorshipCalculator } from '@/features/calculators/youtube-sponsorship';
 import type { FAQItem } from '@/features/calculators/shared/types';
+import { getSponsorshipNichePages } from '@/lib/sponsorship-niches';
 
 export const metadata: Metadata = {
   title: 'YouTube Sponsorship Rate Calculator — How Much to Charge in 2026',
@@ -94,9 +95,15 @@ const howItWorks = (
   <>
     <p>
       Our YouTube Sponsorship Rate Calculator helps creators determine how much to charge for
-      branded content on YouTube. The calculator uses a formula based on your subscriber count,
-      engagement rate, content type, deal type, and content niche to produce a per-video rate range
-      that reflects current market rates.
+      branded content on YouTube. The calculator uses a formula based on your subscriber count,{' '}
+      <Link href="/glossary" className="font-medium text-primary hover:underline">
+        engagement rate
+      </Link>
+      , content type, deal type, and{' '}
+      <Link href="/glossary" className="font-medium text-primary hover:underline">
+        content niche
+      </Link>{' '}
+      to produce a per-video rate range that reflects current market rates.
     </p>
     <p className="mt-3">
       The base rate starts at $20&ndash;$50 per 1,000 subscribers for YouTube, then multiplies based
@@ -219,10 +226,13 @@ export default function YouTubeSponsorshipPage() {
         name="YouTube Sponsorship Rate Calculator"
         description="Calculate how much to charge for sponsored YouTube videos, integrations, Shorts, and pre-rolls based on your subscribers, engagement rate, and niche."
         url="/youtube-sponsorship-rate-calculator"
+        datePublished="2025-01-15"
+        dateModified="2026-02-16"
       />
       <CalculatorLayout
         title="YouTube Sponsorship Rate Calculator"
         slug="youtube-sponsorship-rate-calculator"
+        lastUpdated="February 2026"
         description="Find out how much to charge for sponsored videos on YouTube. Get a personalized rate card based on your subscribers, engagement rate, content type, and niche."
         faq={faq}
         howItWorks={howItWorks}
@@ -238,6 +248,25 @@ export default function YouTubeSponsorshipPage() {
         <Suspense>
           <YouTubeSponsorshipCalculator />
         </Suspense>
+
+        <section className="mt-12">
+          <h2 className="mb-4 text-2xl font-bold">Browse by Niche</h2>
+          <p className="mb-6 text-muted">
+            See sponsorship rate estimates tailored to your specific content niche. Each calculator
+            uses niche-specific pricing data and benchmarks.
+          </p>
+          <div className="grid gap-3 sm:grid-cols-2">
+            {getSponsorshipNichePages('youtube').map((niche) => (
+              <Link
+                key={niche.slug}
+                href={`/youtube-sponsorship-rate-calculator/${niche.slug}`}
+                className="rounded-lg border border-border bg-white px-4 py-3 text-sm font-medium transition-colors hover:border-primary hover:text-primary"
+              >
+                {niche.name} Sponsorship Rates
+              </Link>
+            ))}
+          </div>
+        </section>
       </CalculatorLayout>
     </>
   );

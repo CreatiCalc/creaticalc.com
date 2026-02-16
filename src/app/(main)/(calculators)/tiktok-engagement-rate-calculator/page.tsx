@@ -213,10 +213,13 @@ export default function TikTokEngagementPage() {
         name="TikTok Engagement Rate Calculator"
         description="Calculate your TikTok engagement rate by followers or by views. Compare against industry benchmarks by follower tier."
         url="/tiktok-engagement-rate-calculator"
+        datePublished="2025-01-15"
+        dateModified="2026-02-16"
       />
       <CalculatorLayout
         title="TikTok Engagement Rate Calculator"
         slug="tiktok-engagement-rate-calculator"
+        lastUpdated="February 2026"
         description="Calculate your TikTok engagement rate by followers or by views. See how you compare against benchmarks for your follower tier and content niche."
         faq={faq}
         howItWorks={howItWorks}

@@ -65,6 +65,8 @@ export default function EngagementRateBenchmarksPage() {
     'description':
       'Complete engagement rate benchmarks for Instagram, TikTok, Facebook, and X (Twitter) in 2026 by follower tier and industry.',
     'url': `${SITE_URL}/engagement-rate-benchmarks`,
+    'datePublished': '2025-01-15',
+    'dateModified': '2026-02-16',
   };
 
   const latestTrend = YOY_TRENDS[YOY_TRENDS.length - 1];
