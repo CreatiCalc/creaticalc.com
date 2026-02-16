@@ -114,8 +114,11 @@ const faq: FAQItem[] = [
 const howItWorks = (
   <>
     <p>
-      Our YouTube Money Calculator estimates your potential earnings using RPM (Revenue Per Mille) —
-      the amount you actually earn per 1,000 video views. We use industry-average data across 10
+      Our YouTube Money Calculator estimates your potential earnings using{' '}
+      <Link href="/glossary#rpm" className="font-medium text-primary hover:underline">
+        RPM (Revenue Per Mille)
+      </Link>{' '}
+      — the amount you actually earn per 1,000 video views. We use industry-average data across 10
       popular content niches to give you low, mid, and high earnings estimates, with optional
       compound growth modeling and seasonal ad-rate adjustments.
     </p>
@@ -127,9 +130,16 @@ const howItWorks = (
     </p>
     <p className="mt-3">
       Keep in mind that these are estimates based on ad revenue alone. Many successful creators earn
-      significantly more through brand sponsorships, affiliate marketing, merchandise, channel
-      memberships, and Super Chats. Your actual YouTube ad revenue will also depend on factors like
-      viewer geography, ad-blocker usage, and seasonal advertiser demand.
+      significantly more through{' '}
+      <Link href="/glossary" className="font-medium text-primary hover:underline">
+        brand sponsorships
+      </Link>
+      ,{' '}
+      <Link href="/glossary" className="font-medium text-primary hover:underline">
+        affiliate marketing
+      </Link>
+      , merchandise, channel memberships, and Super Chats. Your actual YouTube ad revenue will also
+      depend on factors like viewer geography, ad-blocker usage, and seasonal advertiser demand.
     </p>
 
     <h3 className="mt-6 text-lg font-semibold text-foreground">
@@ -239,10 +249,13 @@ export default function YouTubeMoneyCalculatorPage() {
         name="YouTube Money Calculator"
         description="Estimate how much money YouTubers make based on views, CPM, and content niche."
         url="/youtube-money-calculator"
+        datePublished="2025-01-15"
+        dateModified="2026-02-16"
       />
       <CalculatorLayout
         title="YouTube Money Calculator"
         slug="youtube-money-calculator"
+        lastUpdated="February 2026"
         description="Estimate your YouTube earnings based on daily views and content niche. See projected daily, monthly, and yearly revenue with growth modeling and seasonal adjustments."
         faq={faq}
         howItWorks={howItWorks}

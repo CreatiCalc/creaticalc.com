@@ -1,6 +1,8 @@
 import type { MetadataRoute } from 'next';
 import { NICHE_PAGES } from '@/lib/nichePageData';
 import { SITE_URL } from '@/lib/siteConfig';
+import { SPONSORSHIP_NICHE_PAGES } from '@/lib/sponsorship-niches';
+import { ENGAGEMENT_NICHE_PAGES } from '@/lib/engagement-niches';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_URL;
@@ -8,6 +10,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const nichePages: MetadataRoute.Sitemap = NICHE_PAGES.map((n) => ({
     url: `${baseUrl}/youtube-money-calculator/${n.slug}`,
     lastModified: '2026-02-12',
+    changeFrequency: 'monthly',
+    priority: 0.7,
+  }));
+
+  const sponsorshipNichePages: MetadataRoute.Sitemap = SPONSORSHIP_NICHE_PAGES.map((n) => ({
+    url: `${baseUrl}/${n.platform}-sponsorship-rate-calculator/${n.slug}`,
+    lastModified: '2026-02-16',
+    changeFrequency: 'monthly',
+    priority: 0.7,
+  }));
+
+  const engagementNichePages: MetadataRoute.Sitemap = ENGAGEMENT_NICHE_PAGES.map((n) => ({
+    url: `${baseUrl}/${n.platform}-engagement-rate-calculator/${n.slug}`,
+    lastModified: '2026-02-16',
     changeFrequency: 'monthly',
     priority: 0.7,
   }));
@@ -136,6 +152,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
+      url: `${baseUrl}/glossary`,
+      lastModified: '2026-02-16',
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    {
       url: `${baseUrl}/about`,
       lastModified: '2026-02-14',
       changeFrequency: 'monthly',
@@ -148,5 +170,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.1,
     },
     ...nichePages,
+    ...sponsorshipNichePages,
+    ...engagementNichePages,
   ];
 }
