@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useIsEmbed } from '@/lib/embedContext';
 
 interface AdSlotProps {
@@ -19,30 +19,57 @@ const SLOT_MIN_HEIGHTS: Record<AdSlotProps['slot'], string> = {
 
 export default function AdSlot({ slot, className = '' }: AdSlotProps) {
   const isEmbed = useIsEmbed();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
 
+  // Defer ad initialization until the slot is near the viewport
   useEffect(() => {
-    if (publisherId && !isEmbed) {
+    const el = containerRef.current;
+    if (!el || !publisherId || isEmbed) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '200px' }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [isEmbed]);
+
+  // Push ad once visible
+  useEffect(() => {
+    if (isVisible && publisherId && !isEmbed) {
       try {
         (((window as unknown as Record<string, unknown>).adsbygoogle as unknown[]) || []).push({});
       } catch {
         // AdSense may throw if ad already loaded
       }
     }
-  }, [isEmbed]);
+  }, [isVisible, isEmbed]);
 
   if (isEmbed) return null;
 
   if (publisherId) {
     return (
-      <div className={`${SLOT_MIN_HEIGHTS[slot]} ${className}`} data-ad-slot={slot}>
-        <ins
-          className="adsbygoogle"
-          style={{ display: 'block' }}
-          data-ad-client={publisherId}
-          data-ad-slot={slot}
-          data-ad-format="auto"
-          data-full-width-responsive="true"
-        />
+      <div
+        ref={containerRef}
+        className={`${SLOT_MIN_HEIGHTS[slot]} ${className}`}
+        data-ad-slot={slot}
+      >
+        {isVisible && (
+          <ins
+            className="adsbygoogle"
+            style={{ display: 'block' }}
+            data-ad-client={publisherId}
+            data-ad-slot={slot}
+            data-ad-format="auto"
+            data-full-width-responsive="true"
+          />
+        )}
       </div>
     );
   }
