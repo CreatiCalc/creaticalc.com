@@ -63,6 +63,8 @@ const homeFaqItems = [
   },
 ];
 
+const calculators = getAllCalculators();
+
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -90,10 +92,21 @@ const jsonLd = {
         },
       })),
     },
+    {
+      '@type': 'ItemList',
+      'itemListElement': calculators.map((calc, index) => ({
+        '@type': 'ListItem',
+        'position': index + 1,
+        'item': {
+          '@type': 'WebApplication',
+          'name': calc.title,
+          'url': `${SITE_URL}${calc.href}`,
+          'description': calc.description,
+        },
+      })),
+    },
   ],
 };
-
-const calculators = getAllCalculators();
 
 export default function Home() {
   return (

@@ -213,10 +213,13 @@ export default function YouTubeSubscriberProjectorPage() {
         name="YouTube Subscriber Growth Projector"
         description="Project your YouTube subscriber growth over 24 months and see when you'll hit key milestones like 1K, 100K, and 1M subscribers."
         url="/youtube-subscriber-projector"
+        datePublished="2025-01-15"
+        dateModified="2026-02-16"
       />
       <CalculatorLayout
         title="YouTube Subscriber Growth Projector"
         slug="youtube-subscriber-projector"
+        lastUpdated="February 2026"
         description="Project your YouTube subscriber growth over 24 months. See when you'll hit key milestones based on your growth rate, upload frequency, and content niche."
         faq={faq}
         howItWorks={howItWorks}

@@ -100,6 +100,8 @@ export default function EngagementRateCalculatorPage() {
     'description':
       'Free engagement rate calculator for Instagram, TikTok, Facebook, and X (Twitter). Compare against industry benchmarks.',
     'url': `${SITE_URL}/engagement-rate-calculator`,
+    'datePublished': '2025-01-15',
+    'dateModified': '2026-02-16',
   };
 
   return (

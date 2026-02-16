@@ -16,6 +16,8 @@ interface CalculatorLayoutProps {
   breadcrumbs?: BreadcrumbItem[];
   /** Calculator slug for related-calculator CTAs */
   slug?: string;
+  /** Visible freshness label, e.g. "February 2026" */
+  lastUpdated?: string;
 }
 
 export default function CalculatorLayout({
@@ -26,6 +28,7 @@ export default function CalculatorLayout({
   howItWorks,
   breadcrumbs,
   slug,
+  lastUpdated,
 }: CalculatorLayoutProps) {
   return (
     <div className="mx-auto max-w-4xl px-4 py-10">
@@ -38,6 +41,7 @@ export default function CalculatorLayout({
       <div className="mb-8 text-center">
         <h1 className="text-gradient-brand text-3xl font-bold md:text-4xl">{title}</h1>
         <p className="mt-3 text-muted">{description}</p>
+        {lastUpdated && <p className="mt-2 text-xs text-muted/70">Updated {lastUpdated}</p>}
         <div
           className="mx-auto mt-5 h-1 w-36 rounded-full"
           style={{ background: 'var(--gradient-brand-vibrant)' }}

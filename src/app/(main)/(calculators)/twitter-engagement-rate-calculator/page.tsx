@@ -6,6 +6,7 @@ import CalculatorSchema from '@/components/seo/CalculatorSchema';
 
 import { TwitterEngagementCalculator } from '@/features/calculators/twitter-engagement';
 import type { FAQItem } from '@/features/calculators/shared/types';
+import { getEngagementNichePages } from '@/lib/engagement-niches';
 
 export const metadata: Metadata = {
   title: 'X (Twitter) Engagement Rate Calculator + Benchmarks 2026',
@@ -221,10 +222,13 @@ export default function TwitterEngagementPage() {
         name="X (Twitter) Engagement Rate Calculator"
         description="Calculate your X (Twitter) engagement rate by followers or by impressions. Compare against industry benchmarks by follower tier."
         url="/twitter-engagement-rate-calculator"
+        datePublished="2025-01-15"
+        dateModified="2026-02-16"
       />
       <CalculatorLayout
         title="X (Twitter) Engagement Rate Calculator"
         slug="twitter-engagement-rate-calculator"
+        lastUpdated="February 2026"
         description="Calculate your X (Twitter) engagement rate by followers or by impressions. See how you compare against benchmarks for your follower tier and content niche."
         faq={faq}
         howItWorks={howItWorks}
@@ -240,6 +244,24 @@ export default function TwitterEngagementPage() {
         <Suspense>
           <TwitterEngagementCalculator />
         </Suspense>
+
+        <section className="mt-12">
+          <h2 className="mb-4 text-2xl font-bold">Browse by Niche</h2>
+          <p className="mb-6 text-muted">
+            See engagement rate benchmarks and tips tailored to your specific content niche.
+          </p>
+          <div className="grid gap-3 sm:grid-cols-2">
+            {getEngagementNichePages('twitter').map((niche) => (
+              <Link
+                key={niche.slug}
+                href={`/twitter-engagement-rate-calculator/${niche.slug}`}
+                className="rounded-lg border border-border bg-white px-4 py-3 text-sm font-medium transition-colors hover:border-primary hover:text-primary"
+              >
+                {niche.name} Engagement Rates
+              </Link>
+            ))}
+          </div>
+        </section>
       </CalculatorLayout>
     </>
   );

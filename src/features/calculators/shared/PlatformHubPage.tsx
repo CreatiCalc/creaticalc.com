@@ -3,6 +3,7 @@ import Card from '@/components/ui/Card';
 import AdSlot from '@/components/layout/AdSlot';
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import Breadcrumbs from '@/components/seo/Breadcrumbs';
+import ItemListSchema from '@/components/seo/ItemListSchema';
 import FAQ from './FAQ';
 import { SITE_URL } from '@/lib/siteConfig';
 import type { PlatformHubData } from '@/lib/platformHubData';
@@ -41,6 +42,13 @@ export default function PlatformHubPage({ hub, calculators, otherHubs }: Platfor
         dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
       />
       <BreadcrumbSchema items={breadcrumbItems} />
+      <ItemListSchema
+        items={calculators.map((calc) => ({
+          name: calc.title,
+          url: calc.href,
+          description: calc.description,
+        }))}
+      />
       <div className="mx-auto max-w-4xl px-4 py-10">
         <Breadcrumbs items={breadcrumbItems} />
 

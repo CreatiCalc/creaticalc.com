@@ -83,10 +83,16 @@ const faq: FAQItem[] = [
 const howItWorks = (
   <>
     <p>
-      Our YouTube Shorts Money Calculator estimates your potential Shorts earnings using real RPM
-      (Revenue Per Mille) data. YouTube Shorts have a flat RPM of roughly $0.01 to $0.07 per 1,000
-      views, regardless of content niche. This is because Shorts ads are served in a mixed feed
-      rather than targeted by content category like long-form pre-roll ads.
+      Our YouTube Shorts Money Calculator estimates your potential Shorts earnings using real{' '}
+      <Link href="/glossary" className="font-medium text-primary hover:underline">
+        RPM (Revenue Per Mille)
+      </Link>{' '}
+      data. YouTube Shorts have a flat RPM of roughly $0.01 to $0.07 per 1,000 views, regardless of{' '}
+      <Link href="/glossary" className="font-medium text-primary hover:underline">
+        content niche
+      </Link>
+      . This is because Shorts ads are served in a mixed feed rather than targeted by content
+      category like long-form pre-roll ads.
     </p>
     <p className="mt-3">
       The formula: your projected monthly Shorts views (daily views &times; days in month &times;
@@ -246,10 +252,13 @@ export default function YouTubeShortsMoneyCalculatorPage() {
         name="YouTube Shorts Money Calculator"
         description="Estimate how much YouTube Shorts pay per 1,000 views with real RPM data."
         url="/youtube-shorts-money-calculator"
+        datePublished="2025-01-15"
+        dateModified="2026-02-16"
       />
       <CalculatorLayout
         title="YouTube Shorts Money Calculator"
         slug="youtube-shorts-money-calculator"
+        lastUpdated="February 2026"
         description="Estimate your YouTube Shorts earnings based on daily views. See projected daily, monthly, and yearly Shorts revenue with growth modeling and seasonal adjustments."
         faq={faq}
         howItWorks={howItWorks}
