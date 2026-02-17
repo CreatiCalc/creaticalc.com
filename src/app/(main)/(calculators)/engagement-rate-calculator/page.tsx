@@ -10,11 +10,11 @@ import Breadcrumbs from '@/components/seo/Breadcrumbs';
 import { SITE_URL } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
-  title: 'Engagement Rate Calculator — Free for All Platforms',
+  title: 'Engagement Rate Calculator 2026 — Free for All Platforms',
   description:
     'Free engagement rate calculator for Instagram, TikTok, Facebook, and X. Compare against benchmarks by follower tier and industry.',
   openGraph: {
-    title: 'Engagement Rate Calculator — Free for All Platforms',
+    title: 'Engagement Rate Calculator 2026 — Free for All Platforms',
     description:
       'Calculate your engagement rate on Instagram, TikTok, Facebook, or X. Compare against benchmarks by follower tier and industry.',
     url: '/engagement-rate-calculator',
