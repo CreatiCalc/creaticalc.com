@@ -7,40 +7,49 @@ interface BreadcrumbsProps {
 
 export default function Breadcrumbs({ items }: BreadcrumbsProps) {
   return (
-    <nav aria-label="Breadcrumb" className="mb-4 text-sm text-muted">
-      <ol className="flex flex-wrap items-center gap-1">
-        {items.map((item, i) => {
-          const isLast = i === items.length - 1;
-          return (
-            <li key={`${i}-${item.path}`} className="flex items-center gap-1">
-              {i > 0 && (
-                <svg
-                  width="12"
-                  height="12"
-                  viewBox="0 0 12 12"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  className="shrink-0 text-muted-light"
-                  aria-hidden="true"
-                >
-                  <path d="M4.5 2.5L7.5 6 4.5 9.5" />
-                </svg>
-              )}
-              {isLast ? (
-                <span className="text-foreground" aria-current="page">
-                  {item.name}
-                </span>
-              ) : (
-                <Link href={item.path} className="hover:text-primary">
-                  {item.name}
-                </Link>
-              )}
-            </li>
-          );
-        })}
-      </ol>
+    <nav aria-label="Breadcrumb" className="relative mb-4 text-sm text-muted">
+      <div className="overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <ol className="flex items-center gap-1 whitespace-nowrap pr-6">
+          {items.map((item, i) => {
+            const isLast = i === items.length - 1;
+            return (
+              <li key={`${i}-${item.path}`} className="flex items-center gap-1">
+                {i > 0 && (
+                  <svg
+                    width="12"
+                    height="12"
+                    viewBox="0 0 12 12"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    className="shrink-0 text-muted-light"
+                    aria-hidden="true"
+                  >
+                    <path d="M4.5 2.5L7.5 6 4.5 9.5" />
+                  </svg>
+                )}
+                {isLast ? (
+                  <span className="text-foreground" aria-current="page">
+                    {item.name}
+                  </span>
+                ) : (
+                  <Link href={item.path} className="hover:text-primary">
+                    {item.name}
+                  </Link>
+                )}
+              </li>
+            );
+          })}
+        </ol>
+      </div>
+      <div
+        className="pointer-events-none absolute right-0 top-0 h-full w-8 sm:hidden"
+        style={{
+          background: 'linear-gradient(to right, transparent, var(--color-background))',
+        }}
+        aria-hidden="true"
+      />
     </nav>
   );
 }

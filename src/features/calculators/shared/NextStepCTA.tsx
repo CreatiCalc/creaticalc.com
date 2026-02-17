@@ -11,20 +11,22 @@ export default function NextStepCTA({ currentSlug }: NextStepCTAProps) {
   if (related.length === 0) return null;
 
   return (
-    <div className="mt-8 rounded-xl border border-border bg-surface p-6">
+    <div className="mt-8 overflow-hidden rounded-xl border border-border bg-surface p-4 sm:p-6">
       <h3 className="text-sm font-semibold uppercase tracking-wide text-muted">Next Step</h3>
       <div className="mt-3 grid gap-3 sm:grid-cols-2">
         {related.map((calc) => (
           <Link
             key={calc.href}
             href={calc.href}
-            className="group flex items-center gap-3 rounded-lg border border-border bg-white px-4 py-3 transition-all hover:border-primary/50 hover:shadow-sm"
+            className="group flex items-center gap-3 rounded-lg border border-border bg-white px-3 py-3 sm:px-4 transition-all hover:border-primary/50 hover:shadow-sm"
           >
             <div className="min-w-0 flex-1">
               <p className="text-sm font-medium text-foreground transition-colors group-hover:text-primary">
                 {calc.cardTitle}
               </p>
-              <p className="mt-0.5 truncate text-xs text-muted">{calc.description}</p>
+              <p className="mt-0.5 text-xs text-muted line-clamp-2 sm:truncate">
+                {calc.description}
+              </p>
             </div>
             <svg
               width="16"

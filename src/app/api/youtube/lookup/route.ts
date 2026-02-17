@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { parseYouTubeUrl } from '@/lib/youtubeUrlParser';
+import { parseISO8601Duration } from '@/lib/youtubeDuration';
 import type { NicheId } from '@/lib/youtubeEarningsModel';
 
 const YOUTUBE_API_BASE = 'https://www.googleapis.com/youtube/v3';
@@ -153,7 +154,7 @@ export async function POST(request: Request) {
 
 async function handleVideo(videoId: string) {
   const data = await youtubeApiFetch('videos', {
-    part: 'statistics,snippet',
+    part: 'statistics,snippet,contentDetails',
     id: videoId,
   });
 
@@ -166,6 +167,9 @@ async function handleVideo(videoId: string) {
   const days = daysBetween(item.snippet.publishedAt);
   const dailyViews = Math.round(viewCount / days);
   const categoryId = item.snippet.categoryId;
+  const durationSeconds = item.contentDetails?.duration
+    ? parseISO8601Duration(item.contentDetails.duration)
+    : null;
 
   return NextResponse.json({
     success: true,
@@ -182,6 +186,7 @@ async function handleVideo(videoId: string) {
       publishedAt: item.snippet.publishedAt,
       subscriberCount: null,
       totalViews: viewCount,
+      durationSeconds,
     },
   });
 }
@@ -219,6 +224,7 @@ async function handleChannel(params: { id?: string; forHandle?: string }) {
       publishedAt: item.snippet.publishedAt,
       subscriberCount,
       totalViews: viewCount,
+      durationSeconds: null,
     },
   });
 }

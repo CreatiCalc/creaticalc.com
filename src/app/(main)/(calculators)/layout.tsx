@@ -18,12 +18,12 @@ export default function CalculatorsLayout({ children }: { children: React.ReactN
       <section className="border-t border-border bg-surface py-10">
         <div className="mx-auto max-w-4xl px-4">
           <h2 className="mb-4 text-lg font-semibold">More Creator Tools</h2>
-          <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-4">
+          <div className="grid grid-cols-2 gap-2 sm:gap-3 md:grid-cols-4">
             {relatedTools.map((tool) => (
               <Link
                 key={tool.href}
                 href={tool.href}
-                className="rounded-lg border border-border bg-white px-4 py-3 text-sm font-medium transition-colors hover:border-primary hover:text-primary"
+                className="rounded-lg border border-border bg-white px-3 py-2.5 text-xs font-medium leading-snug transition-colors hover:border-primary hover:text-primary sm:px-4 sm:py-3 sm:text-sm"
               >
                 {tool.name}
               </Link>
