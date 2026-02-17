@@ -146,7 +146,13 @@ export default function YouTubeMoneyCalculator({
 
   return (
     <>
-      {!isEmbed && <UrlLookup onResult={setFromLookup} currentDailyViews={effectiveDailyViews} />}
+      {!isEmbed && (
+        <UrlLookup
+          onResult={setFromLookup}
+          currentDailyViews={effectiveDailyViews}
+          isShorts={isShorts}
+        />
+      )}
 
       <Card className={isEmbed ? '' : 'mt-4'}>
         <div className="space-y-6">

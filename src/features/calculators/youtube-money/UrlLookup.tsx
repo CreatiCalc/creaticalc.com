@@ -1,9 +1,11 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import Image from 'next/image';
 import { getNiche, type NicheId } from '@/lib/youtubeEarningsModel';
 import { formatCompact, formatDate } from '@/lib/formatters';
+import { formatDuration } from '@/lib/youtubeDuration';
 
 interface LookupResult {
   dailyViews: number;
@@ -22,14 +24,16 @@ interface LookupData {
   totalViews: number;
   subscriberCount: number | null;
   suggestedNicheId: NicheId | null;
+  durationSeconds: number | null;
 }
 
 interface UrlLookupProps {
   onResult: (data: LookupResult) => void;
   currentDailyViews: number;
+  isShorts?: boolean;
 }
 
-export default function UrlLookup({ onResult, currentDailyViews }: UrlLookupProps) {
+export default function UrlLookup({ onResult, currentDailyViews, isShorts }: UrlLookupProps) {
   const [url, setUrl] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -115,6 +119,11 @@ export default function UrlLookup({ onResult, currentDailyViews }: UrlLookupProp
     : null;
 
   const isModified = resultData != null && currentDailyViews !== resultData.dailyViews;
+  const isNotShort =
+    isShorts &&
+    resultData?.type === 'video' &&
+    resultData.durationSeconds != null &&
+    resultData.durationSeconds > 180;
 
   return (
     <div className="space-y-3">
@@ -170,22 +179,28 @@ export default function UrlLookup({ onResult, currentDailyViews }: UrlLookupProp
       {error && <p className="text-sm text-red-600">{error}</p>}
 
       {resultData && (
-        <div className="rounded-xl border border-border bg-white p-4 shadow-sm">
-          <div className="flex gap-4">
+        <div className="overflow-hidden rounded-xl border border-border bg-white shadow-sm">
+          {/* Thumbnail + info header */}
+          <div className="flex gap-3 p-3 sm:gap-4 sm:p-4">
             {resultData.thumbnail && (
               <a
                 href={titleUrl ?? undefined}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-shrink-0"
+                className="relative flex-shrink-0"
               >
                 <Image
                   src={resultData.thumbnail}
                   alt={resultData.title}
                   width={160}
                   height={96}
-                  className="w-32 h-20 sm:w-40 sm:h-24 rounded-lg object-cover"
+                  className="h-20 w-32 rounded-lg object-cover sm:h-24 sm:w-40"
                 />
+                {resultData.durationSeconds != null && (
+                  <span className="absolute bottom-1.5 right-1.5 rounded bg-black/80 px-1.5 py-0.5 font-mono text-[11px] font-medium leading-none text-white">
+                    {formatDuration(resultData.durationSeconds)}
+                  </span>
+                )}
               </a>
             )}
             <div className="min-w-0 flex-1">
@@ -196,7 +211,7 @@ export default function UrlLookup({ onResult, currentDailyViews }: UrlLookupProp
                       href={titleUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="truncate block text-sm font-semibold text-foreground hover:text-primary transition-colors"
+                      className="block truncate text-sm font-semibold text-foreground transition-colors hover:text-primary"
                     >
                       {resultData.title}
                     </a>
@@ -211,7 +226,7 @@ export default function UrlLookup({ onResult, currentDailyViews }: UrlLookupProp
                         href={channelUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="truncate block text-xs text-muted hover:text-primary transition-colors"
+                        className="block truncate text-xs text-muted transition-colors hover:text-primary"
                       >
                         {resultData.channelTitle}
                       </a>
@@ -221,7 +236,7 @@ export default function UrlLookup({ onResult, currentDailyViews }: UrlLookupProp
                 </div>
                 <button
                   onClick={handleDismiss}
-                  className="flex-shrink-0 text-muted transition-colors hover:text-foreground"
+                  className="flex-shrink-0 rounded-md p-1 text-muted transition-colors hover:bg-surface-alt hover:text-foreground"
                   aria-label="Dismiss"
                 >
                   <svg
@@ -238,51 +253,109 @@ export default function UrlLookup({ onResult, currentDailyViews }: UrlLookupProp
                   </svg>
                 </button>
               </div>
-              <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted">
-                <span>{formatCompact(resultData.totalViews)} views</span>
+
+              {/* Stat pills */}
+              <div className="mt-2 flex flex-wrap gap-1.5">
+                <span className="inline-flex items-center rounded-md bg-surface-alt px-2 py-0.5 text-xs text-muted">
+                  {formatCompact(resultData.totalViews)} views
+                </span>
                 {resultData.subscriberCount != null && (
-                  <span>{formatCompact(resultData.subscriberCount)} subscribers</span>
+                  <span className="inline-flex items-center rounded-md bg-surface-alt px-2 py-0.5 text-xs text-muted">
+                    {formatCompact(resultData.subscriberCount)} subs
+                  </span>
                 )}
-                <span>{formatDate(resultData.publishedAt)}</span>
-                <span className="font-medium text-primary">
-                  ~{formatCompact(resultData.dailyViews)} daily avg
-                  {resultData.type === 'video' && ' for this video'}
+                <span className="inline-flex items-center rounded-md bg-surface-alt px-2 py-0.5 text-xs text-muted">
+                  {formatDate(resultData.publishedAt)}
                 </span>
                 {resultData.suggestedNicheId && (
-                  <span className="font-medium text-primary">
-                    Niche: {getNiche(resultData.suggestedNicheId).name}
+                  <span className="inline-flex items-center rounded-md bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary">
+                    {getNiche(resultData.suggestedNicheId).name}
                   </span>
                 )}
               </div>
             </div>
           </div>
 
-          {resultData.type === 'video' && (
-            <p className="mt-2 text-xs text-muted">
-              Based on this video&apos;s lifetime views. Your channel average may differ.
-            </p>
-          )}
-
-          {resultData.subscriberCount != null && resultData.subscriberCount < 1000 && (
-            <div className="mt-3 rounded-lg bg-blue-50 px-3 py-2 text-xs text-blue-800">
-              This channel needs {(1000 - resultData.subscriberCount).toLocaleString()} more
-              subscribers to qualify for the YouTube Partner Program.
-            </div>
-          )}
-
-          {isModified && (
-            <div className="mt-3 flex items-center gap-2 rounded-lg bg-amber-50 px-3 py-2 text-xs text-amber-800">
-              <span>
-                You&apos;ve adjusted daily views from{' '}
-                <span className="font-medium">{formatCompact(resultData.dailyViews)}</span> to{' '}
-                <span className="font-medium">{formatCompact(currentDailyViews)}</span>
+          {/* Key stat bar */}
+          <div className="border-t border-border/50 bg-surface px-3 py-2.5 sm:px-4">
+            <div className="flex items-center justify-between">
+              <span className="text-xs text-muted">
+                Estimated daily avg{resultData.type === 'video' ? ' (this video)' : ''}
               </span>
-              <button
-                onClick={handleReset}
-                className="ml-auto flex-shrink-0 rounded-md bg-amber-200/60 px-2 py-0.5 font-medium transition-colors hover:bg-amber-200"
-              >
-                Reset
-              </button>
+              <span className="font-mono text-sm font-semibold text-primary">
+                ~{formatCompact(resultData.dailyViews)} views/day
+              </span>
+            </div>
+          </div>
+
+          {/* Contextual alerts */}
+          {(resultData.type === 'video' ||
+            isNotShort ||
+            (resultData.subscriberCount != null && resultData.subscriberCount < 1000) ||
+            isModified) && (
+            <div className="space-y-0 border-t border-border/50">
+              {resultData.type === 'video' && (
+                <p className="px-3 py-2 text-xs text-muted sm:px-4">
+                  Based on this video&apos;s lifetime views. Your channel average may differ.
+                </p>
+              )}
+
+              {isNotShort && (
+                <div className="flex items-start gap-2 border-t border-border/30 bg-amber-50/80 px-3 py-2.5 text-xs text-amber-800 sm:px-4">
+                  <svg
+                    className="mt-0.5 h-3.5 w-3.5 flex-shrink-0"
+                    viewBox="0 0 16 16"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path d="M8 1a7 7 0 100 14A7 7 0 008 1zm-.75 3.75a.75.75 0 011.5 0v4a.75.75 0 01-1.5 0v-4zm.75 7a.75.75 0 110-1.5.75.75 0 010 1.5z" />
+                  </svg>
+                  <span>
+                    This video is {formatDuration(resultData!.durationSeconds!)} long — not a
+                    YouTube Short (max 3 min). This page uses Shorts RPM
+                    ($0.01&ndash;$0.07/1K&nbsp;views).{' '}
+                    <Link
+                      href="/youtube-money-calculator"
+                      className="font-medium underline decoration-amber-400 underline-offset-2 hover:text-amber-900"
+                    >
+                      Use the standard calculator
+                    </Link>
+                  </span>
+                </div>
+              )}
+
+              {resultData.subscriberCount != null && resultData.subscriberCount < 1000 && (
+                <div className="flex items-start gap-2 border-t border-border/30 bg-blue-50/80 px-3 py-2.5 text-xs text-blue-800 sm:px-4">
+                  <svg
+                    className="mt-0.5 h-3.5 w-3.5 flex-shrink-0"
+                    viewBox="0 0 16 16"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path d="M8 1a7 7 0 100 14A7 7 0 008 1zm-.75 4.75a.75.75 0 011.5 0v.5a.75.75 0 01-1.5 0v-.5zm0 3a.75.75 0 011.5 0v2.5a.75.75 0 01-1.5 0v-2.5z" />
+                  </svg>
+                  <span>
+                    This channel needs {(1000 - resultData.subscriberCount).toLocaleString()} more
+                    subscribers to qualify for the YouTube Partner Program.
+                  </span>
+                </div>
+              )}
+
+              {isModified && (
+                <div className="flex items-center gap-2 border-t border-border/30 bg-amber-50/80 px-3 py-2.5 text-xs text-amber-800 sm:px-4">
+                  <span>
+                    You&apos;ve adjusted daily views from{' '}
+                    <span className="font-medium">{formatCompact(resultData.dailyViews)}</span> to{' '}
+                    <span className="font-medium">{formatCompact(currentDailyViews)}</span>
+                  </span>
+                  <button
+                    onClick={handleReset}
+                    className="ml-auto flex-shrink-0 rounded-md bg-amber-200/60 px-2 py-0.5 font-medium transition-colors hover:bg-amber-200"
+                  >
+                    Reset
+                  </button>
+                </div>
+              )}
             </div>
           )}
         </div>
