@@ -8,11 +8,11 @@ import { YouTubeGrowthCalculator } from '@/features/calculators/youtube-growth';
 import type { FAQItem } from '@/features/calculators/shared/types';
 
 export const metadata: Metadata = {
-  title: 'YouTube Subscriber Growth Projector — Free Tool',
+  title: 'YouTube Subscriber Growth Projector — Free Tool (2026)',
   description:
     "Free YouTube subscriber growth projector. See when you'll hit 1K, 10K, 100K, and 1M subscribers based on your current growth rate, upload frequency, and content niche.",
   openGraph: {
-    title: 'YouTube Subscriber Growth Projector — Free Tool',
+    title: 'YouTube Subscriber Growth Projector — Free Tool (2026)',
     description:
       "Project your YouTube subscriber growth and see when you'll hit key milestones. Free 24-month projection tool.",
     url: '/youtube-subscriber-projector',

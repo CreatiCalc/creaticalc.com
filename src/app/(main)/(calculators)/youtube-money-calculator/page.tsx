@@ -9,11 +9,11 @@ import type { FAQItem } from '@/features/calculators/shared/types';
 import { NICHE_PAGES } from '@/lib/nichePageData';
 
 export const metadata: Metadata = {
-  title: 'YouTube Money Calculator — Estimate Your Earnings',
+  title: 'YouTube Money Calculator — Estimate Your Earnings (2026)',
   description:
     'Free YouTube money calculator. Estimate how much money YouTubers make based on views, CPM, and niche. Calculate daily, monthly, and yearly YouTube earnings.',
   openGraph: {
-    title: 'YouTube Money Calculator — Estimate Your Earnings',
+    title: 'YouTube Money Calculator — Estimate Your Earnings (2026)',
     description:
       'Estimate how much money YouTubers make based on views, CPM, and niche. Free calculator for daily, monthly, and yearly YouTube revenue.',
     url: '/youtube-money-calculator',
