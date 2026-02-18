@@ -44,7 +44,11 @@ export default async function NicheCalculatorPage({ params }: NichePageProps) {
 
   const howItWorks = (
     <>
-      <p>{data.howItWorks}</p>
+      {data.howItWorks.split('\n\n').map((paragraph, i) => (
+        <p key={i} className={i > 0 ? 'mt-3' : undefined}>
+          {paragraph}
+        </p>
+      ))}
       <p className="mt-3">
         The formula: your projected monthly views (daily views &times; days in month &times; growth
         factor) are divided by 1,000 and multiplied by the {data.name} RPM ($

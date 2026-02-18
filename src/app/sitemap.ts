@@ -9,9 +9,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const nichePages: MetadataRoute.Sitemap = NICHE_PAGES.map((n) => ({
     url: `${baseUrl}/youtube-money-calculator/${n.slug}`,
-    lastModified: '2026-02-12',
+    lastModified: '2026-02-17',
     changeFrequency: 'monthly',
-    priority: 0.7,
+    priority: 0.5,
   }));
 
   const sponsorshipNichePages: MetadataRoute.Sitemap = SPONSORSHIP_NICHE_PAGES.map((n) => ({
@@ -31,63 +31,63 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: baseUrl,
-      lastModified: '2026-02-15',
+      lastModified: '2026-02-17',
       changeFrequency: 'monthly',
-      priority: 0.8,
+      priority: 1.0,
     },
     // Platform hub pages
     {
       url: `${baseUrl}/youtube`,
       lastModified: '2026-02-15',
       changeFrequency: 'monthly',
-      priority: 0.8,
+      priority: 0.9,
     },
     {
       url: `${baseUrl}/instagram`,
       lastModified: '2026-02-15',
       changeFrequency: 'monthly',
-      priority: 0.8,
+      priority: 0.9,
     },
     {
       url: `${baseUrl}/tiktok`,
       lastModified: '2026-02-15',
       changeFrequency: 'monthly',
-      priority: 0.8,
+      priority: 0.9,
     },
     {
       url: `${baseUrl}/facebook`,
       lastModified: '2026-02-15',
       changeFrequency: 'monthly',
-      priority: 0.8,
+      priority: 0.9,
     },
     {
       url: `${baseUrl}/x`,
       lastModified: '2026-02-15',
       changeFrequency: 'monthly',
-      priority: 0.8,
+      priority: 0.9,
     },
     // Individual calculators
     {
       url: `${baseUrl}/youtube-money-calculator`,
-      lastModified: '2026-02-14',
+      lastModified: '2026-02-17',
       changeFrequency: 'weekly',
       priority: 1.0,
     },
     {
       url: `${baseUrl}/youtube-shorts-money-calculator`,
-      lastModified: '2026-02-14',
+      lastModified: '2026-02-17',
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
       url: `${baseUrl}/youtube-subscriber-projector`,
-      lastModified: '2026-02-14',
+      lastModified: '2026-02-17',
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
       url: `${baseUrl}/engagement-rate-calculator`,
-      lastModified: '2026-02-14',
+      lastModified: '2026-02-17',
       changeFrequency: 'weekly',
       priority: 0.9,
     },
@@ -149,7 +149,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${baseUrl}/engagement-rate-benchmarks`,
       lastModified: '2026-02-14',
       changeFrequency: 'monthly',
-      priority: 0.7,
+      priority: 0.8,
     },
     {
       url: `${baseUrl}/glossary`,
