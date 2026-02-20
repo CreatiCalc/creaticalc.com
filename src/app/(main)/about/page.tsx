@@ -209,9 +209,35 @@ export default function AboutPage() {
               <h3 className="text-lg font-semibold">Real CPM and RPM Data</h3>
               <p className="mt-2 text-muted">
                 Our YouTube earnings estimates are based on real CPM ranges across 10+ content
-                niches, sourced from creator-reported data and advertising industry benchmarks. We
-                show low, mid, and high estimates so you see a realistic range — not a single
-                misleading number.
+                niches, informed by{' '}
+                <a
+                  href="https://support.google.com/youtube/answer/72857"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:underline"
+                >
+                  YouTube&apos;s official Partner Program documentation
+                </a>
+                , advertising industry benchmarks from{' '}
+                <a
+                  href="https://www.statista.com/topics/2019/youtube/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:underline"
+                >
+                  Statista
+                </a>{' '}
+                and{' '}
+                <a
+                  href="https://influencermarketinghub.com/youtube-money-calculator/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:underline"
+                >
+                  Influencer Marketing Hub
+                </a>
+                , and creator-reported earnings data. We show low, mid, and high estimates so you
+                see a realistic range — not a single misleading number.
               </p>
             </div>
             <div>
@@ -227,8 +253,35 @@ export default function AboutPage() {
               <h3 className="text-lg font-semibold">Industry-Standard Engagement Benchmarks</h3>
               <p className="mt-2 text-muted">
                 Our engagement rate calculators use the same formulas that brands and agencies rely
-                on. We benchmark against industry averages so you can see where you stand compared
-                to creators in your niche.
+                on, with benchmark data informed by reports from{' '}
+                <a
+                  href="https://www.hypeauditor.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:underline"
+                >
+                  HypeAuditor
+                </a>
+                ,{' '}
+                <a
+                  href="https://blog.hootsuite.com/calculate-engagement-rate/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:underline"
+                >
+                  Hootsuite
+                </a>
+                , and{' '}
+                <a
+                  href="https://www.socialinsider.io/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:underline"
+                >
+                  Social Insider
+                </a>
+                . We benchmark against industry averages so you can see where you stand compared to
+                creators in your niche.
               </p>
             </div>
             <div>

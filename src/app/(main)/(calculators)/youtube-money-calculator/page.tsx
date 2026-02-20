@@ -211,6 +211,59 @@ const howItWorks = (
       full year.
     </p>
 
+    <h3 className="mt-6 text-lg font-semibold text-foreground">Data Sources</h3>
+    <p className="mt-2">Our CPM and RPM estimates are informed by multiple sources:</p>
+    <ul className="mt-2 list-disc space-y-1 pl-5">
+      <li>
+        YouTube&apos;s official{' '}
+        <a
+          href="https://support.google.com/youtube/answer/72857"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-medium text-primary hover:underline"
+        >
+          Partner Program documentation
+        </a>{' '}
+        for the 55/45 revenue split and eligibility requirements
+      </li>
+      <li>
+        Advertising industry benchmarks from{' '}
+        <a
+          href="https://www.statista.com/topics/2019/youtube/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-medium text-primary hover:underline"
+        >
+          Statista
+        </a>{' '}
+        and{' '}
+        <a
+          href="https://influencermarketinghub.com/youtube-money-calculator/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-medium text-primary hover:underline"
+        >
+          Influencer Marketing Hub
+        </a>{' '}
+        for niche CPM ranges
+      </li>
+      <li>
+        Creator-reported earnings data aggregated from public disclosures and industry surveys
+      </li>
+      <li>
+        Seasonal ad-rate patterns from{' '}
+        <a
+          href="https://www.emarketer.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-medium text-primary hover:underline"
+        >
+          eMarketer
+        </a>{' '}
+        digital advertising reports
+      </li>
+    </ul>
+
     <h3 className="mt-6 text-lg font-semibold text-foreground">Related Tools</h3>
     <ul className="mt-2 list-disc space-y-1 pl-5">
       <li>
