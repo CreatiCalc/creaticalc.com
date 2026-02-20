@@ -273,29 +273,12 @@ const definedTermSetSchema = {
   })),
 };
 
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  'mainEntity': faqItems.map((item) => ({
-    '@type': 'Question',
-    'name': item.question,
-    'acceptedAnswer': {
-      '@type': 'Answer',
-      'text': item.answer,
-    },
-  })),
-};
-
 export default function GlossaryPage() {
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(definedTermSetSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
       <div className="mx-auto max-w-4xl px-4 py-10">
