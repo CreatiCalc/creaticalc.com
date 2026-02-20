@@ -7,11 +7,11 @@ import AdSlot from '@/components/layout/AdSlot';
 import { SITE_URL } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
-  title: 'Creator Economy Glossary — CPM, RPM, Engagement Rate & More',
+  title: 'Creator Economy Glossary 2026',
   description:
     'Learn key creator economy terms like CPM, RPM, engagement rate, sponsorship rate, and influencer tiers. A plain-language glossary for YouTubers, Instagrammers, and TikTokers.',
   openGraph: {
-    title: 'Creator Economy Glossary — CPM, RPM, Engagement Rate & More',
+    title: 'Creator Economy Glossary 2026',
     description:
       'Plain-language definitions of CPM, RPM, engagement rate, influencer tiers, brand deals, and more. Built for content creators on YouTube, Instagram, and TikTok.',
     url: '/glossary',
@@ -273,29 +273,12 @@ const definedTermSetSchema = {
   })),
 };
 
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  'mainEntity': faqItems.map((item) => ({
-    '@type': 'Question',
-    'name': item.question,
-    'acceptedAnswer': {
-      '@type': 'Answer',
-      'text': item.answer,
-    },
-  })),
-};
-
 export default function GlossaryPage() {
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(definedTermSetSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
       <div className="mx-auto max-w-4xl px-4 py-10">

@@ -7,7 +7,7 @@ const instagram: SponsorshipNichePageData[] = [
     slug: 'beauty',
     name: 'Beauty',
     platformLabel: 'Instagram',
-    title: 'Instagram Sponsorship Rates for Beauty Creators — 2026 Pricing Guide',
+    title: 'Instagram Beauty Sponsorship Rates 2026',
     metaDescription:
       'How much do beauty influencers charge on Instagram? 2026 rates for sponsored posts, Reels tutorials, Stories, and carousels. Beauty creators earn $15–$35 per 1K followers.',
     ogTitle: 'Instagram Beauty Sponsorship Rates — What to Charge in 2026',
@@ -51,7 +51,7 @@ const instagram: SponsorshipNichePageData[] = [
     slug: 'fashion',
     name: 'Fashion',
     platformLabel: 'Instagram',
-    title: 'Instagram Sponsorship Rates for Fashion Creators — 2026 Pricing Guide',
+    title: 'Instagram Fashion Sponsorship Rates 2026',
     metaDescription:
       'How much do fashion influencers charge on Instagram? 2026 rates for OOTD posts, Reels hauls, and brand collaborations. Fashion creators earn $15–$30 per 1K followers.',
     ogTitle: 'Instagram Fashion Sponsorship Rates — What to Charge in 2026',
@@ -95,7 +95,7 @@ const instagram: SponsorshipNichePageData[] = [
     slug: 'finance',
     name: 'Finance',
     platformLabel: 'Instagram',
-    title: 'Instagram Sponsorship Rates for Finance Creators — 2026 Pricing Guide',
+    title: 'Instagram Finance Sponsorship Rates 2026',
     metaDescription:
       'How much do finance creators charge on Instagram? 2026 rates for financial infographics, carousel breakdowns, and Reels. Finance earns $12–$25 per 1K followers.',
     ogTitle: 'Instagram Finance Sponsorship Rates — What to Charge in 2026',
@@ -140,7 +140,7 @@ const instagram: SponsorshipNichePageData[] = [
     slug: 'fitness',
     name: 'Fitness',
     platformLabel: 'Instagram',
-    title: 'Instagram Sponsorship Rates for Fitness Creators — 2026 Pricing Guide',
+    title: 'Instagram Fitness Sponsorship Rates 2026',
     metaDescription:
       'How much do fitness influencers charge on Instagram? 2026 rates for workout Reels, supplement posts, and athleisure features. Fitness creators earn $12–$28 per 1K followers.',
     ogTitle: 'Instagram Fitness Sponsorship Rates — What to Charge in 2026',
@@ -184,7 +184,7 @@ const instagram: SponsorshipNichePageData[] = [
     slug: 'food',
     name: 'Food',
     platformLabel: 'Instagram',
-    title: 'Instagram Sponsorship Rates for Food Creators — 2026 Pricing Guide',
+    title: 'Instagram Food Sponsorship Rates 2026',
     metaDescription:
       'How much do food influencers charge on Instagram? 2026 rates for recipe Reels, restaurant partnerships, and grocery brand features. Food creators earn $10–$25 per 1K followers.',
     ogTitle: 'Instagram Food Sponsorship Rates — What to Charge in 2026',
@@ -228,7 +228,7 @@ const instagram: SponsorshipNichePageData[] = [
     slug: 'tech',
     name: 'Tech',
     platformLabel: 'Instagram',
-    title: 'Instagram Sponsorship Rates for Tech Creators — 2026 Pricing Guide',
+    title: 'Instagram Tech Sponsorship Rates 2026',
     metaDescription:
       'How much do tech influencers charge on Instagram? 2026 rates for product showcases, setup tours, and unboxing Reels. Tech creators earn $12–$25 per 1K followers.',
     ogTitle: 'Instagram Tech Sponsorship Rates — What to Charge in 2026',
@@ -272,7 +272,7 @@ const instagram: SponsorshipNichePageData[] = [
     slug: 'travel',
     name: 'Travel',
     platformLabel: 'Instagram',
-    title: 'Instagram Sponsorship Rates for Travel Creators — 2026 Pricing Guide',
+    title: 'Instagram Travel Sponsorship Rates 2026',
     metaDescription:
       'How much do travel influencers charge on Instagram? 2026 rates for destination posts, hotel features, and travel Reels. Travel creators earn $15–$30 per 1K followers.',
     ogTitle: 'Instagram Travel Sponsorship Rates — What to Charge in 2026',
@@ -316,7 +316,7 @@ const instagram: SponsorshipNichePageData[] = [
     slug: 'entertainment',
     name: 'Entertainment',
     platformLabel: 'Instagram',
-    title: 'Instagram Sponsorship Rates for Entertainment Creators — 2026 Pricing Guide',
+    title: 'Instagram Entertainment Sponsorship Rates 2026',
     metaDescription:
       'How much do entertainment influencers charge on Instagram? 2026 rates for comedy, meme, and lifestyle content. Entertainment creators earn $8–$20 per 1K followers.',
     ogTitle: 'Instagram Entertainment Sponsorship Rates — What to Charge in 2026',

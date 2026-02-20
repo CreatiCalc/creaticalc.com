@@ -7,7 +7,7 @@ const tiktok: EngagementNichePageData[] = [
     slug: 'beauty',
     name: 'Beauty',
     platformLabel: 'TikTok',
-    title: 'TikTok Engagement Rate for Beauty Creators \u2014 2026 Benchmarks',
+    title: 'TikTok Beauty Engagement Rate + Benchmarks 2026',
     metaDescription:
       'Beauty creators on TikTok average a 4.5% engagement rate in 2026. See how BeautyTok benchmarks compare by follower count and learn proven tactics to boost your rate.',
     ogTitle: 'TikTok Beauty Engagement Rate \u2014 2026 Data',
@@ -50,7 +50,7 @@ const tiktok: EngagementNichePageData[] = [
     slug: 'fashion',
     name: 'Fashion',
     platformLabel: 'TikTok',
-    title: 'TikTok Engagement Rate for Fashion Creators \u2014 2026 Benchmarks',
+    title: 'TikTok Fashion Engagement Rate + Benchmarks 2026',
     metaDescription:
       'Fashion creators on TikTok see an average 3.8% engagement rate in 2026. Explore benchmarks, compare your metrics, and discover strategies to stand out on FashionTok.',
     ogTitle: 'TikTok Fashion Engagement Rate \u2014 2026 Benchmarks',
@@ -94,7 +94,7 @@ const tiktok: EngagementNichePageData[] = [
     slug: 'finance',
     name: 'Finance',
     platformLabel: 'TikTok',
-    title: 'TikTok Engagement Rate for Finance Creators \u2014 2026 Benchmarks',
+    title: 'TikTok Finance Engagement Rate + Benchmarks 2026',
     metaDescription:
       'FinTok creators average a 4.2% engagement rate on TikTok in 2026. Compare your finance content metrics and learn what drives saves and shares in money-related content.',
     ogTitle: 'TikTok Finance Engagement Rate \u2014 2026 Data',
@@ -138,7 +138,7 @@ const tiktok: EngagementNichePageData[] = [
     slug: 'fitness',
     name: 'Fitness',
     platformLabel: 'TikTok',
-    title: 'TikTok Engagement Rate for Fitness Creators \u2014 2026 Benchmarks',
+    title: 'TikTok Fitness Engagement Rate + Benchmarks 2026',
     metaDescription:
       'Fitness creators on TikTok average a 5.5% engagement rate in 2026. Discover GymTok benchmarks, compare your stats, and learn which workout formats drive the most shares.',
     ogTitle: 'TikTok Fitness Engagement Rate \u2014 2026 Benchmarks',
@@ -182,7 +182,7 @@ const tiktok: EngagementNichePageData[] = [
     slug: 'food',
     name: 'Food',
     platformLabel: 'TikTok',
-    title: 'TikTok Engagement Rate for Food Creators \u2014 2026 Benchmarks',
+    title: 'TikTok Food Engagement Rate + Benchmarks 2026',
     metaDescription:
       'Food creators lead TikTok engagement at 6.8% in 2026. Explore FoodTok benchmarks, analyze your content performance, and discover why recipe videos dominate the platform.',
     ogTitle: 'TikTok Food Engagement Rate \u2014 2026 Data',
@@ -226,7 +226,7 @@ const tiktok: EngagementNichePageData[] = [
     slug: 'tech',
     name: 'Tech',
     platformLabel: 'TikTok',
-    title: 'TikTok Engagement Rate for Tech Creators \u2014 2026 Benchmarks',
+    title: 'TikTok Tech Engagement Rate + Benchmarks 2026',
     metaDescription:
       'Tech creators on TikTok average a 4.8% engagement rate in 2026. Explore TechTok benchmarks, see how gadget reviews and app hacks perform, and optimize your content strategy.',
     ogTitle: 'TikTok Tech Engagement Rate \u2014 2026 Benchmarks',
@@ -271,7 +271,7 @@ const tiktok: EngagementNichePageData[] = [
     slug: 'travel',
     name: 'Travel',
     platformLabel: 'TikTok',
-    title: 'TikTok Engagement Rate for Travel Creators \u2014 2026 Benchmarks',
+    title: 'TikTok Travel Engagement Rate + Benchmarks 2026',
     metaDescription:
       'Travel creators on TikTok average a 5.0% engagement rate in 2026. Explore TravelTok benchmarks, compare destination content performance, and learn what drives saves and shares.',
     ogTitle: 'TikTok Travel Engagement Rate \u2014 2026 Data',
@@ -315,7 +315,7 @@ const tiktok: EngagementNichePageData[] = [
     slug: 'entertainment',
     name: 'Entertainment',
     platformLabel: 'TikTok',
-    title: 'TikTok Engagement Rate for Entertainment Creators \u2014 2026 Benchmarks',
+    title: 'TikTok Entertainment Engagement Rate + Benchmarks 2026',
     metaDescription:
       'Entertainment creators on TikTok average a 4.9% engagement rate in 2026. Explore benchmarks for comedy, reactions, and trend content, and learn why massive reach dilutes the rate.',
     ogTitle: 'TikTok Entertainment Engagement Rate \u2014 2026 Data',

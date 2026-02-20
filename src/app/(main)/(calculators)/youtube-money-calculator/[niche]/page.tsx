@@ -73,6 +73,19 @@ export default async function NicheCalculatorPage({ params }: NichePageProps) {
         , affiliate marketing, and other revenue streams.
       </p>
 
+      <h3 className="mt-6 text-lg font-semibold text-foreground">Other YouTube Niches</h3>
+      <div className="mt-2 flex flex-wrap gap-2">
+        {NICHE_PAGES.filter((n) => n.slug !== data.slug).map((n) => (
+          <Link
+            key={n.slug}
+            href={`/youtube-money-calculator/${n.slug}`}
+            className="rounded-full border border-border px-3 py-1 text-sm text-muted transition-colors hover:border-primary/50 hover:text-primary"
+          >
+            {n.name}
+          </Link>
+        ))}
+      </div>
+
       <h3 className="mt-6 text-lg font-semibold text-foreground">Related Tools</h3>
       <ul className="mt-2 list-disc space-y-1 pl-5">
         <li>
@@ -131,6 +144,12 @@ export default async function NicheCalculatorPage({ params }: NichePageProps) {
         description={data.pageDescription}
         faq={data.faq}
         howItWorks={howItWorks}
+        breadcrumbs={[
+          { name: 'Home', path: '/' },
+          { name: 'YouTube', path: '/youtube' },
+          { name: 'Money Calculator', path: '/youtube-money-calculator' },
+          { name: data.name, path: `/youtube-money-calculator/${data.slug}` },
+        ]}
       >
         <Suspense fallback={<CalculatorSkeleton />}>
           <YouTubeMoneyCalculator defaultOverrides={{ nicheId: data.nicheId }} hideNicheSelector />

@@ -11,15 +11,16 @@ const YouTubeMoneyCalculator = dynamic(
 import CalculatorSkeleton from '@/features/calculators/shared/CalculatorSkeleton';
 import type { FAQItem } from '@/features/calculators/shared/types';
 import { NICHE_PAGES } from '@/lib/nichePageData';
+import { YOUTUBE_NICHE_DATA, YOUTUBE_NICHE_IDS } from '@/lib/niches';
 
 export const metadata: Metadata = {
-  title: 'YouTube Money Calculator — Estimate Your Earnings (2026)',
+  title: 'YouTube Money & Earnings Calculator 2026',
   description:
-    'Free YouTube money calculator. Estimate how much money YouTubers make based on views, CPM, and niche. Calculate daily, monthly, and yearly YouTube earnings.',
+    'Free YouTube money calculator. Estimate ad revenue and RPM by views, CPM, and niche. Calculate daily, monthly, and yearly YouTube channel earnings.',
   openGraph: {
-    title: 'YouTube Money Calculator — Estimate Your Earnings (2026)',
+    title: 'YouTube Money & Earnings Calculator 2026',
     description:
-      'Estimate how much money YouTubers make based on views, CPM, and niche. Free calculator for daily, monthly, and yearly YouTube revenue.',
+      'Estimate YouTube ad revenue and RPM by views, CPM, and niche. Free calculator for daily, monthly, and yearly channel earnings.',
     url: '/youtube-money-calculator',
   },
   alternates: {
@@ -113,6 +114,20 @@ const faq: FAQItem[] = [
     answer:
       'Yes! Click the "Embed" button below the calculator results to get a free embed code for your website or blog. You can customize the theme (light or dark), accent color, and height to match your site\'s design. The embed is fully responsive and works on any website that supports iframes.',
   },
+  {
+    question: 'How are your numbers calculated?',
+    answer: (
+      <>
+        All our estimates are based on publicly available industry data, creator-reported earnings,
+        and official platform documentation. We explain our data sources, formulas, update schedule,
+        and assumptions in detail on our{' '}
+        <Link href="/methodology" className="font-medium text-primary hover:underline">
+          Methodology page
+        </Link>
+        .
+      </>
+    ),
+  },
 ];
 
 const howItWorks = (
@@ -122,16 +137,28 @@ const howItWorks = (
       <Link href="/glossary#rpm" className="font-medium text-primary hover:underline">
         RPM (Revenue Per Mille)
       </Link>{' '}
-      — the amount you actually earn per 1,000 video views. We use industry-average data across 10
-      popular content niches to give you low, mid, and high earnings estimates, with optional
-      compound growth modeling and seasonal ad-rate adjustments.
+      — the amount you actually earn per 1,000 video views.
     </p>
-    <p className="mt-3">
-      The formula: your projected monthly views (daily views × days in month × growth factor) are
-      divided by 1,000 and multiplied by your niche RPM. If seasonality is enabled, each month uses
-      a different RPM multiplier based on real advertising cycles. The 12-month chart shows the
-      range between low and high estimates, with the mid estimate as a trend line.
-    </p>
+    <ol className="mt-3 list-decimal space-y-2 pl-5">
+      <li>
+        <strong>Enter your daily views</strong> (or use Per Video mode with views per video and
+        upload frequency).
+      </li>
+      <li>
+        <strong>Select your content niche</strong> — we use industry-average CPM data across 10
+        niches to set low, mid, and high RPM ranges.
+      </li>
+      <li>
+        <strong>Adjust optional settings</strong> — set a monthly growth rate for compound
+        projections, enable seasonality to model real Q4 ad-rate spikes, adjust video length and
+        audience geography.
+      </li>
+      <li>
+        <strong>Get your projection</strong> — the calculator divides your projected monthly views
+        by 1,000 and multiplies by niche RPM. The 12-month chart shows low, mid, and high estimates
+        with a trend line.
+      </li>
+    </ol>
     <p className="mt-3">
       Keep in mind that these are estimates based on ad revenue alone. Many successful creators earn
       significantly more through{' '}
@@ -144,6 +171,48 @@ const howItWorks = (
       </Link>
       , merchandise, channel memberships, and Super Chats. Your actual YouTube ad revenue will also
       depend on factors like viewer geography, ad-blocker usage, and seasonal advertiser demand.
+    </p>
+
+    <h3 className="mt-6 text-lg font-semibold text-foreground">
+      YouTube CPM and Estimated Earnings by Niche (2026)
+    </h3>
+    <div className="mt-3 overflow-x-auto">
+      <table className="w-full text-sm">
+        <thead>
+          <tr className="border-b border-border text-left">
+            <th className="py-2 pr-4 font-semibold">Niche</th>
+            <th className="py-2 pr-4 font-semibold">CPM (Low–High)</th>
+            <th className="py-2 pr-4 font-semibold">RPM (Low–High)</th>
+            <th className="py-2 font-semibold">Est. per 1M Views</th>
+          </tr>
+        </thead>
+        <tbody>
+          {YOUTUBE_NICHE_IDS.map((id) => {
+            const d = YOUTUBE_NICHE_DATA[id];
+            const rpmLow = (d.cpm.low * 0.55).toFixed(2);
+            const rpmHigh = (d.cpm.high * 0.55).toFixed(2);
+            const earnLow = Math.round(d.cpm.low * 0.55 * 1000).toLocaleString();
+            const earnHigh = Math.round(d.cpm.high * 0.55 * 1000).toLocaleString();
+            return (
+              <tr key={id} className="border-b border-border/50">
+                <td className="py-2 pr-4 font-medium">{d.name}</td>
+                <td className="py-2 pr-4 text-muted">
+                  ${d.cpm.low}–${d.cpm.high}
+                </td>
+                <td className="py-2 pr-4 text-muted">
+                  ${rpmLow}–${rpmHigh}
+                </td>
+                <td className="py-2 text-muted">
+                  ${earnLow}–${earnHigh}
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+    <p className="mt-2 text-xs text-muted/70">
+      RPM = CPM × 0.55 (YouTube&apos;s 55% creator share). Earnings assume 100% monetized views.
     </p>
 
     <h3 className="mt-6 text-lg font-semibold text-foreground">
@@ -167,6 +236,59 @@ const howItWorks = (
       applies these real-world multipliers to your projection so you can see the impact across the
       full year.
     </p>
+
+    <h3 className="mt-6 text-lg font-semibold text-foreground">Data Sources</h3>
+    <p className="mt-2">Our CPM and RPM estimates are informed by multiple sources:</p>
+    <ul className="mt-2 list-disc space-y-1 pl-5">
+      <li>
+        YouTube&apos;s official{' '}
+        <a
+          href="https://support.google.com/youtube/answer/72857"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-medium text-primary hover:underline"
+        >
+          Partner Program documentation
+        </a>{' '}
+        for the 55/45 revenue split and eligibility requirements
+      </li>
+      <li>
+        Advertising industry benchmarks from{' '}
+        <a
+          href="https://www.statista.com/topics/2019/youtube/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-medium text-primary hover:underline"
+        >
+          Statista
+        </a>{' '}
+        and{' '}
+        <a
+          href="https://influencermarketinghub.com/youtube-money-calculator/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-medium text-primary hover:underline"
+        >
+          Influencer Marketing Hub
+        </a>{' '}
+        for niche CPM ranges
+      </li>
+      <li>
+        Creator-reported earnings data aggregated from public disclosures and industry surveys
+      </li>
+      <li>
+        Seasonal ad-rate patterns from{' '}
+        <a
+          href="https://www.emarketer.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-medium text-primary hover:underline"
+        >
+          eMarketer
+        </a>{' '}
+        digital advertising reports
+      </li>
+    </ul>
 
     <h3 className="mt-6 text-lg font-semibold text-foreground">Related Tools</h3>
     <ul className="mt-2 list-disc space-y-1 pl-5">

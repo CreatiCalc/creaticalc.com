@@ -55,6 +55,20 @@ const faq: FAQItem[] = [
     answer:
       'Smaller accounts have higher engagement rates because they tend to have a more concentrated, personally connected audience. When you have 5,000 followers, a larger percentage of them are genuinely interested in your content and will interact with each post. As accounts grow, they attract more casual followers who are less likely to engage, naturally diluting the engagement rate. This is a well-documented pattern across all social media platforms.',
   },
+  {
+    question: 'How are your numbers calculated?',
+    answer: (
+      <>
+        All our benchmarks are based on publicly available industry data, annual reports from
+        HypeAuditor, Hootsuite, and Social Insider, and platform-published data. We explain our data
+        sources, formulas, update schedule, and assumptions in detail on our{' '}
+        <Link href="/methodology" className="font-medium text-primary hover:underline">
+          Methodology page
+        </Link>
+        .
+      </>
+    ),
+  },
 ];
 
 export default function EngagementRateBenchmarksPage() {

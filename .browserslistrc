@@ -1,0 +1,10 @@
+# Target modern browsers only — drops Opera Mini and legacy polyfills
+# Covers ~95% of global users
+last 2 Chrome versions
+last 2 Firefox versions
+last 2 Safari versions
+last 2 Edge versions
+last 2 iOS versions
+last 2 ChromeAndroid versions
+not dead
+not op_mini all

@@ -13,13 +13,13 @@ import type { FAQItem } from '@/features/calculators/shared/types';
 import { getEngagementNichePages } from '@/lib/engagement-niches';
 
 export const metadata: Metadata = {
-  title: 'X (Twitter) Engagement Rate Calculator + Benchmarks 2026',
+  title: 'X (Twitter) Engagement Rate + Benchmarks 2026',
   description:
-    'Free X (Twitter) engagement rate calculator. Measure engagement with likes, replies, reposts, and bookmarks. Compare against 2026 benchmarks.',
+    'Free X (Twitter) engagement rate calculator. Measure engagement with likes, replies, reposts, and bookmarks. Compare against average 2026 benchmarks.',
   openGraph: {
-    title: 'X (Twitter) Engagement Rate Calculator + Benchmarks 2026',
+    title: 'X (Twitter) Engagement Rate + Benchmarks 2026',
     description:
-      'Calculate your X (Twitter) engagement rate by followers or by impressions. Compare against industry benchmarks. Free calculator for creators and brands.',
+      'Calculate your X (Twitter) engagement rate by followers or impressions. Compare against average industry benchmarks. Free calculator for creators.',
     url: '/twitter-engagement-rate-calculator',
   },
   alternates: {
@@ -88,23 +88,46 @@ const faq: FAQItem[] = [
     answer:
       'Yes! Click the "Embed" button below the calculator results to get a free embed code for your website or blog. You can customize the theme (light or dark), accent color, and height to match your site\'s design. The embed is fully responsive and works on any website that supports iframes.',
   },
+  {
+    question: 'How are your numbers calculated?',
+    answer: (
+      <>
+        All our estimates are based on publicly available industry data, creator-reported earnings,
+        and official platform documentation. We explain our data sources, formulas, update schedule,
+        and assumptions in detail on our{' '}
+        <Link href="/methodology" className="font-medium text-primary hover:underline">
+          Methodology page
+        </Link>
+        .
+      </>
+    ),
+  },
 ];
 
 const howItWorks = (
   <>
     <p>
       Our X (Twitter) Engagement Rate Calculator measures how actively your audience interacts with
-      your posts. X offers two meaningful ways to calculate engagement: by followers (the standard
-      method for comparing accounts) and by impressions (better for analyzing individual post
-      performance). Our calculator supports both methods so you can choose the most relevant metric
-      for your goals.
+      your posts, with two calculation methods: by followers (for comparing accounts) and by
+      impressions (for analyzing individual post performance).
     </p>
-    <p className="mt-3">
-      Enter your average post metrics — likes, replies, reposts, and bookmarks — along with your
-      follower count and average impressions. The calculator computes your engagement rate using
-      your chosen method, rates it against your follower tier benchmark, and shows how you compare
-      to other accounts in your content niche.
-    </p>
+    <ol className="mt-3 list-decimal space-y-2 pl-5">
+      <li>
+        <strong>Enter your average post metrics</strong> — likes, replies, reposts, and bookmarks.
+      </li>
+      <li>
+        <strong>Enter your follower count and average impressions</strong> — needed for both
+        calculation methods.
+      </li>
+      <li>
+        <strong>Choose your calculation method</strong> — by followers (industry standard for brand
+        pitches) or by impressions (better for content strategy).
+      </li>
+      <li>
+        <strong>Get your engagement rate</strong> — rated against your follower tier benchmark with
+        a niche comparison.
+      </li>
+    </ol>
 
     <h3 className="mt-6 text-lg font-semibold text-foreground">
       By Followers vs. By Impressions: Which to Use

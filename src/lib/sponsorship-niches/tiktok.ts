@@ -7,7 +7,7 @@ const tiktok: SponsorshipNichePageData[] = [
     slug: 'beauty',
     name: 'Beauty',
     platformLabel: 'TikTok',
-    title: 'TikTok Sponsorship Rates for Beauty Creators — 2026 Pricing Guide',
+    title: 'TikTok Beauty Sponsorship Rates 2026',
     metaDescription:
       'How much do beauty TikTokers charge for sponsorships? 2026 rates for GRWM videos, product reviews, and dupe content. Beauty creators earn $8–$20 per 1K followers.',
     ogTitle: 'TikTok Beauty Sponsorship Rates — What to Charge in 2026',
@@ -51,7 +51,7 @@ const tiktok: SponsorshipNichePageData[] = [
     slug: 'fashion',
     name: 'Fashion',
     platformLabel: 'TikTok',
-    title: 'TikTok Sponsorship Rates for Fashion Creators — 2026 Pricing Guide',
+    title: 'TikTok Fashion Sponsorship Rates 2026',
     metaDescription:
       'How much do fashion TikTokers charge for sponsorships? 2026 rates for try-on hauls, thrift flips, and OOTD content. Fashion creators earn $7–$18 per 1K followers.',
     ogTitle: 'TikTok Fashion Sponsorship Rates — What to Charge in 2026',
@@ -95,7 +95,7 @@ const tiktok: SponsorshipNichePageData[] = [
     slug: 'finance',
     name: 'Finance',
     platformLabel: 'TikTok',
-    title: 'TikTok Sponsorship Rates for Finance Creators — 2026 Pricing Guide',
+    title: 'TikTok Finance Sponsorship Rates 2026',
     metaDescription:
       'How much do FinTok creators charge for sponsorships? 2026 rates for financial explainers and fintech app integrations. Finance creators earn $5–$12 per 1K followers on TikTok.',
     ogTitle: 'TikTok Finance Sponsorship Rates — What to Charge in 2026',
@@ -139,7 +139,7 @@ const tiktok: SponsorshipNichePageData[] = [
     slug: 'fitness',
     name: 'Fitness',
     platformLabel: 'TikTok',
-    title: 'TikTok Sponsorship Rates for Fitness Creators — 2026 Pricing Guide',
+    title: 'TikTok Fitness Sponsorship Rates 2026',
     metaDescription:
       'How much do fitness TikTokers charge for sponsorships? 2026 rates for workout clips, supplement integrations, and challenge content. Fitness creators earn $7–$18 per 1K followers.',
     ogTitle: 'TikTok Fitness Sponsorship Rates — What to Charge in 2026',
@@ -183,7 +183,7 @@ const tiktok: SponsorshipNichePageData[] = [
     slug: 'food',
     name: 'Food',
     platformLabel: 'TikTok',
-    title: 'TikTok Sponsorship Rates for Food Creators — 2026 Pricing Guide',
+    title: 'TikTok Food Sponsorship Rates 2026',
     metaDescription:
       'How much do food TikTokers charge for sponsorships? 2026 rates for recipe videos, restaurant reviews, and food brand features. Food creators earn $6–$16 per 1K followers.',
     ogTitle: 'TikTok Food Sponsorship Rates — What to Charge in 2026',
@@ -227,7 +227,7 @@ const tiktok: SponsorshipNichePageData[] = [
     slug: 'tech',
     name: 'Tech',
     platformLabel: 'TikTok',
-    title: 'TikTok Sponsorship Rates for Tech Creators — 2026 Pricing Guide',
+    title: 'TikTok Tech Sponsorship Rates 2026',
     metaDescription:
       'How much do tech TikTokers charge for sponsorships? 2026 rates for product demos, tech tips, and unboxing content. Tech creators earn $6–$15 per 1K followers.',
     ogTitle: 'TikTok Tech Sponsorship Rates — What to Charge in 2026',
@@ -271,7 +271,7 @@ const tiktok: SponsorshipNichePageData[] = [
     slug: 'travel',
     name: 'Travel',
     platformLabel: 'TikTok',
-    title: 'TikTok Sponsorship Rates for Travel Creators — 2026 Pricing Guide',
+    title: 'TikTok Travel Sponsorship Rates 2026',
     metaDescription:
       'How much do travel TikTokers charge for sponsorships? 2026 rates for destination reveals, travel hacks, and hotel content. Travel creators earn $7–$18 per 1K followers.',
     ogTitle: 'TikTok Travel Sponsorship Rates — What to Charge in 2026',
@@ -315,7 +315,7 @@ const tiktok: SponsorshipNichePageData[] = [
     slug: 'entertainment',
     name: 'Entertainment',
     platformLabel: 'TikTok',
-    title: 'TikTok Sponsorship Rates for Entertainment Creators — 2026 Pricing Guide',
+    title: 'TikTok Entertainment Sponsorship Rates 2026',
     metaDescription:
       'How much do entertainment TikTokers charge for sponsorships? 2026 rates for comedy, skits, and trending content. Entertainment creators earn $5–$15 per 1K followers.',
     ogTitle: 'TikTok Entertainment Sponsorship Rates — What to Charge in 2026',

@@ -12,13 +12,13 @@ import CalculatorSkeleton from '@/features/calculators/shared/CalculatorSkeleton
 import type { FAQItem } from '@/features/calculators/shared/types';
 
 export const metadata: Metadata = {
-  title: 'YouTube Subscriber Growth Projector — Free Tool (2026)',
+  title: 'YouTube Subscriber Projector 2026',
   description:
-    "Free YouTube subscriber growth projector. See when you'll hit 1K, 10K, 100K, and 1M subscribers based on your current growth rate, upload frequency, and content niche.",
+    "Free YouTube subscriber growth projector. See when you'll hit 1K, 10K, 100K, and 1M subs — milestones for YouTube Partner Program eligibility and monetization.",
   openGraph: {
-    title: 'YouTube Subscriber Growth Projector — Free Tool (2026)',
+    title: 'YouTube Subscriber Projector 2026',
     description:
-      "Project your YouTube subscriber growth and see when you'll hit key milestones. Free 24-month projection tool.",
+      'Project your YouTube subscriber growth to key monetization milestones. Free 24-month tool with YouTube Partner Program tracking.',
     url: '/youtube-subscriber-projector',
   },
   alternates: {
@@ -92,16 +92,46 @@ const faq: FAQItem[] = [
     answer:
       'Yes! Click the "Embed" button below the calculator results to get a free embed code for your website or blog. You can customize the theme (light or dark), accent color, and height to match your site\'s design. The embed is fully responsive and works on any website that supports iframes.',
   },
+  {
+    question: 'How are your numbers calculated?',
+    answer: (
+      <>
+        All our estimates are based on publicly available industry data, creator-reported earnings,
+        and official platform documentation. We explain our data sources, formulas, update schedule,
+        and assumptions in detail on our{' '}
+        <Link href="/methodology" className="font-medium text-primary hover:underline">
+          Methodology page
+        </Link>
+        .
+      </>
+    ),
+  },
 ];
 
 const howItWorks = (
   <>
     <p>
       Our YouTube Subscriber Growth Projector models your channel&apos;s growth trajectory over 24
-      months. Enter your current subscriber count, choose a growth mode (percentage rate or flat
-      monthly gain), and adjust parameters like upload frequency and content niche to see a
-      personalized projection.
+      months.
     </p>
+    <ol className="mt-3 list-decimal space-y-2 pl-5">
+      <li>
+        <strong>Enter your current subscriber count</strong> — the projector starts from your actual
+        channel size.
+      </li>
+      <li>
+        <strong>Choose a growth mode</strong> — percentage rate (compounding) or flat monthly
+        subscriber gain.
+      </li>
+      <li>
+        <strong>Adjust upload frequency and content niche</strong> — the algorithm rewards
+        consistent publishing with a 0.5&times; to 1.2&times; upload multiplier.
+      </li>
+      <li>
+        <strong>View your 24-month projection</strong> — see a growth chart with milestone tracking
+        for 1K, 10K, 100K, 500K, and 1M subscribers.
+      </li>
+    </ol>
 
     <h3 className="mt-6 text-lg font-semibold text-foreground">Growth Model</h3>
     <p className="mt-2">

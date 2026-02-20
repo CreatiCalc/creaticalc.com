@@ -12,11 +12,11 @@ import CalculatorSkeleton from '@/features/calculators/shared/CalculatorSkeleton
 import type { FAQItem } from '@/features/calculators/shared/types';
 
 export const metadata: Metadata = {
-  title: 'YouTube Shorts Money Calculator — How Much Do Shorts Pay? (2026)',
+  title: 'YouTube Shorts Money Calculator 2026',
   description:
     'Free YouTube Shorts money calculator. Estimate how much Shorts pay per 1,000 views with RPM data ($0.01–$0.07). Calculate daily, monthly, and yearly Shorts revenue.',
   openGraph: {
-    title: 'YouTube Shorts Money Calculator — How Much Do Shorts Pay? (2026)',
+    title: 'YouTube Shorts Money Calculator 2026',
     description:
       'Estimate how much YouTube Shorts pay per 1,000 views. Free calculator with real RPM data for daily, monthly, and yearly Shorts revenue.',
     url: '/youtube-shorts-money-calculator',
@@ -82,6 +82,20 @@ const faq: FAQItem[] = [
     answer:
       'Yes! Click the "Embed" button below the calculator results to get a free embed code for your website or blog. You can customize the theme (light or dark), accent color, and height to match your site\'s design. The embed is fully responsive and works on any website that supports iframes.',
   },
+  {
+    question: 'How are your numbers calculated?',
+    answer: (
+      <>
+        All our estimates are based on publicly available industry data, creator-reported earnings,
+        and official platform documentation. We explain our data sources, formulas, update schedule,
+        and assumptions in detail on our{' '}
+        <Link href="/methodology" className="font-medium text-primary hover:underline">
+          Methodology page
+        </Link>
+        .
+      </>
+    ),
+  },
 ];
 
 const howItWorks = (
@@ -95,16 +109,26 @@ const howItWorks = (
       <Link href="/glossary" className="font-medium text-primary hover:underline">
         content niche
       </Link>
-      . This is because Shorts ads are served in a mixed feed rather than targeted by content
-      category like long-form pre-roll ads.
+      .
     </p>
-    <p className="mt-3">
-      The formula: your projected monthly Shorts views (daily views &times; days in month &times;
-      growth factor) are divided by 1,000 and multiplied by the Shorts RPM range. If seasonality is
-      enabled, each month uses a different RPM multiplier based on real advertising cycles. The
-      12-month chart shows the range between low and high estimates, with the mid estimate as a
-      trend line.
-    </p>
+    <ol className="mt-3 list-decimal space-y-2 pl-5">
+      <li>
+        <strong>Enter your daily Shorts views</strong> (or use Per Video mode with views per Short
+        and upload frequency).
+      </li>
+      <li>
+        <strong>Set a monthly growth rate</strong> to compound your views over the 12-month
+        projection.
+      </li>
+      <li>
+        <strong>Toggle seasonality</strong> to model real Q4 ad-rate spikes — each month uses a
+        different RPM multiplier based on advertising cycles.
+      </li>
+      <li>
+        <strong>Get your projection</strong> — projected monthly views &divide; 1,000 &times; Shorts
+        RPM range. The chart shows low, mid, and high estimates.
+      </li>
+    </ol>
     <p className="mt-3">
       Keep in mind that Shorts ad revenue is just one income stream. Many successful Shorts creators
       earn significantly more through{' '}
