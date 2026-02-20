@@ -5,6 +5,7 @@ import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
 import CalculatorSchema from '@/components/seo/CalculatorSchema';
 
 import { TikTokSponsorshipCalculator } from '@/features/calculators/tiktok-sponsorship';
+import CalculatorSkeleton from '@/features/calculators/shared/CalculatorSkeleton';
 import type { FAQItem } from '@/features/calculators/shared/types';
 import { getSponsorshipNichePages } from '@/lib/sponsorship-niches';
 
@@ -220,7 +221,7 @@ export default function TikTokSponsorshipPage() {
           },
         ]}
       >
-        <Suspense>
+        <Suspense fallback={<CalculatorSkeleton />}>
           <TikTokSponsorshipCalculator />
         </Suspense>
 

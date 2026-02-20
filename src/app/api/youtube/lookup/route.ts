@@ -63,6 +63,20 @@ function getClientIp(request: Request): string {
   return forwarded?.split(',')[0]?.trim() ?? 'unknown';
 }
 
+// ─── Origin Validation ──────────────────────────────────────────────────────
+
+const ALLOWED_ORIGINS = new Set([
+  'https://creaticalc.com',
+  'https://www.creaticalc.com',
+  ...(process.env.NODE_ENV === 'development' ? ['http://localhost:3000'] : []),
+]);
+
+function isAllowedOrigin(request: Request): boolean {
+  const origin = request.headers.get('origin');
+  if (!origin) return false;
+  return ALLOWED_ORIGINS.has(origin);
+}
+
 // ─── Helpers ────────────────────────────────────────────────────────────────
 
 function errorResponse(code: string, message: string, status = 400) {
@@ -94,13 +108,18 @@ async function youtubeApiFetch(endpoint: string, params: Record<string, string>)
       );
     }
     const body = await res.text();
-    throw new Error(`YouTube API error ${res.status}: ${body}`);
+    console.error(`YouTube API error ${res.status}: ${body}`);
+    throw new Error('An error occurred fetching YouTube data.');
   }
 
   return res.json();
 }
 
 export async function POST(request: Request) {
+  if (!isAllowedOrigin(request)) {
+    return errorResponse('FORBIDDEN', 'Requests from this origin are not allowed.', 403);
+  }
+
   const ip = getClientIp(request);
   if (isRateLimited(ip)) {
     return errorResponse(
