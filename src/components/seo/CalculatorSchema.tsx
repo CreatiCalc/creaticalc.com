@@ -26,11 +26,7 @@ export default function CalculatorSchema({
     'applicationCategory': 'UtilitiesApplication',
     'operatingSystem': 'Any',
     'inLanguage': 'en',
-    'author': {
-      '@type': 'Organization',
-      'name': SITE_NAME,
-      'url': SITE_URL,
-    },
+    'author': { '@id': `${SITE_URL}/#organization` },
     'offers': {
       '@type': 'Offer',
       'price': '0',

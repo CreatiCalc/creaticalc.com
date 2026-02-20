@@ -70,16 +70,20 @@ const jsonLd = {
   '@graph': [
     {
       '@type': 'WebSite',
+      '@id': `${SITE_URL}/#website`,
       'name': SITE_NAME,
       'url': SITE_URL,
       'description': SITE_DESCRIPTION,
+      'publisher': { '@id': `${SITE_URL}/#organization` },
     },
     {
       '@type': 'Organization',
+      '@id': `${SITE_URL}/#organization`,
       'name': SITE_NAME,
       'url': SITE_URL,
       'logo': SITE_LOGO,
       'description': SITE_DESCRIPTION,
+      'sameAs': ['https://x.com/CreatiCalc'],
     },
     {
       '@type': 'ItemList',
