@@ -64,13 +64,11 @@ export const MORE_LINKS: NavItem[] = [
 // single source of truth for all site-wide link data.
 export const FOOTER_GROUPS: NavGroup[] = [
   {
-    label: 'Platforms',
+    label: 'YouTube',
     items: [
-      { name: 'YouTube Tools', href: '/youtube' },
-      { name: 'Instagram Tools', href: '/instagram' },
-      { name: 'TikTok Tools', href: '/tiktok' },
-      { name: 'Facebook Tools', href: '/facebook' },
-      { name: 'X (Twitter) Tools', href: '/x' },
+      { name: 'Money Calculator', href: '/youtube-money-calculator' },
+      { name: 'Shorts Calculator', href: '/youtube-shorts-money-calculator' },
+      { name: 'Growth Projector', href: '/youtube-subscriber-projector' },
     ],
   },
   {
@@ -87,11 +85,11 @@ export const FOOTER_GROUPS: NavGroup[] = [
   {
     label: 'Sponsorship Rates',
     items: [
-      { name: 'YouTube', href: '/youtube-sponsorship-rate-calculator' },
       { name: 'Instagram', href: '/instagram-sponsorship-rate-calculator' },
       { name: 'TikTok', href: '/tiktok-sponsorship-rate-calculator' },
       { name: 'Facebook', href: '/facebook-sponsorship-rate-calculator' },
       { name: 'X (Twitter)', href: '/twitter-sponsorship-rate-calculator' },
+      { name: 'YouTube', href: '/youtube-sponsorship-rate-calculator' },
     ],
   },
   {
