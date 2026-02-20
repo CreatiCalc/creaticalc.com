@@ -341,7 +341,36 @@ export default function Home() {
         <p className="mx-auto mb-6 max-w-2xl text-center text-sm text-muted">
           How the five major platforms compare for creator monetization and audience engagement.
         </p>
-        <div className="overflow-x-auto">
+        {/* Mobile: stacked cards */}
+        <div className="space-y-4 sm:hidden">
+          {platformComparison.map((p) => (
+            <div key={p.name} className="rounded-lg border border-border p-4">
+              <Link href={p.href} className="text-lg font-semibold hover:text-primary hover:underline">
+                {p.name}
+              </Link>
+              <dl className="mt-2 space-y-1 text-sm">
+                <div className="flex justify-between">
+                  <dt className="text-muted">Revenue</dt>
+                  <dd>{p.revenueModel}</dd>
+                </div>
+                <div className="flex justify-between">
+                  <dt className="text-muted">Earnings</dt>
+                  <dd>{p.typicalEarnings}</dd>
+                </div>
+                <div className="flex justify-between">
+                  <dt className="text-muted">Engagement</dt>
+                  <dd>{p.engagementRate}</dd>
+                </div>
+                <div className="flex justify-between">
+                  <dt className="text-muted">Sponsorship</dt>
+                  <dd>{p.sponsorshipRate}</dd>
+                </div>
+              </dl>
+            </div>
+          ))}
+        </div>
+        {/* Desktop: table */}
+        <div className="hidden sm:block">
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-border text-left">
