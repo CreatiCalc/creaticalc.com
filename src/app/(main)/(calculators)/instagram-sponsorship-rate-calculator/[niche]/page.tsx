@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
 import CalculatorSchema from '@/components/seo/CalculatorSchema';
 import SponsorshipCalculator from '@/features/calculators/sponsorship-shared/SponsorshipCalculator';
+import CalculatorSkeleton from '@/features/calculators/shared/CalculatorSkeleton';
 import { INSTAGRAM_SPONSORSHIP_CONFIG } from '@/features/calculators/sponsorship-shared/sponsorshipConfigs';
 import { getSponsorshipNichePages, getSponsorshipNichePageData } from '@/lib/sponsorship-niches';
 import NicheCrossLinks from '@/features/calculators/sponsorship-shared/NicheCrossLinks';
@@ -102,7 +103,7 @@ export default async function NicheSponsorshipPage({ params }: NichePageProps) {
           { name: data.name, path: `/instagram-sponsorship-rate-calculator/${data.slug}` },
         ]}
       >
-        <Suspense>
+        <Suspense fallback={<CalculatorSkeleton />}>
           <SponsorshipCalculator
             config={{ ...INSTAGRAM_SPONSORSHIP_CONFIG, defaultIndustryId: data.industryId }}
           />

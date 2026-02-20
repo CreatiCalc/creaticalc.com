@@ -129,6 +129,14 @@ export function encodeState(state: ShareableState): string {
   return toBase64Url(raw);
 }
 
+const MAX_COUNT = 1_000_000_000; // 1 billion — reasonable upper bound for social metrics
+
+function safeInt(value: string, max = MAX_COUNT): number | null {
+  const n = parseInt(value, 10);
+  if (isNaN(n) || n < 0 || n > max) return null;
+  return n;
+}
+
 function decodePipe(raw: string): ShareableState | null {
   const parts = raw.split('|');
   const platform = parts[0];
@@ -137,19 +145,28 @@ function decodePipe(raw: string): ShareableState | null {
     if (parts.length < 8) return null;
     if (!VALID_INDUSTRY_IDS.has(parts[4])) return null;
     if (!VALID_CONTENT_TYPES.has(parts[7])) return null;
+    const f = safeInt(parts[1]);
+    const l = safeInt(parts[2]);
+    const c = safeInt(parts[3]);
+    const n = safeInt(parts[5], 10000);
+    const saves = safeInt(parts[6]);
+    if (f === null || l === null || c === null || n === null || saves === null) return null;
     const s: ShareableState = {
       p: 'instagram',
-      f: parseInt(parts[1], 10),
-      l: parseInt(parts[2], 10),
-      c: parseInt(parts[3], 10),
+      f,
+      l,
+      c,
       i: parts[4],
-      n: parseInt(parts[5], 10),
-      s: parseInt(parts[6], 10),
+      n,
+      s: saves,
       ct: parts[7],
     };
     if (parts.length >= 11) {
-      s.r = parseInt(parts[8], 10);
-      s.im = parseInt(parts[9], 10);
+      const r = safeInt(parts[8]);
+      const im = safeInt(parts[9]);
+      if (r === null || im === null) return null;
+      s.r = r;
+      s.im = im;
       const calcCode = parseInt(parts[10], 10);
       s.icm =
         calcCode >= 0 && calcCode < IG_CODE_TO_CALC_METHOD.length
@@ -162,16 +179,24 @@ function decodePipe(raw: string): ShareableState | null {
   if (platform === 't') {
     if (parts.length < 9) return null;
     if (!VALID_INDUSTRY_IDS.has(parts[4])) return null;
+    const f = safeInt(parts[1]);
+    const l = safeInt(parts[2]);
+    const c = safeInt(parts[3]);
+    const n = safeInt(parts[5], 10000);
+    const sh = safeInt(parts[6]);
+    const v = safeInt(parts[7]);
+    if (f === null || l === null || c === null || n === null || sh === null || v === null)
+      return null;
     const calcCode = parseInt(parts[8], 10);
     return {
       p: 'tiktok',
-      f: parseInt(parts[1], 10),
-      l: parseInt(parts[2], 10),
-      c: parseInt(parts[3], 10),
+      f,
+      l,
+      c,
       i: parts[4],
-      n: parseInt(parts[5], 10),
-      sh: parseInt(parts[6], 10),
-      v: parseInt(parts[7], 10),
+      n,
+      sh,
+      v,
       cm:
         calcCode >= 0 && calcCode < TT_CODE_TO_CALC_METHOD.length
           ? TT_CODE_TO_CALC_METHOD[calcCode]
@@ -182,17 +207,25 @@ function decodePipe(raw: string): ShareableState | null {
   if (platform === 'f') {
     if (parts.length < 7) return null;
     if (!VALID_INDUSTRY_IDS.has(parts[4])) return null;
+    const f = safeInt(parts[1]);
+    const l = safeInt(parts[2]);
+    const c = safeInt(parts[3]);
+    const n = safeInt(parts[5], 10000);
+    const fsh = safeInt(parts[6]);
+    if (f === null || l === null || c === null || n === null || fsh === null) return null;
     const s: ShareableState = {
       p: 'facebook',
-      f: parseInt(parts[1], 10),
-      l: parseInt(parts[2], 10),
-      c: parseInt(parts[3], 10),
+      f,
+      l,
+      c,
       i: parts[4],
-      n: parseInt(parts[5], 10),
-      fsh: parseInt(parts[6], 10),
+      n,
+      fsh,
     };
     if (parts.length >= 9) {
-      s.fr = parseInt(parts[7], 10);
+      const fr = safeInt(parts[7]);
+      if (fr === null) return null;
+      s.fr = fr;
       const calcCode = parseInt(parts[8], 10);
       s.fcm =
         calcCode >= 0 && calcCode < FB_CODE_TO_CALC_METHOD.length
@@ -205,18 +238,28 @@ function decodePipe(raw: string): ShareableState | null {
   if (platform === 'x') {
     if (parts.length < 8) return null;
     if (!VALID_INDUSTRY_IDS.has(parts[4])) return null;
+    const f = safeInt(parts[1]);
+    const l = safeInt(parts[2]);
+    const c = safeInt(parts[3]);
+    const n = safeInt(parts[5], 10000);
+    const rp = safeInt(parts[6]);
+    const bm = safeInt(parts[7]);
+    if (f === null || l === null || c === null || n === null || rp === null || bm === null)
+      return null;
     const s: ShareableState = {
       p: 'twitter',
-      f: parseInt(parts[1], 10),
-      l: parseInt(parts[2], 10),
-      c: parseInt(parts[3], 10),
+      f,
+      l,
+      c,
       i: parts[4],
-      n: parseInt(parts[5], 10),
-      rp: parseInt(parts[6], 10),
-      bm: parseInt(parts[7], 10),
+      n,
+      rp,
+      bm,
     };
     if (parts.length >= 10) {
-      s.tim = parseInt(parts[8], 10);
+      const tim = safeInt(parts[8]);
+      if (tim === null) return null;
+      s.tim = tim;
       const calcCode = parseInt(parts[9], 10);
       s.tcm =
         calcCode >= 0 && calcCode < TW_CODE_TO_CALC_METHOD.length

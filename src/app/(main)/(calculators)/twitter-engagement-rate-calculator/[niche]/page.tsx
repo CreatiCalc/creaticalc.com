@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
 import CalculatorSchema from '@/components/seo/CalculatorSchema';
 import EngagementCalculator from '@/features/calculators/engagement-shared/EngagementCalculator';
+import CalculatorSkeleton from '@/features/calculators/shared/CalculatorSkeleton';
 import { TWITTER_CONFIG } from '@/features/calculators/engagement-shared/platformConfigs';
 import { getEngagementNichePages, getEngagementNichePageData } from '@/lib/engagement-niches';
 import EngagementNicheCrossLinks from '@/features/calculators/engagement-shared/EngagementNicheCrossLinks';
@@ -102,7 +103,7 @@ export default async function NicheEngagementPage({ params }: NichePageProps) {
           { name: data.name, path: `/twitter-engagement-rate-calculator/${data.slug}` },
         ]}
       >
-        <Suspense>
+        <Suspense fallback={<CalculatorSkeleton />}>
           <EngagementCalculator
             config={{ ...TWITTER_CONFIG, defaultIndustryId: data.industryId }}
           />

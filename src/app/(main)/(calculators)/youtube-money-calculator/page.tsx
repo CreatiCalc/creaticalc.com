@@ -5,6 +5,7 @@ import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
 import CalculatorSchema from '@/components/seo/CalculatorSchema';
 
 import { YouTubeMoneyCalculator } from '@/features/calculators/youtube-money';
+import CalculatorSkeleton from '@/features/calculators/shared/CalculatorSkeleton';
 import type { FAQItem } from '@/features/calculators/shared/types';
 import { NICHE_PAGES } from '@/lib/nichePageData';
 
@@ -265,7 +266,7 @@ export default function YouTubeMoneyCalculatorPage() {
           { name: 'YouTube Money Calculator', path: '/youtube-money-calculator' },
         ]}
       >
-        <Suspense>
+        <Suspense fallback={<CalculatorSkeleton />}>
           <YouTubeMoneyCalculator />
         </Suspense>
 

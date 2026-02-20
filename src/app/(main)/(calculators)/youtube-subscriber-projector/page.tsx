@@ -5,6 +5,7 @@ import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
 import CalculatorSchema from '@/components/seo/CalculatorSchema';
 
 import { YouTubeGrowthCalculator } from '@/features/calculators/youtube-growth';
+import CalculatorSkeleton from '@/features/calculators/shared/CalculatorSkeleton';
 import type { FAQItem } from '@/features/calculators/shared/types';
 
 export const metadata: Metadata = {
@@ -232,7 +233,7 @@ export default function YouTubeSubscriberProjectorPage() {
           },
         ]}
       >
-        <Suspense>
+        <Suspense fallback={<CalculatorSkeleton />}>
           <YouTubeGrowthCalculator />
         </Suspense>
       </CalculatorLayout>
