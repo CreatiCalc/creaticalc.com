@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import Breadcrumbs from '@/components/seo/Breadcrumbs';
+import { SOURCES } from '@/lib/sources';
 
 export const metadata: Metadata = {
   title: 'Methodology — How We Calculate Creator Earnings & Engagement',
@@ -262,6 +263,29 @@ export default function MethodologyPage() {
               not be used as the sole basis for business decisions.
             </li>
           </ul>
+        </section>
+
+        <section className="mb-16">
+          <h2 className="text-2xl font-bold">Sources</h2>
+          <p className="mt-4 leading-relaxed text-muted">
+            The following sources inform our calculations, benchmarks, and rate estimates. We
+            cross-reference multiple sources to ensure accuracy and update our data annually.
+          </p>
+          <ol className="mt-4 list-decimal space-y-3 pl-5 text-muted">
+            {SOURCES.map((source) => (
+              <li key={source.id}>
+                <a
+                  href={source.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-primary hover:underline"
+                >
+                  {source.name}
+                </a>{' '}
+                — {source.description}
+              </li>
+            ))}
+          </ol>
         </section>
 
         <section className="text-center">
