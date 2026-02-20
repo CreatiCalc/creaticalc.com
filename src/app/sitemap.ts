@@ -9,21 +9,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const nichePages: MetadataRoute.Sitemap = NICHE_PAGES.map((n) => ({
     url: `${baseUrl}/youtube-money-calculator/${n.slug}`,
-    lastModified: '2026-02-17',
+    lastModified: '2026-02-20',
     changeFrequency: 'monthly',
     priority: 0.5,
   }));
 
   const sponsorshipNichePages: MetadataRoute.Sitemap = SPONSORSHIP_NICHE_PAGES.map((n) => ({
     url: `${baseUrl}/${n.platform}-sponsorship-rate-calculator/${n.slug}`,
-    lastModified: '2026-02-16',
+    lastModified: '2026-02-20',
     changeFrequency: 'monthly',
     priority: 0.7,
   }));
 
   const engagementNichePages: MetadataRoute.Sitemap = ENGAGEMENT_NICHE_PAGES.map((n) => ({
     url: `${baseUrl}/${n.platform}-engagement-rate-calculator/${n.slug}`,
-    lastModified: '2026-02-16',
+    lastModified: '2026-02-20',
     changeFrequency: 'monthly',
     priority: 0.7,
   }));
@@ -31,7 +31,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: baseUrl,
-      lastModified: '2026-02-17',
+      lastModified: '2026-02-20',
       changeFrequency: 'monthly',
       priority: 1.0,
     },
@@ -69,97 +69,97 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Individual calculators
     {
       url: `${baseUrl}/youtube-money-calculator`,
-      lastModified: '2026-02-17',
+      lastModified: '2026-02-20',
       changeFrequency: 'weekly',
       priority: 1.0,
     },
     {
       url: `${baseUrl}/youtube-shorts-money-calculator`,
-      lastModified: '2026-02-17',
+      lastModified: '2026-02-20',
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
       url: `${baseUrl}/youtube-subscriber-projector`,
-      lastModified: '2026-02-17',
+      lastModified: '2026-02-20',
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
       url: `${baseUrl}/engagement-rate-calculator`,
-      lastModified: '2026-02-17',
+      lastModified: '2026-02-20',
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
       url: `${baseUrl}/instagram-engagement-rate-calculator`,
-      lastModified: '2026-02-14',
+      lastModified: '2026-02-20',
       changeFrequency: 'weekly',
       priority: 0.8,
     },
     {
       url: `${baseUrl}/tiktok-engagement-rate-calculator`,
-      lastModified: '2026-02-14',
+      lastModified: '2026-02-20',
       changeFrequency: 'weekly',
       priority: 0.8,
     },
     {
       url: `${baseUrl}/instagram-sponsorship-rate-calculator`,
-      lastModified: '2026-02-14',
+      lastModified: '2026-02-20',
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
       url: `${baseUrl}/tiktok-sponsorship-rate-calculator`,
-      lastModified: '2026-02-14',
+      lastModified: '2026-02-20',
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
       url: `${baseUrl}/facebook-engagement-rate-calculator`,
-      lastModified: '2026-02-14',
+      lastModified: '2026-02-20',
       changeFrequency: 'weekly',
       priority: 0.8,
     },
     {
       url: `${baseUrl}/twitter-engagement-rate-calculator`,
-      lastModified: '2026-02-14',
+      lastModified: '2026-02-20',
       changeFrequency: 'weekly',
       priority: 0.8,
     },
     {
       url: `${baseUrl}/youtube-sponsorship-rate-calculator`,
-      lastModified: '2026-02-14',
+      lastModified: '2026-02-20',
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
       url: `${baseUrl}/facebook-sponsorship-rate-calculator`,
-      lastModified: '2026-02-14',
+      lastModified: '2026-02-20',
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
       url: `${baseUrl}/twitter-sponsorship-rate-calculator`,
-      lastModified: '2026-02-14',
+      lastModified: '2026-02-20',
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
       url: `${baseUrl}/engagement-rate-benchmarks`,
-      lastModified: '2026-02-14',
+      lastModified: '2026-02-20',
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${baseUrl}/glossary`,
-      lastModified: '2026-02-16',
+      lastModified: '2026-02-20',
       changeFrequency: 'monthly',
       priority: 0.6,
     },
     {
       url: `${baseUrl}/about`,
-      lastModified: '2026-02-14',
+      lastModified: '2026-02-20',
       changeFrequency: 'monthly',
       priority: 0.3,
     },

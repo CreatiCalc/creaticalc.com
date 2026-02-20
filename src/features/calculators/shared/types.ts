@@ -1,3 +1,5 @@
+import type { ReactNode } from 'react';
+
 export interface CalculatorMeta {
   title: string;
   description: string;
@@ -6,5 +8,5 @@ export interface CalculatorMeta {
 
 export interface FAQItem {
   question: string;
-  answer: string;
+  answer: ReactNode;
 }

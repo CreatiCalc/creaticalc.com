@@ -12,7 +12,7 @@ export default function FAQ({ items }: FAQProps) {
       <div className="space-y-4">
         {items.map((item, i) => (
           <CollapsibleSection key={i} title={item.question} variant="compact">
-            <p className="text-sm leading-relaxed text-muted">{item.answer}</p>
+            <div className="text-sm leading-relaxed text-muted">{item.answer}</div>
           </CollapsibleSection>
         ))}
       </div>
