@@ -351,7 +351,10 @@ export default function Home() {
         <div className="space-y-4 sm:hidden">
           {platformComparison.map((p) => (
             <div key={p.name} className="rounded-lg border border-border p-4">
-              <Link href={p.href} className="text-lg font-semibold hover:text-primary hover:underline">
+              <Link
+                href={p.href}
+                className="text-lg font-semibold hover:text-primary hover:underline"
+              >
                 {p.name}
               </Link>
               <dl className="mt-2 space-y-1 text-sm">

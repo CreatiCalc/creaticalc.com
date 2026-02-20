@@ -143,8 +143,8 @@ export default function MethodologyPage() {
           <h3 className="mt-8 text-lg font-semibold">Niche-Specific RPM Ranges</h3>
           <p className="mt-2 text-muted">
             Not all YouTube content earns equally. Advertisers pay a premium for audiences in
-            high-intent verticals such as finance, technology, and education, while entertainment and
-            gaming niches typically see lower CPMs due to broader, less commercially targeted
+            high-intent verticals such as finance, technology, and education, while entertainment
+            and gaming niches typically see lower CPMs due to broader, less commercially targeted
             audiences. Our calculator models 10 distinct niches, each with independently researched
             RPM ranges that reflect these differences. For example, finance content can command RPMs
             3–5 times higher than gaming content because financial advertisers compete aggressively
@@ -195,8 +195,9 @@ export default function MethodologyPage() {
             1,000 views compared to $1–$25+ for standard videos. This reflects the shorter watch
             time, different ad format, and the revenue-sharing structure of the Shorts Fund and
             subsequent Shorts ad revenue program. Our estimates use the same core formula as the
-            long-form calculator but with Shorts-specific RPM ranges calibrated from creator-reported
-            earnings and YouTube&apos;s published Shorts monetization documentation.
+            long-form calculator but with Shorts-specific RPM ranges calibrated from
+            creator-reported earnings and YouTube&apos;s published Shorts monetization
+            documentation.
           </p>
         </section>
 
@@ -334,8 +335,8 @@ export default function MethodologyPage() {
           <ul className="mt-2 list-disc space-y-2 pl-5 text-muted marker:text-primary">
             <li>
               <strong className="text-foreground">Engagement Multiplier:</strong> Higher engagement
-              rates (above platform average) command a premium because brands get more visibility per
-              dollar spent. A creator with 2× the average engagement rate can typically charge
+              rates (above platform average) command a premium because brands get more visibility
+              per dollar spent. A creator with 2× the average engagement rate can typically charge
               30–50% more.
             </li>
             <li>
@@ -347,8 +348,8 @@ export default function MethodologyPage() {
             <li>
               <strong className="text-foreground">Content Type Multiplier:</strong> Dedicated videos
               or posts cost more than Stories or brief mentions because they require more production
-              effort and deliver more brand exposure. A dedicated YouTube integration typically costs
-              3–5× more than an Instagram Story mention.
+              effort and deliver more brand exposure. A dedicated YouTube integration typically
+              costs 3–5× more than an Instagram Story mention.
             </li>
             <li>
               <strong className="text-foreground">Deal Type Multiplier:</strong> One-off
@@ -454,9 +455,10 @@ export default function MethodologyPage() {
               <h3 className="text-lg font-semibold">How often is the data updated?</h3>
               <p className="mt-2 text-muted">
                 We perform scheduled data reviews twice a year, in January and July. Between
-                scheduled updates, we make out-of-cycle adjustments when major platform changes occur
-                — such as YouTube modifying its Shorts monetization model or a platform changing its
-                revenue-sharing terms. The Data Refresh Changelog below tracks all updates.
+                scheduled updates, we make out-of-cycle adjustments when major platform changes
+                occur — such as YouTube modifying its Shorts monetization model or a platform
+                changing its revenue-sharing terms. The Data Refresh Changelog below tracks all
+                updates.
               </p>
             </div>
             <div>
@@ -465,10 +467,10 @@ export default function MethodologyPage() {
               </h3>
               <p className="mt-2 text-muted">
                 Our calculators are designed to provide useful directional estimates for content
-                creators evaluating their monetization potential. They can inform business planning as
-                one input among many, but should not be the sole basis for financial decisions. We
-                recommend using the low-end estimates for conservative planning and the mid estimates
-                as a realistic target.
+                creators evaluating their monetization potential. They can inform business planning
+                as one input among many, but should not be the sole basis for financial decisions.
+                We recommend using the low-end estimates for conservative planning and the mid
+                estimates as a realistic target.
               </p>
             </div>
           </div>
@@ -493,7 +495,9 @@ export default function MethodologyPage() {
               <p className="text-sm font-semibold text-foreground">July 2025 — H2 2025 Update</p>
               <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-muted">
                 <li>Initial CPM and RPM data compilation across 10 YouTube niches</li>
-                <li>Established engagement rate benchmarks for Instagram, TikTok, Facebook, and X</li>
+                <li>
+                  Established engagement rate benchmarks for Instagram, TikTok, Facebook, and X
+                </li>
                 <li>Set sponsorship base rates from Influencer Marketing Hub survey data</li>
                 <li>Calibrated seasonality multipliers from IAB and eMarketer ad-spend reports</li>
               </ul>
