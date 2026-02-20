@@ -82,17 +82,6 @@ const jsonLd = {
       'description': SITE_DESCRIPTION,
     },
     {
-      '@type': 'FAQPage',
-      'mainEntity': homeFaqItems.map((item) => ({
-        '@type': 'Question',
-        'name': item.question,
-        'acceptedAnswer': {
-          '@type': 'Answer',
-          'text': item.answer,
-        },
-      })),
-    },
-    {
       '@type': 'ItemList',
       'itemListElement': calculators.map((calc, index) => ({
         '@type': 'ListItem',

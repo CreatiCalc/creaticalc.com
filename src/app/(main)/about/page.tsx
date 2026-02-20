@@ -54,19 +54,6 @@ const faqItems = [
   },
 ];
 
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  'mainEntity': faqItems.map((item) => ({
-    '@type': 'Question',
-    'name': item.question,
-    'acceptedAnswer': {
-      '@type': 'Answer',
-      'text': item.answer,
-    },
-  })),
-};
-
 const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
@@ -82,10 +69,6 @@ export default function AboutPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
       <div className="mx-auto max-w-4xl px-4 py-16">
