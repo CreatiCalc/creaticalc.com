@@ -149,6 +149,7 @@ const jsonLd = {
       'name': SITE_NAME,
       'url': SITE_URL,
       'description': SITE_DESCRIPTION,
+      'inLanguage': 'en',
       'publisher': { '@id': `${SITE_URL}/#organization` },
     },
     {
