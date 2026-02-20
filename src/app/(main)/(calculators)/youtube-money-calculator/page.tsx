@@ -123,16 +123,28 @@ const howItWorks = (
       <Link href="/glossary#rpm" className="font-medium text-primary hover:underline">
         RPM (Revenue Per Mille)
       </Link>{' '}
-      — the amount you actually earn per 1,000 video views. We use industry-average data across 10
-      popular content niches to give you low, mid, and high earnings estimates, with optional
-      compound growth modeling and seasonal ad-rate adjustments.
+      — the amount you actually earn per 1,000 video views.
     </p>
-    <p className="mt-3">
-      The formula: your projected monthly views (daily views × days in month × growth factor) are
-      divided by 1,000 and multiplied by your niche RPM. If seasonality is enabled, each month uses
-      a different RPM multiplier based on real advertising cycles. The 12-month chart shows the
-      range between low and high estimates, with the mid estimate as a trend line.
-    </p>
+    <ol className="mt-3 list-decimal space-y-2 pl-5">
+      <li>
+        <strong>Enter your daily views</strong> (or use Per Video mode with views per video and
+        upload frequency).
+      </li>
+      <li>
+        <strong>Select your content niche</strong> — we use industry-average CPM data across 10
+        niches to set low, mid, and high RPM ranges.
+      </li>
+      <li>
+        <strong>Adjust optional settings</strong> — set a monthly growth rate for compound
+        projections, enable seasonality to model real Q4 ad-rate spikes, adjust video length and
+        audience geography.
+      </li>
+      <li>
+        <strong>Get your projection</strong> — the calculator divides your projected monthly views
+        by 1,000 and multiplies by niche RPM. The 12-month chart shows low, mid, and high estimates
+        with a trend line.
+      </li>
+    </ol>
     <p className="mt-3">
       Keep in mind that these are estimates based on ad revenue alone. Many successful creators earn
       significantly more through{' '}

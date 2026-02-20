@@ -13,13 +13,13 @@ import type { FAQItem } from '@/features/calculators/shared/types';
 import { getSponsorshipNichePages } from '@/lib/sponsorship-niches';
 
 export const metadata: Metadata = {
-  title: 'X (Twitter) Sponsorship Rate Calculator — How Much to Charge in 2026',
+  title: 'X (Twitter) Sponsorship Rates 2026',
   description:
-    'Free X (Twitter) sponsorship rate calculator. Find out how much to charge for sponsored tweets, threads, and Spaces based on your followers, engagement rate, and niche.',
+    'Free X (Twitter) sponsorship rate calculator. Calculate brand deal rates for sponsored tweets, threads, and Spaces by followers, engagement, and niche.',
   openGraph: {
-    title: 'X (Twitter) Sponsorship Rate Calculator — How Much to Charge in 2026',
+    title: 'X (Twitter) Sponsorship Rates 2026',
     description:
-      'Calculate your X (Twitter) sponsorship rates based on followers, engagement, content type, and niche. Free rate card generator for creators.',
+      'Calculate X (Twitter) brand deal rates for tweets, threads, and Spaces by followers, engagement, and niche. Free rate card generator.',
     url: '/twitter-sponsorship-rate-calculator',
   },
   alternates: {
@@ -99,16 +99,26 @@ const howItWorks = (
   <>
     <p>
       Our X (Twitter) Sponsorship Rate Calculator helps creators determine how much to charge for
-      branded content on X. The calculator uses a formula based on your follower count, engagement
-      rate, content type, deal type, and content niche to produce a per-post rate range that
-      reflects current market rates.
+      branded content on X.
     </p>
-    <p className="mt-3">
-      The base rate starts at $8–$20 per 1,000 followers for X, then multiplies based on your
-      specific profile. Higher engagement rates (above 5%) can double your rate, while premium
-      niches like finance and crypto command 1.5–2x multipliers. Deal type has the largest impact —
-      an in-depth product review pays 3.5x more than a simple mention.
-    </p>
+    <ol className="mt-3 list-decimal space-y-2 pl-5">
+      <li>
+        <strong>Enter your follower count and engagement rate</strong> — higher engagement commands
+        premium rates (above 5% can double your rate).
+      </li>
+      <li>
+        <strong>Select your content niche</strong> — premium niches like finance and crypto earn
+        1.5&ndash;2x multipliers.
+      </li>
+      <li>
+        <strong>Choose content type and deal type</strong> — deal type has the largest impact; an
+        in-depth review pays 3.5x more than a simple mention.
+      </li>
+      <li>
+        <strong>Get your rate range</strong> — a per-post sponsorship rate based on a $8&ndash;$20
+        per 1,000 follower base rate with your multipliers applied.
+      </li>
+    </ol>
 
     <h3 className="mt-6 text-lg font-semibold text-foreground">Understanding the Rate Formula</h3>
     <p className="mt-2">

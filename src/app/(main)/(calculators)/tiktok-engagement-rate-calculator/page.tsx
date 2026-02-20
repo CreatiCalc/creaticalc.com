@@ -13,13 +13,13 @@ import type { FAQItem } from '@/features/calculators/shared/types';
 import { getEngagementNichePages } from '@/lib/engagement-niches';
 
 export const metadata: Metadata = {
-  title: 'TikTok Engagement Rate Calculator + Industry Benchmarks 2026',
+  title: 'TikTok Engagement Rate + Benchmarks 2026',
   description:
-    'Free TikTok engagement rate calculator. Measure engagement from likes, comments, shares, and views. Compare against 2026 benchmarks by tier and niche.',
+    'Free TikTok engagement rate calculator. Measure engagement from likes, comments, shares, and views. Compare against average 2026 benchmarks by tier and niche.',
   openGraph: {
-    title: 'TikTok Engagement Rate Calculator + Industry Benchmarks 2026',
+    title: 'TikTok Engagement Rate + Benchmarks 2026',
     description:
-      'Calculate your TikTok engagement rate by followers or by views. Compare against industry benchmarks. Free calculator for creators and brands.',
+      'Calculate your TikTok engagement rate by followers or by views. Compare against average industry benchmarks. Free calculator for creators and brands.',
     url: '/tiktok-engagement-rate-calculator',
   },
   alternates: {
@@ -99,17 +99,26 @@ const howItWorks = (
   <>
     <p>
       Our TikTok Engagement Rate Calculator measures how actively your audience interacts with your
-      videos. Unlike other platforms, TikTok offers two meaningful ways to calculate engagement: by
-      followers (the standard method for comparing creators) and by views (better for analyzing
-      individual video performance). Our calculator supports both methods so you can choose the most
-      relevant metric for your goals.
+      videos, with two calculation methods: by followers (for comparing creators) and by views (for
+      analyzing individual video performance).
     </p>
-    <p className="mt-3">
-      Enter your average video metrics — likes, comments, and shares — along with your follower
-      count and average views. The calculator computes your engagement rate using your chosen
-      method, rates it against your follower tier benchmark, and shows how you compare to other
-      creators in your content niche.
-    </p>
+    <ol className="mt-3 list-decimal space-y-2 pl-5">
+      <li>
+        <strong>Enter your average video metrics</strong> — likes, comments, and shares per video.
+      </li>
+      <li>
+        <strong>Enter your follower count and average views</strong> — needed for both calculation
+        methods.
+      </li>
+      <li>
+        <strong>Choose your calculation method</strong> — by followers (industry standard for brand
+        pitches) or by views (better for content strategy).
+      </li>
+      <li>
+        <strong>Get your engagement rate</strong> — rated against your follower tier benchmark with
+        a niche comparison.
+      </li>
+    </ol>
 
     <h3 className="mt-6 text-lg font-semibold text-foreground">
       By Followers vs. By Views: Which to Use

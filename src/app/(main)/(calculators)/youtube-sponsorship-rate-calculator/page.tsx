@@ -13,13 +13,13 @@ import type { FAQItem } from '@/features/calculators/shared/types';
 import { getSponsorshipNichePages } from '@/lib/sponsorship-niches';
 
 export const metadata: Metadata = {
-  title: 'YouTube Sponsorship Rate Calculator — How Much to Charge in 2026',
+  title: 'YouTube Sponsorship Rates 2026',
   description:
-    'Free YouTube sponsorship rate calculator. Find out how much to charge for integrations, dedicated videos, Shorts, and pre-rolls based on your subscribers, engagement rate, and niche.',
+    'Free YouTube sponsorship rate calculator. Calculate brand deal rates for integrations, dedicated videos, Shorts, and pre-rolls by subscribers, engagement, and niche.',
   openGraph: {
-    title: 'YouTube Sponsorship Rate Calculator — How Much to Charge in 2026',
+    title: 'YouTube Sponsorship Rates 2026',
     description:
-      'Calculate your YouTube sponsorship rates based on subscribers, engagement, content type, and niche. Free rate card generator for creators.',
+      'Calculate YouTube brand deal and sponsorship rates by subscribers, engagement, and niche. Free rate card generator for creators.',
     url: '/youtube-sponsorship-rate-calculator',
   },
   alternates: {
@@ -99,23 +99,36 @@ const howItWorks = (
   <>
     <p>
       Our YouTube Sponsorship Rate Calculator helps creators determine how much to charge for
-      branded content on YouTube. The calculator uses a formula based on your subscriber count,{' '}
-      <Link href="/glossary" className="font-medium text-primary hover:underline">
-        engagement rate
-      </Link>
-      , content type, deal type, and{' '}
-      <Link href="/glossary" className="font-medium text-primary hover:underline">
-        content niche
-      </Link>{' '}
-      to produce a per-video rate range that reflects current market rates.
+      branded content on YouTube.
     </p>
-    <p className="mt-3">
-      The base rate starts at $20&ndash;$50 per 1,000 subscribers for YouTube, then multiplies based
-      on your specific channel profile. Higher engagement rates (above 5%) can double your rate,
-      while premium niches like finance and tech command 1.5&ndash;2x multipliers. Content type
-      matters too &mdash; dedicated videos pay 2x more than integrations, while Shorts are priced at
-      about 40% of an integration.
-    </p>
+    <ol className="mt-3 list-decimal space-y-2 pl-5">
+      <li>
+        <strong>
+          Enter your subscriber count and{' '}
+          <Link href="/glossary" className="font-medium text-primary hover:underline">
+            engagement rate
+          </Link>
+        </strong>{' '}
+        — higher engagement commands premium rates.
+      </li>
+      <li>
+        <strong>
+          Select your{' '}
+          <Link href="/glossary" className="font-medium text-primary hover:underline">
+            content niche
+          </Link>
+        </strong>{' '}
+        — premium niches like finance and tech earn 1.5&ndash;2x multipliers.
+      </li>
+      <li>
+        <strong>Choose content type and deal type</strong> — dedicated videos pay 2x more than
+        integrations, while Shorts are priced at about 40% of an integration.
+      </li>
+      <li>
+        <strong>Get your rate range</strong> — a per-video sponsorship rate based on a $20&ndash;$50
+        per 1,000 subscriber base rate with your multipliers applied.
+      </li>
+    </ol>
 
     <h3 className="mt-6 text-lg font-semibold text-foreground">Understanding the Rate Formula</h3>
     <p className="mt-2">

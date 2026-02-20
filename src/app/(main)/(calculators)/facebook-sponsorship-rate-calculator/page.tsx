@@ -13,13 +13,13 @@ import type { FAQItem } from '@/features/calculators/shared/types';
 import { getSponsorshipNichePages } from '@/lib/sponsorship-niches';
 
 export const metadata: Metadata = {
-  title: 'Facebook Sponsorship Rate Calculator — How Much to Charge in 2026',
+  title: 'Facebook Sponsorship Rates 2026',
   description:
-    'Free Facebook sponsorship rate calculator. Find out how much to charge for sponsored feed posts, Reels, Stories, and Lives based on your followers, engagement rate, and niche.',
+    'Free Facebook sponsorship rate calculator. Calculate brand deal rates for feed posts, Reels, Stories, Lives, and Group sponsorships by followers, engagement, and niche.',
   openGraph: {
-    title: 'Facebook Sponsorship Rate Calculator — How Much to Charge in 2026',
+    title: 'Facebook Sponsorship Rates 2026',
     description:
-      'Calculate your Facebook sponsorship rates based on followers, engagement, content type, and niche. Free rate card generator for creators.',
+      'Calculate Facebook brand deal and Group sponsorship rates by followers, engagement, and niche. Free rate card generator for creators.',
     url: '/facebook-sponsorship-rate-calculator',
   },
   alternates: {
@@ -99,17 +99,26 @@ const howItWorks = (
   <>
     <p>
       Our Facebook Sponsorship Rate Calculator helps creators determine how much to charge for
-      branded content on Facebook. The calculator uses a formula based on your follower count,
-      engagement rate, content type, deal type, and content niche to produce a per-post rate range
-      that reflects current market rates.
+      branded content on Facebook.
     </p>
-    <p className="mt-3">
-      The base rate starts at $5–$15 per 1,000 followers for Facebook, then multiplies based on your
-      specific profile. Higher engagement rates (above 5%) can significantly increase your rate,
-      while premium niches like finance and tech command 1.5–2x multipliers. Content type matters
-      too — Reels pay 1.4x more than feed posts, while Stories are priced at about 30% of a feed
-      post.
-    </p>
+    <ol className="mt-3 list-decimal space-y-2 pl-5">
+      <li>
+        <strong>Enter your follower count and engagement rate</strong> — higher engagement
+        significantly increases your rate.
+      </li>
+      <li>
+        <strong>Select your content niche</strong> — premium niches like finance and tech earn
+        1.5&ndash;2x multipliers.
+      </li>
+      <li>
+        <strong>Choose content type and deal type</strong> — Reels pay 1.4x more than feed posts,
+        while Stories are priced at about 30% of a feed post.
+      </li>
+      <li>
+        <strong>Get your rate range</strong> — a per-post sponsorship rate based on a $5&ndash;$15
+        per 1,000 follower base rate with your multipliers applied.
+      </li>
+    </ol>
 
     <h3 className="mt-6 text-lg font-semibold text-foreground">Understanding the Rate Formula</h3>
     <p className="mt-2">

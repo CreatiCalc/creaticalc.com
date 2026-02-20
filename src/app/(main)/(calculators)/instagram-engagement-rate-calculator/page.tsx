@@ -13,13 +13,13 @@ import type { FAQItem } from '@/features/calculators/shared/types';
 import { getEngagementNichePages } from '@/lib/engagement-niches';
 
 export const metadata: Metadata = {
-  title: 'Instagram Engagement Rate Calculator + Industry Benchmarks 2026',
+  title: 'Instagram Engagement Rate + Benchmarks 2026',
   description:
-    'Free Instagram engagement rate calculator. Calculate your IG engagement from likes, comments, and saves. Compare against 2026 benchmarks by tier and niche.',
+    'Free Instagram engagement rate calculator. Calculate your IG engagement from likes, comments, and saves. Compare against average 2026 benchmarks by tier and niche.',
   openGraph: {
-    title: 'Instagram Engagement Rate Calculator + Industry Benchmarks 2026',
+    title: 'Instagram Engagement Rate + Benchmarks 2026',
     description:
-      'Calculate your Instagram engagement rate and compare it against industry benchmarks. Free calculator for creators and brands.',
+      'Calculate your Instagram engagement rate and compare against average industry benchmarks. Free calculator for creators and brands.',
     url: '/instagram-engagement-rate-calculator',
   },
   alternates: {
@@ -99,16 +99,26 @@ const howItWorks = (
   <>
     <p>
       Our Instagram Engagement Rate Calculator measures how actively your audience interacts with
-      your content relative to your follower count. It uses the industry-standard formula: (Likes +
-      Comments + Saves) divided by Followers, multiplied by 100. This gives you a single percentage
-      that represents the health and responsiveness of your audience.
+      your content using the industry-standard formula: (Likes + Comments + Saves) &divide;
+      Followers &times; 100.
     </p>
-    <p className="mt-3">
-      Enter your average post metrics — likes, comments, and saves — along with your follower count.
-      The calculator instantly computes your engagement rate, rates it against your follower tier
-      benchmark (since smaller accounts naturally have higher engagement), and shows how you compare
-      to other creators in your content niche.
-    </p>
+    <ol className="mt-3 list-decimal space-y-2 pl-5">
+      <li>
+        <strong>Enter your average post metrics</strong> — likes, comments, and saves per post.
+      </li>
+      <li>
+        <strong>Enter your follower count</strong> — used as the baseline for percentage
+        calculation.
+      </li>
+      <li>
+        <strong>Get your engagement rate</strong> — instantly rated against your follower tier
+        benchmark, since smaller accounts naturally have higher engagement.
+      </li>
+      <li>
+        <strong>Compare by niche</strong> — see how you stack up against other creators in your
+        content category.
+      </li>
+    </ol>
 
     <h3 className="mt-6 text-lg font-semibold text-foreground">What Counts as Engagement</h3>
     <p className="mt-2">
