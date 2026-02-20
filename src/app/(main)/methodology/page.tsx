@@ -3,6 +3,7 @@ import Link from 'next/link';
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import Breadcrumbs from '@/components/seo/Breadcrumbs';
 import { SOURCES } from '@/lib/sources';
+import { SITE_URL } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
   title: 'Methodology — How We Calculate Creator Earnings & Engagement',
@@ -25,8 +26,23 @@ const breadcrumbs = [
 ];
 
 export default function MethodologyPage() {
+  const webPageSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    'name': 'Methodology — How We Calculate Creator Earnings & Engagement',
+    'description':
+      'Learn how CreatiCalc calculates YouTube earnings, engagement rates, and sponsorship pricing.',
+    'url': `${SITE_URL}/methodology`,
+    'dateModified': '2026-02-20',
+    'publisher': { '@id': `${SITE_URL}/#organization` },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
+      />
       <BreadcrumbSchema items={breadcrumbs} />
 
       <div className="mx-auto max-w-4xl px-4 py-16">
