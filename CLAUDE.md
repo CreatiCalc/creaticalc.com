@@ -16,6 +16,39 @@ The primary goal of CreatiCalc is to generate passive income through ad revenue,
 - **Freemium readiness.** Architect features so that premium tiers (e.g., advanced analytics, export, saved calculations) can be gated later without major refactoring.
 - **Page speed and Core Web Vitals.** Google ranks fast sites higher, and ad networks pay more for performant pages. Minimize bundle size, lazy-load non-critical components, and optimize images.
 
+## Git Workflow
+
+- NEVER commit or push directly to the `main` branch. Always create a feature branch and open a PR.
+- When asked to 'commit', create a branch and PR unless explicitly told otherwise.
+
+### PR and Merge Workflow
+
+- When combining commits or cleaning up PR history, use git rebase/squash — do NOT close and reopen PRs.
+- When deploying across multiple PRs, ask the user for the correct merge/deploy order rather than assuming.
+
+## General Rules
+
+### Verify Before Answering
+
+- Always check the actual code/config for values like URLs, ports, directory paths, and deploy settings. NEVER answer from memory or assumptions.
+- For deploy configs (Netlify, Fly.io), read the actual config files before suggesting changes.
+
+### Bug Fix Approach
+
+- When fixing a bug, make the MINIMAL change needed. Do NOT remove or rewrite surrounding features/functionality unless explicitly asked.
+- If you think a broader refactor is needed, ASK first before proceeding.
+
+### TypeScript
+
+- This is a TypeScript project. After making changes, always run the type checker (`tsc --noEmit` or equivalent) before considering the task done.
+- Place type definitions in shared type files, NOT inside React components.
+
+### UI/CSS Changes
+
+- When modifying filtered/dimmed UI states, preserve the color information the user relies on — never remove color as a way to indicate filtering.
+- When implementing severity/level-based visual indicators, carefully read the data model's scale (e.g., 27 levels vs 5 levels) before coding the logic.
+- Test CSS changes against the actual rendering — avoid invalid CSS tokens or properties.
+
 ## Commands
 
 ```bash

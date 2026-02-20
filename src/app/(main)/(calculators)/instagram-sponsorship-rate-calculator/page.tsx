@@ -5,6 +5,7 @@ import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
 import CalculatorSchema from '@/components/seo/CalculatorSchema';
 
 import { InstagramSponsorshipCalculator } from '@/features/calculators/instagram-sponsorship';
+import CalculatorSkeleton from '@/features/calculators/shared/CalculatorSkeleton';
 import type { FAQItem } from '@/features/calculators/shared/types';
 import { getSponsorshipNichePages } from '@/lib/sponsorship-niches';
 
@@ -217,7 +218,7 @@ export default function InstagramSponsorshipPage() {
           },
         ]}
       >
-        <Suspense>
+        <Suspense fallback={<CalculatorSkeleton />}>
           <InstagramSponsorshipCalculator />
         </Suspense>
 

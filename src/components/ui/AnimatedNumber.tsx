@@ -12,17 +12,25 @@ export default function AnimatedNumber({ value, format, duration = 400 }: Animat
   const [display, setDisplay] = useState(value);
   const prevRef = useRef(value);
   const rafRef = useRef<number | null>(null);
+  const isFirstRender = useRef(true);
 
   useEffect(() => {
     const from = prevRef.current;
     const to = value;
     prevRef.current = to;
 
+    // Skip animation on first render and when value hasn't changed — avoid
+    // unnecessary rAF work during the LCP window.
+    if (isFirstRender.current || from === to) {
+      isFirstRender.current = false;
+      return;
+    }
+
     if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
 
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    if (prefersReducedMotion || from === to) {
+    if (prefersReducedMotion) {
       rafRef.current = requestAnimationFrame(() => setDisplay(to));
       return;
     }

@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
 import CalculatorSchema from '@/components/seo/CalculatorSchema';
 import { YouTubeMoneyCalculator } from '@/features/calculators/youtube-money';
+import CalculatorSkeleton from '@/features/calculators/shared/CalculatorSkeleton';
 import { getNiche } from '@/lib/youtubeEarningsModel';
 import { NICHE_PAGES, getNichePageData } from '@/lib/nichePageData';
 
@@ -128,7 +129,7 @@ export default async function NicheCalculatorPage({ params }: NichePageProps) {
         faq={data.faq}
         howItWorks={howItWorks}
       >
-        <Suspense>
+        <Suspense fallback={<CalculatorSkeleton />}>
           <YouTubeMoneyCalculator defaultOverrides={{ nicheId: data.nicheId }} hideNicheSelector />
         </Suspense>
       </CalculatorLayout>

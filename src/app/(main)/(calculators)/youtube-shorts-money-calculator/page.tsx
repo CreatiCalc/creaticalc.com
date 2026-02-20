@@ -5,6 +5,7 @@ import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
 import CalculatorSchema from '@/components/seo/CalculatorSchema';
 
 import { YouTubeMoneyCalculator } from '@/features/calculators/youtube-money';
+import CalculatorSkeleton from '@/features/calculators/shared/CalculatorSkeleton';
 import type { FAQItem } from '@/features/calculators/shared/types';
 
 export const metadata: Metadata = {
@@ -268,7 +269,7 @@ export default function YouTubeShortsMoneyCalculatorPage() {
           { name: 'YouTube Shorts Money Calculator', path: '/youtube-shorts-money-calculator' },
         ]}
       >
-        <Suspense>
+        <Suspense fallback={<CalculatorSkeleton />}>
           <YouTubeMoneyCalculator
             defaultOverrides={{ contentFormat: 'shorts', dailyViews: 50000 }}
             hideFormatToggle

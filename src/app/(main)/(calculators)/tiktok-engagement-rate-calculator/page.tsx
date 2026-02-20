@@ -5,6 +5,7 @@ import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
 import CalculatorSchema from '@/components/seo/CalculatorSchema';
 
 import { TikTokEngagementCalculator } from '@/features/calculators/tiktok-engagement';
+import CalculatorSkeleton from '@/features/calculators/shared/CalculatorSkeleton';
 import type { FAQItem } from '@/features/calculators/shared/types';
 import { getEngagementNichePages } from '@/lib/engagement-niches';
 
@@ -233,7 +234,7 @@ export default function TikTokEngagementPage() {
           },
         ]}
       >
-        <Suspense>
+        <Suspense fallback={<CalculatorSkeleton />}>
           <TikTokEngagementCalculator />
         </Suspense>
 

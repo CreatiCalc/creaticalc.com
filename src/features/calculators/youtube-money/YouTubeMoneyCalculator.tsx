@@ -22,9 +22,11 @@ import {
   type VideoLength,
   type ProjectionInput,
 } from '@/lib/youtubeEarningsModel';
+import dynamic from 'next/dynamic';
 import { useCalculatorState, computeDailyViewsFromPerVideo } from './useCalculatorState';
-import UrlLookup from './UrlLookup';
 import ButtonToggle from '@/components/ui/ButtonToggle';
+
+const UrlLookup = dynamic(() => import('./UrlLookup'), { ssr: false });
 import type { ContentFormat } from '@/lib/youtubeEarningsModel';
 import type { InputMode } from './useCalculatorState';
 import GrowthRateInput from './GrowthRateInput';

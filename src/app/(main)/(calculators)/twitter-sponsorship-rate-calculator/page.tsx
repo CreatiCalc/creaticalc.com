@@ -5,6 +5,7 @@ import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
 import CalculatorSchema from '@/components/seo/CalculatorSchema';
 
 import { TwitterSponsorshipCalculator } from '@/features/calculators/twitter-sponsorship';
+import CalculatorSkeleton from '@/features/calculators/shared/CalculatorSkeleton';
 import type { FAQItem } from '@/features/calculators/shared/types';
 import { getSponsorshipNichePages } from '@/lib/sponsorship-niches';
 
@@ -233,7 +234,7 @@ export default function TwitterSponsorshipPage() {
           },
         ]}
       >
-        <Suspense>
+        <Suspense fallback={<CalculatorSkeleton />}>
           <TwitterSponsorshipCalculator />
         </Suspense>
 

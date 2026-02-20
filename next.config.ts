@@ -4,6 +4,7 @@ const nextConfig: NextConfig = {
   productionBrowserSourceMaps: false,
   experimental: {
     optimizePackageImports: ['recharts'],
+    optimizeCss: true,
   },
   images: {
     formats: ['image/avif', 'image/webp'],
