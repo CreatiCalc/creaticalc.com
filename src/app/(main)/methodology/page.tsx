@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Methodology — How CreatiCalc Works',
     description:
-      'Data sources, formulas, and assumptions behind CreatiCalc\'s creator earnings and engagement rate calculators.',
+      "Data sources, formulas, and assumptions behind CreatiCalc's creator earnings and engagement rate calculators.",
     url: '/methodology',
   },
   alternates: {
@@ -213,9 +213,9 @@ export default function MethodologyPage() {
             >
               Influencer Marketing Hub
             </a>
-            , and publicly shared rate information from established creators. Multipliers account for
-            higher engagement (which commands premium rates), high-value niches (like finance), and
-            content formats that require more production effort.
+            , and publicly shared rate information from established creators. Multipliers account
+            for higher engagement (which commands premium rates), high-value niches (like finance),
+            and content formats that require more production effort.
           </p>
         </section>
 
@@ -243,8 +243,8 @@ export default function MethodologyPage() {
             </li>
             <li>
               <strong className="text-foreground">Average CPM ranges:</strong> CPM varies by
-              audience geography, ad-blocker usage, video length, and real-time auction dynamics. Our
-              ranges represent typical values, not guaranteed rates.
+              audience geography, ad-blocker usage, video length, and real-time auction dynamics.
+              Our ranges represent typical values, not guaranteed rates.
             </li>
             <li>
               <strong className="text-foreground">Engagement benchmarks are averages:</strong>{' '}
@@ -258,8 +258,8 @@ export default function MethodologyPage() {
             </li>
             <li>
               <strong className="text-foreground">No financial advice:</strong> CreatiCalc provides
-              estimates for planning purposes. We are not financial advisors and our tools should not
-              be used as the sole basis for business decisions.
+              estimates for planning purposes. We are not financial advisors and our tools should
+              not be used as the sole basis for business decisions.
             </li>
           </ul>
         </section>

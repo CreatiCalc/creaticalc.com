@@ -7,7 +7,7 @@ const twitter: EngagementNichePageData[] = [
     industryId: 'beauty',
     slug: 'beauty',
     name: 'Beauty',
-    title: 'X (Twitter) Engagement Rate for Beauty Creators \u2014 2026 Benchmarks',
+    title: 'X (Twitter) Beauty Engagement Rate + Benchmarks 2026',
     metaDescription:
       'Beauty creators on X (Twitter) average just 0.02% engagement. Learn why this text-first platform underperforms for beauty and how skincare science threads buck the trend.',
     ogTitle: 'X (Twitter) Beauty Engagement Rate: 2026 Data',
@@ -51,7 +51,7 @@ const twitter: EngagementNichePageData[] = [
     industryId: 'fashion',
     slug: 'fashion',
     name: 'Fashion',
-    title: 'X (Twitter) Engagement Rate for Fashion Creators \u2014 2026 Benchmarks',
+    title: 'X (Twitter) Fashion Engagement Rate + Benchmarks 2026',
     metaDescription:
       'Fashion creators on X (Twitter) see an average 0.02% engagement rate. Explore why streetwear and fashion week commentary outperform typical fashion tweets.',
     ogTitle: 'X (Twitter) Fashion Engagement Rate: 2026 Data',
@@ -95,7 +95,7 @@ const twitter: EngagementNichePageData[] = [
     industryId: 'finance',
     slug: 'finance',
     name: 'Finance',
-    title: 'X (Twitter) Engagement Rate for Finance Creators \u2014 2026 Benchmarks',
+    title: 'X (Twitter) Finance Engagement Rate + Benchmarks 2026',
     metaDescription:
       "Finance leads X (Twitter) engagement at 0.06% average. FinTwit is the platform's strongest community \u2014 see 2026 benchmarks for market and investing content.",
     ogTitle: 'X (Twitter) Finance Engagement Rate: 2026 Data',
@@ -139,7 +139,7 @@ const twitter: EngagementNichePageData[] = [
     industryId: 'health',
     slug: 'fitness',
     name: 'Fitness',
-    title: 'X (Twitter) Engagement Rate for Fitness Creators \u2014 2026 Benchmarks',
+    title: 'X (Twitter) Fitness Engagement Rate + Benchmarks 2026',
     metaDescription:
       'Fitness creators on X (Twitter) average 0.04% engagement \u2014 above the platform norm. See 2026 benchmarks for evidence-based training and supplement analysis content.',
     ogTitle: 'X (Twitter) Fitness Engagement Rate: 2026 Data',
@@ -183,7 +183,7 @@ const twitter: EngagementNichePageData[] = [
     industryId: 'food',
     slug: 'food',
     name: 'Food',
-    title: 'X (Twitter) Engagement Rate for Food Creators \u2014 2026 Benchmarks',
+    title: 'X (Twitter) Food Engagement Rate + Benchmarks 2026',
     metaDescription:
       'Food creators on X (Twitter) average 0.03% engagement. Discover why restaurant debates and local food authority accounts outperform typical food tweets in 2026.',
     ogTitle: 'X (Twitter) Food Engagement Rate: 2026 Data',
@@ -227,7 +227,7 @@ const twitter: EngagementNichePageData[] = [
     industryId: 'tech',
     slug: 'tech',
     name: 'Tech',
-    title: 'X (Twitter) Engagement Rate for Tech Creators \u2014 2026 Benchmarks',
+    title: 'X (Twitter) Tech Engagement Rate + Benchmarks 2026',
     metaDescription:
       "Tech creators on X (Twitter) average 0.04% engagement. X is the tech industry's native platform \u2014 see 2026 benchmarks for dev, startup, and product content.",
     ogTitle: 'X (Twitter) Tech Engagement Rate: 2026 Data',
@@ -271,7 +271,7 @@ const twitter: EngagementNichePageData[] = [
     industryId: 'travel',
     slug: 'travel',
     name: 'Travel',
-    title: 'X (Twitter) Engagement Rate for Travel Creators \u2014 2026 Benchmarks',
+    title: 'X (Twitter) Travel Engagement Rate + Benchmarks 2026',
     metaDescription:
       'Travel creators on X (Twitter) average 0.03% engagement. See how the points/miles community and trip report threads outperform standard travel content in 2026.',
     ogTitle: 'X (Twitter) Travel Engagement Rate: 2026 Data',
@@ -315,7 +315,7 @@ const twitter: EngagementNichePageData[] = [
     industryId: 'entertainment',
     slug: 'entertainment',
     name: 'Entertainment',
-    title: 'X (Twitter) Engagement Rate for Entertainment Creators \u2014 2026 Benchmarks',
+    title: 'X (Twitter) Entertainment Engagement Rate + Benchmarks 2026',
     metaDescription:
       'Entertainment creators on X (Twitter) average 0.05% engagement \u2014 second highest on the platform. See 2026 benchmarks for pop culture and live-event commentary.',
     ogTitle: 'X (Twitter) Entertainment Engagement Rate: 2026 Data',

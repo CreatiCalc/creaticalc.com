@@ -7,11 +7,11 @@ import AdSlot from '@/components/layout/AdSlot';
 import { SITE_URL } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
-  title: 'Creator Economy Glossary — CPM, RPM, Engagement Rate & More',
+  title: 'Creator Economy Glossary 2026',
   description:
     'Learn key creator economy terms like CPM, RPM, engagement rate, sponsorship rate, and influencer tiers. A plain-language glossary for YouTubers, Instagrammers, and TikTokers.',
   openGraph: {
-    title: 'Creator Economy Glossary — CPM, RPM, Engagement Rate & More',
+    title: 'Creator Economy Glossary 2026',
     description:
       'Plain-language definitions of CPM, RPM, engagement rate, influencer tiers, brand deals, and more. Built for content creators on YouTube, Instagram, and TikTok.',
     url: '/glossary',

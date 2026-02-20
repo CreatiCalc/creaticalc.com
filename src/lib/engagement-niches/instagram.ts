@@ -7,7 +7,7 @@ const instagram: EngagementNichePageData[] = [
     industryId: 'beauty',
     slug: 'beauty',
     name: 'Beauty',
-    title: 'Instagram Engagement Rate for Beauty Creators \u2014 2026 Benchmarks',
+    title: 'Instagram Beauty Engagement Rate + Benchmarks 2026',
     metaDescription:
       'Beauty Instagram accounts average a 0.87% engagement rate in 2026. See how your beauty content compares and get strategies to boost likes, saves, and comments.',
     ogTitle: 'Beauty Instagram Engagement Rate: 2026 Benchmarks',
@@ -51,7 +51,7 @@ const instagram: EngagementNichePageData[] = [
     industryId: 'fashion',
     slug: 'fashion',
     name: 'Fashion',
-    title: 'Instagram Engagement Rate for Fashion Creators \u2014 2026 Benchmarks',
+    title: 'Instagram Fashion Engagement Rate + Benchmarks 2026',
     metaDescription:
       'Fashion Instagram accounts average just 0.68% engagement in 2026. Learn why fashion lags behind other niches and discover tactics to lift your rate.',
     ogTitle: 'Fashion Instagram Engagement Rate: 2026 Benchmarks',
@@ -95,7 +95,7 @@ const instagram: EngagementNichePageData[] = [
     industryId: 'finance',
     slug: 'finance',
     name: 'Finance',
-    title: 'Instagram Engagement Rate for Finance Creators \u2014 2026 Benchmarks',
+    title: 'Instagram Finance Engagement Rate + Benchmarks 2026',
     metaDescription:
       'Finance Instagram accounts average 0.85% engagement in 2026. Discover why infographic carousels and save rates make FinStagram a unique niche.',
     ogTitle: 'Finance Instagram Engagement Rate: 2026 Benchmarks',
@@ -139,7 +139,7 @@ const instagram: EngagementNichePageData[] = [
     industryId: 'health',
     slug: 'fitness',
     name: 'Fitness',
-    title: 'Instagram Engagement Rate for Fitness Creators \u2014 2026 Benchmarks',
+    title: 'Instagram Fitness Engagement Rate + Benchmarks 2026',
     metaDescription:
       'Fitness Instagram accounts average 1.2% engagement in 2026 \u2014 well above the platform average. See what drives strong interaction in this niche.',
     ogTitle: 'Fitness Instagram Engagement Rate: 2026 Benchmarks',
@@ -183,7 +183,7 @@ const instagram: EngagementNichePageData[] = [
     industryId: 'food',
     slug: 'food',
     name: 'Food',
-    title: 'Instagram Engagement Rate for Food Creators \u2014 2026 Benchmarks',
+    title: 'Instagram Food Engagement Rate + Benchmarks 2026',
     metaDescription:
       'Food Instagram accounts average 1.15% engagement in 2026. Explore why recipe Reels and flat lay photography keep food content above the platform average.',
     ogTitle: 'Food Instagram Engagement Rate: 2026 Benchmarks',
@@ -227,7 +227,7 @@ const instagram: EngagementNichePageData[] = [
     industryId: 'tech',
     slug: 'tech',
     name: 'Tech',
-    title: 'Instagram Engagement Rate for Tech Creators \u2014 2026 Benchmarks',
+    title: 'Instagram Tech Engagement Rate + Benchmarks 2026',
     metaDescription:
       'Tech Instagram accounts average 0.9% engagement in 2026. Learn why saves dominate this niche and which formats drive the most interaction for tech creators.',
     ogTitle: 'Tech Instagram Engagement Rate: 2026 Benchmarks',
@@ -271,7 +271,7 @@ const instagram: EngagementNichePageData[] = [
     industryId: 'travel',
     slug: 'travel',
     name: 'Travel',
-    title: 'Instagram Engagement Rate for Travel Creators \u2014 2026 Benchmarks',
+    title: 'Instagram Travel Engagement Rate + Benchmarks 2026',
     metaDescription:
       'Travel Instagram accounts average 1.35% engagement in 2026 \u2014 the highest among major niches. See why aspirational content and location tags fuel top-tier interaction.',
     ogTitle: 'Travel Instagram Engagement Rate: 2026 Benchmarks',
@@ -315,7 +315,7 @@ const instagram: EngagementNichePageData[] = [
     industryId: 'entertainment',
     slug: 'entertainment',
     name: 'Entertainment',
-    title: 'Instagram Engagement Rate for Entertainment Creators \u2014 2026 Benchmarks',
+    title: 'Instagram Entertainment Engagement Rate + Benchmarks 2026',
     metaDescription:
       'Entertainment Instagram accounts average just 0.75% engagement in 2026. Find out why broad audiences dilute interaction and how to stand out in meme and pop culture content.',
     ogTitle: 'Entertainment Instagram Engagement Rate: 2026 Benchmarks',

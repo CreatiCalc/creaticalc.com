@@ -7,7 +7,7 @@ const twitter: SponsorshipNichePageData[] = [
     slug: 'beauty',
     name: 'Beauty',
     platformLabel: 'X (Twitter)',
-    title: 'X (Twitter) Sponsorship Rates for Beauty Creators — 2026 Pricing Guide',
+    title: 'X (Twitter) Beauty Sponsorship Rates 2026',
     metaDescription:
       'How much do beauty creators charge for X (Twitter) sponsorships? See 2026 rates for threads, product tweets, and beauty brand partnerships. Beauty deals earn $2–$6 per 1K followers.',
     ogTitle: 'X (Twitter) Beauty Sponsorship Rates — What to Charge in 2026',
@@ -51,7 +51,7 @@ const twitter: SponsorshipNichePageData[] = [
     slug: 'fashion',
     name: 'Fashion',
     platformLabel: 'X (Twitter)',
-    title: 'X (Twitter) Sponsorship Rates for Fashion Creators — 2026 Pricing Guide',
+    title: 'X (Twitter) Fashion Sponsorship Rates 2026',
     metaDescription:
       'How much do fashion creators charge for X (Twitter) sponsorships? See 2026 rates for style threads, brand mentions, and fashion commentary. Fashion deals earn $2–$7 per 1K followers.',
     ogTitle: 'X (Twitter) Fashion Sponsorship Rates — What to Charge in 2026',
@@ -95,7 +95,7 @@ const twitter: SponsorshipNichePageData[] = [
     slug: 'finance',
     name: 'Finance',
     platformLabel: 'X (Twitter)',
-    title: 'X (Twitter) Sponsorship Rates for Finance Creators — 2026 Pricing Guide',
+    title: 'X (Twitter) Finance Sponsorship Rates 2026',
     metaDescription:
       'How much do finance creators charge for X (Twitter) sponsorships? See 2026 rates for fintech threads, investment commentary, and financial product mentions. Finance deals earn $5–$15 per 1K followers.',
     ogTitle: 'X (Twitter) Finance Sponsorship Rates — What to Charge in 2026',
@@ -139,7 +139,7 @@ const twitter: SponsorshipNichePageData[] = [
     slug: 'fitness',
     name: 'Fitness',
     platformLabel: 'X (Twitter)',
-    title: 'X (Twitter) Sponsorship Rates for Fitness Creators — 2026 Pricing Guide',
+    title: 'X (Twitter) Fitness Sponsorship Rates 2026',
     metaDescription:
       'How much do fitness creators charge for X (Twitter) sponsorships? See 2026 rates for workout threads, supplement mentions, and wellness partnerships. Fitness deals earn $3–$8 per 1K followers.',
     ogTitle: 'X (Twitter) Fitness Sponsorship Rates — What to Charge in 2026',
@@ -183,7 +183,7 @@ const twitter: SponsorshipNichePageData[] = [
     slug: 'food',
     name: 'Food',
     platformLabel: 'X (Twitter)',
-    title: 'X (Twitter) Sponsorship Rates for Food Creators — 2026 Pricing Guide',
+    title: 'X (Twitter) Food Sponsorship Rates 2026',
     metaDescription:
       'How much do food creators charge for X (Twitter) sponsorships? See 2026 rates for restaurant threads, food brand mentions, and recipe discussions. Food deals earn $2–$6 per 1K followers.',
     ogTitle: 'X (Twitter) Food Sponsorship Rates — What to Charge in 2026',
@@ -227,7 +227,7 @@ const twitter: SponsorshipNichePageData[] = [
     slug: 'tech',
     name: 'Tech',
     platformLabel: 'X (Twitter)',
-    title: 'X (Twitter) Sponsorship Rates for Tech Creators — 2026 Pricing Guide',
+    title: 'X (Twitter) Tech Sponsorship Rates 2026',
     metaDescription:
       'How much do tech creators charge for X (Twitter) sponsorships? See 2026 rates for product launches, SaaS threads, and tech commentary. Tech deals earn $4–$12 per 1K followers.',
     ogTitle: 'X (Twitter) Tech Sponsorship Rates — What to Charge in 2026',
@@ -271,7 +271,7 @@ const twitter: SponsorshipNichePageData[] = [
     slug: 'travel',
     name: 'Travel',
     platformLabel: 'X (Twitter)',
-    title: 'X (Twitter) Sponsorship Rates for Travel Creators — 2026 Pricing Guide',
+    title: 'X (Twitter) Travel Sponsorship Rates 2026',
     metaDescription:
       'How much do travel creators charge for X (Twitter) sponsorships? See 2026 rates for destination threads, airline mentions, and travel hack posts. Travel deals earn $3–$8 per 1K followers.',
     ogTitle: 'X (Twitter) Travel Sponsorship Rates — What to Charge in 2026',
@@ -315,7 +315,7 @@ const twitter: SponsorshipNichePageData[] = [
     slug: 'entertainment',
     name: 'Entertainment',
     platformLabel: 'X (Twitter)',
-    title: 'X (Twitter) Sponsorship Rates for Entertainment Creators — 2026 Pricing Guide',
+    title: 'X (Twitter) Entertainment Sponsorship Rates 2026',
     metaDescription:
       'How much do entertainment creators charge for X (Twitter) sponsorships? See 2026 rates for commentary threads, meme accounts, and pop culture partnerships. Entertainment deals earn $2–$5 per 1K followers.',
     ogTitle: 'X (Twitter) Entertainment Sponsorship Rates — What to Charge in 2026',

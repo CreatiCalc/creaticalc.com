@@ -418,8 +418,10 @@ export function getContentTypeLabel(
 }
 
 /** Base sponsorship rate range (per 1K followers) for a platform. */
-export function getSponsorshipBaseRate(
-  platform: SponsorshipPlatform
-): { low: number; mid: number; high: number } {
+export function getSponsorshipBaseRate(platform: SponsorshipPlatform): {
+  low: number;
+  mid: number;
+  high: number;
+} {
   return PLATFORM_DATA[platform].baseRate;
 }

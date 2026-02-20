@@ -7,7 +7,7 @@ const youtube: SponsorshipNichePageData[] = [
     slug: 'beauty',
     name: 'Beauty',
     platformLabel: 'YouTube',
-    title: 'YouTube Sponsorship Rates for Beauty Creators — 2026 Pricing Guide',
+    title: 'YouTube Beauty Sponsorship Rates 2026',
     metaDescription:
       'How much do beauty YouTubers charge for sponsorships? See 2026 rates for tutorials, hauls, GRWM videos, and dedicated reviews. Beauty integrations earn $25–$60 per 1K subs.',
     ogTitle: 'YouTube Beauty Sponsorship Rates — What to Charge in 2026',
@@ -52,7 +52,7 @@ const youtube: SponsorshipNichePageData[] = [
     slug: 'fashion',
     name: 'Fashion',
     platformLabel: 'YouTube',
-    title: 'YouTube Sponsorship Rates for Fashion Creators — 2026 Pricing Guide',
+    title: 'YouTube Fashion Sponsorship Rates 2026',
     metaDescription:
       'How much do fashion YouTubers charge for sponsored videos? 2026 rates for lookbooks, hauls, try-on videos, and styling guides. Fashion integrations earn $20–$50 per 1K subs.',
     ogTitle: 'YouTube Fashion Sponsorship Rates — What to Charge in 2026',
@@ -96,7 +96,7 @@ const youtube: SponsorshipNichePageData[] = [
     slug: 'finance',
     name: 'Finance',
     platformLabel: 'YouTube',
-    title: 'YouTube Sponsorship Rates for Finance Creators — 2026 Pricing Guide',
+    title: 'YouTube Finance Sponsorship Rates 2026',
     metaDescription:
       'How much do finance YouTubers charge for sponsorships? Finance commands the highest YouTube rates at $40–$80 per 1K subs. See 2026 pricing for reviews, integrations, and dedicated videos.',
     ogTitle: 'YouTube Finance Sponsorship Rates — What to Charge in 2026',
@@ -140,7 +140,7 @@ const youtube: SponsorshipNichePageData[] = [
     slug: 'fitness',
     name: 'Fitness',
     platformLabel: 'YouTube',
-    title: 'YouTube Sponsorship Rates for Fitness Creators — 2026 Pricing Guide',
+    title: 'YouTube Fitness Sponsorship Rates 2026',
     metaDescription:
       'How much do fitness YouTubers charge for sponsorships? 2026 rates for workout integrations, supplement reviews, and gym equipment features. Fitness earns $25–$55 per 1K subs.',
     ogTitle: 'YouTube Fitness Sponsorship Rates — What to Charge in 2026',
@@ -184,7 +184,7 @@ const youtube: SponsorshipNichePageData[] = [
     slug: 'food',
     name: 'Food',
     platformLabel: 'YouTube',
-    title: 'YouTube Sponsorship Rates for Food Creators — 2026 Pricing Guide',
+    title: 'YouTube Food Sponsorship Rates 2026',
     metaDescription:
       'How much do food YouTubers charge for sponsorships? 2026 rates for recipe integrations, cooking equipment reviews, and meal kit partnerships. Food creators earn $20–$45 per 1K subs.',
     ogTitle: 'YouTube Food Sponsorship Rates — What to Charge in 2026',
@@ -228,7 +228,7 @@ const youtube: SponsorshipNichePageData[] = [
     slug: 'tech',
     name: 'Tech',
     platformLabel: 'YouTube',
-    title: 'YouTube Sponsorship Rates for Tech Creators — 2026 Pricing Guide',
+    title: 'YouTube Tech Sponsorship Rates 2026',
     metaDescription:
       'How much do tech YouTubers charge for sponsorships? 2026 rates for product reviews, unboxings, and software integrations. Tech creators earn $35–$70 per 1K subs.',
     ogTitle: 'YouTube Tech Sponsorship Rates — What to Charge in 2026',
@@ -273,7 +273,7 @@ const youtube: SponsorshipNichePageData[] = [
     slug: 'travel',
     name: 'Travel',
     platformLabel: 'YouTube',
-    title: 'YouTube Sponsorship Rates for Travel Creators — 2026 Pricing Guide',
+    title: 'YouTube Travel Sponsorship Rates 2026',
     metaDescription:
       'How much do travel YouTubers charge for sponsorships? 2026 rates for destination features, hotel partnerships, and travel gear reviews. Travel creators earn $30–$60 per 1K subs.',
     ogTitle: 'YouTube Travel Sponsorship Rates — What to Charge in 2026',
@@ -318,7 +318,7 @@ const youtube: SponsorshipNichePageData[] = [
     slug: 'entertainment',
     name: 'Entertainment',
     platformLabel: 'YouTube',
-    title: 'YouTube Sponsorship Rates for Entertainment Creators — 2026 Pricing Guide',
+    title: 'YouTube Entertainment Sponsorship Rates 2026',
     metaDescription:
       'How much do entertainment YouTubers charge for sponsorships? 2026 rates for integrations, dedicated videos, and gaming content. Entertainment earns $15–$35 per 1K subs.',
     ogTitle: 'YouTube Entertainment Sponsorship Rates — What to Charge in 2026',
