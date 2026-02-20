@@ -184,7 +184,7 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <section className="hero-dots relative mb-24 py-8 text-center">
+      <section className="hero-dots relative mb-12 py-8 text-center md:mb-24">
         <h1 className="text-4xl font-bold tracking-tight md:text-6xl">
           Free Calculators for <span className="text-gradient-vibrant">Content Creators</span>
         </h1>
