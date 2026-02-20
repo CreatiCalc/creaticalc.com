@@ -4,6 +4,7 @@ import Card from '@/components/ui/Card';
 import { getAllCalculators, PLATFORM_GRADIENTS } from '@/lib/calculatorRegistry';
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import Breadcrumbs from '@/components/seo/Breadcrumbs';
+import { SITE_URL } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
   title: 'About — Free Calculators for Content Creators',
@@ -61,8 +62,22 @@ const aboutBreadcrumbs = [
 ];
 
 export default function AboutPage() {
+  const aboutPageSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    'name': 'About CreatiCalc',
+    'description':
+      'CreatiCalc offers free calculators for YouTube, Instagram, TikTok, Facebook, and X creators.',
+    'url': `${SITE_URL}/about`,
+    'mainEntity': { '@id': `${SITE_URL}/#organization` },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageSchema) }}
+      />
       <BreadcrumbSchema items={aboutBreadcrumbs} />
 
       <div className="mx-auto max-w-4xl px-4 py-16">
