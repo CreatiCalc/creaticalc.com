@@ -92,6 +92,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${baseUrl}/sponsorship-rate-calculator`,
+      lastModified: '2026-02-20',
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
       url: `${baseUrl}/instagram-engagement-rate-calculator`,
       lastModified: '2026-02-20',
       changeFrequency: 'weekly',
@@ -168,6 +174,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: '2026-02-20',
       changeFrequency: 'monthly',
       priority: 0.4,
+    },
+    {
+      url: `${baseUrl}/contact`,
+      lastModified: '2026-02-20',
+      changeFrequency: 'yearly',
+      priority: 0.3,
     },
     {
       url: `${baseUrl}/privacy`,

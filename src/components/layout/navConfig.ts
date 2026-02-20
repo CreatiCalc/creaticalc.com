@@ -55,6 +55,7 @@ export const NAV_GROUPS: NavGroup[] = [
 
 export const MORE_LINKS: NavItem[] = [
   { name: 'Engagement Calculator', href: '/engagement-rate-calculator' },
+  { name: 'Sponsorship Calculator', href: '/sponsorship-rate-calculator' },
   { name: 'Engagement Benchmarks', href: '/engagement-rate-benchmarks' },
   { name: 'Glossary', href: '/glossary' },
   { name: 'About', href: '/about' },
@@ -90,6 +91,7 @@ export const FOOTER_GROUPS: NavGroup[] = [
       { name: 'Facebook', href: '/facebook-sponsorship-rate-calculator' },
       { name: 'X (Twitter)', href: '/twitter-sponsorship-rate-calculator' },
       { name: 'YouTube', href: '/youtube-sponsorship-rate-calculator' },
+      { name: 'All Platforms', href: '/sponsorship-rate-calculator' },
     ],
   },
   {
@@ -99,6 +101,7 @@ export const FOOTER_GROUPS: NavGroup[] = [
       { name: 'Methodology', href: '/methodology' },
       { name: 'Glossary', href: '/glossary' },
       { name: 'Privacy Policy', href: '/privacy' },
+      { name: 'Contact', href: '/contact' },
     ],
   },
 ];

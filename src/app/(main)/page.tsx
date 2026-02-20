@@ -160,6 +160,12 @@ const jsonLd = {
       'logo': SITE_LOGO,
       'description': SITE_DESCRIPTION,
       'sameAs': ['https://x.com/CreatiCalc'],
+      'contactPoint': {
+        '@type': 'ContactPoint',
+        'email': 'hello@creaticalc.com',
+        'contactType': 'customer support',
+        'url': `${SITE_URL}/contact`,
+      },
     },
     {
       '@type': 'ItemList',
