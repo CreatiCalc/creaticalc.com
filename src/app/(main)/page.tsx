@@ -11,6 +11,7 @@ import { NICHES, SHORTS_RPM } from '@/lib/youtubeEarningsModel';
 const platformComparison = [
   {
     name: 'YouTube',
+    href: '/youtube',
     revenueModel: 'Ad revenue sharing (55%)',
     typicalEarnings: `$${Math.min(...NICHES.map((n) => n.rpm.low))}–$${Math.max(...NICHES.map((n) => n.rpm.high))} RPM`,
     engagementRate: `${YOUTUBE_ENGAGEMENT_RANGE.low}–${YOUTUBE_ENGAGEMENT_RANGE.high}%`,
@@ -21,6 +22,7 @@ const platformComparison = [
   },
   {
     name: 'Instagram',
+    href: '/instagram',
     revenueModel: 'Sponsorships + bonuses',
     typicalEarnings: 'Sponsor-dependent',
     engagementRate: `${PLATFORM_AVERAGES.instagram}%`,
@@ -31,6 +33,7 @@ const platformComparison = [
   },
   {
     name: 'TikTok',
+    href: '/tiktok',
     revenueModel: 'Creator Fund + sponsorships',
     typicalEarnings: `$${SHORTS_RPM.low}–$${SHORTS_RPM.high} / 1K views`,
     engagementRate: `${PLATFORM_AVERAGES.tiktok}%`,
@@ -41,6 +44,7 @@ const platformComparison = [
   },
   {
     name: 'Facebook',
+    href: '/facebook',
     revenueModel: 'In-stream ads + sponsorships',
     typicalEarnings: 'Varies by niche',
     engagementRate: `${PLATFORM_AVERAGES.facebook}%`,
@@ -51,6 +55,7 @@ const platformComparison = [
   },
   {
     name: 'X (Twitter)',
+    href: '/x',
     revenueModel: 'Ads revenue sharing',
     typicalEarnings: 'Varies widely',
     engagementRate: `${PLATFORM_AVERAGES.twitter}%`,
@@ -286,7 +291,26 @@ export default function Home() {
           <div>
             <p className="text-gradient-brand text-3xl font-bold">5 Platforms</p>
             <p className="mt-1 text-sm text-muted">
-              YouTube, Instagram, TikTok, Facebook &amp; X in one place
+              <Link href="/youtube" className="hover:text-primary hover:underline">
+                YouTube
+              </Link>
+              ,{' '}
+              <Link href="/instagram" className="hover:text-primary hover:underline">
+                Instagram
+              </Link>
+              ,{' '}
+              <Link href="/tiktok" className="hover:text-primary hover:underline">
+                TikTok
+              </Link>
+              ,{' '}
+              <Link href="/facebook" className="hover:text-primary hover:underline">
+                Facebook
+              </Link>{' '}
+              &amp;{' '}
+              <Link href="/x" className="hover:text-primary hover:underline">
+                X
+              </Link>{' '}
+              in one place
             </p>
           </div>
           <div>
@@ -330,7 +354,11 @@ export default function Home() {
             <tbody>
               {platformComparison.map((p) => (
                 <tr key={p.name} className="border-b border-border/50">
-                  <td className="py-2 pr-4 font-medium">{p.name}</td>
+                  <td className="py-2 pr-4 font-medium">
+                    <Link href={p.href} className="hover:text-primary hover:underline">
+                      {p.name}
+                    </Link>
+                  </td>
                   <td className="py-2 pr-4 text-muted">{p.revenueModel}</td>
                   <td className="py-2 pr-4 text-muted">{p.typicalEarnings}</td>
                   <td className="py-2 pr-4 text-muted">{p.engagementRate}</td>
