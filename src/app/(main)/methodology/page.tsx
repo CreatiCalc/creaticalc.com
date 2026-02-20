@@ -223,10 +223,11 @@ export default function MethodologyPage() {
         <section className="mb-16">
           <h2 className="text-2xl font-bold">Update Schedule</h2>
           <p className="mt-4 leading-relaxed text-muted">
-            We review and update our benchmark data at the beginning of each year. The current data
-            reflects 2026 industry conditions. Mid-year updates are made if significant platform
-            changes occur (e.g., new monetization features, algorithm shifts, or major changes to ad
-            policies).
+            We review and update our benchmark data twice a year — in January and July — to keep
+            pace with shifting ad rates, platform changes, and creator economy trends. The current
+            data reflects H1 2026 industry conditions. Additional out-of-cycle updates are made if
+            significant platform changes occur (e.g., new monetization features, algorithm shifts,
+            or major changes to ad policies).
           </p>
         </section>
 
@@ -269,7 +270,7 @@ export default function MethodologyPage() {
           <h2 className="text-2xl font-bold">Sources</h2>
           <p className="mt-4 leading-relaxed text-muted">
             The following sources inform our calculations, benchmarks, and rate estimates. We
-            cross-reference multiple sources to ensure accuracy and update our data annually.
+            cross-reference multiple sources to ensure accuracy and update our data twice a year.
           </p>
           <ol className="mt-4 list-decimal space-y-3 pl-5 text-muted">
             {SOURCES.map((source) => (
