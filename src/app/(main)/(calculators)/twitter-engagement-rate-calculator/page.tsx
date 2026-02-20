@@ -4,7 +4,10 @@ import Link from 'next/link';
 import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
 import CalculatorSchema from '@/components/seo/CalculatorSchema';
 
-import { TwitterEngagementCalculator } from '@/features/calculators/twitter-engagement';
+import dynamic from 'next/dynamic';
+const TwitterEngagementCalculator = dynamic(
+  () => import('@/features/calculators/twitter-engagement/TwitterEngagementCalculator')
+);
 import CalculatorSkeleton from '@/features/calculators/shared/CalculatorSkeleton';
 import type { FAQItem } from '@/features/calculators/shared/types';
 import { getEngagementNichePages } from '@/lib/engagement-niches';

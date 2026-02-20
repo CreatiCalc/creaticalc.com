@@ -1,10 +1,13 @@
 import { Suspense } from 'react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
 import CalculatorSchema from '@/components/seo/CalculatorSchema';
 
-import { InstagramEngagementCalculator } from '@/features/calculators/instagram-engagement';
+const InstagramEngagementCalculator = dynamic(
+  () => import('@/features/calculators/instagram-engagement/InstagramEngagementCalculator')
+);
 import CalculatorSkeleton from '@/features/calculators/shared/CalculatorSkeleton';
 import type { FAQItem } from '@/features/calculators/shared/types';
 import { getEngagementNichePages } from '@/lib/engagement-niches';

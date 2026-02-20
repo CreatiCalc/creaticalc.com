@@ -4,7 +4,10 @@ import Link from 'next/link';
 import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
 import CalculatorSchema from '@/components/seo/CalculatorSchema';
 
-import { YouTubeGrowthCalculator } from '@/features/calculators/youtube-growth';
+import dynamic from 'next/dynamic';
+const YouTubeGrowthCalculator = dynamic(
+  () => import('@/features/calculators/youtube-growth/YouTubeGrowthCalculator')
+);
 import CalculatorSkeleton from '@/features/calculators/shared/CalculatorSkeleton';
 import type { FAQItem } from '@/features/calculators/shared/types';
 

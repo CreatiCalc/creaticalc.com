@@ -4,7 +4,10 @@ import Link from 'next/link';
 import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
 import CalculatorSchema from '@/components/seo/CalculatorSchema';
 
-import { TikTokSponsorshipCalculator } from '@/features/calculators/tiktok-sponsorship';
+import dynamic from 'next/dynamic';
+const TikTokSponsorshipCalculator = dynamic(
+  () => import('@/features/calculators/tiktok-sponsorship/TikTokSponsorshipCalculator')
+);
 import CalculatorSkeleton from '@/features/calculators/shared/CalculatorSkeleton';
 import type { FAQItem } from '@/features/calculators/shared/types';
 import { getSponsorshipNichePages } from '@/lib/sponsorship-niches';
