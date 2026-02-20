@@ -17,12 +17,12 @@ export default function Footer() {
           {FOOTER_GROUPS.map((group) => (
             <nav key={group.label} aria-label={group.label}>
               <p className="mb-3 font-semibold text-white">{group.label}</p>
-              <ul className="space-y-1">
+              <ul className="space-y-0.5">
                 {group.items.map((link) => (
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="inline-block py-1 text-sm text-stone-400 transition-colors hover:text-white"
+                      className="inline-block py-2 text-sm text-stone-400 transition-colors hover:text-white"
                     >
                       {link.name}
                     </Link>
