@@ -117,6 +117,20 @@ const homeFaqItems = [
     answer:
       'Yes — every calculator on CreatiCalc is 100% free with no sign-up required. All calculations run in your browser, so your data never leaves your device. You get instant results with no paywalls or hidden fees.',
   },
+  {
+    question: 'How are your numbers calculated?',
+    answer: (
+      <>
+        All our estimates are based on publicly available industry data, creator-reported earnings,
+        and official platform documentation. We explain our data sources, formulas, update schedule,
+        and assumptions in detail on our{' '}
+        <Link href="/methodology" className="font-medium text-primary hover:underline">
+          Methodology page
+        </Link>
+        .
+      </>
+    ),
+  },
 ];
 
 const calculators = getAllCalculators();
@@ -338,7 +352,7 @@ export default function Home() {
               defaultOpen={i === 0}
               variant="compact"
             >
-              <p className="text-muted">{item.answer}</p>
+              <div className="text-muted">{item.answer}</div>
             </CollapsibleSection>
           ))}
         </div>
