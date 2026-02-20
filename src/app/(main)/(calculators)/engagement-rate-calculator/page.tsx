@@ -107,6 +107,13 @@ const platforms = [
 ];
 
 export default function EngagementRateCalculatorPage() {
+  const platformApps = platforms.map((p) => ({
+    '@type': 'WebApplication' as const,
+    'name': `${p.name} Engagement Rate Calculator`,
+    'url': `${SITE_URL}${p.href}`,
+    'applicationCategory': 'UtilitiesApplication',
+  }));
+
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
@@ -116,6 +123,17 @@ export default function EngagementRateCalculatorPage() {
     'url': `${SITE_URL}/engagement-rate-calculator`,
     'datePublished': '2025-01-15',
     'dateModified': '2026-02-16',
+    'hasPart': platformApps,
+  };
+
+  const itemListSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    'itemListElement': platformApps.map((app, i) => ({
+      '@type': 'ListItem',
+      'position': i + 1,
+      'item': app,
+    })),
   };
 
   return (
@@ -123,6 +141,10 @@ export default function EngagementRateCalculatorPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
       />
       <BreadcrumbSchema
         items={[
