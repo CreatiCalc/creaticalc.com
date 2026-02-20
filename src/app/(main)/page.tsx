@@ -240,6 +240,65 @@ export default function Home() {
       </section>
 
       <section className="mt-20">
+        <h2 className="mb-4 text-center text-2xl font-bold">
+          Creator Earnings &amp; Engagement at a Glance (2026)
+        </h2>
+        <p className="mx-auto mb-6 max-w-2xl text-center text-sm text-muted">
+          How the five major platforms compare for creator monetization and audience engagement.
+        </p>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b border-border text-left">
+                <th className="py-2 pr-4 font-semibold">Platform</th>
+                <th className="py-2 pr-4 font-semibold">Revenue Model</th>
+                <th className="py-2 pr-4 font-semibold">Typical Earnings</th>
+                <th className="py-2 pr-4 font-semibold">Avg. Engagement Rate</th>
+                <th className="py-2 font-semibold">Sponsorship Rate</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b border-border/50">
+                <td className="py-2 pr-4 font-medium">YouTube</td>
+                <td className="py-2 pr-4 text-muted">Ad revenue sharing (55%)</td>
+                <td className="py-2 pr-4 text-muted">$1–$25 RPM</td>
+                <td className="py-2 pr-4 text-muted">3.5–5.5%</td>
+                <td className="py-2 text-muted">$20–$50 / 1K subs</td>
+              </tr>
+              <tr className="border-b border-border/50">
+                <td className="py-2 pr-4 font-medium">Instagram</td>
+                <td className="py-2 pr-4 text-muted">Sponsorships + bonuses</td>
+                <td className="py-2 pr-4 text-muted">Sponsor-dependent</td>
+                <td className="py-2 pr-4 text-muted">0.98%</td>
+                <td className="py-2 text-muted">$10–$25 / 1K followers</td>
+              </tr>
+              <tr className="border-b border-border/50">
+                <td className="py-2 pr-4 font-medium">TikTok</td>
+                <td className="py-2 pr-4 text-muted">Creator Fund + sponsorships</td>
+                <td className="py-2 pr-4 text-muted">$0.02–$0.05 / 1K views</td>
+                <td className="py-2 pr-4 text-muted">4.9%</td>
+                <td className="py-2 text-muted">$5–$15 / 1K followers</td>
+              </tr>
+              <tr className="border-b border-border/50">
+                <td className="py-2 pr-4 font-medium">Facebook</td>
+                <td className="py-2 pr-4 text-muted">In-stream ads + sponsorships</td>
+                <td className="py-2 pr-4 text-muted">$1–$8 RPM</td>
+                <td className="py-2 pr-4 text-muted">0.065%</td>
+                <td className="py-2 text-muted">$5–$20 / 1K followers</td>
+              </tr>
+              <tr className="border-b border-border/50">
+                <td className="py-2 pr-4 font-medium">X (Twitter)</td>
+                <td className="py-2 pr-4 text-muted">Ads revenue sharing</td>
+                <td className="py-2 pr-4 text-muted">Varies widely</td>
+                <td className="py-2 pr-4 text-muted">0.03%</td>
+                <td className="py-2 text-muted">$2–$10 / 1K followers</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section className="mt-20">
         <h2 className="mb-8 text-center text-2xl font-bold">Frequently Asked Questions</h2>
         <div className="space-y-3">
           {homeFaqItems.map((item, i) => (

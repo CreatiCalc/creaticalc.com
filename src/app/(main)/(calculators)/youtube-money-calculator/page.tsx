@@ -11,15 +11,16 @@ const YouTubeMoneyCalculator = dynamic(
 import CalculatorSkeleton from '@/features/calculators/shared/CalculatorSkeleton';
 import type { FAQItem } from '@/features/calculators/shared/types';
 import { NICHE_PAGES } from '@/lib/nichePageData';
+import { YOUTUBE_NICHE_DATA, YOUTUBE_NICHE_IDS } from '@/lib/niches';
 
 export const metadata: Metadata = {
-  title: 'YouTube Money Calculator — Estimate Your Earnings (2026)',
+  title: 'YouTube Money & Earnings Calculator 2026',
   description:
-    'Free YouTube money calculator. Estimate how much money YouTubers make based on views, CPM, and niche. Calculate daily, monthly, and yearly YouTube earnings.',
+    'Free YouTube money calculator. Estimate ad revenue and RPM by views, CPM, and niche. Calculate daily, monthly, and yearly YouTube channel earnings.',
   openGraph: {
-    title: 'YouTube Money Calculator — Estimate Your Earnings (2026)',
+    title: 'YouTube Money & Earnings Calculator 2026',
     description:
-      'Estimate how much money YouTubers make based on views, CPM, and niche. Free calculator for daily, monthly, and yearly YouTube revenue.',
+      'Estimate YouTube ad revenue and RPM by views, CPM, and niche. Free calculator for daily, monthly, and yearly channel earnings.',
     url: '/youtube-money-calculator',
   },
   alternates: {
@@ -144,6 +145,48 @@ const howItWorks = (
       </Link>
       , merchandise, channel memberships, and Super Chats. Your actual YouTube ad revenue will also
       depend on factors like viewer geography, ad-blocker usage, and seasonal advertiser demand.
+    </p>
+
+    <h3 className="mt-6 text-lg font-semibold text-foreground">
+      YouTube CPM and Estimated Earnings by Niche (2026)
+    </h3>
+    <div className="mt-3 overflow-x-auto">
+      <table className="w-full text-sm">
+        <thead>
+          <tr className="border-b border-border text-left">
+            <th className="py-2 pr-4 font-semibold">Niche</th>
+            <th className="py-2 pr-4 font-semibold">CPM (Low–High)</th>
+            <th className="py-2 pr-4 font-semibold">RPM (Low–High)</th>
+            <th className="py-2 font-semibold">Est. per 1M Views</th>
+          </tr>
+        </thead>
+        <tbody>
+          {YOUTUBE_NICHE_IDS.map((id) => {
+            const d = YOUTUBE_NICHE_DATA[id];
+            const rpmLow = (d.cpm.low * 0.55).toFixed(2);
+            const rpmHigh = (d.cpm.high * 0.55).toFixed(2);
+            const earnLow = Math.round(d.cpm.low * 0.55 * 1000).toLocaleString();
+            const earnHigh = Math.round(d.cpm.high * 0.55 * 1000).toLocaleString();
+            return (
+              <tr key={id} className="border-b border-border/50">
+                <td className="py-2 pr-4 font-medium">{d.name}</td>
+                <td className="py-2 pr-4 text-muted">
+                  ${d.cpm.low}–${d.cpm.high}
+                </td>
+                <td className="py-2 pr-4 text-muted">
+                  ${rpmLow}–${rpmHigh}
+                </td>
+                <td className="py-2 text-muted">
+                  ${earnLow}–${earnHigh}
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+    <p className="mt-2 text-xs text-muted/70">
+      RPM = CPM × 0.55 (YouTube&apos;s 55% creator share). Earnings assume 100% monetized views.
     </p>
 
     <h3 className="mt-6 text-lg font-semibold text-foreground">
