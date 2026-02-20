@@ -206,6 +206,19 @@ const CALCULATORS: CalculatorEntry[] = [
     embeddable: false,
     relatedSlugs: ['engagement-rate-calculator', 'youtube-money-calculator'],
   },
+  {
+    slug: 'sponsorship-rate-calculator',
+    title: 'Sponsorship Rate Calculator',
+    cardTitle: 'Sponsorship Rate Calculator',
+    href: '/sponsorship-rate-calculator',
+    platform: 'Multi-Platform',
+    description:
+      'Compare sponsorship rates across Instagram, TikTok, YouTube, Facebook, and X. See base rates, content multipliers, and deal pricing.',
+    aboutDescription:
+      'All-in-one sponsorship rate calculator for Instagram, TikTok, YouTube, Facebook, and X. Compare base rates, content type multipliers, and deal pricing across all platforms.',
+    embeddable: false,
+    relatedSlugs: ['engagement-rate-calculator', 'instagram-sponsorship-rate-calculator'],
+  },
 ];
 
 /** All calculators in display order. */
