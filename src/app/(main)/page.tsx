@@ -4,6 +4,62 @@ import Card from '@/components/ui/Card';
 import CollapsibleSection from '@/features/calculators/shared/CollapsibleSection';
 import { SITE_NAME, SITE_URL, SITE_LOGO, SITE_DESCRIPTION } from '@/lib/siteConfig';
 import { getAllCalculators, PLATFORM_GRADIENTS } from '@/lib/calculatorRegistry';
+import { PLATFORM_AVERAGES, YOUTUBE_ENGAGEMENT_RANGE } from '@/lib/engagementBenchmarks';
+import { getSponsorshipBaseRate } from '@/lib/sponsorshipModel';
+import { NICHES, SHORTS_RPM } from '@/lib/youtubeEarningsModel';
+
+const platformComparison = [
+  {
+    name: 'YouTube',
+    revenueModel: 'Ad revenue sharing (55%)',
+    typicalEarnings: `$${Math.min(...NICHES.map((n) => n.rpm.low))}–$${Math.max(...NICHES.map((n) => n.rpm.high))} RPM`,
+    engagementRate: `${YOUTUBE_ENGAGEMENT_RANGE.low}–${YOUTUBE_ENGAGEMENT_RANGE.high}%`,
+    sponsorshipRate: (() => {
+      const r = getSponsorshipBaseRate('youtube');
+      return `$${r.low}–$${r.high} / 1K subs`;
+    })(),
+  },
+  {
+    name: 'Instagram',
+    revenueModel: 'Sponsorships + bonuses',
+    typicalEarnings: 'Sponsor-dependent',
+    engagementRate: `${PLATFORM_AVERAGES.instagram}%`,
+    sponsorshipRate: (() => {
+      const r = getSponsorshipBaseRate('instagram');
+      return `$${r.low}–$${r.high} / 1K followers`;
+    })(),
+  },
+  {
+    name: 'TikTok',
+    revenueModel: 'Creator Fund + sponsorships',
+    typicalEarnings: `$${SHORTS_RPM.low}–$${SHORTS_RPM.high} / 1K views`,
+    engagementRate: `${PLATFORM_AVERAGES.tiktok}%`,
+    sponsorshipRate: (() => {
+      const r = getSponsorshipBaseRate('tiktok');
+      return `$${r.low}–$${r.high} / 1K followers`;
+    })(),
+  },
+  {
+    name: 'Facebook',
+    revenueModel: 'In-stream ads + sponsorships',
+    typicalEarnings: 'Varies by niche',
+    engagementRate: `${PLATFORM_AVERAGES.facebook}%`,
+    sponsorshipRate: (() => {
+      const r = getSponsorshipBaseRate('facebook');
+      return `$${r.low}–$${r.high} / 1K followers`;
+    })(),
+  },
+  {
+    name: 'X (Twitter)',
+    revenueModel: 'Ads revenue sharing',
+    typicalEarnings: 'Varies widely',
+    engagementRate: `${PLATFORM_AVERAGES.twitter}%`,
+    sponsorshipRate: (() => {
+      const r = getSponsorshipBaseRate('twitter');
+      return `$${r.low}–$${r.high} / 1K followers`;
+    })(),
+  },
+];
 
 const title = `${SITE_NAME} — Free Calculators for Content Creators`;
 
@@ -258,41 +314,15 @@ export default function Home() {
               </tr>
             </thead>
             <tbody>
-              <tr className="border-b border-border/50">
-                <td className="py-2 pr-4 font-medium">YouTube</td>
-                <td className="py-2 pr-4 text-muted">Ad revenue sharing (55%)</td>
-                <td className="py-2 pr-4 text-muted">$1–$25 RPM</td>
-                <td className="py-2 pr-4 text-muted">3.5–5.5%</td>
-                <td className="py-2 text-muted">$20–$50 / 1K subs</td>
-              </tr>
-              <tr className="border-b border-border/50">
-                <td className="py-2 pr-4 font-medium">Instagram</td>
-                <td className="py-2 pr-4 text-muted">Sponsorships + bonuses</td>
-                <td className="py-2 pr-4 text-muted">Sponsor-dependent</td>
-                <td className="py-2 pr-4 text-muted">0.98%</td>
-                <td className="py-2 text-muted">$10–$25 / 1K followers</td>
-              </tr>
-              <tr className="border-b border-border/50">
-                <td className="py-2 pr-4 font-medium">TikTok</td>
-                <td className="py-2 pr-4 text-muted">Creator Fund + sponsorships</td>
-                <td className="py-2 pr-4 text-muted">$0.02–$0.05 / 1K views</td>
-                <td className="py-2 pr-4 text-muted">4.9%</td>
-                <td className="py-2 text-muted">$5–$15 / 1K followers</td>
-              </tr>
-              <tr className="border-b border-border/50">
-                <td className="py-2 pr-4 font-medium">Facebook</td>
-                <td className="py-2 pr-4 text-muted">In-stream ads + sponsorships</td>
-                <td className="py-2 pr-4 text-muted">$1–$8 RPM</td>
-                <td className="py-2 pr-4 text-muted">0.065%</td>
-                <td className="py-2 text-muted">$5–$20 / 1K followers</td>
-              </tr>
-              <tr className="border-b border-border/50">
-                <td className="py-2 pr-4 font-medium">X (Twitter)</td>
-                <td className="py-2 pr-4 text-muted">Ads revenue sharing</td>
-                <td className="py-2 pr-4 text-muted">Varies widely</td>
-                <td className="py-2 pr-4 text-muted">0.03%</td>
-                <td className="py-2 text-muted">$2–$10 / 1K followers</td>
-              </tr>
+              {platformComparison.map((p) => (
+                <tr key={p.name} className="border-b border-border/50">
+                  <td className="py-2 pr-4 font-medium">{p.name}</td>
+                  <td className="py-2 pr-4 text-muted">{p.revenueModel}</td>
+                  <td className="py-2 pr-4 text-muted">{p.typicalEarnings}</td>
+                  <td className="py-2 pr-4 text-muted">{p.engagementRate}</td>
+                  <td className="py-2 text-muted">{p.sponsorshipRate}</td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
