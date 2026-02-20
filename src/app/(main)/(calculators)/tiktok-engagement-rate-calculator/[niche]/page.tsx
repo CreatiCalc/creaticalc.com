@@ -4,7 +4,10 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
 import CalculatorSchema from '@/components/seo/CalculatorSchema';
-import EngagementCalculator from '@/features/calculators/engagement-shared/EngagementCalculator';
+import dynamic from 'next/dynamic';
+const EngagementCalculator = dynamic(
+  () => import('@/features/calculators/engagement-shared/EngagementCalculator')
+);
 import CalculatorSkeleton from '@/features/calculators/shared/CalculatorSkeleton';
 import { TIKTOK_CONFIG } from '@/features/calculators/engagement-shared/platformConfigs';
 import { getEngagementNichePages, getEngagementNichePageData } from '@/lib/engagement-niches';

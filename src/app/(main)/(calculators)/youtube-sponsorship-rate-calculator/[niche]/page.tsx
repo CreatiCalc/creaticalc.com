@@ -4,7 +4,10 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
 import CalculatorSchema from '@/components/seo/CalculatorSchema';
-import SponsorshipCalculator from '@/features/calculators/sponsorship-shared/SponsorshipCalculator';
+import dynamic from 'next/dynamic';
+const SponsorshipCalculator = dynamic(
+  () => import('@/features/calculators/sponsorship-shared/SponsorshipCalculator')
+);
 import CalculatorSkeleton from '@/features/calculators/shared/CalculatorSkeleton';
 import { YOUTUBE_SPONSORSHIP_CONFIG } from '@/features/calculators/sponsorship-shared/sponsorshipConfigs';
 import { getSponsorshipNichePages, getSponsorshipNichePageData } from '@/lib/sponsorship-niches';

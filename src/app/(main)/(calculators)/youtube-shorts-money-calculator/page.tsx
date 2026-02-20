@@ -1,10 +1,13 @@
 import { Suspense } from 'react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import CalculatorLayout from '@/features/calculators/shared/CalculatorLayout';
 import CalculatorSchema from '@/components/seo/CalculatorSchema';
 
-import { YouTubeMoneyCalculator } from '@/features/calculators/youtube-money';
+const YouTubeMoneyCalculator = dynamic(
+  () => import('@/features/calculators/youtube-money/YouTubeMoneyCalculator')
+);
 import CalculatorSkeleton from '@/features/calculators/shared/CalculatorSkeleton';
 import type { FAQItem } from '@/features/calculators/shared/types';
 
