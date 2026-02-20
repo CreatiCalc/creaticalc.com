@@ -3,6 +3,8 @@ import Link from 'next/link';
 import Card from '@/components/ui/Card';
 import { SITE_NAME, SITE_URL, SITE_LOGO, SITE_DESCRIPTION } from '@/lib/siteConfig';
 import { getAllCalculators, PLATFORM_GRADIENTS } from '@/lib/calculatorRegistry';
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
+import Breadcrumbs from '@/components/seo/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'About — Free Calculators for Content Creators',
@@ -63,6 +65,11 @@ const organizationSchema = {
   'description': SITE_DESCRIPTION,
 };
 
+const aboutBreadcrumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'About', path: '/about' },
+];
+
 export default function AboutPage() {
   return (
     <>
@@ -70,8 +77,10 @@ export default function AboutPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
       />
+      <BreadcrumbSchema items={aboutBreadcrumbs} />
 
       <div className="mx-auto max-w-4xl px-4 py-16">
+        <Breadcrumbs items={aboutBreadcrumbs} />
         {/* Hero */}
         <header className="mb-16">
           <h1 className="text-4xl font-bold tracking-tight md:text-5xl">

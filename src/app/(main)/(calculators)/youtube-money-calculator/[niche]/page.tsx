@@ -131,6 +131,12 @@ export default async function NicheCalculatorPage({ params }: NichePageProps) {
         description={data.pageDescription}
         faq={data.faq}
         howItWorks={howItWorks}
+        breadcrumbs={[
+          { name: 'Home', path: '/' },
+          { name: 'YouTube', path: '/youtube' },
+          { name: 'Money Calculator', path: '/youtube-money-calculator' },
+          { name: data.name, path: `/youtube-money-calculator/${data.slug}` },
+        ]}
       >
         <Suspense fallback={<CalculatorSkeleton />}>
           <YouTubeMoneyCalculator defaultOverrides={{ nicheId: data.nicheId }} hideNicheSelector />
