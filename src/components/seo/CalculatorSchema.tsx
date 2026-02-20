@@ -1,4 +1,4 @@
-import { SITE_NAME, SITE_URL } from '@/lib/siteConfig';
+import { SITE_URL } from '@/lib/siteConfig';
 
 interface CalculatorSchemaProps {
   name: string;
