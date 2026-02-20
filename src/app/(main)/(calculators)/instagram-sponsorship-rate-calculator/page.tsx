@@ -13,13 +13,13 @@ import type { FAQItem } from '@/features/calculators/shared/types';
 import { getSponsorshipNichePages } from '@/lib/sponsorship-niches';
 
 export const metadata: Metadata = {
-  title: 'Instagram Sponsorship Rate Calculator — How Much to Charge in 2026',
+  title: 'Instagram Sponsorship Rates 2026',
   description:
-    'Free Instagram sponsorship rate calculator. Find out how much to charge for sponsored posts, Reels, Stories, and carousels based on your followers, engagement rate, and niche.',
+    'Free Instagram sponsorship rate calculator. Calculate influencer and brand deal rates for posts, Reels, Stories, and carousels by followers, engagement, and niche.',
   openGraph: {
-    title: 'Instagram Sponsorship Rate Calculator — How Much to Charge in 2026',
+    title: 'Instagram Sponsorship Rates 2026',
     description:
-      'Calculate your Instagram sponsorship rates based on followers, engagement, content type, and niche. Free rate card generator for creators.',
+      'Calculate Instagram influencer and brand deal rates by followers, engagement, and niche. Free rate card generator for creators.',
     url: '/instagram-sponsorship-rate-calculator',
   },
   alternates: {
@@ -93,28 +93,56 @@ const faq: FAQItem[] = [
     answer:
       'Yes! Click the "Embed" button below the calculator results to get a free embed code for your website or blog. You can customize the theme (light or dark), accent color, and height to match your site\'s design. The embed is fully responsive and works on any website that supports iframes.',
   },
+  {
+    question: 'How are your numbers calculated?',
+    answer: (
+      <>
+        All our estimates are based on publicly available industry data, creator-reported earnings,
+        and official platform documentation. We explain our data sources, formulas, update schedule,
+        and assumptions in detail on our{' '}
+        <Link href="/methodology" className="font-medium text-primary hover:underline">
+          Methodology page
+        </Link>
+        .
+      </>
+    ),
+  },
 ];
 
 const howItWorks = (
   <>
     <p>
       Our Instagram Sponsorship Rate Calculator helps creators determine how much to charge for
-      branded content on Instagram. The calculator uses a formula based on your follower count,{' '}
-      <Link href="/glossary" className="font-medium text-primary hover:underline">
-        engagement rate
-      </Link>
-      , content type, deal type, and{' '}
-      <Link href="/glossary" className="font-medium text-primary hover:underline">
-        content niche
-      </Link>{' '}
-      to produce a per-post rate range that reflects current market rates.
+      branded content on Instagram.
     </p>
-    <p className="mt-3">
-      The base rate starts at $10–$25 per 1,000 followers for Instagram, then multiplies based on
-      your specific profile. Higher engagement rates (above 5%) can double your rate, while premium
-      niches like finance and tech command 1.5–2x multipliers. Content type matters too — Reels pay
-      1.5x more than feed posts, while Stories are priced at about 30% of a feed post.
-    </p>
+    <ol className="mt-3 list-decimal space-y-2 pl-5">
+      <li>
+        <strong>
+          Enter your follower count and{' '}
+          <Link href="/glossary" className="font-medium text-primary hover:underline">
+            engagement rate
+          </Link>
+        </strong>{' '}
+        — higher engagement commands premium rates (above 5% can double your rate).
+      </li>
+      <li>
+        <strong>
+          Select your{' '}
+          <Link href="/glossary" className="font-medium text-primary hover:underline">
+            content niche
+          </Link>
+        </strong>{' '}
+        — premium niches like finance and tech earn 1.5&ndash;2x multipliers.
+      </li>
+      <li>
+        <strong>Choose content type and deal type</strong> — Reels pay 1.5x more than feed posts,
+        while Stories are priced at about 30% of a feed post.
+      </li>
+      <li>
+        <strong>Get your rate range</strong> — a per-post sponsorship rate based on a $10&ndash;$25
+        per 1,000 follower base rate with your multipliers applied.
+      </li>
+    </ol>
 
     <h3 className="mt-6 text-lg font-semibold text-foreground">Understanding the Rate Formula</h3>
     <p className="mt-2">

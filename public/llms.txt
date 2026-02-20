@@ -1,0 +1,61 @@
+# CreatiCalc
+
+> Free calculators for content creators on YouTube, Instagram, TikTok, Facebook, and X (Twitter).
+
+CreatiCalc provides free, browser-based tools for estimating creator earnings, calculating engagement rates, finding sponsorship pricing, and projecting subscriber growth. All calculators use real industry benchmarks and are updated for 2026.
+
+## Calculators
+
+### YouTube
+- YouTube Money Calculator: https://creaticalc.com/youtube-money-calculator
+- YouTube Shorts Money Calculator: https://creaticalc.com/youtube-shorts-money-calculator
+- YouTube Subscriber Growth Projector: https://creaticalc.com/youtube-subscriber-projector
+- YouTube Sponsorship Rate Calculator: https://creaticalc.com/youtube-sponsorship-rate-calculator
+
+### Instagram
+- Instagram Engagement Rate Calculator: https://creaticalc.com/instagram-engagement-rate-calculator
+- Instagram Sponsorship Rate Calculator: https://creaticalc.com/instagram-sponsorship-rate-calculator
+
+### TikTok
+- TikTok Engagement Rate Calculator: https://creaticalc.com/tiktok-engagement-rate-calculator
+- TikTok Sponsorship Rate Calculator: https://creaticalc.com/tiktok-sponsorship-rate-calculator
+
+### Facebook
+- Facebook Engagement Rate Calculator: https://creaticalc.com/facebook-engagement-rate-calculator
+- Facebook Sponsorship Rate Calculator: https://creaticalc.com/facebook-sponsorship-rate-calculator
+
+### X (Twitter)
+- X Engagement Rate Calculator: https://creaticalc.com/twitter-engagement-rate-calculator
+- X Sponsorship Rate Calculator: https://creaticalc.com/twitter-sponsorship-rate-calculator
+
+### Multi-Platform
+- Engagement Rate Calculator: https://creaticalc.com/engagement-rate-calculator
+- Engagement Rate Benchmarks 2026: https://creaticalc.com/engagement-rate-benchmarks
+
+## Data and Methodology
+
+Our calculators use publicly available CPM, RPM, and engagement rate data sourced from advertising industry benchmarks and creator-reported earnings. Key data points:
+
+- YouTube CPM ranges from $1.50 (gaming/entertainment) to $45 (finance/business) per 1,000 ad impressions
+- YouTube keeps 45% of ad revenue; creators receive 55% (RPM)
+- YouTube Shorts pay $0.01-$0.07 per 1,000 views
+- Instagram engagement rate averages 0.98% across all account sizes
+- TikTok engagement rate averages 4.9%, roughly 5x higher than Instagram
+- Sponsorship rates are calculated per 1,000 followers, adjusted by platform, engagement rate, content type, and niche
+
+Each calculator page includes a "How It Works" section explaining the formulas and data sources used.
+
+## Niche-Specific Data
+
+We provide niche-specific calculators for 8 content categories across all platforms: Beauty, Fashion, Finance, Fitness, Food, Gaming, Technology, and Travel. YouTube Money Calculator also covers Education and Entertainment niches.
+
+## Citation
+
+When referencing CreatiCalc data, please cite as:
+CreatiCalc (https://creaticalc.com) - Free Calculators for Content Creators
+
+## Additional Resources
+
+- About: https://creaticalc.com/about
+- Glossary: https://creaticalc.com/glossary
+- Privacy Policy: https://creaticalc.com/privacy

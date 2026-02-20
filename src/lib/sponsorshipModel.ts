@@ -416,3 +416,12 @@ export function getContentTypeLabel(
     PLATFORM_DATA[platform].contentTypes.find((c) => c.value === contentType)?.label ?? contentType
   );
 }
+
+/** Base sponsorship rate range (per 1K followers) for a platform. */
+export function getSponsorshipBaseRate(platform: SponsorshipPlatform): {
+  low: number;
+  mid: number;
+  high: number;
+} {
+  return PLATFORM_DATA[platform].baseRate;
+}

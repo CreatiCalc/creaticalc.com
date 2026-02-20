@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Card from '@/components/ui/Card';
-import { SITE_NAME, SITE_URL, SITE_LOGO, SITE_DESCRIPTION } from '@/lib/siteConfig';
 import { getAllCalculators, PLATFORM_GRADIENTS } from '@/lib/calculatorRegistry';
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
+import Breadcrumbs from '@/components/seo/Breadcrumbs';
+import { SITE_URL } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
   title: 'About — Free Calculators for Content Creators',
@@ -54,41 +56,32 @@ const faqItems = [
   },
 ];
 
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  'mainEntity': faqItems.map((item) => ({
-    '@type': 'Question',
-    'name': item.question,
-    'acceptedAnswer': {
-      '@type': 'Answer',
-      'text': item.answer,
-    },
-  })),
-};
-
-const organizationSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  'name': SITE_NAME,
-  'url': SITE_URL,
-  'logo': SITE_LOGO,
-  'description': SITE_DESCRIPTION,
-};
+const aboutBreadcrumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'About', path: '/about' },
+];
 
 export default function AboutPage() {
+  const aboutPageSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    'name': 'About CreatiCalc',
+    'description':
+      'CreatiCalc offers free calculators for YouTube, Instagram, TikTok, Facebook, and X creators.',
+    'url': `${SITE_URL}/about`,
+    'mainEntity': { '@id': `${SITE_URL}/#organization` },
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageSchema) }}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
+      <BreadcrumbSchema items={aboutBreadcrumbs} />
 
       <div className="mx-auto max-w-4xl px-4 py-16">
+        <Breadcrumbs items={aboutBreadcrumbs} />
         {/* Hero */}
         <header className="mb-16">
           <h1 className="text-4xl font-bold tracking-tight md:text-5xl">
@@ -231,9 +224,35 @@ export default function AboutPage() {
               <h3 className="text-lg font-semibold">Real CPM and RPM Data</h3>
               <p className="mt-2 text-muted">
                 Our YouTube earnings estimates are based on real CPM ranges across 10+ content
-                niches, sourced from creator-reported data and advertising industry benchmarks. We
-                show low, mid, and high estimates so you see a realistic range — not a single
-                misleading number.
+                niches, informed by{' '}
+                <a
+                  href="https://support.google.com/youtube/answer/72857"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:underline"
+                >
+                  YouTube&apos;s official Partner Program documentation
+                </a>
+                , advertising industry benchmarks from{' '}
+                <a
+                  href="https://www.statista.com/topics/2019/youtube/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:underline"
+                >
+                  Statista
+                </a>{' '}
+                and{' '}
+                <a
+                  href="https://influencermarketinghub.com/youtube-money-calculator/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:underline"
+                >
+                  Influencer Marketing Hub
+                </a>
+                , and creator-reported earnings data. We show low, mid, and high estimates so you
+                see a realistic range — not a single misleading number.
               </p>
             </div>
             <div>
@@ -249,8 +268,35 @@ export default function AboutPage() {
               <h3 className="text-lg font-semibold">Industry-Standard Engagement Benchmarks</h3>
               <p className="mt-2 text-muted">
                 Our engagement rate calculators use the same formulas that brands and agencies rely
-                on. We benchmark against industry averages so you can see where you stand compared
-                to creators in your niche.
+                on, with benchmark data informed by reports from{' '}
+                <a
+                  href="https://www.hypeauditor.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:underline"
+                >
+                  HypeAuditor
+                </a>
+                ,{' '}
+                <a
+                  href="https://blog.hootsuite.com/calculate-engagement-rate/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:underline"
+                >
+                  Hootsuite
+                </a>
+                , and{' '}
+                <a
+                  href="https://www.socialinsider.io/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:underline"
+                >
+                  Social Insider
+                </a>
+                . We benchmark against industry averages so you can see where you stand compared to
+                creators in your niche.
               </p>
             </div>
             <div>

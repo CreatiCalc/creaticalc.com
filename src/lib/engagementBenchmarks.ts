@@ -542,6 +542,9 @@ export const PLATFORM_AVERAGES: Record<Platform, number> = {
   twitter: 0.03,
 };
 
+/** YouTube engagement rate range (view-based, not follower-based like other platforms). */
+export const YOUTUBE_ENGAGEMENT_RANGE = { low: 3.5, high: 5.5 };
+
 // ─── Tier Lookup Functions ───────────────────────────────────────────────────
 
 export function getTiers(platform: Platform): TierBenchmark[] {

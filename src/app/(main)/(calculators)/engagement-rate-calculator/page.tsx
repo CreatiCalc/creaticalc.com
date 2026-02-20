@@ -10,13 +10,13 @@ import Breadcrumbs from '@/components/seo/Breadcrumbs';
 import { SITE_URL } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
-  title: 'Engagement Rate Calculator 2026 — Free for All Platforms',
+  title: 'Engagement Rate Calculator 2026',
   description:
-    'Free engagement rate calculator for Instagram, TikTok, Facebook, and X. Compare against benchmarks by follower tier and industry.',
+    'Free social media engagement rate calculator for Instagram, TikTok, Facebook, and X. Compare against average benchmarks by follower tier and industry.',
   openGraph: {
-    title: 'Engagement Rate Calculator 2026 — Free for All Platforms',
+    title: 'Engagement Rate Calculator 2026',
     description:
-      'Calculate your engagement rate on Instagram, TikTok, Facebook, or X. Compare against benchmarks by follower tier and industry.',
+      'Calculate your social media engagement rate on Instagram, TikTok, Facebook, or X. Compare against average benchmarks by follower tier and industry.',
     url: '/engagement-rate-calculator',
   },
   alternates: {
@@ -54,6 +54,20 @@ const faq: FAQItem[] = [
     question: 'Should I calculate engagement rate by followers, reach, or impressions?',
     answer:
       'Use followers for comparing yourself to other creators and when brands request your engagement rate — it is the industry standard. Use reach to measure how well your content performs among people who actually saw it. Use impressions when you want to understand engagement per total view, including repeat views. Each method has its place depending on your analysis goals.',
+  },
+  {
+    question: 'How are your numbers calculated?',
+    answer: (
+      <>
+        All our estimates are based on publicly available industry data, creator-reported earnings,
+        and official platform documentation. We explain our data sources, formulas, update schedule,
+        and assumptions in detail on our{' '}
+        <Link href="/methodology" className="font-medium text-primary hover:underline">
+          Methodology page
+        </Link>
+        .
+      </>
+    ),
   },
 ];
 
@@ -93,6 +107,13 @@ const platforms = [
 ];
 
 export default function EngagementRateCalculatorPage() {
+  const platformApps = platforms.map((p) => ({
+    '@type': 'WebApplication' as const,
+    'name': `${p.name} Engagement Rate Calculator`,
+    'url': `${SITE_URL}${p.href}`,
+    'applicationCategory': 'UtilitiesApplication',
+  }));
+
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
@@ -102,6 +123,17 @@ export default function EngagementRateCalculatorPage() {
     'url': `${SITE_URL}/engagement-rate-calculator`,
     'datePublished': '2025-01-15',
     'dateModified': '2026-02-16',
+    'hasPart': platformApps,
+  };
+
+  const itemListSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    'itemListElement': platformApps.map((app, i) => ({
+      '@type': 'ListItem',
+      'position': i + 1,
+      'item': app,
+    })),
   };
 
   return (
@@ -109,6 +141,10 @@ export default function EngagementRateCalculatorPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
       />
       <BreadcrumbSchema
         items={[

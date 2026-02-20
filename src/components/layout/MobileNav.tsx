@@ -101,7 +101,7 @@ export default function MobileNav() {
                             <Link
                               href={item.href}
                               aria-current={pathname === item.href ? 'page' : undefined}
-                              className={`block rounded-lg px-4 py-2 text-sm transition-colors ${
+                              className={`block rounded-lg px-4 py-2.5 text-sm transition-colors ${
                                 pathname === item.href
                                   ? 'bg-primary/8 font-medium text-primary'
                                   : 'text-muted hover:bg-surface-alt hover:text-foreground'
@@ -128,7 +128,7 @@ export default function MobileNav() {
                   <Link
                     href={link.href}
                     aria-current={pathname === link.href ? 'page' : undefined}
-                    className={`block rounded-lg px-4 py-2 text-sm transition-colors ${
+                    className={`block rounded-lg px-4 py-2.5 text-sm transition-colors ${
                       pathname === link.href
                         ? 'bg-primary/8 font-medium text-primary'
                         : 'text-muted hover:bg-surface-alt hover:text-foreground'

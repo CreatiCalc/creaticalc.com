@@ -7,7 +7,7 @@ const facebook: SponsorshipNichePageData[] = [
     slug: 'beauty',
     name: 'Beauty',
     platformLabel: 'Facebook',
-    title: 'Facebook Sponsorship Rates for Beauty Creators — 2026 Pricing Guide',
+    title: 'Facebook Beauty Sponsorship Rates 2026',
     metaDescription:
       'How much do beauty creators charge on Facebook? 2026 rates for video tutorials, group content, and product features. Beauty creators earn $6–$16 per 1K followers on Facebook.',
     ogTitle: 'Facebook Beauty Sponsorship Rates — What to Charge in 2026',
@@ -51,7 +51,7 @@ const facebook: SponsorshipNichePageData[] = [
     slug: 'fashion',
     name: 'Fashion',
     platformLabel: 'Facebook',
-    title: 'Facebook Sponsorship Rates for Fashion Creators — 2026 Pricing Guide',
+    title: 'Facebook Fashion Sponsorship Rates 2026',
     metaDescription:
       'How much do fashion creators charge on Facebook? 2026 rates for styling videos, lookbook posts, and group content. Fashion creators earn $5–$15 per 1K followers on Facebook.',
     ogTitle: 'Facebook Fashion Sponsorship Rates — What to Charge in 2026',
@@ -95,7 +95,7 @@ const facebook: SponsorshipNichePageData[] = [
     slug: 'finance',
     name: 'Finance',
     platformLabel: 'Facebook',
-    title: 'Facebook Sponsorship Rates for Finance Creators — 2026 Pricing Guide',
+    title: 'Facebook Finance Sponsorship Rates 2026',
     metaDescription:
       'How much do finance creators charge on Facebook? 2026 rates for financial advice videos, community content, and fintech features. Finance creators earn $8–$20 per 1K followers.',
     ogTitle: 'Facebook Finance Sponsorship Rates — What to Charge in 2026',
@@ -139,7 +139,7 @@ const facebook: SponsorshipNichePageData[] = [
     slug: 'fitness',
     name: 'Fitness',
     platformLabel: 'Facebook',
-    title: 'Facebook Sponsorship Rates for Fitness Creators — 2026 Pricing Guide',
+    title: 'Facebook Fitness Sponsorship Rates 2026',
     metaDescription:
       'How much do fitness creators charge on Facebook? 2026 rates for wellness content, workout videos, and supplement features. Fitness creators earn $7–$18 per 1K followers.',
     ogTitle: 'Facebook Fitness Sponsorship Rates — What to Charge in 2026',
@@ -183,7 +183,7 @@ const facebook: SponsorshipNichePageData[] = [
     slug: 'food',
     name: 'Food',
     platformLabel: 'Facebook',
-    title: 'Facebook Sponsorship Rates for Food Creators — 2026 Pricing Guide',
+    title: 'Facebook Food Sponsorship Rates 2026',
     metaDescription:
       'How much do food creators charge on Facebook? 2026 rates for recipe videos, cooking tips, and food brand features. Food creators earn $5–$14 per 1K followers on Facebook.',
     ogTitle: 'Facebook Food Sponsorship Rates — What to Charge in 2026',
@@ -227,7 +227,7 @@ const facebook: SponsorshipNichePageData[] = [
     slug: 'tech',
     name: 'Tech',
     platformLabel: 'Facebook',
-    title: 'Facebook Sponsorship Rates for Tech Creators — 2026 Pricing Guide',
+    title: 'Facebook Tech Sponsorship Rates 2026',
     metaDescription:
       'How much do tech creators charge on Facebook? 2026 rates for product reviews, how-to guides, and software features. Tech creators earn $6–$16 per 1K followers on Facebook.',
     ogTitle: 'Facebook Tech Sponsorship Rates — What to Charge in 2026',
@@ -271,7 +271,7 @@ const facebook: SponsorshipNichePageData[] = [
     slug: 'travel',
     name: 'Travel',
     platformLabel: 'Facebook',
-    title: 'Facebook Sponsorship Rates for Travel Creators — 2026 Pricing Guide',
+    title: 'Facebook Travel Sponsorship Rates 2026',
     metaDescription:
       'How much do travel creators charge on Facebook? 2026 rates for destination videos, trip reviews, and travel planning content. Travel creators earn $6–$16 per 1K followers.',
     ogTitle: 'Facebook Travel Sponsorship Rates — What to Charge in 2026',
@@ -315,7 +315,7 @@ const facebook: SponsorshipNichePageData[] = [
     slug: 'entertainment',
     name: 'Entertainment',
     platformLabel: 'Facebook',
-    title: 'Facebook Sponsorship Rates for Entertainment Creators — 2026 Pricing Guide',
+    title: 'Facebook Entertainment Sponsorship Rates 2026',
     metaDescription:
       'How much do entertainment creators charge on Facebook? 2026 rates for viral videos, comedy content, and community engagement. Entertainment creators earn $4–$10 per 1K followers.',
     ogTitle: 'Facebook Entertainment Sponsorship Rates — What to Charge in 2026',

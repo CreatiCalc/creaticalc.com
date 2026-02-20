@@ -8,7 +8,7 @@ const facebook: EngagementNichePageData[] = [
     industryId: 'beauty',
     slug: 'beauty',
     name: 'Beauty',
-    title: 'Facebook Engagement Rate for Beauty Creators \u2014 2026 Benchmarks',
+    title: 'Facebook Beauty Engagement Rate + Benchmarks 2026',
     metaDescription:
       'Beauty creators on Facebook average a 0.07% engagement rate in 2026. Learn why beauty engagement is low on Facebook and how Groups can boost your reach.',
     ogTitle: 'Facebook Beauty Engagement Rate \u2014 2026 Data',
@@ -54,7 +54,7 @@ const facebook: EngagementNichePageData[] = [
     industryId: 'fashion',
     slug: 'fashion',
     name: 'Fashion',
-    title: 'Facebook Engagement Rate for Fashion Creators \u2014 2026 Benchmarks',
+    title: 'Facebook Fashion Engagement Rate + Benchmarks 2026',
     metaDescription:
       'Fashion pages on Facebook average just 0.05% engagement in 2026. Discover why fashion struggles on Facebook and where niche communities still thrive.',
     ogTitle: 'Facebook Fashion Engagement Rate \u2014 2026 Data',
@@ -100,7 +100,7 @@ const facebook: EngagementNichePageData[] = [
     industryId: 'finance',
     slug: 'finance',
     name: 'Finance',
-    title: 'Facebook Engagement Rate for Finance Creators \u2014 2026 Benchmarks',
+    title: 'Facebook Finance Engagement Rate + Benchmarks 2026',
     metaDescription:
       'Finance pages on Facebook average 0.08% engagement in 2026. See why the 35+ demographic makes Facebook a strong channel for personal finance content.',
     ogTitle: 'Facebook Finance Engagement Rate \u2014 2026 Data',
@@ -146,7 +146,7 @@ const facebook: EngagementNichePageData[] = [
     industryId: 'health',
     slug: 'fitness',
     name: 'Fitness',
-    title: 'Facebook Engagement Rate for Fitness Creators \u2014 2026 Benchmarks',
+    title: 'Facebook Fitness Engagement Rate + Benchmarks 2026',
     metaDescription:
       'Fitness creators on Facebook average 0.10% engagement in 2026. See how live workouts and Group challenges drive above-average interaction rates.',
     ogTitle: 'Facebook Fitness Engagement Rate \u2014 2026 Data',
@@ -193,7 +193,7 @@ const facebook: EngagementNichePageData[] = [
     industryId: 'food',
     slug: 'food',
     name: 'Food',
-    title: 'Facebook Engagement Rate for Food Creators \u2014 2026 Benchmarks',
+    title: 'Facebook Food Engagement Rate + Benchmarks 2026',
     metaDescription:
       'Food pages lead Facebook engagement at 0.12% in 2026. Recipe sharing, cooking Groups, and comfort food videos drive the platform\u2019s highest niche rate.',
     ogTitle: 'Facebook Food Engagement Rate \u2014 2026 Data',
@@ -239,7 +239,7 @@ const facebook: EngagementNichePageData[] = [
     industryId: 'tech',
     slug: 'tech',
     name: 'Tech',
-    title: 'Facebook Engagement Rate for Tech Creators \u2014 2026 Benchmarks',
+    title: 'Facebook Tech Engagement Rate + Benchmarks 2026',
     metaDescription:
       'Tech pages on Facebook average 0.05% engagement in 2026. Learn why tech audiences skew younger and how device-specific Groups buck the trend.',
     ogTitle: 'Facebook Tech Engagement Rate \u2014 2026 Data',
@@ -286,7 +286,7 @@ const facebook: EngagementNichePageData[] = [
     industryId: 'travel',
     slug: 'travel',
     name: 'Travel',
-    title: 'Facebook Engagement Rate for Travel Creators \u2014 2026 Benchmarks',
+    title: 'Facebook Travel Engagement Rate + Benchmarks 2026',
     metaDescription:
       'Travel pages on Facebook average 0.07% engagement in 2026. Trip reviews, planning-focused Groups, and Facebook Events help travel creators connect with the 35+ audience.',
     ogTitle: 'Facebook Travel Engagement Rate \u2014 2026 Data',
@@ -332,7 +332,7 @@ const facebook: EngagementNichePageData[] = [
     industryId: 'entertainment',
     slug: 'entertainment',
     name: 'Entertainment',
-    title: 'Facebook Engagement Rate for Entertainment Creators \u2014 2026 Benchmarks',
+    title: 'Facebook Entertainment Engagement Rate + Benchmarks 2026',
     metaDescription:
       'Entertainment pages on Facebook average 0.08% engagement in 2026. Nostalgia content, viral video sharing, and Facebook Watch fuel above-average interaction rates.',
     ogTitle: 'Facebook Entertainment Engagement Rate \u2014 2026 Data',

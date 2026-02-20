@@ -1,4 +1,4 @@
-import { SITE_NAME, SITE_URL } from '@/lib/siteConfig';
+import { SITE_URL } from '@/lib/siteConfig';
 
 interface CalculatorSchemaProps {
   name: string;
@@ -26,11 +26,7 @@ export default function CalculatorSchema({
     'applicationCategory': 'UtilitiesApplication',
     'operatingSystem': 'Any',
     'inLanguage': 'en',
-    'author': {
-      '@type': 'Organization',
-      'name': SITE_NAME,
-      'url': SITE_URL,
-    },
+    'author': { '@id': `${SITE_URL}/#organization` },
     'offers': {
       '@type': 'Offer',
       'price': '0',

@@ -4,6 +4,67 @@ import Card from '@/components/ui/Card';
 import CollapsibleSection from '@/features/calculators/shared/CollapsibleSection';
 import { SITE_NAME, SITE_URL, SITE_LOGO, SITE_DESCRIPTION } from '@/lib/siteConfig';
 import { getAllCalculators, PLATFORM_GRADIENTS } from '@/lib/calculatorRegistry';
+import { PLATFORM_AVERAGES, YOUTUBE_ENGAGEMENT_RANGE } from '@/lib/engagementBenchmarks';
+import { getSponsorshipBaseRate } from '@/lib/sponsorshipModel';
+import { NICHES, SHORTS_RPM } from '@/lib/youtubeEarningsModel';
+
+const platformComparison = [
+  {
+    name: 'YouTube',
+    href: '/youtube',
+    revenueModel: 'Ad revenue sharing (55%)',
+    typicalEarnings: `$${Math.min(...NICHES.map((n) => n.rpm.low))}–$${Math.max(...NICHES.map((n) => n.rpm.high))} RPM`,
+    engagementRate: `${YOUTUBE_ENGAGEMENT_RANGE.low}–${YOUTUBE_ENGAGEMENT_RANGE.high}%`,
+    sponsorshipRate: (() => {
+      const r = getSponsorshipBaseRate('youtube');
+      return `$${r.low}–$${r.high} / 1K subs`;
+    })(),
+  },
+  {
+    name: 'Instagram',
+    href: '/instagram',
+    revenueModel: 'Sponsorships + bonuses',
+    typicalEarnings: 'Sponsor-dependent',
+    engagementRate: `${PLATFORM_AVERAGES.instagram}%`,
+    sponsorshipRate: (() => {
+      const r = getSponsorshipBaseRate('instagram');
+      return `$${r.low}–$${r.high} / 1K followers`;
+    })(),
+  },
+  {
+    name: 'TikTok',
+    href: '/tiktok',
+    revenueModel: 'Creator Fund + sponsorships',
+    typicalEarnings: `$${SHORTS_RPM.low}–$${SHORTS_RPM.high} / 1K views`,
+    engagementRate: `${PLATFORM_AVERAGES.tiktok}%`,
+    sponsorshipRate: (() => {
+      const r = getSponsorshipBaseRate('tiktok');
+      return `$${r.low}–$${r.high} / 1K followers`;
+    })(),
+  },
+  {
+    name: 'Facebook',
+    href: '/facebook',
+    revenueModel: 'In-stream ads + sponsorships',
+    typicalEarnings: 'Varies by niche',
+    engagementRate: `${PLATFORM_AVERAGES.facebook}%`,
+    sponsorshipRate: (() => {
+      const r = getSponsorshipBaseRate('facebook');
+      return `$${r.low}–$${r.high} / 1K followers`;
+    })(),
+  },
+  {
+    name: 'X (Twitter)',
+    href: '/x',
+    revenueModel: 'Ads revenue sharing',
+    typicalEarnings: 'Varies widely',
+    engagementRate: `${PLATFORM_AVERAGES.twitter}%`,
+    sponsorshipRate: (() => {
+      const r = getSponsorshipBaseRate('twitter');
+      return `$${r.low}–$${r.high} / 1K followers`;
+    })(),
+  },
+];
 
 const title = `${SITE_NAME} — Free Calculators for Content Creators`;
 
@@ -61,6 +122,20 @@ const homeFaqItems = [
     answer:
       'Yes — every calculator on CreatiCalc is 100% free with no sign-up required. All calculations run in your browser, so your data never leaves your device. You get instant results with no paywalls or hidden fees.',
   },
+  {
+    question: 'How are your numbers calculated?',
+    answer: (
+      <>
+        All our estimates are based on publicly available industry data, creator-reported earnings,
+        and official platform documentation. We explain our data sources, formulas, update schedule,
+        and assumptions in detail on our{' '}
+        <Link href="/methodology" className="font-medium text-primary hover:underline">
+          Methodology page
+        </Link>
+        .
+      </>
+    ),
+  },
 ];
 
 const calculators = getAllCalculators();
@@ -70,27 +145,27 @@ const jsonLd = {
   '@graph': [
     {
       '@type': 'WebSite',
+      '@id': `${SITE_URL}/#website`,
       'name': SITE_NAME,
       'url': SITE_URL,
       'description': SITE_DESCRIPTION,
+      'inLanguage': 'en',
+      'publisher': { '@id': `${SITE_URL}/#organization` },
     },
     {
       '@type': 'Organization',
+      '@id': `${SITE_URL}/#organization`,
       'name': SITE_NAME,
       'url': SITE_URL,
       'logo': SITE_LOGO,
       'description': SITE_DESCRIPTION,
-    },
-    {
-      '@type': 'FAQPage',
-      'mainEntity': homeFaqItems.map((item) => ({
-        '@type': 'Question',
-        'name': item.question,
-        'acceptedAnswer': {
-          '@type': 'Answer',
-          'text': item.answer,
-        },
-      })),
+      'sameAs': ['https://x.com/CreatiCalc'],
+      'contactPoint': {
+        '@type': 'ContactPoint',
+        'email': 'hello@creaticalc.com',
+        'contactType': 'customer support',
+        'url': `${SITE_URL}/contact`,
+      },
     },
     {
       '@type': 'ItemList',
@@ -115,7 +190,7 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <section className="hero-dots relative mb-24 py-8 text-center">
+      <section className="hero-dots relative mb-12 py-8 text-center md:mb-24">
         <h1 className="text-4xl font-bold tracking-tight md:text-6xl">
           Free Calculators for <span className="text-gradient-vibrant">Content Creators</span>
         </h1>
@@ -223,7 +298,26 @@ export default function Home() {
           <div>
             <p className="text-gradient-brand text-3xl font-bold">5 Platforms</p>
             <p className="mt-1 text-sm text-muted">
-              YouTube, Instagram, TikTok, Facebook &amp; X in one place
+              <Link href="/youtube" className="hover:text-primary hover:underline">
+                YouTube
+              </Link>
+              ,{' '}
+              <Link href="/instagram" className="hover:text-primary hover:underline">
+                Instagram
+              </Link>
+              ,{' '}
+              <Link href="/tiktok" className="hover:text-primary hover:underline">
+                TikTok
+              </Link>
+              ,{' '}
+              <Link href="/facebook" className="hover:text-primary hover:underline">
+                Facebook
+              </Link>{' '}
+              &amp;{' '}
+              <Link href="/x" className="hover:text-primary hover:underline">
+                X
+              </Link>{' '}
+              in one place
             </p>
           </div>
           <div>
@@ -247,6 +341,75 @@ export default function Home() {
       </section>
 
       <section className="mt-20">
+        <h2 className="mb-4 text-center text-2xl font-bold">
+          Creator Earnings &amp; Engagement at a Glance (2026)
+        </h2>
+        <p className="mx-auto mb-6 max-w-2xl text-center text-sm text-muted">
+          How the five major platforms compare for creator monetization and audience engagement.
+        </p>
+        {/* Mobile: stacked cards */}
+        <div className="space-y-4 sm:hidden">
+          {platformComparison.map((p) => (
+            <div key={p.name} className="rounded-lg border border-border p-4">
+              <Link
+                href={p.href}
+                className="text-lg font-semibold hover:text-primary hover:underline"
+              >
+                {p.name}
+              </Link>
+              <dl className="mt-2 space-y-1 text-sm">
+                <div className="flex justify-between">
+                  <dt className="text-muted">Revenue</dt>
+                  <dd>{p.revenueModel}</dd>
+                </div>
+                <div className="flex justify-between">
+                  <dt className="text-muted">Earnings</dt>
+                  <dd>{p.typicalEarnings}</dd>
+                </div>
+                <div className="flex justify-between">
+                  <dt className="text-muted">Engagement</dt>
+                  <dd>{p.engagementRate}</dd>
+                </div>
+                <div className="flex justify-between">
+                  <dt className="text-muted">Sponsorship</dt>
+                  <dd>{p.sponsorshipRate}</dd>
+                </div>
+              </dl>
+            </div>
+          ))}
+        </div>
+        {/* Desktop: table */}
+        <div className="hidden sm:block">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b border-border text-left">
+                <th className="py-2 pr-4 font-semibold">Platform</th>
+                <th className="py-2 pr-4 font-semibold">Revenue Model</th>
+                <th className="py-2 pr-4 font-semibold">Typical Earnings</th>
+                <th className="py-2 pr-4 font-semibold">Avg. Engagement Rate</th>
+                <th className="py-2 font-semibold">Sponsorship Rate</th>
+              </tr>
+            </thead>
+            <tbody>
+              {platformComparison.map((p) => (
+                <tr key={p.name} className="border-b border-border/50">
+                  <td className="py-2 pr-4 font-medium">
+                    <Link href={p.href} className="hover:text-primary hover:underline">
+                      {p.name}
+                    </Link>
+                  </td>
+                  <td className="py-2 pr-4 text-muted">{p.revenueModel}</td>
+                  <td className="py-2 pr-4 text-muted">{p.typicalEarnings}</td>
+                  <td className="py-2 pr-4 text-muted">{p.engagementRate}</td>
+                  <td className="py-2 text-muted">{p.sponsorshipRate}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section className="mt-20">
         <h2 className="mb-8 text-center text-2xl font-bold">Frequently Asked Questions</h2>
         <div className="space-y-3">
           {homeFaqItems.map((item, i) => (
@@ -256,7 +419,7 @@ export default function Home() {
               defaultOpen={i === 0}
               variant="compact"
             >
-              <p className="text-muted">{item.answer}</p>
+              <div className="text-muted">{item.answer}</div>
             </CollapsibleSection>
           ))}
         </div>

@@ -19,7 +19,7 @@ export const NICHE_PAGES: NichePageData[] = [
     nicheId: 'finance',
     slug: 'finance',
     name: 'Finance & Business',
-    title: 'YouTube Finance Money Calculator — Estimate Finance Channel Earnings (2026)',
+    title: 'YouTube Finance Money & Earnings Calculator 2026',
     metaDescription:
       'Free YouTube finance money calculator. Estimate how much finance and business YouTubers make with CPM rates of $18–$45. Calculate daily, monthly, and yearly earnings.',
     ogTitle: 'YouTube Finance Money Calculator',
@@ -65,7 +65,7 @@ export const NICHE_PAGES: NichePageData[] = [
     nicheId: 'tech',
     slug: 'technology',
     name: 'Technology',
-    title: 'YouTube Tech Money Calculator — Estimate Tech Channel Earnings (2026)',
+    title: 'YouTube Tech Money & Earnings Calculator 2026',
     metaDescription:
       'Free YouTube technology money calculator. Estimate how much tech YouTubers make with CPM rates of $8–$18. Calculate daily, monthly, and yearly tech channel earnings.',
     ogTitle: 'YouTube Tech Money Calculator',
@@ -106,7 +106,7 @@ export const NICHE_PAGES: NichePageData[] = [
     nicheId: 'education',
     slug: 'education',
     name: 'Education',
-    title: 'YouTube Education Money Calculator — Estimate Education Channel Earnings (2026)',
+    title: 'YouTube Education Money & Earnings Calculator 2026',
     metaDescription:
       'Free YouTube education money calculator. Estimate how much educational YouTubers make with CPM rates of $5–$12. Calculate daily, monthly, and yearly earnings.',
     ogTitle: 'YouTube Education Money Calculator',
@@ -147,7 +147,7 @@ export const NICHE_PAGES: NichePageData[] = [
     nicheId: 'health',
     slug: 'health',
     name: 'Health & Fitness',
-    title: 'YouTube Health & Fitness Money Calculator — Estimate Channel Earnings (2026)',
+    title: 'YouTube Health & Fitness Money & Earnings Calculator 2026',
     metaDescription:
       'Free YouTube health and fitness money calculator. Estimate how much health YouTubers make with CPM rates of $5–$12. Calculate daily, monthly, and yearly earnings.',
     ogTitle: 'YouTube Health & Fitness Money Calculator',
@@ -188,7 +188,7 @@ export const NICHE_PAGES: NichePageData[] = [
     nicheId: 'beauty',
     slug: 'beauty',
     name: 'Beauty & Fashion',
-    title: 'YouTube Beauty Money Calculator — Estimate Beauty Channel Earnings (2026)',
+    title: 'YouTube Beauty Money & Earnings Calculator 2026',
     metaDescription:
       'Free YouTube beauty and fashion money calculator. Estimate how much beauty YouTubers make with CPM rates of $3–$10. Calculate daily, monthly, and yearly earnings.',
     ogTitle: 'YouTube Beauty Money Calculator',
@@ -229,7 +229,7 @@ export const NICHE_PAGES: NichePageData[] = [
     nicheId: 'travel',
     slug: 'travel',
     name: 'Travel',
-    title: 'YouTube Travel Money Calculator — Estimate Travel Channel Earnings (2026)',
+    title: 'YouTube Travel Money & Earnings Calculator 2026',
     metaDescription:
       'Free YouTube travel money calculator. Estimate how much travel YouTubers make with CPM rates of $4–$10. Calculate daily, monthly, and yearly travel channel earnings.',
     ogTitle: 'YouTube Travel Money Calculator',
@@ -270,7 +270,7 @@ export const NICHE_PAGES: NichePageData[] = [
     nicheId: 'food',
     slug: 'food',
     name: 'Food & Cooking',
-    title: 'YouTube Food Money Calculator — Estimate Food Channel Earnings (2026)',
+    title: 'YouTube Food Money & Earnings Calculator 2026',
     metaDescription:
       'Free YouTube food and cooking money calculator. Estimate how much food YouTubers make with CPM rates of $3–$8. Calculate daily, monthly, and yearly earnings.',
     ogTitle: 'YouTube Food Money Calculator',
@@ -311,7 +311,7 @@ export const NICHE_PAGES: NichePageData[] = [
     nicheId: 'lifestyle',
     slug: 'lifestyle',
     name: 'Lifestyle',
-    title: 'YouTube Lifestyle Money Calculator — Estimate Lifestyle Channel Earnings (2026)',
+    title: 'YouTube Lifestyle Money & Earnings Calculator 2026',
     metaDescription:
       'Free YouTube lifestyle money calculator. Estimate how much lifestyle YouTubers make with CPM rates of $2–$6. Calculate daily, monthly, and yearly earnings.',
     ogTitle: 'YouTube Lifestyle Money Calculator',
@@ -352,7 +352,7 @@ export const NICHE_PAGES: NichePageData[] = [
     nicheId: 'entertainment',
     slug: 'entertainment',
     name: 'Entertainment',
-    title: 'YouTube Entertainment Money Calculator — Estimate Channel Earnings (2026)',
+    title: 'YouTube Entertainment Money & Earnings Calculator 2026',
     metaDescription:
       'Free YouTube entertainment money calculator. Estimate how much entertainment YouTubers make with CPM rates of $1.50–$4. Calculate daily, monthly, and yearly earnings.',
     ogTitle: 'YouTube Entertainment Money Calculator',
@@ -393,7 +393,7 @@ export const NICHE_PAGES: NichePageData[] = [
     nicheId: 'gaming',
     slug: 'gaming',
     name: 'Gaming',
-    title: 'YouTube Gaming Money Calculator — Estimate Gaming Channel Earnings (2026)',
+    title: 'YouTube Gaming Money & Earnings Calculator 2026',
     metaDescription:
       'Free YouTube gaming money calculator. Estimate how much gaming YouTubers make with CPM rates of $1.50–$5. Calculate daily, monthly, and yearly gaming channel earnings.',
     ogTitle: 'YouTube Gaming Money Calculator',
