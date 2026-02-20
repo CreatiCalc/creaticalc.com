@@ -140,6 +140,28 @@ export default function MethodologyPage() {
             provide low, mid, and high estimates using the full CPM range for each niche.
           </p>
 
+          <h3 className="mt-8 text-lg font-semibold">Niche-Specific RPM Ranges</h3>
+          <p className="mt-2 text-muted">
+            Not all YouTube content earns equally. Advertisers pay a premium for audiences in
+            high-intent verticals such as finance, technology, and education, while entertainment and
+            gaming niches typically see lower CPMs due to broader, less commercially targeted
+            audiences. Our calculator models 10 distinct niches, each with independently researched
+            RPM ranges that reflect these differences. For example, finance content can command RPMs
+            3–5 times higher than gaming content because financial advertisers compete aggressively
+            for audience attention.
+          </p>
+
+          <h3 className="mt-8 text-lg font-semibold">Growth Factor</h3>
+          <p className="mt-2 text-muted">
+            The growth factor allows you to model channel momentum over the 12-month projection. A
+            growth factor of 1.0 assumes flat viewership, while values above 1.0 model compounding
+            monthly growth. For instance, a 5% monthly growth rate (factor 1.05) means each
+            month&apos;s projected views are 5% higher than the previous month. This compounds over
+            the year, so by month 12 your daily views would be roughly 80% higher than month 1. We
+            default to flat growth to provide conservative estimates, but growing channels should
+            adjust this value based on their recent analytics trends.
+          </p>
+
           <h3 className="mt-8 text-lg font-semibold">Seasonality Model</h3>
           <p className="mt-2 text-muted">
             When enabled, our seasonality toggle applies monthly multipliers to RPM based on
@@ -147,6 +169,57 @@ export default function MethodologyPage() {
             due to holiday shopping, while January typically has the lowest rates as brand budgets
             reset. These multipliers are derived from annual digital ad-spend data published by
             eMarketer and IAB.
+          </p>
+          <p className="mt-2 text-muted">
+            Typical seasonal patterns show RPMs peaking 30–50% above the annual average in
+            November–December, dropping 20–30% below average in January–February, and gradually
+            recovering through spring and summer. This model helps creators set realistic monthly
+            expectations rather than assuming flat earnings year-round.
+          </p>
+        </section>
+
+        <section className="mb-16">
+          <h2 className="text-2xl font-bold">YouTube Shorts Earnings</h2>
+          <p className="mt-4 leading-relaxed text-muted">
+            Our{' '}
+            <Link href="/youtube-shorts-money-calculator" className="text-primary hover:underline">
+              YouTube Shorts Money Calculator
+            </Link>{' '}
+            estimates revenue from short-form vertical videos. Shorts monetization works differently
+            from long-form content: instead of individual video ad placements, Shorts revenue comes
+            from ads shown between Shorts in the feed, with revenue pooled and distributed based on
+            views.
+          </p>
+          <p className="mt-4 text-muted">
+            Shorts RPMs are significantly lower than long-form RPMs — typically $0.01–$0.15 per
+            1,000 views compared to $1–$25+ for standard videos. This reflects the shorter watch
+            time, different ad format, and the revenue-sharing structure of the Shorts Fund and
+            subsequent Shorts ad revenue program. Our estimates use the same core formula as the
+            long-form calculator but with Shorts-specific RPM ranges calibrated from creator-reported
+            earnings and YouTube&apos;s published Shorts monetization documentation.
+          </p>
+        </section>
+
+        <section className="mb-16">
+          <h2 className="text-2xl font-bold">Subscriber Growth Projections</h2>
+          <p className="mt-4 leading-relaxed text-muted">
+            The{' '}
+            <Link href="/youtube-subscriber-projector" className="text-primary hover:underline">
+              YouTube Subscriber Growth Projector
+            </Link>{' '}
+            forecasts future subscriber counts and milestone dates based on your current subscriber
+            count and daily growth rate. The model uses:{' '}
+            <code className="rounded bg-surface-alt px-1.5 py-0.5 text-xs font-mono">
+              Future Subscribers = Current + (Daily Gain × Days × Growth Modifier)
+            </code>
+          </p>
+          <p className="mt-4 text-muted">
+            The growth modifier accounts for the common pattern where subscriber acquisition
+            accelerates as channels grow — larger channels attract more organic discovery through
+            YouTube&apos;s recommendation algorithm. The projector shows when you&apos;ll hit key
+            milestones (1K, 10K, 100K, 1M) and provides a 12-month forecast chart. These projections
+            assume consistent content output; real growth depends heavily on content quality,
+            publishing frequency, and algorithm dynamics.
           </p>
         </section>
 
@@ -169,6 +242,27 @@ export default function MethodologyPage() {
             likes, comments, shares, and views (TikTok); reactions, comments, and shares (Facebook);
             and likes, replies, reposts, and bookmarks (X/Twitter).
           </p>
+
+          <h3 className="mt-8 text-lg font-semibold">Follower Tier Benchmarks</h3>
+          <p className="mt-2 text-muted">
+            Engagement rates vary significantly by account size. Nano-influencers (1K–10K followers)
+            typically see the highest engagement rates (3–6% on Instagram) because they have close,
+            personal relationships with their audience. As follower counts grow, engagement rates
+            naturally decline — mega-influencers (1M+) often see rates below 2%. Our calculators
+            reflect these tier-specific benchmarks so creators can compare their performance against
+            realistic standards for their audience size, not just a single platform-wide average.
+          </p>
+
+          <h3 className="mt-8 text-lg font-semibold">Why Engagement Rate Matters</h3>
+          <p className="mt-2 text-muted">
+            Brands use engagement rate as a primary metric when selecting creators for partnerships.
+            A creator with 50K followers and a 5% engagement rate is often more valuable to
+            advertisers than one with 500K followers and a 0.5% rate, because higher engagement
+            signals a more attentive, trusting audience. Our calculators help creators quantify this
+            metric so they can benchmark against industry averages and demonstrate their value in
+            sponsorship negotiations.
+          </p>
+
           <p className="mt-4 text-muted">
             Benchmark data for follower tiers and industries is informed by annual reports from{' '}
             <a
@@ -230,9 +324,47 @@ export default function MethodologyPage() {
             >
               Influencer Marketing Hub
             </a>
-            , and publicly shared rate information from established creators. Multipliers account
-            for higher engagement (which commands premium rates), high-value niches (like finance),
-            and content formats that require more production effort.
+            , and publicly shared rate information from established creators.
+          </p>
+
+          <h3 className="mt-8 text-lg font-semibold">Understanding the Multipliers</h3>
+          <p className="mt-2 text-muted">
+            Each multiplier in the formula captures a different value driver:
+          </p>
+          <ul className="mt-2 list-disc space-y-2 pl-5 text-muted marker:text-primary">
+            <li>
+              <strong className="text-foreground">Engagement Multiplier:</strong> Higher engagement
+              rates (above platform average) command a premium because brands get more visibility per
+              dollar spent. A creator with 2× the average engagement rate can typically charge
+              30–50% more.
+            </li>
+            <li>
+              <strong className="text-foreground">Niche Multiplier:</strong> High-value verticals
+              like finance, technology, and B2B command higher rates because advertisers in these
+              spaces have larger budgets and higher customer lifetime values. A finance creator may
+              charge 2–3× what an entertainment creator charges at the same follower count.
+            </li>
+            <li>
+              <strong className="text-foreground">Content Type Multiplier:</strong> Dedicated videos
+              or posts cost more than Stories or brief mentions because they require more production
+              effort and deliver more brand exposure. A dedicated YouTube integration typically costs
+              3–5× more than an Instagram Story mention.
+            </li>
+            <li>
+              <strong className="text-foreground">Deal Type Multiplier:</strong> One-off
+              collaborations command higher per-post rates than ongoing partnerships, where brands
+              negotiate volume discounts in exchange for longer commitments.
+            </li>
+          </ul>
+
+          <h3 className="mt-8 text-lg font-semibold">Platform Rate Differences</h3>
+          <p className="mt-2 text-muted">
+            Sponsorship rates vary across platforms. YouTube commands the highest per-post rates
+            because videos have longer shelf life and higher production value. Instagram rates are
+            driven by visual storytelling and the ability to include direct shopping links. TikTok
+            rates are growing rapidly as brands chase younger demographics, but per-post rates
+            remain lower than YouTube due to shorter content duration. Our calculators apply
+            platform-specific base rates to account for these structural differences.
           </p>
         </section>
 
@@ -280,6 +412,93 @@ export default function MethodologyPage() {
               not be used as the sole basis for business decisions.
             </li>
           </ul>
+        </section>
+
+        <section className="mb-16">
+          <h2 className="text-2xl font-bold">Frequently Asked Questions</h2>
+          <div className="mt-6 space-y-6">
+            <div>
+              <h3 className="text-lg font-semibold">How accurate are these calculators?</h3>
+              <p className="mt-2 text-muted">
+                Our calculators provide estimates based on industry averages and publicly available
+                data. For YouTube earnings, real-world results typically fall within our low–high
+                range for the given niche. However, individual results vary based on audience
+                geography, ad-blocker usage, content type, and dozens of other factors. We recommend
+                using our estimates as directional guidance rather than exact predictions.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold">Where do you get your CPM/RPM data?</h3>
+              <p className="mt-2 text-muted">
+                We aggregate data from multiple sources: YouTube&apos;s official Partner Program
+                documentation, advertising industry reports from Statista and eMarketer,
+                creator-reported earnings from public disclosures, and cross-references with
+                established tools like Social Blade. No single source is relied upon in isolation —
+                our ranges represent the consensus across these inputs.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold">
+                Why does my actual YouTube revenue differ from the estimate?
+              </h3>
+              <p className="mt-2 text-muted">
+                Several factors cause real revenue to differ: your audience&apos;s geographic mix
+                (US/UK viewers generate higher CPMs than viewers in developing countries), your
+                video&apos;s ad suitability rating, the percentage of views from monetizable sources
+                (e.g., embedded views may not be monetized), and your ad format mix (mid-roll ads
+                generate more revenue than pre-roll only). Our calculator uses niche-average RPMs
+                that may not match your channel&apos;s specific audience profile.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold">How often is the data updated?</h3>
+              <p className="mt-2 text-muted">
+                We perform scheduled data reviews twice a year, in January and July. Between
+                scheduled updates, we make out-of-cycle adjustments when major platform changes occur
+                — such as YouTube modifying its Shorts monetization model or a platform changing its
+                revenue-sharing terms. The Data Refresh Changelog below tracks all updates.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold">
+                Can I use these estimates for business planning?
+              </h3>
+              <p className="mt-2 text-muted">
+                Our calculators are designed to provide useful directional estimates for content
+                creators evaluating their monetization potential. They can inform business planning as
+                one input among many, but should not be the sole basis for financial decisions. We
+                recommend using the low-end estimates for conservative planning and the mid estimates
+                as a realistic target.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="mb-16">
+          <h2 className="text-2xl font-bold">Data Refresh Changelog</h2>
+          <p className="mt-4 leading-relaxed text-muted">
+            This log tracks when we update our underlying benchmark data and what changed.
+          </p>
+          <div className="mt-6 space-y-4">
+            <div className="rounded-lg border border-border p-4">
+              <p className="text-sm font-semibold text-foreground">January 2026 — H1 2026 Update</p>
+              <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-muted">
+                <li>Updated YouTube CPM ranges across all 10 niches to reflect 2025 Q4 actuals</li>
+                <li>Refreshed engagement rate benchmarks with 2025 annual data from HypeAuditor</li>
+                <li>Adjusted sponsorship base rates upward 8–12% based on market trends</li>
+                <li>Added YouTube Shorts RPM data reflecting the mature Shorts ad program</li>
+              </ul>
+            </div>
+            <div className="rounded-lg border border-border p-4">
+              <p className="text-sm font-semibold text-foreground">July 2025 — H2 2025 Update</p>
+              <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-muted">
+                <li>Initial CPM and RPM data compilation across 10 YouTube niches</li>
+                <li>Established engagement rate benchmarks for Instagram, TikTok, Facebook, and X</li>
+                <li>Set sponsorship base rates from Influencer Marketing Hub survey data</li>
+                <li>Calibrated seasonality multipliers from IAB and eMarketer ad-spend reports</li>
+              </ul>
+            </div>
+          </div>
         </section>
 
         <section className="mb-16">
