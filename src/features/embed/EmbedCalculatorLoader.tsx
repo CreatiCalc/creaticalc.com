@@ -2,8 +2,9 @@
 
 import dynamic from 'next/dynamic';
 import type { ComponentType } from 'react';
+import type { CalculatorSlug } from '@/lib/calculatorRegistry';
 
-const calculatorComponents: Record<string, ComponentType> = {
+const calculatorComponents: Partial<Record<CalculatorSlug, ComponentType>> = {
   'youtube-money-calculator': dynamic(
     () => import('@/features/calculators/youtube-money').then((m) => m.YouTubeMoneyCalculator),
     { ssr: false }
@@ -84,7 +85,7 @@ interface EmbedCalculatorLoaderProps {
 }
 
 export default function EmbedCalculatorLoader({ slug }: EmbedCalculatorLoaderProps) {
-  const Component = calculatorComponents[slug];
+  const Component = calculatorComponents[slug as CalculatorSlug];
   if (!Component) return null;
   return <Component />;
 }

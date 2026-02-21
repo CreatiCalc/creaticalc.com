@@ -63,14 +63,16 @@ function ArcGauge({ score, grade }: { score: number; grade: string }) {
   );
 }
 
-const COMPONENT_LABELS: Record<string, string> = {
+type ComponentKey = keyof HealthScore['components'];
+
+const COMPONENT_LABELS: Record<ComponentKey, string> = {
   rateBenchmark: 'Rate vs Benchmark',
   likeCommentRatio: 'Like:Comment Ratio',
   saveSharePct: 'Saves/Shares',
   industryComparison: 'Industry Comparison',
 };
 
-const COMPONENT_MAX: Record<string, number> = {
+const COMPONENT_MAX: Record<ComponentKey, number> = {
   rateBenchmark: 40,
   likeCommentRatio: 20,
   saveSharePct: 20,
@@ -98,7 +100,7 @@ export default function EngagementHealthScore({ healthScore }: EngagementHealthS
       </div>
 
       <div className="mt-6 space-y-3">
-        {Object.entries(components).map(([key, value]) => (
+        {(Object.entries(components) as [ComponentKey, number][]).map(([key, value]) => (
           <div key={key}>
             <div className="flex justify-between text-xs text-muted">
               <span>{COMPONENT_LABELS[key]}</span>

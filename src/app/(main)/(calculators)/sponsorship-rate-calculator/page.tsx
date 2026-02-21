@@ -9,6 +9,7 @@ import Breadcrumbs from '@/components/seo/Breadcrumbs';
 import { SITE_URL } from '@/lib/siteConfig';
 import { getSponsorshipBaseRate } from '@/lib/sponsorshipModel';
 import { PLATFORM_GRADIENTS } from '@/lib/calculatorRegistry';
+import { Platform } from '@/lib/platforms';
 import { getSourcesById, SPONSORSHIP_SOURCE_IDS } from '@/lib/sources';
 
 export const metadata: Metadata = {
@@ -73,7 +74,7 @@ const platforms = [
     name: 'Instagram',
     platform: 'instagram' as const,
     href: '/instagram-sponsorship-rate-calculator',
-    color: PLATFORM_GRADIENTS['Instagram'],
+    color: PLATFORM_GRADIENTS[Platform.Instagram],
     description:
       "Calculate rates for sponsored feed posts, Reels, Stories, and carousels. Instagram's visual-first format and high brand demand make it a top sponsorship platform.",
     contentTypes: 'Posts, Reels, Stories, Carousels',
@@ -82,7 +83,7 @@ const platforms = [
     name: 'TikTok',
     platform: 'tiktok' as const,
     href: '/tiktok-sponsorship-rate-calculator',
-    color: PLATFORM_GRADIENTS['TikTok'],
+    color: PLATFORM_GRADIENTS[Platform.TikTok],
     description:
       "Calculate rates for sponsored videos, Stories, and Lives. TikTok's algorithm-driven reach means sponsored content can go far beyond your follower count.",
     contentTypes: 'Videos, Stories, Lives',
@@ -91,7 +92,7 @@ const platforms = [
     name: 'YouTube',
     platform: 'youtube' as const,
     href: '/youtube-sponsorship-rate-calculator',
-    color: PLATFORM_GRADIENTS['YouTube'],
+    color: PLATFORM_GRADIENTS[Platform.YouTube],
     description:
       "Calculate rates for integrations, dedicated videos, Shorts, and pre-rolls. YouTube's evergreen content and high CPMs command premium sponsorship rates.",
     contentTypes: 'Integrations, Dedicated, Shorts, Pre-Rolls',
@@ -100,7 +101,7 @@ const platforms = [
     name: 'Facebook',
     platform: 'facebook' as const,
     href: '/facebook-sponsorship-rate-calculator',
-    color: PLATFORM_GRADIENTS['Facebook'],
+    color: PLATFORM_GRADIENTS[Platform.Facebook],
     description:
       "Calculate rates for sponsored feed posts, Reels, Stories, and Lives. Facebook's older, higher-income audience makes it valuable for specific brand verticals.",
     contentTypes: 'Posts, Reels, Stories, Lives',
@@ -109,7 +110,7 @@ const platforms = [
     name: 'X (Twitter)',
     platform: 'twitter' as const,
     href: '/twitter-sponsorship-rate-calculator',
-    color: PLATFORM_GRADIENTS['X'],
+    color: PLATFORM_GRADIENTS[Platform.X],
     description:
       "Calculate rates for sponsored tweets, threads, and Spaces. X's thought-leadership positioning makes it valuable for B2B and tech brand sponsorships.",
     contentTypes: 'Tweets, Threads, Spaces',

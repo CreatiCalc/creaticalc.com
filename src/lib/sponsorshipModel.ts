@@ -1,4 +1,4 @@
-import type { Platform, IndustryId, FollowerTier } from './engagementBenchmarks';
+import type { IndustryId, FollowerTier } from './engagementBenchmarks';
 import {
   findTier,
   formatUSD,
@@ -6,10 +6,12 @@ import {
   getEngagementMultiplier,
   getNicheMultiplier,
 } from './engagementBenchmarks';
+import type { PlatformSlug } from '@/lib/platforms';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
-export type SponsorshipPlatform = Platform | 'youtube';
+/** All platforms supported by the sponsorship model — derived from the central PlatformSlug. */
+export type SponsorshipPlatform = PlatformSlug;
 
 export type InstagramContentType = 'feedPost' | 'reel' | 'story' | 'carousel';
 export type TikTokContentType = 'video' | 'story' | 'live';
@@ -86,7 +88,7 @@ interface TierDef {
 interface PlatformSponsorshipData {
   baseRate: { low: number; mid: number; high: number };
   contentTypes: ContentTypeOption[];
-  contentTypeMultipliers: Partial<Record<string, number>>;
+  contentTypeMultipliers: Partial<Record<SponsorshipContentType, number>>;
   tierDefs: TierDef[];
   platformTip: NegotiationTip;
 }
