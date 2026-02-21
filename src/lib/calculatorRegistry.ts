@@ -50,6 +50,8 @@ export interface CalculatorEntry {
   aboutDescription: string;
   /** Whether this calculator supports embed mode */
   embeddable: boolean;
+  /** Sitemap priority (0.0–1.0). Defaults to 0.9 when omitted. */
+  sitemapPriority?: number;
   /** Slugs of the most relevant related calculators (for "Next Step" CTAs) */
   relatedSlugs?: CalculatorSlug[];
 }
@@ -66,6 +68,7 @@ const CALCULATORS: CalculatorEntry[] = [
     aboutDescription:
       'Estimate how much YouTubers earn based on views, CPM, and content niche. Includes growth modeling, seasonality adjustments, and sponsorship rate estimates.',
     embeddable: true,
+    sitemapPriority: 1.0,
     relatedSlugs: ['youtube-sponsorship-rate-calculator', 'youtube-subscriber-projector'],
   },
   {
@@ -120,6 +123,7 @@ const CALCULATORS: CalculatorEntry[] = [
     aboutDescription:
       'Calculate your Instagram engagement rate and benchmark it against industry averages. Track likes, comments, and shares.',
     embeddable: true,
+    sitemapPriority: 0.8,
     relatedSlugs: ['instagram-sponsorship-rate-calculator', 'engagement-rate-benchmarks'],
   },
   {
@@ -147,6 +151,7 @@ const CALCULATORS: CalculatorEntry[] = [
     aboutDescription:
       'Measure your TikTok engagement rate using views, likes, comments, and shares. Compare your performance to other creators.',
     embeddable: true,
+    sitemapPriority: 0.8,
     relatedSlugs: ['tiktok-sponsorship-rate-calculator', 'engagement-rate-benchmarks'],
   },
   {
@@ -174,6 +179,7 @@ const CALCULATORS: CalculatorEntry[] = [
     aboutDescription:
       'Calculate your Facebook Page engagement rate using reactions, comments, and shares. Compare against page benchmarks by follower tier and industry.',
     embeddable: true,
+    sitemapPriority: 0.8,
     relatedSlugs: ['facebook-sponsorship-rate-calculator', 'engagement-rate-benchmarks'],
   },
   {
@@ -202,6 +208,7 @@ const CALCULATORS: CalculatorEntry[] = [
     aboutDescription:
       'Measure your X engagement rate using likes, replies, reposts, and bookmarks. Compare against benchmarks by follower tier and industry.',
     embeddable: true,
+    sitemapPriority: 0.8,
     relatedSlugs: ['twitter-sponsorship-rate-calculator', 'engagement-rate-benchmarks'],
   },
   {
@@ -243,6 +250,7 @@ const CALCULATORS: CalculatorEntry[] = [
     aboutDescription:
       'Complete engagement rate benchmark data for 2026. See average rates by follower tier, industry, and platform for Instagram, TikTok, Facebook, X, and YouTube.',
     embeddable: false,
+    sitemapPriority: 0.8,
     relatedSlugs: ['engagement-rate-calculator', 'youtube-money-calculator'],
   },
   {

@@ -53,12 +53,12 @@ const engagementCalcs = allCalcs
     (c) =>
       c.platform !== Platform.YouTube &&
       c.slug.includes('engagement') &&
-      !c.slug.includes('benchmarks'),
+      !c.slug.includes('benchmarks')
   )
   .map((c) =>
     c.platform === Platform.Multi
       ? { name: 'All Platforms', href: c.href }
-      : { name: c.title.replace(' Engagement Rate Calculator', ''), href: c.href },
+      : { name: c.title.replace(' Engagement Rate Calculator', ''), href: c.href }
   );
 
 const sponsorshipCalcs = allCalcs
@@ -66,7 +66,7 @@ const sponsorshipCalcs = allCalcs
   .map((c) =>
     c.platform === Platform.Multi
       ? { name: 'All Platforms', href: c.href }
-      : { name: c.title.replace(' Sponsorship Rate Calculator', ''), href: c.href },
+      : { name: c.title.replace(' Sponsorship Rate Calculator', ''), href: c.href }
   );
 
 export const FOOTER_GROUPS: NavGroup[] = [
@@ -76,10 +76,7 @@ export const FOOTER_GROUPS: NavGroup[] = [
   },
   {
     label: 'Engagement Rates',
-    items: [
-      ...engagementCalcs,
-      { name: 'Benchmarks 2026', href: '/engagement-rate-benchmarks' },
-    ],
+    items: [...engagementCalcs, { name: 'Benchmarks 2026', href: '/engagement-rate-benchmarks' }],
   },
   {
     label: 'Sponsorship Rates',

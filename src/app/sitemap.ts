@@ -1,11 +1,29 @@
 import type { MetadataRoute } from 'next';
+import { getAllCalculators } from '@/lib/calculatorRegistry';
 import { NICHE_PAGES } from '@/lib/nichePageData';
+import { PLATFORM_HUBS } from '@/lib/platformHubData';
 import { SITE_URL } from '@/lib/siteConfig';
 import { SPONSORSHIP_NICHE_PAGES } from '@/lib/sponsorship-niches';
 import { ENGAGEMENT_NICHE_PAGES } from '@/lib/engagement-niches';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_URL;
+
+  // ─── Auto-generated from registries ─────────────────────────────────────────
+
+  const hubPages: MetadataRoute.Sitemap = PLATFORM_HUBS.map((h) => ({
+    url: `${baseUrl}/${h.slug}`,
+    lastModified: '2026-02-15',
+    changeFrequency: 'monthly',
+    priority: 0.9,
+  }));
+
+  const calculatorPages: MetadataRoute.Sitemap = getAllCalculators().map((c) => ({
+    url: `${baseUrl}${c.href}`,
+    lastModified: '2026-02-20',
+    changeFrequency: 'weekly',
+    priority: c.sitemapPriority ?? 0.9,
+  }));
 
   const nichePages: MetadataRoute.Sitemap = NICHE_PAGES.map((n) => ({
     url: `${baseUrl}/youtube-money-calculator/${n.slug}`,
@@ -28,6 +46,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
+  // ─── Static pages ───────────────────────────────────────────────────────────
+
   return [
     {
       url: baseUrl,
@@ -35,128 +55,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 1.0,
     },
-    // Platform hub pages
-    {
-      url: `${baseUrl}/youtube`,
-      lastModified: '2026-02-15',
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/instagram`,
-      lastModified: '2026-02-15',
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/tiktok`,
-      lastModified: '2026-02-15',
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/facebook`,
-      lastModified: '2026-02-15',
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/x`,
-      lastModified: '2026-02-15',
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    // Individual calculators
-    {
-      url: `${baseUrl}/youtube-money-calculator`,
-      lastModified: '2026-02-20',
-      changeFrequency: 'weekly',
-      priority: 1.0,
-    },
-    {
-      url: `${baseUrl}/youtube-shorts-money-calculator`,
-      lastModified: '2026-02-20',
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/youtube-subscriber-projector`,
-      lastModified: '2026-02-20',
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/engagement-rate-calculator`,
-      lastModified: '2026-02-20',
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/sponsorship-rate-calculator`,
-      lastModified: '2026-02-20',
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/instagram-engagement-rate-calculator`,
-      lastModified: '2026-02-20',
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/tiktok-engagement-rate-calculator`,
-      lastModified: '2026-02-20',
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/instagram-sponsorship-rate-calculator`,
-      lastModified: '2026-02-20',
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/tiktok-sponsorship-rate-calculator`,
-      lastModified: '2026-02-20',
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/facebook-engagement-rate-calculator`,
-      lastModified: '2026-02-20',
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/twitter-engagement-rate-calculator`,
-      lastModified: '2026-02-20',
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/youtube-sponsorship-rate-calculator`,
-      lastModified: '2026-02-20',
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/facebook-sponsorship-rate-calculator`,
-      lastModified: '2026-02-20',
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/twitter-sponsorship-rate-calculator`,
-      lastModified: '2026-02-20',
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/engagement-rate-benchmarks`,
-      lastModified: '2026-02-20',
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
+    ...hubPages,
+    ...calculatorPages,
     {
       url: `${baseUrl}/glossary`,
       lastModified: '2026-02-20',
