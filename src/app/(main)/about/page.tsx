@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Card from '@/components/ui/Card';
 import { getAllCalculators, PLATFORM_GRADIENTS } from '@/lib/calculatorRegistry';
+import { Platform } from '@/lib/platforms';
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import Breadcrumbs from '@/components/seo/Breadcrumbs';
 import { SITE_URL } from '@/lib/siteConfig';
@@ -333,11 +334,11 @@ export default function AboutPage() {
           <div className="mt-8 grid gap-6 text-left sm:grid-cols-3 lg:grid-cols-5">
             {(
               [
-                { name: 'YouTube', href: '/youtube' },
-                { name: 'Instagram', href: '/instagram' },
-                { name: 'TikTok', href: '/tiktok' },
-                { name: 'Facebook', href: '/facebook' },
-                { name: 'X (Twitter)', href: '/x' },
+                { name: Platform.YouTube, href: '/youtube' },
+                { name: Platform.Instagram, href: '/instagram' },
+                { name: Platform.TikTok, href: '/tiktok' },
+                { name: Platform.Facebook, href: '/facebook' },
+                { name: Platform.X, href: '/x' },
               ] as const
             ).map((platform) => (
               <div key={platform.name}>
@@ -365,7 +366,7 @@ export default function AboutPage() {
           </div>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             {calculators
-              .filter((c) => c.platform === 'Multi-Platform')
+              .filter((c) => c.platform === Platform.Multi)
               .map((calc) => (
                 <Link
                   key={calc.href}

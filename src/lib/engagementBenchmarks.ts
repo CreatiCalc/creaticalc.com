@@ -1,5 +1,6 @@
 import { formatFollowerCount } from './formatters';
 import type { EngagementIndustryId } from './niches';
+import { Platform as PlatformDisplay } from '@/lib/platforms';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -21,10 +22,10 @@ export type FacebookCalcMethod = 'byFollowers' | 'byReach';
 export type TwitterCalcMethod = 'byFollowers' | 'byImpressions';
 
 export const PLATFORM_NAMES: Record<Platform, string> = {
-  instagram: 'Instagram',
-  tiktok: 'TikTok',
-  facebook: 'Facebook',
-  twitter: 'X (Twitter)',
+  instagram: PlatformDisplay.Instagram,
+  tiktok: PlatformDisplay.TikTok,
+  facebook: PlatformDisplay.Facebook,
+  twitter: PlatformDisplay.X,
 };
 
 export interface EngagementInput {

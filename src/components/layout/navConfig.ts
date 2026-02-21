@@ -1,3 +1,5 @@
+import { Platform } from '@/lib/platforms';
+
 export interface NavItem {
   name: string;
   href: string;
@@ -10,7 +12,7 @@ export interface NavGroup {
 
 export const NAV_GROUPS: NavGroup[] = [
   {
-    label: 'YouTube',
+    label: Platform.YouTube,
     items: [
       { name: 'All YouTube Tools', href: '/youtube' },
       { name: 'Money Calculator', href: '/youtube-money-calculator' },
@@ -20,7 +22,7 @@ export const NAV_GROUPS: NavGroup[] = [
     ],
   },
   {
-    label: 'Instagram',
+    label: Platform.Instagram,
     items: [
       { name: 'All Instagram Tools', href: '/instagram' },
       { name: 'Engagement Rate', href: '/instagram-engagement-rate-calculator' },
@@ -28,7 +30,7 @@ export const NAV_GROUPS: NavGroup[] = [
     ],
   },
   {
-    label: 'TikTok',
+    label: Platform.TikTok,
     items: [
       { name: 'All TikTok Tools', href: '/tiktok' },
       { name: 'Engagement Rate', href: '/tiktok-engagement-rate-calculator' },
@@ -36,7 +38,7 @@ export const NAV_GROUPS: NavGroup[] = [
     ],
   },
   {
-    label: 'Facebook',
+    label: Platform.Facebook,
     items: [
       { name: 'All Facebook Tools', href: '/facebook' },
       { name: 'Engagement Rate', href: '/facebook-engagement-rate-calculator' },
@@ -44,7 +46,7 @@ export const NAV_GROUPS: NavGroup[] = [
     ],
   },
   {
-    label: 'X (Twitter)',
+    label: Platform.X,
     items: [
       { name: 'All X (Twitter) Tools', href: '/x' },
       { name: 'Engagement Rate', href: '/twitter-engagement-rate-calculator' },
@@ -65,7 +67,7 @@ export const MORE_LINKS: NavItem[] = [
 // single source of truth for all site-wide link data.
 export const FOOTER_GROUPS: NavGroup[] = [
   {
-    label: 'YouTube',
+    label: Platform.YouTube,
     items: [
       { name: 'Money Calculator', href: '/youtube-money-calculator' },
       { name: 'Shorts Calculator', href: '/youtube-shorts-money-calculator' },

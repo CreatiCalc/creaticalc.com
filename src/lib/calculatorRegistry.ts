@@ -1,11 +1,13 @@
+import { Platform, type PlatformId } from '@/lib/platforms';
+
 /** Tailwind gradient classes for each platform's accent bar. */
-export const PLATFORM_GRADIENTS: Record<string, string> = {
-  'YouTube': 'from-red-500 via-red-600 to-red-700',
-  'Instagram': 'from-pink-500 via-purple-500 to-orange-400',
-  'TikTok': 'from-cyan-400 via-pink-500 to-red-500',
-  'Facebook': 'from-blue-500 via-blue-600 to-indigo-500',
-  'X': 'from-sky-400 via-blue-500 to-indigo-400',
-  'Multi-Platform': 'from-teal-400 via-emerald-500 to-cyan-500',
+export const PLATFORM_GRADIENTS: Record<PlatformId, string> = {
+  [Platform.YouTube]: 'from-red-500 via-red-600 to-red-700',
+  [Platform.Instagram]: 'from-pink-500 via-purple-500 to-orange-400',
+  [Platform.TikTok]: 'from-cyan-400 via-pink-500 to-red-500',
+  [Platform.Facebook]: 'from-blue-500 via-blue-600 to-indigo-500',
+  [Platform.X]: 'from-sky-400 via-blue-500 to-indigo-400',
+  [Platform.Multi]: 'from-teal-400 via-emerald-500 to-cyan-500',
 };
 
 export interface CalculatorEntry {
@@ -18,7 +20,7 @@ export interface CalculatorEntry {
   /** Route path, e.g. '/youtube-money-calculator' */
   href: string;
   /** Platform label for badge display */
-  platform: string;
+  platform: PlatformId;
   /** Short description for homepage cards */
   description: string;
   /** Detailed description for about page */
@@ -35,7 +37,7 @@ const CALCULATORS: CalculatorEntry[] = [
     title: 'YouTube Money Calculator',
     cardTitle: 'YouTube Money Calculator',
     href: '/youtube-money-calculator',
-    platform: 'YouTube',
+    platform: Platform.YouTube,
     description: 'Estimate how much YouTubers earn based on views, CPM, and niche.',
     aboutDescription:
       'Estimate how much YouTubers earn based on views, CPM, and content niche. Includes growth modeling, seasonality adjustments, and sponsorship rate estimates.',
@@ -47,7 +49,7 @@ const CALCULATORS: CalculatorEntry[] = [
     title: 'YouTube Shorts Money Calculator',
     cardTitle: 'YouTube Shorts Money Calculator',
     href: '/youtube-shorts-money-calculator',
-    platform: 'YouTube',
+    platform: Platform.YouTube,
     description:
       'Estimate how much YouTube Shorts pay per 1,000 views. See projected Shorts revenue with real RPM data.',
     aboutDescription:
@@ -60,7 +62,7 @@ const CALCULATORS: CalculatorEntry[] = [
     title: 'YouTube Subscriber Growth Projector',
     cardTitle: 'YouTube Subscriber Projector',
     href: '/youtube-subscriber-projector',
-    platform: 'YouTube',
+    platform: Platform.YouTube,
     description: "Project your YouTube subscriber growth and see when you'll hit milestones.",
     aboutDescription:
       "Project your YouTube subscriber growth over time and see when you'll hit key milestones like 1K, 10K, and 100K subscribers.",
@@ -72,7 +74,7 @@ const CALCULATORS: CalculatorEntry[] = [
     title: 'YouTube Sponsorship Rate Calculator',
     cardTitle: 'YouTube Sponsorship Rate',
     href: '/youtube-sponsorship-rate-calculator',
-    platform: 'YouTube',
+    platform: Platform.YouTube,
     description:
       'Calculate how much to charge for YouTube integrations, dedicated videos, Shorts, and pre-rolls.',
     aboutDescription:
@@ -85,7 +87,7 @@ const CALCULATORS: CalculatorEntry[] = [
     title: 'Instagram Engagement Rate Calculator',
     cardTitle: 'Instagram Engagement Rate',
     href: '/instagram-engagement-rate-calculator',
-    platform: 'Instagram',
+    platform: Platform.Instagram,
     description: 'Calculate your Instagram engagement rate and see how you compare.',
     aboutDescription:
       'Calculate your Instagram engagement rate and benchmark it against industry averages. Track likes, comments, and shares.',
@@ -97,7 +99,7 @@ const CALCULATORS: CalculatorEntry[] = [
     title: 'Instagram Sponsorship Rate Calculator',
     cardTitle: 'Instagram Sponsorship Rate',
     href: '/instagram-sponsorship-rate-calculator',
-    platform: 'Instagram',
+    platform: Platform.Instagram,
     description:
       'Calculate how much to charge for sponsored Instagram posts, Reels, Stories, and carousels.',
     aboutDescription:
@@ -110,7 +112,7 @@ const CALCULATORS: CalculatorEntry[] = [
     title: 'TikTok Engagement Rate Calculator',
     cardTitle: 'TikTok Engagement Rate',
     href: '/tiktok-engagement-rate-calculator',
-    platform: 'TikTok',
+    platform: Platform.TikTok,
     description: 'Measure your TikTok engagement rate with views, likes, and shares.',
     aboutDescription:
       'Measure your TikTok engagement rate using views, likes, comments, and shares. Compare your performance to other creators.',
@@ -122,7 +124,7 @@ const CALCULATORS: CalculatorEntry[] = [
     title: 'TikTok Sponsorship Rate Calculator',
     cardTitle: 'TikTok Sponsorship Rate',
     href: '/tiktok-sponsorship-rate-calculator',
-    platform: 'TikTok',
+    platform: Platform.TikTok,
     description: 'Find out how much to charge for sponsored TikTok videos, Stories, and Lives.',
     aboutDescription:
       'Calculate how much to charge for sponsored TikTok videos, Stories, and Lives based on your followers, engagement, and niche.',
@@ -134,7 +136,7 @@ const CALCULATORS: CalculatorEntry[] = [
     title: 'Facebook Engagement Rate Calculator',
     cardTitle: 'Facebook Engagement Rate',
     href: '/facebook-engagement-rate-calculator',
-    platform: 'Facebook',
+    platform: Platform.Facebook,
     description:
       'Calculate your Facebook Page engagement rate using reactions, comments, and shares. Compare against page benchmarks.',
     aboutDescription:
@@ -147,7 +149,7 @@ const CALCULATORS: CalculatorEntry[] = [
     title: 'Facebook Sponsorship Rate Calculator',
     cardTitle: 'Facebook Sponsorship Rate',
     href: '/facebook-sponsorship-rate-calculator',
-    platform: 'Facebook',
+    platform: Platform.Facebook,
     description:
       'Calculate how much to charge for sponsored Facebook posts, Reels, Stories, and Lives.',
     aboutDescription:
@@ -160,7 +162,7 @@ const CALCULATORS: CalculatorEntry[] = [
     title: 'X (Twitter) Engagement Rate Calculator',
     cardTitle: 'X (Twitter) Engagement Rate',
     href: '/twitter-engagement-rate-calculator',
-    platform: 'X',
+    platform: Platform.X,
     description:
       'Measure your X engagement rate with likes, replies, reposts, and bookmarks. Compare against benchmarks.',
     aboutDescription:
@@ -173,7 +175,7 @@ const CALCULATORS: CalculatorEntry[] = [
     title: 'X (Twitter) Sponsorship Rate Calculator',
     cardTitle: 'X (Twitter) Sponsorship Rate',
     href: '/twitter-sponsorship-rate-calculator',
-    platform: 'X',
+    platform: Platform.X,
     description: 'Calculate how much to charge for sponsored tweets, threads, and X Spaces.',
     aboutDescription:
       'Find out how much to charge for sponsored X content based on your followers, engagement rate, content type, and niche.',
@@ -185,7 +187,7 @@ const CALCULATORS: CalculatorEntry[] = [
     title: 'Engagement Rate Calculator',
     cardTitle: 'Engagement Rate Calculator',
     href: '/engagement-rate-calculator',
-    platform: 'Multi-Platform',
+    platform: Platform.Multi,
     description:
       'Calculate your engagement rate on Instagram, TikTok, YouTube, Facebook, or X. Compare against 2026 benchmarks by tier and niche.',
     aboutDescription:
@@ -198,7 +200,7 @@ const CALCULATORS: CalculatorEntry[] = [
     title: 'Engagement Rate Benchmarks',
     cardTitle: 'Engagement Rate Benchmarks',
     href: '/engagement-rate-benchmarks',
-    platform: 'Multi-Platform',
+    platform: Platform.Multi,
     description:
       'See 2026 average engagement rates by follower tier, industry, and platform for Instagram, TikTok, Facebook, X, and YouTube.',
     aboutDescription:
@@ -211,7 +213,7 @@ const CALCULATORS: CalculatorEntry[] = [
     title: 'Sponsorship Rate Calculator',
     cardTitle: 'Sponsorship Rate Calculator',
     href: '/sponsorship-rate-calculator',
-    platform: 'Multi-Platform',
+    platform: Platform.Multi,
     description:
       'Compare sponsorship rates across Instagram, TikTok, YouTube, Facebook, and X. See base rates, content multipliers, and deal pricing.',
     aboutDescription:
@@ -227,7 +229,7 @@ export function getAllCalculators(): CalculatorEntry[] {
 }
 
 /** Get all calculators for a specific platform. */
-export function getCalculatorsByPlatform(platform: string): CalculatorEntry[] {
+export function getCalculatorsByPlatform(platform: PlatformId): CalculatorEntry[] {
   return CALCULATORS.filter((c) => c.platform === platform);
 }
 

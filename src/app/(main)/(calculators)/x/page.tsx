@@ -2,9 +2,10 @@ import type { Metadata } from 'next';
 import { getPlatformHub, PLATFORM_HUBS } from '@/lib/platformHubData';
 import { getCalculatorsByPlatform } from '@/lib/calculatorRegistry';
 import PlatformHubPage from '@/features/calculators/shared/PlatformHubPage';
+import { Platform } from '@/lib/platforms';
 
 const hub = getPlatformHub('x')!;
-const calculators = getCalculatorsByPlatform('X');
+const calculators = getCalculatorsByPlatform(Platform.X);
 
 export const metadata: Metadata = {
   title: hub.title,

@@ -5,13 +5,14 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Drawer } from 'vaul';
 import { NAV_GROUPS, MORE_LINKS } from './navConfig';
+import { Platform } from '@/lib/platforms';
 
 const PLATFORM_DOTS: Record<string, string> = {
-  'YouTube': 'bg-red-500',
-  'Instagram': 'bg-pink-500',
-  'TikTok': 'bg-cyan-500',
-  'Facebook': 'bg-blue-500',
-  'X (Twitter)': 'bg-sky-500',
+  [Platform.YouTube]: 'bg-red-500',
+  [Platform.Instagram]: 'bg-pink-500',
+  [Platform.TikTok]: 'bg-cyan-500',
+  [Platform.Facebook]: 'bg-blue-500',
+  [Platform.X]: 'bg-sky-500',
 };
 
 export default function MobileNav() {
