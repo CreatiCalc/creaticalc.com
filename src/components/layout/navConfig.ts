@@ -1,4 +1,6 @@
 import { Platform } from '@/lib/platforms';
+import { getAllCalculators } from '@/lib/calculatorRegistry';
+import { PLATFORM_HUBS } from '@/lib/platformHubData';
 
 export interface NavItem {
   name: string;
@@ -10,91 +12,78 @@ export interface NavGroup {
   items: NavItem[];
 }
 
-export const NAV_GROUPS: NavGroup[] = [
-  {
-    label: Platform.YouTube,
-    items: [
-      { name: 'All YouTube Tools', href: '/youtube' },
-      { name: 'Money Calculator', href: '/youtube-money-calculator' },
-      { name: 'Shorts Money Calculator', href: '/youtube-shorts-money-calculator' },
-      { name: 'Growth Projector', href: '/youtube-subscriber-projector' },
-      { name: 'Sponsorship Rate', href: '/youtube-sponsorship-rate-calculator' },
-    ],
-  },
-  {
-    label: Platform.Instagram,
-    items: [
-      { name: 'All Instagram Tools', href: '/instagram' },
-      { name: 'Engagement Rate', href: '/instagram-engagement-rate-calculator' },
-      { name: 'Sponsorship Rate', href: '/instagram-sponsorship-rate-calculator' },
-    ],
-  },
-  {
-    label: Platform.TikTok,
-    items: [
-      { name: 'All TikTok Tools', href: '/tiktok' },
-      { name: 'Engagement Rate', href: '/tiktok-engagement-rate-calculator' },
-      { name: 'Sponsorship Rate', href: '/tiktok-sponsorship-rate-calculator' },
-    ],
-  },
-  {
-    label: Platform.Facebook,
-    items: [
-      { name: 'All Facebook Tools', href: '/facebook' },
-      { name: 'Engagement Rate', href: '/facebook-engagement-rate-calculator' },
-      { name: 'Sponsorship Rate', href: '/facebook-sponsorship-rate-calculator' },
-    ],
-  },
-  {
-    label: Platform.X,
-    items: [
-      { name: 'All X (Twitter) Tools', href: '/x' },
-      { name: 'Engagement Rate', href: '/twitter-engagement-rate-calculator' },
-      { name: 'Sponsorship Rate', href: '/twitter-sponsorship-rate-calculator' },
-    ],
-  },
-];
+// ─── Header Nav ─────────────────────────────────────────────────────────────────
+// Auto-generated from calculator registry + platform hub data.
+// Adding a new calculator automatically updates the nav.
+
+export const NAV_GROUPS: NavGroup[] = PLATFORM_HUBS.map((hub) => ({
+  label: hub.platform,
+  items: [
+    { name: `All ${hub.displayName} Tools`, href: `/${hub.slug}` },
+    ...getAllCalculators()
+      .filter((c) => c.platform === hub.platform)
+      .map((c) => ({ name: c.navLabel, href: c.href })),
+  ],
+}));
+
+const multiPlatformCalcs = getAllCalculators()
+  .filter((c) => c.platform === Platform.Multi)
+  .map((c) => ({ name: c.navLabel, href: c.href }));
 
 export const MORE_LINKS: NavItem[] = [
-  { name: 'Engagement Calculator', href: '/engagement-rate-calculator' },
-  { name: 'Sponsorship Calculator', href: '/sponsorship-rate-calculator' },
-  { name: 'Engagement Benchmarks', href: '/engagement-rate-benchmarks' },
+  ...multiPlatformCalcs,
   { name: 'Glossary', href: '/glossary' },
   { name: 'About', href: '/about' },
 ];
 
+// ─── Footer ─────────────────────────────────────────────────────────────────────
 // Footer uses a different grouping than the header nav — kept here as the
 // single source of truth for all site-wide link data.
+// The YouTube, Engagement, and Sponsorship groups are auto-generated from the
+// registry. The Company group is manual (static pages).
+
+const allCalcs = getAllCalculators();
+
+const youtubeOnlyCalcs = allCalcs
+  .filter((c) => c.platform === Platform.YouTube && !c.slug.includes('sponsorship'))
+  .map((c) => ({ name: c.navLabel, href: c.href }));
+
+const engagementCalcs = allCalcs
+  .filter(
+    (c) =>
+      c.platform !== Platform.YouTube &&
+      c.slug.includes('engagement') &&
+      !c.slug.includes('benchmarks'),
+  )
+  .map((c) =>
+    c.platform === Platform.Multi
+      ? { name: 'All Platforms', href: c.href }
+      : { name: c.title.replace(' Engagement Rate Calculator', ''), href: c.href },
+  );
+
+const sponsorshipCalcs = allCalcs
+  .filter((c) => c.slug.includes('sponsorship'))
+  .map((c) =>
+    c.platform === Platform.Multi
+      ? { name: 'All Platforms', href: c.href }
+      : { name: c.title.replace(' Sponsorship Rate Calculator', ''), href: c.href },
+  );
+
 export const FOOTER_GROUPS: NavGroup[] = [
   {
     label: Platform.YouTube,
-    items: [
-      { name: 'Money Calculator', href: '/youtube-money-calculator' },
-      { name: 'Shorts Calculator', href: '/youtube-shorts-money-calculator' },
-      { name: 'Growth Projector', href: '/youtube-subscriber-projector' },
-    ],
+    items: youtubeOnlyCalcs,
   },
   {
     label: 'Engagement Rates',
     items: [
-      { name: 'Instagram', href: '/instagram-engagement-rate-calculator' },
-      { name: 'TikTok', href: '/tiktok-engagement-rate-calculator' },
-      { name: 'Facebook', href: '/facebook-engagement-rate-calculator' },
-      { name: 'X (Twitter)', href: '/twitter-engagement-rate-calculator' },
-      { name: 'All Platforms', href: '/engagement-rate-calculator' },
+      ...engagementCalcs,
       { name: 'Benchmarks 2026', href: '/engagement-rate-benchmarks' },
     ],
   },
   {
     label: 'Sponsorship Rates',
-    items: [
-      { name: 'Instagram', href: '/instagram-sponsorship-rate-calculator' },
-      { name: 'TikTok', href: '/tiktok-sponsorship-rate-calculator' },
-      { name: 'Facebook', href: '/facebook-sponsorship-rate-calculator' },
-      { name: 'X (Twitter)', href: '/twitter-sponsorship-rate-calculator' },
-      { name: 'YouTube', href: '/youtube-sponsorship-rate-calculator' },
-      { name: 'All Platforms', href: '/sponsorship-rate-calculator' },
-    ],
+    items: sponsorshipCalcs,
   },
   {
     label: 'Company',

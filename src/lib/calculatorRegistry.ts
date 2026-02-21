@@ -38,6 +38,8 @@ export interface CalculatorEntry {
   title: string;
   /** Shorter display title for homepage cards */
   cardTitle: string;
+  /** Short label for navigation menus (e.g. "Money Calculator") */
+  navLabel: string;
   /** Route path, e.g. '/youtube-money-calculator' */
   href: string;
   /** Platform label for badge display */
@@ -57,6 +59,7 @@ const CALCULATORS: CalculatorEntry[] = [
     slug: 'youtube-money-calculator',
     title: 'YouTube Money Calculator',
     cardTitle: 'YouTube Money Calculator',
+    navLabel: 'Money Calculator',
     href: '/youtube-money-calculator',
     platform: Platform.YouTube,
     description: 'Estimate how much YouTubers earn based on views, CPM, and niche.',
@@ -69,6 +72,7 @@ const CALCULATORS: CalculatorEntry[] = [
     slug: 'youtube-shorts-money-calculator',
     title: 'YouTube Shorts Money Calculator',
     cardTitle: 'YouTube Shorts Money Calculator',
+    navLabel: 'Shorts Money Calculator',
     href: '/youtube-shorts-money-calculator',
     platform: Platform.YouTube,
     description:
@@ -82,6 +86,7 @@ const CALCULATORS: CalculatorEntry[] = [
     slug: 'youtube-subscriber-projector',
     title: 'YouTube Subscriber Growth Projector',
     cardTitle: 'YouTube Subscriber Projector',
+    navLabel: 'Growth Projector',
     href: '/youtube-subscriber-projector',
     platform: Platform.YouTube,
     description: "Project your YouTube subscriber growth and see when you'll hit milestones.",
@@ -94,6 +99,7 @@ const CALCULATORS: CalculatorEntry[] = [
     slug: 'youtube-sponsorship-rate-calculator',
     title: 'YouTube Sponsorship Rate Calculator',
     cardTitle: 'YouTube Sponsorship Rate',
+    navLabel: 'Sponsorship Rate',
     href: '/youtube-sponsorship-rate-calculator',
     platform: Platform.YouTube,
     description:
@@ -107,6 +113,7 @@ const CALCULATORS: CalculatorEntry[] = [
     slug: 'instagram-engagement-rate-calculator',
     title: 'Instagram Engagement Rate Calculator',
     cardTitle: 'Instagram Engagement Rate',
+    navLabel: 'Engagement Rate',
     href: '/instagram-engagement-rate-calculator',
     platform: Platform.Instagram,
     description: 'Calculate your Instagram engagement rate and see how you compare.',
@@ -119,6 +126,7 @@ const CALCULATORS: CalculatorEntry[] = [
     slug: 'instagram-sponsorship-rate-calculator',
     title: 'Instagram Sponsorship Rate Calculator',
     cardTitle: 'Instagram Sponsorship Rate',
+    navLabel: 'Sponsorship Rate',
     href: '/instagram-sponsorship-rate-calculator',
     platform: Platform.Instagram,
     description:
@@ -132,6 +140,7 @@ const CALCULATORS: CalculatorEntry[] = [
     slug: 'tiktok-engagement-rate-calculator',
     title: 'TikTok Engagement Rate Calculator',
     cardTitle: 'TikTok Engagement Rate',
+    navLabel: 'Engagement Rate',
     href: '/tiktok-engagement-rate-calculator',
     platform: Platform.TikTok,
     description: 'Measure your TikTok engagement rate with views, likes, and shares.',
@@ -144,6 +153,7 @@ const CALCULATORS: CalculatorEntry[] = [
     slug: 'tiktok-sponsorship-rate-calculator',
     title: 'TikTok Sponsorship Rate Calculator',
     cardTitle: 'TikTok Sponsorship Rate',
+    navLabel: 'Sponsorship Rate',
     href: '/tiktok-sponsorship-rate-calculator',
     platform: Platform.TikTok,
     description: 'Find out how much to charge for sponsored TikTok videos, Stories, and Lives.',
@@ -156,6 +166,7 @@ const CALCULATORS: CalculatorEntry[] = [
     slug: 'facebook-engagement-rate-calculator',
     title: 'Facebook Engagement Rate Calculator',
     cardTitle: 'Facebook Engagement Rate',
+    navLabel: 'Engagement Rate',
     href: '/facebook-engagement-rate-calculator',
     platform: Platform.Facebook,
     description:
@@ -169,6 +180,7 @@ const CALCULATORS: CalculatorEntry[] = [
     slug: 'facebook-sponsorship-rate-calculator',
     title: 'Facebook Sponsorship Rate Calculator',
     cardTitle: 'Facebook Sponsorship Rate',
+    navLabel: 'Sponsorship Rate',
     href: '/facebook-sponsorship-rate-calculator',
     platform: Platform.Facebook,
     description:
@@ -182,6 +194,7 @@ const CALCULATORS: CalculatorEntry[] = [
     slug: 'twitter-engagement-rate-calculator',
     title: 'X (Twitter) Engagement Rate Calculator',
     cardTitle: 'X (Twitter) Engagement Rate',
+    navLabel: 'Engagement Rate',
     href: '/twitter-engagement-rate-calculator',
     platform: Platform.X,
     description:
@@ -195,6 +208,7 @@ const CALCULATORS: CalculatorEntry[] = [
     slug: 'twitter-sponsorship-rate-calculator',
     title: 'X (Twitter) Sponsorship Rate Calculator',
     cardTitle: 'X (Twitter) Sponsorship Rate',
+    navLabel: 'Sponsorship Rate',
     href: '/twitter-sponsorship-rate-calculator',
     platform: Platform.X,
     description: 'Calculate how much to charge for sponsored tweets, threads, and X Spaces.',
@@ -207,6 +221,7 @@ const CALCULATORS: CalculatorEntry[] = [
     slug: 'engagement-rate-calculator',
     title: 'Engagement Rate Calculator',
     cardTitle: 'Engagement Rate Calculator',
+    navLabel: 'Engagement Calculator',
     href: '/engagement-rate-calculator',
     platform: Platform.Multi,
     description:
@@ -220,6 +235,7 @@ const CALCULATORS: CalculatorEntry[] = [
     slug: 'engagement-rate-benchmarks',
     title: 'Engagement Rate Benchmarks',
     cardTitle: 'Engagement Rate Benchmarks',
+    navLabel: 'Engagement Benchmarks',
     href: '/engagement-rate-benchmarks',
     platform: Platform.Multi,
     description:
@@ -233,6 +249,7 @@ const CALCULATORS: CalculatorEntry[] = [
     slug: 'sponsorship-rate-calculator',
     title: 'Sponsorship Rate Calculator',
     cardTitle: 'Sponsorship Rate Calculator',
+    navLabel: 'Sponsorship Calculator',
     href: '/sponsorship-rate-calculator',
     platform: Platform.Multi,
     description:
