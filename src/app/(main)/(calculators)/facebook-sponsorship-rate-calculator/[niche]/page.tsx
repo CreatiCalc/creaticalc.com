@@ -13,9 +13,21 @@ const CONFIG: SponsorshipNicheConfig = {
   hubPath: '/facebook',
   urlPrefix: 'facebook-sponsorship-rate-calculator',
   relatedLinks: [
-    { href: '/facebook-sponsorship-rate-calculator', label: 'Facebook Sponsorship Rate Calculator', description: 'calculate rates across all niches' },
-    { href: '/facebook-engagement-rate-calculator', label: 'Facebook Engagement Rate Calculator', description: 'measure your engagement rate' },
-    { href: '/instagram-sponsorship-rate-calculator', label: 'Instagram Sponsorship Rate Calculator', description: 'compare sponsorship rates across platforms' },
+    {
+      href: '/facebook-sponsorship-rate-calculator',
+      label: 'Facebook Sponsorship Rate Calculator',
+      description: 'calculate rates across all niches',
+    },
+    {
+      href: '/facebook-engagement-rate-calculator',
+      label: 'Facebook Engagement Rate Calculator',
+      description: 'measure your engagement rate',
+    },
+    {
+      href: '/instagram-sponsorship-rate-calculator',
+      label: 'Instagram Sponsorship Rate Calculator',
+      description: 'compare sponsorship rates across platforms',
+    },
   ],
 };
 

@@ -1,4 +1,7 @@
-import { OG_SIZE, buildNicheOgImage } from '@/features/calculators/sponsorship-shared/sponsorshipNicheOgImage';
+import {
+  OG_SIZE,
+  buildNicheOgImage,
+} from '@/features/calculators/sponsorship-shared/sponsorshipNicheOgImage';
 
 export const alt = 'TikTok Sponsorship Rate Calculator by Niche';
 export const size = OG_SIZE;

@@ -13,9 +13,21 @@ const CONFIG: SponsorshipNicheConfig = {
   hubPath: '/tiktok',
   urlPrefix: 'tiktok-sponsorship-rate-calculator',
   relatedLinks: [
-    { href: '/tiktok-sponsorship-rate-calculator', label: 'TikTok Sponsorship Rate Calculator', description: 'calculate rates across all niches' },
-    { href: '/tiktok-engagement-rate-calculator', label: 'TikTok Engagement Rate Calculator', description: 'measure your engagement rate' },
-    { href: '/instagram-sponsorship-rate-calculator', label: 'Instagram Sponsorship Rate Calculator', description: 'compare sponsorship rates across platforms' },
+    {
+      href: '/tiktok-sponsorship-rate-calculator',
+      label: 'TikTok Sponsorship Rate Calculator',
+      description: 'calculate rates across all niches',
+    },
+    {
+      href: '/tiktok-engagement-rate-calculator',
+      label: 'TikTok Engagement Rate Calculator',
+      description: 'measure your engagement rate',
+    },
+    {
+      href: '/instagram-sponsorship-rate-calculator',
+      label: 'Instagram Sponsorship Rate Calculator',
+      description: 'compare sponsorship rates across platforms',
+    },
   ],
 };
 
