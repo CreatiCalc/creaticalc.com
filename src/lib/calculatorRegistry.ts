@@ -10,9 +10,30 @@ export const PLATFORM_GRADIENTS: Record<PlatformId, string> = {
   [Platform.Multi]: 'from-teal-400 via-emerald-500 to-cyan-500',
 };
 
+/** All calculator slugs — typos in relatedSlugs become compile errors. */
+export const CALCULATOR_SLUGS = [
+  'youtube-money-calculator',
+  'youtube-shorts-money-calculator',
+  'youtube-subscriber-projector',
+  'youtube-sponsorship-rate-calculator',
+  'instagram-engagement-rate-calculator',
+  'instagram-sponsorship-rate-calculator',
+  'tiktok-engagement-rate-calculator',
+  'tiktok-sponsorship-rate-calculator',
+  'facebook-engagement-rate-calculator',
+  'facebook-sponsorship-rate-calculator',
+  'twitter-engagement-rate-calculator',
+  'twitter-sponsorship-rate-calculator',
+  'engagement-rate-calculator',
+  'engagement-rate-benchmarks',
+  'sponsorship-rate-calculator',
+] as const;
+
+export type CalculatorSlug = (typeof CALCULATOR_SLUGS)[number];
+
 export interface CalculatorEntry {
-  /** URL slug, e.g. 'youtube-money-calculator' */
-  slug: string;
+  /** URL slug — must be one of the known CALCULATOR_SLUGS values. */
+  slug: CalculatorSlug;
   /** Full formal title (used in about page, registry lookups, sidebar) */
   title: string;
   /** Shorter display title for homepage cards */
@@ -28,7 +49,7 @@ export interface CalculatorEntry {
   /** Whether this calculator supports embed mode */
   embeddable: boolean;
   /** Slugs of the most relevant related calculators (for "Next Step" CTAs) */
-  relatedSlugs?: string[];
+  relatedSlugs?: CalculatorSlug[];
 }
 
 const CALCULATORS: CalculatorEntry[] = [
@@ -234,16 +255,16 @@ export function getCalculatorsByPlatform(platform: PlatformId): CalculatorEntry[
 }
 
 /** Only calculators that support the embed widget. */
-export function getAllEmbeddableSlugs(): string[] {
+export function getAllEmbeddableSlugs(): CalculatorSlug[] {
   return CALCULATORS.filter((c) => c.embeddable).map((c) => c.slug);
 }
 
-/** Lookup a single calculator by its URL slug. */
+/** Lookup a single calculator by its URL slug. Accepts `string` for use at URL boundaries. */
 export function getCalculatorBySlug(slug: string): CalculatorEntry | undefined {
   return CALCULATORS.find((c) => c.slug === slug);
 }
 
-/** Get the related calculators for a given slug (for "Next Step" CTAs). */
+/** Get the related calculators for a given slug. Accepts `string` for use at URL boundaries. */
 export function getRelatedCalculators(slug: string): CalculatorEntry[] {
   const entry = getCalculatorBySlug(slug);
   if (!entry?.relatedSlugs) return [];

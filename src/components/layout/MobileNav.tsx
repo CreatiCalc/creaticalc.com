@@ -5,9 +5,9 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Drawer } from 'vaul';
 import { NAV_GROUPS, MORE_LINKS } from './navConfig';
-import { Platform } from '@/lib/platforms';
+import { Platform, type PlatformId } from '@/lib/platforms';
 
-const PLATFORM_DOTS: Record<string, string> = {
+const PLATFORM_DOTS: Partial<Record<PlatformId, string>> = {
   [Platform.YouTube]: 'bg-red-500',
   [Platform.Instagram]: 'bg-pink-500',
   [Platform.TikTok]: 'bg-cyan-500',
@@ -72,7 +72,7 @@ export default function MobileNav() {
                     className="flex w-full items-center gap-2.5 px-2 py-3 text-sm font-semibold text-foreground"
                   >
                     <span
-                      className={`inline-block h-2 w-2 shrink-0 rounded-full ${PLATFORM_DOTS[group.label] ?? 'bg-muted'}`}
+                      className={`inline-block h-2 w-2 shrink-0 rounded-full ${PLATFORM_DOTS[group.label as PlatformId] ?? 'bg-muted'}`}
                     />
                     {group.label}
                     <svg

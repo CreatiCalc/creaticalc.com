@@ -1,5 +1,5 @@
 import type { FAQItem } from '@/features/calculators/shared/types';
-import { Platform, type PlatformId } from '@/lib/platforms';
+import { Platform, type PlatformId, type PlatformHubSlug } from '@/lib/platforms';
 
 export type { PlatformId };
 
@@ -7,7 +7,7 @@ export interface PlatformHubData {
   /** Internal platform ID — must match calculatorRegistry.platform */
   platform: PlatformId;
   /** URL slug for the hub page */
-  slug: string;
+  slug: PlatformHubSlug;
   /** Display name (may differ from platform, e.g. "X (Twitter)") */
   displayName: string;
   /** Short name for breadcrumbs */
@@ -522,6 +522,6 @@ export function getPlatformHubByPlatform(platform: PlatformId): PlatformHubData 
 }
 
 /** Get all platform hub slugs (for sitemap, static generation, etc.). */
-export function getAllPlatformHubSlugs(): string[] {
+export function getAllPlatformHubSlugs(): PlatformHubSlug[] {
   return PLATFORM_HUBS.map((h) => h.slug);
 }
