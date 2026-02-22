@@ -1,12 +1,13 @@
 import type { FAQItem } from '@/features/calculators/shared/types';
+import { Platform, type PlatformId, type PlatformHubSlug } from '@/lib/platforms';
 
-export type PlatformId = 'YouTube' | 'Instagram' | 'TikTok' | 'Facebook' | 'X';
+export type { PlatformId };
 
 export interface PlatformHubData {
   /** Internal platform ID — must match calculatorRegistry.platform */
   platform: PlatformId;
   /** URL slug for the hub page */
-  slug: string;
+  slug: PlatformHubSlug;
   /** Display name (may differ from platform, e.g. "X (Twitter)") */
   displayName: string;
   /** Short name for breadcrumbs */
@@ -57,7 +58,7 @@ interface EducationalSection {
 // ─── YouTube ────────────────────────────────────────────────────────────────────
 
 const youtubeHub: PlatformHubData = {
-  platform: 'YouTube',
+  platform: Platform.YouTube,
   slug: 'youtube',
   displayName: 'YouTube',
   breadcrumbName: 'YouTube',
@@ -151,7 +152,7 @@ const youtubeHub: PlatformHubData = {
 // ─── Instagram ──────────────────────────────────────────────────────────────────
 
 const instagramHub: PlatformHubData = {
-  platform: 'Instagram',
+  platform: Platform.Instagram,
   slug: 'instagram',
   displayName: 'Instagram',
   breadcrumbName: 'Instagram',
@@ -239,7 +240,7 @@ const instagramHub: PlatformHubData = {
 // ─── TikTok ─────────────────────────────────────────────────────────────────────
 
 const tiktokHub: PlatformHubData = {
-  platform: 'TikTok',
+  platform: Platform.TikTok,
   slug: 'tiktok',
   displayName: 'TikTok',
   breadcrumbName: 'TikTok',
@@ -327,7 +328,7 @@ const tiktokHub: PlatformHubData = {
 // ─── Facebook ───────────────────────────────────────────────────────────────────
 
 const facebookHub: PlatformHubData = {
-  platform: 'Facebook',
+  platform: Platform.Facebook,
   slug: 'facebook',
   displayName: 'Facebook',
   breadcrumbName: 'Facebook',
@@ -415,7 +416,7 @@ const facebookHub: PlatformHubData = {
 // ─── X (Twitter) ────────────────────────────────────────────────────────────────
 
 const xHub: PlatformHubData = {
-  platform: 'X',
+  platform: Platform.X,
   slug: 'x',
   displayName: 'X (Twitter)',
   breadcrumbName: 'X (Twitter)',
@@ -521,6 +522,6 @@ export function getPlatformHubByPlatform(platform: PlatformId): PlatformHubData 
 }
 
 /** Get all platform hub slugs (for sitemap, static generation, etc.). */
-export function getAllPlatformHubSlugs(): string[] {
+export function getAllPlatformHubSlugs(): PlatformHubSlug[] {
   return PLATFORM_HUBS.map((h) => h.slug);
 }

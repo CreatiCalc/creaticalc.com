@@ -1,9 +1,11 @@
 import { formatFollowerCount } from './formatters';
 import type { EngagementIndustryId } from './niches';
+import { type EngagementPlatformSlug, PLATFORM_SLUG_TO_DISPLAY } from '@/lib/platforms';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
-export type Platform = 'instagram' | 'tiktok' | 'facebook' | 'twitter';
+/** Engagement-model platform slug — derived from the central PlatformSlug type. */
+export type Platform = EngagementPlatformSlug;
 
 export type FollowerTier = 'nano' | 'micro' | 'mid' | 'macro' | 'mega' | 'super';
 
@@ -21,10 +23,10 @@ export type FacebookCalcMethod = 'byFollowers' | 'byReach';
 export type TwitterCalcMethod = 'byFollowers' | 'byImpressions';
 
 export const PLATFORM_NAMES: Record<Platform, string> = {
-  instagram: 'Instagram',
-  tiktok: 'TikTok',
-  facebook: 'Facebook',
-  twitter: 'X (Twitter)',
+  instagram: PLATFORM_SLUG_TO_DISPLAY.instagram,
+  tiktok: PLATFORM_SLUG_TO_DISPLAY.tiktok,
+  facebook: PLATFORM_SLUG_TO_DISPLAY.facebook,
+  twitter: PLATFORM_SLUG_TO_DISPLAY.twitter,
 };
 
 export interface EngagementInput {
