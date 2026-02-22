@@ -31,20 +31,20 @@ export interface ShareableState {
   ct?: string; // contentType
   r?: number; // reach
   im?: number; // impressions
-  icm?: string; // instagramCalcMethod
+  icm?: InstagramCalcMethod; // instagramCalcMethod
   // TikTok-specific
   sh?: number; // shares
   v?: number; // views
-  cm?: string; // calcMethod (TikTok)
+  cm?: TikTokCalcMethod; // calcMethod (TikTok)
   // Facebook-specific
   fsh?: number; // facebook shares
   fr?: number; // facebook reach
-  fcm?: string; // facebookCalcMethod
+  fcm?: FacebookCalcMethod; // facebookCalcMethod
   // Twitter-specific
   rp?: number; // reposts
   bm?: number; // bookmarks
   tim?: number; // twitter impressions
-  tcm?: string; // twitterCalcMethod
+  tcm?: TwitterCalcMethod; // twitterCalcMethod
 }
 
 // ─── Compact pipe-delimited encoding ──────────────────────────────────────────
@@ -60,20 +60,26 @@ export interface ShareableState {
 //   Facebook:  0=byFollowers (default), 1=byReach
 //   Twitter:   0=byFollowers (default), 1=byImpressions
 
-const IG_CALC_METHOD_TO_CODE: Record<string, number> = {
+const IG_CALC_METHOD_TO_CODE: Record<InstagramCalcMethod, number> = {
   byFollowers: 0,
   byReach: 1,
   byImpressions: 2,
 };
 const IG_CODE_TO_CALC_METHOD: InstagramCalcMethod[] = ['byFollowers', 'byReach', 'byImpressions'];
 
-const TT_CALC_METHOD_TO_CODE: Record<string, number> = { byFollowers: 0, byViews: 1 };
+const TT_CALC_METHOD_TO_CODE: Record<TikTokCalcMethod, number> = { byFollowers: 0, byViews: 1 };
 const TT_CODE_TO_CALC_METHOD: TikTokCalcMethod[] = ['byFollowers', 'byViews'];
 
-const FB_CALC_METHOD_TO_CODE: Record<string, number> = { byFollowers: 0, byReach: 1 };
+const FB_CALC_METHOD_TO_CODE: Record<FacebookCalcMethod, number> = {
+  byFollowers: 0,
+  byReach: 1,
+};
 const FB_CODE_TO_CALC_METHOD: FacebookCalcMethod[] = ['byFollowers', 'byReach'];
 
-const TW_CALC_METHOD_TO_CODE: Record<string, number> = { byFollowers: 0, byImpressions: 1 };
+const TW_CALC_METHOD_TO_CODE: Record<TwitterCalcMethod, number> = {
+  byFollowers: 0,
+  byImpressions: 1,
+};
 const TW_CODE_TO_CALC_METHOD: TwitterCalcMethod[] = ['byFollowers', 'byImpressions'];
 
 export function encodeState(state: ShareableState): string {
