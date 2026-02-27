@@ -1,4 +1,5 @@
 import type { MetadataRoute } from 'next';
+import { getAllPosts } from '@/lib/blog';
 import { getAllCalculators } from '@/lib/calculatorRegistry';
 import { NICHE_PAGES } from '@/lib/nichePageData';
 import { PLATFORM_HUBS } from '@/lib/platformHubData';
@@ -46,6 +47,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
+  // ─── Blog pages ────────────────────────────────────────────────────────────
+
+  const blogPosts: MetadataRoute.Sitemap = getAllPosts().map((p) => ({
+    url: `${baseUrl}/blog/${p.frontmatter.slug}`,
+    lastModified: p.frontmatter.lastModified,
+    changeFrequency: 'monthly',
+    priority: 0.7,
+  }));
+
   // ─── Static pages ───────────────────────────────────────────────────────────
 
   return [
@@ -87,6 +97,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'yearly',
       priority: 0.1,
     },
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: '2026-02-27',
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    ...blogPosts,
     ...nichePages,
     ...sponsorshipNichePages,
     ...engagementNichePages,
