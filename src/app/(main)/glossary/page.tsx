@@ -233,11 +233,7 @@ const allTerms = glossaryCategories.flatMap((cat) => cat.terms);
 
 /** Derive a URL-friendly slug from a glossary term name. */
 function termSlug(name: string): string {
-  return name
-    .split(/[(/]/)[0]
-    .trim()
-    .toLowerCase()
-    .replace(/\s+/g, '-');
+  return name.split(/[(/]/)[0].trim().toLowerCase().replace(/\s+/g, '-');
 }
 
 const faqItems = [

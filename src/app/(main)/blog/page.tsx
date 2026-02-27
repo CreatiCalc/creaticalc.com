@@ -88,11 +88,7 @@ export default function BlogPage() {
           <>
             <div className="grid gap-5 sm:grid-cols-2">
               {featuredPosts.map((post) => (
-                <BlogCard
-                  key={post.frontmatter.slug}
-                  post={post.frontmatter}
-                  featured
-                />
+                <BlogCard key={post.frontmatter.slug} post={post.frontmatter} featured />
               ))}
             </div>
             <hr className="my-8 border-border" />

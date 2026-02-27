@@ -87,7 +87,12 @@ export default function CollapsibleSection({
   }, []);
 
   return (
-    <details ref={detailsRef} id={id} className={`group ${styles.details} ${className}`} open={defaultOpen}>
+    <details
+      ref={detailsRef}
+      id={id}
+      className={`group ${styles.details} ${className}`}
+      open={defaultOpen}
+    >
       <summary
         onClick={handleClick}
         className={`cursor-pointer list-none ${styles.summary} transition-colors hover:text-primary [&::-webkit-details-marker]:hidden`}
