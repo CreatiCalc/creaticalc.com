@@ -231,6 +231,15 @@ const glossaryCategories: GlossaryCategory[] = [
 
 const allTerms = glossaryCategories.flatMap((cat) => cat.terms);
 
+/** Derive a URL-friendly slug from a glossary term name. */
+function termSlug(name: string): string {
+  return name
+    .split(/[(/]/)[0]
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, '-');
+}
+
 const faqItems = [
   {
     question: 'What is the difference between CPM and RPM?',
@@ -336,7 +345,12 @@ export default function GlossaryPage() {
             </div>
             <div className="space-y-3">
               {category.terms.map((term) => (
-                <CollapsibleSection key={term.name} title={term.name} variant="compact">
+                <CollapsibleSection
+                  key={term.name}
+                  id={termSlug(term.name)}
+                  title={term.name}
+                  variant="compact"
+                >
                   <div className="space-y-3">
                     <p className="font-medium text-foreground">{term.shortDefinition}</p>
                     <p className="leading-relaxed text-muted">{term.explanation}</p>

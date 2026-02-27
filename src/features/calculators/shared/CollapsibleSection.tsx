@@ -7,6 +7,8 @@ interface CollapsibleSectionProps {
   defaultOpen?: boolean;
   children: React.ReactNode;
   className?: string;
+  /** HTML id attribute — useful for anchor links */
+  id?: string;
   /** "default" uses rounded-xl shadow-sm semibold; "compact" uses rounded-lg no shadow medium */
   variant?: 'default' | 'compact';
   /** Short text shown next to the title when collapsed (hidden when open) */
@@ -33,6 +35,7 @@ export default function CollapsibleSection({
   defaultOpen = false,
   children,
   className = '',
+  id,
   variant = 'default',
   preview,
 }: CollapsibleSectionProps) {
@@ -84,7 +87,7 @@ export default function CollapsibleSection({
   }, []);
 
   return (
-    <details ref={detailsRef} className={`group ${styles.details} ${className}`} open={defaultOpen}>
+    <details ref={detailsRef} id={id} className={`group ${styles.details} ${className}`} open={defaultOpen}>
       <summary
         onClick={handleClick}
         className={`cursor-pointer list-none ${styles.summary} transition-colors hover:text-primary [&::-webkit-details-marker]:hidden`}
