@@ -11,7 +11,7 @@ interface BlogPostLayoutProps {
 }
 
 export default function BlogPostLayout({ frontmatter, children }: BlogPostLayoutProps) {
-  const formattedDate = new Date(frontmatter.date).toLocaleDateString('en-US', {
+  const formattedDate = new Date(`${frontmatter.date}T00:00:00`).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
