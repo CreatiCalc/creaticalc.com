@@ -32,6 +32,7 @@ const multiPlatformCalcs = getAllCalculators()
 
 export const MORE_LINKS: NavItem[] = [
   ...multiPlatformCalcs,
+  { name: 'Blog', href: '/blog' },
   { name: 'Glossary', href: '/glossary' },
   { name: 'About', href: '/about' },
 ];
@@ -85,6 +86,7 @@ export const FOOTER_GROUPS: NavGroup[] = [
   {
     label: 'Company',
     items: [
+      { name: 'Blog', href: '/blog' },
       { name: 'About', href: '/about' },
       { name: 'Methodology', href: '/methodology' },
       { name: 'Glossary', href: '/glossary' },
