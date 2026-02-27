@@ -51,8 +51,6 @@ function CollectionPageSchema(posts: { title: string; slug: string }[]) {
 
 export default function BlogPage() {
   const posts = getAllPosts();
-  const featured = posts.filter((p) => p.frontmatter.featured);
-  const rest = posts.filter((p) => !p.frontmatter.featured);
 
   return (
     <>
@@ -83,13 +81,14 @@ export default function BlogPage() {
           </p>
         </header>
 
-        {/* Post grid */}
+        {/* Post grid — newest first, featured posts span 2 columns */}
         <div className="grid gap-5 sm:grid-cols-2">
-          {featured.map((post) => (
-            <BlogCard key={post.frontmatter.slug} post={post.frontmatter} featured />
-          ))}
-          {rest.map((post) => (
-            <BlogCard key={post.frontmatter.slug} post={post.frontmatter} />
+          {posts.map((post) => (
+            <BlogCard
+              key={post.frontmatter.slug}
+              post={post.frontmatter}
+              featured={post.frontmatter.featured}
+            />
           ))}
         </div>
       </div>
