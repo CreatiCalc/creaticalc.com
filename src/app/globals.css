@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@plugin '@tailwindcss/typography';
 
 @theme {
   --color-background: #ffffff;
@@ -244,4 +245,37 @@ textarea:focus {
   background: var(--color-background);
   color: var(--color-foreground);
   color-scheme: dark;
+}
+
+/* Blog prose overrides */
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4 {
+  font-family: var(--font-display), sans-serif;
+}
+
+.prose a {
+  color: var(--color-primary);
+  text-decoration-color: color-mix(in srgb, var(--color-primary) 30%, transparent);
+}
+
+.prose a:hover {
+  text-decoration-color: var(--color-primary);
+}
+
+.prose blockquote {
+  border-left-color: color-mix(in srgb, var(--color-primary) 30%, transparent);
+}
+
+.prose code:not(pre code) {
+  background: var(--color-surface-alt);
+  padding: 0.15em 0.35em;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+}
+
+.prose code:not(pre code)::before,
+.prose code:not(pre code)::after {
+  content: '';
 }
