@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { getAllPosts } from '@/lib/blog';
+import { getAllPosts, getAllTags } from '@/lib/blog';
 import { getAllCalculators } from '@/lib/calculatorRegistry';
 import { NICHE_PAGES } from '@/lib/nichePageData';
 import { PLATFORM_HUBS } from '@/lib/platformHubData';
@@ -49,11 +49,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // ─── Blog pages ────────────────────────────────────────────────────────────
 
-  const blogPosts: MetadataRoute.Sitemap = getAllPosts().map((p) => ({
+  const allBlogPosts = getAllPosts();
+
+  const blogPosts: MetadataRoute.Sitemap = allBlogPosts.map((p) => ({
     url: `${baseUrl}/blog/${p.frontmatter.slug}`,
     lastModified: p.frontmatter.lastModified,
     changeFrequency: 'monthly',
     priority: 0.7,
+  }));
+
+  const latestBlogDate = allBlogPosts[0]?.frontmatter.lastModified ?? '2026-02-27';
+
+  const blogTagPages: MetadataRoute.Sitemap = getAllTags().map((tag) => ({
+    url: `${baseUrl}/blog/tag/${tag}`,
+    lastModified: latestBlogDate,
+    changeFrequency: 'weekly',
+    priority: 0.5,
   }));
 
   // ─── Static pages ───────────────────────────────────────────────────────────
@@ -99,11 +110,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/blog`,
-      lastModified: '2026-02-27',
+      lastModified: latestBlogDate,
       changeFrequency: 'weekly',
       priority: 0.8,
     },
     ...blogPosts,
+    ...blogTagPages,
     ...nichePages,
     ...sponsorshipNichePages,
     ...engagementNichePages,

@@ -35,7 +35,7 @@ export default function BlogCard({ post, featured }: BlogCardProps) {
       <p className="mb-4 flex-1 text-sm leading-relaxed text-muted">{post.description}</p>
       <div className="flex flex-wrap gap-1.5">
         {post.tags.map((tag) => (
-          <TagBadge key={tag} tag={tag} />
+          <TagBadge key={tag} tag={tag} linked={false} />
         ))}
       </div>
     </Link>

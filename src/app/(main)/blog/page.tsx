@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
 import { getAllPosts } from '@/lib/blog';
 import { SITE_NAME, SITE_URL } from '@/lib/siteConfig';
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
+import Breadcrumbs from '@/components/seo/Breadcrumbs';
 import BlogCard from '@/features/blog/BlogCard';
-import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Blog — Creator Economy Insights & Guides',
@@ -15,6 +16,14 @@ export const metadata: Metadata = {
       'Data-driven guides on YouTube earnings, Instagram sponsorship rates, TikTok monetization, and engagement benchmarks for content creators.',
     url: `${SITE_URL}/blog`,
     type: 'website',
+    images: [
+      {
+        url: `${SITE_URL}/blog/opengraph-image`,
+        width: 1200,
+        height: 630,
+        alt: 'CreatiCalc Blog — Creator Economy Insights & Guides',
+      },
+    ],
   },
 };
 
@@ -56,21 +65,21 @@ export default function BlogPage() {
 
   return (
     <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', path: '/' },
+          { name: 'Blog', path: '/blog' },
+        ]}
+      />
       {CollectionPageSchema(posts.map((p) => p.frontmatter))}
 
       <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6">
-        {/* Breadcrumbs */}
-        <nav aria-label="Breadcrumb" className="mb-6 text-sm text-muted">
-          <ol className="flex items-center gap-1.5">
-            <li>
-              <Link href="/" className="hover:text-primary">
-                Home
-              </Link>
-            </li>
-            <li aria-hidden="true">/</li>
-            <li className="text-foreground">Blog</li>
-          </ol>
-        </nav>
+        <Breadcrumbs
+          items={[
+            { name: 'Home', path: '/' },
+            { name: 'Blog', path: '/blog' },
+          ]}
+        />
 
         {/* Hero */}
         <header className="mb-10">

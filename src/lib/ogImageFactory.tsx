@@ -13,6 +13,129 @@ interface OgImageConfig {
   stats: [OgStat, OgStat, OgStat];
 }
 
+interface BlogOgImageConfig {
+  title: string;
+  description: string;
+  readingTime: number;
+  tags: string[];
+}
+
+export function createBlogOgImageResponse({
+  title,
+  description,
+  readingTime,
+  tags,
+}: BlogOgImageConfig): ImageResponse {
+  return new ImageResponse(
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        width: '100%',
+        height: '100%',
+        background: 'linear-gradient(135deg, #0d9488 0%, #0891b2 50%, #22d3ee 100%)',
+        fontFamily: 'sans-serif',
+        padding: '60px',
+      }}
+    >
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: 12,
+          marginBottom: 40,
+        }}
+      >
+        <div
+          style={{
+            fontSize: 24,
+            fontWeight: 700,
+            color: '#ffffff',
+            opacity: 0.9,
+          }}
+        >
+          CreatiCalc Blog
+        </div>
+      </div>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          flex: 1,
+          justifyContent: 'center',
+        }}
+      >
+        <div
+          style={{
+            fontSize: 48,
+            fontWeight: 700,
+            color: '#ffffff',
+            lineHeight: 1.2,
+            marginBottom: 20,
+          }}
+        >
+          {title}
+        </div>
+        <div
+          style={{
+            fontSize: 22,
+            color: '#ffffff',
+            opacity: 0.85,
+            lineHeight: 1.4,
+            maxWidth: 900,
+          }}
+        >
+          {description}
+        </div>
+      </div>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: 20,
+        }}
+      >
+        {readingTime > 0 && (
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 6,
+              fontSize: 18,
+              color: '#ffffff',
+              opacity: 0.8,
+            }}
+          >
+            {readingTime} min read
+          </div>
+        )}
+        <div
+          style={{
+            display: 'flex',
+            gap: 8,
+          }}
+        >
+          {tags.slice(0, 3).map((tag) => (
+            <div
+              key={tag}
+              style={{
+                fontSize: 14,
+                color: '#ffffff',
+                backgroundColor: 'rgba(255,255,255,0.2)',
+                padding: '4px 12px',
+                borderRadius: 20,
+              }}
+            >
+              {tag}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>,
+    { ...OG_SIZE }
+  );
+}
+
 export function createOgImageResponse({ title, subtitle, stats }: OgImageConfig): ImageResponse {
   return new ImageResponse(
     <div
