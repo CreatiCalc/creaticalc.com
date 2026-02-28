@@ -14,13 +14,13 @@ import { NICHE_PAGES } from '@/lib/nichePageData';
 import { YOUTUBE_NICHE_DATA, YOUTUBE_NICHE_IDS } from '@/lib/niches';
 
 export const metadata: Metadata = {
-  title: 'YouTube Money & Earnings Calculator 2026',
+  title: 'YouTube Money Calculator — See What You\u2019d Earn (2026)',
   description:
-    'Free YouTube money calculator. Estimate ad revenue and RPM by views, CPM, and niche. Calculate daily, monthly, and yearly YouTube channel earnings.',
+    'How much does YouTube pay per 1,000 views? Enter your views and niche to get real earnings estimates based on 2026 CPM rates ($2\u2013$45 depending on niche).',
   openGraph: {
-    title: 'YouTube Money & Earnings Calculator 2026',
+    title: 'YouTube Money Calculator — See What You\u2019d Earn (2026)',
     description:
-      'Estimate YouTube ad revenue and RPM by views, CPM, and niche. Free calculator for daily, monthly, and yearly channel earnings.',
+      'Enter your views and niche to get real YouTube earnings estimates based on 2026 CPM rates ($2\u2013$45 depending on niche).',
     url: '/youtube-money-calculator',
   },
   alternates: {

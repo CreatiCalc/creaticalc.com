@@ -22,7 +22,7 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: 'CreatiCalc — Free Calculators for Content Creators',
+    default: 'CreatiCalc — Free YouTube, Instagram & TikTok Calculators',
     template: '%s | CreatiCalc',
   },
   description: SITE_DESCRIPTION,
