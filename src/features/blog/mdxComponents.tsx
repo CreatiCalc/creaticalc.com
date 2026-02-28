@@ -25,7 +25,7 @@ function CalculatorLink({ href, children }: { href: string; children: React.Reac
   return (
     <Link
       href={href}
-      className="my-4 inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-white no-underline shadow-sm transition-colors hover:bg-primary-dark"
+      className="not-prose my-4 inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-white no-underline shadow-sm transition-colors hover:bg-primary-dark"
     >
       {children}
       <span aria-hidden="true">&rarr;</span>

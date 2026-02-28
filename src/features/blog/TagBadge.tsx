@@ -1,11 +1,21 @@
+import Link from 'next/link';
+
 interface TagBadgeProps {
   tag: string;
+  linked?: boolean;
 }
 
-export default function TagBadge({ tag }: TagBadgeProps) {
+export default function TagBadge({ tag, linked = true }: TagBadgeProps) {
+  const className =
+    'inline-block rounded-full bg-surface-alt px-2.5 py-0.5 text-xs font-medium text-muted transition-colors hover:bg-primary/10 hover:text-primary';
+
+  if (!linked) {
+    return <span className={className}>{tag}</span>;
+  }
+
   return (
-    <span className="inline-block rounded-full bg-surface-alt px-2.5 py-0.5 text-xs font-medium text-muted">
+    <Link href={`/blog/tag/${tag}`} className={className}>
       {tag}
-    </span>
+    </Link>
   );
 }

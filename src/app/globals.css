@@ -255,12 +255,12 @@ textarea:focus {
   font-family: var(--font-display), sans-serif;
 }
 
-.prose a {
+.prose a:not(.not-prose) {
   color: var(--color-primary);
   text-decoration-color: color-mix(in srgb, var(--color-primary) 30%, transparent);
 }
 
-.prose a:hover {
+.prose a:not(.not-prose):hover {
   text-decoration-color: var(--color-primary);
 }
 
