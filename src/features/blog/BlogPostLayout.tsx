@@ -1,6 +1,7 @@
-import Link from 'next/link';
 import type { BlogPostFrontmatter } from '@/lib/blog';
 import AdSlot from '@/components/layout/AdSlot';
+import Breadcrumbs from '@/components/seo/Breadcrumbs';
+import BlogShareButtons from './BlogShareButtons';
 import TagBadge from './TagBadge';
 import RelatedCalculators from './RelatedCalculators';
 import RelatedPosts from './RelatedPosts';
@@ -16,32 +17,37 @@ export default function BlogPostLayout({ frontmatter, children }: BlogPostLayout
     month: 'long',
     day: 'numeric',
   });
+  const wasUpdated = frontmatter.lastModified !== frontmatter.date;
+  const formattedUpdated = wasUpdated
+    ? new Date(`${frontmatter.lastModified}T00:00:00`).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      })
+    : null;
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6">
-      {/* Breadcrumbs */}
-      <nav aria-label="Breadcrumb" className="mb-6 text-sm text-muted">
-        <ol className="flex items-center gap-1.5">
-          <li>
-            <Link href="/" className="hover:text-primary">
-              Home
-            </Link>
-          </li>
-          <li aria-hidden="true">/</li>
-          <li>
-            <Link href="/blog" className="hover:text-primary">
-              Blog
-            </Link>
-          </li>
-          <li aria-hidden="true">/</li>
-          <li className="truncate text-foreground">{frontmatter.title}</li>
-        </ol>
-      </nav>
+      <Breadcrumbs
+        items={[
+          { name: 'Home', path: '/' },
+          { name: 'Blog', path: '/blog' },
+          { name: frontmatter.title, path: `/blog/${frontmatter.slug}` },
+        ]}
+      />
 
       {/* Hero */}
       <header className="mb-8">
         <div className="mb-3 flex items-center gap-3 text-sm text-muted">
           <time dateTime={frontmatter.date}>{formattedDate}</time>
+          {formattedUpdated && (
+            <>
+              <span aria-hidden="true">&middot;</span>
+              <span>
+                Updated <time dateTime={frontmatter.lastModified}>{formattedUpdated}</time>
+              </span>
+            </>
+          )}
           <span aria-hidden="true">&middot;</span>
           <span>{frontmatter.readingTime} min read</span>
         </div>
@@ -64,6 +70,9 @@ export default function BlogPostLayout({ frontmatter, children }: BlogPostLayout
       <article className="prose prose-stone max-w-none prose-headings:scroll-mt-20">
         {children}
       </article>
+
+      {/* Share */}
+      <BlogShareButtons slug={frontmatter.slug} title={frontmatter.title} />
 
       {/* Bottom ad */}
       <AdSlot slot="below-results" className="mt-8" />

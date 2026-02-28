@@ -1,4 +1,4 @@
-import { SITE_NAME, SITE_URL } from '@/lib/siteConfig';
+import { SITE_NAME, SITE_URL, SITE_LOGO } from '@/lib/siteConfig';
 
 interface BlogPostSchemaProps {
   title: string;
@@ -7,6 +7,8 @@ interface BlogPostSchemaProps {
   datePublished: string;
   dateModified: string;
   tags: string[];
+  readingTime: number;
+  wordCount: number;
 }
 
 export default function BlogPostSchema({
@@ -16,6 +18,8 @@ export default function BlogPostSchema({
   datePublished,
   dateModified,
   tags,
+  readingTime,
+  wordCount,
 }: BlogPostSchemaProps) {
   const url = `${SITE_URL}/blog/${slug}`;
 
@@ -29,11 +33,23 @@ export default function BlogPostSchema({
     dateModified,
     'inLanguage': 'en',
     'keywords': tags.join(', '),
-    'author': { '@id': `${SITE_URL}/#organization` },
+    'image': `${SITE_URL}/blog/${slug}/opengraph-image`,
+    'wordCount': wordCount,
+    'timeRequired': `PT${readingTime}M`,
+    'author': {
+      '@type': 'Organization',
+      'name': SITE_NAME,
+      'url': SITE_URL,
+      'logo': SITE_LOGO,
+    },
     'publisher': {
       '@type': 'Organization',
       'name': SITE_NAME,
       'url': SITE_URL,
+      'logo': {
+        '@type': 'ImageObject',
+        'url': SITE_LOGO,
+      },
     },
     'mainEntityOfPage': {
       '@type': 'WebPage',
