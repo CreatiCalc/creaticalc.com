@@ -12,13 +12,13 @@ import CalculatorSkeleton from '@/features/calculators/shared/CalculatorSkeleton
 import type { FAQItem } from '@/features/calculators/shared/types';
 
 export const metadata: Metadata = {
-  title: 'YouTube Shorts Money Calculator 2026',
+  title: 'YouTube Shorts Money Calculator \u2014 Real RPM Data (2026)',
   description:
-    'Free YouTube Shorts money calculator. Estimate how much Shorts pay per 1,000 views with RPM data ($0.01–$0.07). Calculate daily, monthly, and yearly Shorts revenue.',
+    'Shorts pay $0.01\u2013$0.07 per 1,000 views \u2014 but your niche matters. Enter your views to see daily, monthly, and yearly Shorts revenue with 2026 RPM data.',
   openGraph: {
-    title: 'YouTube Shorts Money Calculator 2026',
+    title: 'YouTube Shorts Money Calculator \u2014 Real RPM Data (2026)',
     description:
-      'Estimate how much YouTube Shorts pay per 1,000 views. Free calculator with real RPM data for daily, monthly, and yearly Shorts revenue.',
+      'Shorts pay $0.01\u2013$0.07 per 1,000 views. Enter your Shorts views to see estimated daily, monthly, and yearly revenue with real RPM data.',
     url: '/youtube-shorts-money-calculator',
   },
   alternates: {

@@ -66,7 +66,7 @@ const platformComparison = [
   },
 ];
 
-const title = `${SITE_NAME} — Free Calculators for Content Creators`;
+const title = `${SITE_NAME} — Free YouTube, Instagram & TikTok Calculators`;
 
 export const metadata: Metadata = {
   title: { absolute: title },
