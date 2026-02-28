@@ -13,13 +13,13 @@ import type { FAQItem } from '@/features/calculators/shared/types';
 import { getEngagementNichePages } from '@/lib/engagement-niches';
 
 export const metadata: Metadata = {
-  title: 'TikTok Engagement Rate + Benchmarks 2026',
+  title: 'TikTok Engagement Rate Calculator + Benchmarks (2026)',
   description:
-    'Free TikTok engagement rate calculator. Measure engagement from likes, comments, shares, and views. Compare against average 2026 benchmarks by tier and niche.',
+    'What\u2019s a good TikTok engagement rate? Enter your stats to calculate yours instantly and compare against 2026 averages by follower tier and content niche.',
   openGraph: {
-    title: 'TikTok Engagement Rate + Benchmarks 2026',
+    title: 'TikTok Engagement Rate Calculator + Benchmarks (2026)',
     description:
-      'Calculate your TikTok engagement rate by followers or by views. Compare against average industry benchmarks. Free calculator for creators and brands.',
+      'Enter your TikTok stats to calculate your engagement rate. Compare against 2026 benchmarks by follower tier and content niche.',
     url: '/tiktok-engagement-rate-calculator',
   },
   alternates: {

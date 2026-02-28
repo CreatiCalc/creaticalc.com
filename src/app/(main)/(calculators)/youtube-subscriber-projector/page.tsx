@@ -12,13 +12,13 @@ import CalculatorSkeleton from '@/features/calculators/shared/CalculatorSkeleton
 import type { FAQItem } from '@/features/calculators/shared/types';
 
 export const metadata: Metadata = {
-  title: 'YouTube Subscriber Projector 2026',
+  title: 'YouTube Subscriber Growth Calculator (2026)',
   description:
-    "Free YouTube subscriber growth projector. See when you'll hit 1K, 10K, 100K, and 1M subs — milestones for YouTube Partner Program eligibility and monetization.",
+    'When will you hit 1K, 10K, or 100K subscribers? Enter your current subs and growth rate to see projected milestone dates, including YPP eligibility.',
   openGraph: {
-    title: 'YouTube Subscriber Projector 2026',
+    title: 'YouTube Subscriber Growth Calculator (2026)',
     description:
-      'Project your YouTube subscriber growth to key monetization milestones. Free 24-month tool with YouTube Partner Program tracking.',
+      'Enter your current subscribers and growth rate to see when you\u2019ll hit key milestones like 1K, 10K, 100K, and 1M subs.',
     url: '/youtube-subscriber-projector',
   },
   alternates: {
