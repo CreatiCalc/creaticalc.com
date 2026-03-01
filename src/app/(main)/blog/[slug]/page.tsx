@@ -39,14 +39,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       publishedTime: date,
       modifiedTime: lastModified,
       tags,
-      images: [
-        {
-          url: `${SITE_URL}/blog/${slug}/opengraph-image`,
-          width: 1200,
-          height: 630,
-          alt: title,
-        },
-      ],
     },
   };
 }
