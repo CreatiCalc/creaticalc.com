@@ -16,14 +16,6 @@ export const metadata: Metadata = {
       'Data-driven guides on YouTube earnings, Instagram sponsorship rates, TikTok monetization, and engagement benchmarks for content creators.',
     url: `${SITE_URL}/blog`,
     type: 'website',
-    images: [
-      {
-        url: `${SITE_URL}/blog/opengraph-image`,
-        width: 1200,
-        height: 630,
-        alt: 'CreatiCalc Blog — Creator Economy Insights & Guides',
-      },
-    ],
   },
 };
 
