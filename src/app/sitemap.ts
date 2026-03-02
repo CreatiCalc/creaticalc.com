@@ -58,7 +58,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  const latestBlogDate = allBlogPosts[0]?.frontmatter.lastModified ?? '2026-02-27';
+  const latestBlogDate = allBlogPosts[0]?.frontmatter.lastModified ?? '2026-03-02';
 
   const blogTagPages: MetadataRoute.Sitemap = getAllTags().map((tag) => ({
     url: `${baseUrl}/blog/tag/${tag}`,
