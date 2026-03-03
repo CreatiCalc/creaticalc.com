@@ -1,5 +1,5 @@
 import { createBlogOgImageResponse, OG_SIZE } from '@/lib/ogImageFactory';
-import { getAllSlugs, getPostBySlug } from '@/lib/blog';
+import { getAllSlugs, getPostBySlug, formatTagLabel } from '@/lib/blog';
 
 export const alt = 'CreatiCalc Blog Post';
 export const size = OG_SIZE;
@@ -16,7 +16,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
   const title = post?.frontmatter.title ?? 'CreatiCalc Blog';
   const description = post?.frontmatter.description ?? 'Creator economy insights and guides.';
   const readingTime = post?.frontmatter.readingTime ?? 5;
-  const tags = post?.frontmatter.tags ?? [];
+  const tags = (post?.frontmatter.tags ?? []).map(formatTagLabel);
 
   return createBlogOgImageResponse({ title, description, readingTime, tags });
 }

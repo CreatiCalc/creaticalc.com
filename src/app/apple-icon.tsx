@@ -4,6 +4,10 @@ export const size = { width: 180, height: 180 };
 export const contentType = 'image/png';
 
 export default function Icon() {
+  const barH = 100;
+  const w = Math.round((barH * 7) / 27);
+  const r = Math.max(3, Math.round((barH * 2) / 27));
+
   return new ImageResponse(
     <div
       style={{
@@ -16,18 +20,35 @@ export default function Icon() {
         borderRadius: 36,
       }}
     >
-      <svg
-        width="120"
-        height="120"
-        viewBox="0 0 32 32"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <rect x="4" y="20" width="6" height="10" rx="3" fill="white" fillOpacity="0.9" />
-        <rect x="13" y="12" width="6" height="18" rx="3" fill="white" fillOpacity="0.9" />
-        <rect x="22" y="4" width="6" height="26" rx="3" fill="white" fillOpacity="0.9" />
-        <path d="M29 0 L30.5 2 L32 3.5 L30.5 5 L29 7 L27.5 5 L26 3.5 L27.5 2Z" fill="#d97706" />
-      </svg>
+      <div style={{ display: 'flex', alignItems: 'flex-end', height: barH }}>
+        <div
+          style={{
+            width: w,
+            height: Math.round((barH * 10) / 27),
+            backgroundColor: 'rgba(255,255,255,0.9)',
+            borderTopLeftRadius: r,
+            borderTopRightRadius: r,
+          }}
+        />
+        <div
+          style={{
+            width: w,
+            height: Math.round((barH * 19) / 27),
+            backgroundColor: 'rgba(255,255,255,0.9)',
+            borderTopLeftRadius: r,
+            borderTopRightRadius: r,
+          }}
+        />
+        <div
+          style={{
+            width: w,
+            height: barH,
+            backgroundColor: 'rgba(255,255,255,0.9)',
+            borderTopLeftRadius: r,
+            borderTopRightRadius: r,
+          }}
+        />
+      </div>
     </div>,
     { ...size }
   );

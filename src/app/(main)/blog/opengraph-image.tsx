@@ -11,6 +11,6 @@ export default function Image() {
     description:
       'Data-driven articles on YouTube earnings, sponsorship rates, engagement benchmarks, and monetization strategies for content creators.',
     readingTime: 0,
-    tags: ['youtube', 'instagram', 'tiktok'],
+    tags: ['YouTube', 'Instagram', 'TikTok'],
   });
 }

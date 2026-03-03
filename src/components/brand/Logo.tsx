@@ -17,18 +17,12 @@ export default function Logo({ className = '', showWordmark = true, size = 'md' 
         xmlns="http://www.w3.org/2000/svg"
         aria-hidden="true"
       >
-        <defs>
-          <linearGradient id="logo-grad" x1="0" y1="32" x2="32" y2="0">
-            <stop offset="0%" stopColor="#0d9488" />
-            <stop offset="100%" stopColor="#0891b2" />
-          </linearGradient>
-        </defs>
-        {/* Three ascending rounded bars — tighter grouping, rounder corners */}
-        <rect x="4" y="20" width="6" height="10" rx="3" fill="url(#logo-grad)" />
-        <rect x="13" y="12" width="6" height="18" rx="3" fill="url(#logo-grad)" />
-        <rect x="22" y="4" width="6" height="26" rx="3" fill="url(#logo-grad)" />
-        {/* 4-point sparkle */}
-        <path d="M29 0 L30.5 2 L32 3.5 L30.5 5 L29 7 L27.5 5 L26 3.5 L27.5 2Z" fill="#d97706" />
+        {/* Bar 1: shortest — dark teal */}
+        <path d="M4,30 L4,22 Q4,20 6,20 L9,20 Q11,20 11,22 L11,30Z" fill="#0f766e" />
+        {/* Bar 2: medium — cyan */}
+        <path d="M11,30 L11,13 Q11,11 13,11 L16,11 Q18,11 18,13 L18,30Z" fill="#06b6d4" />
+        {/* Bar 3: tallest — amber accent */}
+        <path d="M18,30 L18,5 Q18,3 20,3 L23,3 Q25,3 25,5 L25,30Z" fill="#d97706" />
       </svg>
       {showWordmark && (
         <span className={`font-bold leading-none ${size === 'sm' ? 'text-lg' : 'text-xl'}`}>
