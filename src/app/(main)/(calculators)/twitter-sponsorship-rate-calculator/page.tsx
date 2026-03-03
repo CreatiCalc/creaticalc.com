@@ -117,8 +117,16 @@ const howItWorks = (
     </p>
     <ol className="mt-3 list-decimal space-y-2 pl-5">
       <li>
-        <strong>Enter your follower count and engagement rate</strong> — higher engagement commands
-        premium rates (above 5% can double your rate).
+        <strong>
+          Enter your follower count and{' '}
+          <Link
+            href="/twitter-engagement-rate-calculator"
+            className="font-medium text-primary hover:underline"
+          >
+            engagement rate
+          </Link>
+        </strong>{' '}
+        — higher engagement commands premium rates (above 5% can double your rate).
       </li>
       <li>
         <strong>Select your content niche</strong> — premium niches like finance and crypto earn
@@ -243,7 +251,7 @@ export default function TwitterSponsorshipPage() {
         description="Calculate how much to charge for sponsored tweets, threads, and X Spaces based on your followers, engagement rate, and niche."
         url="/twitter-sponsorship-rate-calculator"
         datePublished="2025-01-15"
-        dateModified="2026-02-16"
+        dateModified="2026-03-02"
       />
       <CalculatorLayout
         title="X (Twitter) Sponsorship Rate Calculator"
