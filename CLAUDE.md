@@ -108,6 +108,12 @@ Before creating or updating a pull request, always run these commands and fix an
 2. `npm run lint` — ensure no ESLint errors
 3. `npm run build` — verify the production build succeeds
 
+## Writing Style (Blog Posts & Content)
+
+- **Do NOT overuse em dashes (—).** This is a dead giveaway for AI-generated content. Use commas, periods, colons, or semicolons instead. A few per article is fine; 15+ is not.
+- **Write like a human.** Blog posts should sound authentic, conversational, and opinionated. Avoid the polished, hedge-everything, "here's what you need to know" AI tone. Take a stance. Be direct.
+- **Vary sentence structure.** Mix short punchy sentences with longer ones. Don't fall into repetitive patterns.
+
 ## Code Style
 
 - Prettier: single quotes, semicolons, 100-char line width, 2-space indent, trailing commas (ES5)
