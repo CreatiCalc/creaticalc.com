@@ -7,6 +7,10 @@ export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
 export default function Image() {
+  const barH = 64;
+  const w = Math.round((barH * 7) / 27);
+  const r = Math.max(2, Math.round((barH * 2) / 27));
+
   return new ImageResponse(
     <div
       style={{
@@ -16,67 +20,178 @@ export default function Image() {
         justifyContent: 'center',
         width: '100%',
         height: '100%',
-        background: 'linear-gradient(135deg, #0d9488 0%, #0891b2 40%, #22d3ee 100%)',
+        backgroundColor: '#111827',
         fontFamily: 'sans-serif',
+        position: 'relative',
       }}
     >
+      {/* Subtle radial glow */}
       <div
         style={{
+          position: 'absolute',
+          width: 800,
+          height: 800,
+          borderRadius: 400,
+          background: 'radial-gradient(circle, rgba(6,182,212,0.08) 0%, transparent 70%)',
+          top: -100,
+          left: 200,
+        }}
+      />
+
+      {/* Decorative background bars — right */}
+      <div
+        style={{
+          position: 'absolute',
+          right: 120,
+          bottom: 0,
           display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          padding: '60px',
+          alignItems: 'flex-end',
+          gap: 12,
+          opacity: 0.04,
         }}
       >
-        {/* Icon: three ascending bars + sparkle */}
-        <svg
-          width="80"
-          height="80"
-          viewBox="0 0 32 32"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <rect x="4" y="20" width="6" height="10" rx="3" fill="white" fillOpacity="0.9" />
-          <rect x="13" y="12" width="6" height="18" rx="3" fill="white" fillOpacity="0.9" />
-          <rect x="22" y="4" width="6" height="26" rx="3" fill="white" fillOpacity="0.9" />
-          <path d="M29 0 L30.5 2 L32 3.5 L30.5 5 L29 7 L27.5 5 L26 3.5 L27.5 2Z" fill="#d97706" />
-        </svg>
         <div
           style={{
-            fontSize: 56,
-            fontWeight: 700,
-            color: '#ffffff',
-            marginTop: 24,
-            marginBottom: 16,
+            width: 52,
+            height: 120,
+            backgroundColor: '#fff',
+            borderTopLeftRadius: 8,
+            borderTopRightRadius: 8,
           }}
-        >
-          CreatiCalc
-        </div>
+        />
         <div
           style={{
-            fontSize: 28,
-            fontWeight: 500,
-            color: 'rgba(255,255,255,0.9)',
-            textAlign: 'center',
-            maxWidth: 800,
+            width: 52,
+            height: 240,
+            backgroundColor: '#fff',
+            borderTopLeftRadius: 8,
+            borderTopRightRadius: 8,
           }}
-        >
-          Free Calculators for Content Creators
-        </div>
+        />
         <div
           style={{
-            fontSize: 20,
-            color: 'rgba(255,255,255,0.7)',
-            textAlign: 'center',
-            maxWidth: 700,
-            marginTop: 12,
+            width: 52,
+            height: 380,
+            backgroundColor: '#fff',
+            borderTopLeftRadius: 8,
+            borderTopRightRadius: 8,
           }}
-        >
-          Estimate earnings, calculate engagement rates, find sponsorship pricing, and project
-          growth
-        </div>
+        />
       </div>
+
+      {/* Decorative background bars — left */}
+      <div
+        style={{
+          position: 'absolute',
+          left: 80,
+          bottom: 0,
+          display: 'flex',
+          alignItems: 'flex-end',
+          gap: 12,
+          opacity: 0.04,
+        }}
+      >
+        <div
+          style={{
+            width: 52,
+            height: 100,
+            backgroundColor: '#fff',
+            borderTopLeftRadius: 8,
+            borderTopRightRadius: 8,
+          }}
+        />
+        <div
+          style={{
+            width: 52,
+            height: 200,
+            backgroundColor: '#fff',
+            borderTopLeftRadius: 8,
+            borderTopRightRadius: 8,
+          }}
+        />
+        <div
+          style={{
+            width: 52,
+            height: 340,
+            backgroundColor: '#fff',
+            borderTopLeftRadius: 8,
+            borderTopRightRadius: 8,
+          }}
+        />
+      </div>
+
+      {/* Brand icon */}
+      <div style={{ display: 'flex', alignItems: 'flex-end', height: barH, marginBottom: 24 }}>
+        <div
+          style={{
+            width: w,
+            height: Math.round((barH * 10) / 27),
+            backgroundColor: '#0f766e',
+            borderTopLeftRadius: r,
+            borderTopRightRadius: r,
+          }}
+        />
+        <div
+          style={{
+            width: w,
+            height: Math.round((barH * 19) / 27),
+            backgroundColor: '#06b6d4',
+            borderTopLeftRadius: r,
+            borderTopRightRadius: r,
+          }}
+        />
+        <div
+          style={{
+            width: w,
+            height: barH,
+            backgroundColor: '#d97706',
+            borderTopLeftRadius: r,
+            borderTopRightRadius: r,
+          }}
+        />
+      </div>
+
+      {/* Wordmark */}
+      <div style={{ fontSize: 56, fontWeight: 700, color: '#ffffff', marginBottom: 16 }}>
+        CreatiCalc
+      </div>
+
+      {/* Tagline */}
+      <div
+        style={{
+          fontSize: 26,
+          color: 'rgba(255,255,255,0.7)',
+          textAlign: 'center',
+          maxWidth: 700,
+          marginBottom: 12,
+        }}
+      >
+        Free Calculators for Content Creators
+      </div>
+
+      {/* Categories */}
+      <div
+        style={{
+          fontSize: 18,
+          color: 'rgba(255,255,255,0.4)',
+          textAlign: 'center',
+        }}
+      >
+        Earnings · Engagement · Sponsorships · Growth
+      </div>
+
+      {/* Bottom gradient line */}
+      <div
+        style={{
+          position: 'absolute',
+          bottom: 48,
+          left: 72,
+          right: 72,
+          height: 2,
+          background: 'linear-gradient(90deg, #0f766e 0%, #06b6d4 50%, #d97706 100%)',
+          borderRadius: 1,
+        }}
+      />
     </div>,
     { ...size }
   );
