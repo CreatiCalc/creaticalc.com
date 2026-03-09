@@ -18,7 +18,7 @@ export default function Logo({ className = '', showWordmark = true, size = 'md' 
         aria-hidden="true"
       >
         {/* Bar 1: shortest — dark teal */}
-        <path d="M4,30 L4,22 Q4,20 6,20 L9,20 Q11,20 11,22 L11,30Z" fill="#0f766e" />
+        <path d="M4,30 L4,22 Q4,20 6,20 L9,20 Q11,20 11,22 L11,30Z" fill="#086059" />
         {/* Bar 2: medium — cyan */}
         <path d="M11,30 L11,13 Q11,11 13,11 L16,11 Q18,11 18,13 L18,30Z" fill="#06b6d4" />
         {/* Bar 3: tallest — amber accent */}

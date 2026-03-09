@@ -17,7 +17,7 @@ const sora = Sora({
 });
 
 export const viewport: Viewport = {
-  themeColor: '#0d9488',
+  themeColor: '#0a766d',
 };
 
 export const metadata: Metadata = {
