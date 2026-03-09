@@ -7,6 +7,8 @@ import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import Breadcrumbs from '@/components/seo/Breadcrumbs';
 import { SITE_URL } from '@/lib/siteConfig';
 
+export const dynamic = 'force-static';
+
 export const metadata: Metadata = {
   title: 'About — Free Calculators for Content Creators',
   description:

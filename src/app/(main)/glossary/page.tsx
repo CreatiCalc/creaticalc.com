@@ -6,6 +6,8 @@ import Breadcrumbs from '@/components/seo/Breadcrumbs';
 import AdSlot from '@/components/layout/AdSlot';
 import { SITE_URL } from '@/lib/siteConfig';
 
+export const dynamic = 'force-static';
+
 export const metadata: Metadata = {
   title: 'Creator Economy Glossary 2026',
   description:
