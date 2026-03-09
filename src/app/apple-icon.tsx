@@ -16,7 +16,7 @@ export default function Icon() {
         justifyContent: 'center',
         width: '100%',
         height: '100%',
-        background: 'linear-gradient(135deg, #0d9488 0%, #0891b2 50%, #06b6d4 100%)',
+        background: 'linear-gradient(135deg, #0a766d 0%, #0891b2 50%, #06b6d4 100%)',
         borderRadius: 36,
       }}
     >

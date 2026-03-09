@@ -22,7 +22,7 @@ interface BlogOgImageConfig {
 
 /* ── shared sub-components (Satori JSX) ─────────────────────── */
 
-const BRAND = ['#0f766e', '#06b6d4', '#d97706'] as const;
+const BRAND = ['#086059', '#06b6d4', '#d97706'] as const;
 
 function BrandBars({ height = 32 }: { height?: number }) {
   const w = Math.round((height * 7) / 27);

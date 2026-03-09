@@ -126,7 +126,7 @@ export default function Image() {
           style={{
             width: w,
             height: Math.round((barH * 10) / 27),
-            backgroundColor: '#0f766e',
+            backgroundColor: '#086059',
             borderTopLeftRadius: r,
             borderTopRightRadius: r,
           }}
@@ -188,7 +188,7 @@ export default function Image() {
           left: 72,
           right: 72,
           height: 2,
-          background: 'linear-gradient(90deg, #0f766e 0%, #06b6d4 50%, #d97706 100%)',
+          background: 'linear-gradient(90deg, #086059 0%, #06b6d4 50%, #d97706 100%)',
           borderRadius: 1,
         }}
       />

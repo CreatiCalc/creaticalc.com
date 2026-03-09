@@ -12,7 +12,7 @@ const COLOR_PRESETS: Record<string, { primary: string; primaryDark: string }> = 
   red: { primary: '#dc2626', primaryDark: '#b91c1c' },
   pink: { primary: '#db2777', primaryDark: '#be185d' },
   orange: { primary: '#ea580c', primaryDark: '#c2410c' },
-  teal: { primary: '#0d9488', primaryDark: '#0f766e' },
+  teal: { primary: '#0a766d', primaryDark: '#086059' },
 };
 
 function resolveColor(param: string | null): { primary: string; primaryDark: string } | null {
