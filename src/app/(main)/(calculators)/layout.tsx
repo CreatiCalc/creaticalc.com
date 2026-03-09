@@ -2,6 +2,8 @@ import Link from 'next/link';
 import { JetBrains_Mono } from 'next/font/google';
 import { getAllCalculators } from '@/lib/calculatorRegistry';
 
+export const dynamic = 'force-static';
+
 const jetbrainsMono = JetBrains_Mono({
   variable: '--font-jetbrains-mono',
   subsets: ['latin'],

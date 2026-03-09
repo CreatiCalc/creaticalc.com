@@ -5,6 +5,8 @@ import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import Breadcrumbs from '@/components/seo/Breadcrumbs';
 import BlogCard from '@/features/blog/BlogCard';
 
+export const dynamic = 'force-static';
+
 export const metadata: Metadata = {
   title: 'Blog — Creator Economy Insights & Guides',
   description:
