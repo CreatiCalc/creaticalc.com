@@ -18,8 +18,19 @@ The primary goal of CreatiCalc is to generate passive income through ad revenue,
 
 ## Git Workflow
 
-- NEVER commit or push directly to the `main` branch. Always create a feature branch and open a PR.
-- When asked to 'commit', create a branch and PR unless explicitly told otherwise.
+**IMPORTANT: Never push directly to `main`. All changes go through `staging` first.**
+
+### Branch Strategy
+
+- `main` - Production branch. Deploys to Netlify. **Do not push directly.**
+- `staging` - Integration branch. All PRs target this branch.
+- Feature branches - Created from `staging` for individual changes.
+
+### Development Workflow
+
+1. Create feature branches from `staging`
+2. Open PRs targeting `staging` (not main)
+3. After PR merges to staging, a separate deploy PR merges `staging` → `main`
 
 ### PR and Merge Workflow
 
