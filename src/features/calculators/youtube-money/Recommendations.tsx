@@ -15,7 +15,7 @@ interface RecommendationsProps {
 }
 
 const CATEGORY_STYLES: Record<OptimizationTip['category'], { label: string; className: string }> = {
-  revenue: { label: 'Revenue', className: 'bg-success/10 text-success' },
+  revenue: { label: 'Revenue', className: 'bg-success/10 text-green-800' },
   strategy: { label: 'Strategy', className: 'bg-primary/10 text-primary' },
   growth: { label: 'Growth', className: 'bg-blue-100 text-blue-700' },
 };
@@ -46,7 +46,7 @@ export default function Recommendations({
                       {style.label}
                     </span>
                     {tip.impact && (
-                      <span className="shrink-0 rounded-full bg-success/10 px-2 py-0.5 text-xs font-semibold text-success">
+                      <span className="shrink-0 rounded-full bg-success/10 px-2 py-0.5 text-xs font-semibold text-green-800">
                         {tip.impact}
                       </span>
                     )}

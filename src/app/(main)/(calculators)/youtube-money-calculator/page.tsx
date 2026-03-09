@@ -211,7 +211,7 @@ const howItWorks = (
         </tbody>
       </table>
     </div>
-    <p className="mt-2 text-xs text-muted/70">
+    <p className="mt-2 text-xs text-muted">
       RPM = CPM × 0.55 (YouTube&apos;s 55% creator share). Earnings assume 100% monetized views.
     </p>
 
