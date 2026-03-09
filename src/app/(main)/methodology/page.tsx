@@ -5,6 +5,8 @@ import Breadcrumbs from '@/components/seo/Breadcrumbs';
 import { SOURCES } from '@/lib/sources';
 import { SITE_URL } from '@/lib/siteConfig';
 
+export const dynamic = 'force-static';
+
 export const metadata: Metadata = {
   title: 'Methodology — How We Calculate Creator Earnings & Engagement',
   description:

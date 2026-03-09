@@ -66,6 +66,8 @@ const platformComparison = [
   },
 ];
 
+export const dynamic = 'force-static';
+
 const title = `${SITE_NAME} — Free YouTube, Instagram & TikTok Calculators`;
 
 export const metadata: Metadata = {
