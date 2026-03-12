@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint src",
     "format": "prettier --write \"src/**/*.{ts,tsx,css}\"",
-    "format:check": "prettier --check \"src/**/*.{ts,tsx,css}\""
+    "format:check": "prettier --check \"src/**/*.{ts,tsx,css}\"",
+    "indexnow": "node scripts/indexnow.mjs"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
