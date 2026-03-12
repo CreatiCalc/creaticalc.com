@@ -17,6 +17,7 @@ const EngagementCalculator = dynamic(
 import CalculatorSkeleton from '@/features/calculators/shared/CalculatorSkeleton';
 import { getEngagementNichePages, getEngagementNichePageData } from '@/lib/engagement-niches';
 import EngagementNicheCrossLinks from '@/features/calculators/engagement-shared/EngagementNicheCrossLinks';
+import NicheBenchmarkSection from '@/features/calculators/engagement-shared/NicheBenchmarkSection';
 import type { EngagementPlatformConfig } from './platformConfigs';
 import type { Platform } from '@/lib/engagementBenchmarks';
 
@@ -136,6 +137,12 @@ export function buildNicheEngagementPage(config: EngagementNicheConfig) {
               config={{ ...config.calculatorConfig, defaultIndustryId: data.industryId }}
             />
           </Suspense>
+
+          <NicheBenchmarkSection
+            platform={config.platform}
+            industryId={data.industryId}
+            nicheName={data.name}
+          />
 
           <EngagementNicheCrossLinks
             currentPlatform={config.platform}
