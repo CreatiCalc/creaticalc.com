@@ -13,13 +13,13 @@ import type { FAQItem } from '@/features/calculators/shared/types';
 import { getEngagementNichePages } from '@/lib/engagement-niches';
 
 export const metadata: Metadata = {
-  title: 'Facebook Engagement Rate + Benchmarks 2026',
+  title: 'Facebook Engagement Rate Calculator [Free, 2026 Benchmarks] — Check Yours Now',
   description:
-    'Free Facebook engagement rate calculator. Measure your page engagement with reactions, comments, and shares. Compare against average 2026 benchmarks by niche.',
+    'Is your Facebook engagement rate above or below average? Most pages overestimate. Check yours against real 2026 benchmarks by niche and see where you actually stand.',
   openGraph: {
-    title: 'Facebook Engagement Rate + Benchmarks 2026',
+    title: 'Facebook Engagement Rate Calculator [Free] — Check Yours Now',
     description:
-      'Calculate your Facebook page engagement rate by followers or by reach. Compare against average industry benchmarks. Free calculator for creators.',
+      'Find out where your Facebook engagement rate really stands. Compare against 2026 benchmarks by niche and industry.',
     url: '/facebook-engagement-rate-calculator',
   },
   alternates: {

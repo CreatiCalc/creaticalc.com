@@ -10,13 +10,13 @@ import Breadcrumbs from '@/components/seo/Breadcrumbs';
 import { SITE_URL } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
-  title: 'Engagement Rate Benchmarks 2026 — All Platforms',
+  title: 'Engagement Rate Benchmarks 2026 [Used by Industry Experts] — All Platforms Compared',
   description:
-    'Engagement rate benchmarks for 2026 across Instagram, TikTok, Facebook, and X. Compare average rates by follower tier and industry.',
+    'The engagement rate benchmarks that agencies, talent managers, and brand strategists actually use. See how the numbers have shifted across Instagram, TikTok, Facebook, and X in 2026.',
   openGraph: {
-    title: 'Engagement Rate Benchmarks 2026 — All Platforms',
+    title: 'Engagement Rate Benchmarks 2026 [Used by Industry Experts] — All Platforms',
     description:
-      'Full engagement rate benchmark data for 2026 by follower tier, industry, and platform.',
+      'The benchmark data that industry professionals rely on. See where your engagement rate ranks across platforms, follower tiers, and industries in 2026.',
     url: '/engagement-rate-benchmarks',
   },
   alternates: {
@@ -80,7 +80,7 @@ export default function EngagementRateBenchmarksPage() {
       'Complete engagement rate benchmarks for Instagram, TikTok, Facebook, and X (Twitter) in 2026 by follower tier and industry.',
     'url': `${SITE_URL}/engagement-rate-benchmarks`,
     'datePublished': '2025-01-15',
-    'dateModified': '2026-02-16',
+    'dateModified': '2026-03-15',
   };
 
   const latestTrend = YOY_TRENDS[YOY_TRENDS.length - 1];
@@ -109,8 +109,9 @@ export default function EngagementRateBenchmarksPage() {
             Engagement Rate Benchmarks 2026
           </h1>
           <p className="mt-3 text-muted">
-            Comprehensive engagement rate benchmarks for Instagram, TikTok, Facebook, and X
-            (Twitter). See how your account compares by follower tier, industry, and platform.
+            The engagement rate benchmarks trusted by talent managers, agencies, and brand
+            strategists. Compare your account against real 2026 data by follower tier, industry, and
+            platform.
           </p>
           <div
             className="mx-auto mt-5 h-1 w-36 rounded-full"

@@ -13,13 +13,13 @@ import { Platform } from '@/lib/platforms';
 import { getSourcesById, SPONSORSHIP_SOURCE_IDS } from '@/lib/sources';
 
 export const metadata: Metadata = {
-  title: 'Sponsorship Rate Calculator 2026',
+  title: 'Sponsorship Rate Calculator [Free, All Platforms] — Compare Rates (2026)',
   description:
-    'Free sponsorship rate calculator for Instagram, TikTok, YouTube, Facebook, and X. Compare base rates, content type multipliers, and deal pricing across all platforms.',
+    'How much should you charge for brand deals? Compare sponsorship rates across Instagram, TikTok, YouTube, Facebook, and X. Data trusted by agencies and talent managers.',
   openGraph: {
-    title: 'Sponsorship Rate Calculator 2026',
+    title: 'Sponsorship Rate Calculator [Free, All Platforms] — Compare Rates',
     description:
-      'Calculate how much to charge for sponsored content on Instagram, TikTok, YouTube, Facebook, or X. Compare rates across all platforms.',
+      'See what creators charge for brand deals across every major platform. Data updated for 2026 and trusted by industry professionals.',
     url: '/sponsorship-rate-calculator',
   },
   alternates: {

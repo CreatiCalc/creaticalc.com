@@ -13,13 +13,13 @@ import type { FAQItem } from '@/features/calculators/shared/types';
 import { getEngagementNichePages } from '@/lib/engagement-niches';
 
 export const metadata: Metadata = {
-  title: 'X (Twitter) Engagement Rate + Benchmarks 2026',
+  title: 'X (Twitter) Engagement Rate Calculator [Free, 2026 Benchmarks] — Check Yours',
   description:
-    'Free X (Twitter) engagement rate calculator. Measure engagement with likes, replies, reposts, and bookmarks. Compare against average 2026 benchmarks.',
+    'X engagement rates are lower than you think. Check yours against real 2026 benchmarks and find out if you are actually beating the average. Data used by brands to evaluate creators.',
   openGraph: {
-    title: 'X (Twitter) Engagement Rate + Benchmarks 2026',
+    title: 'X (Twitter) Engagement Rate Calculator [Free] — Check Yours',
     description:
-      'Calculate your X (Twitter) engagement rate by followers or impressions. Compare against average industry benchmarks. Free calculator for creators.',
+      'Find out where your X engagement rate really stands. Compare against 2026 benchmarks used by brands and agencies.',
     url: '/twitter-engagement-rate-calculator',
   },
   alternates: {

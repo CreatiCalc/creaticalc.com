@@ -13,13 +13,13 @@ import type { FAQItem } from '@/features/calculators/shared/types';
 import { getSponsorshipNichePages } from '@/lib/sponsorship-niches';
 
 export const metadata: Metadata = {
-  title: 'X (Twitter) Sponsorship Rates 2026',
+  title: 'X (Twitter) Sponsorship Rate Calculator [Free Tool] — Get Your Rate Card',
   description:
-    'Free X (Twitter) sponsorship rate calculator. Calculate brand deal rates for sponsored tweets, threads, and Spaces by followers, engagement, and niche.',
+    'How much should you charge for sponsored tweets, threads, and X Spaces? Enter your stats and get a personalized rate card in seconds. Used by 50K+ creators.',
   openGraph: {
-    title: 'X (Twitter) Sponsorship Rates 2026',
+    title: 'X (Twitter) Sponsorship Rate Calculator [Free] — Get Your Rate Card',
     description:
-      'Calculate X (Twitter) brand deal rates for tweets, threads, and Spaces by followers, engagement, and niche. Free rate card generator.',
+      'Stop guessing what to charge for X brand deals. Enter your followers and niche to get a personalized sponsorship rate card instantly.',
     url: '/twitter-sponsorship-rate-calculator',
   },
   alternates: {
@@ -164,6 +164,20 @@ const howItWorks = (
       exposure that extends well beyond the original post&rsquo;s impressions.
     </p>
 
+    <h3 className="mt-6 text-lg font-semibold text-foreground">
+      Why Engagement Rate Matters for Your X Rate
+    </h3>
+    <p className="mt-2">
+      Your engagement rate is the single biggest lever on your sponsorship pricing. Brands on X care
+      less about raw follower counts and more about whether your audience actually interacts with
+      your posts. Check where you stand against{' '}
+      <Link href="/engagement-rate-benchmarks" className="font-medium text-primary hover:underline">
+        2026 engagement rate benchmarks across all platforms
+      </Link>{' '}
+      before setting your rates. Creators with above-average engagement consistently command
+      20&ndash;50% higher sponsorship rates.
+    </p>
+
     <h3 className="mt-6 text-lg font-semibold text-foreground">Content Types Explained</h3>
     <p className="mt-2">
       <strong>Tweet (1.0x)</strong> — The standard X sponsored content format. A single post
@@ -251,7 +265,7 @@ export default function TwitterSponsorshipPage() {
         description="Calculate how much to charge for sponsored tweets, threads, and X Spaces based on your followers, engagement rate, and niche."
         url="/twitter-sponsorship-rate-calculator"
         datePublished="2025-01-15"
-        dateModified="2026-03-02"
+        dateModified="2026-03-15"
       />
       <CalculatorLayout
         title="X (Twitter) Sponsorship Rate Calculator"

@@ -13,13 +13,13 @@ import type { FAQItem } from '@/features/calculators/shared/types';
 import { getSponsorshipNichePages } from '@/lib/sponsorship-niches';
 
 export const metadata: Metadata = {
-  title: 'Facebook Sponsorship Rates 2026',
+  title: 'Facebook Sponsorship Rate Calculator [Free, 2026] — Get Your Rate Card',
   description:
-    'Free Facebook sponsorship rate calculator. Calculate brand deal rates for feed posts, Reels, Stories, Lives, and Group sponsorships by followers, engagement, and niche.',
+    'What are Facebook brand deals actually worth in 2026? Get a personalized rate card for posts, Reels, Stories, Lives, and Group sponsorships. Data used by agencies to price campaigns.',
   openGraph: {
-    title: 'Facebook Sponsorship Rates 2026',
+    title: 'Facebook Sponsorship Rate Calculator [Free] — Get Your Rate Card',
     description:
-      'Calculate Facebook brand deal and Group sponsorship rates by followers, engagement, and niche. Free rate card generator for creators.',
+      'Find out what your Facebook audience is worth to brands. Personalized sponsorship rate card backed by industry data.',
     url: '/facebook-sponsorship-rate-calculator',
   },
   alternates: {
