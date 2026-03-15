@@ -8,11 +8,11 @@ export const contentType = 'image/png';
 export default function Image() {
   return createOgImageResponse({
     title: 'TikTok Sponsorship Rate Calculator',
-    subtitle: 'Find out how much to charge for sponsored TikTok content',
+    subtitle: 'Get your personalized rate card — trusted by agencies',
     stats: [
-      { label: 'Video', value: '$400' },
-      { label: 'Story', value: '$150' },
-      { label: 'Live', value: '$300' },
+      { label: 'Formats', value: '3' },
+      { label: 'Data', value: '2026' },
+      { label: 'Price', value: 'Free' },
     ],
   });
 }

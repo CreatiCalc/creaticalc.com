@@ -62,12 +62,12 @@ const youtubeHub: PlatformHubData = {
   slug: 'youtube',
   displayName: 'YouTube',
   breadcrumbName: 'YouTube',
-  title: 'YouTube Creator Calculators 2026',
+  title: 'YouTube Creator Calculators [Free, 2026] — Earnings, Growth & Sponsorships',
   metaDescription:
-    'Free YouTube creator tools: money & earnings calculator, Shorts revenue estimator, subscriber growth projector, and sponsorship rate calculator. Updated for 2026.',
-  ogTitle: 'YouTube Creator Calculators 2026',
+    'The YouTube calculators trusted by creators and agencies. Estimate ad revenue, project subscriber growth, price sponsorships, and analyze Shorts earnings. Try them free.',
+  ogTitle: 'YouTube Creator Calculators [Free] — Earnings, Growth & Sponsorships',
   ogDescription:
-    'Free tools to estimate YouTube ad revenue, project subscriber growth, and calculate sponsorship rates.',
+    'The YouTube tools that creators and agencies actually use. Earnings, growth, sponsorships, and Shorts. All free.',
   h1: 'YouTube Calculators for Creators',
   heroDescription:
     'Estimate your YouTube ad revenue, project subscriber growth, calculate sponsorship rates, and analyze Shorts earnings — all free, no sign-up required.',
@@ -140,11 +140,11 @@ const youtubeHub: PlatformHubData = {
   ],
   ogImage: {
     title: 'YouTube Creator Calculators',
-    subtitle: 'Earnings, growth, sponsorships & Shorts — all free',
+    subtitle: 'Earnings, growth, sponsorships & Shorts — trusted by pros',
     stats: [
-      { label: 'Avg CPM', value: '$5–$18' },
       { label: 'Calculators', value: '4' },
-      { label: 'Revenue Split', value: '55%' },
+      { label: 'Data', value: '2026' },
+      { label: 'Price', value: 'Free' },
     ],
   },
 };
@@ -156,12 +156,12 @@ const instagramHub: PlatformHubData = {
   slug: 'instagram',
   displayName: 'Instagram',
   breadcrumbName: 'Instagram',
-  title: 'Instagram Creator Calculators 2026',
+  title: 'Instagram Creator Calculators [Free, 2026] — Engagement & Sponsorship Rates',
   metaDescription:
-    'Free Instagram creator tools: engagement rate calculator with industry benchmarks and sponsorship rate calculator for brand deals on posts, Reels, and Stories. Updated for 2026.',
-  ogTitle: 'Instagram Creator Calculators 2026',
+    'Check your Instagram engagement rate and find out what your content is worth to brands. The calculator suite trusted by agencies and talent managers. Try them free.',
+  ogTitle: 'Instagram Creator Calculators [Free] — Engagement & Sponsorship Rates',
   ogDescription:
-    'Free tools to calculate your Instagram engagement rate and influencer sponsorship pricing.',
+    'Check your Instagram engagement and sponsorship value. The tools creators and agencies actually use. Free.',
   h1: 'Instagram Calculators for Creators',
   heroDescription:
     'Calculate your Instagram engagement rate, benchmark against industry averages, and find out how much to charge for sponsored posts, Reels, Stories, and carousels — all free.',
@@ -228,11 +228,11 @@ const instagramHub: PlatformHubData = {
   ],
   ogImage: {
     title: 'Instagram Creator Calculators',
-    subtitle: 'Engagement rate & sponsorship pricing — all free',
+    subtitle: 'Engagement rate & sponsorship pricing — trusted by pros',
     stats: [
-      { label: 'Avg ER', value: '0.98%' },
       { label: 'Calculators', value: '2' },
-      { label: 'Sponsor CPM', value: '$10–$25' },
+      { label: 'Data', value: '2026' },
+      { label: 'Price', value: 'Free' },
     ],
   },
 };
@@ -244,12 +244,12 @@ const tiktokHub: PlatformHubData = {
   slug: 'tiktok',
   displayName: 'TikTok',
   breadcrumbName: 'TikTok',
-  title: 'TikTok Creator Calculators 2026',
+  title: 'TikTok Creator Calculators [Free, 2026] — Engagement & Sponsorship Rates',
   metaDescription:
-    'Free TikTok creator tools: engagement rate calculator with industry benchmarks and sponsorship rate calculator for brand deals and Spark Ads. Updated for 2026.',
-  ogTitle: 'TikTok Creator Calculators 2026',
+    'Check your TikTok engagement rate and find out what brands will pay for your content. The calculators trusted by agencies and creators. Try them free.',
+  ogTitle: 'TikTok Creator Calculators [Free] — Engagement & Sponsorship Rates',
   ogDescription:
-    'Free tools to calculate your TikTok engagement rate and sponsorship brand deal pricing.',
+    'Check your TikTok engagement and sponsorship value. The tools creators and agencies actually use. Free.',
   h1: 'TikTok Calculators for Creators',
   heroDescription:
     'Calculate your TikTok engagement rate, benchmark against TikTok-specific averages, and find out how much to charge for sponsored videos, Stories, and Lives — all free.',
@@ -316,11 +316,11 @@ const tiktokHub: PlatformHubData = {
   ],
   ogImage: {
     title: 'TikTok Creator Calculators',
-    subtitle: 'Engagement rate & sponsorship pricing — all free',
+    subtitle: 'Engagement rate & sponsorship pricing — trusted by pros',
     stats: [
-      { label: 'Avg ER', value: '4.9%' },
       { label: 'Calculators', value: '2' },
-      { label: 'Sponsor CPM', value: '$5–$15' },
+      { label: 'Data', value: '2026' },
+      { label: 'Price', value: 'Free' },
     ],
   },
 };
@@ -332,12 +332,12 @@ const facebookHub: PlatformHubData = {
   slug: 'facebook',
   displayName: 'Facebook',
   breadcrumbName: 'Facebook',
-  title: 'Facebook Creator Calculators 2026',
+  title: 'Facebook Creator Calculators [Free, 2026] — Engagement & Sponsorship Rates',
   metaDescription:
-    'Free Facebook creator tools: engagement rate calculator with page benchmarks and sponsorship rate calculator for feed posts, Reels, Groups, and Lives. Updated for 2026.',
-  ogTitle: 'Facebook Creator Calculators 2026',
+    'Check your Facebook engagement rate and find out what your page is worth to brands. The calculators trusted by agencies and creators. Try them free.',
+  ogTitle: 'Facebook Creator Calculators [Free] — Engagement & Sponsorship Rates',
   ogDescription:
-    'Free tools to calculate your Facebook engagement rate and sponsorship brand deal pricing.',
+    'Check your Facebook engagement and sponsorship value. The tools creators and agencies actually use. Free.',
   h1: 'Facebook Calculators for Creators',
   heroDescription:
     'Calculate your Facebook Page engagement rate, benchmark against industry averages, and find out how much to charge for sponsored posts, Reels, Stories, and Lives — all free.',
@@ -404,11 +404,11 @@ const facebookHub: PlatformHubData = {
   ],
   ogImage: {
     title: 'Facebook Creator Calculators',
-    subtitle: 'Engagement rate & sponsorship pricing — all free',
+    subtitle: 'Engagement rate & sponsorship pricing — trusted by pros',
     stats: [
-      { label: 'Avg ER', value: '0.065%' },
       { label: 'Calculators', value: '2' },
-      { label: 'MAU', value: '3.07B' },
+      { label: 'Data', value: '2026' },
+      { label: 'Price', value: 'Free' },
     ],
   },
 };
@@ -420,12 +420,12 @@ const xHub: PlatformHubData = {
   slug: 'x',
   displayName: 'X (Twitter)',
   breadcrumbName: 'X (Twitter)',
-  title: 'X (Twitter) Creator Calculators 2026',
+  title: 'X (Twitter) Creator Calculators [Free, 2026] — Engagement & Sponsorship Rates',
   metaDescription:
-    'Free X (Twitter) creator tools: engagement rate calculator with industry benchmarks and sponsorship rate calculator for tweets, threads, and Spaces. Updated for 2026.',
-  ogTitle: 'X (Twitter) Creator Calculators 2026',
+    'Check your X engagement rate and find out what your audience is worth to brands. The calculators trusted by agencies and talent managers. Try them free.',
+  ogTitle: 'X (Twitter) Creator Calculators [Free] — Engagement & Sponsorship Rates',
   ogDescription:
-    'Free tools to calculate your X (Twitter) engagement rate and sponsorship brand deal pricing.',
+    'Check your X engagement and sponsorship value. The tools creators and agencies actually use. Free.',
   h1: 'X (Twitter) Calculators for Creators',
   heroDescription:
     'Calculate your X engagement rate, benchmark against platform averages, and find out how much to charge for sponsored tweets, threads, and Spaces — all free.',
@@ -492,11 +492,11 @@ const xHub: PlatformHubData = {
   ],
   ogImage: {
     title: 'X (Twitter) Creator Calculators',
-    subtitle: 'Engagement rate & sponsorship pricing — all free',
+    subtitle: 'Engagement rate & sponsorship pricing — trusted by pros',
     stats: [
-      { label: 'Avg ER', value: '0.03%' },
       { label: 'Calculators', value: '2' },
-      { label: 'Sponsor CPM', value: '$5–$12' },
+      { label: 'Data', value: '2026' },
+      { label: 'Price', value: 'Free' },
     ],
   },
 };
