@@ -119,5 +119,29 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...nichePages,
     ...sponsorshipNichePages,
     ...engagementNichePages,
+    {
+      url: `${baseUrl}/tiktok-vs-youtube`,
+      lastModified: '2026-03-15',
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/instagram-vs-tiktok`,
+      lastModified: '2026-03-15',
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/youtube-shorts-vs-tiktok`,
+      lastModified: '2026-03-15',
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/instagram-vs-youtube-sponsorships`,
+      lastModified: '2026-03-15',
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
   ];
 }

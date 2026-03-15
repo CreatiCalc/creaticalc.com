@@ -224,10 +224,7 @@ const howItWorks = (
       as the top of a funnel: Shorts drive subscribers, subscribers watch long-form content, and
       long-form content generates real ad revenue and sponsorship deals. If you are creating on
       multiple platforms, check how your{' '}
-      <Link
-        href="/engagement-rate-benchmarks"
-        className="font-medium text-primary hover:underline"
-      >
+      <Link href="/engagement-rate-benchmarks" className="font-medium text-primary hover:underline">
         engagement rate compares across platforms
       </Link>{' '}
       and read our breakdown of{' '}
