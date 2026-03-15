@@ -215,6 +215,31 @@ const howItWorks = (
       .
     </p>
 
+    <h3 className="mt-6 text-lg font-semibold text-foreground">
+      How Shorts Fit Into the Bigger Picture
+    </h3>
+    <p className="mt-2">
+      Shorts alone rarely pay enough to sustain a full-time creator career, but they are one of the
+      most powerful growth levers on YouTube. The creators earning the most from Shorts treat them
+      as the top of a funnel: Shorts drive subscribers, subscribers watch long-form content, and
+      long-form content generates real ad revenue and sponsorship deals. If you are creating on
+      multiple platforms, check how your{' '}
+      <Link
+        href="/engagement-rate-benchmarks"
+        className="font-medium text-primary hover:underline"
+      >
+        engagement rate compares across platforms
+      </Link>{' '}
+      and read our breakdown of{' '}
+      <Link
+        href="/blog/tiktok-vs-youtube-creator-pay"
+        className="font-medium text-primary hover:underline"
+      >
+        TikTok vs YouTube creator pay
+      </Link>{' '}
+      to see which platform rewards your content style best.
+    </p>
+
     <h3 className="mt-6 text-lg font-semibold text-foreground">Related Tools</h3>
     <ul className="mt-2 list-disc space-y-1 pl-5">
       <li>
@@ -281,7 +306,7 @@ export default function YouTubeShortsMoneyCalculatorPage() {
         description="Estimate how much YouTube Shorts pay per 1,000 views with real RPM data."
         url="/youtube-shorts-money-calculator"
         datePublished="2025-01-15"
-        dateModified="2026-02-16"
+        dateModified="2026-03-15"
       />
       <CalculatorLayout
         title="YouTube Shorts Money Calculator"
