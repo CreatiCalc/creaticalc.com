@@ -30,10 +30,19 @@ const multiPlatformCalcs = getAllCalculators()
   .filter((c) => c.platform === Platform.Multi)
   .map((c) => ({ name: c.navLabel, href: c.href }));
 
+export const COMPARISON_LINKS: NavItem[] = [
+  { name: 'TikTok vs YouTube', href: '/tiktok-vs-youtube' },
+  { name: 'Instagram vs TikTok', href: '/instagram-vs-tiktok' },
+  { name: 'Shorts vs TikTok', href: '/youtube-shorts-vs-tiktok' },
+  { name: 'IG vs YT Sponsorships', href: '/instagram-vs-youtube-sponsorships' },
+];
+
 export const MORE_LINKS: NavItem[] = [
   ...multiPlatformCalcs,
+  { name: 'Benchmarks 2026', href: '/engagement-rate-benchmarks' },
   { name: 'Blog', href: '/blog' },
   { name: 'Glossary', href: '/glossary' },
+  { name: 'Methodology', href: '/methodology' },
   { name: 'About', href: '/about' },
 ];
 

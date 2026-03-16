@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Drawer } from 'vaul';
-import { NAV_GROUPS, MORE_LINKS } from './navConfig';
+import { NAV_GROUPS, COMPARISON_LINKS, MORE_LINKS } from './navConfig';
 import { Platform, type PlatformId } from '@/lib/platforms';
 
 const PLATFORM_DOTS: Partial<Record<PlatformId, string>> = {
@@ -118,6 +118,28 @@ export default function MobileNav() {
                 </div>
               );
             })}
+
+            {/* Comparisons section */}
+            <div className="mt-3 space-y-0.5 px-2">
+              <span className="block px-2 pb-1 text-xs font-semibold uppercase tracking-wider text-muted-light">
+                Comparisons
+              </span>
+              {COMPARISON_LINKS.map((link) => (
+                <Drawer.Close key={link.href} asChild>
+                  <Link
+                    href={link.href}
+                    aria-current={pathname === link.href ? 'page' : undefined}
+                    className={`block rounded-lg px-4 py-2.5 text-sm transition-colors ${
+                      pathname === link.href
+                        ? 'bg-primary/8 font-medium text-primary'
+                        : 'text-muted hover:bg-surface-alt hover:text-foreground'
+                    }`}
+                  >
+                    {link.name}
+                  </Link>
+                </Drawer.Close>
+              ))}
+            </div>
 
             {/* More section */}
             <div className="mt-3 space-y-0.5 px-2">
