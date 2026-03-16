@@ -10,9 +10,9 @@ export default function Image() {
     title: 'Instagram Engagement Rate Calculator',
     subtitle: 'Calculate your IG engagement rate and compare against industry benchmarks',
     stats: [
-      { label: 'Likes', value: '1,240' },
-      { label: 'Rate', value: '3.2%' },
-      { label: 'Saves', value: '86' },
+      { label: 'Metrics', value: '3 Formulas' },
+      { label: 'Benchmarks', value: 'By Niche' },
+      { label: 'Price', value: 'Free' },
     ],
   });
 }

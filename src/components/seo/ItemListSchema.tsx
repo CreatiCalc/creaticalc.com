@@ -22,6 +22,13 @@ export default function ItemListSchema({ items }: ItemListSchemaProps) {
         '@type': 'WebApplication',
         'name': item.name,
         'url': item.url.startsWith('http') ? item.url : `${SITE_URL}${item.url}`,
+        'applicationCategory': 'UtilitiesApplication',
+        'operatingSystem': 'Any',
+        'offers': {
+          '@type': 'Offer',
+          'price': '0',
+          'priceCurrency': 'USD',
+        },
         ...(item.description ? { description: item.description } : {}),
       },
     })),

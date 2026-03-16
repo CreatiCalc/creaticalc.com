@@ -10,9 +10,9 @@ export default function Image() {
     title: 'Engagement Rate Benchmarks 2026',
     subtitle: 'Average rates by follower tier, industry, and platform',
     stats: [
-      { label: 'Nano', value: '4.2%' },
-      { label: 'Micro', value: '2.8%' },
-      { label: 'Macro', value: '1.5%' },
+      { label: 'Follower Tiers', value: '5' },
+      { label: 'Industries', value: '12+' },
+      { label: 'Data', value: '2026' },
     ],
   });
 }

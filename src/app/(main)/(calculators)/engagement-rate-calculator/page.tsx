@@ -112,6 +112,12 @@ export default function EngagementRateCalculatorPage() {
     'name': `${p.name} Engagement Rate Calculator`,
     'url': `${SITE_URL}${p.href}`,
     'applicationCategory': 'UtilitiesApplication',
+    'operatingSystem': 'Any',
+    'offers': {
+      '@type': 'Offer',
+      'price': '0',
+      'priceCurrency': 'USD',
+    },
   }));
 
   const schema = {
