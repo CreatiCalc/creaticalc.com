@@ -392,6 +392,40 @@ export default function EngagementRateBenchmarksPage() {
           </div>
         </section>
 
+        <section className="mb-12">
+          <h2 className="mb-4 text-2xl font-bold">Platform Comparisons</h2>
+          <p className="mb-4 text-sm text-muted">
+            Want a deeper look at how specific platforms stack up? Our side-by-side comparisons
+            break down earnings, sponsorships, and growth dynamics.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <Link
+              href="/tiktok-vs-youtube"
+              className="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-primary/90"
+            >
+              TikTok vs YouTube
+            </Link>
+            <Link
+              href="/instagram-vs-tiktok"
+              className="rounded-lg border border-primary bg-primary/5 px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary/10"
+            >
+              Instagram vs TikTok
+            </Link>
+            <Link
+              href="/youtube-shorts-vs-tiktok"
+              className="rounded-lg border border-primary bg-primary/5 px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary/10"
+            >
+              YouTube Shorts vs TikTok
+            </Link>
+            <Link
+              href="/instagram-vs-youtube-sponsorships"
+              className="rounded-lg border border-primary bg-primary/5 px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary/10"
+            >
+              Instagram vs YouTube Sponsorships
+            </Link>
+          </div>
+        </section>
+
         <AdSlot slot="below-results" className="mb-8" />
 
         <FAQ items={faq} />

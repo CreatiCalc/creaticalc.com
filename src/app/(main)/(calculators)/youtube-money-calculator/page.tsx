@@ -364,6 +364,12 @@ const howItWorks = (
         </Link>{' '}
         — compare engagement rates across all platforms
       </li>
+      <li>
+        <Link href="/tiktok-vs-youtube" className="font-medium text-primary hover:underline">
+          TikTok vs YouTube
+        </Link>{' '}
+        — full comparison of earnings, sponsorships, and engagement
+      </li>
     </ul>
   </>
 );

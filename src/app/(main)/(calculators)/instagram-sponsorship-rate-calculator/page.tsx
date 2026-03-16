@@ -219,6 +219,21 @@ const howItWorks = (
         </Link>{' '}
         — full benchmark data across all platforms
       </li>
+      <li>
+        <Link
+          href="/instagram-vs-youtube-sponsorships"
+          className="font-medium text-primary hover:underline"
+        >
+          Instagram vs YouTube Sponsorships
+        </Link>{' '}
+        — side-by-side sponsorship rate and deal structure comparison
+      </li>
+      <li>
+        <Link href="/instagram-vs-tiktok" className="font-medium text-primary hover:underline">
+          Instagram vs TikTok
+        </Link>{' '}
+        — see which platform pays more for your content style
+      </li>
     </ul>
   </>
 );

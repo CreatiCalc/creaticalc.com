@@ -84,6 +84,15 @@ export const FOOTER_GROUPS: NavGroup[] = [
     items: sponsorshipCalcs,
   },
   {
+    label: 'Comparisons',
+    items: [
+      { name: 'TikTok vs YouTube', href: '/tiktok-vs-youtube' },
+      { name: 'Instagram vs TikTok', href: '/instagram-vs-tiktok' },
+      { name: 'Shorts vs TikTok', href: '/youtube-shorts-vs-tiktok' },
+      { name: 'IG vs YT Sponsorships', href: '/instagram-vs-youtube-sponsorships' },
+    ],
+  },
+  {
     label: 'Company',
     items: [
       { name: 'Blog', href: '/blog' },

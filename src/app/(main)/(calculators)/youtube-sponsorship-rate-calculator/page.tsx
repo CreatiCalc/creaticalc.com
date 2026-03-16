@@ -246,6 +246,21 @@ const howItWorks = (
         </Link>{' '}
         &mdash; calculate X sponsorship pricing for tweets and threads
       </li>
+      <li>
+        <Link href="/tiktok-vs-youtube" className="font-medium text-primary hover:underline">
+          TikTok vs YouTube
+        </Link>{' '}
+        &mdash; full comparison of earnings, sponsorships, and engagement
+      </li>
+      <li>
+        <Link
+          href="/instagram-vs-youtube-sponsorships"
+          className="font-medium text-primary hover:underline"
+        >
+          Instagram vs YouTube Sponsorships
+        </Link>{' '}
+        &mdash; side-by-side sponsorship rate and deal structure comparison
+      </li>
     </ul>
   </>
 );

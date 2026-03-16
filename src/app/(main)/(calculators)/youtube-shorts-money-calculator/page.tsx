@@ -291,6 +291,12 @@ const howItWorks = (
         </Link>{' '}
         &mdash; see how your engagement compares across all platforms
       </li>
+      <li>
+        <Link href="/youtube-shorts-vs-tiktok" className="font-medium text-primary hover:underline">
+          YouTube Shorts vs TikTok
+        </Link>{' '}
+        &mdash; full comparison of Shorts and TikTok earnings, growth, and sponsorships
+      </li>
     </ul>
   </>
 );

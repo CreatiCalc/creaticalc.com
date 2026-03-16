@@ -218,6 +218,18 @@ const howItWorks = (
         </Link>{' '}
         — full benchmark data across all platforms
       </li>
+      <li>
+        <Link href="/tiktok-vs-youtube" className="font-medium text-primary hover:underline">
+          TikTok vs YouTube
+        </Link>{' '}
+        — full comparison of earnings, sponsorships, and engagement
+      </li>
+      <li>
+        <Link href="/instagram-vs-tiktok" className="font-medium text-primary hover:underline">
+          Instagram vs TikTok
+        </Link>{' '}
+        — see which platform pays more for your content style
+      </li>
     </ul>
   </>
 );
