@@ -21,9 +21,10 @@ export const NICHE_PAGES: NichePageData[] = [
     name: 'Finance & Business',
     title: 'YouTube Finance Money & Earnings Calculator 2026',
     metaDescription:
-      'Free YouTube finance money calculator. Estimate how much finance and business YouTubers make with CPM rates of $18–$45. Calculate daily, monthly, and yearly earnings.',
+      'Free YouTube finance money calculator. See how much finance and business YouTubers actually earn per 1,000 views. Calculate daily, monthly, and yearly earnings.',
     ogTitle: 'YouTube Finance Money Calculator',
-    ogDescription: 'Estimate finance & business YouTube channel earnings. CPM: $18–$45.',
+    ogDescription:
+      'Find out what finance YouTubers really earn. Enter your views for a personalized estimate.',
     pageDescription:
       'Estimate your YouTube finance channel earnings based on daily views. Finance and business content earns the highest CPM on YouTube, with rates of $18–$45 per 1,000 impressions.',
     howItWorks:
@@ -67,9 +68,10 @@ export const NICHE_PAGES: NichePageData[] = [
     name: 'Technology',
     title: 'YouTube Tech Money & Earnings Calculator 2026',
     metaDescription:
-      'Free YouTube technology money calculator. Estimate how much tech YouTubers make with CPM rates of $8–$18. Calculate daily, monthly, and yearly tech channel earnings.',
+      'Free YouTube technology money calculator. See how much tech YouTubers actually earn per 1,000 views. Calculate daily, monthly, and yearly tech channel earnings.',
     ogTitle: 'YouTube Tech Money Calculator',
-    ogDescription: 'Estimate technology YouTube channel earnings. CPM: $8–$18.',
+    ogDescription:
+      'Find out what tech YouTubers really earn. Enter your views for a personalized estimate.',
     pageDescription:
       'Estimate your YouTube tech channel earnings based on daily views. Technology content earns strong CPM rates of $8–$18 per 1,000 impressions, making it one of the highest-paying niches.',
     howItWorks:
@@ -108,9 +110,10 @@ export const NICHE_PAGES: NichePageData[] = [
     name: 'Education',
     title: 'YouTube Education Money & Earnings Calculator 2026',
     metaDescription:
-      'Free YouTube education money calculator. Estimate how much educational YouTubers make with CPM rates of $5–$12. Calculate daily, monthly, and yearly earnings.',
+      'Free YouTube education money calculator. See how much educational YouTubers actually earn per 1,000 views. Calculate daily, monthly, and yearly earnings.',
     ogTitle: 'YouTube Education Money Calculator',
-    ogDescription: 'Estimate education YouTube channel earnings. CPM: $5–$12.',
+    ogDescription:
+      'Find out what education YouTubers really earn. Enter your views for a personalized estimate.',
     pageDescription:
       'Estimate your YouTube education channel earnings based on daily views. Educational content earns CPM rates of $5–$12 per 1,000 impressions with strong audience retention.',
     howItWorks:
@@ -149,9 +152,10 @@ export const NICHE_PAGES: NichePageData[] = [
     name: 'Health & Fitness',
     title: 'YouTube Health & Fitness Money & Earnings Calculator 2026',
     metaDescription:
-      'Free YouTube health and fitness money calculator. Estimate how much health YouTubers make with CPM rates of $5–$12. Calculate daily, monthly, and yearly earnings.',
+      'Free YouTube health and fitness money calculator. See how much health and fitness YouTubers actually earn per 1,000 views. Calculate daily, monthly, and yearly earnings.',
     ogTitle: 'YouTube Health & Fitness Money Calculator',
-    ogDescription: 'Estimate health & fitness YouTube channel earnings. CPM: $5–$12.',
+    ogDescription:
+      'Find out what health and fitness YouTubers really earn. Enter your views for a personalized estimate.',
     pageDescription:
       'Estimate your YouTube health and fitness channel earnings based on daily views. Health content earns CPM rates of $5–$12 per 1,000 impressions.',
     howItWorks:
@@ -190,9 +194,10 @@ export const NICHE_PAGES: NichePageData[] = [
     name: 'Beauty & Fashion',
     title: 'YouTube Beauty Money & Earnings Calculator 2026',
     metaDescription:
-      'Free YouTube beauty and fashion money calculator. Estimate how much beauty YouTubers make with CPM rates of $3–$10. Calculate daily, monthly, and yearly earnings.',
+      'Free YouTube beauty and fashion money calculator. See how much beauty YouTubers actually earn per 1,000 views. Calculate daily, monthly, and yearly earnings.',
     ogTitle: 'YouTube Beauty Money Calculator',
-    ogDescription: 'Estimate beauty & fashion YouTube channel earnings. CPM: $3–$10.',
+    ogDescription:
+      'Find out what beauty and fashion YouTubers really earn. Enter your views for a personalized estimate.',
     pageDescription:
       'Estimate your YouTube beauty and fashion channel earnings based on daily views. Beauty content earns CPM rates of $3–$10 per 1,000 impressions.',
     howItWorks:
@@ -231,9 +236,10 @@ export const NICHE_PAGES: NichePageData[] = [
     name: 'Travel',
     title: 'YouTube Travel Money & Earnings Calculator 2026',
     metaDescription:
-      'Free YouTube travel money calculator. Estimate how much travel YouTubers make with CPM rates of $4–$10. Calculate daily, monthly, and yearly travel channel earnings.',
+      'Free YouTube travel money calculator. See how much travel YouTubers actually earn per 1,000 views. Calculate daily, monthly, and yearly travel channel earnings.',
     ogTitle: 'YouTube Travel Money Calculator',
-    ogDescription: 'Estimate travel YouTube channel earnings. CPM: $4–$10.',
+    ogDescription:
+      'Find out what travel YouTubers really earn. Enter your views for a personalized estimate.',
     pageDescription:
       'Estimate your YouTube travel channel earnings based on daily views. Travel content earns CPM rates of $4–$10 per 1,000 impressions.',
     howItWorks:
@@ -272,9 +278,10 @@ export const NICHE_PAGES: NichePageData[] = [
     name: 'Food & Cooking',
     title: 'YouTube Food Money & Earnings Calculator 2026',
     metaDescription:
-      'Free YouTube food and cooking money calculator. Estimate how much food YouTubers make with CPM rates of $3–$8. Calculate daily, monthly, and yearly earnings.',
+      'Free YouTube food and cooking money calculator. See how much food YouTubers actually earn per 1,000 views. Calculate daily, monthly, and yearly earnings.',
     ogTitle: 'YouTube Food Money Calculator',
-    ogDescription: 'Estimate food & cooking YouTube channel earnings. CPM: $3–$8.',
+    ogDescription:
+      'Find out what food and cooking YouTubers really earn. Enter your views for a personalized estimate.',
     pageDescription:
       'Estimate your YouTube food and cooking channel earnings based on daily views. Food content earns CPM rates of $3–$8 per 1,000 impressions.',
     howItWorks:
@@ -313,9 +320,10 @@ export const NICHE_PAGES: NichePageData[] = [
     name: 'Lifestyle',
     title: 'YouTube Lifestyle Money & Earnings Calculator 2026',
     metaDescription:
-      'Free YouTube lifestyle money calculator. Estimate how much lifestyle YouTubers make with CPM rates of $2–$6. Calculate daily, monthly, and yearly earnings.',
+      'Free YouTube lifestyle money calculator. See how much lifestyle YouTubers actually earn per 1,000 views. Calculate daily, monthly, and yearly earnings.',
     ogTitle: 'YouTube Lifestyle Money Calculator',
-    ogDescription: 'Estimate lifestyle YouTube channel earnings. CPM: $2–$6.',
+    ogDescription:
+      'Find out what lifestyle YouTubers really earn. Enter your views for a personalized estimate.',
     pageDescription:
       'Estimate your YouTube lifestyle channel earnings based on daily views. Lifestyle content earns CPM rates of $2–$6 per 1,000 impressions.',
     howItWorks:
@@ -354,9 +362,10 @@ export const NICHE_PAGES: NichePageData[] = [
     name: 'Entertainment',
     title: 'YouTube Entertainment Money & Earnings Calculator 2026',
     metaDescription:
-      'Free YouTube entertainment money calculator. Estimate how much entertainment YouTubers make with CPM rates of $1.50–$4. Calculate daily, monthly, and yearly earnings.',
+      'Free YouTube entertainment money calculator. See how much entertainment YouTubers actually earn per 1,000 views. Calculate daily, monthly, and yearly earnings.',
     ogTitle: 'YouTube Entertainment Money Calculator',
-    ogDescription: 'Estimate entertainment YouTube channel earnings. CPM: $1.50–$4.',
+    ogDescription:
+      'Find out what entertainment YouTubers really earn. Enter your views for a personalized estimate.',
     pageDescription:
       'Estimate your YouTube entertainment channel earnings based on daily views. Entertainment content earns CPM rates of $1.50–$4 per 1,000 impressions.',
     howItWorks:
@@ -395,9 +404,10 @@ export const NICHE_PAGES: NichePageData[] = [
     name: 'Gaming',
     title: 'YouTube Gaming Money & Earnings Calculator 2026',
     metaDescription:
-      'Free YouTube gaming money calculator. Estimate how much gaming YouTubers make with CPM rates of $1.50–$5. Calculate daily, monthly, and yearly gaming channel earnings.',
+      'Free YouTube gaming money calculator. See how much gaming YouTubers actually earn per 1,000 views. Calculate daily, monthly, and yearly gaming channel earnings.',
     ogTitle: 'YouTube Gaming Money Calculator',
-    ogDescription: 'Estimate gaming YouTube channel earnings. CPM: $1.50–$5.',
+    ogDescription:
+      'Find out what gaming YouTubers really earn. Enter your views for a personalized estimate.',
     pageDescription:
       'Estimate your YouTube gaming channel earnings based on daily views. Gaming content earns CPM rates of $1.50–$5 per 1,000 impressions.',
     howItWorks:

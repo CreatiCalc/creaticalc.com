@@ -10,9 +10,9 @@ export default function Image() {
     title: 'TikTok Engagement Rate Calculator',
     subtitle: 'Measure your TikTok engagement and compare against benchmarks',
     stats: [
-      { label: 'Likes', value: '8,500' },
-      { label: 'Rate', value: '5.4%' },
-      { label: 'Shares', value: '320' },
+      { label: 'Metrics', value: '3 Formulas' },
+      { label: 'Benchmarks', value: 'By Niche' },
+      { label: 'Price', value: 'Free' },
     ],
   });
 }

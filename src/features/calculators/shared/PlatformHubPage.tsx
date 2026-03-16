@@ -49,6 +49,12 @@ export default function PlatformHubPage({ hub, calculators, otherHubs }: Platfor
       'name': calc.title,
       'url': `${SITE_URL}${calc.href}`,
       'applicationCategory': 'UtilitiesApplication',
+      'operatingSystem': 'Any',
+      'offers': {
+        '@type': 'Offer',
+        'price': '0',
+        'priceCurrency': 'USD',
+      },
     })),
   };
 

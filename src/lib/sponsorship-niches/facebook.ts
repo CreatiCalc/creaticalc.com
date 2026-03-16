@@ -9,10 +9,10 @@ const facebook: SponsorshipNichePageData[] = [
     platformLabel: 'Facebook',
     title: 'Facebook Beauty Sponsorship Rates 2026',
     metaDescription:
-      'How much do beauty creators charge on Facebook? 2026 rates for video tutorials, group content, and product features. Beauty creators earn $6–$16 per 1K followers on Facebook.',
+      'How much should beauty Facebook creators charge for sponsorships? Get a personalized rate card based on your followers, engagement, and deal type.',
     ogTitle: 'Facebook Beauty Sponsorship Rates — What to Charge in 2026',
     ogDescription:
-      'Calculate your beauty Facebook sponsorship rate. Video tutorials, group content, and product features with niche-specific pricing.',
+      'Find out what beauty Facebook sponsorships are really worth. Free rate card calculator.',
     pageDescription:
       'Beauty content on Facebook reaches a different demographic than Instagram or TikTok — a predominantly 30–55 audience with higher disposable income and loyalty to established brands. Beauty creators earn $6–$16 per 1,000 followers, with video tutorials and group-based content performing strongest. Calculate your rate below.',
     howItWorks:
@@ -53,10 +53,10 @@ const facebook: SponsorshipNichePageData[] = [
     platformLabel: 'Facebook',
     title: 'Facebook Fashion Sponsorship Rates 2026',
     metaDescription:
-      'How much do fashion creators charge on Facebook? 2026 rates for styling videos, lookbook posts, and group content. Fashion creators earn $5–$15 per 1K followers on Facebook.',
+      'How much should fashion Facebook creators charge for sponsorships? Get a personalized rate card based on your followers, engagement, and deal type.',
     ogTitle: 'Facebook Fashion Sponsorship Rates — What to Charge in 2026',
     ogDescription:
-      'Calculate your fashion Facebook sponsorship rate. Styling videos, lookbook posts, and group content with niche-specific pricing.',
+      'Find out what fashion Facebook sponsorships are really worth. Free rate card calculator.',
     pageDescription:
       'Fashion on Facebook serves an audience that Instagram and TikTok often overlook — women 35+, plus-size fashion, modest fashion, and budget-friendly styling. Fashion creators earn $5–$15 per 1,000 followers, with community-driven content and video lookbooks performing strongest. Calculate your rate below.',
     howItWorks:
@@ -97,10 +97,10 @@ const facebook: SponsorshipNichePageData[] = [
     platformLabel: 'Facebook',
     title: 'Facebook Finance Sponsorship Rates 2026',
     metaDescription:
-      'How much do finance creators charge on Facebook? 2026 rates for financial advice videos, community content, and fintech features. Finance creators earn $8–$20 per 1K followers.',
+      'How much should finance Facebook creators charge for sponsorships? Get a personalized rate card based on your followers, engagement, and deal type.',
     ogTitle: 'Facebook Finance Sponsorship Rates — What to Charge in 2026',
     ogDescription:
-      'Calculate your finance Facebook sponsorship rate. Financial advice content, community groups, and fintech features with niche-specific pricing.',
+      'Find out what finance Facebook sponsorships are really worth. Free rate card calculator.',
     pageDescription:
       "Finance is the highest-paying sponsorship niche on Facebook, thanks to the platform's 35+ audience with significant assets and financial product needs. Finance creators earn $8–$20 per 1,000 followers — the top rate on the platform — with insurance, investment, and banking products competing for creator partnerships. Calculate your rate below.",
     howItWorks:
@@ -141,10 +141,10 @@ const facebook: SponsorshipNichePageData[] = [
     platformLabel: 'Facebook',
     title: 'Facebook Fitness Sponsorship Rates 2026',
     metaDescription:
-      'How much do fitness creators charge on Facebook? 2026 rates for wellness content, workout videos, and supplement features. Fitness creators earn $7–$18 per 1K followers.',
+      'How much should fitness Facebook creators charge for sponsorships? Get a personalized rate card based on your followers, engagement, and deal type.',
     ogTitle: 'Facebook Fitness Sponsorship Rates — What to Charge in 2026',
     ogDescription:
-      'Calculate your fitness Facebook sponsorship rate. Wellness content, workout videos, and supplement features with niche-specific pricing.',
+      'Find out what fitness Facebook sponsorships are really worth. Free rate card calculator.',
     pageDescription:
       "Fitness on Facebook leans toward wellness, home workouts, and health management rather than gym culture — reflecting the platform's 35+ demographic. Fitness creators earn $7–$18 per 1,000 followers, with wellness-focused content and community-based programming attracting premium sponsorship rates. Calculate your rate below.",
     howItWorks:
@@ -185,10 +185,10 @@ const facebook: SponsorshipNichePageData[] = [
     platformLabel: 'Facebook',
     title: 'Facebook Food Sponsorship Rates 2026',
     metaDescription:
-      'How much do food creators charge on Facebook? 2026 rates for recipe videos, cooking tips, and food brand features. Food creators earn $5–$14 per 1K followers on Facebook.',
+      'How much should food Facebook creators charge for sponsorships? Get a personalized rate card based on your followers, engagement, and deal type.',
     ogTitle: 'Facebook Food Sponsorship Rates — What to Charge in 2026',
     ogDescription:
-      'Calculate your food Facebook sponsorship rate. Recipe videos, cooking tips, and brand integrations with niche-specific pricing.',
+      'Find out what food Facebook sponsorships are really worth. Free rate card calculator.',
     pageDescription:
       "Food is one of Facebook's highest-engagement niches — recipe videos, cooking tips, and meal planning content thrive among the platform's family-oriented audience. Food creators earn $5–$14 per 1,000 followers, with recipe video integrations and grocery brand partnerships performing strongest. Calculate your rate below.",
     howItWorks:
@@ -229,10 +229,10 @@ const facebook: SponsorshipNichePageData[] = [
     platformLabel: 'Facebook',
     title: 'Facebook Tech Sponsorship Rates 2026',
     metaDescription:
-      'How much do tech creators charge on Facebook? 2026 rates for product reviews, how-to guides, and software features. Tech creators earn $6–$16 per 1K followers on Facebook.',
+      'How much should tech Facebook creators charge for sponsorships? Get a personalized rate card based on your followers, engagement, and deal type.',
     ogTitle: 'Facebook Tech Sponsorship Rates — What to Charge in 2026',
     ogDescription:
-      'Calculate your tech Facebook sponsorship rate. Product reviews, how-to guides, and software features with niche-specific pricing.',
+      'Find out what tech Facebook sponsorships are really worth. Free rate card calculator.',
     pageDescription:
       'Tech content on Facebook serves a professional audience that values practical how-to guides, product comparisons, and software tutorials. Tech creators earn $6–$16 per 1,000 followers, with B2B software and productivity tool sponsorships commanding premium rates. Calculate your rate below.',
     howItWorks:
@@ -273,10 +273,10 @@ const facebook: SponsorshipNichePageData[] = [
     platformLabel: 'Facebook',
     title: 'Facebook Travel Sponsorship Rates 2026',
     metaDescription:
-      'How much do travel creators charge on Facebook? 2026 rates for destination videos, trip reviews, and travel planning content. Travel creators earn $6–$16 per 1K followers.',
+      'How much should travel Facebook creators charge for sponsorships? Get a personalized rate card based on your followers, engagement, and deal type.',
     ogTitle: 'Facebook Travel Sponsorship Rates — What to Charge in 2026',
     ogDescription:
-      'Calculate your travel Facebook sponsorship rate. Destination videos, trip reviews, and planning content with niche-specific pricing.',
+      'Find out what travel Facebook sponsorships are really worth. Free rate card calculator.',
     pageDescription:
       'Travel content on Facebook reaches an audience of established travelers with higher budgets — couples, families, and retirees planning trips with disposable income. Travel creators earn $6–$16 per 1,000 followers, with destination reviews and trip planning content attracting tourism board and hotel partnerships. Calculate your rate below.',
     howItWorks:
@@ -317,10 +317,10 @@ const facebook: SponsorshipNichePageData[] = [
     platformLabel: 'Facebook',
     title: 'Facebook Entertainment Sponsorship Rates 2026',
     metaDescription:
-      'How much do entertainment creators charge on Facebook? 2026 rates for viral videos, comedy content, and community engagement. Entertainment creators earn $4–$10 per 1K followers.',
+      'How much should entertainment Facebook creators charge for sponsorships? Get a personalized rate card based on your followers, engagement, and deal type.',
     ogTitle: 'Facebook Entertainment Sponsorship Rates — What to Charge in 2026',
     ogDescription:
-      'Calculate your entertainment Facebook sponsorship rate. Viral videos, comedy content, and community engagement with niche-specific pricing.',
+      'Find out what entertainment Facebook sponsorships are really worth. Free rate card calculator.',
     pageDescription:
       "Entertainment is Facebook's broadest niche, covering comedy, viral videos, commentary, and community content. Lower per-follower rates ($4–$10 per 1K) reflect the broad audience, but Facebook entertainment creators can reach massive audiences through the platform's sharing mechanics. Calculate your rate below.",
     howItWorks:

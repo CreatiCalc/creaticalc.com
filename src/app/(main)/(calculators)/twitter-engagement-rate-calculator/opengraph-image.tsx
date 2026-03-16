@@ -10,9 +10,9 @@ export default function Image() {
     title: 'X (Twitter) Engagement Rate Calculator',
     subtitle: 'Calculate your X engagement rate and compare against benchmarks',
     stats: [
-      { label: 'Likes', value: '430' },
-      { label: 'Rate', value: '1.8%' },
-      { label: 'Reposts', value: '52' },
+      { label: 'Metrics', value: '3 Formulas' },
+      { label: 'Benchmarks', value: 'By Niche' },
+      { label: 'Price', value: 'Free' },
     ],
   });
 }
