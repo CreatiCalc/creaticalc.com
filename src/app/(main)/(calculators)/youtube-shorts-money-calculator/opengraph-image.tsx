@@ -1,18 +1,18 @@
 import { createOgImageResponse, OG_SIZE } from '@/lib/ogImageFactory';
 
 export const runtime = 'edge';
-export const alt = 'YouTube Shorts Money Calculator — How Much Do Shorts Pay?';
+export const alt = 'YouTube Shorts Money Calculator — See What Shorts Really Pay';
 export const size = OG_SIZE;
 export const contentType = 'image/png';
 
 export default function Image() {
   return createOgImageResponse({
     title: 'YouTube Shorts Money Calculator',
-    subtitle: 'Estimate how much YouTube Shorts pay per 1,000 views',
+    subtitle: 'Find out what your Shorts are really worth — 2026 RPM data',
     stats: [
-      { label: 'Shorts RPM', value: '$0.01 — $0.07' },
-      { label: 'Per 1M Views', value: '$20 — $80' },
-      { label: 'Revenue Share', value: '45%' },
+      { label: 'Niches', value: '10+' },
+      { label: 'Data', value: '2026 RPMs' },
+      { label: 'Price', value: 'Free' },
     ],
   });
 }

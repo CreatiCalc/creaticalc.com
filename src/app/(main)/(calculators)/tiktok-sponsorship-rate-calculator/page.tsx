@@ -13,13 +13,13 @@ import type { FAQItem } from '@/features/calculators/shared/types';
 import { getSponsorshipNichePages } from '@/lib/sponsorship-niches';
 
 export const metadata: Metadata = {
-  title: 'TikTok Sponsorship Rates 2026',
+  title: 'TikTok Sponsorship Rate Calculator [Free, 2026] — Get Your Rate Card',
   description:
-    'Free TikTok sponsorship rate calculator. Calculate brand deal rates for sponsored videos, Spark Ads, Stories, and Lives by followers, engagement, and niche.',
+    'How much should you charge for TikTok brand deals? Rates vary more than you think. Get a personalized rate card for videos, Spark Ads, and Lives based on data used by top agencies.',
   openGraph: {
-    title: 'TikTok Sponsorship Rates 2026',
+    title: 'TikTok Sponsorship Rate Calculator [Free] — Get Your Rate Card',
     description:
-      'Calculate TikTok brand deal and Spark Ad rates by followers, engagement, and niche. Free rate card generator for creators.',
+      'Find out what your TikTok is really worth to brands. Personalized rate card backed by industry data, updated for 2026.',
     url: '/tiktok-sponsorship-rate-calculator',
   },
   alternates: {
@@ -217,6 +217,18 @@ const howItWorks = (
           Engagement Rate Benchmarks 2026
         </Link>{' '}
         — full benchmark data across all platforms
+      </li>
+      <li>
+        <Link href="/tiktok-vs-youtube" className="font-medium text-primary hover:underline">
+          TikTok vs YouTube
+        </Link>{' '}
+        — full comparison of earnings, sponsorships, and engagement
+      </li>
+      <li>
+        <Link href="/instagram-vs-tiktok" className="font-medium text-primary hover:underline">
+          Instagram vs TikTok
+        </Link>{' '}
+        — see which platform pays more for your content style
       </li>
     </ul>
   </>

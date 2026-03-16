@@ -8,13 +8,13 @@ import { SITE_URL } from '@/lib/siteConfig';
 export const dynamic = 'force-static';
 
 export const metadata: Metadata = {
-  title: 'Methodology — How We Calculate Creator Earnings & Engagement',
+  title: 'Our Methodology — How We Build Industry-Trusted Creator Data',
   description:
-    'Learn how CreatiCalc calculates YouTube earnings, engagement rates, and sponsorship pricing. Our data sources, formulas, update schedule, and model assumptions explained.',
+    'The data sources, formulas, and update schedule behind our calculators. See why agencies and talent managers trust our earnings, engagement, and sponsorship estimates.',
   openGraph: {
-    title: 'Methodology — How CreatiCalc Works',
+    title: 'Our Methodology — How We Build Industry-Trusted Creator Data',
     description:
-      "Data sources, formulas, and assumptions behind CreatiCalc's creator earnings and engagement rate calculators.",
+      'Transparent methodology behind the creator calculators trusted by industry professionals. Data sources, formulas, and assumptions explained.',
     url: '/methodology',
   },
   alternates: {

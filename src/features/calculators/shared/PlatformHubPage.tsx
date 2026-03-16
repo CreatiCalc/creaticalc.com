@@ -9,6 +9,28 @@ import { SITE_URL } from '@/lib/siteConfig';
 import type { PlatformHubData } from '@/lib/platformHubData';
 import type { CalculatorEntry } from '@/lib/calculatorRegistry';
 
+interface ComparisonLink {
+  name: string;
+  href: string;
+}
+
+const PLATFORM_COMPARISONS: Record<string, ComparisonLink[]> = {
+  youtube: [
+    { name: 'TikTok vs YouTube', href: '/tiktok-vs-youtube' },
+    { name: 'YouTube Shorts vs TikTok', href: '/youtube-shorts-vs-tiktok' },
+    { name: 'Instagram vs YouTube Sponsorships', href: '/instagram-vs-youtube-sponsorships' },
+  ],
+  instagram: [
+    { name: 'Instagram vs TikTok', href: '/instagram-vs-tiktok' },
+    { name: 'Instagram vs YouTube Sponsorships', href: '/instagram-vs-youtube-sponsorships' },
+  ],
+  tiktok: [
+    { name: 'TikTok vs YouTube', href: '/tiktok-vs-youtube' },
+    { name: 'Instagram vs TikTok', href: '/instagram-vs-tiktok' },
+    { name: 'YouTube Shorts vs TikTok', href: '/youtube-shorts-vs-tiktok' },
+  ],
+};
+
 interface PlatformHubPageProps {
   hub: PlatformHubData;
   calculators: CalculatorEntry[];
@@ -120,6 +142,32 @@ export default function PlatformHubPage({ hub, calculators, otherHubs }: Platfor
             </div>
           </section>
         ))}
+
+        {/* Platform Comparisons */}
+        {PLATFORM_COMPARISONS[hub.slug] && (
+          <section className="mb-12">
+            <h2 className="mb-4 text-2xl font-bold">Platform Comparisons</h2>
+            <p className="mb-4 text-sm text-muted">
+              See how {hub.displayName} stacks up against other platforms for creator earnings,
+              sponsorships, and engagement.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              {PLATFORM_COMPARISONS[hub.slug].map((comp, i) => (
+                <Link
+                  key={comp.href}
+                  href={comp.href}
+                  className={
+                    i === 0
+                      ? 'rounded-lg bg-primary px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-primary/90'
+                      : 'rounded-lg border border-primary bg-primary/5 px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary/10'
+                  }
+                >
+                  {comp.name}
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* Cross-Platform Links */}
         <section className="mb-12">

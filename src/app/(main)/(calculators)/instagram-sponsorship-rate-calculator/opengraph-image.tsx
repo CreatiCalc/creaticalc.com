@@ -8,11 +8,11 @@ export const contentType = 'image/png';
 export default function Image() {
   return createOgImageResponse({
     title: 'Instagram Sponsorship Rate Calculator',
-    subtitle: 'Find out how much to charge for sponsored Instagram content',
+    subtitle: 'Get your personalized rate card — trusted by agencies',
     stats: [
-      { label: 'Post', value: '$500' },
-      { label: 'Reel', value: '$750' },
-      { label: 'Story', value: '$200' },
+      { label: 'Formats', value: '4' },
+      { label: 'Data', value: '2026' },
+      { label: 'Price', value: 'Free' },
     ],
   });
 }

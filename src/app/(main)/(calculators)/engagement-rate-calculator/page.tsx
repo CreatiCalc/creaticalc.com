@@ -10,13 +10,13 @@ import Breadcrumbs from '@/components/seo/Breadcrumbs';
 import { SITE_URL } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
-  title: 'Engagement Rate Calculator 2026',
+  title: 'Engagement Rate Calculator [Free, All Platforms] — Check Your Rate (2026)',
   description:
-    'Free social media engagement rate calculator for Instagram, TikTok, Facebook, and X. Compare against average benchmarks by follower tier and industry.',
+    'How does your engagement rate stack up? Calculate yours for Instagram, TikTok, Facebook, or X and compare against benchmarks that brands actually use to evaluate creators.',
   openGraph: {
-    title: 'Engagement Rate Calculator 2026',
+    title: 'Engagement Rate Calculator [Free, All Platforms] — Check Your Rate',
     description:
-      'Calculate your social media engagement rate on Instagram, TikTok, Facebook, or X. Compare against average benchmarks by follower tier and industry.',
+      'Calculate your engagement rate on any platform and see how you compare. Benchmarks updated for 2026, used by brands and agencies.',
     url: '/engagement-rate-calculator',
   },
   alternates: {
