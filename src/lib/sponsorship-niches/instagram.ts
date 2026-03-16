@@ -9,10 +9,10 @@ const instagram: SponsorshipNichePageData[] = [
     platformLabel: 'Instagram',
     title: 'Instagram Beauty Sponsorship Rates 2026',
     metaDescription:
-      'How much do beauty influencers charge on Instagram? 2026 rates for sponsored posts, Reels tutorials, Stories, and carousels. Beauty creators earn $15–$35 per 1K followers.',
+      'How much should beauty Instagram creators charge for sponsorships? Get a personalized rate card based on your followers, engagement, and deal type.',
     ogTitle: 'Instagram Beauty Sponsorship Rates — What to Charge in 2026',
     ogDescription:
-      'Calculate your beauty Instagram sponsorship rate. Sponsored posts, Reels tutorials, and Stories with niche-specific pricing.',
+      'Find out what beauty Instagram sponsorships are really worth. Free rate card calculator.',
     pageDescription:
       "Beauty is Instagram's most established sponsorship niche. Makeup tutorials, skincare routines, and product swatches drive direct purchases, earning creators $15–$35 per 1,000 followers for feed posts and up to $40 per 1K for Reels. Calculate your personalized rate below.",
     howItWorks:
@@ -53,10 +53,10 @@ const instagram: SponsorshipNichePageData[] = [
     platformLabel: 'Instagram',
     title: 'Instagram Fashion Sponsorship Rates 2026',
     metaDescription:
-      'How much do fashion influencers charge on Instagram? 2026 rates for OOTD posts, Reels hauls, and brand collaborations. Fashion creators earn $15–$30 per 1K followers.',
+      'How much should fashion Instagram creators charge for sponsorships? Get a personalized rate card based on your followers, engagement, and deal type.',
     ogTitle: 'Instagram Fashion Sponsorship Rates — What to Charge in 2026',
     ogDescription:
-      'Calculate your fashion Instagram sponsorship rate. OOTD posts, Reels hauls, and brand collaborations with niche-specific pricing.',
+      'Find out what fashion Instagram sponsorships are really worth. Free rate card calculator.',
     pageDescription:
       "Fashion is one of Instagram's top sponsorship niches, with brands paying $15–$30 per 1,000 followers for outfit posts and up to $45 per 1K for Reels featuring try-on hauls and styling guides. Affiliate commissions through LTK and ShopMy add substantial income on top of flat fees. Calculate your rate below.",
     howItWorks:
@@ -97,10 +97,10 @@ const instagram: SponsorshipNichePageData[] = [
     platformLabel: 'Instagram',
     title: 'Instagram Finance Sponsorship Rates 2026',
     metaDescription:
-      'How much do finance creators charge on Instagram? 2026 rates for financial infographics, carousel breakdowns, and Reels. Finance earns $12–$25 per 1K followers.',
+      'How much should finance Instagram creators charge for sponsorships? Get a personalized rate card based on your followers, engagement, and deal type.',
     ogTitle: 'Instagram Finance Sponsorship Rates — What to Charge in 2026',
     ogDescription:
-      'Calculate your finance Instagram sponsorship rate. Infographic posts, carousel breakdowns, and Reels with niche-specific pricing.',
+      'Find out what finance Instagram sponsorships are really worth. Free rate card calculator.',
     pageDescription:
       'Finance on Instagram relies on visual explainers — infographic carousels, budgeting tips, and investing breakdowns. While per-follower rates ($12–$25 per 1K) are lower than beauty or fashion because financial content is less visually native, fintech brands pay premium rates for creators who can simplify complex topics. Calculate your rate below.',
     howItWorks:
@@ -142,10 +142,10 @@ const instagram: SponsorshipNichePageData[] = [
     platformLabel: 'Instagram',
     title: 'Instagram Fitness Sponsorship Rates 2026',
     metaDescription:
-      'How much do fitness influencers charge on Instagram? 2026 rates for workout Reels, supplement posts, and athleisure features. Fitness creators earn $12–$28 per 1K followers.',
+      'How much should fitness Instagram creators charge for sponsorships? Get a personalized rate card based on your followers, engagement, and deal type.',
     ogTitle: 'Instagram Fitness Sponsorship Rates — What to Charge in 2026',
     ogDescription:
-      'Calculate your fitness Instagram sponsorship rate. Workout Reels, supplement posts, and athleisure features with niche-specific pricing.',
+      'Find out what fitness Instagram sponsorships are really worth. Free rate card calculator.',
     pageDescription:
       "Fitness is one of Instagram's most active sponsorship niches, with supplement brands, athleisure companies, and wellness apps all competing for creator partnerships. Workout Reels and training content earn $12–$28 per 1,000 followers, with supplement and equipment integrations commanding premium rates. Calculate your rate below.",
     howItWorks:
@@ -186,10 +186,10 @@ const instagram: SponsorshipNichePageData[] = [
     platformLabel: 'Instagram',
     title: 'Instagram Food Sponsorship Rates 2026',
     metaDescription:
-      'How much do food influencers charge on Instagram? 2026 rates for recipe Reels, restaurant partnerships, and grocery brand features. Food creators earn $10–$25 per 1K followers.',
+      'How much should food Instagram creators charge for sponsorships? Get a personalized rate card based on your followers, engagement, and deal type.',
     ogTitle: 'Instagram Food Sponsorship Rates — What to Charge in 2026',
     ogDescription:
-      'Calculate your food Instagram sponsorship rate. Recipe Reels, restaurant tags, and brand integrations with niche-specific pricing.',
+      'Find out what food Instagram sponsorships are really worth. Free rate card calculator.',
     pageDescription:
       "Food content thrives on Instagram's visual format — recipe Reels, flat-lay food photography, and restaurant features all drive strong engagement. Food creators earn $10–$25 per 1,000 followers for feed posts, with recipe Reels and dedicated brand features pushing rates higher. Calculate your rate below.",
     howItWorks:
@@ -230,10 +230,10 @@ const instagram: SponsorshipNichePageData[] = [
     platformLabel: 'Instagram',
     title: 'Instagram Tech Sponsorship Rates 2026',
     metaDescription:
-      'How much do tech influencers charge on Instagram? 2026 rates for product showcases, setup tours, and unboxing Reels. Tech creators earn $12–$25 per 1K followers.',
+      'How much should tech Instagram creators charge for sponsorships? Get a personalized rate card based on your followers, engagement, and deal type.',
     ogTitle: 'Instagram Tech Sponsorship Rates — What to Charge in 2026',
     ogDescription:
-      'Calculate your tech Instagram sponsorship rate. Product showcases, desk setups, and unboxing Reels with niche-specific pricing.',
+      'Find out what tech Instagram sponsorships are really worth. Free rate card calculator.',
     pageDescription:
       'Tech on Instagram centers around product aesthetics — desk setup tours, unboxing Reels, flat-lay product photography, and lifestyle tech integration. Tech creators earn $12–$25 per 1,000 followers for feed posts, with unboxing Reels and setup tour content commanding premium rates. Calculate your rate below.',
     howItWorks:
@@ -274,10 +274,10 @@ const instagram: SponsorshipNichePageData[] = [
     platformLabel: 'Instagram',
     title: 'Instagram Travel Sponsorship Rates 2026',
     metaDescription:
-      'How much do travel influencers charge on Instagram? 2026 rates for destination posts, hotel features, and travel Reels. Travel creators earn $15–$30 per 1K followers.',
+      'How much should travel Instagram creators charge for sponsorships? Get a personalized rate card based on your followers, engagement, and deal type.',
     ogTitle: 'Instagram Travel Sponsorship Rates — What to Charge in 2026',
     ogDescription:
-      'Calculate your travel Instagram sponsorship rate. Destination features, hotel partnerships, and travel Reels with niche-specific pricing.',
+      'Find out what travel Instagram sponsorships are really worth. Free rate card calculator.',
     pageDescription:
       "Travel is one of Instagram's most aspirational niches — destination photography, hotel features, and travel Reels inspire bookings and drive tourism. Travel creators earn $15–$30 per 1,000 followers for feed posts, with destination features and hotel partnerships commanding premium rates. Calculate your rate below.",
     howItWorks:
@@ -318,10 +318,10 @@ const instagram: SponsorshipNichePageData[] = [
     platformLabel: 'Instagram',
     title: 'Instagram Entertainment Sponsorship Rates 2026',
     metaDescription:
-      'How much do entertainment influencers charge on Instagram? 2026 rates for comedy, meme, and lifestyle content. Entertainment creators earn $8–$20 per 1K followers.',
+      'How much should entertainment Instagram creators charge for sponsorships? Get a personalized rate card based on your followers, engagement, and deal type.',
     ogTitle: 'Instagram Entertainment Sponsorship Rates — What to Charge in 2026',
     ogDescription:
-      'Calculate your entertainment Instagram sponsorship rate. Comedy, meme, and lifestyle content with niche-specific pricing.',
+      'Find out what entertainment Instagram sponsorships are really worth. Free rate card calculator.',
     pageDescription:
       "Entertainment is Instagram's broadest niche — comedy, memes, pop culture commentary, and lifestyle content. Lower per-follower rates ($8–$20 per 1K) reflect a broad, less targeted audience, but larger followings and high engagement mean strong absolute earnings. Calculate your rate below.",
     howItWorks:

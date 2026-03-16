@@ -10,10 +10,10 @@ const facebook: EngagementNichePageData[] = [
     name: 'Beauty',
     title: 'Facebook Beauty Engagement Rate + Benchmarks 2026',
     metaDescription:
-      'Beauty creators on Facebook average a 0.07% engagement rate in 2026. Learn why beauty engagement is low on Facebook and how Groups can boost your reach.',
+      "What's the average engagement rate for Beauty Facebook pages? Calculate yours and see how you compare to industry benchmarks.",
     ogTitle: 'Facebook Beauty Engagement Rate \u2014 2026 Data',
     ogDescription:
-      'Beauty pages average 0.07% engagement on Facebook. See benchmarks and strategies to grow.',
+      'See how your Beauty Facebook engagement stacks up. Free calculator with industry benchmarks.',
     pageDescription:
       'Beauty content on Facebook averages a 0.07% engagement rate, falling below the platform\u2019s overall mean. Much of the beauty audience has migrated to Instagram and TikTok, but Facebook\u2019s older demographic still engages with skincare routines, anti-aging tips, and wellness-focused beauty content.',
     howItWorks:
@@ -56,10 +56,10 @@ const facebook: EngagementNichePageData[] = [
     name: 'Fashion',
     title: 'Facebook Fashion Engagement Rate + Benchmarks 2026',
     metaDescription:
-      'Fashion pages on Facebook average just 0.05% engagement in 2026. Discover why fashion struggles on Facebook and where niche communities still thrive.',
+      "What's the average engagement rate for Fashion Facebook pages? Calculate yours and see how you compare to industry benchmarks.",
     ogTitle: 'Facebook Fashion Engagement Rate \u2014 2026 Data',
     ogDescription:
-      'Fashion content averages 0.05% engagement on Facebook. Explore niche Group strategies that work.',
+      'See how your Fashion Facebook engagement stacks up. Free calculator with industry benchmarks.',
     pageDescription:
       'Fashion is one of the lowest-performing niches on Facebook, averaging just 0.05% engagement. The platform\u2019s mismatch with visual-first fashion content and its older user demographic create significant headwinds, though thriving communities around plus-size fashion, vintage finds, and Marketplace resale prove that pockets of strong engagement still exist.',
     howItWorks:
@@ -102,10 +102,10 @@ const facebook: EngagementNichePageData[] = [
     name: 'Finance',
     title: 'Facebook Finance Engagement Rate + Benchmarks 2026',
     metaDescription:
-      'Finance pages on Facebook average 0.08% engagement in 2026. See why the 35+ demographic makes Facebook a strong channel for personal finance content.',
+      "What's the average engagement rate for Finance Facebook pages? Calculate yours and see how you compare to industry benchmarks.",
     ogTitle: 'Facebook Finance Engagement Rate \u2014 2026 Data',
     ogDescription:
-      'Finance creators see 0.08% engagement on Facebook. Learn how the 35+ audience drives results.',
+      'See how your Finance Facebook engagement stacks up. Free calculator with industry benchmarks.',
     pageDescription:
       'Finance and personal money content on Facebook averages a 0.08% engagement rate, placing it above the platform\u2019s overall mean. Facebook\u2019s older, financially active user base makes it one of the few platforms where retirement planning, mortgage advice, and investment discussions genuinely resonate.',
     howItWorks:
@@ -148,10 +148,10 @@ const facebook: EngagementNichePageData[] = [
     name: 'Fitness',
     title: 'Facebook Fitness Engagement Rate + Benchmarks 2026',
     metaDescription:
-      'Fitness creators on Facebook average 0.10% engagement in 2026. See how live workouts and Group challenges drive above-average interaction rates.',
+      "What's the average engagement rate for Fitness Facebook pages? Calculate yours and see how you compare to industry benchmarks.",
     ogTitle: 'Facebook Fitness Engagement Rate \u2014 2026 Data',
     ogDescription:
-      'Fitness pages see 0.10% engagement on Facebook. Explore strategies for live workouts and Groups.',
+      'See how your Fitness Facebook engagement stacks up. Free calculator with industry benchmarks.',
     pageDescription:
       'Fitness content achieves a 0.10% engagement rate on Facebook, well above the platform average. Facebook Live workouts, Group accountability challenges, and wellness-focused content resonate strongly with the 35+ audience that prioritizes health and longevity over aesthetics.',
     howItWorks:
@@ -195,10 +195,10 @@ const facebook: EngagementNichePageData[] = [
     name: 'Food',
     title: 'Facebook Food Engagement Rate + Benchmarks 2026',
     metaDescription:
-      'Food pages lead Facebook engagement at 0.12% in 2026. Recipe sharing, cooking Groups, and comfort food videos drive the platform\u2019s highest niche rate.',
+      "What's the average engagement rate for Food Facebook pages? Calculate yours and see how you compare to industry benchmarks.",
     ogTitle: 'Facebook Food Engagement Rate \u2014 2026 Data',
     ogDescription:
-      'Food content tops Facebook at 0.12% engagement. See why recipe sharing dominates the platform.',
+      'See how your Food Facebook engagement stacks up. Free calculator with industry benchmarks.',
     pageDescription:
       'Food content leads all niches on Facebook with a 0.12% engagement rate, nearly double the platform average. Recipe sharing is one of Facebook\u2019s most natural organic behaviors, and massive cooking Groups sustain daily interaction that no other niche can match on this platform.',
     howItWorks:
@@ -241,10 +241,10 @@ const facebook: EngagementNichePageData[] = [
     name: 'Tech',
     title: 'Facebook Tech Engagement Rate + Benchmarks 2026',
     metaDescription:
-      'Tech pages on Facebook average 0.05% engagement in 2026. Learn why tech audiences skew younger and how device-specific Groups buck the trend.',
+      "What's the average engagement rate for Tech Facebook pages? Calculate yours and see how you compare to industry benchmarks.",
     ogTitle: 'Facebook Tech Engagement Rate \u2014 2026 Data',
     ogDescription:
-      'Tech content averages 0.05% engagement on Facebook. Discover niche Group opportunities.',
+      'See how your Tech Facebook engagement stacks up. Free calculator with industry benchmarks.',
     pageDescription:
       'Technology content on Facebook averages a 0.05% engagement rate, tied for the lowest among major niches. The tech-savvy audience largely prefers Reddit, YouTube, and X for discussions, but Facebook Groups focused on specific devices and software maintain surprisingly active communities.',
     howItWorks:
@@ -288,10 +288,10 @@ const facebook: EngagementNichePageData[] = [
     name: 'Travel',
     title: 'Facebook Travel Engagement Rate + Benchmarks 2026',
     metaDescription:
-      'Travel pages on Facebook average 0.07% engagement in 2026. Trip reviews, planning-focused Groups, and Facebook Events help travel creators connect with the 35+ audience.',
+      "What's the average engagement rate for Travel Facebook pages? Calculate yours and see how you compare to industry benchmarks.",
     ogTitle: 'Facebook Travel Engagement Rate \u2014 2026 Data',
     ogDescription:
-      'Travel content averages 0.07% engagement on Facebook. See how Groups and Events drive results.',
+      'See how your Travel Facebook engagement stacks up. Free calculator with industry benchmarks.',
     pageDescription:
       'Travel content on Facebook earns a 0.07% engagement rate, sitting right at the platform average. While Instagram and TikTok dominate travel inspiration, Facebook\u2019s strength lies in trip planning discussions, destination review Groups, and Facebook Events for travel meetups that serve its older, planning-oriented audience.',
     howItWorks:
@@ -334,10 +334,10 @@ const facebook: EngagementNichePageData[] = [
     name: 'Entertainment',
     title: 'Facebook Entertainment Engagement Rate + Benchmarks 2026',
     metaDescription:
-      'Entertainment pages on Facebook average 0.08% engagement in 2026. Nostalgia content, viral video sharing, and Facebook Watch fuel above-average interaction rates.',
+      "What's the average engagement rate for Entertainment Facebook pages? Calculate yours and see how you compare to industry benchmarks.",
     ogTitle: 'Facebook Entertainment Engagement Rate \u2014 2026 Data',
     ogDescription:
-      'Entertainment content earns 0.08% engagement on Facebook. See what drives shares and reactions.',
+      'See how your Entertainment Facebook engagement stacks up. Free calculator with industry benchmarks.',
     pageDescription:
       'Entertainment content on Facebook achieves a 0.08% engagement rate, above the platform average. Nostalgia-driven posts, viral video sharing, and family-friendly content tap into Facebook\u2019s core strength as a platform where people connect over shared cultural touchpoints and pass along content to friends and family.',
     howItWorks:

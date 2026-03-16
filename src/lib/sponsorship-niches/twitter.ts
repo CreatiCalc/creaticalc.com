@@ -9,10 +9,10 @@ const twitter: SponsorshipNichePageData[] = [
     platformLabel: 'X (Twitter)',
     title: 'X (Twitter) Beauty Sponsorship Rates 2026',
     metaDescription:
-      'How much do beauty creators charge for X (Twitter) sponsorships? See 2026 rates for threads, product tweets, and beauty brand partnerships. Beauty deals earn $2–$6 per 1K followers.',
+      'How much should beauty X (Twitter) creators charge for sponsorships? Get a personalized rate card based on your followers, engagement, and deal type.',
     ogTitle: 'X (Twitter) Beauty Sponsorship Rates — What to Charge in 2026',
     ogDescription:
-      'Calculate your beauty X (Twitter) sponsorship rate. Thread-based tutorials, product mentions, and brand partnerships with niche-specific pricing.',
+      'Find out what beauty X (Twitter) sponsorships are really worth. Free rate card calculator.',
     pageDescription:
       'Beauty sponsorships on X (Twitter) are a smaller but growing segment. Creators earn $2–$6 per 1,000 followers for product mentions and thread-based tutorials. While rates are lower than visual platforms, X offers unique advantages for skincare education and ingredient discussion threads. Enter your stats to calculate your rate.',
     howItWorks:
@@ -53,10 +53,10 @@ const twitter: SponsorshipNichePageData[] = [
     platformLabel: 'X (Twitter)',
     title: 'X (Twitter) Fashion Sponsorship Rates 2026',
     metaDescription:
-      'How much do fashion creators charge for X (Twitter) sponsorships? See 2026 rates for style threads, brand mentions, and fashion commentary. Fashion deals earn $2–$7 per 1K followers.',
+      'How much should fashion X (Twitter) creators charge for sponsorships? Get a personalized rate card based on your followers, engagement, and deal type.',
     ogTitle: 'X (Twitter) Fashion Sponsorship Rates — What to Charge in 2026',
     ogDescription:
-      'Calculate your fashion X (Twitter) sponsorship rate. Style commentary, brand mentions, and trend analysis with niche-specific pricing.',
+      'Find out what fashion X (Twitter) sponsorships are really worth. Free rate card calculator.',
     pageDescription:
       "Fashion sponsorships on X (Twitter) earn $2–$7 per 1,000 followers. X is uniquely suited to fashion commentary, trend analysis, and behind-the-scenes industry discussion that visual platforms can't replicate. Enter your stats to calculate your personalized rate.",
     howItWorks:
@@ -97,10 +97,10 @@ const twitter: SponsorshipNichePageData[] = [
     platformLabel: 'X (Twitter)',
     title: 'X (Twitter) Finance Sponsorship Rates 2026',
     metaDescription:
-      'How much do finance creators charge for X (Twitter) sponsorships? See 2026 rates for fintech threads, investment commentary, and financial product mentions. Finance deals earn $5–$15 per 1K followers.',
+      'How much should finance X (Twitter) creators charge for sponsorships? Get a personalized rate card based on your followers, engagement, and deal type.',
     ogTitle: 'X (Twitter) Finance Sponsorship Rates — What to Charge in 2026',
     ogDescription:
-      'Calculate your finance X (Twitter) sponsorship rate. Fintech mentions, investment threads, and financial product partnerships with niche-specific pricing.',
+      'Find out what finance X (Twitter) sponsorships are really worth. Free rate card calculator.',
     pageDescription:
       'Finance is the highest-paying sponsorship niche on X (Twitter), earning $5–$15 per 1,000 followers. X is where financial professionals, investors, and decision-makers consume content, making it the most valuable platform for fintech and financial services sponsorships. Enter your stats to calculate your rate.',
     howItWorks:
@@ -141,10 +141,10 @@ const twitter: SponsorshipNichePageData[] = [
     platformLabel: 'X (Twitter)',
     title: 'X (Twitter) Fitness Sponsorship Rates 2026',
     metaDescription:
-      'How much do fitness creators charge for X (Twitter) sponsorships? See 2026 rates for workout threads, supplement mentions, and wellness partnerships. Fitness deals earn $3–$8 per 1K followers.',
+      'How much should fitness X (Twitter) creators charge for sponsorships? Get a personalized rate card based on your followers, engagement, and deal type.',
     ogTitle: 'X (Twitter) Fitness Sponsorship Rates — What to Charge in 2026',
     ogDescription:
-      'Calculate your fitness X (Twitter) sponsorship rate. Supplement mentions, workout discussions, and wellness brand partnerships with niche-specific pricing.',
+      'Find out what fitness X (Twitter) sponsorships are really worth. Free rate card calculator.',
     pageDescription:
       'Fitness sponsorships on X (Twitter) earn $3–$8 per 1,000 followers. X is increasingly valuable for fitness creators who share evidence-based training advice, supplement analysis, and wellness commentary that goes deeper than workout clips. Enter your stats to calculate your rate.',
     howItWorks:
@@ -185,10 +185,10 @@ const twitter: SponsorshipNichePageData[] = [
     platformLabel: 'X (Twitter)',
     title: 'X (Twitter) Food Sponsorship Rates 2026',
     metaDescription:
-      'How much do food creators charge for X (Twitter) sponsorships? See 2026 rates for restaurant threads, food brand mentions, and recipe discussions. Food deals earn $2–$6 per 1K followers.',
+      'How much should food X (Twitter) creators charge for sponsorships? Get a personalized rate card based on your followers, engagement, and deal type.',
     ogTitle: 'X (Twitter) Food Sponsorship Rates — What to Charge in 2026',
     ogDescription:
-      'Calculate your food X (Twitter) sponsorship rate. Restaurant reviews, food brand mentions, and culinary commentary with niche-specific pricing.',
+      'Find out what food X (Twitter) sponsorships are really worth. Free rate card calculator.',
     pageDescription:
       "Food sponsorships on X (Twitter) earn $2–$6 per 1,000 followers. X's text-first format makes it ideal for restaurant criticism, food industry commentary, and the kind of culinary debate that drives high engagement. Enter your stats to calculate your rate.",
     howItWorks:
@@ -229,10 +229,10 @@ const twitter: SponsorshipNichePageData[] = [
     platformLabel: 'X (Twitter)',
     title: 'X (Twitter) Tech Sponsorship Rates 2026',
     metaDescription:
-      'How much do tech creators charge for X (Twitter) sponsorships? See 2026 rates for product launches, SaaS threads, and tech commentary. Tech deals earn $4–$12 per 1K followers.',
+      'How much should tech X (Twitter) creators charge for sponsorships? Get a personalized rate card based on your followers, engagement, and deal type.',
     ogTitle: 'X (Twitter) Tech Sponsorship Rates — What to Charge in 2026',
     ogDescription:
-      'Calculate your tech X (Twitter) sponsorship rate. Product launches, SaaS reviews, and tech commentary with niche-specific pricing.',
+      'Find out what tech X (Twitter) sponsorships are really worth. Free rate card calculator.',
     pageDescription:
       "Tech is X (Twitter)'s second-highest-paying sponsorship niche at $4–$12 per 1,000 followers. X is the epicenter of tech industry discourse — product launches, startup culture, and developer tools are all discussed here first. Enter your stats to calculate your rate.",
     howItWorks:
@@ -273,10 +273,10 @@ const twitter: SponsorshipNichePageData[] = [
     platformLabel: 'X (Twitter)',
     title: 'X (Twitter) Travel Sponsorship Rates 2026',
     metaDescription:
-      'How much do travel creators charge for X (Twitter) sponsorships? See 2026 rates for destination threads, airline mentions, and travel hack posts. Travel deals earn $3–$8 per 1K followers.',
+      'How much should travel X (Twitter) creators charge for sponsorships? Get a personalized rate card based on your followers, engagement, and deal type.',
     ogTitle: 'X (Twitter) Travel Sponsorship Rates — What to Charge in 2026',
     ogDescription:
-      'Calculate your travel X (Twitter) sponsorship rate. Destination threads, travel hacks, and airline/hotel partnerships with niche-specific pricing.',
+      'Find out what travel X (Twitter) sponsorships are really worth. Free rate card calculator.',
     pageDescription:
       'Travel sponsorships on X (Twitter) earn $3–$8 per 1,000 followers. X excels for travel deal alerts, points/miles strategy, and destination discussion threads that drive booking decisions. Enter your stats to calculate your rate.',
     howItWorks:
@@ -317,10 +317,10 @@ const twitter: SponsorshipNichePageData[] = [
     platformLabel: 'X (Twitter)',
     title: 'X (Twitter) Entertainment Sponsorship Rates 2026',
     metaDescription:
-      'How much do entertainment creators charge for X (Twitter) sponsorships? See 2026 rates for commentary threads, meme accounts, and pop culture partnerships. Entertainment deals earn $2–$5 per 1K followers.',
+      'How much should entertainment X (Twitter) creators charge for sponsorships? Get a personalized rate card based on your followers, engagement, and deal type.',
     ogTitle: 'X (Twitter) Entertainment Sponsorship Rates — What to Charge in 2026',
     ogDescription:
-      'Calculate your entertainment X (Twitter) sponsorship rate. Pop culture commentary, meme accounts, and entertainment brand partnerships with niche-specific pricing.',
+      'Find out what entertainment X (Twitter) sponsorships are really worth. Free rate card calculator.',
     pageDescription:
       'Entertainment sponsorships on X (Twitter) earn $2–$5 per 1,000 followers — the lowest per-follower rate but often the highest in absolute earnings due to massive audience sizes. X is the real-time commentary platform for TV, movies, music, and sports. Enter your stats to calculate your rate.',
     howItWorks:

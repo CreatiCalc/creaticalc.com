@@ -9,10 +9,10 @@ const instagram: EngagementNichePageData[] = [
     name: 'Beauty',
     title: 'Instagram Beauty Engagement Rate + Benchmarks 2026',
     metaDescription:
-      'Beauty Instagram accounts average a 0.87% engagement rate in 2026. See how your beauty content compares and get strategies to boost likes, saves, and comments.',
+      "What's the average engagement rate for beauty Instagram accounts? Calculate yours and see how you compare to industry benchmarks.",
     ogTitle: 'Beauty Instagram Engagement Rate: 2026 Benchmarks',
     ogDescription:
-      'Beauty creators average 0.87% engagement on Instagram. Compare your rate and improve it.',
+      'See how your beauty Instagram engagement stacks up. Free calculator with industry benchmarks.',
     pageDescription:
       'The average Instagram engagement rate for beauty creators sits at 0.87% in 2026, placing the niche slightly below the platform-wide average. Despite beauty being one of the most followed verticals on Instagram, high content volume means individual posts compete fiercely for attention. Use this calculator to benchmark your beauty account against industry standards and pinpoint where you can gain ground.',
     howItWorks:
@@ -53,10 +53,10 @@ const instagram: EngagementNichePageData[] = [
     name: 'Fashion',
     title: 'Instagram Fashion Engagement Rate + Benchmarks 2026',
     metaDescription:
-      'Fashion Instagram accounts average just 0.68% engagement in 2026. Learn why fashion lags behind other niches and discover tactics to lift your rate.',
+      "What's the average engagement rate for fashion Instagram accounts? Calculate yours and see how you compare to industry benchmarks.",
     ogTitle: 'Fashion Instagram Engagement Rate: 2026 Benchmarks',
     ogDescription:
-      'Fashion accounts average 0.68% engagement on Instagram. See how to beat the benchmark.',
+      'See how your fashion Instagram engagement stacks up. Free calculator with industry benchmarks.',
     pageDescription:
       "Fashion creators on Instagram face a challenging engagement landscape, with the niche averaging just 0.68% in 2026 \u2014 the lowest among major lifestyle verticals. The shift from curated lookbooks to short-form video has disrupted traditional fashion content strategies. Measure your fashion account's performance against current benchmarks and identify the content shifts that can reverse declining interaction rates.",
     howItWorks:
@@ -97,10 +97,10 @@ const instagram: EngagementNichePageData[] = [
     name: 'Finance',
     title: 'Instagram Finance Engagement Rate + Benchmarks 2026',
     metaDescription:
-      'Finance Instagram accounts average 0.85% engagement in 2026. Discover why infographic carousels and save rates make FinStagram a unique niche.',
+      "What's the average engagement rate for finance Instagram accounts? Calculate yours and see how you compare to industry benchmarks.",
     ogTitle: 'Finance Instagram Engagement Rate: 2026 Benchmarks',
     ogDescription:
-      'Finance creators average 0.85% engagement on Instagram. Benchmark your FinStagram account.',
+      'See how your finance Instagram engagement stacks up. Free calculator with industry benchmarks.',
     pageDescription:
       'Finance content on Instagram has carved out a distinctive engagement profile, averaging 0.85% in 2026. What makes this niche unusual is that saves often outpace likes and comments, reflecting how audiences treat financial content as reference material rather than casual entertainment. Check how your finance account stacks up and learn which content formats resonate most with money-minded followers.',
     howItWorks:
@@ -141,10 +141,10 @@ const instagram: EngagementNichePageData[] = [
     name: 'Fitness',
     title: 'Instagram Fitness Engagement Rate + Benchmarks 2026',
     metaDescription:
-      'Fitness Instagram accounts average 1.2% engagement in 2026 \u2014 well above the platform average. See what drives strong interaction in this niche.',
+      "What's the average engagement rate for fitness Instagram accounts? Calculate yours and see how you compare to industry benchmarks.",
     ogTitle: 'Fitness Instagram Engagement Rate: 2026 Benchmarks',
     ogDescription:
-      'Fitness creators average 1.2% engagement on Instagram. Benchmark your account today.',
+      'See how your fitness Instagram engagement stacks up. Free calculator with industry benchmarks.',
     pageDescription:
       "Fitness is one of Instagram's highest-engaging niches, averaging 1.2% in 2026 \u2014 significantly above the platform-wide mean. The combination of visual transformation content, workout demonstrations, and challenge-based community participation gives fitness creators a natural advantage in driving interaction. Use this calculator to see where your fitness account stands relative to the benchmark and uncover strategies to push even higher.",
     howItWorks:
@@ -185,10 +185,10 @@ const instagram: EngagementNichePageData[] = [
     name: 'Food',
     title: 'Instagram Food Engagement Rate + Benchmarks 2026',
     metaDescription:
-      'Food Instagram accounts average 1.15% engagement in 2026. Explore why recipe Reels and flat lay photography keep food content above the platform average.',
+      "What's the average engagement rate for food Instagram accounts? Calculate yours and see how you compare to industry benchmarks.",
     ogTitle: 'Food Instagram Engagement Rate: 2026 Benchmarks',
     ogDescription:
-      'Food accounts average 1.15% engagement on Instagram. See how your food content compares.',
+      'See how your food Instagram engagement stacks up. Free calculator with industry benchmarks.',
     pageDescription:
       'Food content thrives on Instagram with a 1.15% average engagement rate in 2026, benefiting from universal audience appeal and highly visual subject matter. From overhead recipe Reels to carefully composed flat lay photography, food creators enjoy above-average interaction rates driven by saves, shares, and comment threads debating techniques and substitutions. Benchmark your food account here and find out which content formats will lift your numbers.',
     howItWorks:
@@ -229,10 +229,10 @@ const instagram: EngagementNichePageData[] = [
     name: 'Tech',
     title: 'Instagram Tech Engagement Rate + Benchmarks 2026',
     metaDescription:
-      'Tech Instagram accounts average 0.9% engagement in 2026. Learn why saves dominate this niche and which formats drive the most interaction for tech creators.',
+      "What's the average engagement rate for tech Instagram accounts? Calculate yours and see how you compare to industry benchmarks.",
     ogTitle: 'Tech Instagram Engagement Rate: 2026 Benchmarks',
     ogDescription:
-      'Tech accounts average 0.9% engagement on Instagram. Compare your tech content performance.',
+      'See how your tech Instagram engagement stacks up. Free calculator with industry benchmarks.',
     pageDescription:
       "Tech creators on Instagram maintain a 0.9% average engagement rate in 2026, sitting right at the platform average. What distinguishes this niche is the outsized role of saves \u2014 followers bookmark unboxing Reels, setup tours, and comparison carousels to reference before making purchasing decisions. Calculate your tech account's engagement against current benchmarks and discover strategies tailored to how tech audiences interact on Instagram.",
     howItWorks:
@@ -273,10 +273,10 @@ const instagram: EngagementNichePageData[] = [
     name: 'Travel',
     title: 'Instagram Travel Engagement Rate + Benchmarks 2026',
     metaDescription:
-      'Travel Instagram accounts average 1.35% engagement in 2026 \u2014 the highest among major niches. See why aspirational content and location tags fuel top-tier interaction.',
+      "What's the average engagement rate for travel Instagram accounts? Calculate yours and see how you compare to industry benchmarks.",
     ogTitle: 'Travel Instagram Engagement Rate: 2026 Benchmarks',
     ogDescription:
-      'Travel creators average 1.35% engagement on Instagram \u2014 the highest of major niches.',
+      'See how your travel Instagram engagement stacks up. Free calculator with industry benchmarks.',
     pageDescription:
       "Travel leads all major Instagram niches with a 1.35% average engagement rate in 2026, fueled by aspirational imagery, location-based discovery features, and strong seasonal patterns. Instagram remains the dominant platform for trip planning and destination research, giving travel creators a built-in audience actively seeking inspiration. Benchmark your travel account and learn how to capitalize on the niche's natural engagement advantages.",
     howItWorks:
@@ -317,10 +317,10 @@ const instagram: EngagementNichePageData[] = [
     name: 'Entertainment',
     title: 'Instagram Entertainment Engagement Rate + Benchmarks 2026',
     metaDescription:
-      'Entertainment Instagram accounts average just 0.75% engagement in 2026. Find out why broad audiences dilute interaction and how to stand out in meme and pop culture content.',
+      "What's the average engagement rate for entertainment Instagram accounts? Calculate yours and see how you compare to industry benchmarks.",
     ogTitle: 'Entertainment Instagram Engagement Rate: 2026 Benchmarks',
     ogDescription:
-      'Entertainment accounts average 0.75% engagement on Instagram. Learn how to improve yours.',
+      'See how your entertainment Instagram engagement stacks up. Free calculator with industry benchmarks.',
     pageDescription:
       "Entertainment is one of Instagram's most-followed categories but one of its lowest-engaging, averaging just 0.75% in 2026. The paradox stems from broad, passive audiences who follow entertainment accounts casually rather than with deep personal investment. Benchmark your entertainment account against the industry average and learn which tactics can cut through the noise in a niche dominated by memes, trending audio, and celebrity commentary.",
     howItWorks:

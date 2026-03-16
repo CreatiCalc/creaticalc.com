@@ -9,9 +9,10 @@ const tiktok: EngagementNichePageData[] = [
     platformLabel: 'TikTok',
     title: 'TikTok Beauty Engagement Rate + Benchmarks 2026',
     metaDescription:
-      'Beauty creators on TikTok average a 4.5% engagement rate in 2026. See how BeautyTok benchmarks compare by follower count and learn proven tactics to boost your rate.',
+      "What's the average engagement rate for beauty TikTok creators? Calculate yours and see how you compare to industry benchmarks.",
     ogTitle: 'TikTok Beauty Engagement Rate \u2014 2026 Data',
-    ogDescription: 'BeautyTok averages 4.5% engagement. See where you stand and how to improve.',
+    ogDescription:
+      'See how your beauty TikTok engagement stacks up. Free calculator with industry benchmarks.',
     pageDescription:
       "Beauty is one of TikTok's most saturated verticals, yet creators who understand the platform's recommendation engine still pull a solid 4.5% average engagement rate. This benchmark reflects interactions across likes, comments, shares, and saves relative to total views \u2014 a metric that matters far more on TikTok than raw follower counts. Use the calculator below to compare your performance against the BeautyTok average and identify where your content stands.",
     howItWorks:
@@ -52,10 +53,10 @@ const tiktok: EngagementNichePageData[] = [
     platformLabel: 'TikTok',
     title: 'TikTok Fashion Engagement Rate + Benchmarks 2026',
     metaDescription:
-      'Fashion creators on TikTok see an average 3.8% engagement rate in 2026. Explore benchmarks, compare your metrics, and discover strategies to stand out on FashionTok.',
+      "What's the average engagement rate for fashion TikTok creators? Calculate yours and see how you compare to industry benchmarks.",
     ogTitle: 'TikTok Fashion Engagement Rate \u2014 2026 Benchmarks',
     ogDescription:
-      'FashionTok averages 3.8% engagement \u2014 the lowest among major TikTok niches. Learn how to beat it.',
+      'See how your fashion TikTok engagement stacks up. Free calculator with industry benchmarks.',
     pageDescription:
       "Fashion sits at a 3.8% average engagement rate on TikTok, making it the lowest-performing major niche on the platform. This isn't because fashion content lacks appeal \u2014 it's because the niche faces stiff cross-platform competition from Instagram Reels and Pinterest, splitting audience attention. Enter your metrics below to see how your FashionTok content stacks up against the benchmark.",
     howItWorks:
@@ -96,10 +97,10 @@ const tiktok: EngagementNichePageData[] = [
     platformLabel: 'TikTok',
     title: 'TikTok Finance Engagement Rate + Benchmarks 2026',
     metaDescription:
-      'FinTok creators average a 4.2% engagement rate on TikTok in 2026. Compare your finance content metrics and learn what drives saves and shares in money-related content.',
+      "What's the average engagement rate for finance TikTok creators? Calculate yours and see how you compare to industry benchmarks.",
     ogTitle: 'TikTok Finance Engagement Rate \u2014 2026 Data',
     ogDescription:
-      'FinTok averages 4.2% engagement. Benchmark your finance content and find ways to grow.',
+      'See how your finance TikTok engagement stacks up. Free calculator with industry benchmarks.',
     pageDescription:
       "Finance content on TikTok pulls a 4.2% average engagement rate, fueled by Gen Z's appetite for accessible money advice delivered in 60 seconds or less. FinTok has exploded as a community where budgeting tips, investing basics, and debt payoff strategies go viral through relatable, jargon-free delivery. Plug in your numbers to see how your finance content measures against the FinTok benchmark.",
     howItWorks:
@@ -140,10 +141,10 @@ const tiktok: EngagementNichePageData[] = [
     platformLabel: 'TikTok',
     title: 'TikTok Fitness Engagement Rate + Benchmarks 2026',
     metaDescription:
-      'Fitness creators on TikTok average a 5.5% engagement rate in 2026. Discover GymTok benchmarks, compare your stats, and learn which workout formats drive the most shares.',
+      "What's the average engagement rate for fitness TikTok creators? Calculate yours and see how you compare to industry benchmarks.",
     ogTitle: 'TikTok Fitness Engagement Rate \u2014 2026 Benchmarks',
     ogDescription:
-      'GymTok averages 5.5% engagement. Check your fitness content performance against real benchmarks.',
+      'See how your fitness TikTok engagement stacks up. Free calculator with industry benchmarks.',
     pageDescription:
       "GymTok is one of TikTok's most actively engaged communities, with fitness creators averaging a 5.5% engagement rate \u2014 well above the platform average. The niche thrives on share-driven content: viewers tag workout partners in challenges, save routines for gym sessions, and duet form-check videos with their own attempts. Enter your metrics to see how your fitness content compares to the GymTok benchmark.",
     howItWorks:
@@ -184,10 +185,10 @@ const tiktok: EngagementNichePageData[] = [
     platformLabel: 'TikTok',
     title: 'TikTok Food Engagement Rate + Benchmarks 2026',
     metaDescription:
-      'Food creators lead TikTok engagement at 6.8% in 2026. Explore FoodTok benchmarks, analyze your content performance, and discover why recipe videos dominate the platform.',
+      "What's the average engagement rate for food TikTok creators? Calculate yours and see how you compare to industry benchmarks.",
     ogTitle: 'TikTok Food Engagement Rate \u2014 2026 Data',
     ogDescription:
-      'FoodTok leads all niches at 6.8% engagement. See how your food content measures up.',
+      'See how your food TikTok engagement stacks up. Free calculator with industry benchmarks.',
     pageDescription:
       "Food is TikTok's highest-engaging niche at a commanding 6.8% average engagement rate. FoodTok's dominance stems from universal appeal: everyone eats, everyone has opinions about food, and the visual satisfaction of cooking content translates perfectly to short-form video. From overhead recipe tutorials to ASMR chopping montages, food content consistently outperforms every other vertical on the platform. Check your numbers against the FoodTok benchmark below.",
     howItWorks:
@@ -228,10 +229,10 @@ const tiktok: EngagementNichePageData[] = [
     platformLabel: 'TikTok',
     title: 'TikTok Tech Engagement Rate + Benchmarks 2026',
     metaDescription:
-      'Tech creators on TikTok average a 4.8% engagement rate in 2026. Explore TechTok benchmarks, see how gadget reviews and app hacks perform, and optimize your content strategy.',
+      "What's the average engagement rate for tech TikTok creators? Calculate yours and see how you compare to industry benchmarks.",
     ogTitle: 'TikTok Tech Engagement Rate \u2014 2026 Benchmarks',
     ogDescription:
-      'TechTok averages 4.8% engagement. Benchmark your tech content and improve your metrics.',
+      'See how your tech TikTok engagement stacks up. Free calculator with industry benchmarks.',
     pageDescription:
       'Tech content on TikTok averages a 4.8% engagement rate, sitting near the platform median. TechTok thrives on the \"I didn\'t know that existed\" factor \u2014 quick product demos, hidden app features, and gadget unboxings that deliver instant value. The niche skews heavily male (18\u201334) and generates strong save-to-like ratios as viewers bookmark tech recommendations for later purchases. Compare your TechTok performance against the benchmark below.',
     howItWorks:
@@ -273,10 +274,10 @@ const tiktok: EngagementNichePageData[] = [
     platformLabel: 'TikTok',
     title: 'TikTok Travel Engagement Rate + Benchmarks 2026',
     metaDescription:
-      'Travel creators on TikTok average a 5.0% engagement rate in 2026. Explore TravelTok benchmarks, compare destination content performance, and learn what drives saves and shares.',
+      "What's the average engagement rate for travel TikTok creators? Calculate yours and see how you compare to industry benchmarks.",
     ogTitle: 'TikTok Travel Engagement Rate \u2014 2026 Data',
     ogDescription:
-      'TravelTok averages 5.0% engagement. See how your destination content performs against benchmarks.',
+      'See how your travel TikTok engagement stacks up. Free calculator with industry benchmarks.',
     pageDescription:
       "TravelTok delivers a strong 5.0% average engagement rate, driven by the aspirational nature of destination content and TikTok's ability to surface hidden-gem locations to millions of viewers. Travel content earns disproportionately high save rates as viewers bookmark destinations and itineraries for future trips. The niche has proven real-world impact, with TikTok-viral locations experiencing measurable tourism surges. Compare your travel content metrics below.",
     howItWorks:
@@ -317,10 +318,10 @@ const tiktok: EngagementNichePageData[] = [
     platformLabel: 'TikTok',
     title: 'TikTok Entertainment Engagement Rate + Benchmarks 2026',
     metaDescription:
-      'Entertainment creators on TikTok average a 4.9% engagement rate in 2026. Explore benchmarks for comedy, reactions, and trend content, and learn why massive reach dilutes the rate.',
+      "What's the average engagement rate for entertainment TikTok creators? Calculate yours and see how you compare to industry benchmarks.",
     ogTitle: 'TikTok Entertainment Engagement Rate \u2014 2026 Data',
     ogDescription:
-      'Entertainment averages 4.9% on TikTok despite massive reach. See how your content compares.',
+      'See how your entertainment TikTok engagement stacks up. Free calculator with industry benchmarks.',
     pageDescription:
       'Entertainment content \u2014 comedy skits, reaction videos, and trend origination \u2014 is the backbone of TikTok, yet it averages a 4.9% engagement rate that sits surprisingly close to the platform median. The reason: entertainment videos reach the widest audiences on TikTok, and that massive distribution dilutes the per-view engagement percentage even when total interactions are enormous. Compare your entertainment content metrics against the benchmark below.',
     howItWorks:
