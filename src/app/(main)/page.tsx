@@ -68,14 +68,16 @@ const platformComparison = [
 
 export const dynamic = 'force-static';
 
-const title = `${SITE_NAME} — Free YouTube, Instagram & TikTok Calculators`;
+const title = `${SITE_NAME} — Free Creator Calculators [Trusted by Industry Pros]`;
+const homeDescription =
+  'The free calculators that agencies, talent managers, and creators rely on. Estimate YouTube earnings, check engagement rates, and price sponsorship deals across 5 platforms.';
 
 export const metadata: Metadata = {
   title: { absolute: title },
-  description: SITE_DESCRIPTION,
+  description: homeDescription,
   openGraph: {
     title,
-    description: SITE_DESCRIPTION,
+    description: homeDescription,
     url: '/',
   },
   alternates: {

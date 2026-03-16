@@ -10,13 +10,13 @@ import { SITE_URL } from '@/lib/siteConfig';
 export const dynamic = 'force-static';
 
 export const metadata: Metadata = {
-  title: 'About — Free Calculators for Content Creators',
+  title: 'About CreatiCalc — The Creator Calculators Trusted by Industry Pros',
   description:
-    'CreatiCalc offers free calculators for YouTube, Instagram, TikTok, Facebook, and X creators. Estimate earnings, engagement rates, and sponsorship pricing.',
+    'The free creator calculators used by talent managers, agencies, and brands. Earnings estimates, engagement benchmarks, and sponsorship pricing across YouTube, Instagram, TikTok, Facebook, and X.',
   openGraph: {
-    title: 'About CreatiCalc — Free Calculators for Content Creators',
+    title: 'About CreatiCalc — Creator Calculators Trusted by Industry Pros',
     description:
-      'Free YouTube earnings, Instagram & TikTok engagement rate, and sponsorship rate calculators. Built for creators, powered by real benchmarks.',
+      'Free creator tools powered by real benchmarks, used by industry professionals across YouTube, Instagram, TikTok, Facebook, and X.',
     url: '/about',
   },
   alternates: {

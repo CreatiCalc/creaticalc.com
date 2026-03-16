@@ -13,13 +13,13 @@ import { Platform } from '@/lib/platforms';
 import { getSourcesById, SPONSORSHIP_SOURCE_IDS } from '@/lib/sources';
 
 export const metadata: Metadata = {
-  title: 'Sponsorship Rate Calculator 2026',
+  title: 'Sponsorship Rate Calculator [Free, All Platforms] — Compare Rates (2026)',
   description:
-    'Free sponsorship rate calculator for Instagram, TikTok, YouTube, Facebook, and X. Compare base rates, content type multipliers, and deal pricing across all platforms.',
+    'How much should you charge for brand deals? Compare sponsorship rates across Instagram, TikTok, YouTube, Facebook, and X. Data trusted by agencies and talent managers.',
   openGraph: {
-    title: 'Sponsorship Rate Calculator 2026',
+    title: 'Sponsorship Rate Calculator [Free, All Platforms] — Compare Rates',
     description:
-      'Calculate how much to charge for sponsored content on Instagram, TikTok, YouTube, Facebook, or X. Compare rates across all platforms.',
+      'See what creators charge for brand deals across every major platform. Data updated for 2026 and trusted by industry professionals.',
     url: '/sponsorship-rate-calculator',
   },
   alternates: {
@@ -412,6 +412,34 @@ export default function SponsorshipRateCalculatorPage() {
               className="rounded-lg border border-primary bg-primary/5 px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary/10"
             >
               Engagement Rate Benchmarks
+            </Link>
+          </div>
+        </section>
+
+        {/* Platform Comparisons */}
+        <section className="mb-12">
+          <h2 className="mb-4 text-2xl font-bold">Platform Comparisons</h2>
+          <p className="mb-4 text-sm text-muted">
+            See how sponsorship rates and deal structures compare across platforms.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <Link
+              href="/instagram-vs-youtube-sponsorships"
+              className="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-primary/90"
+            >
+              Instagram vs YouTube Sponsorships
+            </Link>
+            <Link
+              href="/tiktok-vs-youtube"
+              className="rounded-lg border border-primary bg-primary/5 px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary/10"
+            >
+              TikTok vs YouTube
+            </Link>
+            <Link
+              href="/instagram-vs-tiktok"
+              className="rounded-lg border border-primary bg-primary/5 px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary/10"
+            >
+              Instagram vs TikTok
             </Link>
           </div>
         </section>

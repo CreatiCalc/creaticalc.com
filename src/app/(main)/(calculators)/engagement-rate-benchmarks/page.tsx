@@ -10,13 +10,13 @@ import Breadcrumbs from '@/components/seo/Breadcrumbs';
 import { SITE_URL } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
-  title: 'Engagement Rate Benchmarks 2026 — All Platforms',
+  title: 'Engagement Rate Benchmarks 2026 [Used by Industry Experts] — All Platforms Compared',
   description:
-    'Engagement rate benchmarks for 2026 across Instagram, TikTok, Facebook, and X. Compare average rates by follower tier and industry.',
+    'The engagement rate benchmarks that agencies, talent managers, and brand strategists actually use. See how the numbers have shifted across Instagram, TikTok, Facebook, and X in 2026.',
   openGraph: {
-    title: 'Engagement Rate Benchmarks 2026 — All Platforms',
+    title: 'Engagement Rate Benchmarks 2026 [Used by Industry Experts] — All Platforms',
     description:
-      'Full engagement rate benchmark data for 2026 by follower tier, industry, and platform.',
+      'The benchmark data that industry professionals rely on. See where your engagement rate ranks across platforms, follower tiers, and industries in 2026.',
     url: '/engagement-rate-benchmarks',
   },
   alternates: {
@@ -80,7 +80,7 @@ export default function EngagementRateBenchmarksPage() {
       'Complete engagement rate benchmarks for Instagram, TikTok, Facebook, and X (Twitter) in 2026 by follower tier and industry.',
     'url': `${SITE_URL}/engagement-rate-benchmarks`,
     'datePublished': '2025-01-15',
-    'dateModified': '2026-02-16',
+    'dateModified': '2026-03-15',
   };
 
   const latestTrend = YOY_TRENDS[YOY_TRENDS.length - 1];
@@ -109,8 +109,9 @@ export default function EngagementRateBenchmarksPage() {
             Engagement Rate Benchmarks 2026
           </h1>
           <p className="mt-3 text-muted">
-            Comprehensive engagement rate benchmarks for Instagram, TikTok, Facebook, and X
-            (Twitter). See how your account compares by follower tier, industry, and platform.
+            The engagement rate benchmarks trusted by talent managers, agencies, and brand
+            strategists. Compare your account against real 2026 data by follower tier, industry, and
+            platform.
           </p>
           <div
             className="mx-auto mt-5 h-1 w-36 rounded-full"
@@ -388,6 +389,40 @@ export default function EngagementRateBenchmarksPage() {
                 X (Twitter) Sponsorship Rates
               </Link>
             </div>
+          </div>
+        </section>
+
+        <section className="mb-12">
+          <h2 className="mb-4 text-2xl font-bold">Platform Comparisons</h2>
+          <p className="mb-4 text-sm text-muted">
+            Want a deeper look at how specific platforms stack up? Our side-by-side comparisons
+            break down earnings, sponsorships, and growth dynamics.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <Link
+              href="/tiktok-vs-youtube"
+              className="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-primary/90"
+            >
+              TikTok vs YouTube
+            </Link>
+            <Link
+              href="/instagram-vs-tiktok"
+              className="rounded-lg border border-primary bg-primary/5 px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary/10"
+            >
+              Instagram vs TikTok
+            </Link>
+            <Link
+              href="/youtube-shorts-vs-tiktok"
+              className="rounded-lg border border-primary bg-primary/5 px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary/10"
+            >
+              YouTube Shorts vs TikTok
+            </Link>
+            <Link
+              href="/instagram-vs-youtube-sponsorships"
+              className="rounded-lg border border-primary bg-primary/5 px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary/10"
+            >
+              Instagram vs YouTube Sponsorships
+            </Link>
           </div>
         </section>
 

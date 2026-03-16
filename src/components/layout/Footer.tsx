@@ -6,8 +6,8 @@ export default function Footer() {
   return (
     <footer className="bg-foreground text-stone-300">
       <div className="mx-auto max-w-6xl px-4 py-14">
-        <div className="grid gap-8 text-center sm:grid-cols-2 sm:text-left md:grid-cols-3 lg:grid-cols-[1.5fr_1fr_1fr_1fr_1fr]">
-          <div className="sm:col-span-2 md:col-span-3 lg:col-span-1">
+        <div className="grid gap-8 text-center sm:grid-cols-2 sm:text-left md:grid-cols-3 xl:grid-cols-[1.5fr_1fr_1fr_1fr_1fr_1fr]">
+          <div className="sm:col-span-2 md:col-span-3 xl:col-span-1">
             <Logo size="sm" className="[&_span]:text-white" />
             <p className="mt-3 text-sm text-stone-400">
               Free calculators for content creators. Estimate earnings, track engagement, find

@@ -14,13 +14,13 @@ import { NICHE_PAGES } from '@/lib/nichePageData';
 import { YOUTUBE_NICHE_DATA, YOUTUBE_NICHE_IDS } from '@/lib/niches';
 
 export const metadata: Metadata = {
-  title: 'YouTube Money Calculator — See What You\u2019d Earn (2026)',
+  title: 'YouTube Money Calculator [Free] — Check Your Earning Potential (2026)',
   description:
-    'How much does YouTube pay per 1,000 views? Enter your views and niche to get real earnings estimates based on 2026 CPM rates ($2\u2013$45 depending on niche).',
+    'How much does YouTube actually pay? Most creators are surprised. Enter your views and niche to get a personalized earnings estimate based on real 2026 CPM data. Trusted by top creator agencies.',
   openGraph: {
-    title: 'YouTube Money Calculator — See What You\u2019d Earn (2026)',
+    title: 'YouTube Money Calculator [Free] — Check Your Earning Potential',
     description:
-      'Enter your views and niche to get real YouTube earnings estimates based on 2026 CPM rates ($2\u2013$45 depending on niche).',
+      'Find out what your YouTube channel is really worth. Enter your stats for a personalized earnings breakdown trusted by industry professionals.',
     url: '/youtube-money-calculator',
   },
   alternates: {
@@ -363,6 +363,12 @@ const howItWorks = (
           Engagement Rate Benchmarks 2026
         </Link>{' '}
         — compare engagement rates across all platforms
+      </li>
+      <li>
+        <Link href="/tiktok-vs-youtube" className="font-medium text-primary hover:underline">
+          TikTok vs YouTube
+        </Link>{' '}
+        — full comparison of earnings, sponsorships, and engagement
       </li>
     </ul>
   </>
