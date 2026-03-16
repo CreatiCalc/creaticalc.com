@@ -10,9 +10,9 @@ export default function Image() {
     title: 'Engagement Rate Calculator',
     subtitle: 'Calculate your engagement rate and compare against 2026 benchmarks',
     stats: [
-      { label: 'Instagram', value: '3.2%' },
-      { label: 'TikTok', value: '5.4%' },
-      { label: 'Benchmark', value: 'By Niche' },
+      { label: 'Platforms', value: '5' },
+      { label: 'Benchmarks', value: 'By Niche' },
+      { label: 'Price', value: 'Free' },
     ],
   });
 }

@@ -10,9 +10,9 @@ export default function Image() {
     title: 'Facebook Engagement Rate Calculator',
     subtitle: 'Measure your Facebook page engagement and compare against benchmarks',
     stats: [
-      { label: 'Reactions', value: '245' },
-      { label: 'Rate', value: '1.2%' },
-      { label: 'Shares', value: '18' },
+      { label: 'Metrics', value: '3 Formulas' },
+      { label: 'Benchmarks', value: 'By Niche' },
+      { label: 'Price', value: 'Free' },
     ],
   });
 }
