@@ -130,6 +130,12 @@ export default function SponsorshipRateCalculatorPage() {
     'name': `${p.name} Sponsorship Rate Calculator`,
     'url': `${SITE_URL}${p.href}`,
     'applicationCategory': 'UtilitiesApplication',
+    'operatingSystem': 'Any',
+    'offers': {
+      '@type': 'Offer',
+      'price': '0',
+      'priceCurrency': 'USD',
+    },
   }));
 
   const schema = {

@@ -181,6 +181,13 @@ const jsonLd = {
           'name': calc.title,
           'url': `${SITE_URL}${calc.href}`,
           'description': calc.description,
+          'applicationCategory': 'UtilitiesApplication',
+          'operatingSystem': 'Any',
+          'offers': {
+            '@type': 'Offer',
+            'price': '0',
+            'priceCurrency': 'USD',
+          },
         },
       })),
     },
