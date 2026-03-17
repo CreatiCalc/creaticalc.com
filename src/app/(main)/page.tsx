@@ -230,12 +230,47 @@ export default function Home() {
           >
             engagement rate
           </Link>
-          , estimate{' '}
+          , price sponsorship deals on{' '}
+          <Link
+            href="/youtube-sponsorship-rate-calculator"
+            className="font-medium text-primary hover:underline"
+          >
+            YouTube
+          </Link>
+          ,{' '}
           <Link
             href="/instagram-sponsorship-rate-calculator"
             className="font-medium text-primary hover:underline"
           >
-            sponsorship pricing
+            Instagram
+          </Link>
+          ,{' '}
+          <Link
+            href="/tiktok-sponsorship-rate-calculator"
+            className="font-medium text-primary hover:underline"
+          >
+            TikTok
+          </Link>
+          , and{' '}
+          <Link
+            href="/twitter-sponsorship-rate-calculator"
+            className="font-medium text-primary hover:underline"
+          >
+            X
+          </Link>
+          , estimate{' '}
+          <Link
+            href="/youtube-money-calculator"
+            className="font-medium text-primary hover:underline"
+          >
+            YouTube ad revenue
+          </Link>{' '}
+          and{' '}
+          <Link
+            href="/youtube-shorts-money-calculator"
+            className="font-medium text-primary hover:underline"
+          >
+            Shorts earnings
           </Link>
           , compare against{' '}
           <Link
@@ -244,21 +279,14 @@ export default function Home() {
           >
             2026 industry benchmarks
           </Link>
-          , project{' '}
+          , and project{' '}
           <Link
             href="/youtube-subscriber-projector"
             className="font-medium text-primary hover:underline"
           >
             subscriber growth
           </Link>
-          , and estimate{' '}
-          <Link
-            href="/youtube-money-calculator"
-            className="font-medium text-primary hover:underline"
-          >
-            YouTube ad revenue
-          </Link>{' '}
-          — across YouTube, Instagram, TikTok, Facebook, and X.
+          .
         </p>
       </section>
 

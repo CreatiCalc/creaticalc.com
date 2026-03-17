@@ -15,11 +15,11 @@ import { getEngagementNichePages } from '@/lib/engagement-niches';
 export const metadata: Metadata = {
   title: 'Instagram Engagement Rate Calculator [Free]: Check Yours Instantly',
   description:
-    'Check your Instagram engagement rate instantly (no sign-up). Compare against real 2026 benchmarks by follower tier and niche. Trusted by 50K+ creators.',
+    'Check your Instagram engagement rate instantly (no sign-up). Compare against real 2026 benchmarks by follower tier and niche. See your rating by follower tier with niche-specific benchmarks.',
   openGraph: {
     title: 'Instagram Engagement Rate Calculator [Free]: Check Yours Instantly',
     description:
-      'Check your Instagram engagement rate instantly (no sign-up). Compare against real 2026 benchmarks by follower tier and niche. Trusted by 50K+ creators.',
+      'Check your Instagram engagement rate instantly (no sign-up). Compare against real 2026 benchmarks by follower tier and niche. See your rating by follower tier with niche-specific benchmarks.',
     url: '/instagram-engagement-rate-calculator',
   },
   alternates: {

@@ -15,11 +15,11 @@ import { getEngagementNichePages } from '@/lib/engagement-niches';
 export const metadata: Metadata = {
   title: 'X (Twitter) Engagement Rate Calculator [Free]: Check Yours Instantly',
   description:
-    'Check your X engagement rate instantly (no sign-up). Compare against real 2026 benchmarks and find out if you are beating the average. Trusted by 50K+ creators.',
+    'Check your X engagement rate instantly (no sign-up). Compare against real 2026 benchmarks and find out if you are beating the average. Find out if you are above or below average for your niche.',
   openGraph: {
     title: 'X (Twitter) Engagement Rate Calculator [Free]: Check Yours Instantly',
     description:
-      'Check your X engagement rate instantly (no sign-up). Compare against real 2026 benchmarks and find out if you are beating the average. Trusted by 50K+ creators.',
+      'Check your X engagement rate instantly (no sign-up). Compare against real 2026 benchmarks and find out if you are beating the average. Find out if you are above or below average for your niche.',
     url: '/twitter-engagement-rate-calculator',
   },
   alternates: {

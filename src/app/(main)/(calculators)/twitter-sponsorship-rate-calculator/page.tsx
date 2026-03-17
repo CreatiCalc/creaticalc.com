@@ -15,11 +15,11 @@ import { getSponsorshipNichePages } from '@/lib/sponsorship-niches';
 export const metadata: Metadata = {
   title: 'X (Twitter) Sponsorship Price Calculator [Free]: Get Your Rate Instantly',
   description:
-    'Get your X sponsorship price instantly (no sign-up). Trusted by 50K+ creators to calculate fair rates for tweets & threads.',
+    'Get your X sponsorship price instantly (no sign-up). Calculate fair rates for tweets, threads & Spaces based on your followers, engagement, and niche.',
   openGraph: {
     title: 'X (Twitter) Sponsorship Price Calculator [Free]: Get Your Rate Instantly',
     description:
-      'Get your X sponsorship price instantly (no sign-up). Trusted by 50K+ creators to calculate fair rates for tweets & threads.',
+      'Get your X sponsorship price instantly (no sign-up). Calculate fair rates for tweets, threads & Spaces based on your followers, engagement, and niche.',
     url: '/twitter-sponsorship-rate-calculator',
   },
   alternates: {

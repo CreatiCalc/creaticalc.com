@@ -21,7 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const calculatorPages: MetadataRoute.Sitemap = getAllCalculators().map((c) => ({
     url: `${baseUrl}${c.href}`,
-    lastModified: '2026-03-15',
+    lastModified: '2026-03-17',
     changeFrequency: 'weekly',
     priority: c.sitemapPriority ?? 0.9,
   }));
@@ -72,7 +72,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: baseUrl,
-      lastModified: '2026-03-16',
+      lastModified: '2026-03-17',
       changeFrequency: 'monthly',
       priority: 1.0,
     },
@@ -92,7 +92,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/methodology`,
-      lastModified: '2026-03-16',
+      lastModified: '2026-03-17',
       changeFrequency: 'monthly',
       priority: 0.4,
     },
@@ -140,6 +140,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${baseUrl}/instagram-vs-youtube-sponsorships`,
       lastModified: '2026-03-15',
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/x-vs-instagram-sponsorships`,
+      lastModified: '2026-03-17',
       changeFrequency: 'monthly',
       priority: 0.8,
     },

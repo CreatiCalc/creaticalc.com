@@ -15,11 +15,11 @@ import { getSponsorshipNichePages } from '@/lib/sponsorship-niches';
 export const metadata: Metadata = {
   title: 'YouTube Sponsorship Price Calculator [Free]: Get Your Rate Instantly',
   description:
-    'Get your YouTube sponsorship price instantly (no sign-up). Trusted by 50K+ creators to calculate fair rates for integrations, dedicated videos & Shorts.',
+    'Get your YouTube sponsorship price instantly (no sign-up). Calculate fair rates for integrations, dedicated videos & Shorts based on your subscribers, engagement, and niche.',
   openGraph: {
     title: 'YouTube Sponsorship Price Calculator [Free]: Get Your Rate Instantly',
     description:
-      'Get your YouTube sponsorship price instantly (no sign-up). Trusted by 50K+ creators to calculate fair rates for integrations, dedicated videos & Shorts.',
+      'Get your YouTube sponsorship price instantly (no sign-up). Calculate fair rates for integrations, dedicated videos & Shorts based on your subscribers, engagement, and niche.',
     url: '/youtube-sponsorship-rate-calculator',
   },
   alternates: {

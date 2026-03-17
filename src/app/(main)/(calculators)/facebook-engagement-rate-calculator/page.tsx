@@ -15,11 +15,11 @@ import { getEngagementNichePages } from '@/lib/engagement-niches';
 export const metadata: Metadata = {
   title: 'Facebook Engagement Rate Calculator [Free]: Check Yours Instantly',
   description:
-    'Check your Facebook engagement rate instantly (no sign-up). Compare against real 2026 benchmarks by niche and see where you actually stand. Trusted by 50K+ creators.',
+    'Check your Facebook engagement rate instantly (no sign-up). Compare against real 2026 benchmarks by niche and see where you actually stand. See where you stand with niche-specific benchmarks.',
   openGraph: {
     title: 'Facebook Engagement Rate Calculator [Free]: Check Yours Instantly',
     description:
-      'Check your Facebook engagement rate instantly (no sign-up). Compare against real 2026 benchmarks by niche and see where you actually stand. Trusted by 50K+ creators.',
+      'Check your Facebook engagement rate instantly (no sign-up). Compare against real 2026 benchmarks by niche and see where you actually stand. See where you stand with niche-specific benchmarks.',
     url: '/facebook-engagement-rate-calculator',
   },
   alternates: {

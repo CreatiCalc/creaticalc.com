@@ -14,11 +14,11 @@ import type { FAQItem } from '@/features/calculators/shared/types';
 export const metadata: Metadata = {
   title: 'YouTube Subscriber Growth Calculator [Free]: See Your Timeline Instantly',
   description:
-    'See when you will hit 1K, 10K, or 100K subs instantly (no sign-up). Our model accounts for growth deceleration that most calculators ignore. Trusted by 50K+ creators.',
+    'See when you will hit 1K, 10K, or 100K subs instantly (no sign-up). Our model accounts for growth deceleration that most calculators ignore. See realistic milestone timelines, not just straight-line guesses.',
   openGraph: {
     title: 'YouTube Subscriber Growth Calculator [Free]: See Your Timeline Instantly',
     description:
-      'See when you will hit 1K, 10K, or 100K subs instantly (no sign-up). Our model accounts for growth deceleration that most calculators ignore. Trusted by 50K+ creators.',
+      'See when you will hit 1K, 10K, or 100K subs instantly (no sign-up). Our model accounts for growth deceleration that most calculators ignore. See realistic milestone timelines, not just straight-line guesses.',
     url: '/youtube-subscriber-projector',
   },
   alternates: {
