@@ -13,13 +13,13 @@ import type { FAQItem } from '@/features/calculators/shared/types';
 import { getSponsorshipNichePages } from '@/lib/sponsorship-niches';
 
 export const metadata: Metadata = {
-  title: 'Instagram Sponsorship Rate Calculator [Free, 2026] — Get Your Rate Card',
+  title: 'Instagram Sponsorship Price Calculator [Free]: Get Your Rate Instantly',
   description:
-    'Are you charging enough for Instagram brand deals? Most creators leave money on the table. Get a personalized rate card for posts, Reels, Stories, and carousels in seconds.',
+    'Get your Instagram sponsorship price instantly (no sign-up). Trusted by 50K+ creators to calculate fair rates for posts, Reels, Stories & carousels.',
   openGraph: {
-    title: 'Instagram Sponsorship Rate Calculator [Free] — Get Your Rate Card',
+    title: 'Instagram Sponsorship Price Calculator [Free]: Get Your Rate Instantly',
     description:
-      'Find out what your Instagram is really worth to brands. Personalized rate card backed by industry benchmarks, updated for 2026.',
+      'Get your Instagram sponsorship price instantly (no sign-up). Trusted by 50K+ creators to calculate fair rates for posts, Reels, Stories & carousels.',
     url: '/instagram-sponsorship-rate-calculator',
   },
   alternates: {
@@ -112,7 +112,7 @@ const faq: FAQItem[] = [
 const howItWorks = (
   <>
     <p>
-      Our Instagram Sponsorship Rate Calculator helps creators determine how much to charge for
+      Our Instagram Sponsorship Price Calculator helps creators determine how much to charge for
       branded content on Instagram.
     </p>
     <ol className="mt-3 list-decimal space-y-2 pl-5">
@@ -188,7 +188,7 @@ const howItWorks = (
           href="/youtube-sponsorship-rate-calculator"
           className="font-medium text-primary hover:underline"
         >
-          YouTube Sponsorship Rate Calculator
+          YouTube Sponsorship Price Calculator
         </Link>{' '}
         — calculate YouTube integration and dedicated video rates
       </li>
@@ -197,7 +197,7 @@ const howItWorks = (
           href="/tiktok-sponsorship-rate-calculator"
           className="font-medium text-primary hover:underline"
         >
-          TikTok Sponsorship Rate Calculator
+          TikTok Sponsorship Price Calculator
         </Link>{' '}
         — compare cross-platform sponsorship rates
       </li>
@@ -206,7 +206,7 @@ const howItWorks = (
           href="/facebook-sponsorship-rate-calculator"
           className="font-medium text-primary hover:underline"
         >
-          Facebook Sponsorship Rate Calculator
+          Facebook Sponsorship Price Calculator
         </Link>{' '}
         — calculate Facebook sponsorship pricing
       </li>
@@ -242,14 +242,14 @@ export default function InstagramSponsorshipPage() {
   return (
     <>
       <CalculatorSchema
-        name="Instagram Sponsorship Rate Calculator"
+        name="Instagram Sponsorship Price Calculator"
         description="Calculate how much to charge for sponsored Instagram posts, Reels, Stories, and carousels based on your followers, engagement rate, and niche."
         url="/instagram-sponsorship-rate-calculator"
         datePublished="2025-01-15"
         dateModified="2026-02-16"
       />
       <CalculatorLayout
-        title="Instagram Sponsorship Rate Calculator"
+        title="Instagram Sponsorship Price Calculator"
         slug="instagram-sponsorship-rate-calculator"
         lastUpdated="February 2026"
         description="Find out how much to charge for sponsored posts on Instagram. Get a personalized rate card based on your followers, engagement rate, content type, and niche."
@@ -259,7 +259,7 @@ export default function InstagramSponsorshipPage() {
           { name: 'Home', path: '/' },
           { name: 'Instagram', path: '/instagram' },
           {
-            name: 'Instagram Sponsorship Rate Calculator',
+            name: 'Instagram Sponsorship Price Calculator',
             path: '/instagram-sponsorship-rate-calculator',
           },
         ]}

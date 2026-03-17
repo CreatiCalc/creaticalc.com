@@ -13,13 +13,13 @@ import type { FAQItem } from '@/features/calculators/shared/types';
 import { getSponsorshipNichePages } from '@/lib/sponsorship-niches';
 
 export const metadata: Metadata = {
-  title: 'X (Twitter) Sponsorship Rate Calculator [Free Tool] — Get Your Rate Card',
+  title: 'X (Twitter) Sponsorship Price Calculator [Free]: Get Your Rate Instantly',
   description:
-    'How much should you charge for sponsored tweets, threads, and X Spaces? Enter your stats and get a personalized rate card in seconds. Used by 50K+ creators.',
+    'Get your X sponsorship price instantly (no sign-up). Trusted by 50K+ creators to calculate fair rates for tweets & threads.',
   openGraph: {
-    title: 'X (Twitter) Sponsorship Rate Calculator [Free] — Get Your Rate Card',
+    title: 'X (Twitter) Sponsorship Price Calculator [Free]: Get Your Rate Instantly',
     description:
-      'Stop guessing what to charge for X brand deals. Enter your followers and niche to get a personalized sponsorship rate card instantly.',
+      'Get your X sponsorship price instantly (no sign-up). Trusted by 50K+ creators to calculate fair rates for tweets & threads.',
     url: '/twitter-sponsorship-rate-calculator',
   },
   alternates: {
@@ -112,7 +112,7 @@ const faq: FAQItem[] = [
 const howItWorks = (
   <>
     <p>
-      Our X (Twitter) Sponsorship Rate Calculator helps creators determine how much to charge for
+      Our X (Twitter) Sponsorship Price Calculator helps creators determine how much to charge for
       branded content on X.
     </p>
     <ol className="mt-3 list-decimal space-y-2 pl-5">
@@ -213,7 +213,7 @@ const howItWorks = (
           href="/instagram-sponsorship-rate-calculator"
           className="font-medium text-primary hover:underline"
         >
-          Instagram Sponsorship Rate Calculator
+          Instagram Sponsorship Price Calculator
         </Link>{' '}
         — compare cross-platform sponsorship rates
       </li>
@@ -222,7 +222,7 @@ const howItWorks = (
           href="/tiktok-sponsorship-rate-calculator"
           className="font-medium text-primary hover:underline"
         >
-          TikTok Sponsorship Rate Calculator
+          TikTok Sponsorship Price Calculator
         </Link>{' '}
         — calculate TikTok sponsorship rates for videos, Stories, and Lives
       </li>
@@ -231,7 +231,7 @@ const howItWorks = (
           href="/youtube-sponsorship-rate-calculator"
           className="font-medium text-primary hover:underline"
         >
-          YouTube Sponsorship Rate Calculator
+          YouTube Sponsorship Price Calculator
         </Link>{' '}
         — calculate YouTube integration and dedicated video rates
       </li>
@@ -240,7 +240,7 @@ const howItWorks = (
           href="/facebook-sponsorship-rate-calculator"
           className="font-medium text-primary hover:underline"
         >
-          Facebook Sponsorship Rate Calculator
+          Facebook Sponsorship Price Calculator
         </Link>{' '}
         — calculate Facebook sponsorship pricing
       </li>
@@ -261,14 +261,14 @@ export default function TwitterSponsorshipPage() {
   return (
     <>
       <CalculatorSchema
-        name="X (Twitter) Sponsorship Rate Calculator"
+        name="X (Twitter) Sponsorship Price Calculator"
         description="Calculate how much to charge for sponsored tweets, threads, and X Spaces based on your followers, engagement rate, and niche."
         url="/twitter-sponsorship-rate-calculator"
         datePublished="2025-01-15"
         dateModified="2026-03-15"
       />
       <CalculatorLayout
-        title="X (Twitter) Sponsorship Rate Calculator"
+        title="X (Twitter) Sponsorship Price Calculator"
         slug="twitter-sponsorship-rate-calculator"
         lastUpdated="February 2026"
         description="Find out how much to charge for sponsored content on X (Twitter). Get a personalized rate card based on your followers, engagement rate, content type, and niche."
@@ -278,7 +278,7 @@ export default function TwitterSponsorshipPage() {
           { name: 'Home', path: '/' },
           { name: 'X (Twitter)', path: '/x' },
           {
-            name: 'X (Twitter) Sponsorship Rate Calculator',
+            name: 'X (Twitter) Sponsorship Price Calculator',
             path: '/twitter-sponsorship-rate-calculator',
           },
         ]}

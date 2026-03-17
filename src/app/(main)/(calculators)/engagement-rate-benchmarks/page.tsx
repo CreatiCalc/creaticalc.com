@@ -10,13 +10,13 @@ import Breadcrumbs from '@/components/seo/Breadcrumbs';
 import { SITE_URL } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
-  title: 'Engagement Rate Benchmarks 2026 [Used by Industry Experts] — All Platforms Compared',
+  title: 'Engagement Rate Benchmarks 2026 [Free]: All Platforms Compared Instantly',
   description:
-    'The engagement rate benchmarks that agencies, talent managers, and brand strategists actually use. See how the numbers have shifted across Instagram, TikTok, Facebook, and X in 2026.',
+    'See 2026 engagement rate benchmarks instantly for Instagram, TikTok, Facebook & X (no sign-up). The data agencies and brand strategists actually use to evaluate creators.',
   openGraph: {
-    title: 'Engagement Rate Benchmarks 2026 [Used by Industry Experts] — All Platforms',
+    title: 'Engagement Rate Benchmarks 2026 [Free]: All Platforms Compared Instantly',
     description:
-      'The benchmark data that industry professionals rely on. See where your engagement rate ranks across platforms, follower tiers, and industries in 2026.',
+      'See 2026 engagement rate benchmarks instantly for Instagram, TikTok, Facebook & X (no sign-up). The data agencies and brand strategists actually use to evaluate creators.',
     url: '/engagement-rate-benchmarks',
   },
   alternates: {

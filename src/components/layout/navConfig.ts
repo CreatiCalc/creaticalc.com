@@ -76,7 +76,7 @@ const sponsorshipCalcs = allCalcs
   .map((c) =>
     c.platform === Platform.Multi
       ? { name: 'All Platforms', href: c.href }
-      : { name: c.title.replace(' Sponsorship Rate Calculator', ''), href: c.href }
+      : { name: c.title.replace(' Sponsorship Price Calculator', ''), href: c.href }
   );
 
 export const FOOTER_GROUPS: NavGroup[] = [

@@ -15,7 +15,7 @@ const CONFIG: SponsorshipNicheConfig = {
   relatedLinks: [
     {
       href: '/youtube-sponsorship-rate-calculator',
-      label: 'YouTube Sponsorship Rate Calculator',
+      label: 'YouTube Sponsorship Price Calculator',
       description: 'calculate rates across all niches',
     },
     {
@@ -25,7 +25,7 @@ const CONFIG: SponsorshipNicheConfig = {
     },
     {
       href: '/instagram-sponsorship-rate-calculator',
-      label: 'Instagram Sponsorship Rate Calculator',
+      label: 'Instagram Sponsorship Price Calculator',
       description: 'compare sponsorship rates across platforms',
     },
   ],

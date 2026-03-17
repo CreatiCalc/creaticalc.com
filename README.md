@@ -13,12 +13,12 @@
 ### Instagram
 
 - **Instagram Engagement Rate Calculator** -- Calculate your Instagram engagement rate and benchmark it against industry averages.
-- **Instagram Sponsorship Rate Calculator** -- Find out how much to charge for sponsored posts, Reels, Stories, and carousels based on your followers, engagement rate, and niche.
+- **Instagram Sponsorship Price Calculator** -- Find out how much to charge for sponsored posts, Reels, Stories, and carousels based on your followers, engagement rate, and niche.
 
 ### TikTok
 
 - **TikTok Engagement Rate Calculator** -- Measure your TikTok engagement rate using views, likes, comments, and shares.
-- **TikTok Sponsorship Rate Calculator** -- Calculate how much to charge for sponsored TikTok videos, Stories, and Lives based on your followers, engagement, and niche.
+- **TikTok Sponsorship Price Calculator** -- Calculate how much to charge for sponsored TikTok videos, Stories, and Lives based on your followers, engagement, and niche.
 
 ### Facebook
 

@@ -183,7 +183,7 @@ const instagramHub: PlatformHubData = {
       title: 'Instagram Sponsorship Pricing in 2026',
       paragraphs: [
         'Instagram sponsorship rates depend on follower count, engagement rate, content type, and niche. A micro-influencer (10K–50K followers) typically charges $100–$500 per post, while a macro-influencer (500K–1M) may charge $5,000–$20,000. Reels command a premium of 1.5–2x over static posts due to higher reach and engagement.',
-        'Engagement rate is the single most important factor in determining sponsorship value. A creator with 50,000 followers and 5% engagement is often more valuable to brands than one with 500,000 followers and 0.5% engagement. Use our Sponsorship Rate Calculator to get a personalized rate card based on your specific metrics.',
+        'Engagement rate is the single most important factor in determining sponsorship value. A creator with 50,000 followers and 5% engagement is often more valuable to brands than one with 500,000 followers and 0.5% engagement. Use our Sponsorship Price Calculator to get a personalized rate card based on your specific metrics.',
       ],
     },
     {
@@ -203,7 +203,7 @@ const instagramHub: PlatformHubData = {
     {
       question: 'How much should I charge for an Instagram sponsored post?',
       answer:
-        'A common baseline is $100 per 10,000 followers, but rates vary significantly based on engagement rate, niche, and content type. Creators in high-value niches like finance or beauty can charge 2–3x the baseline. Reels typically command 1.5–2x more than static posts. Use our Sponsorship Rate Calculator for a personalized rate card.',
+        'A common baseline is $100 per 10,000 followers, but rates vary significantly based on engagement rate, niche, and content type. Creators in high-value niches like finance or beauty can charge 2–3x the baseline. Reels typically command 1.5–2x more than static posts. Use our Sponsorship Price Calculator for a personalized rate card.',
     },
     {
       question: 'How is Instagram engagement rate calculated?',
@@ -271,7 +271,7 @@ const tiktokHub: PlatformHubData = {
       title: 'TikTok Sponsorship Rates in 2026',
       paragraphs: [
         "TikTok sponsorship rates are generally lower per-follower than Instagram due to the platform's younger audience demographics and the ephemeral nature of content. However, TikTok's higher engagement rates mean that sponsored content often reaches more people organically, delivering strong ROI for brands.",
-        'Typical rates range from $50–$200 for nano creators (under 10K), $200–$2,000 for micro-influencers (10K–100K), and $2,000–$20,000 for macro and mega creators. TikTok Lives and multi-video packages typically command premium rates. Use our Sponsorship Rate Calculator for personalized pricing.',
+        'Typical rates range from $50–$200 for nano creators (under 10K), $200–$2,000 for micro-influencers (10K–100K), and $2,000–$20,000 for macro and mega creators. TikTok Lives and multi-video packages typically command premium rates. Use our Sponsorship Price Calculator for personalized pricing.',
       ],
     },
     {

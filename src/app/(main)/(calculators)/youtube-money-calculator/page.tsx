@@ -14,13 +14,13 @@ import { NICHE_PAGES } from '@/lib/nichePageData';
 import { YOUTUBE_NICHE_DATA, YOUTUBE_NICHE_IDS } from '@/lib/niches';
 
 export const metadata: Metadata = {
-  title: 'YouTube Money Calculator [Free] — Check Your Earning Potential (2026)',
+  title: 'YouTube Money Calculator [Free]: Check Your Earnings Instantly',
   description:
-    'How much does YouTube actually pay? Most creators are surprised. Enter your views and niche to get a personalized earnings estimate based on real 2026 CPM data. Trusted by top creator agencies.',
+    'Check your YouTube earnings instantly (no sign-up). Enter your views and niche for a personalized estimate based on real 2026 CPM data. Trusted by 50K+ creators.',
   openGraph: {
-    title: 'YouTube Money Calculator [Free] — Check Your Earning Potential',
+    title: 'YouTube Money Calculator [Free]: Check Your Earnings Instantly',
     description:
-      'Find out what your YouTube channel is really worth. Enter your stats for a personalized earnings breakdown trusted by industry professionals.',
+      'Check your YouTube earnings instantly (no sign-up). Enter your views and niche for a personalized estimate based on real 2026 CPM data. Trusted by 50K+ creators.',
     url: '/youtube-money-calculator',
   },
   alternates: {
@@ -315,7 +315,7 @@ const howItWorks = (
           href="/youtube-sponsorship-rate-calculator"
           className="font-medium text-primary hover:underline"
         >
-          YouTube Sponsorship Rate Calculator
+          YouTube Sponsorship Price Calculator
         </Link>{' '}
         — find out how much to charge for integrations, dedicated videos, and Shorts sponsorships
       </li>
@@ -324,7 +324,7 @@ const howItWorks = (
           href="/instagram-sponsorship-rate-calculator"
           className="font-medium text-primary hover:underline"
         >
-          Instagram Sponsorship Rate Calculator
+          Instagram Sponsorship Price Calculator
         </Link>{' '}
         — find out how much to charge for sponsored Instagram posts
       </li>
@@ -333,7 +333,7 @@ const howItWorks = (
           href="/tiktok-sponsorship-rate-calculator"
           className="font-medium text-primary hover:underline"
         >
-          TikTok Sponsorship Rate Calculator
+          TikTok Sponsorship Price Calculator
         </Link>{' '}
         — calculate your TikTok sponsorship rates
       </li>
@@ -342,7 +342,7 @@ const howItWorks = (
           href="/facebook-sponsorship-rate-calculator"
           className="font-medium text-primary hover:underline"
         >
-          Facebook Sponsorship Rate Calculator
+          Facebook Sponsorship Price Calculator
         </Link>{' '}
         — calculate Facebook sponsorship pricing
       </li>
@@ -351,7 +351,7 @@ const howItWorks = (
           href="/twitter-sponsorship-rate-calculator"
           className="font-medium text-primary hover:underline"
         >
-          X (Twitter) Sponsorship Rate Calculator
+          X (Twitter) Sponsorship Price Calculator
         </Link>{' '}
         — calculate X sponsorship pricing for tweets and threads
       </li>

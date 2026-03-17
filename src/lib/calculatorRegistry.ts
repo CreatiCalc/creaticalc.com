@@ -100,7 +100,7 @@ const CALCULATORS: CalculatorEntry[] = [
   },
   {
     slug: 'youtube-sponsorship-rate-calculator',
-    title: 'YouTube Sponsorship Rate Calculator',
+    title: 'YouTube Sponsorship Price Calculator',
     cardTitle: 'YouTube Sponsorship Rate',
     navLabel: 'Sponsorship Rate',
     href: '/youtube-sponsorship-rate-calculator',
@@ -128,7 +128,7 @@ const CALCULATORS: CalculatorEntry[] = [
   },
   {
     slug: 'instagram-sponsorship-rate-calculator',
-    title: 'Instagram Sponsorship Rate Calculator',
+    title: 'Instagram Sponsorship Price Calculator',
     cardTitle: 'Instagram Sponsorship Rate',
     navLabel: 'Sponsorship Rate',
     href: '/instagram-sponsorship-rate-calculator',
@@ -156,7 +156,7 @@ const CALCULATORS: CalculatorEntry[] = [
   },
   {
     slug: 'tiktok-sponsorship-rate-calculator',
-    title: 'TikTok Sponsorship Rate Calculator',
+    title: 'TikTok Sponsorship Price Calculator',
     cardTitle: 'TikTok Sponsorship Rate',
     navLabel: 'Sponsorship Rate',
     href: '/tiktok-sponsorship-rate-calculator',
@@ -184,7 +184,7 @@ const CALCULATORS: CalculatorEntry[] = [
   },
   {
     slug: 'facebook-sponsorship-rate-calculator',
-    title: 'Facebook Sponsorship Rate Calculator',
+    title: 'Facebook Sponsorship Price Calculator',
     cardTitle: 'Facebook Sponsorship Rate',
     navLabel: 'Sponsorship Rate',
     href: '/facebook-sponsorship-rate-calculator',
@@ -213,7 +213,7 @@ const CALCULATORS: CalculatorEntry[] = [
   },
   {
     slug: 'twitter-sponsorship-rate-calculator',
-    title: 'X (Twitter) Sponsorship Rate Calculator',
+    title: 'X (Twitter) Sponsorship Price Calculator',
     cardTitle: 'X (Twitter) Sponsorship Rate',
     navLabel: 'Sponsorship Rate',
     href: '/twitter-sponsorship-rate-calculator',
@@ -255,8 +255,8 @@ const CALCULATORS: CalculatorEntry[] = [
   },
   {
     slug: 'sponsorship-rate-calculator',
-    title: 'Sponsorship Rate Calculator',
-    cardTitle: 'Sponsorship Rate Calculator',
+    title: 'Sponsorship Price Calculator',
+    cardTitle: 'Sponsorship Price Calculator',
     navLabel: 'Sponsorship Calculator',
     href: '/sponsorship-rate-calculator',
     platform: Platform.Multi,

@@ -13,13 +13,13 @@ import type { FAQItem } from '@/features/calculators/shared/types';
 import { getSponsorshipNichePages } from '@/lib/sponsorship-niches';
 
 export const metadata: Metadata = {
-  title: 'Facebook Sponsorship Rate Calculator [Free, 2026] — Get Your Rate Card',
+  title: 'Facebook Sponsorship Price Calculator [Free]: Get Your Rate Instantly',
   description:
-    'What are Facebook brand deals actually worth in 2026? Get a personalized rate card for posts, Reels, Stories, Lives, and Group sponsorships. Data used by agencies to price campaigns.',
+    'Get your Facebook sponsorship price instantly (no sign-up). Trusted by 50K+ creators to calculate fair rates for posts, Reels, Stories & Lives.',
   openGraph: {
-    title: 'Facebook Sponsorship Rate Calculator [Free] — Get Your Rate Card',
+    title: 'Facebook Sponsorship Price Calculator [Free]: Get Your Rate Instantly',
     description:
-      'Find out what your Facebook audience is worth to brands. Personalized sponsorship rate card backed by industry data.',
+      'Get your Facebook sponsorship price instantly (no sign-up). Trusted by 50K+ creators to calculate fair rates for posts, Reels, Stories & Lives.',
     url: '/facebook-sponsorship-rate-calculator',
   },
   alternates: {
@@ -112,7 +112,7 @@ const faq: FAQItem[] = [
 const howItWorks = (
   <>
     <p>
-      Our Facebook Sponsorship Rate Calculator helps creators determine how much to charge for
+      Our Facebook Sponsorship Price Calculator helps creators determine how much to charge for
       branded content on Facebook.
     </p>
     <ol className="mt-3 list-decimal space-y-2 pl-5">
@@ -189,7 +189,7 @@ const howItWorks = (
           href="/instagram-sponsorship-rate-calculator"
           className="font-medium text-primary hover:underline"
         >
-          Instagram Sponsorship Rate Calculator
+          Instagram Sponsorship Price Calculator
         </Link>{' '}
         — compare cross-platform sponsorship rates with Instagram
       </li>
@@ -198,7 +198,7 @@ const howItWorks = (
           href="/tiktok-sponsorship-rate-calculator"
           className="font-medium text-primary hover:underline"
         >
-          TikTok Sponsorship Rate Calculator
+          TikTok Sponsorship Price Calculator
         </Link>{' '}
         — compare cross-platform sponsorship rates with TikTok
       </li>
@@ -207,7 +207,7 @@ const howItWorks = (
           href="/youtube-sponsorship-rate-calculator"
           className="font-medium text-primary hover:underline"
         >
-          YouTube Sponsorship Rate Calculator
+          YouTube Sponsorship Price Calculator
         </Link>{' '}
         — calculate YouTube integration and dedicated video rates
       </li>
@@ -216,7 +216,7 @@ const howItWorks = (
           href="/twitter-sponsorship-rate-calculator"
           className="font-medium text-primary hover:underline"
         >
-          X (Twitter) Sponsorship Rate Calculator
+          X (Twitter) Sponsorship Price Calculator
         </Link>{' '}
         — calculate X sponsorship pricing for tweets and threads
       </li>
@@ -237,14 +237,14 @@ export default function FacebookSponsorshipPage() {
   return (
     <>
       <CalculatorSchema
-        name="Facebook Sponsorship Rate Calculator"
+        name="Facebook Sponsorship Price Calculator"
         description="Calculate how much to charge for sponsored Facebook feed posts, Reels, Stories, and Lives based on your followers, engagement rate, and niche."
         url="/facebook-sponsorship-rate-calculator"
         datePublished="2025-01-15"
         dateModified="2026-02-16"
       />
       <CalculatorLayout
-        title="Facebook Sponsorship Rate Calculator"
+        title="Facebook Sponsorship Price Calculator"
         slug="facebook-sponsorship-rate-calculator"
         lastUpdated="February 2026"
         description="Find out how much to charge for sponsored posts on Facebook. Get a personalized rate card based on your followers, engagement rate, content type, and niche."
@@ -254,7 +254,7 @@ export default function FacebookSponsorshipPage() {
           { name: 'Home', path: '/' },
           { name: 'Facebook', path: '/facebook' },
           {
-            name: 'Facebook Sponsorship Rate Calculator',
+            name: 'Facebook Sponsorship Price Calculator',
             path: '/facebook-sponsorship-rate-calculator',
           },
         ]}
