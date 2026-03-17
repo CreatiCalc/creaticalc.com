@@ -12,13 +12,13 @@ import CalculatorSkeleton from '@/features/calculators/shared/CalculatorSkeleton
 import type { FAQItem } from '@/features/calculators/shared/types';
 
 export const metadata: Metadata = {
-  title: 'YouTube Shorts Money Calculator [2026 RPM Data] — See What Shorts Really Pay',
+  title: 'YouTube Shorts Money Calculator [Free]: Check Your Earnings Instantly',
   description:
-    'Shorts RPM varies wildly by niche, and most creators underestimate the gap. Enter your views to see what you should actually be earning. Built on data used by leading creator agencies.',
+    'Check your YouTube Shorts earnings instantly (no sign-up). Enter your views for niche-specific RPM estimates based on real 2026 data. Trusted by 50K+ creators.',
   openGraph: {
-    title: 'YouTube Shorts Money Calculator [2026 RPM Data] — See What Shorts Really Pay',
+    title: 'YouTube Shorts Money Calculator [Free]: Check Your Earnings Instantly',
     description:
-      'Find out what your Shorts are really worth. Niche-specific RPM estimates updated for 2026, trusted by industry professionals.',
+      'Check your YouTube Shorts earnings instantly (no sign-up). Enter your views for niche-specific RPM estimates based on real 2026 data. Trusted by 50K+ creators.',
     url: '/youtube-shorts-money-calculator',
   },
   alternates: {

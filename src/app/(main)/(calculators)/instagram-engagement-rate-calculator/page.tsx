@@ -13,13 +13,13 @@ import type { FAQItem } from '@/features/calculators/shared/types';
 import { getEngagementNichePages } from '@/lib/engagement-niches';
 
 export const metadata: Metadata = {
-  title: 'Instagram Engagement Rate Calculator [Free, 2026 Benchmarks] — Check Yours Now',
+  title: 'Instagram Engagement Rate Calculator [Free]: Check Yours Instantly',
   description:
-    'Is your Instagram engagement rate actually good? The answer depends on your follower tier and niche. Check yours against real 2026 benchmarks used by brands and agencies.',
+    'Check your Instagram engagement rate instantly (no sign-up). Compare against real 2026 benchmarks by follower tier and niche. Trusted by 50K+ creators.',
   openGraph: {
-    title: 'Instagram Engagement Rate Calculator [Free] — Check Yours Now',
+    title: 'Instagram Engagement Rate Calculator [Free]: Check Yours Instantly',
     description:
-      'Find out where your engagement rate really stands. Compare against 2026 Instagram benchmarks by follower tier and niche.',
+      'Check your Instagram engagement rate instantly (no sign-up). Compare against real 2026 benchmarks by follower tier and niche. Trusted by 50K+ creators.',
     url: '/instagram-engagement-rate-calculator',
   },
   alternates: {
