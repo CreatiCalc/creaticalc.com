@@ -14,11 +14,11 @@ import type { FAQItem } from '@/features/calculators/shared/types';
 export const metadata: Metadata = {
   title: 'YouTube Shorts Money Calculator [Free]: Check Your Earnings Instantly',
   description:
-    'Check your YouTube Shorts earnings instantly (no sign-up). Enter your views for niche-specific RPM estimates based on real 2026 data. Trusted by 50K+ creators.',
+    'Check your YouTube Shorts earnings instantly (no sign-up). Enter your views for niche-specific RPM estimates based on real 2026 data. See estimated Shorts revenue by niche with monthly projections.',
   openGraph: {
     title: 'YouTube Shorts Money Calculator [Free]: Check Your Earnings Instantly',
     description:
-      'Check your YouTube Shorts earnings instantly (no sign-up). Enter your views for niche-specific RPM estimates based on real 2026 data. Trusted by 50K+ creators.',
+      'Check your YouTube Shorts earnings instantly (no sign-up). Enter your views for niche-specific RPM estimates based on real 2026 data. See estimated Shorts revenue by niche with monthly projections.',
     url: '/youtube-shorts-money-calculator',
   },
   alternates: {

@@ -15,11 +15,11 @@ import { getSourcesById, SPONSORSHIP_SOURCE_IDS } from '@/lib/sources';
 export const metadata: Metadata = {
   title: 'Sponsorship Price Calculator [Free]: Compare All Platforms Instantly',
   description:
-    'Get your sponsorship price instantly across YouTube, Instagram, TikTok, Facebook & X (no sign-up). Trusted by 50K+ creators and agencies to calculate fair rates.',
+    'Get your sponsorship price instantly across YouTube, Instagram, TikTok, Facebook & X (no sign-up). Compare rates across all five platforms by content type, deal type, and niche.',
   openGraph: {
     title: 'Sponsorship Price Calculator [Free]: Compare All Platforms Instantly',
     description:
-      'Get your sponsorship price instantly across YouTube, Instagram, TikTok, Facebook & X (no sign-up). Trusted by 50K+ creators and agencies to calculate fair rates.',
+      'Get your sponsorship price instantly across YouTube, Instagram, TikTok, Facebook & X (no sign-up). Compare rates across all five platforms by content type, deal type, and niche.',
     url: '/sponsorship-rate-calculator',
   },
   alternates: {
