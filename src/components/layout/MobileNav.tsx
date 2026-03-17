@@ -119,26 +119,60 @@ export default function MobileNav() {
               );
             })}
 
-            {/* Comparisons section */}
-            <div className="mt-3 space-y-0.5 px-2">
-              <span className="block px-2 pb-1 text-xs font-semibold uppercase tracking-wider text-muted-light">
+            {/* Comparisons section — collapsible like platform groups */}
+            <div className="border-b border-border/40">
+              <button
+                type="button"
+                aria-expanded={expandedSection === 'Comparisons'}
+                onClick={() =>
+                  setExpandedSection(expandedSection === 'Comparisons' ? null : 'Comparisons')
+                }
+                className="flex w-full items-center gap-2.5 px-2 py-3 text-sm font-semibold text-foreground"
+              >
+                <span className="inline-block h-2 w-2 shrink-0 rounded-full bg-amber-500" />
                 Comparisons
-              </span>
-              {COMPARISON_LINKS.map((link) => (
-                <Drawer.Close key={link.href} asChild>
-                  <Link
-                    href={link.href}
-                    aria-current={pathname === link.href ? 'page' : undefined}
-                    className={`block rounded-lg px-4 py-2.5 text-sm transition-colors ${
-                      pathname === link.href
-                        ? 'bg-primary/8 font-medium text-primary'
-                        : 'text-muted hover:bg-surface-alt hover:text-foreground'
-                    }`}
-                  >
-                    {link.name}
-                  </Link>
-                </Drawer.Close>
-              ))}
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 12 12"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className={`ml-auto text-muted transition-transform duration-200 ${expandedSection === 'Comparisons' ? 'rotate-180' : ''}`}
+                  aria-hidden="true"
+                >
+                  <path d="M3 4.5 6 7.5 9 4.5" />
+                </svg>
+              </button>
+
+              <div
+                className="grid transition-[grid-template-rows] duration-250 ease-out"
+                style={{
+                  gridTemplateRows: expandedSection === 'Comparisons' ? '1fr' : '0fr',
+                }}
+              >
+                <div className="overflow-hidden">
+                  <div className="space-y-0.5 pb-2 pl-2">
+                    {COMPARISON_LINKS.map((link) => (
+                      <Drawer.Close key={link.href} asChild>
+                        <Link
+                          href={link.href}
+                          aria-current={pathname === link.href ? 'page' : undefined}
+                          className={`block rounded-lg px-4 py-2.5 text-sm transition-colors ${
+                            pathname === link.href
+                              ? 'bg-primary/8 font-medium text-primary'
+                              : 'text-muted hover:bg-surface-alt hover:text-foreground'
+                          }`}
+                        >
+                          {link.name}
+                        </Link>
+                      </Drawer.Close>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
 
             {/* More section */}

@@ -16,11 +16,11 @@ import { YOUTUBE_NICHE_DATA, YOUTUBE_NICHE_IDS } from '@/lib/niches';
 export const metadata: Metadata = {
   title: 'YouTube Money Calculator [Free]: Check Your Earnings Instantly',
   description:
-    'Check your YouTube earnings instantly (no sign-up). Enter your views and niche for a personalized estimate based on real 2026 CPM data. Trusted by 50K+ creators.',
+    'Check your YouTube earnings instantly (no sign-up). Enter your views and niche for a personalized estimate based on real 2026 CPM data. See estimated daily, monthly, and yearly revenue with growth projections.',
   openGraph: {
     title: 'YouTube Money Calculator [Free]: Check Your Earnings Instantly',
     description:
-      'Check your YouTube earnings instantly (no sign-up). Enter your views and niche for a personalized estimate based on real 2026 CPM data. Trusted by 50K+ creators.',
+      'Check your YouTube earnings instantly (no sign-up). Enter your views and niche for a personalized estimate based on real 2026 CPM data. See estimated daily, monthly, and yearly revenue with growth projections.',
     url: '/youtube-money-calculator',
   },
   alternates: {

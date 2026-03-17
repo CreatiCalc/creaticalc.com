@@ -530,6 +530,52 @@ export default function MethodologyPage() {
           </ol>
         </section>
 
+        <section className="mb-16">
+          <h2 className="text-2xl font-bold">Referenced By</h2>
+          <p className="mt-4 leading-relaxed text-muted">
+            Our data and benchmarks have been cited by industry publications and creator economy
+            platforms.
+          </p>
+          <ol className="mt-4 list-decimal space-y-3 pl-5 text-muted">
+            <li>
+              <a
+                href="https://theinfluencermarketingfactory.com/how-to-calculate-tiktok-engagement-rate/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-primary hover:underline"
+              >
+                The Influencer Marketing Factory
+              </a>{' '}
+              — &ldquo;How to Calculate TikTok Engagement Rate&rdquo; &mdash; cites CreatiCalc
+              engagement rate data
+            </li>
+            <li>
+              <a
+                href="https://mysocial.io/blog/how-to-price-influencers-on-youtube-instagram-and-snapchat/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-primary hover:underline"
+              >
+                MySocial
+              </a>{' '}
+              — &ldquo;How to Price Influencers on YouTube, Instagram, and Snapchat&rdquo; &mdash;
+              sources CreatiCalc Rate Database
+            </li>
+            <li>
+              <a
+                href="https://mysocial.io/blog/how-to-make-money-on-instagram/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-primary hover:underline"
+              >
+                MySocial
+              </a>{' '}
+              — &ldquo;How to Make Money on Instagram&rdquo; &mdash; sources CreatiCalc engagement
+              benchmarks
+            </li>
+          </ol>
+        </section>
+
         <section className="text-center">
           <h2 className="text-2xl font-bold">Questions About Our Data?</h2>
           <p className="mt-4 text-muted">

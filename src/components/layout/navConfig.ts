@@ -35,6 +35,7 @@ export const COMPARISON_LINKS: NavItem[] = [
   { name: 'Instagram vs TikTok', href: '/instagram-vs-tiktok' },
   { name: 'Shorts vs TikTok', href: '/youtube-shorts-vs-tiktok' },
   { name: 'IG vs YT Sponsorships', href: '/instagram-vs-youtube-sponsorships' },
+  { name: 'X vs IG Sponsorships', href: '/x-vs-instagram-sponsorships' },
 ];
 
 export const MORE_LINKS: NavItem[] = [
@@ -99,6 +100,7 @@ export const FOOTER_GROUPS: NavGroup[] = [
       { name: 'Instagram vs TikTok', href: '/instagram-vs-tiktok' },
       { name: 'Shorts vs TikTok', href: '/youtube-shorts-vs-tiktok' },
       { name: 'IG vs YT Sponsorships', href: '/instagram-vs-youtube-sponsorships' },
+      { name: 'X vs IG Sponsorships', href: '/x-vs-instagram-sponsorships' },
     ],
   },
   {
