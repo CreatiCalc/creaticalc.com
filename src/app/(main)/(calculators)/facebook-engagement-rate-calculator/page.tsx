@@ -13,13 +13,13 @@ import type { FAQItem } from '@/features/calculators/shared/types';
 import { getEngagementNichePages } from '@/lib/engagement-niches';
 
 export const metadata: Metadata = {
-  title: 'Facebook Engagement Rate Calculator [Free, 2026 Benchmarks] — Check Yours Now',
+  title: 'Facebook Engagement Rate Calculator [Free]: Check Yours Instantly',
   description:
-    'Is your Facebook engagement rate above or below average? Most pages overestimate. Check yours against real 2026 benchmarks by niche and see where you actually stand.',
+    'Check your Facebook engagement rate instantly (no sign-up). Compare against real 2026 benchmarks by niche and see where you actually stand. Trusted by 50K+ creators.',
   openGraph: {
-    title: 'Facebook Engagement Rate Calculator [Free] — Check Yours Now',
+    title: 'Facebook Engagement Rate Calculator [Free]: Check Yours Instantly',
     description:
-      'Find out where your Facebook engagement rate really stands. Compare against 2026 benchmarks by niche and industry.',
+      'Check your Facebook engagement rate instantly (no sign-up). Compare against real 2026 benchmarks by niche and see where you actually stand. Trusted by 50K+ creators.',
     url: '/facebook-engagement-rate-calculator',
   },
   alternates: {
@@ -219,7 +219,7 @@ const howItWorks = (
           href="/facebook-sponsorship-rate-calculator"
           className="font-medium text-primary hover:underline"
         >
-          Facebook Sponsorship Rate Calculator
+          Facebook Sponsorship Price Calculator
         </Link>{' '}
         — find out how much to charge for sponsored Facebook content
       </li>

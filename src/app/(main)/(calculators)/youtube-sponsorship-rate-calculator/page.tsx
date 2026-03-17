@@ -13,13 +13,13 @@ import type { FAQItem } from '@/features/calculators/shared/types';
 import { getSponsorshipNichePages } from '@/lib/sponsorship-niches';
 
 export const metadata: Metadata = {
-  title: 'YouTube Sponsorship Rate Calculator [Free, 2026] — Know Your Worth',
+  title: 'YouTube Sponsorship Price Calculator [Free]: Get Your Rate Instantly',
   description:
-    'Are you undercharging for YouTube sponsorships? Most creators are. Get a data-backed rate card for integrations, dedicated videos, and Shorts. Used by agencies and talent managers.',
+    'Get your YouTube sponsorship price instantly (no sign-up). Trusted by 50K+ creators to calculate fair rates for integrations, dedicated videos & Shorts.',
   openGraph: {
-    title: 'YouTube Sponsorship Rate Calculator [Free] — Know Your Worth',
+    title: 'YouTube Sponsorship Price Calculator [Free]: Get Your Rate Instantly',
     description:
-      'Stop guessing what to charge for YouTube brand deals. Get a personalized rate card backed by real industry data.',
+      'Get your YouTube sponsorship price instantly (no sign-up). Trusted by 50K+ creators to calculate fair rates for integrations, dedicated videos & Shorts.',
     url: '/youtube-sponsorship-rate-calculator',
   },
   alternates: {
@@ -112,7 +112,7 @@ const faq: FAQItem[] = [
 const howItWorks = (
   <>
     <p>
-      Our YouTube Sponsorship Rate Calculator helps creators determine how much to charge for
+      Our YouTube Sponsorship Price Calculator helps creators determine how much to charge for
       branded content on YouTube.
     </p>
     <ol className="mt-3 list-decimal space-y-2 pl-5">
@@ -215,7 +215,7 @@ const howItWorks = (
           href="/instagram-sponsorship-rate-calculator"
           className="font-medium text-primary hover:underline"
         >
-          Instagram Sponsorship Rate Calculator
+          Instagram Sponsorship Price Calculator
         </Link>{' '}
         &mdash; compare cross-platform sponsorship rates
       </li>
@@ -224,7 +224,7 @@ const howItWorks = (
           href="/tiktok-sponsorship-rate-calculator"
           className="font-medium text-primary hover:underline"
         >
-          TikTok Sponsorship Rate Calculator
+          TikTok Sponsorship Price Calculator
         </Link>{' '}
         &mdash; calculate TikTok sponsorship pricing
       </li>
@@ -233,7 +233,7 @@ const howItWorks = (
           href="/facebook-sponsorship-rate-calculator"
           className="font-medium text-primary hover:underline"
         >
-          Facebook Sponsorship Rate Calculator
+          Facebook Sponsorship Price Calculator
         </Link>{' '}
         &mdash; calculate Facebook sponsorship pricing
       </li>
@@ -242,7 +242,7 @@ const howItWorks = (
           href="/twitter-sponsorship-rate-calculator"
           className="font-medium text-primary hover:underline"
         >
-          X (Twitter) Sponsorship Rate Calculator
+          X (Twitter) Sponsorship Price Calculator
         </Link>{' '}
         &mdash; calculate X sponsorship pricing for tweets and threads
       </li>
@@ -269,14 +269,14 @@ export default function YouTubeSponsorshipPage() {
   return (
     <>
       <CalculatorSchema
-        name="YouTube Sponsorship Rate Calculator"
+        name="YouTube Sponsorship Price Calculator"
         description="Calculate how much to charge for sponsored YouTube videos, integrations, Shorts, and pre-rolls based on your subscribers, engagement rate, and niche."
         url="/youtube-sponsorship-rate-calculator"
         datePublished="2025-01-15"
         dateModified="2026-02-16"
       />
       <CalculatorLayout
-        title="YouTube Sponsorship Rate Calculator"
+        title="YouTube Sponsorship Price Calculator"
         slug="youtube-sponsorship-rate-calculator"
         lastUpdated="February 2026"
         description="Find out how much to charge for sponsored videos on YouTube. Get a personalized rate card based on your subscribers, engagement rate, content type, and niche."
@@ -286,7 +286,7 @@ export default function YouTubeSponsorshipPage() {
           { name: 'Home', path: '/' },
           { name: 'YouTube', path: '/youtube' },
           {
-            name: 'YouTube Sponsorship Rate Calculator',
+            name: 'YouTube Sponsorship Price Calculator',
             path: '/youtube-sponsorship-rate-calculator',
           },
         ]}

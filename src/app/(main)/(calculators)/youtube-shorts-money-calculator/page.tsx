@@ -12,13 +12,13 @@ import CalculatorSkeleton from '@/features/calculators/shared/CalculatorSkeleton
 import type { FAQItem } from '@/features/calculators/shared/types';
 
 export const metadata: Metadata = {
-  title: 'YouTube Shorts Money Calculator [2026 RPM Data] — See What Shorts Really Pay',
+  title: 'YouTube Shorts Money Calculator [Free]: Check Your Earnings Instantly',
   description:
-    'Shorts RPM varies wildly by niche, and most creators underestimate the gap. Enter your views to see what you should actually be earning. Built on data used by leading creator agencies.',
+    'Check your YouTube Shorts earnings instantly (no sign-up). Enter your views for niche-specific RPM estimates based on real 2026 data. Trusted by 50K+ creators.',
   openGraph: {
-    title: 'YouTube Shorts Money Calculator [2026 RPM Data] — See What Shorts Really Pay',
+    title: 'YouTube Shorts Money Calculator [Free]: Check Your Earnings Instantly',
     description:
-      'Find out what your Shorts are really worth. Niche-specific RPM estimates updated for 2026, trusted by industry professionals.',
+      'Check your YouTube Shorts earnings instantly (no sign-up). Enter your views for niche-specific RPM estimates based on real 2026 data. Trusted by 50K+ creators.',
     url: '/youtube-shorts-money-calculator',
   },
   alternates: {
@@ -188,7 +188,7 @@ const howItWorks = (
         href="/youtube-sponsorship-rate-calculator"
         className="font-medium text-primary hover:underline"
       >
-        YouTube Sponsorship Rate Calculator
+        YouTube Sponsorship Price Calculator
       </Link>{' '}
       to see what your channel could charge. If you also create content on other platforms, compare
       rates across{' '}
@@ -250,7 +250,7 @@ const howItWorks = (
           href="/youtube-sponsorship-rate-calculator"
           className="font-medium text-primary hover:underline"
         >
-          YouTube Sponsorship Rate Calculator
+          YouTube Sponsorship Price Calculator
         </Link>{' '}
         &mdash; find out how much to charge for integrations, dedicated videos, and Shorts
         sponsorships
@@ -269,7 +269,7 @@ const howItWorks = (
           href="/tiktok-sponsorship-rate-calculator"
           className="font-medium text-primary hover:underline"
         >
-          TikTok Sponsorship Rate Calculator
+          TikTok Sponsorship Price Calculator
         </Link>{' '}
         &mdash; compare Shorts earnings with TikTok sponsorship rates
       </li>
@@ -278,7 +278,7 @@ const howItWorks = (
           href="/instagram-sponsorship-rate-calculator"
           className="font-medium text-primary hover:underline"
         >
-          Instagram Sponsorship Rate Calculator
+          Instagram Sponsorship Price Calculator
         </Link>{' '}
         &mdash; calculate cross-platform sponsorship rates for Instagram
       </li>
