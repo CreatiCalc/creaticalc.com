@@ -13,13 +13,13 @@ import { Platform } from '@/lib/platforms';
 import { getSourcesById, SPONSORSHIP_SOURCE_IDS } from '@/lib/sources';
 
 export const metadata: Metadata = {
-  title: 'Sponsorship Rate Calculator [Free, All Platforms] — Compare Rates (2026)',
+  title: 'Sponsorship Price Calculator [Free]: Compare All Platforms Instantly',
   description:
-    'How much should you charge for brand deals? Compare sponsorship rates across Instagram, TikTok, YouTube, Facebook, and X. Data trusted by agencies and talent managers.',
+    'Get your sponsorship price instantly across YouTube, Instagram, TikTok, Facebook & X (no sign-up). Trusted by 50K+ creators and agencies to calculate fair rates.',
   openGraph: {
-    title: 'Sponsorship Rate Calculator [Free, All Platforms] — Compare Rates',
+    title: 'Sponsorship Price Calculator [Free]: Compare All Platforms Instantly',
     description:
-      'See what creators charge for brand deals across every major platform. Data updated for 2026 and trusted by industry professionals.',
+      'Get your sponsorship price instantly across YouTube, Instagram, TikTok, Facebook & X (no sign-up). Trusted by 50K+ creators and agencies to calculate fair rates.',
     url: '/sponsorship-rate-calculator',
   },
   alternates: {
@@ -119,7 +119,7 @@ const platforms = [
 
 const breadcrumbs = [
   { name: 'Home', path: '/' },
-  { name: 'Sponsorship Rate Calculator', path: '/sponsorship-rate-calculator' },
+  { name: 'Sponsorship Price Calculator', path: '/sponsorship-rate-calculator' },
 ];
 
 export default function SponsorshipRateCalculatorPage() {
@@ -127,7 +127,7 @@ export default function SponsorshipRateCalculatorPage() {
 
   const platformApps = platforms.map((p) => ({
     '@type': 'WebApplication' as const,
-    'name': `${p.name} Sponsorship Rate Calculator`,
+    'name': `${p.name} Sponsorship Price Calculator`,
     'url': `${SITE_URL}${p.href}`,
     'applicationCategory': 'UtilitiesApplication',
     'operatingSystem': 'Any',
@@ -141,7 +141,7 @@ export default function SponsorshipRateCalculatorPage() {
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    'name': 'Sponsorship Rate Calculator',
+    'name': 'Sponsorship Price Calculator',
     'description':
       'Free sponsorship rate calculator for Instagram, TikTok, YouTube, Facebook, and X. Compare base rates and pricing across all platforms.',
     'url': `${SITE_URL}/sponsorship-rate-calculator`,
@@ -175,7 +175,7 @@ export default function SponsorshipRateCalculatorPage() {
         <Breadcrumbs items={breadcrumbs} />
         <div className="mb-8 text-center">
           <h1 className="text-gradient-brand text-3xl font-bold md:text-4xl">
-            Sponsorship Rate Calculator
+            Sponsorship Price Calculator
           </h1>
           <p className="mt-3 text-muted">
             Calculate how much to charge for sponsored content on Instagram, TikTok, YouTube,

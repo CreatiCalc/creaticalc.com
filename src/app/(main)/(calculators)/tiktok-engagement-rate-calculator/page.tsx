@@ -226,7 +226,7 @@ const howItWorks = (
           href="/tiktok-sponsorship-rate-calculator"
           className="font-medium text-primary hover:underline"
         >
-          TikTok Sponsorship Rate Calculator
+          TikTok Sponsorship Price Calculator
         </Link>{' '}
         — estimate how much you can charge per sponsored video
       </li>

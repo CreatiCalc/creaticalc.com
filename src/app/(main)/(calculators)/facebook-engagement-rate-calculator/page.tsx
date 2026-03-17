@@ -219,7 +219,7 @@ const howItWorks = (
           href="/facebook-sponsorship-rate-calculator"
           className="font-medium text-primary hover:underline"
         >
-          Facebook Sponsorship Rate Calculator
+          Facebook Sponsorship Price Calculator
         </Link>{' '}
         — find out how much to charge for sponsored Facebook content
       </li>

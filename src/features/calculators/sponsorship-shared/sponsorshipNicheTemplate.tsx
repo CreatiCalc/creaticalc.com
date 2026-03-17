@@ -114,7 +114,7 @@ export function buildNicheSponsorshipPage(config: SponsorshipNicheConfig) {
           breadcrumbs={[
             { name: 'Home', path: '/' },
             { name: config.displayName, path: config.hubPath },
-            { name: 'Sponsorship Rate', path: `/${config.urlPrefix}` },
+            { name: 'Sponsorship Price', path: `/${config.urlPrefix}` },
             { name: data.name, path: `/${config.urlPrefix}/${data.slug}` },
           ]}
         >

@@ -169,7 +169,7 @@ const howItWorks = (
         href="/youtube-sponsorship-rate-calculator"
         className="font-medium text-primary hover:underline"
       >
-        YouTube Sponsorship Rate Calculator
+        YouTube Sponsorship Price Calculator
       </Link>{' '}
       to see how much brands will pay to sponsor your videos at different subscriber levels. Many
       creators also use{' '}
@@ -204,7 +204,7 @@ const howItWorks = (
           href="/youtube-sponsorship-rate-calculator"
           className="font-medium text-primary hover:underline"
         >
-          YouTube Sponsorship Rate Calculator
+          YouTube Sponsorship Price Calculator
         </Link>{' '}
         &mdash; find out how much to charge for integrations, dedicated videos, and Shorts
         sponsorships
@@ -214,7 +214,7 @@ const howItWorks = (
           href="/instagram-sponsorship-rate-calculator"
           className="font-medium text-primary hover:underline"
         >
-          Instagram Sponsorship Rate Calculator
+          Instagram Sponsorship Price Calculator
         </Link>{' '}
         &mdash; calculate cross-platform sponsorship rates for Instagram
       </li>
@@ -223,7 +223,7 @@ const howItWorks = (
           href="/tiktok-sponsorship-rate-calculator"
           className="font-medium text-primary hover:underline"
         >
-          TikTok Sponsorship Rate Calculator
+          TikTok Sponsorship Price Calculator
         </Link>{' '}
         &mdash; compare sponsorship rates across platforms
       </li>

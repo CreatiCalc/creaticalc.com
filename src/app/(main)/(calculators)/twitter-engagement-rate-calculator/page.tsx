@@ -234,7 +234,7 @@ const howItWorks = (
           href="/twitter-sponsorship-rate-calculator"
           className="font-medium text-primary hover:underline"
         >
-          X (Twitter) Sponsorship Rate Calculator
+          X (Twitter) Sponsorship Price Calculator
         </Link>{' '}
         — find out how much to charge for sponsored tweets, threads, and Spaces
       </li>
