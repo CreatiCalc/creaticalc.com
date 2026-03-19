@@ -379,7 +379,7 @@ export default function GlossaryPage() {
         <AdSlot slot="below-results" className="mt-12 mb-12" />
 
         {/* FAQ */}
-        <section className="mb-16">
+        <section className="mt-12 mb-16">
           <h2 className="text-2xl font-bold">Frequently Asked Questions</h2>
           <div className="mt-6 space-y-6">
             {faqItems.map((item) => (

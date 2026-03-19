@@ -40,7 +40,6 @@ export const COMPARISON_LINKS: NavItem[] = [
 
 export const MORE_LINKS: NavItem[] = [
   ...multiPlatformCalcs,
-  { name: 'Benchmarks 2026', href: '/engagement-rate-benchmarks' },
   { name: 'Blog', href: '/blog' },
   { name: 'Glossary', href: '/glossary' },
   { name: 'Methodology', href: '/methodology' },
