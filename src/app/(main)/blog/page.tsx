@@ -76,14 +76,18 @@ export default function BlogPage() {
         />
 
         {/* Hero */}
-        <header className="mb-10">
-          <h1 className="mb-3 font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            Creator Economy Insights & Guides
-          </h1>
-          <p className="text-lg text-muted">
-            Data-driven articles on YouTube earnings, sponsorship rates, engagement benchmarks, and
-            monetization strategies for content creators.
-          </p>
+        <header className="relative mb-10 overflow-hidden rounded-2xl bg-gradient-to-br from-primary/[0.07] via-secondary/[0.04] to-accent/[0.06] px-6 py-8 sm:px-8 sm:py-10">
+          <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-primary/[0.06] blur-3xl" />
+          <div className="absolute -bottom-12 -left-12 h-36 w-36 rounded-full bg-accent/[0.08] blur-3xl" />
+          <div className="relative">
+            <h1 className="mb-3 font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+              Creator Economy Insights & Guides
+            </h1>
+            <p className="max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
+              Real numbers, real data. Sponsorship rates, CPM benchmarks, and monetization
+              strategies that actually help you earn more as a creator.
+            </p>
+          </div>
         </header>
 
         {/* Featured posts */}
@@ -94,7 +98,7 @@ export default function BlogPage() {
                 <BlogCard key={post.frontmatter.slug} post={post.frontmatter} featured />
               ))}
             </div>
-            <hr className="my-8 border-border" />
+            <div className="my-8 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
           </>
         )}
 
