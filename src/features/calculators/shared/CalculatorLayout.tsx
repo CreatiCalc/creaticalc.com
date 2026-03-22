@@ -2,6 +2,7 @@ import type { FAQItem } from './types';
 import type { BreadcrumbItem } from '@/components/seo/BreadcrumbSchema';
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import Breadcrumbs from '@/components/seo/Breadcrumbs';
+import FAQSchema from '@/components/seo/FAQSchema';
 import FAQ from './FAQ';
 import AdSlot from '@/components/layout/AdSlot';
 import CalculatorErrorBoundary from './CalculatorErrorBoundary';
@@ -30,8 +31,13 @@ export default function CalculatorLayout({
   slug,
   lastUpdated,
 }: CalculatorLayoutProps) {
+  const faqSchemaItems = faq
+    .filter((item): item is FAQItem & { answer: string } => typeof item.answer === 'string')
+    .map((item) => ({ question: item.question, answer: item.answer }));
+
   return (
     <div className="mx-auto max-w-4xl px-4 py-10">
+      <FAQSchema items={faqSchemaItems} />
       {breadcrumbs && (
         <>
           <BreadcrumbSchema items={breadcrumbs} />

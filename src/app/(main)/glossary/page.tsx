@@ -3,6 +3,7 @@ import Link from 'next/link';
 import CollapsibleSection from '@/features/calculators/shared/CollapsibleSection';
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import Breadcrumbs from '@/components/seo/Breadcrumbs';
+import FAQSchema from '@/components/seo/FAQSchema';
 import AdSlot from '@/components/layout/AdSlot';
 import { SITE_URL } from '@/lib/siteConfig';
 
@@ -287,6 +288,7 @@ export default function GlossaryPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(definedTermSetSchema) }}
       />
+      <FAQSchema items={faqItems} />
 
       <div className="mx-auto max-w-4xl px-4 py-10">
         <BreadcrumbSchema

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import FAQ from '@/features/calculators/shared/FAQ';
 import AdSlot from '@/components/layout/AdSlot';
 import type { FAQItem } from '@/features/calculators/shared/types';
+import FAQSchema from '@/components/seo/FAQSchema';
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import Breadcrumbs from '@/components/seo/Breadcrumbs';
 import { SITE_URL } from '@/lib/siteConfig';
@@ -67,6 +68,10 @@ const breadcrumbs = [
 ];
 
 export default function YouTubeShortsVsTikTokPage() {
+  const faqSchemaItems = faq
+    .filter((item): item is FAQItem & { answer: string } => typeof item.answer === 'string')
+    .map(({ question, answer }) => ({ question, answer }));
+
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
@@ -272,6 +277,7 @@ export default function YouTubeShortsVsTikTokPage() {
 
         <AdSlot slot="below-results" className="mb-8" />
 
+        <FAQSchema items={faqSchemaItems} />
         <FAQ items={faq} />
       </div>
     </>

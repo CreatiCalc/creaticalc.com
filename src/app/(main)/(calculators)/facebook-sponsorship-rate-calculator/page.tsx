@@ -13,13 +13,13 @@ import type { FAQItem } from '@/features/calculators/shared/types';
 import { getSponsorshipNichePages } from '@/lib/sponsorship-niches';
 
 export const metadata: Metadata = {
-  title: 'Facebook Sponsorship Price Calculator [Free]: Get Your Rate Instantly',
+  title: 'Facebook Sponsorship Rate Calculator: Price Posts, Reels & Lives [2026]',
   description:
-    'Get your Facebook sponsorship price instantly (no sign-up). Calculate fair rates for posts, Reels, Stories & Lives based on your followers, engagement, and niche.',
+    'Calculate fair Facebook sponsorship rates by follower count, engagement, and niche. Covers posts, Reels, Stories, and Lives. No sign-up.',
   openGraph: {
-    title: 'Facebook Sponsorship Price Calculator [Free]: Get Your Rate Instantly',
+    title: 'Facebook Sponsorship Rate Calculator: Price Posts, Reels & Lives [2026]',
     description:
-      'Get your Facebook sponsorship price instantly (no sign-up). Calculate fair rates for posts, Reels, Stories & Lives based on your followers, engagement, and niche.',
+      'Calculate fair Facebook sponsorship rates by follower count, engagement, and niche. Covers posts, Reels, Stories, and Lives. No sign-up.',
     url: '/facebook-sponsorship-rate-calculator',
   },
   alternates: {
