@@ -5,18 +5,19 @@ import FAQ from '@/features/calculators/shared/FAQ';
 import AdSlot from '@/components/layout/AdSlot';
 import { PlatformComparisonTable } from '@/features/calculators/engagement-shared';
 import type { FAQItem } from '@/features/calculators/shared/types';
+import FAQSchema from '@/components/seo/FAQSchema';
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import Breadcrumbs from '@/components/seo/Breadcrumbs';
 import { SITE_URL } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
-  title: 'Engagement Rate Calculator [Free]: Check Your Rate Instantly',
+  title: 'Engagement Rate Calculator: See How You Rank on Any Platform [2026]',
   description:
-    'Check your engagement rate instantly for Instagram, TikTok, Facebook or X (no sign-up). Compare against 2026 benchmarks that brands actually use to evaluate creators.',
+    'Calculate your engagement rate for Instagram, TikTok, Facebook, or X. Compare against the benchmarks brands use to evaluate creators. No sign-up.',
   openGraph: {
-    title: 'Engagement Rate Calculator [Free]: Check Your Rate Instantly',
+    title: 'Engagement Rate Calculator: See How You Rank on Any Platform [2026]',
     description:
-      'Check your engagement rate instantly for Instagram, TikTok, Facebook or X (no sign-up). Compare against 2026 benchmarks that brands actually use to evaluate creators.',
+      'Calculate your engagement rate for Instagram, TikTok, Facebook, or X. Compare against the benchmarks brands use to evaluate creators. No sign-up.',
     url: '/engagement-rate-calculator',
   },
   alternates: {
@@ -107,6 +108,10 @@ const platforms = [
 ];
 
 export default function EngagementRateCalculatorPage() {
+  const faqSchemaItems = faq
+    .filter((item): item is FAQItem & { answer: string } => typeof item.answer === 'string')
+    .map(({ question, answer }) => ({ question, answer }));
+
   const platformApps = platforms.map((p) => ({
     '@type': 'WebApplication' as const,
     'name': `${p.name} Engagement Rate Calculator`,
@@ -319,6 +324,7 @@ export default function EngagementRateCalculatorPage() {
 
         <AdSlot slot="below-results" className="mb-8" />
 
+        <FAQSchema items={faqSchemaItems} />
         <FAQ items={faq} />
       </div>
     </>

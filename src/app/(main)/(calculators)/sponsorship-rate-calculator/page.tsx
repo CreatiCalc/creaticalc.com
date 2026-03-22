@@ -4,6 +4,7 @@ import Card from '@/components/ui/Card';
 import FAQ from '@/features/calculators/shared/FAQ';
 import AdSlot from '@/components/layout/AdSlot';
 import type { FAQItem } from '@/features/calculators/shared/types';
+import FAQSchema from '@/components/seo/FAQSchema';
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import Breadcrumbs from '@/components/seo/Breadcrumbs';
 import { SITE_URL } from '@/lib/siteConfig';
@@ -13,13 +14,13 @@ import { Platform } from '@/lib/platforms';
 import { getSourcesById, SPONSORSHIP_SOURCE_IDS } from '@/lib/sources';
 
 export const metadata: Metadata = {
-  title: 'Sponsorship Price Calculator [Free]: Compare All Platforms Instantly',
+  title: 'Sponsorship Rate Calculator: Compare Rates Across 5 Platforms [2026]',
   description:
-    'Get your sponsorship price instantly across YouTube, Instagram, TikTok, Facebook & X (no sign-up). Compare rates across all five platforms by content type, deal type, and niche.',
+    'Compare sponsorship rates across YouTube, Instagram, TikTok, Facebook, and X. Filter by content type, deal type, and niche. No sign-up.',
   openGraph: {
-    title: 'Sponsorship Price Calculator [Free]: Compare All Platforms Instantly',
+    title: 'Sponsorship Rate Calculator: Compare Rates Across 5 Platforms [2026]',
     description:
-      'Get your sponsorship price instantly across YouTube, Instagram, TikTok, Facebook & X (no sign-up). Compare rates across all five platforms by content type, deal type, and niche.',
+      'Compare sponsorship rates across YouTube, Instagram, TikTok, Facebook, and X. Filter by content type, deal type, and niche. No sign-up.',
     url: '/sponsorship-rate-calculator',
   },
   alternates: {
@@ -123,6 +124,10 @@ const breadcrumbs = [
 ];
 
 export default function SponsorshipRateCalculatorPage() {
+  const faqSchemaItems = faq
+    .filter((item): item is FAQItem & { answer: string } => typeof item.answer === 'string')
+    .map(({ question, answer }) => ({ question, answer }));
+
   const sources = getSourcesById([...SPONSORSHIP_SOURCE_IDS]);
 
   const platformApps = platforms.map((p) => ({
@@ -472,6 +477,7 @@ export default function SponsorshipRateCalculatorPage() {
 
         <AdSlot slot="below-results" className="mb-8" />
 
+        <FAQSchema items={faqSchemaItems} />
         <FAQ items={faq} />
       </div>
     </>

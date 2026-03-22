@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import Breadcrumbs from '@/components/seo/Breadcrumbs';
+import FAQSchema from '@/components/seo/FAQSchema';
 import { SOURCES } from '@/lib/sources';
 import { SITE_URL } from '@/lib/siteConfig';
 
@@ -27,6 +28,34 @@ const breadcrumbs = [
   { name: 'Methodology', path: '/methodology' },
 ];
 
+const methodologyFaqItems = [
+  {
+    question: 'How accurate are these calculators?',
+    answer:
+      'Our calculators provide estimates based on industry averages and publicly available data. For YouTube earnings, real-world results typically fall within our low-high range for the given niche. However, individual results vary based on audience geography, ad-blocker usage, content type, and dozens of other factors. We recommend using our estimates as directional guidance rather than exact predictions.',
+  },
+  {
+    question: 'Where do you get your CPM/RPM data?',
+    answer:
+      "We aggregate data from multiple sources: YouTube's official Partner Program documentation, advertising industry reports from Statista and eMarketer, creator-reported earnings from public disclosures, and cross-references with established tools like Social Blade. No single source is relied upon in isolation — our ranges represent the consensus across these inputs.",
+  },
+  {
+    question: 'Why does my actual YouTube revenue differ from the estimate?',
+    answer:
+      "Several factors cause real revenue to differ: your audience's geographic mix (US/UK viewers generate higher CPMs than viewers in developing countries), your video's ad suitability rating, the percentage of views from monetizable sources (e.g., embedded views may not be monetized), and your ad format mix (mid-roll ads generate more revenue than pre-roll only). Our calculator uses niche-average RPMs that may not match your channel's specific audience profile.",
+  },
+  {
+    question: 'How often is the data updated?',
+    answer:
+      'We perform scheduled data reviews twice a year, in January and July. Between scheduled updates, we make out-of-cycle adjustments when major platform changes occur — such as YouTube modifying its Shorts monetization model or a platform changing its revenue-sharing terms.',
+  },
+  {
+    question: 'Can I use these estimates for business planning?',
+    answer:
+      'Our calculators are designed to provide useful directional estimates for content creators evaluating their monetization potential. They can inform business planning as one input among many, but should not be the sole basis for financial decisions. We recommend using the low-end estimates for conservative planning and the mid estimates as a realistic target.',
+  },
+];
+
 export default function MethodologyPage() {
   const webPageSchema = {
     '@context': 'https://schema.org',
@@ -45,6 +74,7 @@ export default function MethodologyPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
       />
+      <FAQSchema items={methodologyFaqItems} />
       <BreadcrumbSchema items={breadcrumbs} />
 
       <div className="mx-auto max-w-4xl px-4 py-16">

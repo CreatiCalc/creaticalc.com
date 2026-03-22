@@ -13,13 +13,13 @@ import type { FAQItem } from '@/features/calculators/shared/types';
 import { getSponsorshipNichePages } from '@/lib/sponsorship-niches';
 
 export const metadata: Metadata = {
-  title: 'TikTok Sponsorship Price Calculator [Free]: Get Your Rate Instantly',
+  title: 'TikTok Sponsorship Rate Calculator: Price Videos, Spark Ads & Lives [2026]',
   description:
-    'Get your TikTok sponsorship price instantly (no sign-up). Calculate fair rates for videos, Spark Ads & Lives based on your followers, engagement, and niche.',
+    'Calculate fair TikTok sponsorship rates by follower count, engagement, and niche. Covers videos, Spark Ads, and Lives. No sign-up.',
   openGraph: {
-    title: 'TikTok Sponsorship Price Calculator [Free]: Get Your Rate Instantly',
+    title: 'TikTok Sponsorship Rate Calculator: Price Videos, Spark Ads & Lives [2026]',
     description:
-      'Get your TikTok sponsorship price instantly (no sign-up). Calculate fair rates for videos, Spark Ads & Lives based on your followers, engagement, and niche.',
+      'Calculate fair TikTok sponsorship rates by follower count, engagement, and niche. Covers videos, Spark Ads, and Lives. No sign-up.',
     url: '/tiktok-sponsorship-rate-calculator',
   },
   alternates: {

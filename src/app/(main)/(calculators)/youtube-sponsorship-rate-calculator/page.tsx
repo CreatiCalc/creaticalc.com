@@ -13,13 +13,13 @@ import type { FAQItem } from '@/features/calculators/shared/types';
 import { getSponsorshipNichePages } from '@/lib/sponsorship-niches';
 
 export const metadata: Metadata = {
-  title: 'YouTube Sponsorship Price Calculator [Free]: Get Your Rate Instantly',
+  title: 'YouTube Sponsorship Rate Calculator: Price Integrations & Dedicated Videos [2026]',
   description:
-    'Get your YouTube sponsorship price instantly (no sign-up). Calculate fair rates for integrations, dedicated videos & Shorts based on your subscribers, engagement, and niche.',
+    'Calculate fair YouTube sponsorship rates by subscriber count, engagement, and niche. Covers integrations, dedicated videos, and Shorts. No sign-up.',
   openGraph: {
-    title: 'YouTube Sponsorship Price Calculator [Free]: Get Your Rate Instantly',
+    title: 'YouTube Sponsorship Rate Calculator: Price Integrations & Dedicated Videos [2026]',
     description:
-      'Get your YouTube sponsorship price instantly (no sign-up). Calculate fair rates for integrations, dedicated videos & Shorts based on your subscribers, engagement, and niche.',
+      'Calculate fair YouTube sponsorship rates by subscriber count, engagement, and niche. Covers integrations, dedicated videos, and Shorts. No sign-up.',
     url: '/youtube-sponsorship-rate-calculator',
   },
   alternates: {

@@ -13,13 +13,13 @@ import type { FAQItem } from '@/features/calculators/shared/types';
 import { getSponsorshipNichePages } from '@/lib/sponsorship-niches';
 
 export const metadata: Metadata = {
-  title: 'Instagram Sponsorship Price Calculator [Free]: Get Your Rate Instantly',
+  title: 'Instagram Sponsorship Rate Calculator: Price Posts, Reels & Stories [2026]',
   description:
-    'Get your Instagram sponsorship price instantly (no sign-up). Calculate fair rates for posts, Reels, Stories & carousels based on your followers, engagement, and niche.',
+    'Calculate fair Instagram sponsorship rates by follower count, engagement, and niche. Covers posts, Reels, Stories, and carousels. No sign-up.',
   openGraph: {
-    title: 'Instagram Sponsorship Price Calculator [Free]: Get Your Rate Instantly',
+    title: 'Instagram Sponsorship Rate Calculator: Price Posts, Reels & Stories [2026]',
     description:
-      'Get your Instagram sponsorship price instantly (no sign-up). Calculate fair rates for posts, Reels, Stories & carousels based on your followers, engagement, and niche.',
+      'Calculate fair Instagram sponsorship rates by follower count, engagement, and niche. Covers posts, Reels, Stories, and carousels. No sign-up.',
     url: '/instagram-sponsorship-rate-calculator',
   },
   alternates: {

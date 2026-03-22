@@ -13,13 +13,13 @@ import type { FAQItem } from '@/features/calculators/shared/types';
 import { getEngagementNichePages } from '@/lib/engagement-niches';
 
 export const metadata: Metadata = {
-  title: 'TikTok Engagement Rate Calculator [Free]: Check Yours Instantly',
+  title: 'TikTok Engagement Rate Calculator: Check Yours by Niche and Tier [2026]',
   description:
-    'Check your TikTok engagement rate instantly (no sign-up). Compare against real 2026 benchmarks by follower tier and niche. See your rating by follower tier with niche-specific benchmarks.',
+    'Calculate your TikTok engagement rate and compare it against benchmarks by follower tier and niche. Average is 4.9%, but it varies. No sign-up.',
   openGraph: {
-    title: 'TikTok Engagement Rate Calculator [Free]: Check Yours Instantly',
+    title: 'TikTok Engagement Rate Calculator: Check Yours by Niche and Tier [2026]',
     description:
-      'Check your TikTok engagement rate instantly (no sign-up). Compare against real 2026 benchmarks by follower tier and niche. See your rating by follower tier with niche-specific benchmarks.',
+      'Calculate your TikTok engagement rate and compare it against benchmarks by follower tier and niche. Average is 4.9%, but it varies. No sign-up.',
     url: '/tiktok-engagement-rate-calculator',
   },
   alternates: {
