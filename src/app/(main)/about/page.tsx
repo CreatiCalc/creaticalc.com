@@ -5,6 +5,7 @@ import { getAllCalculators, PLATFORM_GRADIENTS } from '@/lib/calculatorRegistry'
 import { Platform } from '@/lib/platforms';
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import Breadcrumbs from '@/components/seo/Breadcrumbs';
+import FAQSchema from '@/components/seo/FAQSchema';
 import { SITE_URL } from '@/lib/siteConfig';
 
 export const dynamic = 'force-static';
@@ -81,6 +82,7 @@ export default function AboutPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageSchema) }}
       />
+      <FAQSchema items={faqItems} />
       <BreadcrumbSchema items={aboutBreadcrumbs} />
 
       <div className="mx-auto max-w-4xl px-4 py-16">

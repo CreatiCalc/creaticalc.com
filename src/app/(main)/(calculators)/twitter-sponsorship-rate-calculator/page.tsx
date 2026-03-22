@@ -13,13 +13,13 @@ import type { FAQItem } from '@/features/calculators/shared/types';
 import { getSponsorshipNichePages } from '@/lib/sponsorship-niches';
 
 export const metadata: Metadata = {
-  title: 'X (Twitter) Sponsorship Price Calculator [Free]: Get Your Rate Instantly',
+  title: 'X (Twitter) Sponsorship Rate Calculator: Price Tweets, Threads & Spaces [2026]',
   description:
-    'Get your X sponsorship price instantly (no sign-up). Calculate fair rates for tweets, threads & Spaces based on your followers, engagement, and niche.',
+    'Calculate fair X sponsorship rates by follower count, engagement, and niche. Covers tweets, threads, and Spaces. No sign-up.',
   openGraph: {
-    title: 'X (Twitter) Sponsorship Price Calculator [Free]: Get Your Rate Instantly',
+    title: 'X (Twitter) Sponsorship Rate Calculator: Price Tweets, Threads & Spaces [2026]',
     description:
-      'Get your X sponsorship price instantly (no sign-up). Calculate fair rates for tweets, threads & Spaces based on your followers, engagement, and niche.',
+      'Calculate fair X sponsorship rates by follower count, engagement, and niche. Covers tweets, threads, and Spaces. No sign-up.',
     url: '/twitter-sponsorship-rate-calculator',
   },
   alternates: {

@@ -5,18 +5,19 @@ import AdSlot from '@/components/layout/AdSlot';
 import { BenchmarkTable, PlatformComparisonTable } from '@/features/calculators/engagement-shared';
 import { YOY_TRENDS, formatPercent } from '@/lib/engagementBenchmarks';
 import type { FAQItem } from '@/features/calculators/shared/types';
+import FAQSchema from '@/components/seo/FAQSchema';
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import Breadcrumbs from '@/components/seo/Breadcrumbs';
 import { SITE_URL } from '@/lib/siteConfig';
 
 export const metadata: Metadata = {
-  title: 'Engagement Rate Benchmarks 2026 [Free]: All Platforms Compared Instantly',
+  title: 'Engagement Rate Benchmarks 2026: Instagram, TikTok, Facebook & X Compared',
   description:
-    'See 2026 engagement rate benchmarks instantly for Instagram, TikTok, Facebook & X (no sign-up). The data agencies and brand strategists actually use to evaluate creators.',
+    'Side-by-side engagement rate benchmarks by platform, follower tier, and niche. The data agencies and brands use to evaluate creators.',
   openGraph: {
-    title: 'Engagement Rate Benchmarks 2026 [Free]: All Platforms Compared Instantly',
+    title: 'Engagement Rate Benchmarks 2026: Instagram, TikTok, Facebook & X Compared',
     description:
-      'See 2026 engagement rate benchmarks instantly for Instagram, TikTok, Facebook & X (no sign-up). The data agencies and brand strategists actually use to evaluate creators.',
+      'Side-by-side engagement rate benchmarks by platform, follower tier, and niche. The data agencies and brands use to evaluate creators.',
     url: '/engagement-rate-benchmarks',
   },
   alternates: {
@@ -72,6 +73,10 @@ const faq: FAQItem[] = [
 ];
 
 export default function EngagementRateBenchmarksPage() {
+  const faqSchemaItems = faq
+    .filter((item): item is FAQItem & { answer: string } => typeof item.answer === 'string')
+    .map(({ question, answer }) => ({ question, answer }));
+
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
@@ -428,6 +433,7 @@ export default function EngagementRateBenchmarksPage() {
 
         <AdSlot slot="below-results" className="mb-8" />
 
+        <FAQSchema items={faqSchemaItems} />
         <FAQ items={faq} />
       </div>
     </>

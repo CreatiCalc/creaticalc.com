@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Card from '@/components/ui/Card';
 import CollapsibleSection from '@/features/calculators/shared/CollapsibleSection';
+import FAQSchema from '@/components/seo/FAQSchema';
 import { SITE_NAME, SITE_URL, SITE_LOGO, SITE_DESCRIPTION } from '@/lib/siteConfig';
 import { getAllCalculators, PLATFORM_GRADIENTS } from '@/lib/calculatorRegistry';
 import { PLATFORM_AVERAGES, YOUTUBE_ENGAGEMENT_RANGE } from '@/lib/engagementBenchmarks';
@@ -195,12 +196,17 @@ const jsonLd = {
 };
 
 export default function Home() {
+  const faqSchemaItems = homeFaqItems
+    .filter((item): item is { question: string; answer: string } => typeof item.answer === 'string')
+    .map((item) => ({ question: item.question, answer: item.answer }));
+
   return (
     <div className="mx-auto max-w-6xl px-4 py-16">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <FAQSchema items={faqSchemaItems} />
       <section className="hero-dots relative mb-12 py-8 text-center md:mb-24">
         <h1 className="text-4xl font-bold tracking-tight md:text-6xl">
           Free Calculators for <span className="text-gradient-vibrant">Content Creators</span>
