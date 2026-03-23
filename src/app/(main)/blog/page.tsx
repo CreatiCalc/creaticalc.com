@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { getAllPosts } from '@/lib/blog';
 import { SITE_NAME, SITE_URL } from '@/lib/siteConfig';
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import Breadcrumbs from '@/components/seo/Breadcrumbs';
 import BlogCard from '@/features/blog/BlogCard';
+import TagBadge from '@/features/blog/TagBadge';
 
 export const dynamic = 'force-static';
 
@@ -54,8 +56,16 @@ function CollectionPageSchema(posts: { title: string; slug: string }[]) {
 
 export default function BlogPage() {
   const posts = getAllPosts();
-  const featuredPosts = posts.filter((p) => p.frontmatter.featured);
-  const otherPosts = posts.filter((p) => !p.frontmatter.featured);
+  const leadPost = posts[0];
+  const gridPosts = posts.slice(1);
+
+  const leadDate = leadPost
+    ? new Date(`${leadPost.frontmatter.date}T00:00:00`).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+      })
+    : '';
 
   return (
     <>
@@ -75,37 +85,48 @@ export default function BlogPage() {
           ]}
         />
 
-        {/* Hero */}
-        <header className="relative mb-10 overflow-hidden rounded-2xl bg-gradient-to-br from-primary/[0.07] via-secondary/[0.04] to-accent/[0.06] px-6 py-8 sm:px-8 sm:py-10">
-          <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-primary/[0.06] blur-3xl" />
-          <div className="absolute -bottom-12 -left-12 h-36 w-36 rounded-full bg-accent/[0.08] blur-3xl" />
-          <div className="relative">
-            <h1 className="mb-3 font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Creator Economy Insights & Guides
-            </h1>
-            <p className="max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
-              Real numbers, real data. Sponsorship rates, CPM benchmarks, and monetization
-              strategies that actually help you earn more as a creator.
-            </p>
-          </div>
+        {/* Header */}
+        <header className="mb-10 pb-8">
+          <h1 className="mb-3 font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            Creator Economy Insights & Guides
+          </h1>
+          <p className="max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
+            Real numbers, real data. Sponsorship rates, CPM benchmarks, and monetization strategies
+            that actually help you earn more as a creator.
+          </p>
         </header>
 
-        {/* Featured posts */}
-        {featuredPosts.length > 0 && (
-          <>
-            <div className="grid gap-5 sm:grid-cols-2">
-              {featuredPosts.map((post) => (
-                <BlogCard key={post.frontmatter.slug} post={post.frontmatter} featured />
+        {/* Lead story */}
+        {leadPost && (
+          <Link
+            href={`/blog/${leadPost.frontmatter.slug}`}
+            className="group mb-12 block rounded-xl bg-surface p-6 ring-1 ring-border/50 transition-all duration-200 hover:shadow-md hover:ring-primary/40 sm:p-8"
+          >
+            <div className="mb-3 flex flex-wrap gap-1.5">
+              {leadPost.frontmatter.tags.slice(0, 3).map((tag: string) => (
+                <TagBadge key={tag} tag={tag} linked={false} />
               ))}
             </div>
-            <div className="my-8 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
-          </>
+            <h2 className="mb-3 font-display text-2xl font-bold leading-tight text-foreground transition-colors group-hover:text-primary sm:text-3xl">
+              {leadPost.frontmatter.title}
+            </h2>
+            <p className="mb-4 max-w-2xl text-base leading-relaxed text-muted">
+              {leadPost.frontmatter.description}
+            </p>
+            <div className="text-sm text-muted-light">
+              <time dateTime={leadPost.frontmatter.date}>{leadDate}</time>
+              <span className="mx-2" aria-hidden="true">
+                &middot;
+              </span>
+              <span>{leadPost.frontmatter.readingTime} min read</span>
+            </div>
+          </Link>
         )}
 
-        {/* All other posts */}
-        <h2 className="mb-5 font-display text-xl font-semibold text-foreground">Latest Articles</h2>
+        {/* All articles */}
+        <h2 className="mb-6 font-display text-lg font-semibold text-foreground">More Articles</h2>
         <div className="grid gap-5 sm:grid-cols-2">
-          {otherPosts.map((post) => (
+          {gridPosts.map((post) => (
             <BlogCard key={post.frontmatter.slug} post={post.frontmatter} />
           ))}
         </div>

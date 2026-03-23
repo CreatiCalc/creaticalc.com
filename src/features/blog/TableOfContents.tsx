@@ -10,7 +10,7 @@ export default function TableOfContents({ headings }: TableOfContentsProps) {
   return (
     <nav
       aria-label="Table of contents"
-      className="mb-8 rounded-lg border border-border bg-surface-alt p-5"
+      className="mb-10 rounded-r-lg border-l-2 border-primary/30 bg-surface py-5 pl-5 pr-4"
     >
       <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted">
         In this article

@@ -14,14 +14,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const hubPages: MetadataRoute.Sitemap = PLATFORM_HUBS.map((h) => ({
     url: `${baseUrl}/${h.slug}`,
-    lastModified: '2026-03-16',
+    lastModified: '2026-03-23',
     changeFrequency: 'monthly',
     priority: 0.9,
   }));
 
   const calculatorPages: MetadataRoute.Sitemap = getAllCalculators().map((c) => ({
     url: `${baseUrl}${c.href}`,
-    lastModified: '2026-03-17',
+    lastModified: '2026-03-23',
     changeFrequency: 'weekly',
     priority: c.sitemapPriority ?? 0.9,
   }));
@@ -35,7 +35,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const sponsorshipNichePages: MetadataRoute.Sitemap = SPONSORSHIP_NICHE_PAGES.map((n) => ({
     url: `${baseUrl}/${n.platform}-sponsorship-rate-calculator/${n.slug}`,
-    lastModified: '2026-03-16',
+    lastModified: '2026-03-23',
     changeFrequency: 'monthly',
     priority: 0.7,
   }));
@@ -72,7 +72,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: baseUrl,
-      lastModified: '2026-03-17',
+      lastModified: '2026-03-23',
       changeFrequency: 'monthly',
       priority: 1.0,
     },
@@ -80,7 +80,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...calculatorPages,
     {
       url: `${baseUrl}/glossary`,
-      lastModified: '2026-03-16',
+      lastModified: '2026-03-23',
       changeFrequency: 'monthly',
       priority: 0.6,
     },

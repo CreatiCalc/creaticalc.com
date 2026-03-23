@@ -120,7 +120,7 @@ const platforms = [
 
 const breadcrumbs = [
   { name: 'Home', path: '/' },
-  { name: 'Sponsorship Price Calculator', path: '/sponsorship-rate-calculator' },
+  { name: 'Sponsorship Rate Calculator', path: '/sponsorship-rate-calculator' },
 ];
 
 export default function SponsorshipRateCalculatorPage() {
@@ -132,7 +132,7 @@ export default function SponsorshipRateCalculatorPage() {
 
   const platformApps = platforms.map((p) => ({
     '@type': 'WebApplication' as const,
-    'name': `${p.name} Sponsorship Price Calculator`,
+    'name': `${p.name} Sponsorship Rate Calculator`,
     'url': `${SITE_URL}${p.href}`,
     'applicationCategory': 'UtilitiesApplication',
     'operatingSystem': 'Any',
@@ -146,7 +146,7 @@ export default function SponsorshipRateCalculatorPage() {
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    'name': 'Sponsorship Price Calculator',
+    'name': 'Sponsorship Rate Calculator',
     'description':
       'Free sponsorship rate calculator for Instagram, TikTok, YouTube, Facebook, and X. Compare base rates and pricing across all platforms.',
     'url': `${SITE_URL}/sponsorship-rate-calculator`,
@@ -180,7 +180,7 @@ export default function SponsorshipRateCalculatorPage() {
         <Breadcrumbs items={breadcrumbs} />
         <div className="mb-8 text-center">
           <h1 className="text-gradient-brand text-3xl font-bold md:text-4xl">
-            Sponsorship Price Calculator
+            Sponsorship Rate Calculator
           </h1>
           <p className="mt-3 text-muted">
             Calculate how much to charge for sponsored content on Instagram, TikTok, YouTube,

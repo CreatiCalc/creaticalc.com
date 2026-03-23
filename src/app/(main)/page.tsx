@@ -4,10 +4,26 @@ import Card from '@/components/ui/Card';
 import CollapsibleSection from '@/features/calculators/shared/CollapsibleSection';
 import FAQSchema from '@/components/seo/FAQSchema';
 import { SITE_NAME, SITE_URL, SITE_LOGO, SITE_DESCRIPTION } from '@/lib/siteConfig';
-import { getAllCalculators, PLATFORM_GRADIENTS } from '@/lib/calculatorRegistry';
+import {
+  getAllCalculators,
+  getCalculatorsByPlatform,
+  PLATFORM_GRADIENTS,
+} from '@/lib/calculatorRegistry';
+import { Platform } from '@/lib/platforms';
+import { PLATFORM_ICONS, getToolIcon } from '@/components/icons/PlatformIcons';
 import { PLATFORM_AVERAGES, YOUTUBE_ENGAGEMENT_RANGE } from '@/lib/engagementBenchmarks';
 import { getSponsorshipBaseRate } from '@/lib/sponsorshipModel';
 import { NICHES, SHORTS_RPM } from '@/lib/youtubeEarningsModel';
+
+// Subtle tinted backgrounds per platform
+const PLATFORM_CARD_BG: Record<string, string> = {
+  [Platform.YouTube]: 'bg-gradient-to-br from-red-50/60 to-background',
+  [Platform.Instagram]: 'bg-gradient-to-br from-fuchsia-50/50 to-background',
+  [Platform.TikTok]: 'bg-gradient-to-br from-cyan-50/50 to-background',
+  [Platform.X]: 'bg-gradient-to-br from-sky-50/50 to-background',
+  [Platform.Facebook]: 'bg-gradient-to-br from-blue-50/50 to-background',
+  [Platform.Multi]: 'bg-gradient-to-br from-teal-50/50 to-background',
+};
 
 const platformComparison = [
   {
@@ -105,7 +121,7 @@ const homeFaqItems = [
   {
     question: 'How much should I charge for a sponsored post?',
     answer:
-      'Sponsorship rates depend on your platform, follower count, engagement rate, content niche, and deal type. On Instagram, the standard rate is $10–$25 per 1,000 followers for a basic feed post mention. On TikTok, rates are $5–$15 per 1,000 followers. On YouTube, integrations run $20–$50 per 1,000 subscribers. Use our Sponsorship Price Calculators for YouTube, Instagram, TikTok, Facebook, and X for a personalized rate card.',
+      'Sponsorship rates depend on your platform, follower count, engagement rate, content niche, and deal type. On Instagram, the standard rate is $10–$25 per 1,000 followers for a basic feed post mention. On TikTok, rates are $5–$15 per 1,000 followers. On YouTube, integrations run $20–$50 per 1,000 subscribers. Use our Sponsorship Rate Calculators for YouTube, Instagram, TikTok, Facebook, and X for a personalized rate card.',
   },
   {
     question: 'What is a good engagement rate on Instagram?',
@@ -296,46 +312,64 @@ export default function Home() {
         </p>
       </section>
 
-      <section className="grid gap-6 sm:grid-cols-2">
-        {calculators.map((calc) => (
-          <Link key={calc.href} href={calc.href} className="group">
-            <Card className="relative h-full overflow-hidden transition-all duration-300 group-hover:scale-[1.02] group-hover:border-primary/50 group-hover:shadow-lg">
-              {/* Platform gradient accent bar — slides in from left on hover */}
-              <div
-                className={`absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-gradient-to-r transition-transform duration-300 group-hover:scale-x-100 ${PLATFORM_GRADIENTS[calc.platform] ?? ''}`}
-              />
-              <div className="flex items-center justify-between">
-                <span className="inline-block rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-semibold text-primary">
-                  {calc.platform}
-                </span>
-                <span className="rounded-full bg-surface-alt px-2 py-0.5 text-xs text-muted">
-                  Free
-                </span>
-              </div>
-              <h2 className="text-lg font-semibold transition-colors duration-200 group-hover:text-primary">
-                {calc.cardTitle}
-              </h2>
-              <p className="mt-1 text-sm text-muted">{calc.description}</p>
-              <p className="mt-3 flex items-center gap-1 text-sm font-medium text-primary opacity-0 transition-all duration-200 group-hover:translate-x-1 group-hover:opacity-100">
-                Try it free
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 14 14"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden="true"
+      {/* All tools — grouped by platform with rich cards */}
+      {(
+        [
+          { platform: Platform.Multi, label: 'All Platforms', href: '/engagement-rate-calculator' },
+          { platform: Platform.YouTube, label: 'YouTube', href: '/youtube' },
+          { platform: Platform.Instagram, label: 'Instagram', href: '/instagram' },
+          { platform: Platform.TikTok, label: 'TikTok', href: '/tiktok' },
+          { platform: Platform.X, label: 'X (Twitter)', href: '/x' },
+          { platform: Platform.Facebook, label: 'Facebook', href: '/facebook' },
+        ] as const
+      ).map(({ platform, label, href }, groupIdx) => {
+        const tools = getCalculatorsByPlatform(platform);
+        if (tools.length === 0) return null;
+        const PlatformIcon = PLATFORM_ICONS[platform];
+        return (
+          <section key={platform} className={groupIdx === 0 ? '' : 'mt-12'}>
+            <div className="mb-5 flex items-center gap-3">
+              {PlatformIcon && (
+                <span
+                  className={`inline-flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br ${PLATFORM_GRADIENTS[platform]} text-white`}
                 >
-                  <path d="M1 7h12M8 2l5 5-5 5" />
-                </svg>
-              </p>
-            </Card>
-          </Link>
-        ))}
-      </section>
+                  <PlatformIcon className="h-4.5 w-4.5" />
+                </span>
+              )}
+              <h2 className="text-xl font-bold tracking-tight text-foreground">
+                <Link href={href} className="hover:text-primary">
+                  {label}
+                </Link>
+              </h2>
+            </div>
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {tools.map((calc) => {
+                const icon = getToolIcon(calc.slug);
+                return (
+                  <Link key={calc.href} href={calc.href} className="group">
+                    <Card
+                      className={`relative h-full overflow-hidden transition-all duration-300 group-hover:scale-[1.02] group-hover:border-primary/50 group-hover:shadow-lg ${PLATFORM_CARD_BG[calc.platform] ?? ''}`}
+                    >
+                      <div
+                        className={`absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-gradient-to-r transition-transform duration-300 group-hover:scale-x-100 ${PLATFORM_GRADIENTS[calc.platform] ?? ''}`}
+                      />
+                      {icon && (
+                        <div className="mb-3 text-muted-light transition-colors group-hover:text-primary/60">
+                          {icon}
+                        </div>
+                      )}
+                      <h3 className="text-base font-semibold transition-colors duration-200 group-hover:text-primary">
+                        {calc.cardTitle}
+                      </h3>
+                      <p className="mt-1 text-sm leading-relaxed text-muted">{calc.description}</p>
+                    </Card>
+                  </Link>
+                );
+              })}
+            </div>
+          </section>
+        );
+      })}
 
       <section className="mt-20 text-center">
         <h2 className="text-2xl font-bold">Why CreatiCalc?</h2>

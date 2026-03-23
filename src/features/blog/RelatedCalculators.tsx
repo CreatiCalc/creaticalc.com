@@ -43,7 +43,7 @@ export default function RelatedCalculators({ tags }: RelatedCalculatorsProps) {
   if (calcs.length === 0) return null;
 
   return (
-    <section className="mt-12 rounded-2xl border border-border bg-surface p-6">
+    <section className="mt-12 rounded-lg border border-border/70 p-6">
       <h2 className="mb-4 font-display text-lg font-semibold text-foreground">
         Try These Calculators
       </h2>
@@ -52,7 +52,7 @@ export default function RelatedCalculators({ tags }: RelatedCalculatorsProps) {
           <Link
             key={c!.slug}
             href={c!.href}
-            className="flex items-center gap-3 rounded-xl border border-border bg-white px-4 py-3 text-sm font-medium text-foreground transition-colors hover:border-primary/30 hover:text-primary"
+            className="flex items-center gap-3 rounded-lg border border-border/70 px-4 py-3 text-sm font-medium text-foreground transition-colors hover:border-primary/30 hover:text-primary"
           >
             <span className="text-primary">&rarr;</span>
             {c!.title}
