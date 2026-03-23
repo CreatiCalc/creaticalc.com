@@ -27,6 +27,7 @@ export const CALCULATOR_SLUGS = [
   'engagement-rate-calculator',
   'engagement-rate-benchmarks',
   'sponsorship-rate-calculator',
+  'x-monetization-checker',
 ] as const;
 
 export type CalculatorSlug = (typeof CALCULATOR_SLUGS)[number];
@@ -100,7 +101,7 @@ const CALCULATORS: CalculatorEntry[] = [
   },
   {
     slug: 'youtube-sponsorship-rate-calculator',
-    title: 'YouTube Sponsorship Price Calculator',
+    title: 'YouTube Sponsorship Rate Calculator',
     cardTitle: 'YouTube Sponsorship Rate',
     navLabel: 'Sponsorship Rate',
     href: '/youtube-sponsorship-rate-calculator',
@@ -128,7 +129,7 @@ const CALCULATORS: CalculatorEntry[] = [
   },
   {
     slug: 'instagram-sponsorship-rate-calculator',
-    title: 'Instagram Sponsorship Price Calculator',
+    title: 'Instagram Sponsorship Rate Calculator',
     cardTitle: 'Instagram Sponsorship Rate',
     navLabel: 'Sponsorship Rate',
     href: '/instagram-sponsorship-rate-calculator',
@@ -156,7 +157,7 @@ const CALCULATORS: CalculatorEntry[] = [
   },
   {
     slug: 'tiktok-sponsorship-rate-calculator',
-    title: 'TikTok Sponsorship Price Calculator',
+    title: 'TikTok Sponsorship Rate Calculator',
     cardTitle: 'TikTok Sponsorship Rate',
     navLabel: 'Sponsorship Rate',
     href: '/tiktok-sponsorship-rate-calculator',
@@ -184,7 +185,7 @@ const CALCULATORS: CalculatorEntry[] = [
   },
   {
     slug: 'facebook-sponsorship-rate-calculator',
-    title: 'Facebook Sponsorship Price Calculator',
+    title: 'Facebook Sponsorship Rate Calculator',
     cardTitle: 'Facebook Sponsorship Rate',
     navLabel: 'Sponsorship Rate',
     href: '/facebook-sponsorship-rate-calculator',
@@ -209,11 +210,11 @@ const CALCULATORS: CalculatorEntry[] = [
       'Measure your X engagement rate using likes, replies, reposts, and bookmarks. Compare against benchmarks by follower tier and industry.',
     embeddable: true,
     sitemapPriority: 0.8,
-    relatedSlugs: ['twitter-sponsorship-rate-calculator', 'engagement-rate-benchmarks'],
+    relatedSlugs: ['twitter-sponsorship-rate-calculator', 'x-monetization-checker'],
   },
   {
     slug: 'twitter-sponsorship-rate-calculator',
-    title: 'X (Twitter) Sponsorship Price Calculator',
+    title: 'X (Twitter) Sponsorship Rate Calculator',
     cardTitle: 'X (Twitter) Sponsorship Rate',
     navLabel: 'Sponsorship Rate',
     href: '/twitter-sponsorship-rate-calculator',
@@ -222,7 +223,7 @@ const CALCULATORS: CalculatorEntry[] = [
     aboutDescription:
       'Find out how much to charge for sponsored X content based on your followers, engagement rate, content type, and niche.',
     embeddable: true,
-    relatedSlugs: ['twitter-engagement-rate-calculator', 'tiktok-sponsorship-rate-calculator'],
+    relatedSlugs: ['twitter-engagement-rate-calculator', 'x-monetization-checker'],
   },
   {
     slug: 'engagement-rate-calculator',
@@ -255,8 +256,8 @@ const CALCULATORS: CalculatorEntry[] = [
   },
   {
     slug: 'sponsorship-rate-calculator',
-    title: 'Sponsorship Price Calculator',
-    cardTitle: 'Sponsorship Price Calculator',
+    title: 'Sponsorship Rate Calculator',
+    cardTitle: 'Sponsorship Rate Calculator',
     navLabel: 'Sponsorship Calculator',
     href: '/sponsorship-rate-calculator',
     platform: Platform.Multi,
@@ -266,6 +267,20 @@ const CALCULATORS: CalculatorEntry[] = [
       'All-in-one sponsorship rate calculator for Instagram, TikTok, YouTube, Facebook, and X. Compare base rates, content type multipliers, and deal pricing across all platforms.',
     embeddable: false,
     relatedSlugs: ['engagement-rate-calculator', 'instagram-sponsorship-rate-calculator'],
+  },
+  {
+    slug: 'x-monetization-checker',
+    title: 'X (Twitter) Monetization Eligibility Checker',
+    cardTitle: 'X Monetization Checker',
+    navLabel: 'Monetization Checker',
+    href: '/x-monetization-checker',
+    platform: Platform.X,
+    description:
+      'Check if you qualify for X Ads Revenue Sharing, Subscriptions, Ticketed Spaces, and Tips.',
+    aboutDescription:
+      'Check your eligibility for all X (Twitter) monetization programs. See which requirements you meet, track your progress, and get actionable tips to unlock each program.',
+    embeddable: false,
+    relatedSlugs: ['twitter-sponsorship-rate-calculator', 'twitter-engagement-rate-calculator'],
   },
 ];
 

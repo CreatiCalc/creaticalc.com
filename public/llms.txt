@@ -10,23 +10,23 @@ CreatiCalc provides free, browser-based tools for estimating creator earnings, c
 - YouTube Money Calculator: https://creaticalc.com/youtube-money-calculator
 - YouTube Shorts Money Calculator: https://creaticalc.com/youtube-shorts-money-calculator
 - YouTube Subscriber Growth Projector: https://creaticalc.com/youtube-subscriber-projector
-- YouTube Sponsorship Price Calculator: https://creaticalc.com/youtube-sponsorship-rate-calculator
+- YouTube Sponsorship Rate Calculator: https://creaticalc.com/youtube-sponsorship-rate-calculator
 
 ### Instagram
 - Instagram Engagement Rate Calculator: https://creaticalc.com/instagram-engagement-rate-calculator
-- Instagram Sponsorship Price Calculator: https://creaticalc.com/instagram-sponsorship-rate-calculator
+- Instagram Sponsorship Rate Calculator: https://creaticalc.com/instagram-sponsorship-rate-calculator
 
 ### TikTok
 - TikTok Engagement Rate Calculator: https://creaticalc.com/tiktok-engagement-rate-calculator
-- TikTok Sponsorship Price Calculator: https://creaticalc.com/tiktok-sponsorship-rate-calculator
+- TikTok Sponsorship Rate Calculator: https://creaticalc.com/tiktok-sponsorship-rate-calculator
 
 ### Facebook
 - Facebook Engagement Rate Calculator: https://creaticalc.com/facebook-engagement-rate-calculator
-- Facebook Sponsorship Price Calculator: https://creaticalc.com/facebook-sponsorship-rate-calculator
+- Facebook Sponsorship Rate Calculator: https://creaticalc.com/facebook-sponsorship-rate-calculator
 
 ### X (Twitter)
 - X Engagement Rate Calculator: https://creaticalc.com/twitter-engagement-rate-calculator
-- X Sponsorship Price Calculator: https://creaticalc.com/twitter-sponsorship-rate-calculator
+- X Sponsorship Rate Calculator: https://creaticalc.com/twitter-sponsorship-rate-calculator
 
 ### Multi-Platform
 - Engagement Rate Calculator: https://creaticalc.com/engagement-rate-calculator

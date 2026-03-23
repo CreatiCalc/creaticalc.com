@@ -112,7 +112,7 @@ const faq: FAQItem[] = [
 const howItWorks = (
   <>
     <p>
-      Our Instagram Sponsorship Price Calculator helps creators determine how much to charge for
+      Our Instagram Sponsorship Rate Calculator helps creators determine how much to charge for
       branded content on Instagram.
     </p>
     <ol className="mt-3 list-decimal space-y-2 pl-5">
@@ -188,7 +188,7 @@ const howItWorks = (
           href="/youtube-sponsorship-rate-calculator"
           className="font-medium text-primary hover:underline"
         >
-          YouTube Sponsorship Price Calculator
+          YouTube Sponsorship Rate Calculator
         </Link>{' '}
         — calculate YouTube integration and dedicated video rates
       </li>
@@ -197,7 +197,7 @@ const howItWorks = (
           href="/tiktok-sponsorship-rate-calculator"
           className="font-medium text-primary hover:underline"
         >
-          TikTok Sponsorship Price Calculator
+          TikTok Sponsorship Rate Calculator
         </Link>{' '}
         — compare cross-platform sponsorship rates
       </li>
@@ -206,7 +206,7 @@ const howItWorks = (
           href="/facebook-sponsorship-rate-calculator"
           className="font-medium text-primary hover:underline"
         >
-          Facebook Sponsorship Price Calculator
+          Facebook Sponsorship Rate Calculator
         </Link>{' '}
         — calculate Facebook sponsorship pricing
       </li>
@@ -242,14 +242,14 @@ export default function InstagramSponsorshipPage() {
   return (
     <>
       <CalculatorSchema
-        name="Instagram Sponsorship Price Calculator"
+        name="Instagram Sponsorship Rate Calculator"
         description="Calculate how much to charge for sponsored Instagram posts, Reels, Stories, and carousels based on your followers, engagement rate, and niche."
         url="/instagram-sponsorship-rate-calculator"
         datePublished="2025-01-15"
         dateModified="2026-02-16"
       />
       <CalculatorLayout
-        title="Instagram Sponsorship Price Calculator"
+        title="Instagram Sponsorship Rate Calculator"
         slug="instagram-sponsorship-rate-calculator"
         lastUpdated="February 2026"
         description="Find out how much to charge for sponsored posts on Instagram. Get a personalized rate card based on your followers, engagement rate, content type, and niche."
@@ -259,7 +259,7 @@ export default function InstagramSponsorshipPage() {
           { name: 'Home', path: '/' },
           { name: 'Instagram', path: '/instagram' },
           {
-            name: 'Instagram Sponsorship Price Calculator',
+            name: 'Instagram Sponsorship Rate Calculator',
             path: '/instagram-sponsorship-rate-calculator',
           },
         ]}

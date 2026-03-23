@@ -111,7 +111,7 @@ export default async function NicheCalculatorPage({ params }: NichePageProps) {
             href="/youtube-sponsorship-rate-calculator"
             className="font-medium text-primary hover:underline"
           >
-            YouTube Sponsorship Price Calculator
+            YouTube Sponsorship Rate Calculator
           </Link>{' '}
           &mdash; find out how much to charge for sponsored YouTube content
         </li>

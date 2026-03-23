@@ -107,7 +107,7 @@ const glossaryCategories: GlossaryCategory[] = [
           'The fee a creator charges a brand for a sponsored post, video, or campaign.',
         explanation:
           'Sponsorship rates depend on several factors: follower count, engagement rate, platform, content format, niche, and usage rights. A common starting formula is to charge a base rate per follower (e.g., $0.01–$0.05 per follower on Instagram) and then adjust based on deliverables. Rates also vary by content type — a dedicated YouTube video commands significantly more than an Instagram Story mention. Creators with high engagement rates and niche audiences can often charge more than those with large but passive followings.',
-        calculatorLabel: 'YouTube Sponsorship Price Calculator',
+        calculatorLabel: 'YouTube Sponsorship Rate Calculator',
         calculatorHref: '/youtube-sponsorship-rate-calculator',
       },
       {
@@ -139,7 +139,7 @@ const glossaryCategories: GlossaryCategory[] = [
           'A paid partnership between a creator and a company to promote a product or service through sponsored content.',
         explanation:
           'Brand deals are the primary way most mid-size and larger creators monetize their audiences beyond platform ad revenue. A typical deal includes deliverables (e.g., one YouTube video and two Instagram Stories), a timeline, approval processes, and a fixed fee or fee-plus-performance structure. Negotiations cover usage rights, exclusivity periods, and content format. Creators usually formalize brand deals with a contract that outlines payment terms, revision limits, and FTC disclosure requirements.',
-        calculatorLabel: 'Instagram Sponsorship Price Calculator',
+        calculatorLabel: 'Instagram Sponsorship Rate Calculator',
         calculatorHref: '/instagram-sponsorship-rate-calculator',
       },
       {
@@ -179,7 +179,7 @@ const glossaryCategories: GlossaryCategory[] = [
           "Content created by regular users or hired creators that features a brand's product, rather than content produced by the brand itself.",
         explanation:
           "User-generated content can be organic (customers voluntarily posting about a product) or paid (brands hiring UGC creators to produce authentic-looking content). Paid UGC has become a major revenue stream for creators who may not have large followings but are skilled at producing relatable, conversion-focused videos. Unlike traditional influencer marketing, paid UGC is typically used in the brand's own ads rather than posted on the creator's channels, which means follower count matters less than production quality and authenticity.",
-        calculatorLabel: 'TikTok Sponsorship Price Calculator',
+        calculatorLabel: 'TikTok Sponsorship Rate Calculator',
         calculatorHref: '/tiktok-sponsorship-rate-calculator',
       },
       {
@@ -188,7 +188,7 @@ const glossaryCategories: GlossaryCategory[] = [
           "When a brand runs paid ads using a creator's account or post, so the ad appears to come from the creator rather than the brand.",
         explanation:
           "When a creator whitelists their content, they grant a brand permission to boost or promote a post as a paid ad through the creator's handle. On TikTok, this is done through Spark Ads; on Instagram and Facebook, it uses branded content ads via the creator's account. This format combines the authenticity of creator content with the targeting power of paid advertising. Creators typically charge an additional fee for whitelisting because it gives the brand control over how the content is distributed and increases the audience exposure beyond the creator's organic following.",
-        calculatorLabel: 'TikTok Sponsorship Price Calculator',
+        calculatorLabel: 'TikTok Sponsorship Rate Calculator',
         calculatorHref: '/tiktok-sponsorship-rate-calculator',
       },
       {
@@ -197,7 +197,7 @@ const glossaryCategories: GlossaryCategory[] = [
           "How, where, and for how long a brand can repurpose a creator's sponsored content beyond the original post.",
         explanation:
           'When a creator produces sponsored content, the brand may want to use that content in their own advertising — on their website, in email campaigns, on digital ads, or even in television commercials. Usage rights specify the scope (platforms), duration (30 days, 6 months, perpetual), and exclusivity of this repurposing. Creators should always negotiate usage rights separately from the base sponsorship fee, as extended or broad usage rights significantly increase the value of the content to the brand. A common structure is to add 25–100% of the base fee for usage rights depending on scope.',
-        calculatorLabel: 'Facebook Sponsorship Price Calculator',
+        calculatorLabel: 'Facebook Sponsorship Rate Calculator',
         calculatorHref: '/facebook-sponsorship-rate-calculator',
       },
       {

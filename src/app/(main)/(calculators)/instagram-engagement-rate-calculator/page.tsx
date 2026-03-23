@@ -210,7 +210,7 @@ const howItWorks = (
           href="/instagram-sponsorship-rate-calculator"
           className="font-medium text-primary hover:underline"
         >
-          Instagram Sponsorship Price Calculator
+          Instagram Sponsorship Rate Calculator
         </Link>{' '}
         — estimate how much you can charge per sponsored post
       </li>

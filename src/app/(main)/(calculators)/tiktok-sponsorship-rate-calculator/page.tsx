@@ -112,8 +112,8 @@ const faq: FAQItem[] = [
 const howItWorks = (
   <>
     <p>
-      Our TikTok Sponsorship Price Calculator helps creators determine how much to charge for
-      branded content on TikTok.
+      Our TikTok Sponsorship Rate Calculator helps creators determine how much to charge for branded
+      content on TikTok.
     </p>
     <ol className="mt-3 list-decimal space-y-2 pl-5">
       <li>
@@ -187,7 +187,7 @@ const howItWorks = (
           href="/youtube-sponsorship-rate-calculator"
           className="font-medium text-primary hover:underline"
         >
-          YouTube Sponsorship Price Calculator
+          YouTube Sponsorship Rate Calculator
         </Link>{' '}
         — calculate YouTube integration and dedicated video rates
       </li>
@@ -196,7 +196,7 @@ const howItWorks = (
           href="/instagram-sponsorship-rate-calculator"
           className="font-medium text-primary hover:underline"
         >
-          Instagram Sponsorship Price Calculator
+          Instagram Sponsorship Rate Calculator
         </Link>{' '}
         — compare cross-platform sponsorship rates
       </li>
@@ -205,7 +205,7 @@ const howItWorks = (
           href="/facebook-sponsorship-rate-calculator"
           className="font-medium text-primary hover:underline"
         >
-          Facebook Sponsorship Price Calculator
+          Facebook Sponsorship Rate Calculator
         </Link>{' '}
         — calculate Facebook sponsorship pricing
       </li>
@@ -238,14 +238,14 @@ export default function TikTokSponsorshipPage() {
   return (
     <>
       <CalculatorSchema
-        name="TikTok Sponsorship Price Calculator"
+        name="TikTok Sponsorship Rate Calculator"
         description="Calculate how much to charge for sponsored TikTok videos, Stories, and Lives based on your followers, engagement rate, and niche."
         url="/tiktok-sponsorship-rate-calculator"
         datePublished="2025-01-15"
         dateModified="2026-02-16"
       />
       <CalculatorLayout
-        title="TikTok Sponsorship Price Calculator"
+        title="TikTok Sponsorship Rate Calculator"
         slug="tiktok-sponsorship-rate-calculator"
         lastUpdated="February 2026"
         description="Find out how much to charge for sponsored content on TikTok. Get a personalized rate card based on your followers, engagement rate, content type, and niche."
@@ -255,7 +255,7 @@ export default function TikTokSponsorshipPage() {
           { name: 'Home', path: '/' },
           { name: 'TikTok', path: '/tiktok' },
           {
-            name: 'TikTok Sponsorship Price Calculator',
+            name: 'TikTok Sponsorship Rate Calculator',
             path: '/tiktok-sponsorship-rate-calculator',
           },
         ]}

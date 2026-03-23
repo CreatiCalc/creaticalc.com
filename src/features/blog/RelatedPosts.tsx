@@ -30,7 +30,7 @@ export default function RelatedPosts({ currentSlug, tags }: RelatedPostsProps) {
           <Link
             key={post.slug}
             href={`/blog/${post.slug}`}
-            className="rounded-xl border border-border bg-white p-4 transition-colors hover:border-primary/30"
+            className="rounded-lg border border-border/70 p-4 transition-colors hover:border-primary/30"
           >
             <p className="mb-1 text-sm font-medium text-foreground">{post.title}</p>
             <p className="text-xs text-muted">{post.readingTime} min read</p>
