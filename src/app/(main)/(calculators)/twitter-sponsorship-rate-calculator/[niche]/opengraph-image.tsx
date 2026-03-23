@@ -3,7 +3,7 @@ import {
   buildNicheOgImage,
 } from '@/features/calculators/sponsorship-shared/sponsorshipNicheOgImage';
 
-export const alt = 'X (Twitter) Sponsorship Price Calculator by Niche';
+export const alt = 'X (Twitter) Sponsorship Rate Calculator by Niche';
 export const size = OG_SIZE;
 export const contentType = 'image/png';
 

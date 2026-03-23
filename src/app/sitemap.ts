@@ -21,7 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const calculatorPages: MetadataRoute.Sitemap = getAllCalculators().map((c) => ({
     url: `${baseUrl}${c.href}`,
-    lastModified: '2026-03-17',
+    lastModified: '2026-03-23',
     changeFrequency: 'weekly',
     priority: c.sitemapPriority ?? 0.9,
   }));

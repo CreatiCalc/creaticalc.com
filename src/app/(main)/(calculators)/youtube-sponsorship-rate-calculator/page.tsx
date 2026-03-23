@@ -112,7 +112,7 @@ const faq: FAQItem[] = [
 const howItWorks = (
   <>
     <p>
-      Our YouTube Sponsorship Price Calculator helps creators determine how much to charge for
+      Our YouTube Sponsorship Rate Calculator helps creators determine how much to charge for
       branded content on YouTube.
     </p>
     <ol className="mt-3 list-decimal space-y-2 pl-5">
@@ -215,7 +215,7 @@ const howItWorks = (
           href="/instagram-sponsorship-rate-calculator"
           className="font-medium text-primary hover:underline"
         >
-          Instagram Sponsorship Price Calculator
+          Instagram Sponsorship Rate Calculator
         </Link>{' '}
         &mdash; compare cross-platform sponsorship rates
       </li>
@@ -224,7 +224,7 @@ const howItWorks = (
           href="/tiktok-sponsorship-rate-calculator"
           className="font-medium text-primary hover:underline"
         >
-          TikTok Sponsorship Price Calculator
+          TikTok Sponsorship Rate Calculator
         </Link>{' '}
         &mdash; calculate TikTok sponsorship pricing
       </li>
@@ -233,7 +233,7 @@ const howItWorks = (
           href="/facebook-sponsorship-rate-calculator"
           className="font-medium text-primary hover:underline"
         >
-          Facebook Sponsorship Price Calculator
+          Facebook Sponsorship Rate Calculator
         </Link>{' '}
         &mdash; calculate Facebook sponsorship pricing
       </li>
@@ -242,7 +242,7 @@ const howItWorks = (
           href="/twitter-sponsorship-rate-calculator"
           className="font-medium text-primary hover:underline"
         >
-          X (Twitter) Sponsorship Price Calculator
+          X (Twitter) Sponsorship Rate Calculator
         </Link>{' '}
         &mdash; calculate X sponsorship pricing for tweets and threads
       </li>
@@ -269,14 +269,14 @@ export default function YouTubeSponsorshipPage() {
   return (
     <>
       <CalculatorSchema
-        name="YouTube Sponsorship Price Calculator"
+        name="YouTube Sponsorship Rate Calculator"
         description="Calculate how much to charge for sponsored YouTube videos, integrations, Shorts, and pre-rolls based on your subscribers, engagement rate, and niche."
         url="/youtube-sponsorship-rate-calculator"
         datePublished="2025-01-15"
         dateModified="2026-02-16"
       />
       <CalculatorLayout
-        title="YouTube Sponsorship Price Calculator"
+        title="YouTube Sponsorship Rate Calculator"
         slug="youtube-sponsorship-rate-calculator"
         lastUpdated="February 2026"
         description="Find out how much to charge for sponsored videos on YouTube. Get a personalized rate card based on your subscribers, engagement rate, content type, and niche."
@@ -286,7 +286,7 @@ export default function YouTubeSponsorshipPage() {
           { name: 'Home', path: '/' },
           { name: 'YouTube', path: '/youtube' },
           {
-            name: 'YouTube Sponsorship Price Calculator',
+            name: 'YouTube Sponsorship Rate Calculator',
             path: '/youtube-sponsorship-rate-calculator',
           },
         ]}

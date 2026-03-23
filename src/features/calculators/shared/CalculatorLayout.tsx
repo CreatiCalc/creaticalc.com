@@ -7,6 +7,8 @@ import FAQ from './FAQ';
 import AdSlot from '@/components/layout/AdSlot';
 import CalculatorErrorBoundary from './CalculatorErrorBoundary';
 import NextStepCTA from './NextStepCTA';
+import { getCalculatorBySlug, PLATFORM_GRADIENTS } from '@/lib/calculatorRegistry';
+import { PLATFORM_ICONS } from '@/components/icons/PlatformIcons';
 
 interface CalculatorLayoutProps {
   title: string;
@@ -35,6 +37,10 @@ export default function CalculatorLayout({
     .filter((item): item is FAQItem & { answer: string } => typeof item.answer === 'string')
     .map((item) => ({ question: item.question, answer: item.answer }));
 
+  const calc = slug ? getCalculatorBySlug(slug) : undefined;
+  const platformGradient = calc ? PLATFORM_GRADIENTS[calc.platform] : undefined;
+  const PlatformIcon = calc ? PLATFORM_ICONS[calc.platform] : undefined;
+
   return (
     <div className="mx-auto max-w-4xl px-4 py-10">
       <FAQSchema items={faqSchemaItems} />
@@ -45,12 +51,19 @@ export default function CalculatorLayout({
         </>
       )}
       <div className="mb-8 text-center">
+        {PlatformIcon && (
+          <span
+            className={`mx-auto mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${platformGradient} text-white shadow-lg`}
+          >
+            <PlatformIcon className="h-7 w-7" />
+          </span>
+        )}
         <h1 className="text-gradient-brand text-3xl font-bold md:text-4xl">{title}</h1>
         <p className="mt-3 text-muted">{description}</p>
         {lastUpdated && <p className="mt-2 text-xs text-muted">Updated {lastUpdated}</p>}
         <div
-          className="mx-auto mt-5 h-1 w-36 rounded-full"
-          style={{ background: 'var(--gradient-brand-vibrant)' }}
+          className={`mx-auto mt-5 h-1 w-36 rounded-full ${platformGradient ? `bg-gradient-to-r ${platformGradient}` : ''}`}
+          style={platformGradient ? undefined : { background: 'var(--gradient-brand-vibrant)' }}
           aria-hidden="true"
         />
       </div>

@@ -8,6 +8,7 @@ import FAQ from './FAQ';
 import { SITE_URL } from '@/lib/siteConfig';
 import type { PlatformHubData } from '@/lib/platformHubData';
 import type { CalculatorEntry } from '@/lib/calculatorRegistry';
+import { HUB_SLUG_ICONS, getToolIcon } from '@/components/icons/PlatformIcons';
 
 interface ComparisonLink {
   name: string;
@@ -38,6 +39,8 @@ interface PlatformHubPageProps {
 }
 
 export default function PlatformHubPage({ hub, calculators, otherHubs }: PlatformHubPageProps) {
+  const HeroIcon = HUB_SLUG_ICONS[hub.slug];
+
   const collectionSchema = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
@@ -82,6 +85,13 @@ export default function PlatformHubPage({ hub, calculators, otherHubs }: Platfor
 
         {/* Hero */}
         <div className="mb-8 text-center">
+          {HeroIcon && (
+            <span
+              className={`mx-auto mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${hub.accentGradient} text-white shadow-lg`}
+            >
+              <HeroIcon className="h-7 w-7" />
+            </span>
+          )}
           <h1 className="text-gradient-brand text-3xl font-bold md:text-4xl">{hub.h1}</h1>
           <p className="mt-3 text-muted">{hub.heroDescription}</p>
           <div
@@ -96,27 +106,35 @@ export default function PlatformHubPage({ hub, calculators, otherHubs }: Platfor
         <section className="mb-12">
           <h2 className="mb-6 text-2xl font-bold">Free {hub.displayName} Calculator Tools</h2>
           <div className="grid gap-6 sm:grid-cols-2">
-            {calculators.map((calc) => (
-              <Link key={calc.href} href={calc.href} className="group">
-                <Card className="relative h-full overflow-hidden transition-all duration-200 group-hover:border-primary/50 group-hover:shadow-md">
-                  <div
-                    className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${hub.accentGradient} opacity-0 transition-opacity duration-200 group-hover:opacity-100`}
-                  />
-                  <div className="flex items-baseline justify-between">
-                    <h3 className="text-lg font-semibold group-hover:text-primary">
-                      {calc.cardTitle}
-                    </h3>
-                    <span className="rounded-full bg-surface-alt px-2 py-0.5 text-xs text-muted">
-                      Free
-                    </span>
-                  </div>
-                  <p className="mt-2 text-sm text-muted">{calc.description}</p>
-                  <p className="mt-3 text-sm font-medium text-primary opacity-0 transition-opacity duration-200 group-hover:opacity-100">
-                    Try it free &rarr;
-                  </p>
-                </Card>
-              </Link>
-            ))}
+            {calculators.map((calc) => {
+              const icon = getToolIcon(calc.slug);
+              return (
+                <Link key={calc.href} href={calc.href} className="group">
+                  <Card className="relative h-full overflow-hidden transition-all duration-200 group-hover:border-primary/50 group-hover:shadow-md">
+                    <div
+                      className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${hub.accentGradient} opacity-0 transition-opacity duration-200 group-hover:opacity-100`}
+                    />
+                    {icon && (
+                      <div className="mb-2 text-muted-light transition-colors group-hover:text-primary/60">
+                        {icon}
+                      </div>
+                    )}
+                    <div className="flex items-baseline justify-between">
+                      <h3 className="text-lg font-semibold group-hover:text-primary">
+                        {calc.cardTitle}
+                      </h3>
+                      <span className="rounded-full bg-surface-alt px-2 py-0.5 text-xs text-muted">
+                        Free
+                      </span>
+                    </div>
+                    <p className="mt-2 text-sm text-muted">{calc.description}</p>
+                    <p className="mt-3 text-sm font-medium text-primary opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                      Try it free &rarr;
+                    </p>
+                  </Card>
+                </Link>
+              );
+            })}
           </div>
         </section>
 
@@ -179,16 +197,24 @@ export default function PlatformHubPage({ hub, calculators, otherHubs }: Platfor
         <section className="mb-12">
           <h2 className="mb-6 text-2xl font-bold">Explore Other Platforms</h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {otherHubs.map((other) => (
-              <Link key={other.slug} href={`/${other.slug}`} className="group">
-                <Card className="text-center transition-all duration-200 group-hover:border-primary/50 group-hover:shadow-md">
-                  <p className="font-semibold group-hover:text-primary">{other.name}</p>
-                  <p className="mt-1 text-xs text-muted">
-                    {other.calculatorCount} free tool{other.calculatorCount !== 1 ? 's' : ''}
-                  </p>
-                </Card>
-              </Link>
-            ))}
+            {otherHubs.map((other) => {
+              const OtherIcon = HUB_SLUG_ICONS[other.slug];
+              return (
+                <Link key={other.slug} href={`/${other.slug}`} className="group">
+                  <Card className="text-center transition-all duration-200 group-hover:border-primary/50 group-hover:shadow-md">
+                    {OtherIcon && (
+                      <div className="mx-auto mb-2 text-muted-light transition-colors group-hover:text-primary">
+                        <OtherIcon className="mx-auto h-6 w-6" />
+                      </div>
+                    )}
+                    <p className="font-semibold group-hover:text-primary">{other.name}</p>
+                    <p className="mt-1 text-xs text-muted">
+                      {other.calculatorCount} free tool{other.calculatorCount !== 1 ? 's' : ''}
+                    </p>
+                  </Card>
+                </Link>
+              );
+            })}
           </div>
         </section>
 

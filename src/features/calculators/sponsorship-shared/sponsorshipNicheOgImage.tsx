@@ -12,7 +12,7 @@ export function buildNicheOgImage(platform: SponsorshipPlatform, displayName: st
     const { niche } = await params;
     const data = getSponsorshipNichePageData(platform, niche);
     return createOgImageResponse({
-      title: data?.ogTitle ?? `${displayName} Sponsorship Price Calculator`,
+      title: data?.ogTitle ?? `${displayName} Sponsorship Rate Calculator`,
       subtitle: `Calculate ${data?.name ?? ''} sponsorship rates on ${displayName}`,
       stats: [
         { label: 'Platform', value: displayName },

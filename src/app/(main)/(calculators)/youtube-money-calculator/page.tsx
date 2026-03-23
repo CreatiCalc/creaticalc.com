@@ -315,7 +315,7 @@ const howItWorks = (
           href="/youtube-sponsorship-rate-calculator"
           className="font-medium text-primary hover:underline"
         >
-          YouTube Sponsorship Price Calculator
+          YouTube Sponsorship Rate Calculator
         </Link>{' '}
         — find out how much to charge for integrations, dedicated videos, and Shorts sponsorships
       </li>
@@ -324,7 +324,7 @@ const howItWorks = (
           href="/instagram-sponsorship-rate-calculator"
           className="font-medium text-primary hover:underline"
         >
-          Instagram Sponsorship Price Calculator
+          Instagram Sponsorship Rate Calculator
         </Link>{' '}
         — find out how much to charge for sponsored Instagram posts
       </li>
@@ -333,7 +333,7 @@ const howItWorks = (
           href="/tiktok-sponsorship-rate-calculator"
           className="font-medium text-primary hover:underline"
         >
-          TikTok Sponsorship Price Calculator
+          TikTok Sponsorship Rate Calculator
         </Link>{' '}
         — calculate your TikTok sponsorship rates
       </li>
@@ -342,7 +342,7 @@ const howItWorks = (
           href="/facebook-sponsorship-rate-calculator"
           className="font-medium text-primary hover:underline"
         >
-          Facebook Sponsorship Price Calculator
+          Facebook Sponsorship Rate Calculator
         </Link>{' '}
         — calculate Facebook sponsorship pricing
       </li>
@@ -351,7 +351,7 @@ const howItWorks = (
           href="/twitter-sponsorship-rate-calculator"
           className="font-medium text-primary hover:underline"
         >
-          X (Twitter) Sponsorship Price Calculator
+          X (Twitter) Sponsorship Rate Calculator
         </Link>{' '}
         — calculate X sponsorship pricing for tweets and threads
       </li>
