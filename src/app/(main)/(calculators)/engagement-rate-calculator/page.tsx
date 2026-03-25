@@ -49,7 +49,7 @@ const faq: FAQItem[] = [
   {
     question: 'How do engagement rates compare across platforms?',
     answer:
-      "Engagement rates vary dramatically by platform. TikTok leads at ~4.9% average, followed by Instagram at ~0.98%, Facebook at ~0.065%, and X (Twitter) at ~0.03%. These differences are driven by each platform's algorithm, content format, and audience behavior. TikTok's algorithm-driven content distribution and auto-playing video format produce the highest engagement. You should not compare rates directly across platforms without adjusting for these structural differences — use our cross-platform comparison tools for that.",
+      "Engagement rates vary dramatically by platform. TikTok leads at ~4.9% average, followed by Instagram at ~0.98%, Facebook at ~0.15%, and X (Twitter) at ~0.10%. These differences are driven by each platform's algorithm, content format, and audience behavior. TikTok's algorithm-driven content distribution and auto-playing video format produce the highest engagement. You should not compare rates directly across platforms without adjusting for these structural differences — use our cross-platform comparison tools for that.",
   },
   {
     question: 'Should I calculate engagement rate by followers, reach, or impressions?',
@@ -95,7 +95,7 @@ const platforms = [
     description:
       'Calculate your Facebook page engagement rate from reactions, comments, and shares. Supports follower and reach formulas.',
     color: 'from-blue-500 via-blue-600 to-indigo-500',
-    avgRate: '0.065%',
+    avgRate: '0.15%',
   },
   {
     name: 'X (Twitter)',
@@ -103,7 +103,7 @@ const platforms = [
     description:
       'Calculate your X engagement rate from likes, replies, reposts, and bookmarks. Supports follower and impressions formulas.',
     color: 'from-sky-400 via-blue-500 to-indigo-400',
-    avgRate: '0.03%',
+    avgRate: '0.10%',
   },
 ];
 
