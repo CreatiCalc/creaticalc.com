@@ -44,7 +44,7 @@ const faq: FAQItem[] = [
   {
     question: 'Are engagement rates going up or down?',
     answer:
-      'Instagram engagement rates have been slowly declining year-over-year as the platform matures — from 1.16% in 2023 to 0.98% in 2026. TikTok rates have been increasing, rising from 4.07% in 2023 to 4.9% in 2026. Facebook engagement is recovering slightly to 0.065% in 2026 after years of decline. X (Twitter) continues to decline, dropping to approximately 0.03% in 2026 — down roughly 80% since 2021.',
+      'Instagram engagement rates have been slowly declining year-over-year as the platform matures — from 1.16% in 2023 to 0.98% in 2026. TikTok rates have been increasing, rising from 4.07% in 2023 to 4.9% in 2026. Facebook engagement has recovered to 0.15% in 2026, up from lows of around 0.06% in earlier years. X (Twitter) continues to decline, dropping to approximately 0.10% in 2026 — down roughly 33% since 2021.',
   },
   {
     question: 'How often do you update these benchmarks?',

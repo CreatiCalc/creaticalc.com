@@ -263,7 +263,7 @@ const tiktokHub: PlatformHubData = {
     {
       title: 'Why TikTok Has the Highest Engagement Rates',
       paragraphs: [
-        "TikTok consistently leads all social platforms in engagement rate, averaging 4.9% compared to Instagram's 0.98% and Facebook's 0.065%. This is driven by TikTok's algorithm, which surfaces content based on interest rather than follower relationships, giving every video a chance to reach a wide audience.",
+        "TikTok consistently leads all social platforms in engagement rate, averaging 4.9% compared to Instagram's 0.98% and Facebook's 0.15%. This is driven by TikTok's algorithm, which surfaces content based on interest rather than follower relationships, giving every video a chance to reach a wide audience.",
         "TikTok's auto-playing, full-screen video format also encourages higher interaction rates. Users are more likely to like, comment, and share when content fills their entire screen and plays automatically. For creators, this means even accounts with smaller followings can achieve high engagement and rapid growth.",
       ],
     },
@@ -343,7 +343,7 @@ const facebookHub: PlatformHubData = {
     'Calculate your Facebook Page engagement rate, benchmark against industry averages, and find out how much to charge for sponsored posts, Reels, Stories, and Lives — all free.',
   accentGradient: 'from-blue-500 via-blue-600 to-indigo-500',
   keyStats: [
-    { label: 'Avg Engagement Rate', value: '0.065%' },
+    { label: 'Avg Engagement Rate', value: '0.15%' },
     { label: 'Monthly Active Users', value: '3.07B' },
     { label: 'Free Tools', value: '2' },
   ],
@@ -351,7 +351,7 @@ const facebookHub: PlatformHubData = {
     {
       title: 'Understanding Facebook Engagement Rates',
       paragraphs: [
-        "Facebook has the lowest organic engagement rates of any major social platform, averaging just 0.065% in 2026. This is primarily due to Facebook's algorithm heavily prioritizing paid content and personal connections over organic page posts. Despite this, Facebook remains the world's largest social network with over 3 billion monthly active users.",
+        "Facebook has the lowest organic engagement rates of any major social platform, averaging around 0.15% in 2026. This is primarily due to Facebook's algorithm heavily prioritizing paid content and personal connections over organic page posts. Despite this, Facebook remains the world's largest social network with over 3 billion monthly active users.",
         'Facebook engagement is measured by reactions (like, love, haha, wow, sad, angry), comments, and shares. Unlike Instagram, Facebook does not have a native "save" feature, so shares carry more weight as a signal of content quality. Our calculator uses the standard formula: (Reactions + Comments + Shares) / Followers x 100.',
       ],
     },
@@ -374,7 +374,7 @@ const facebookHub: PlatformHubData = {
     {
       question: 'What is a good Facebook engagement rate?',
       answer:
-        'The average Facebook Page engagement rate is around 0.065%. Rates above 0.1% are considered good, and above 0.2% is excellent. Facebook has the lowest organic engagement of any major platform due to the algorithm prioritizing paid content. Smaller pages (under 10K followers) tend to see higher rates of 0.15–0.5%.',
+        'The average Facebook Page engagement rate is around 0.15%. Rates above 0.2% are considered good, and above 0.5% is excellent. Facebook has the lowest organic engagement of any major platform due to the algorithm prioritizing paid content. Smaller pages (under 10K followers) tend to see higher rates of 0.3–0.8%.',
     },
     {
       question: 'Why are Facebook engagement rates so low?',
@@ -431,7 +431,7 @@ const xHub: PlatformHubData = {
     'Calculate your X engagement rate, benchmark against platform averages, and find out how much to charge for sponsored tweets, threads, and Spaces — all free.',
   accentGradient: 'from-sky-400 via-blue-500 to-indigo-400',
   keyStats: [
-    { label: 'Avg Engagement Rate', value: '0.03%' },
+    { label: 'Avg Engagement Rate', value: '0.10%' },
     { label: 'Avg Sponsorship CPM', value: '$5 – $12' },
     { label: 'Free Tools', value: '2' },
   ],
@@ -440,7 +440,7 @@ const xHub: PlatformHubData = {
       title: 'How X Engagement Is Measured',
       paragraphs: [
         'X (formerly Twitter) measures engagement through likes, replies, reposts (retweets), bookmarks, and link clicks. The standard engagement rate formula divides total interactions by follower count and multiplies by 100. X also provides impression-based metrics, allowing creators to calculate engagement per view.',
-        "X has the second-lowest engagement rates of major platforms, averaging around 0.03%. This is partly because X's real-time, text-based format encourages browsing and consumption rather than active interaction. However, highly engaged niches like tech, politics, and creator economy can see significantly higher rates.",
+        "X has the lowest engagement rates of major platforms, averaging around 0.10%. This is partly because X's real-time, text-based format encourages browsing and consumption rather than active interaction. However, highly engaged niches like tech, politics, and creator economy can see significantly higher rates.",
       ],
     },
     {
@@ -462,7 +462,7 @@ const xHub: PlatformHubData = {
     {
       question: 'What is a good engagement rate on X (Twitter)?',
       answer:
-        'The average X engagement rate is around 0.03%. Rates above 0.05% are considered good, and above 0.1% is excellent. Engagement rates on X are much lower than on visual platforms like Instagram or TikTok because the text-based format encourages passive consumption. Niche accounts with highly engaged audiences often see 0.1–0.5%.',
+        'The average X engagement rate is around 0.10%. Rates above 0.15% are considered good, and above 0.3% is excellent. Engagement rates on X are much lower than on visual platforms like Instagram or TikTok because the text-based format encourages passive consumption. Niche accounts with highly engaged audiences often see 0.3–0.8%.',
     },
     {
       question: 'How is X engagement rate calculated?',

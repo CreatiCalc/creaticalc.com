@@ -15,11 +15,11 @@ import { getEngagementNichePages } from '@/lib/engagement-niches';
 export const metadata: Metadata = {
   title: 'X (Twitter) Engagement Rate Calculator: Are You Above Average? [2026]',
   description:
-    'Calculate your X engagement rate and compare it to niche benchmarks. Average is just 0.03%, so most accounts beat it. No sign-up.',
+    'Calculate your X engagement rate and compare it to niche benchmarks. Average is just 0.10%, so most accounts beat it. No sign-up.',
   openGraph: {
     title: 'X (Twitter) Engagement Rate Calculator: Are You Above Average? [2026]',
     description:
-      'Calculate your X engagement rate and compare it to niche benchmarks. Average is just 0.03%, so most accounts beat it. No sign-up.',
+      'Calculate your X engagement rate and compare it to niche benchmarks. Average is just 0.10%, so most accounts beat it. No sign-up.',
     url: '/twitter-engagement-rate-calculator',
   },
   alternates: {
@@ -31,7 +31,7 @@ const faq: FAQItem[] = [
   {
     question: 'What is a good X (Twitter) engagement rate?',
     answer:
-      'X (Twitter) engagement rates are among the lowest of major social platforms and have been declining for several years. For follower-based calculation, nano accounts (under 10K followers) typically see 1.0–3.0%, micro accounts (10K–50K) see 0.5–1.5%, mid-tier (50K–200K) see 0.2–0.8%, macro (200K–1M) see 0.1–0.4%, and mega accounts (1M+) average 0.02–0.2%. Anything above 0.5% is considered solid on X. The platform-wide average across all accounts is approximately 0.03%.',
+      'X (Twitter) engagement rates are among the lowest of major social platforms and have been declining for several years. For follower-based calculation, nano accounts (under 10K followers) typically see 1.0–3.0%, micro accounts (10K–50K) see 0.5–1.5%, mid-tier (50K–200K) see 0.2–0.8%, macro (200K–1M) see 0.1–0.4%, and mega accounts (1M+) average 0.02–0.2%. Anything above 0.5% is considered solid on X. The platform-wide average across all accounts is approximately 0.10%.',
   },
   {
     question: 'How is X (Twitter) engagement rate calculated?',
@@ -46,12 +46,12 @@ const faq: FAQItem[] = [
   {
     question: 'Why is X (Twitter) engagement rate declining?',
     answer:
-      'X engagement rates have declined roughly 80% since 2021, falling from about 0.15% to 0.03% in 2026. Several factors contribute: the shift from a chronological timeline to an algorithmic feed, increased content volume competing for attention, platform changes under new ownership (including the rebrand from Twitter to X), advertiser departures affecting content monetization incentives, and the rise of alternative platforms like Threads and Bluesky that have drawn away some active users.',
+      'X engagement rates have declined roughly 33% since 2021, falling from about 0.15% to 0.10% in 2026. Several factors contribute: the shift from a chronological timeline to an algorithmic feed, increased content volume competing for attention, platform changes under new ownership (including the rebrand from Twitter to X), advertiser departures affecting content monetization incentives, and the rise of alternative platforms like Threads and Bluesky that have drawn away some active users.',
   },
   {
     question: 'What is the average X (Twitter) engagement rate in 2026?',
     answer:
-      "The overall average X engagement rate in 2026 is approximately 0.03% (follower-based), continuing a multi-year decline. This makes X the lowest-engagement major social platform. For context, Facebook averages about 0.065%, Instagram about 0.98%, and TikTok about 4.9%. The low average reflects the platform's fast-moving timeline nature — most tweets are seen briefly and scrolled past.",
+      "The overall average X engagement rate in 2026 is approximately 0.10% (follower-based), continuing a multi-year decline. This makes X the lowest-engagement major social platform. For context, Facebook averages about 0.15%, Instagram about 0.98%, and TikTok about 4.9%. The gap with Facebook has narrowed considerably, but X remains at the bottom.",
   },
   {
     question: 'How do bookmarks affect X (Twitter) engagement?',
@@ -76,7 +76,7 @@ const faq: FAQItem[] = [
   {
     question: 'What are X engagement benchmarks by niche?',
     answer:
-      "X engagement rates vary by content niche. The highest-performing niches include education (0.10%), animals and pets (0.08%), and sports (0.07%). Mid-range niches include entertainment (0.05%), finance (0.06%), and gaming (0.07%). Lower-performing niches include fashion (0.02%), beauty (0.02%), and food (0.03%). These rates are all very low in absolute terms, which is normal for X — the platform's value often lies more in reach and conversation influence than raw engagement metrics.",
+      "X engagement rates vary by content niche. The highest-performing niches include education (0.20%), animals and pets (0.16%), and sports (0.14%). Mid-range niches include entertainment (0.10%), finance (0.12%), and arts (0.12%). Lower-performing niches include fashion (0.04%), beauty (0.04%), and food (0.06%). These rates are all low in absolute terms, which is normal for X — the platform's value often lies more in reach and conversation influence than raw engagement metrics.",
   },
   {
     question: 'How does X monetization through ad revenue sharing work?',
@@ -154,8 +154,8 @@ const howItWorks = (
 
     <h3 className="mt-6 text-lg font-semibold text-foreground">Why X Engagement Is Declining</h3>
     <p className="mt-2">
-      X engagement rates have declined approximately 80% since 2021, dropping from about 0.15% to
-      0.03% in 2026. For comparison,{' '}
+      X engagement rates have declined approximately 33% since 2021, dropping from about 0.15% to
+      0.10% in 2026. For comparison,{' '}
       <Link
         href="/instagram-engagement-rate-calculator"
         className="font-medium text-primary hover:underline"
@@ -174,7 +174,7 @@ const howItWorks = (
         href="/facebook-engagement-rate-calculator"
         className="font-medium text-primary hover:underline"
       >
-        Facebook averages about 0.065%
+        Facebook averages about 0.15%
       </Link>
       . This reflects several platform dynamics: the shift to an algorithmic feed, increased content
       volume, platform changes following the Twitter-to-X rebrand, and user migration to alternative

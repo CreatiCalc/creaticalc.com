@@ -46,7 +46,7 @@ const faq: FAQItem[] = [
   {
     question: 'How does engagement rate affect X sponsorship pricing?',
     answer:
-      'Engagement rate has a significant impact on your X sponsorship rates. Creators with below 1% engagement earn about 50% less than standard rates, while those above 5% can charge 2x the standard rate. The platform-wide average engagement rate on X is approximately 0.03%, which is lower than Instagram or TikTok, so even a 1–2% engagement rate is considered strong. Brands pay close attention to reply quality, retweets, and quote tweets as indicators of genuine audience influence rather than passive scrolling.',
+      'Engagement rate has a significant impact on your X sponsorship rates. Creators with below 1% engagement earn about 50% less than standard rates, while those above 5% can charge 2x the standard rate. The platform-wide average engagement rate on X is approximately 0.10%, which is lower than Instagram or TikTok, so even a 1–2% engagement rate is considered strong. Brands pay close attention to reply quality, retweets, and quote tweets as indicators of genuine audience influence rather than passive scrolling.',
   },
   {
     question: 'What niches pay the most for X (Twitter) sponsorships?',

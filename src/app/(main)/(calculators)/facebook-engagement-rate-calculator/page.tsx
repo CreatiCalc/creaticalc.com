@@ -15,11 +15,11 @@ import { getEngagementNichePages } from '@/lib/engagement-niches';
 export const metadata: Metadata = {
   title: 'Facebook Engagement Rate Calculator: Check Yours by Niche [2026 Data]',
   description:
-    'Calculate your Facebook Page engagement rate and see how it compares to niche benchmarks. Average is just 0.065%. No sign-up.',
+    'Calculate your Facebook Page engagement rate and see how it compares to niche benchmarks. Average is around 0.15%. No sign-up.',
   openGraph: {
     title: 'Facebook Engagement Rate Calculator: Check Yours by Niche [2026 Data]',
     description:
-      'Calculate your Facebook Page engagement rate and see how it compares to niche benchmarks. Average is just 0.065%. No sign-up.',
+      'Calculate your Facebook Page engagement rate and see how it compares to niche benchmarks. Average is around 0.15%. No sign-up.',
     url: '/facebook-engagement-rate-calculator',
   },
   alternates: {
@@ -31,7 +31,7 @@ const faq: FAQItem[] = [
   {
     question: 'What is a good Facebook engagement rate?',
     answer:
-      'Facebook engagement rates are significantly lower than other social platforms due to limited organic reach. For follower-based calculation, nano pages (under 10K followers) typically see 1.5–3.0%, micro pages (10K–50K) see 0.8–1.8%, mid-tier (50K–200K) see 0.5–1.2%, macro (200K–1M) see 0.2–0.8%, and mega pages (1M+) average 0.05–0.3%. Anything above 1% is considered strong for most Facebook Pages. The platform-wide average across all pages is approximately 0.065%.',
+      'Facebook engagement rates are significantly lower than other social platforms due to limited organic reach. For follower-based calculation, nano pages (under 10K followers) typically see 1.5–3.0%, micro pages (10K–50K) see 0.8–1.8%, mid-tier (50K–200K) see 0.5–1.2%, macro (200K–1M) see 0.2–0.8%, and mega pages (1M+) average 0.05–0.3%. Anything above 1% is considered strong for most Facebook Pages. The platform-wide average across all pages is approximately 0.15%.',
   },
   {
     question: 'How is Facebook engagement rate calculated?',
@@ -51,7 +51,7 @@ const faq: FAQItem[] = [
   {
     question: 'What is the average Facebook engagement rate in 2026?',
     answer:
-      "The overall average Facebook Page engagement rate in 2026 is approximately 0.065% (follower-based), which has been slowly recovering from lows of 0.06% in previous years. This makes Facebook the second-lowest engagement platform after X (Twitter). For context, Instagram averages about 0.98% and TikTok about 4.9%. The low average reflects Facebook's mature platform status and its algorithmic preference for personal content over brand/page content.",
+      "The overall average Facebook Page engagement rate in 2026 is approximately 0.15% (follower-based), a significant recovery from the old baseline of around 0.06% in previous years. This makes Facebook the second-lowest engagement platform after X (Twitter). For context, Instagram averages about 0.98% and TikTok about 4.9%. The low average reflects Facebook's mature platform status and its algorithmic preference for personal content over brand/page content, though the upward trend suggests Reels and video-first strategies are helping.",
   },
   {
     question: 'How do Facebook Reactions affect engagement?',
@@ -147,7 +147,7 @@ const howItWorks = (
     </h3>
     <p className="mt-2">
       Facebook engagement rates are the second-lowest among major social platforms, averaging about
-      0.065% across all pages in 2026. For comparison,{' '}
+      0.15% across all pages in 2026. For comparison,{' '}
       <Link
         href="/instagram-engagement-rate-calculator"
         className="font-medium text-primary hover:underline"
