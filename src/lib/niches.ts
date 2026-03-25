@@ -88,7 +88,11 @@ export const YOUTUBE_NICHE_DATA: Record<YouTubeNicheId, YouTubeNicheData> = {
   },
   tech: { name: 'Technology', cpm: { low: 8, mid: 14, high: 22 }, avgMonthlyGrowthPct: 4.0 },
   education: { name: 'Education', cpm: { low: 5, mid: 12, high: 18 }, avgMonthlyGrowthPct: 5.0 },
-  health: { name: 'Health & Fitness', cpm: { low: 6, mid: 12, high: 18 }, avgMonthlyGrowthPct: 4.5 },
+  health: {
+    name: 'Health & Fitness',
+    cpm: { low: 6, mid: 12, high: 18 },
+    avgMonthlyGrowthPct: 4.5,
+  },
   beauty: { name: 'Beauty & Fashion', cpm: { low: 3, mid: 6, high: 10 }, avgMonthlyGrowthPct: 3.0 },
   travel: { name: 'Travel', cpm: { low: 4, mid: 7, high: 10 }, avgMonthlyGrowthPct: 3.5 },
   food: { name: 'Food & Cooking', cpm: { low: 3, mid: 5, high: 8 }, avgMonthlyGrowthPct: 4.0 },

@@ -533,7 +533,7 @@ export const YOY_TRENDS: YoYTrend[] = [
   { year: 2023, instagram: 1.16, tiktok: 4.07, facebook: 0.13, twitter: 0.14 },
   { year: 2024, instagram: 1.05, tiktok: 4.4, facebook: 0.14, twitter: 0.12 },
   { year: 2025, instagram: 1.01, tiktok: 4.64, facebook: 0.15, twitter: 0.11 },
-  { year: 2026, instagram: 0.98, tiktok: 4.9, facebook: 0.15, twitter: 0.10 },
+  { year: 2026, instagram: 0.98, tiktok: 4.9, facebook: 0.15, twitter: 0.1 },
 ];
 
 // Platform averages for cross-platform comparison
@@ -541,7 +541,7 @@ export const PLATFORM_AVERAGES: Record<Platform, number> = {
   instagram: 0.98,
   tiktok: 4.9,
   facebook: 0.15,
-  twitter: 0.10,
+  twitter: 0.1,
 };
 
 /** YouTube engagement rate range (view-based, not follower-based like other platforms). */

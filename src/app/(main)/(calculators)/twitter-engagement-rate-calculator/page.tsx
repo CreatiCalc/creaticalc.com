@@ -51,7 +51,7 @@ const faq: FAQItem[] = [
   {
     question: 'What is the average X (Twitter) engagement rate in 2026?',
     answer:
-      "The overall average X engagement rate in 2026 is approximately 0.10% (follower-based), continuing a multi-year decline. This makes X the lowest-engagement major social platform. For context, Facebook averages about 0.15%, Instagram about 0.98%, and TikTok about 4.9%. The gap with Facebook has narrowed considerably, but X remains at the bottom.",
+      'The overall average X engagement rate in 2026 is approximately 0.10% (follower-based), continuing a multi-year decline. This makes X the lowest-engagement major social platform. For context, Facebook averages about 0.15%, Instagram about 0.98%, and TikTok about 4.9%. The gap with Facebook has narrowed considerably, but X remains at the bottom.',
   },
   {
     question: 'How do bookmarks affect X (Twitter) engagement?',
