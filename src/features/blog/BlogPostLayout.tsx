@@ -1,4 +1,5 @@
 import type { BlogPostFrontmatter } from '@/lib/blog';
+import Link from 'next/link';
 import AdSlot from '@/components/layout/AdSlot';
 import Breadcrumbs from '@/components/seo/Breadcrumbs';
 import BlogShareButtons from './BlogShareButtons';
@@ -70,9 +71,19 @@ export default function BlogPostLayout({ frontmatter, children }: BlogPostLayout
       <AdSlot slot="header" className="mb-8" />
 
       {/* Article content */}
-      <article className="prose prose-stone max-w-none prose-headings:scroll-mt-20">
+      <article className="prose prose-stone max-w-none prose-headings:scroll-mt-20 [&>p:first-of-type]:text-lg [&>p:first-of-type]:leading-relaxed [&>p:first-of-type]:text-foreground">
         {children}
       </article>
+
+      {/* Methodology attribution */}
+      <p className="mt-8 border-t border-border pt-4 text-xs text-muted">
+        Benchmark data comes from our aggregated research across industry reports and platform
+        analytics.{' '}
+        <Link href="/methodology" className="text-primary hover:text-primary-dark">
+          See our methodology
+        </Link>
+        .
+      </p>
 
       {/* Share */}
       <BlogShareButtons slug={frontmatter.slug} title={frontmatter.title} />
