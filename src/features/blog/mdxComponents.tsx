@@ -1,6 +1,7 @@
 import type { MDXComponents } from 'mdx/types';
 import Link from 'next/link';
 import AdSlot from '@/components/layout/AdSlot';
+import QuickEngagementCheck from './QuickEngagementCheck';
 
 function MdxLink(props: React.AnchorHTMLAttributes<HTMLAnchorElement>) {
   const { href, children, ...rest } = props;
@@ -69,4 +70,5 @@ export const mdxComponents: MDXComponents = {
   CalculatorLink,
   Callout,
   MidArticleAd,
+  QuickEngagementCheck,
 };
